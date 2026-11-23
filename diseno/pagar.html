@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pagar préstamo — TextoVivo</title>
+<!-- En la V1 esta página no carga nada de terceros (PCI): fuentes servidas desde el propio dominio y CSP estricta. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilos.css">
+<style>
+  .caja { padding: clamp(28px, 5vw, 64px) 0 96px; }
+  .caja .envoltura { display: grid; grid-template-columns: 1fr 380px; gap: clamp(28px, 5vw, 72px); align-items: start; max-width: 1120px; }
+  .caja h1 { font-size: clamp(2.6rem, 5.4vw, 4.6rem); margin: 12px 0 0; }
+
+  .etapas { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 36px; padding: 0; list-style: none; }
+  .etapas li { display: flex; align-items: center; gap: 8px; padding: 8px 14px 8px 8px; border-radius: 999px; font-size: 0.85rem; color: var(--gris); background: color-mix(in srgb, var(--tinta) 5%, transparent); }
+  .etapas b { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: color-mix(in srgb, var(--tinta) 10%, transparent); font-size: 0.75rem; }
+  .etapas li[aria-current="step"] { color: var(--crema); background: var(--tinta); }
+  .etapas li[aria-current="step"] b { background: var(--crema); color: var(--tinta); }
+
+  fieldset { border: 0; margin: 0 0 32px; padding: 0; min-width: 0; }
+  legend { font: 700 1.25rem/1.2 var(--sans); letter-spacing: -0.02em; margin-bottom: 4px; padding: 0; }
+  legend + .nota { margin: 0 0 16px; }
+
+  .seguridad { display: flex; gap: 12px; align-items: flex-start; padding: 16px; border-radius: 14px; background: color-mix(in srgb, #2f55c4 9%, transparent); font-size: 0.9rem; margin-bottom: 22px; }
+  .seguridad strong { white-space: nowrap; color: #2f55c4; }
+  @media (prefers-color-scheme: dark) { .seguridad strong { color: #8fa9f2; } }
+  .legal { font-size: 0.8rem; color: var(--gris); margin-top: 14px; text-align: center; }
+
+  .resumen { position: sticky; top: 88px; display: grid; gap: 14px; }
+  .resumen .obra { display: flex; gap: 14px; align-items: center; margin-bottom: 18px; }
+  .resumen .mini { width: 56px; flex: none; padding: 6px; }
+  .resumen .mini .titulo { margin-top: 30%; font-size: 17cqi; color: #ffb089; }
+  .resumen dl { display: grid; grid-template-columns: 1fr auto; gap: 10px; margin: 0; font-size: 0.92rem; }
+  .resumen dt { color: var(--gris); }
+  .resumen dd { margin: 0; text-align: right; }
+  .resumen .total { padding-top: 12px; border-top: 1px solid var(--linea); font-weight: 700; font-size: 1.05rem; }
+
+  .estado-pago { padding: 24px 0; max-width: 32em; }
+  .estado-pago h2 { margin: 22px 0 14px; }
+  .giro { width: 40px; height: 40px; border: 3px solid var(--linea); border-top-color: var(--tinta); border-radius: 50%; animation: girar 0.8s linear infinite; }
+  @keyframes girar { to { transform: rotate(360deg); } }
+
+  @media (max-width: 900px) { .caja .envoltura { grid-template-columns: 1fr; } .resumen { position: static; order: -1; } }
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cabecera">
+  <div class="envoltura">
+    <a class="marca" href="index.html" aria-label="TextoVivo, inicio">Texto<b>Vivo</b></a>
+    <nav class="navegacion" aria-label="Pago"><span class="micro">Pago seguro · 3D Secure</span></nav>
+  </div>
+</header>
+
+<main id="contenido" class="caja">
+  <div class="envoltura">
+    <div>
+      <a class="enlace nota" href="texto.html">← El arte de la guerra</a>
+      <h1>Alquilar por 30 días.</h1>
+      <ol class="etapas" aria-label="Pasos del pago">
+        <li aria-current="step"><b>1</b>Datos y tarjeta</li>
+        <li><b>2</b>Verificación del banco</li>
+        <li><b>3</b>Listo</li>
+      </ol>
+
+      <form data-demo="estado-3ds" novalidate>
+        <fieldset>
+          <legend>Tarjeta</legend>
+          <p class="nota">Crédito o débito.</p>
+          <div class="campos">
+            <div class="campo"><label for="tarjeta">Número de tarjeta</label><input id="tarjeta" data-tarjeta inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" required></div>
+            <div class="campo m2 par"><label for="mes">Mes</label><input id="mes" inputmode="numeric" autocomplete="cc-exp-month" placeholder="MM" maxlength="2" required></div>
+            <div class="campo m2 par"><label for="anio">Año</label><input id="anio" inputmode="numeric" autocomplete="cc-exp-year" placeholder="AAAA" maxlength="4" required></div>
+            <div class="campo m2"><label for="cvv">CVV</label><input id="cvv" inputmode="numeric" autocomplete="cc-csc" placeholder="000" maxlength="4" required></div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Titular y facturación</legend>
+          <p class="nota">Tu banco los pide para verificar la compra.</p>
+          <div class="campos">
+            <div class="campo m3"><label for="nombre">Nombre</label><input id="nombre" autocomplete="given-name" required></div>
+            <div class="campo m3"><label for="apellido">Apellido</label><input id="apellido" autocomplete="family-name" required></div>
+            <div class="campo m3"><label for="email">Email</label><input id="email" type="email" autocomplete="email" required></div>
+            <div class="campo m3"><label for="telefono">Teléfono</label><input id="telefono" type="tel" autocomplete="tel" required></div>
+            <div class="campo"><label for="direccion">Dirección</label><input id="direccion" autocomplete="street-address" required></div>
+            <div class="campo m2"><label for="ciudad">Ciudad</label><input id="ciudad" autocomplete="address-level2" required></div>
+            <div class="campo m2"><label for="postal">Código postal</label><input id="postal" autocomplete="postal-code" required></div>
+            <div class="campo m2"><label for="pais">País</label>
+              <select id="pais" autocomplete="country" required><option value="SV">El Salvador</option><option value="MX">México</option><option value="GT">Guatemala</option><option value="CO">Colombia</option><option value="AR">Argentina</option><option value="ES">España</option><option value="US">Estados Unidos</option></select></div>
+            <div class="campo"><label for="region">Departamento, provincia o estado</label>
+              <select id="region" autocomplete="address-level1" required><option value="SV-SS">San Salvador</option><option value="SV-LI">La Libertad</option><option value="SV-SA">Santa Ana</option><option value="SV-SM">San Miguel</option></select></div>
+          </div>
+        </fieldset>
+
+        <div class="seguridad"><strong>3D Secure</strong><span>Después de este paso, tu banco te pide confirmar la compra. TextoVivo no guarda los datos de tu tarjeta: van directo a Wompi.</span></div>
+        <button class="boton ancho" type="submit">Pagar US$4.99</button>
+        <p class="legal">Licencia personal e intransferible por 30 días. Procesado por Wompi (El Salvador).</p>
+      </form>
+
+      <section id="estado-3ds" class="estado-pago" hidden>
+        <div class="giro" aria-hidden="true"></div>
+        <h2 tabindex="-1">Te llevamos a tu banco.</h2>
+        <p class="bajada">Confirmá la compra en la pantalla de tu banco. Cuando termines, volvés acá y tu préstamo ya está activo.</p>
+        <p class="nota">Prototipo: en la app real, acá se abre la verificación 3D Secure.</p>
+        <a class="boton" href="mi-biblioteca.html">Simular pago aprobado</a>
+      </section>
+    </div>
+
+    <aside class="resumen" aria-label="Resumen del préstamo">
+      <div class="tarjeta">
+        <div class="obra">
+          <div class="poster c-rojo mini" aria-hidden="true"><span class="titulo t-alta">Arte</span></div>
+          <div><strong style="display:block;font-size:1.05rem;letter-spacing:-0.02em">El arte de la guerra</strong><span class="nota">Sun Tzu · trad. Giles</span></div>
+        </div>
+        <dl>
+          <dt>Desde</dt><dd>23 nov 2026</dd>
+          <dt>Vence</dt><dd>23 dic 2026</dd>
+          <dt>Consultas</dt><dd>150 (~50 preguntas)</dd>
+          <dt class="total">Total</dt><dd class="total">US$4.99</dd>
+        </dl>
+      </div>
+      <p class="nota">Pago único, sin renovación automática. Te avisamos 3 días antes de que venza.</p>
+    </aside>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

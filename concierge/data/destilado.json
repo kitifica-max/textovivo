@@ -1,0 +1,772 @@
+{
+  "id": "arte-de-la-guerra",
+  "titulo": "El arte de la guerra (The Art of War)",
+  "autor": "Sun Tzu (traducción de Lionel Giles, 1910)",
+  "descripcion": "Estrategia frente a la competencia, posicionamiento y liderazgo. Texto original de la traducción inglesa de 1910, de dominio público; frameworks y checklists resumidos en español.",
+  "idioma": "en",
+  "indice": [
+    {
+      "titulo": "Capítulo I. Planificación (Laying Plans)",
+      "nivel": 1,
+      "pagina_inicio": 1,
+      "pagina_fin": 3
+    },
+    {
+      "titulo": "Capítulo II. Hacer la guerra (Waging War)",
+      "nivel": 1,
+      "pagina_inicio": 4,
+      "pagina_fin": 6
+    },
+    {
+      "titulo": "Capítulo III. Atacar con estratagemas (Attack By Stratagem)",
+      "nivel": 1,
+      "pagina_inicio": 7,
+      "pagina_fin": 9
+    },
+    {
+      "titulo": "Capítulo IV. Disposiciones tácticas (Tactical Dispositions)",
+      "nivel": 1,
+      "pagina_inicio": 10,
+      "pagina_fin": 11
+    },
+    {
+      "titulo": "Capítulo V. Energía (Energy)",
+      "nivel": 1,
+      "pagina_inicio": 12,
+      "pagina_fin": 14
+    },
+    {
+      "titulo": "Capítulo VI. Puntos débiles y fuertes (Weak Points And Strong)",
+      "nivel": 1,
+      "pagina_inicio": 15,
+      "pagina_fin": 19
+    },
+    {
+      "titulo": "Capítulo VII. Maniobras (Manœuvering)",
+      "nivel": 1,
+      "pagina_inicio": 20,
+      "pagina_fin": 23
+    },
+    {
+      "titulo": "Capítulo VIII. Variación de tácticas (Variation Of Tactics)",
+      "nivel": 1,
+      "pagina_inicio": 24,
+      "pagina_fin": 25
+    },
+    {
+      "titulo": "Capítulo IX. El ejército en marcha (The Army On The March)",
+      "nivel": 1,
+      "pagina_inicio": 26,
+      "pagina_fin": 30
+    },
+    {
+      "titulo": "Capítulo X. El terreno (Terrain)",
+      "nivel": 1,
+      "pagina_inicio": 31,
+      "pagina_fin": 34
+    },
+    {
+      "titulo": "Capítulo XI. Las nueve situaciones (The Nine Situations)",
+      "nivel": 1,
+      "pagina_inicio": 35,
+      "pagina_fin": 42
+    },
+    {
+      "titulo": "Capítulo XII. El ataque con fuego (The Attack By Fire)",
+      "nivel": 1,
+      "pagina_inicio": 43,
+      "pagina_fin": 44
+    },
+    {
+      "titulo": "Capítulo XIII. El uso de espías (The Use Of Spies)",
+      "nivel": 1,
+      "pagina_inicio": 45,
+      "pagina_fin": 48
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Ley moral (Moral Law)",
+      "definicion": "Principio que hace que la gente esté en total acuerdo con quien lidera.",
+      "pagina": 1,
+      "cita": "The Moral Law causes the people to be in complete accord with their ruler"
+    },
+    {
+      "termino": "Vencer sin pelear (supreme excellence)",
+      "definicion": "La excelencia suprema: quebrar la resistencia del rival sin combatir.",
+      "pagina": 7,
+      "cita": "supreme excellence consists in breaking the enemy’s resistance without fighting."
+    },
+    {
+      "termino": "Métodos directo e indirecto (direct and indirect)",
+      "definicion": "El directo sirve para entrar en combate; los indirectos, para asegurar la victoria. Combinados generan maniobras infinitas.",
+      "pagina": 12,
+      "cita": "In all fighting, the direct method may be used for joining battle, but indirect methods will be needed in order to secure victory."
+    },
+    {
+      "termino": "Energía (Energy)",
+      "definicion": "Fuerza acumulada, como un arco tensado; la decisión es soltar el gatillo.",
+      "pagina": 13,
+      "cita": "Energy may be likened to the bending of a crossbow; decision, to the releasing of the trigger."
+    },
+    {
+      "termino": "Arte de la desviación (artifice of deviation)",
+      "definicion": "Tomar un camino largo, distraer al rival y aun así llegar antes que él.",
+      "pagina": 20,
+      "cita": "to take a long and circuitous route, after enticing the enemy out of the way, and though starting after him, to contrive to reach the goal before him, shows knowledge of the artifice of deviation."
+    },
+    {
+      "termino": "Terreno disputado (contentious ground)",
+      "definicion": "Terreno cuya posesión da una gran ventaja a cualquiera de los dos lados.",
+      "pagina": 35,
+      "cita": "Ground the possession of which imports great advantage to either side, is contentious ground."
+    },
+    {
+      "termino": "Terreno desesperado (desperate ground)",
+      "definicion": "Terreno donde solo te salva pelear sin demora.",
+      "pagina": 35,
+      "cita": "Ground on which we can only be saved from destruction by fighting without delay, is desperate ground."
+    },
+    {
+      "termino": "Previsión (foreknowledge)",
+      "definicion": "Saber de antemano. Es lo que permite al líder lograr lo que otros no; se obtiene de otras personas, no de cálculos.",
+      "pagina": 45,
+      "cita": "what enables the wise sovereign and the good general to strike and conquer, and achieve things beyond the reach of ordinary men, is foreknowledge."
+    },
+    {
+      "termino": "Espía convertido (converted spy)",
+      "definicion": "Espía del rival que pasa a trabajar para vos; la fuente principal de conocimiento del rival.",
+      "pagina": 46,
+      "cita": "Having converted spies, getting hold of the enemy’s spies and using them for our own purposes."
+    },
+    {
+      "termino": "Shuai-jan",
+      "definicion": "Serpiente que contraataca con la cabeza o la cola según dónde la golpeen: imagen del ejército que responde como un solo cuerpo.",
+      "pagina": 38,
+      "cita": "Strike at its head, and you will be attacked by its tail; strike at its tail, and you will be attacked by its head"
+    }
+  ],
+  "frameworks": [
+    {
+      "nombre": "Los cinco factores constantes (The five constant factors)",
+      "resumen": "Los cinco factores que gobiernan el arte de la guerra y que hay que evaluar al deliberar. Quien los conoce vence; quien no, fracasa.",
+      "verificado": true,
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "La ley moral (The Moral Law)",
+          "descripcion": "Que la gente esté en total acuerdo con quien lidera, al punto de seguirlo sin importar el peligro.",
+          "pagina": 1,
+          "cita": "The Moral Law causes the people to be in complete accord with their ruler"
+        },
+        {
+          "orden": 2,
+          "titulo": "El cielo (Heaven)",
+          "descripcion": "Las condiciones del momento: noche y día, frío y calor, tiempos y estaciones.",
+          "pagina": 1,
+          "cita": "Heaven signifies night and day, cold and heat, times and seasons."
+        },
+        {
+          "orden": 3,
+          "titulo": "La tierra (Earth)",
+          "descripcion": "El terreno: distancias, peligro y seguridad, campo abierto y pasos estrechos.",
+          "pagina": 1,
+          "cita": "Earth comprises distances, great and small; danger and security"
+        },
+        {
+          "orden": 4,
+          "titulo": "El comandante (The Commander)",
+          "descripcion": "Las virtudes de quien dirige: sabiduría, sinceridad, benevolencia, coraje y rigor.",
+          "pagina": 1,
+          "cita": "The Commander stands for the virtues of wisdom, sincerity, benevolence, courage and strictness."
+        },
+        {
+          "orden": 5,
+          "titulo": "Método y disciplina (Method and discipline)",
+          "descripcion": "La organización: estructura, jerarquías, líneas de abastecimiento y control del gasto.",
+          "pagina": 1,
+          "cita": "By Method and discipline are to be understood the marshalling of the army in its proper subdivisions"
+        }
+      ]
+    },
+    {
+      "nombre": "Jerarquía de estrategias (Attack by stratagem)",
+      "resumen": "El orden de preferencia para vencer. La excelencia suprema es quebrar la resistencia del rival sin pelear; lo peor es el asedio.",
+      "verificado": true,
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Frustrar los planes del rival",
+          "descripcion": "La forma más alta de conducción.",
+          "pagina": 7,
+          "cita": "the highest form of generalship is to baulk the enemy’s plans"
+        },
+        {
+          "orden": 2,
+          "titulo": "Impedir que el rival una sus fuerzas",
+          "descripcion": "La segunda mejor opción.",
+          "pagina": 7,
+          "cita": "the next best is to prevent the junction of the enemy’s forces"
+        },
+        {
+          "orden": 3,
+          "titulo": "Atacar al ejército en el campo",
+          "descripcion": "Recién después, el enfrentamiento directo.",
+          "pagina": 7,
+          "cita": "the next in order is to attack the enemy’s army in the field"
+        },
+        {
+          "orden": 4,
+          "titulo": "Asediar ciudades amuralladas",
+          "descripcion": "La peor política de todas: evitarla siempre que se pueda.",
+          "pagina": 7,
+          "cita": "the worst policy of all is to besiege walled cities"
+        }
+      ]
+    },
+    {
+      "nombre": "Conocer al rival y a uno mismo (Know the enemy and know yourself)",
+      "resumen": "Cuánto conocés al rival y a vos mismo predice el resultado; sumar el contexto y el terreno completa la victoria.",
+      "verificado": true,
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Conocés al rival y a vos mismo",
+          "descripcion": "No hay que temer el resultado de cien batallas.",
+          "pagina": 9,
+          "cita": "If you know the enemy and know yourself, you need not fear the result of a hundred battles."
+        },
+        {
+          "orden": 2,
+          "titulo": "Te conocés, pero no al rival",
+          "descripcion": "Por cada victoria, una derrota.",
+          "pagina": 9,
+          "cita": "If you know yourself but not the enemy, for every victory gained you will also suffer a defeat."
+        },
+        {
+          "orden": 3,
+          "titulo": "No conocés ni al rival ni a vos",
+          "descripcion": "Se pierde cada batalla.",
+          "pagina": 9,
+          "cita": "If you know neither the enemy nor yourself, you will succumb in every battle."
+        },
+        {
+          "orden": 4,
+          "titulo": "Sumá el cielo y la tierra",
+          "descripcion": "Conocer también el momento y el terreno hace la victoria completa.",
+          "pagina": 34,
+          "cita": "if you know Heaven and know Earth, you may make your victory complete."
+        }
+      ]
+    },
+    {
+      "nombre": "Primero ser invencible, después esperar la oportunidad",
+      "resumen": "Asegurarse contra la derrota depende de uno; la oportunidad de vencer la da el rival. El estratega victorioso busca la batalla solo cuando ya ganó.",
+      "verificado": true,
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Ponerte fuera del alcance de la derrota",
+          "descripcion": "Lo primero es que no te puedan vencer.",
+          "pagina": 10,
+          "cita": "The good fighters of old first put themselves beyond the possibility of defeat"
+        },
+        {
+          "orden": 2,
+          "titulo": "Esperar la oportunidad que da el rival",
+          "descripcion": "La ocasión de vencer la provee el propio rival.",
+          "pagina": 10,
+          "cita": "the opportunity of defeating the enemy is provided by the enemy himself."
+        },
+        {
+          "orden": 3,
+          "titulo": "Buscar la batalla solo después de haber ganado",
+          "descripcion": "Quien pelea primero y después busca la victoria está destinado a perder.",
+          "pagina": 11,
+          "cita": "the victorious strategist only seeks battle after the victory has been won"
+        }
+      ]
+    },
+    {
+      "nombre": "Método militar en cinco pasos (Military method)",
+      "resumen": "Una cadena de cálculo para decidir: cada paso nace del anterior, desde medir el terreno hasta la victoria.",
+      "verificado": true,
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Medición (Measurement)",
+          "descripcion": "Medir el terreno.",
+          "pagina": 11,
+          "cita": "Measurement owes its existence to Earth"
+        },
+        {
+          "orden": 2,
+          "titulo": "Estimación de cantidades (Estimation of quantity)",
+          "descripcion": "Estimar a partir de lo medido.",
+          "pagina": 11,
+          "cita": "Estimation of quantity to Measurement"
+        },
+        {
+          "orden": 3,
+          "titulo": "Cálculo (Calculation)",
+          "descripcion": "Calcular a partir de lo estimado.",
+          "pagina": 11,
+          "cita": "Calculation to Estimation of quantity"
+        },
+        {
+          "orden": 4,
+          "titulo": "Balance de probabilidades (Balancing of chances)",
+          "descripcion": "Comparar las chances a partir del cálculo.",
+          "pagina": 11,
+          "cita": "Balancing of chances to Calculation"
+        },
+        {
+          "orden": 5,
+          "titulo": "Victoria (Victory)",
+          "descripcion": "La victoria surge del balance de probabilidades.",
+          "pagina": 11,
+          "cita": "and Victory to Balancing of chances."
+        }
+      ]
+    },
+    {
+      "nombre": "Las seis clases de terreno (Six kinds of terrain)",
+      "resumen": "Seis situaciones del terreno y cómo actuar en cada una. Quien tiene un puesto de responsabilidad debe estudiarlas.",
+      "verificado": true,
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Terreno accesible",
+          "descripcion": "Ambos pueden moverse libremente: ocupá primero los puntos altos y cuidá tus líneas de suministro.",
+          "pagina": 31,
+          "cita": "Ground which can be freely traversed by both sides is called accessible."
+        },
+        {
+          "orden": 2,
+          "titulo": "Terreno enredado",
+          "descripcion": "Fácil de dejar y difícil de recuperar: salí solo si el rival no está preparado.",
+          "pagina": 31,
+          "cita": "Ground which can be abandoned but is hard to re-occupy is called entangling."
+        },
+        {
+          "orden": 3,
+          "titulo": "Terreno de espera",
+          "descripcion": "Nadie gana moviendo primero: no salgas aunque te ofrezcan un cebo; retirate para atraer al rival.",
+          "pagina": 31,
+          "cita": "When the position is such that neither side will gain by making the first move, it is called temporising ground."
+        },
+        {
+          "orden": 4,
+          "titulo": "Pasos estrechos",
+          "descripcion": "Si llegás primero, guarnecelos fuerte y esperá; si llegó el rival, entrá solo si está débilmente guarnecido.",
+          "pagina": 31,
+          "cita": "With regard to narrow passes, if you can occupy them first, let them be strongly garrisoned and await the advent of the enemy."
+        },
+        {
+          "orden": 5,
+          "titulo": "Alturas escarpadas",
+          "descripcion": "Si llegás primero, ocupá lo alto y esperá; si no, retirate e intentá atraerlo.",
+          "pagina": 32,
+          "cita": "With regard to precipitous heights, if you are beforehand with your adversary, you should occupy the raised and sunny spots, and there wait for him to come up."
+        },
+        {
+          "orden": 6,
+          "titulo": "Gran distancia del rival",
+          "descripcion": "Con fuerzas iguales, provocar la batalla es difícil y pelear te perjudica.",
+          "pagina": 32,
+          "cita": "If you are situated at a great distance from the enemy, and the strength of the two armies is equal, it is not easy to provoke a battle, and fighting will be to your disadvantage."
+        }
+      ]
+    },
+    {
+      "nombre": "Los nueve tipos de terreno y qué hacer en cada uno (The nine situations)",
+      "resumen": "Nueve situaciones según dónde estás respecto del rival y la acción que corresponde a cada una.",
+      "verificado": true,
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Terreno dispersivo (en tu propio territorio)",
+          "descripcion": "No pelees.",
+          "pagina": 35,
+          "cita": "On dispersive ground, therefore, fight not."
+        },
+        {
+          "orden": 2,
+          "titulo": "Terreno fácil (poco adentro del territorio rival)",
+          "descripcion": "No te detengas.",
+          "pagina": 35,
+          "cita": "On facile ground, halt not."
+        },
+        {
+          "orden": 3,
+          "titulo": "Terreno disputado (gran ventaja para quien lo tome)",
+          "descripcion": "No ataques.",
+          "pagina": 35,
+          "cita": "On contentious ground, attack not."
+        },
+        {
+          "orden": 4,
+          "titulo": "Terreno abierto (ambos se mueven libremente)",
+          "descripcion": "No intentes bloquear el paso del rival.",
+          "pagina": 36,
+          "cita": "On open ground, do not try to block the enemy’s way."
+        },
+        {
+          "orden": 5,
+          "titulo": "Cruce de caminos (clave entre varios estados)",
+          "descripcion": "Unite con tus aliados.",
+          "pagina": 36,
+          "cita": "On ground of intersecting highways, join hands with your allies."
+        },
+        {
+          "orden": 6,
+          "titulo": "Terreno serio (en el corazón del territorio rival)",
+          "descripcion": "Reuní recursos.",
+          "pagina": 36,
+          "cita": "On serious ground, gather in plunder."
+        },
+        {
+          "orden": 7,
+          "titulo": "Terreno difícil (montañas, pantanos)",
+          "descripcion": "Seguí en marcha.",
+          "pagina": 36,
+          "cita": "In difficult ground, keep steadily on the march."
+        },
+        {
+          "orden": 8,
+          "titulo": "Terreno cercado (entrada estrecha, salida tortuosa)",
+          "descripcion": "Recurrí a la estratagema.",
+          "pagina": 36,
+          "cita": "On hemmed-in ground, resort to stratagem."
+        },
+        {
+          "orden": 9,
+          "titulo": "Terreno desesperado (solo te salva pelear ya)",
+          "descripcion": "Peleá.",
+          "pagina": 36,
+          "cita": "On desperate ground, fight."
+        }
+      ]
+    },
+    {
+      "nombre": "Las cinco clases de espías (Five classes of spies)",
+      "resumen": "El conocimiento del rival solo se obtiene de otras personas. Estas son las cinco fuentes; el espía convertido es la clave para activar las demás.",
+      "verificado": true,
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Espías locales",
+          "descripcion": "Habitantes de la zona.",
+          "pagina": 46,
+          "cita": "Having local spies means employing the services of the inhabitants of a district."
+        },
+        {
+          "orden": 2,
+          "titulo": "Espías internos",
+          "descripcion": "Funcionarios del propio rival.",
+          "pagina": 46,
+          "cita": "Having inward spies, making use of officials of the enemy."
+        },
+        {
+          "orden": 3,
+          "titulo": "Espías convertidos",
+          "descripcion": "Espías del rival que pasan a trabajar para vos.",
+          "pagina": 46,
+          "cita": "Having converted spies, getting hold of the enemy’s spies and using them for our own purposes."
+        },
+        {
+          "orden": 4,
+          "titulo": "Espías condenados",
+          "descripcion": "Se les deja ver acciones hechas para engañar, para que las reporten al rival.",
+          "pagina": 46,
+          "cita": "Having doomed spies, doing certain things openly for purposes of deception"
+        },
+        {
+          "orden": 5,
+          "titulo": "Espías sobrevivientes",
+          "descripcion": "Los que vuelven con noticias del campo rival.",
+          "pagina": 46,
+          "cita": "Surviving spies, finally, are those who bring back news from the enemy’s camp."
+        }
+      ]
+    }
+  ],
+  "checklists": [
+    {
+      "nombre": "Las siete consideraciones para compararte con el rival",
+      "contexto": "Preguntas para comparar tu posición con la del rival antes de decidir. Según Sun Tzu, con ellas se puede prever la victoria o la derrota.",
+      "verificado": true,
+      "items": [
+        {
+          "texto": "¿Qué líder tiene a su gente más alineada (ley moral)?",
+          "pagina": 2,
+          "cita": "Which of the two sovereigns is imbued with the Moral law?"
+        },
+        {
+          "texto": "¿Quién dirige con más capacidad?",
+          "pagina": 2,
+          "cita": "Which of the two generals has most ability?"
+        },
+        {
+          "texto": "¿Quién tiene a favor el momento y el terreno?",
+          "pagina": 2,
+          "cita": "With whom lie the advantages derived from Heaven and Earth?"
+        },
+        {
+          "texto": "¿Dónde se cumple la disciplina con más rigor?",
+          "pagina": 2,
+          "cita": "On which side is discipline most rigorously enforced?"
+        },
+        {
+          "texto": "¿Qué fuerza es más fuerte?",
+          "pagina": 2,
+          "cita": "Which army is the stronger?"
+        },
+        {
+          "texto": "¿Qué equipo está mejor entrenado?",
+          "pagina": 2,
+          "cita": "On which side are officers and men more highly trained?"
+        },
+        {
+          "texto": "¿Dónde son más constantes las recompensas y las sanciones?",
+          "pagina": 2,
+          "cita": "In which army is there the greater constancy both in reward and punishment?"
+        }
+      ]
+    },
+    {
+      "nombre": "Las cinco claves de la victoria (Five essentials for victory)",
+      "contexto": "Condiciones que, según Sun Tzu, deciden quién gana.",
+      "verificado": true,
+      "items": [
+        {
+          "texto": "Saber cuándo pelear y cuándo no.",
+          "pagina": 9,
+          "cita": "He will win who knows when to fight and when not to fight."
+        },
+        {
+          "texto": "Saber manejar fuerzas superiores e inferiores.",
+          "pagina": 9,
+          "cita": "He will win who knows how to handle both superior and inferior forces."
+        },
+        {
+          "texto": "Todo el equipo comparte el mismo espíritu.",
+          "pagina": 9,
+          "cita": "He will win whose army is animated by the same spirit throughout all its ranks."
+        },
+        {
+          "texto": "Estar preparado y esperar a tomar al rival desprevenido.",
+          "pagina": 9,
+          "cita": "He will win who, prepared himself, waits to take the enemy unprepared."
+        },
+        {
+          "texto": "Quien tiene capacidad no sufre interferencias de arriba.",
+          "pagina": 9,
+          "cita": "He will win who has military capacity and is not interfered with by the sovereign."
+        }
+      ]
+    },
+    {
+      "nombre": "Los cinco defectos peligrosos de un líder (Five dangerous faults)",
+      "contexto": "Defectos que arruinan la conducción. Sun Tzu pide meditarlos: cuando un ejército cae, la causa está entre ellos.",
+      "verificado": true,
+      "items": [
+        {
+          "texto": "Imprudencia: lleva a la destrucción.",
+          "pagina": 25,
+          "cita": "Recklessness, which leads to destruction"
+        },
+        {
+          "texto": "Cobardía: lleva a la captura.",
+          "pagina": 25,
+          "cita": "cowardice, which leads to capture"
+        },
+        {
+          "texto": "Temperamento impulsivo: se lo puede provocar con insultos.",
+          "pagina": 25,
+          "cita": "a hasty temper, which can be provoked by insults"
+        },
+        {
+          "texto": "Honor demasiado sensible a la vergüenza.",
+          "pagina": 25,
+          "cita": "a delicacy of honour which is sensitive to shame"
+        },
+        {
+          "texto": "Exceso de preocupación por su gente, que lo expone a angustias y problemas.",
+          "pagina": 25,
+          "cita": "over-solicitude for his men, which exposes him to worry and trouble"
+        }
+      ]
+    },
+    {
+      "nombre": "Las seis calamidades causadas por el líder (Six calamities)",
+      "contexto": "Seis formas de buscar la derrota que no vienen de causas naturales, sino de fallas de quien dirige.",
+      "verificado": true,
+      "items": [
+        {
+          "texto": "Huida: lanzar una fuerza contra otra diez veces mayor.",
+          "pagina": 32,
+          "cita": "if one force is hurled against another ten times its size, the result will be the flight of the former"
+        },
+        {
+          "texto": "Insubordinación: equipo fuerte con mandos débiles.",
+          "pagina": 32,
+          "cita": "When the common soldiers are too strong and their officers too weak, the result is insubordination."
+        },
+        {
+          "texto": "Colapso: mandos fuertes con equipo débil.",
+          "pagina": 32,
+          "cita": "When the officers are too strong and the common soldiers too weak, the result is collapse."
+        },
+        {
+          "texto": "Ruina: mandos enojados que pelean por su cuenta antes de que el jefe decida.",
+          "pagina": 32,
+          "cita": "When the higher officers are angry and insubordinate"
+        },
+        {
+          "texto": "Desorganización: líder sin autoridad, órdenes poco claras y roles sin definir.",
+          "pagina": 33,
+          "cita": "When the general is weak and without authority; when his orders are not clear and distinct"
+        },
+        {
+          "texto": "Derrota en desbandada: no estimar la fuerza del rival y mandar una fuerza inferior contra una mayor.",
+          "pagina": 33,
+          "cita": "When a general, unable to estimate the enemy’s strength, allows an inferior force to engage a larger one"
+        }
+      ]
+    },
+    {
+      "nombre": "Tácticas de engaño (All warfare is based on deception)",
+      "contexto": "Según Sun Tzu, toda guerra se basa en el engaño. Movimientos para confundir al rival.",
+      "verificado": true,
+      "items": [
+        {
+          "texto": "Si podés atacar, aparentá que no; si estás actuando, aparentá inactividad.",
+          "pagina": 2,
+          "cita": "when able to attack, we must seem unable; when using our forces, we must seem inactive"
+        },
+        {
+          "texto": "Ofrecé cebos para atraer al rival.",
+          "pagina": 2,
+          "cita": "Hold out baits to entice the enemy."
+        },
+        {
+          "texto": "Si es superior en fuerza, evitalo.",
+          "pagina": 2,
+          "cita": "If he is in superior strength, evade him."
+        },
+        {
+          "texto": "Fingí debilidad para que se confíe.",
+          "pagina": 2,
+          "cita": "Pretend to be weak, that he may grow arrogant."
+        },
+        {
+          "texto": "Si sus fuerzas están unidas, separalas.",
+          "pagina": 3,
+          "cita": "If his forces are united, separate them."
+        },
+        {
+          "texto": "Atacá donde no está preparado; aparecé donde no te esperan.",
+          "pagina": 3,
+          "cita": "Attack him where he is unprepared, appear where you are not expected."
+        }
+      ]
+    },
+    {
+      "nombre": "Antes de moverte",
+      "contexto": "Principios para decidir si actuar o esperar.",
+      "verificado": true,
+      "items": [
+        {
+          "texto": "No te muevas si no ves una ventaja.",
+          "pagina": 44,
+          "cita": "Move not unless you see an advantage"
+        },
+        {
+          "texto": "No uses tus recursos si no hay algo que ganar.",
+          "pagina": 44,
+          "cita": "use not your troops unless there is something to be gained"
+        },
+        {
+          "texto": "No pelees si la situación no es crítica.",
+          "pagina": 44,
+          "cita": "fight not unless the position is critical"
+        },
+        {
+          "texto": "No pelees por despecho.",
+          "pagina": 44,
+          "cita": "no general should fight a battle simply out of pique"
+        },
+        {
+          "texto": "Pensá y deliberá antes de moverte.",
+          "pagina": 21,
+          "cita": "Ponder and deliberate before you make a move."
+        },
+        {
+          "texto": "No repitas la táctica que ya te dio una victoria: adaptate a las circunstancias.",
+          "pagina": 18,
+          "cita": "Do not repeat the tactics which have gained you one victory"
+        }
+      ]
+    },
+    {
+      "nombre": "Tres formas en que quien manda perjudica a su equipo",
+      "contexto": "Interferencias de la autoridad superior que debilitan a la organización.",
+      "verificado": true,
+      "items": [
+        {
+          "texto": "Ordenar avanzar o retroceder sin saber que el equipo no puede cumplir.",
+          "pagina": 8,
+          "cita": "By commanding the army to advance or to retreat, being ignorant of the fact that it cannot obey."
+        },
+        {
+          "texto": "Gobernar al equipo como si fuera otra cosa, sin conocer sus condiciones.",
+          "pagina": 8,
+          "cita": "By attempting to govern an army in the same way as he administers a kingdom"
+        },
+        {
+          "texto": "Asignar a las personas sin criterio, ignorando la adaptación a las circunstancias.",
+          "pagina": 8,
+          "cita": "By employing the officers of his army without discrimination"
+        }
+      ]
+    },
+    {
+      "nombre": "Señales para leer la situación del rival",
+      "contexto": "Indicios que, según Sun Tzu, revelan las intenciones o el estado del rival.",
+      "verificado": true,
+      "items": [
+        {
+          "texto": "Palabras humildes y más preparativos: está por avanzar.",
+          "pagina": 28,
+          "cita": "Humble words and increased preparations are signs that the enemy is about to advance."
+        },
+        {
+          "texto": "Propuestas de paz sin un compromiso firme: hay una trampa.",
+          "pagina": 28,
+          "cita": "Peace proposals unaccompanied by a sworn covenant indicate a plot."
+        },
+        {
+          "texto": "Ve una ventaja y no la toma: su gente está agotada.",
+          "pagina": 28,
+          "cita": "If the enemy sees an advantage to be gained and makes no effort to secure it, the soldiers are exhausted."
+        },
+        {
+          "texto": "Mandos enojados: el equipo está cansado.",
+          "pagina": 29,
+          "cita": "If the officers are angry, it means that the men are weary."
+        },
+        {
+          "texto": "Recompensas demasiado frecuentes: se le acaban los recursos.",
+          "pagina": 29,
+          "cita": "Too frequent rewards signify that the enemy is at the end of his resources"
+        },
+        {
+          "texto": "Una posición demasiado fácil de alcanzar es un cebo.",
+          "pagina": 27,
+          "cita": "If his place of encampment is easy of access, he is tendering a bait."
+        }
+      ]
+    }
+  ]
+}

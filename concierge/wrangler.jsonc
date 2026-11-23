@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "vivotext-concierge",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "vivotext-concierge",
+      "database_id": "9815f181-47a2-4e55-87fb-bb0dbafa95ae",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    // URL pública de la página de venta (para los mensajes de "venció, renová").
+    "PUBLIC_URL": "https://vivotext-concierge.kitifica.workers.dev",
+    // Enlace de pago de Wompi creado a mano en el panel (vacío = botón deshabilitado).
+    "WOMPI_LINK_URL": "",
+    // Video demo antes/después de 30 s (vacío = no se muestra).
+    "VIDEO_URL": "",
+    "PRICE_USD": "4.99",
+    "RENTAL_DAYS": "30",
+    "CALLS_PER_TOKEN": "150"
+  }
+}

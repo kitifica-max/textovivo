@@ -1,0 +1,45 @@
+{
+  "id": "ejemplo-landing",
+  "titulo": "Landing pages que convierten (EJEMPLO)",
+  "autor": "Autor de Ejemplo",
+  "descripcion": "Texto de prueba del H-1. Reemplazar por el libro real del autor invitado.",
+  "idioma": "es",
+  "indice": [
+    { "titulo": "Capítulo 1. La promesa", "nivel": 1, "pagina_inicio": 1, "pagina_fin": 2 },
+    { "titulo": "Capítulo 2. La prueba", "nivel": 1, "pagina_inicio": 3, "pagina_fin": 3 },
+    { "titulo": "Capítulo 3. La acción", "nivel": 1, "pagina_inicio": 4, "pagina_fin": 5 },
+    { "titulo": "Glosario", "nivel": 1, "pagina_inicio": 6, "pagina_fin": 6 }
+  ],
+  "glosario": [
+    { "termino": "Fricción", "definicion": "Todo lo que hace más difícil completar la acción principal.", "pagina": 6, "cita": "Fricción: todo lo que hace más difícil completar la acción principal." },
+    { "termino": "Prueba social", "definicion": "Evidencia de que otras personas ya obtuvieron el resultado prometido.", "pagina": 6, "cita": "Prueba social: evidencia de que otras personas ya obtuvieron el resultado prometido." },
+    { "termino": "Pliegue", "definicion": "El borde inferior de la pantalla antes de hacer scroll.", "pagina": 6, "cita": "Pliegue: el borde inferior de la pantalla antes de hacer scroll." }
+  ],
+  "frameworks": [
+    {
+      "nombre": "Método de las tres preguntas",
+      "resumen": "Escribir la promesa de una landing respondiendo quién es el visitante, qué resultado quiere y qué lo frena.",
+      "verificado": true,
+      "pasos": [
+        { "orden": 1, "titulo": "Quién", "descripcion": "Definir exactamente quién es el visitante.", "pagina": 2, "cita": "preguntá quién es exactamente el visitante" },
+        { "orden": 2, "titulo": "Qué resultado", "descripcion": "Definir qué resultado quiere lograr esta semana.", "pagina": 2, "cita": "preguntá qué resultado quiere lograr esta semana" },
+        { "orden": 3, "titulo": "Qué lo frena", "descripcion": "Identificar qué lo frena hoy.", "pagina": 2, "cita": "preguntá qué lo frena hoy" },
+        { "orden": 4, "titulo": "Una sola frase", "descripcion": "Responder las tres preguntas en una frase de menos de doce palabras.", "pagina": 2, "cita": "La promesa responde las tres en una sola frase de menos de doce palabras." }
+      ]
+    }
+  ],
+  "checklists": [
+    {
+      "nombre": "Revisión antes de publicar una landing",
+      "contexto": "Lista para revisar la página antes de publicarla.",
+      "verificado": true,
+      "items": [
+        { "texto": "La promesa se entiende sin hacer scroll.", "pagina": 5, "cita": "La promesa se entiende sin hacer scroll." },
+        { "texto": "Hay un solo botón principal por pantalla.", "pagina": 5, "cita": "Hay un solo botón principal por pantalla." },
+        { "texto": "Cada testimonio incluye una cifra.", "pagina": 5, "cita": "Cada testimonio incluye una cifra." },
+        { "texto": "La página carga en menos de tres segundos en un teléfono.", "pagina": 5, "cita": "La página carga en menos de tres segundos en un teléfono." },
+        { "texto": "El formulario pide solo los datos que se van a usar.", "pagina": 5, "cita": "El formulario pide solo los datos que vas a usar." }
+      ]
+    }
+  ]
+}

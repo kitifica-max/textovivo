@@ -1,0 +1,27 @@
+{
+  "name": "textovivo-concierge",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node --test \"src/**/*.test.ts\"",
+    "types": "wrangler types",
+    "check": "tsc --noEmit",
+    "db:local": "wrangler d1 migrations apply vivotext-concierge --local",
+    "db:remote": "wrangler d1 migrations apply vivotext-concierge --remote",
+    "paginas": "node scripts/extraer-paginas.ts"
+  },
+  "type": "module",
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.4.0",
+    "agents": "^0.34.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2",
+    "unpdf": "^2.2.2",
+    "wrangler": "^4.167.0"
+  },
+  "private": true
+}

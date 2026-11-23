@@ -1,0 +1,15 @@
+# Sistema
+.DS_Store
+
+# Dependencias y builds
+node_modules/
+.wrangler/
+worker-configuration.d.ts
+
+# Secretos y datos locales: nunca al repo
+.dev.vars
+.secreto-admin
+.mi-guia-de-prueba.txt
+.env
+.env.*
+.claude/settings.local.json

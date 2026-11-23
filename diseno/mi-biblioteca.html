@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi biblioteca — TextoVivo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilos.css">
+<style>
+  .panel { padding: clamp(32px, 5vw, 64px) 0 96px; }
+  .saludo { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 32px; }
+  .saludo h1 { margin-top: 12px; font-size: clamp(3rem, 7vw, 6rem); }
+
+  .conector { display: grid; grid-template-columns: auto 1fr auto; gap: 14px 22px; align-items: center; margin-bottom: 56px; }
+  .conector .pulso { width: 12px; height: 12px; border-radius: 50%; background: #36c26f; box-shadow: 0 0 0 0 #36c26f99; animation: pulso 2.4s infinite; }
+  @keyframes pulso { 70% { box-shadow: 0 0 0 10px #36c26f00; } 100% { box-shadow: 0 0 0 0 #36c26f00; } }
+  .conector strong { display: block; font: 700 1.25rem/1.2 var(--sans); letter-spacing: -0.02em; }
+  .conector code { font: 500 0.85rem/1.6 var(--mono); opacity: 0.85; }
+  .conector .acciones { display: flex; flex-wrap: wrap; gap: 8px; }
+  .conector .boton { --fondo: #f3f0e8; --texto: #161616; }
+  .conector .boton.claro { --fondo: transparent; --texto: #f3f0e8; border-color: #f3f0e855; }
+  @media (max-width: 760px) { .conector { grid-template-columns: auto 1fr; } .conector .acciones { grid-column: 1 / -1; } }
+
+  .titulo-bloque { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 18px; }
+  .titulo-bloque h2 { font-size: clamp(1.6rem, 2.6vw, 2.2rem); }
+
+  .prestamos { margin-bottom: 64px; }
+  /* El préstamo ocupa dos columnas: es lo más importante del panel */
+  .prestamo { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 0 6cqi; align-content: start; }
+  .prestamo > * { grid-column: 1; }
+  .prestamo .titulo { margin-top: 14cqi; font-size: 10cqi; color: #ffb089; text-align: left; }
+  .prestamo .lado { grid-column: 2; grid-row: 1 / span 3; align-self: end; padding-top: 16cqi; }
+  .prestamo .dias { font: 800 15cqi/0.85 var(--sans); letter-spacing: -0.05em; margin: 0; }
+  .prestamo .dias small { display: block; font: 600 max(0.8rem, 2.6cqi)/1.3 var(--sans); letter-spacing: 0; margin-top: 6px; }
+  .prestamo .medidor { margin: 14px 0 6px; }
+  .prestamo .uso { font: 500 max(0.75rem, 2.3cqi)/1.3 var(--sans); }
+  @media (max-width: 680px) {
+    .prestamo { grid-template-columns: 1fr; }
+    .prestamo .lado { grid-column: 1; grid-row: auto; margin-top: 10cqi; }
+    .prestamo .titulo { font-size: 16cqi; }
+    .prestamo .dias { font-size: 26cqi; }
+    .prestamo .dias small, .prestamo .uso { font-size: max(0.75rem, 4.6cqi); }
+  }
+  .prestamo .acciones { display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap; }
+  .prestamo .boton { --fondo: #f3f0e8; --texto: #161616; min-height: 34px; padding: 0 12px; font-size: 0.78rem; }
+  .prestamo .boton.claro { --fondo: transparent; --texto: #f3f0e8; border-color: #f3f0e866; }
+  .prestamo .estado { position: absolute; top: 6cqi; left: 7cqi; }
+  .vacio { border: 1.5px dashed color-mix(in srgb, var(--tinta) 30%, transparent); background-color: transparent; }
+
+  .revocar { border: 0; background: none; color: #df2a1f; font: 600 0.85rem/1 var(--sans); cursor: pointer; padding: 8px; border-radius: 8px; }
+  .revocar:active { transform: scale(0.96); }
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cabecera">
+  <div class="envoltura">
+    <a class="marca" href="index.html" aria-label="TextoVivo, inicio">Texto<b>Vivo</b></a>
+    <nav class="navegacion" aria-label="Principal">
+      <a href="biblioteca.html">Biblioteca</a>
+      <a href="mi-biblioteca.html" aria-current="page">Mi biblioteca</a>
+      <a class="ocultable" href="guia.html">Guía</a>
+      <a class="ocultable" href="index.html">Salir</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido" class="panel">
+  <div class="envoltura">
+    <div class="saludo">
+      <div><p class="micro" data-aparece style="--i:0">Lector · vos@ejemplo.com</p><h1 data-aparece style="--i:1">Tu biblioteca.</h1></div>
+      <a class="boton claro" href="biblioteca.html" data-aparece style="--i:2">Sumar un libro</a>
+    </div>
+
+    <section class="banda c-negro conector" aria-label="Estado del conector" data-aparece style="--i:2">
+      <span class="pulso" aria-hidden="true"></span>
+      <div>
+        <strong>Conector TextoVivo activo</strong>
+        <span style="font-size:0.85rem;opacity:.7">Última consulta hace 2 horas, desde Claude Code</span><br>
+        <code id="url-conector">https://textovivo.app/mcp</code>
+      </div>
+      <div class="acciones">
+        <button class="boton chico" type="button" data-copiar="#url-conector">Copiar dirección</button>
+        <a class="boton chico claro" href="guia.html">Ver guía</a>
+      </div>
+    </section>
+
+    <div class="titulo-bloque"><h2>Préstamos activos</h2><span class="nota">1 activo</span></div>
+    <div class="grilla cuatro prestamos">
+      <article class="poster c-rojo plegado prestamo libre" data-aparece style="--i:3">
+        <span class="estado vivo">Activo</span>
+        <span class="num">001</span>
+        <h3 class="titulo t-alta">El arte de la guerra</h3>
+        <div class="lado">
+          <p class="dias">30<small>días restantes · vence el 23 dic</small></p>
+          <div class="medidor" role="meter" aria-label="Consultas usadas" aria-valuemin="0" aria-valuemax="150" aria-valuenow="37"><span style="width:24.6%"></span></div>
+          <span class="uso">37 de 150 consultas</span>
+          <div class="acciones"><a class="boton" href="pagar.html">Renovar 30 días</a><a class="boton claro" href="texto.html">Índice</a></div>
+        </div>
+      </article>
+      <a class="poster c-cuadricula vacio" href="biblioteca.html" data-aparece style="--i:4">
+        <span class="num">+</span>
+        <h3 class="titulo t-serif">Sumá otro libro</h3>
+        <p class="texto serif">Aparece solo en tu IA, sin volver a conectar nada.</p>
+      </a>
+    </div>
+
+    <div class="titulo-bloque"><h2>Conexiones</h2><span class="nota">dónde está conectado TextoVivo</span></div>
+    <ul class="lista" style="margin-bottom:64px">
+      <li><span class="n">01</span>Claude <span class="nota">· web</span><span class="der">desde 23 nov</span><button class="revocar" type="button">Revocar</button></li>
+      <li><span class="n">02</span>Claude Code<span class="der">desde 23 nov</span><button class="revocar" type="button">Revocar</button></li>
+    </ul>
+
+    <div class="titulo-bloque"><h2>Historial</h2><span class="nota">préstamos vencidos</span></div>
+    <p class="nota">Todavía no venció ningún préstamo. Cuando pase, lo vas a ver acá con un botón para renovarlo.</p>
+  </div>
+</main>
+
+<footer class="pie-sitio">
+  <div class="envoltura">
+    <div>
+      <div class="firma"><b>TextoVivo</b><span>Los autores solo ven totales, nunca tus consultas</span></div>
+      <nav aria-label="Pie"><a href="biblioteca.html">Biblioteca</a><a href="guia.html">Guía de conexión</a><a href="#">Recibos</a><a href="#">Borrar mi cuenta</a></nav>
+    </div>
+    <span class="edicion">© 2026 — Edición uno · San Salvador</span>
+  </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
