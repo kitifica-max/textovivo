@@ -8,7 +8,7 @@ Lo mejor de cada libro, dentro de tu IA. Un lector alquila un libro por 30 días
 |---|---|
 | [`TEXTOVIVO-SPEC-V1.md`](TEXTOVIVO-SPEC-V1.md) | Especificación de la V1 (Cloudflare, Wompi 3DS, hitos H-1 a H8) |
 | [`concierge/`](concierge/README.md) | H-1: Worker de validación en Cloudflare (MCP por URL secreta + D1), con *El arte de la guerra* cargado |
-| [`diseno/`](diseno/README.md) | Prototipo navegable del sitio (HTML y CSS): portada, biblioteca, libro, pago, login, panel, guía, autores |
+| [`diseno/`](diseno/README.md) | Prototipo navegable del sitio (HTML y CSS): portada, biblioteca, libro, pago, login, panel, guía, autores · en vivo: https://textovivo.kitifica.workers.dev |
 | `concepto_de_producto_vivotext_textos_vivos.md` | Documento de concepto original |
 
 ## Correr en local

@@ -65,3 +65,11 @@ Tomé el criterio de Apple:
 - Servir las fuentes desde el propio dominio. La página de pago no puede cargar nada de terceros (PCI).
 - Usar el botón oficial de "Continuar con Google" según su guía de marca.
 - Llevar los tokens de `:root` y los colores `.c-*` a la configuración de Tailwind.
+
+## Publicado
+
+- **URL:** https://textovivo.kitifica.workers.dev, en Cloudflare Workers, solo archivos estáticos (`wrangler.jsonc`).
+- **Aviso:** cada página dice que es un prototipo. `_headers` agrega `noindex` para que no lo indexen los buscadores.
+- **No se publican:** `wrangler.jsonc`, `README.md` y `.assetsignore`.
+- **Despliegue a mano:** `npx wrangler deploy` desde `diseno/`.
+- **Despliegue automático:** al conectar el repo de GitHub en Cloudflare (Workers Builds), con *root directory* `diseno` y *deploy command* `npx wrangler deploy`. Cada push a `main` publica solo.
