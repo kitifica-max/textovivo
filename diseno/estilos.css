@@ -517,3 +517,31 @@ details p { margin: 10px 0 0; color: var(--gris); max-width: 44em; }
   .ia-cita mark { transition: none; }
   .ia-conectado .pulso, .ia-tools li.activo .ia-estado { animation: none; }
 }
+
+
+/* ---------- Hero con el ejemplo animado a la derecha ---------- */
+.apertura-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(28px, 4vw, 64px); align-items: center; }
+.apertura-grid .apertura-texto h1 { max-width: none; font-size: clamp(2.6rem, 5.2vw, 4.6rem); }
+.apertura-ia .ia { margin: 0; max-width: none; }
+.apertura-ia .ia-cuerpo { gap: 14px; padding: clamp(16px, 2vw, 24px); }
+.apertura-ia .ia-cita blockquote { font-size: clamp(1.05rem, 1.6vw, 1.25rem); }
+@media (max-width: 1000px) {
+  .apertura-grid { grid-template-columns: 1fr; }
+  .apertura-ia { order: 2; }
+}
+
+/* Versión compacta para que el ejemplo entre en la primera pantalla */
+.apertura-grid { align-items: start; }
+.apertura-grid .apertura-texto { padding-top: clamp(0px, 4vw, 56px); }
+.apertura-ia .ia-pie, .apertura-ia .ia-intro { display: none; }
+.apertura-ia .ia-barra { padding: 11px 18px; }
+.apertura-ia .ia-cuerpo { gap: 12px; padding: 18px 20px 20px; }
+.apertura-ia .ia-usuario p { padding: 11px 15px; font-size: 0.92rem; }
+.apertura-ia .ia-tools li { padding: 5px 12px 5px 9px; font-size: 0.74rem; }
+.apertura-ia .ia-tools code { font-size: 0.72rem; }
+.apertura-ia .ia-resp { gap: 10px; }
+.apertura-ia .ia-cita { padding: 12px 14px 12px 20px; border-radius: 16px; }
+.apertura-ia .ia-cita header { font-size: 0.82rem; }
+.apertura-ia .ia-cita blockquote { margin: 6px 0 4px; font-size: 1.08rem; }
+.apertura-ia .ia-cita p { font-size: 0.82rem; line-height: 1.35; }
+.apertura-ia .ia-cierre { font-size: 0.8rem; }

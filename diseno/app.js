@@ -245,5 +245,5 @@ document.querySelectorAll("[data-ia]").forEach((ia) => {
   ia.querySelector("[data-repetir]")?.addEventListener("click", reproducir);
   if (reducido || !("IntersectionObserver" in window)) return reproducir();
   limpiar();
-  new IntersectionObserver((e, o) => { if (e[0].isIntersecting) { o.disconnect(); reproducir(); } }, { threshold: 0.35 }).observe(ia);
+  new IntersectionObserver((e, o) => { if (e[0].isIntersecting) { o.disconnect(); reproducir(); } }, { threshold: 0.2 }).observe(ia);
 });

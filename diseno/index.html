@@ -62,7 +62,8 @@
 
 <main id="contenido">
   <section class="apertura">
-    <div class="envoltura">
+    <div class="envoltura apertura-grid">
+      <div class="apertura-texto">
       <p class="micro" data-aparece style="--i:0">Edición uno · 2026</p>
       <h1 data-aparece style="--i:1">Libros que trabajan dentro de tu IA.</h1>
       <p class="bajada" data-aparece style="--i:2">Conectá un libro a Claude, Claude Code o Cursor y pedile a tu IA que revise tu estrategia, tu landing o tu plan con el criterio de ese libro. Te dice de qué página sacó cada idea. Acceso gratis por 30 días.</p>
@@ -70,17 +71,9 @@
         <a class="boton" href="#usos">Ver para qué sirve</a>
         <a class="boton claro" href="biblioteca.html">Ver la biblioteca</a>
       </div>
-    </div>
-  </section>
-
-  <section class="seccion ejemplo" id="ejemplo" aria-labelledby="ej-titulo">
-    <div class="envoltura">
-      <div class="cabeza">
-        <div><p class="micro">Así se siente</p><h2 id="ej-titulo" style="margin-top:10px">Preguntás. Tu IA responde con libros y páginas.</h2></div>
-        <p class="bajada" style="max-width:26em">Decidís con fundamento, no con corazonadas. Cada consejo viene con la cita literal y su página.</p>
       </div>
-
-      <div class="ia" data-ia>
+      <div class="apertura-ia" data-aparece style="--i:2">
+      <div class="ia" data-ia aria-label="Ejemplo animado de una consulta a Textifika">
         <div class="ia-barra">
           <span class="ia-puntos" aria-hidden="true"><i></i><i></i><i></i></span>
           <span class="ia-titulo">Tu IA</span>
@@ -89,8 +82,8 @@
 
         <div class="ia-cuerpo">
           <div class="ia-usuario">
-            <span class="sr-only">Quiero cobrar por mi producto cuando termine la prueba gratis. ¿Qué hago? Respondé con fundamento.</span>
-            <p aria-hidden="true"><span data-tipeo="Quiero cobrar por mi producto cuando termine la prueba gratis. ¿Qué hago? Respondé con fundamento."></span><span class="ia-fantasma" data-fantasma></span><span class="ia-cursor" data-cursor></span></p>
+            <span class="sr-only">¿Cómo cobro mi producto cuando termina la prueba gratis? Respondé con fundamento.</span>
+            <p aria-hidden="true"><span data-tipeo="¿Cómo cobro mi producto cuando termina la prueba gratis? Respondé con fundamento."></span><span class="ia-fantasma" data-fantasma></span><span class="ia-cursor" data-cursor></span></p>
           </div>
 
           <ul class="ia-tools" aria-label="Consultas que hace tu IA a Textifika">
@@ -129,10 +122,6 @@
           <button class="boton chico claro" type="button" data-repetir>Ver de nuevo</button>
         </div>
       </div>
-
-      <div class="acciones" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:28px">
-        <a class="boton" href="entrar.html">Obtener acceso gratis</a>
-        <a class="boton claro" href="biblioteca.html">Ver la biblioteca completa</a>
       </div>
     </div>
   </section>
