@@ -117,15 +117,11 @@ p { margin: 0 0 1em; }
 .navegacion .boton { margin-left: 8px; }
 .navegacion button.salir { font: inherit; font-size: 0.9rem; font-weight: 500; color: var(--gris); background: none; border: 0; padding: 8px 12px; border-radius: 999px; cursor: pointer; }
 .navegacion button.salir:hover { color: var(--tinta); background: color-mix(in srgb, var(--tinta) 6%, transparent); }
-@media (max-width: 760px) { .navegacion .ocultable { display: none; } }
 @media (max-width: 420px) {
   .cabecera .envoltura { gap: 12px; }
   .marca { font-size: 1.45rem; }
-  .navegacion a:not(.boton) { padding: 8px; font-size: 0.85rem; }
-  .navegacion .boton { margin-left: 4px; }
 }
 /* Teléfonos muy chicos: sin el link de la página actual (la grilla pasa a una columna más abajo) */
-@media (max-width: 360px) { .navegacion a[aria-current="page"] { display: none; } }
 
 /* ---------- Botones: respuesta al presionar ---------- */
 
@@ -437,3 +433,29 @@ details p { margin: 10px 0 0; color: var(--gris); max-width: 44em; }
 .caja:checked { background: var(--tinta); border-color: var(--tinta); }
 .caja:checked::after { transform: rotate(-45deg) translate(1px, -1px) scale(1); }
 .caja:focus-visible { outline: 3px solid color-mix(in srgb, var(--foco) 45%, transparent); outline-offset: 2px; }
+
+
+/* ---------- Menú de hamburguesa (móvil) ---------- */
+.menu-boton { display: none; }
+@media (max-width: 760px) {
+  .cabecera .envoltura { position: relative; }
+  .menu-boton {
+    display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
+    margin-left: auto; width: 48px; height: 48px; padding: 0 13px;
+    background: none; border: 1px solid var(--linea); border-radius: 999px; cursor: pointer;
+  }
+  .menu-boton span { display: block; height: 2px; background: var(--tinta); border-radius: 2px; transition: transform .2s, opacity .2s; }
+  .cabecera.abierta .menu-boton span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .cabecera.abierta .menu-boton span:nth-child(2) { opacity: 0; }
+  .cabecera.abierta .menu-boton span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .navegacion {
+    display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0; margin: 0; gap: 2px;
+    flex-direction: column; align-items: stretch; padding: 10px;
+    background: var(--superficie); border: 1px solid var(--linea); border-radius: 24px;
+    box-shadow: 0 18px 40px -18px rgb(20 20 20 / .35); z-index: 50;
+  }
+  .cabecera.abierta .navegacion { display: flex; }
+  .navegacion a:not(.boton), .navegacion button.salir { padding: 14px 16px; font-size: 1rem; text-align: left; border-radius: 16px; }
+  .navegacion .boton { margin: 6px 0 0; width: 100%; min-height: 48px; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) { .menu-boton span { transition: none; } }

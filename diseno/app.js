@@ -181,3 +181,21 @@ window.tvTurnstile = (id) => {
     reset: () => widget !== null && window.turnstile && window.turnstile.reset(widget)
   };
 };
+
+
+// Menú de hamburguesa (móvil): el botón se crea acá; el CSS lo muestra solo en pantallas angostas.
+document.querySelectorAll(".cabecera").forEach((cab) => {
+  const nav = cab.querySelector(".navegacion");
+  if (!nav) return;
+  if (!nav.id) nav.id = "menu-principal";
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "menu-boton";
+  b.setAttribute("aria-label", "Menú"); b.setAttribute("aria-expanded", "false"); b.setAttribute("aria-controls", nav.id);
+  b.innerHTML = "<span></span><span></span><span></span>";
+  nav.before(b);
+  const poner = (abierto) => { cab.classList.toggle("abierta", abierto); b.setAttribute("aria-expanded", String(abierto)); };
+  b.addEventListener("click", () => poner(!cab.classList.contains("abierta")));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") poner(false); });
+  document.addEventListener("click", (e) => { if (!cab.contains(e.target)) poner(false); });
+  nav.addEventListener("click", (e) => { if (e.target.closest("a")) poner(false); });
+});
