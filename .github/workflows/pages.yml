@@ -1,9 +1,9 @@
-# Publica diseno/ en GitHub Pages en cada push a main.
+# GitHub Pages solo redirige al sitio real (Cloudflare Workers). El sitio se despliega con `npm run deploy` en concierge/.
 name: Publicar sitio
 on:
   push:
     branches: [main]
-    paths: ["diseno/**", ".github/workflows/pages.yml"]
+    paths: ["redirect/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 permissions:
   contents: read
@@ -22,6 +22,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: diseno
+          path: redirect
       - id: deploy
         uses: actions/deploy-pages@v4

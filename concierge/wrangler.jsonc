@@ -1,10 +1,17 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "vivotext-concierge",
+  "name": "textovivo",
   "main": "src/index.ts",
   "compatibility_date": "2026-11-01",
   "compatibility_flags": ["nodejs_compat"],
   "observability": { "enabled": true },
+  // El sitio (../diseno) se sirve desde el mismo Worker: un solo origen, sin CORS.
+  // Solo estas rutas pasan por el código; todo lo demás sale directo de los archivos.
+  "assets": {
+    "directory": "../diseno",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/acceso", "/api/*", "/c/*", "/admin/*"]
+  },
   "d1_databases": [
     {
       "binding": "DB",
@@ -15,7 +22,7 @@
   ],
   "vars": {
     // URL pública de la página de venta (para los mensajes de "venció, renová").
-    "PUBLIC_URL": "https://vivotext-concierge.kitifica.workers.dev",
+    "PUBLIC_URL": "https://textovivo.kitifica.workers.dev",
     // Enlace de pago de Wompi creado a mano en el panel (vacío = botón deshabilitado).
     "WOMPI_LINK_URL": "",
     // Video demo antes/después de 30 s (vacío = no se muestra).

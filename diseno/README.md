@@ -68,7 +68,7 @@ Tomé el criterio de Apple:
 
 ## Publicado
 
-- **URL:** https://textovivo.kitifica.workers.dev, en Cloudflare Workers, solo archivos estáticos (`wrangler.jsonc`).
+- **URL:** https://textovivo.kitifica.workers.dev. Lo sirve el Worker de `concierge/` (assets + API); no tiene `wrangler.jsonc` propio.
 - **Aviso:** cada página dice que es un prototipo. `_headers` agrega `noindex` para que no lo indexen los buscadores.
 - **No se publican:** `wrangler.jsonc`, `README.md` y `.assetsignore`.
 - **Despliegue a mano:** `npx wrangler deploy` desde `diseno/`.

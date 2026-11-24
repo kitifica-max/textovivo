@@ -37,7 +37,6 @@
 </style>
 </head>
 <body>
-<p class="aviso-prototipo">Prototipo de diseño: los formularios no envían datos y los pagos no son reales.</p>
 <main class="puerta">
   <section class="poster c-azul plegado" aria-label="Cita de El arte de la guerra">
     <a class="marca" href="index.html" aria-label="TextoVivo, inicio">Texto<b>Vivo</b></a>
@@ -48,28 +47,20 @@
 
   <section class="lado-form">
     <div class="formulario">
-      <form data-demo="enviado" novalidate data-aparece style="--i:0">
-        <p class="micro">Lectores y autores</p>
+      <form method="post" action="/acceso" data-aparece style="--i:0">
+        <p class="micro">Acceso gratis · 30 días</p>
         <h1>Entrá a tu biblioteca.</h1>
-        <p class="bajada">Sin contraseñas. Si es tu primera vez, tu cuenta se crea sola.</p>
+        <p class="bajada">Sin contraseñas ni tarjeta. Dejá tu email y al instante ves tu conector para Claude, Claude Code o Cursor. Si ya tenías acceso vigente, volvés a él.</p>
 
-        <a class="boton claro ancho" href="mi-biblioteca.html"><span class="g" aria-hidden="true">G</span>Continuar con Google</a>
-        <div class="separador">o con tu email</div>
-        <div class="campo"><label for="email">Email</label><input id="email" type="email" autocomplete="email" placeholder="vos@ejemplo.com" required></div>
-        <button class="boton ancho" type="submit">Mandame un enlace</button>
-        <p class="nota" style="margin-top:18px;text-align:center">Al entrar aceptás los <a class="enlace" href="#">términos</a> y la <a class="enlace" href="#">privacidad</a>.</p>
+        <p id="error" class="nota" role="alert" hidden style="color:#b3261e;margin-bottom:12px">Ese email no parece válido. Revisalo y probá de nuevo.</p>
+        <div class="campo"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="vos@ejemplo.com" required maxlength="200"></div>
+        <button class="boton ancho" type="submit">Obtener mi acceso</button>
+        <p class="nota" style="margin-top:18px;text-align:center">Usamos tu email solo para identificar tu acceso. Al entrar aceptás los <a class="enlace" href="#">términos</a> y la <a class="enlace" href="#">privacidad</a>.</p>
       </form>
-
-      <section id="enviado" class="enviado" hidden aria-live="polite">
-        <span class="burbuja">Enlace enviado</span>
-        <h2 tabindex="-1">Revisá tu correo.</h2>
-        <p class="bajada">Te mandamos un enlace para entrar. Vence en 15 minutos y sirve una sola vez.</p>
-        <p class="nota">¿No llegó? Mirá en spam o <a class="enlace" href="entrar.html">probá de nuevo</a>.</p>
-        <p class="nota">Prototipo: <a class="enlace" href="mi-biblioteca.html">seguir como si hubieras abierto el enlace</a>.</p>
-      </section>
     </div>
   </section>
 </main>
 <script src="app.js"></script>
+<script>if (new URLSearchParams(location.search).get("error")) document.getElementById("error").hidden = false;</script>
 </body>
 </html>

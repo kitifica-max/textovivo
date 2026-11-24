@@ -55,7 +55,6 @@
 </style>
 </head>
 <body>
-<p class="aviso-prototipo">Prototipo de diseño: los formularios no envían datos y los pagos no son reales.</p>
 <a class="saltar" href="#contenido">Saltar al contenido</a>
 
 <header class="cabecera">
@@ -65,59 +64,62 @@
       <a href="biblioteca.html">Biblioteca</a>
       <a href="mi-biblioteca.html" aria-current="page">Mi biblioteca</a>
       <a class="ocultable" href="guia.html">Guía</a>
-      <a class="ocultable" href="index.html">Salir</a>
+      
     </nav>
   </div>
 </header>
 
 <main id="contenido" class="panel">
   <div class="envoltura">
-    <div class="saludo">
-      <div><p class="micro" data-aparece style="--i:0">Lector · vos@ejemplo.com</p><h1 data-aparece style="--i:1">Tu biblioteca.</h1></div>
-      <a class="boton claro" href="biblioteca.html" data-aparece style="--i:2">Sumar un libro</a>
-    </div>
-
-    <section class="banda c-negro conector" aria-label="Estado del conector" data-aparece style="--i:2">
-      <span class="pulso" aria-hidden="true"></span>
-      <div>
-        <strong>Conector TextoVivo activo</strong>
-        <span style="font-size:0.85rem;opacity:.7">Última consulta hace 2 horas, desde Claude Code</span><br>
-        <code id="url-conector">https://textovivo.app/mcp</code>
-      </div>
-      <div class="acciones">
-        <button class="boton chico" type="button" data-copiar="#url-conector">Copiar dirección</button>
-        <a class="boton chico claro" href="guia.html">Ver guía</a>
-      </div>
+    <section id="sin-acceso" hidden>
+      <p class="micro">Mi biblioteca</p>
+      <h1 style="margin:12px 0 16px">Todavía no entraste.</h1>
+      <p class="bajada" style="margin-bottom:24px">Obtené tu acceso gratis con tu email y acá ves tu conector, tus días restantes y los libros.</p>
+      <a class="boton" href="entrar.html">Obtener acceso gratis</a>
     </section>
 
-    <div class="titulo-bloque"><h2>Préstamos activos</h2><span class="nota">1 activo</span></div>
-    <div class="grilla cuatro prestamos">
-      <article class="poster c-rojo plegado prestamo libre" data-aparece style="--i:3">
-        <span class="estado vivo">Activo</span>
-        <span class="num">001</span>
-        <h3 class="titulo t-alta">El arte de la guerra</h3>
-        <div class="lado">
-          <p class="dias">30<small>días restantes · vence el 23 dic</small></p>
-          <div class="medidor" role="meter" aria-label="Consultas usadas" aria-valuemin="0" aria-valuemax="150" aria-valuenow="37"><span style="width:24.6%"></span></div>
-          <span class="uso">37 de 150 consultas</span>
-          <div class="acciones"><a class="boton" href="https://vivotext-concierge.kitifica.workers.dev">Renovar 30 días gratis</a><a class="boton claro" href="texto.html">Índice</a></div>
+    <div id="con-acceso" hidden>
+      <div class="saludo">
+        <div><p class="micro" id="quien">Lector</p><h1>Tu biblioteca.</h1></div>
+        <a class="boton claro" href="biblioteca.html">Ver libros</a>
+      </div>
+
+      <section class="banda c-negro conector" aria-label="Tu conector">
+        <span class="pulso" aria-hidden="true"></span>
+        <div>
+          <strong id="estado">Conector TextoVivo activo</strong>
+          <span id="ultima" style="font-size:0.85rem;opacity:.7"></span><br>
+          <code id="url-conector"></code>
         </div>
-      </article>
-      <a class="poster c-cuadricula vacio" href="biblioteca.html" data-aparece style="--i:4">
-        <span class="num">+</span>
-        <h3 class="titulo t-serif">Sumá otro libro</h3>
-        <p class="texto serif">Aparece solo en tu IA, sin volver a conectar nada.</p>
-      </a>
+        <div class="acciones">
+          <button class="boton chico" type="button" data-copiar="#url-conector">Copiar dirección</button>
+          <a class="boton chico claro" href="guia.html">Ver guía</a>
+        </div>
+      </section>
+
+      <div class="titulo-bloque"><h2>Tu acceso</h2><span class="nota">gratis · 30 días</span></div>
+      <div class="grilla cuatro prestamos">
+        <article class="poster c-rojo plegado prestamo libre">
+          <span class="estado vivo" id="chip">Activo</span>
+          <span class="num">∞</span>
+          <h3 class="titulo t-alta" style="font-size:13cqi">Toda la biblioteca</h3>
+          <div class="lado">
+            <p class="dias"><span id="dias">30</span><small id="vence">días restantes</small></p>
+            <div class="medidor" role="meter" aria-label="Consultas usadas" id="medidor" aria-valuemin="0" aria-valuemax="150" aria-valuenow="0"><span id="barra" style="width:0%"></span></div>
+            <span class="uso" id="uso"></span>
+            <form class="acciones" method="post" action="/acceso" id="renovar" hidden>
+              <input type="hidden" name="email" id="email-renovar">
+              <button class="boton" type="submit">Renovar 30 días gratis</button>
+            </form>
+          </div>
+        </article>
+      </div>
+
+      <div class="titulo-bloque"><h2>Libros en tu conector</h2><span class="nota" id="n-libros"></span></div>
+      <ul class="lista" id="libros" style="margin-bottom:64px"></ul>
+
+      <p class="nota" style="margin-bottom:64px"><button class="revocar" type="button" id="salir">Salir de este navegador</button> Tu acceso sigue valiendo: para volver, entrá con el mismo email.</p>
     </div>
-
-    <div class="titulo-bloque"><h2>Conexiones</h2><span class="nota">dónde está conectado TextoVivo</span></div>
-    <ul class="lista" style="margin-bottom:64px">
-      <li><span class="n">01</span>Claude <span class="nota">· web</span><span class="der">desde 23 nov</span><button class="revocar" type="button">Revocar</button></li>
-      <li><span class="n">02</span>Claude Code<span class="der">desde 23 nov</span><button class="revocar" type="button">Revocar</button></li>
-    </ul>
-
-    <div class="titulo-bloque"><h2>Historial</h2><span class="nota">préstamos vencidos</span></div>
-    <p class="nota">Todavía no venció ningún préstamo. Cuando pase, lo vas a ver acá con un botón para renovarlo.</p>
   </div>
 </main>
 
@@ -125,11 +127,42 @@
   <div class="envoltura">
     <div>
       <div class="firma"><b>TextoVivo</b><span>Los autores solo ven totales, nunca tus consultas</span></div>
-      <nav aria-label="Pie"><a href="biblioteca.html">Biblioteca</a><a href="guia.html">Guía de conexión</a><a href="#">Recibos</a><a href="#">Borrar mi cuenta</a></nav>
+      <nav aria-label="Pie"><a href="biblioteca.html">Biblioteca</a><a href="guia.html">Guía de conexión</a></nav>
     </div>
     <span class="edicion">© 2026 — Edición uno · San Salvador</span>
   </div>
 </footer>
 <script src="app.js"></script>
+<script>
+const $ = (id) => document.getElementById(id);
+let token = "";
+try { token = localStorage.getItem("tv_token") || ""; } catch {}
+const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+async function cargar() {
+  if (!/^[a-f0-9]{32}$/.test(token)) return ($("sin-acceso").hidden = false);
+  const r = await fetch("/api/acceso", { headers: { authorization: "Bearer " + token } }).catch(() => null);
+  if (!r || !r.ok) {
+    try { localStorage.removeItem("tv_token"); } catch {}
+    return ($("sin-acceso").hidden = false);
+  }
+  const d = await r.json();
+  $("quien").textContent = "Lector · " + d.email;
+  $("url-conector").textContent = d.url_mcp;
+  $("dias").textContent = d.dias_restantes;
+  $("vence").textContent = d.vencido ? "acceso vencido" : "días restantes · vence el " + new Date(d.vence).toLocaleDateString("es", { day: "numeric", month: "short" });
+  $("uso").textContent = d.consultas_usadas + " de " + d.consultas_limite + " consultas";
+  $("medidor").setAttribute("aria-valuemax", d.consultas_limite);
+  $("medidor").setAttribute("aria-valuenow", d.consultas_usadas);
+  $("barra").style.width = Math.min(100, (d.consultas_usadas / d.consultas_limite) * 100) + "%";
+  $("ultima").textContent = d.ultima_consulta ? "Última consulta: " + new Date(d.ultima_consulta).toLocaleString("es", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "Todavía no hiciste ninguna consulta: conectalo con la guía.";
+  if (d.vencido) { $("estado").textContent = "Acceso vencido"; $("chip").textContent = "Vencido"; }
+  if (d.vencido || d.dias_restantes <= 7) { $("renovar").hidden = false; $("email-renovar").value = d.email; }
+  $("n-libros").textContent = d.libros.length + " libros";
+  $("libros").innerHTML = d.libros.map((l, i) => '<li><span class="n">' + String(i + 1).padStart(2, "0") + "</span>" + esc(l.titulo) + ' <span class="nota">· ' + esc(l.autor) + "</span></li>").join("");
+  $("con-acceso").hidden = false;
+}
+$("salir").addEventListener("click", () => { try { localStorage.removeItem("tv_token"); } catch {} location.href = "index.html"; });
+cargar();
+</script>
 </body>
 </html>

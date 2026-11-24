@@ -1,4 +1,2 @@
-# No se publican como parte del sitio
-wrangler.jsonc
-.assetsignore
 README.md
+wrangler.jsonc

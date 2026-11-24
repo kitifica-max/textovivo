@@ -6,7 +6,6 @@ import { env } from "cloudflare:workers";
 import { z } from "zod";
 import catalogoJson from "../data/catalogo.json" with { type: "json" };
 import { buscadorD1 } from "./buscador-d1.ts";
-import { guia, landing } from "./pages.ts";
 import { Destilado } from "./schema.ts";
 import {
   buscarConcepto,
@@ -168,15 +167,6 @@ const json = (data: unknown, status = 200) =>
     headers: { "content-type": "application/json; charset=utf-8" }
   });
 
-const html = (cuerpo: string) =>
-  new Response(cuerpo, {
-    headers: {
-      "content-type": "text/html; charset=utf-8",
-      "referrer-policy": "no-referrer",
-      "x-content-type-options": "nosniff"
-    }
-  });
-
 async function esAdmin(req: Request) {
   const enviado = new TextEncoder().encode(req.headers.get("authorization") ?? "");
   const esperado = new TextEncoder().encode(`Bearer ${env.ADMIN_SECRET}`);
@@ -276,7 +266,7 @@ export default {
     if (url.pathname === "/acceso" && req.method === "POST" && env.ACCESO_GRATIS === "1") {
       const form = await req.formData().catch(() => new FormData());
       const email = String(form.get("email") ?? "").trim().toLowerCase();
-      if (!/^\S+@\S+\.\S+$/.test(email) || email.length > 200) return new Response("Email inválido", { status: 400 });
+      if (!/^\S+@\S+\.\S+$/.test(email) || email.length > 200) return new Response(null, { status: 303, headers: { location: "/entrar.html?error=email" } });
       // Mismo email con acceso vigente: reusa el token.
       const previo = await env.DB.prepare(
         "SELECT token FROM buyers WHERE email = ? AND es_prueba = 0 AND expires_at > ? ORDER BY created_at DESC"
@@ -292,11 +282,31 @@ export default {
           .bind(token, email, creado.toISOString(), vence.toISOString())
           .run();
       }
-      return new Response(null, { status: 303, headers: { location: `/guia#${token}`, "referrer-policy": "no-referrer" } });
+      return new Response(null, { status: 303, headers: { location: `/guia.html#${token}`, "referrer-policy": "no-referrer" } });
     }
 
-    if (url.pathname === "/" && req.method === "GET") return html(landing(libros, env));
-    if (url.pathname === "/guia" && req.method === "GET") return html(guia(libros));
+    // Datos del acceso para «Mi biblioteca». El token va en el header, nunca en la URL.
+    if (url.pathname === "/api/acceso" && req.method === "GET") {
+      const token = (req.headers.get("authorization") ?? "").replace(/^Bearer /, "");
+      const c = /^[a-f0-9]{32}$/.test(token)
+        ? await env.DB.prepare("SELECT email, created_at, expires_at, calls, last_call_at FROM buyers WHERE token = ?")
+            .bind(token)
+            .first<{ email: string; created_at: string; expires_at: string; calls: number; last_call_at: string | null }>()
+        : null;
+      if (!c) return json({ error: "Acceso no válido" }, 401);
+      const dias = Math.ceil((new Date(c.expires_at).getTime() - Date.now()) / 86_400_000);
+      return json({
+        email: c.email,
+        url_mcp: `${url.origin}/c/${token}/mcp`,
+        vence: c.expires_at,
+        dias_restantes: Math.max(0, dias),
+        vencido: c.expires_at <= ahora(),
+        consultas_usadas: c.calls,
+        consultas_limite: Number(env.CALLS_PER_TOKEN),
+        ultima_consulta: c.last_call_at,
+        libros: libros.map((l) => ({ id: l.id, titulo: l.titulo, autor: l.autor }))
+      });
+    }
     if (url.pathname.startsWith("/admin/")) return admin(req, url);
     return new Response("No encontrado", { status: 404 });
   }
