@@ -73,6 +73,70 @@
     </div>
   </section>
 
+  <section class="seccion ejemplo" id="ejemplo" aria-labelledby="ej-titulo">
+    <div class="envoltura">
+      <div class="cabeza">
+        <div><p class="micro">Así se siente</p><h2 id="ej-titulo" style="margin-top:10px">Preguntás. Tu IA responde con libros y páginas.</h2></div>
+        <p class="bajada" style="max-width:26em">Decidís con fundamento, no con corazonadas. Cada consejo viene con la cita literal y su página.</p>
+      </div>
+
+      <div class="ia" data-ia>
+        <div class="ia-barra">
+          <span class="ia-puntos" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="ia-titulo">Tu IA</span>
+          <span class="ia-conectado"><span class="pulso" aria-hidden="true"></span>Textifika conectado</span>
+        </div>
+
+        <div class="ia-cuerpo">
+          <div class="ia-usuario">
+            <span class="sr-only">Quiero cobrar por mi producto cuando termine la prueba gratis. ¿Qué hago? Respondé con fundamento.</span>
+            <p aria-hidden="true"><span data-tipeo="Quiero cobrar por mi producto cuando termine la prueba gratis. ¿Qué hago? Respondé con fundamento."></span><span class="ia-fantasma" data-fantasma></span><span class="ia-cursor" data-cursor></span></p>
+          </div>
+
+          <ul class="ia-tools" aria-label="Consultas que hace tu IA a Textifika">
+            <li data-paso><span class="ia-estado" aria-hidden="true"></span><code>buscar_concepto</code><span>Scientific Advertising</span></li>
+            <li data-paso><span class="ia-estado" aria-hidden="true"></span><code>buscar_concepto</code><span>The Art of Money Getting</span></li>
+            <li data-paso><span class="ia-estado" aria-hidden="true"></span><code>obtener_checklist</code><span>El arte de la guerra</span></li>
+          </ul>
+
+          <div class="ia-resp">
+            <p class="ia-intro" data-paso>Con esto de fondo, te propongo tres pasos. Cada uno sale de un libro y de una página que podés abrir.</p>
+
+            <article class="ia-cita" data-paso style="--acento:#f1e27c">
+              <header><b>Scientific Advertising</b><span class="pagina">Hopkins · p. 75</span></header>
+              <blockquote><mark data-marca>We make a small venture, and watch cost and result.</mark></blockquote>
+              <p><strong>Qué hacer.</strong> Probá primero con un grupo chico. Medí cuánto cuesta cada usuario y cuántos siguen, antes de cobrarle a todos.</p>
+            </article>
+
+            <article class="ia-cita" data-paso style="--acento:#5f9b6b">
+              <header><b>The Art of Money Getting</b><span class="pagina">Barnum · p. 53</span></header>
+              <blockquote><mark data-marca>You all need to have your customers return and purchase again.</mark></blockquote>
+              <p><strong>Qué hacer.</strong> Cobrá por volver, no por cada uso. Que renovar sea fácil, y que valga la pena.</p>
+            </article>
+
+            <article class="ia-cita" data-paso style="--acento:#df2a1f">
+              <header><b>El arte de la guerra</b><span class="pagina">Sun Tzu · p. 44</span></header>
+              <blockquote><mark data-marca>Move not unless you see an advantage</mark></blockquote>
+              <p><strong>Qué hacer.</strong> No lances el cobro por impulso: esperá a que los números muestren que el valor está.</p>
+            </article>
+
+            <p class="ia-cierre" data-paso><span class="ia-ok" aria-hidden="true">✓</span> 3 citas verificadas: existen tal cual en su página. Si una no está en el libro, no llega a tu IA.</p>
+          </div>
+        </div>
+
+        <div class="ia-pie">
+          <span>Respuesta de ejemplo, armada con textos reales de la biblioteca.</span>
+          <button class="boton chico claro" type="button" data-repetir>Ver de nuevo</button>
+        </div>
+      </div>
+
+      <div class="acciones" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:28px">
+        <a class="boton" href="entrar.html">Obtener acceso gratis</a>
+        <a class="boton claro" href="biblioteca.html">Ver la biblioteca completa</a>
+      </div>
+    </div>
+  </section>
+
   <section class="usos" id="usos">
     <div class="envoltura">
       <div class="cabeza">
@@ -238,28 +302,6 @@
     </div>
   </section>
 
-  <section class="seccion">
-    <div class="envoltura demo">
-      <div>
-        <p class="micro">Un ejemplo con El arte de la guerra</p>
-        <h2 style="margin-top:12px">Así responde tu IA con un libro conectado.</h2>
-        <p class="bajada" style="margin:14px 0 24px;max-width:34em">Cada respuesta dice de qué libro y de qué página sale. Si una cita no está en el texto, no llega a tu IA.</p>
-        <div class="terminal">
-          <div class="barra"><i></i><i></i><i></i><span>claude · Textifika conectado</span></div>
-          <div class="cuerpo">
-            <p class="persona">Competimos contra una herramienta enorme. ¿Por dónde entramos?</p>
-            <p class="herramienta">buscar_concepto <span class="tenue">("strike at what is weak")</span></p>
-            <p class="respuesta">Sun Tzu es directo: evitá lo fuerte y golpeá lo débil. Antes, compará tu equipo con el suyo para ver dónde sobra fuerza y dónde falta.</p>
-            <span class="chip">El arte de la guerra · p. 18</span>
-          </div>
-        </div>
-        <div class="acciones">
-          <a class="boton" href="biblioteca.html">Ver la biblioteca completa</a>
-          <a class="boton claro" href="entrar.html">Obtener acceso gratis</a>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer class="pie-sitio">

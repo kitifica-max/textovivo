@@ -199,3 +199,51 @@ document.querySelectorAll(".cabecera").forEach((cab) => {
   document.addEventListener("click", (e) => { if (!cab.contains(e.target)) poner(false); });
   nav.addEventListener("click", (e) => { if (e.target.closest("a")) poner(false); });
 });
+
+
+// Ejemplo animado (landing): tipea la pregunta, "consulta" a Textifika y muestra la respuesta con citas.
+// Con prefers-reduced-motion se muestra todo de una vez. Empieza al entrar en pantalla; «Ver de nuevo» la repite.
+document.querySelectorAll("[data-ia]").forEach((ia) => {
+  const espera = (ms) => new Promise((r) => setTimeout(r, ms));
+  const reducido = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const texto = ia.querySelector("[data-tipeo]");
+  const fantasma = ia.querySelector("[data-fantasma]");
+  const completo = texto.dataset.tipeo;
+  const pasos = [...ia.querySelectorAll("[data-paso]")];
+  const tools = pasos.filter((p) => p.closest(".ia-tools"));
+  const citas = ia.querySelectorAll(".ia-cita");
+  let corrida = 0;
+
+  const poner = (n) => { texto.textContent = completo.slice(0, n); fantasma.textContent = completo.slice(n); };
+  const limpiar = () => {
+    ia.dataset.estado = "";
+    pasos.forEach((p) => p.classList.remove("visible", "activo", "listo"));
+    poner(0);
+  };
+  const mostrarTodo = () => {
+    ia.dataset.estado = "listo"; poner(completo.length);
+    tools.forEach((t) => t.classList.add("listo"));
+    pasos.filter((p) => !p.closest(".ia-tools")).forEach((p) => p.classList.add("visible"));
+  };
+
+  async function reproducir() {
+    const mia = ++corrida;
+    limpiar();
+    if (reducido) return mostrarTodo();
+    const vigente = () => mia === corrida;
+    ia.dataset.estado = "escribiendo";
+    for (let i = 1; i <= completo.length; i++) { if (!vigente()) return; poner(i); await espera(completo[i - 1] === " " ? 38 : 26); }
+    ia.dataset.estado = "consultando";
+    await espera(500);
+    for (const t of tools) { if (!vigente()) return; t.classList.add("activo"); await espera(850); t.classList.replace("activo", "listo"); await espera(150); }
+    await espera(250);
+    const resto = pasos.filter((p) => !p.closest(".ia-tools"));
+    for (const p of resto) { if (!vigente()) return; p.classList.add("visible"); await espera(p.classList.contains("ia-cita") ? 1500 : 800); }
+    ia.dataset.estado = "listo";
+  }
+
+  ia.querySelector("[data-repetir]")?.addEventListener("click", reproducir);
+  if (reducido || !("IntersectionObserver" in window)) return reproducir();
+  limpiar();
+  new IntersectionObserver((e, o) => { if (e[0].isIntersecting) { o.disconnect(); reproducir(); } }, { threshold: 0.35 }).observe(ia);
+});
