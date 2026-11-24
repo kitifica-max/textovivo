@@ -1,7 +1,7 @@
 // Genera, desde data/catalogo.json y scripts/sitio.json:
 //   - los pósters de ../diseno/biblioteca.html (entre <!--libros--> y <!--/libros-->)
 //   - una ficha por libro disponible en ../diseno/libros/<id>.html
-// El libro 001 conserva su ficha diseñada a mano (texto.html).
+// El libro 001 también sale de acá; texto.html solo redirige a su ficha.
 // Uso: node scripts/sitio.ts   (después de node scripts/catalogo.ts)
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 
@@ -24,7 +24,7 @@ const porId = new Map(catalogo.map((d) => [d.id, d]));
 const TEMAS: Record<string, string> = { estrategia: "Estrategia", marketing: "Marketing", decisiones: "Decisiones", investigacion: "Investigación", negocios: "Negocios", escritura: "Escritura" };
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
 const disponible = (f: Ficha) => Boolean(f.id && porId.has(f.id));
-const href = (f: Ficha) => (f.id === "arte-de-la-guerra" ? "texto.html" : `libros/${f.id}.html`);
+const href = (f: Ficha) => `libros/${f.id}.html`;
 
 // 1) Pósters de la biblioteca
 const poster = (f: Ficha, i: number) => {
@@ -131,7 +131,7 @@ await mkdir("../diseno/libros", { recursive: true });
 let n = 0;
 for (const f of fichas) {
   const d = f.id ? porId.get(f.id) : undefined;
-  if (!d || f.id === "arte-de-la-guerra") continue;
+  if (!d) continue;
   const titulo = f.titulo.replace(/<[^>]+>/g, "");
   const citas = d.glosario.length + d.frameworks.reduce((t, x) => t + x.pasos.length, 0) + d.checklists.reduce((t, x) => t + x.items.length, 0);
 

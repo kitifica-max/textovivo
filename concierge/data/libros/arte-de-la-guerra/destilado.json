@@ -144,6 +144,24 @@
       "definicion": "Serpiente que contraataca con la cabeza o la cola según dónde la golpeen: imagen del ejército que responde como un solo cuerpo.",
       "pagina": 38,
       "cita": "Strike at its head, and you will be attacked by its tail; strike at its tail, and you will be attacked by its head"
+    },
+    {
+      "termino": "Arte de estudiar los ánimos",
+      "definicion": "Evitar al rival cuando su ánimo está alto y atacar cuando decae.",
+      "pagina": 22,
+      "cita": "This is the art of studying moods. 30"
+    },
+    {
+      "termino": "Autodominio (self-possession)",
+      "definicion": "Mantenerse disciplinado y calmo mientras el rival se desordena.",
+      "pagina": 22,
+      "cita": "this is the art of retaining self-possession"
+    },
+    {
+      "termino": "Abastecerse del rival (foraging)",
+      "definicion": "Un carro del rival vale veinte propios.",
+      "pagina": 5,
+      "cita": "a wise general makes a point of foraging on the enemy. One cartload of"
     }
   ],
   "frameworks": [
@@ -489,6 +507,258 @@
           "cita": "Surviving spies, finally, are those who bring back news from the enemy’s camp."
         }
       ]
+    },
+    {
+      "nombre": "Cómo responder ante un ataque con fuego (The attack by fire)",
+      "resumen": "Sun Tzu enumera objetivos del fuego y cómo reaccionar según se desarrolle el incendio.",
+      "verificado": true,
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Si arde el campamento rival, atacá desde fuera",
+          "descripcion": "Responder de inmediato con un ataque exterior.",
+          "pagina": 43,
+          "cita": "(1) When fire breaks out inside the enemy’s camp, respond at once with an attack from without. 7. (2) If there is"
+        },
+        {
+          "orden": 2,
+          "titulo": "Si arde pero la tropa rival sigue quieta, esperá",
+          "descripcion": "No atacar todavía.",
+          "pagina": 43,
+          "cita": "(2) If there is an outbreak of fire, but the enemy’s soldiers remain quiet, bide your time and do not attack. 8"
+        },
+        {
+          "orden": 3,
+          "titulo": "Cuando las llamas llegan a su punto máximo, seguí con un ataque si es viable",
+          "descripcion": "Si no es viable, quedarse donde estás.",
+          "pagina": 43,
+          "cita": "(3) When the force of the flames has reached its height, follow it up with an attack, if that is practicable; if not, stay"
+        },
+        {
+          "orden": 4,
+          "titulo": "Si podés atacar con fuego desde fuera, no esperes a que prenda adentro",
+          "descripcion": "Elegir el momento favorable.",
+          "pagina": 43,
+          "cita": "(4) If it is possible to make an assault with fire from without, do not wait for it to break out within, but deliver"
+        }
+      ]
+    },
+    {
+      "nombre": "Método directo e indirecto (Energy)",
+      "resumen": "El choque se inicia con lo directo, pero la victoria se asegura con lo indirecto.",
+      "verificado": true,
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Directo para trabar el combate",
+          "descripcion": "Es la forma habitual de iniciar.",
+          "pagina": 12,
+          "cita": "In all fighting, the direct method may be used for joining battle, but indirect methods will be needed"
+        },
+        {
+          "orden": 2,
+          "titulo": "Indirecto para asegurar la victoria",
+          "descripcion": "Hace falta una maniobra que el rival no espera.",
+          "pagina": 12,
+          "cita": "indirect methods will be needed in order to secure victory. 6. Indirect"
+        },
+        {
+          "orden": 3,
+          "titulo": "Aplicado con eficacia, es inagotable",
+          "descripcion": "Como el cielo y la tierra.",
+          "pagina": 12,
+          "cita": "Indirect tactics, efficiently applied, are inexhausible as Heaven and Earth, unending as the flow"
+        }
+      ]
+    },
+    {
+      "nombre": "Tomar la iniciativa (Weak points and strong)",
+      "resumen": "Imponer tu voluntad al rival, aparecer donde no te esperan y adaptarte a cada situación.",
+      "verificado": true,
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Imponé tu voluntad, no dejes que te la impongan",
+          "descripcion": "El combatiente hábil lleva la iniciativa.",
+          "pagina": 15,
+          "cita": "the clever combatant imposes his will on the enemy, but does not allow the enemy’s will to be imposed on him. 3"
+        },
+        {
+          "orden": 2,
+          "titulo": "Aparecé donde el rival tiene que acudir y moveté donde no te esperan",
+          "descripcion": "Obligarlo a reaccionar.",
+          "pagina": 15,
+          "cita": "Appear at points which the enemy must hasten to defend; march swiftly to places where you are not expected. 6"
+        },
+        {
+          "orden": 3,
+          "titulo": "Avanzá hacia sus puntos débiles",
+          "descripcion": "Así sos irresistible.",
+          "pagina": 16,
+          "cita": "You may advance and be absolutely irresistible, if you make for the enemy’s weak points; you may retire and be"
+        },
+        {
+          "orden": 4,
+          "titulo": "Adaptate como el agua",
+          "descripcion": "La victoria se arma según el rival que tenés enfrente.",
+          "pagina": 18,
+          "cita": "Water shapes its course according to the nature of the ground over which it flows; the soldier works out his victory in relation to"
+        },
+        {
+          "orden": 5,
+          "titulo": "No repitas la táctica que ya te dio una victoria",
+          "descripcion": "Los métodos se regulan por la variedad de circunstancias.",
+          "pagina": 18,
+          "cita": "Do not repeat the tactics which have gained you one victory, but let your methods be regulated by the infinite variety of"
+        }
+      ]
+    },
+    {
+      "nombre": "Maniobrar con velocidad, sigilo y ánimo (Manœuvering)",
+      "resumen": "Cómo moverte, cuándo evitar al rival y cuándo atacarlo.",
+      "verificado": true,
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Rapidez como el viento",
+          "descripcion": "Y compacidad como el bosque.",
+          "pagina": 21,
+          "cita": "Let your rapidity be that of the wind, your compactness that of the forest"
+        },
+        {
+          "orden": 2,
+          "titulo": "Planes oscuros como la noche; al moverte, caé como un rayo",
+          "descripcion": "Sigilo total hasta el momento de actuar.",
+          "pagina": 21,
+          "cita": "Let your plans be dark and impenetrable as night, and when you move, fall like a thunderbolt. 20"
+        },
+        {
+          "orden": 3,
+          "titulo": "Ponderá y deliberá antes de moverte",
+          "descripcion": "No actuar sin pensar.",
+          "pagina": 21,
+          "cita": "Ponder and deliberate before you make a move. 22. He"
+        },
+        {
+          "orden": 4,
+          "titulo": "Evitá al rival cuando su ánimo está alto; atacalo cuando decae",
+          "descripcion": "El ánimo es más fuerte en la mañana y se apaga hacia la tarde.",
+          "pagina": 22,
+          "cita": "A clever general, therefore, avoids an army when its spirit is keen, but attacks it when it is sluggish and inclined to return. This"
+        },
+        {
+          "orden": 5,
+          "titulo": "Mantené la calma y esperá su desorden",
+          "descripcion": "Es el arte de conservar el autodominio.",
+          "pagina": 22,
+          "cita": "Disciplined and calm, to await the appearance of disorder and hubbub amongst the enemy:—this is the art of retaining self-possession"
+        }
+      ]
+    },
+    {
+      "nombre": "Elegir dónde acampar (Encamping)",
+      "resumen": "Cuatro ramas del conocimiento militar sobre dónde ubicarse: montañas, ríos, marismas y llanura.",
+      "verificado": true,
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Montañas: cruzalas rápido y quedate cerca de los valles",
+          "descripcion": "Acampá en alto y de cara al sol.",
+          "pagina": 26,
+          "cita": "Pass quickly over mountains, and keep in the neighbourhood of valleys. 2. Camp in high places, facing the sun. 3"
+        },
+        {
+          "orden": 2,
+          "titulo": "Ríos: alejate del río después de cruzarlo",
+          "descripcion": "No salgas al paso del invasor en medio de la corriente.",
+          "pagina": 26,
+          "cita": "After crossing a river, you should get far away from it. 4. When an invading force crosses a"
+        },
+        {
+          "orden": 3,
+          "titulo": "Marismas: cruzalas sin demora",
+          "descripcion": "Si hay que pelear, con agua, pasto y árboles atrás.",
+          "pagina": 26,
+          "cita": "In crossing salt-marshes, your sole concern should be to get over them quickly, without any delay. 8. If forced to fight in"
+        },
+        {
+          "orden": 4,
+          "titulo": "Llanura: posición accesible con terreno alto a tu derecha y atrás",
+          "descripcion": "El peligro al frente, la seguridad detrás.",
+          "pagina": 26,
+          "cita": "In dry, level country, take up an easily accessible position with rising ground to your right and on your rear, so that the danger may be in front"
+        }
+      ]
+    },
+    {
+      "nombre": "Hacer la guerra corta y barata (Waging war)",
+      "resumen": "Cómo evitar que una campaña larga agote tus recursos y cómo financiarla con lo del rival.",
+      "verificado": true,
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Entendé el costo de la demora",
+          "descripcion": "Si la victoria tarda, se gastan armas y ánimo.",
+          "pagina": 4,
+          "cita": "When you engage in actual fighting, if victory is long in coming, the men’s weapons will grow dull and their ardour will be damped"
+        },
+        {
+          "orden": 2,
+          "titulo": "Una campaña larga no beneficia a nadie",
+          "descripcion": "No hay caso de un país que se haya beneficiado.",
+          "pagina": 4,
+          "cita": "There is no instance of a country having benefited from prolonged warfare. 7. It"
+        },
+        {
+          "orden": 3,
+          "titulo": "Llevá el material de casa y abastecete del rival",
+          "descripcion": "Un carro del rival vale veinte propios.",
+          "pagina": 5,
+          "cita": "Bring war material with you from home, but forage on the enemy. Thus the army will have food enough for"
+        },
+        {
+          "orden": 4,
+          "titulo": "Usá al rival vencido para fortalecerte",
+          "descripcion": "Tratar bien a los capturados.",
+          "pagina": 6,
+          "cita": "This is called, using the conquered foe to augment one’s own strength. 19. In"
+        },
+        {
+          "orden": 5,
+          "titulo": "Que el objetivo sea la victoria, no la campaña larga",
+          "descripcion": "Cierre del capítulo.",
+          "pagina": 6,
+          "cita": "In war, then, let your great object be victory, not lengthy campaigns. 20. Thus it may"
+        }
+      ]
+    },
+    {
+      "nombre": "Tres condiciones para actuar (The attack by fire)",
+      "resumen": "Antes de mover una pieza, la ventaja tiene que estar a la vista.",
+      "verificado": true,
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Movete solo si ves una ventaja",
+          "descripcion": "Sin ventaja, no hay movimiento.",
+          "pagina": 44,
+          "cita": "Move not unless you see an advantage; use not your troops unless there is something to"
+        },
+        {
+          "orden": 2,
+          "titulo": "Usá tus tropas solo si hay algo que ganar",
+          "descripcion": "No malgastar recursos.",
+          "pagina": 44,
+          "cita": "use not your troops unless there is something to be gained; fight"
+        },
+        {
+          "orden": 3,
+          "titulo": "Peleá solo si la posición es crítica",
+          "descripcion": "Pelear es último recurso.",
+          "pagina": 44,
+          "cita": "fight not unless the position is critical. 18. No ruler"
+        }
+      ]
     }
   ],
   "checklists": [
@@ -765,6 +1035,225 @@
           "texto": "Una posición demasiado fácil de alcanzar es un cebo.",
           "pagina": 27,
           "cita": "If his place of encampment is easy of access, he is tendering a bait."
+        }
+      ]
+    },
+    {
+      "nombre": "No decidas por rabia ni por orgullo",
+      "contexto": "Para frenar una decisión tomada por enojo (la lección final del capítulo del fuego).",
+      "verificado": true,
+      "items": [
+        {
+          "texto": "Que el enojo no mande la acción",
+          "pagina": 44,
+          "cita": "No ruler should put troops into the field merely to gratify his own spleen; no general should fight a battle simply out"
+        },
+        {
+          "texto": "Ni el capricho ni la ofensa justifican pelear",
+          "pagina": 44,
+          "cita": "no general should fight a battle simply out of pique. 19. If"
+        },
+        {
+          "texto": "Si te conviene, avanzá; si no, quedate donde estás",
+          "pagina": 44,
+          "cita": "If it is to your advantage, make a forward move; if not, stay where you are. 20. Anger"
+        },
+        {
+          "texto": "El enojo pasa; lo destruido no vuelve",
+          "pagina": 44,
+          "cita": "Anger may in time change to gladness; vexation may be succeeded by"
+        },
+        {
+          "texto": "Un reino destruido no se recupera",
+          "pagina": 44,
+          "cita": "But a kingdom that has once been destroyed can never come again into being; nor can the dead"
+        },
+        {
+          "texto": "El líder prudente es cauteloso",
+          "pagina": 44,
+          "cita": "Hence the enlightened ruler is heedful, and the good general full of caution. This is the"
+        }
+      ]
+    },
+    {
+      "nombre": "Costos de una campaña larga",
+      "contexto": "Para evaluar si un proyecto o una pelea que se alarga todavía vale la pena.",
+      "verificado": true,
+      "items": [
+        {
+          "texto": "¿Tu gente y tus recursos se están desgastando?",
+          "pagina": 4,
+          "cita": "if victory is long in coming, the men’s weapons will grow dull and their ardour will be damped"
+        },
+        {
+          "texto": "¿Tus recursos aguantan si se alarga?",
+          "pagina": 4,
+          "cita": "if the campaign is protracted, the resources of the State will not be equal to the strain. 4. Now, when"
+        },
+        {
+          "texto": "¿Otros van a aprovechar tu agotamiento?",
+          "pagina": 4,
+          "cita": "other chieftains will spring up to take advantage of your extremity. Then no man, however wise"
+        },
+        {
+          "texto": "La rapidez torpe es mejor que la demora lista",
+          "pagina": 4,
+          "cita": "cleverness has never been seen associated with long delays. 6. There is"
+        },
+        {
+          "texto": "El hábil no pide un segundo refuerzo",
+          "pagina": 4,
+          "cita": "The skilful soldier does not raise a second levy, neither are his"
+        }
+      ]
+    },
+    {
+      "nombre": "Cuidar a tu gente (liderazgo)",
+      "contexto": "Para revisar cómo tratás a tu equipo.",
+      "verificado": true,
+      "items": [
+        {
+          "texto": "Tratalo como a tus hijos y te seguirá",
+          "pagina": 34,
+          "cita": "Regard your soldiers as your children, and they will follow you into the deepest valleys; look on them as your own beloved sons, and"
+        },
+        {
+          "texto": "Pero no seas indulgente sin autoridad",
+          "pagina": 34,
+          "cita": "If, however, you are indulgent, but unable to make your authority felt; kind-hearted, but unable to enforce your commands; and incapable, moreover, of quelling"
+        },
+        {
+          "texto": "Cuidá su bienestar y no lo sobrecargues",
+          "pagina": 37,
+          "cita": "Carefully study the well-being of your men, and do not overtax them. Concentrate your energy and hoard your"
+        },
+        {
+          "texto": "Cuidalo y evitás que se enferme",
+          "pagina": 26,
+          "cita": "If you are careful of your men, and camp on hard ground, the army will be free from disease of every kind"
+        },
+        {
+          "texto": "Premiá sin apegarte a la regla",
+          "pagina": 41,
+          "cita": "Bestow rewards without regard to rule, issue orders without regard to previous arrangements; and you will be able to handle"
+        },
+        {
+          "texto": "A los capturados, buen trato",
+          "pagina": 6,
+          "cita": "The captured soldiers should be kindly treated and kept. 18. This is"
+        }
+      ]
+    },
+    {
+      "nombre": "Revisar el terreno antes de acampar",
+      "contexto": "Para evaluar una posición antes de asentarte.",
+      "verificado": true,
+      "items": [
+        {
+          "texto": "Ubicate en alto y de cara al sol",
+          "pagina": 26,
+          "cita": "Camp in high places, facing the sun. 3. After crossing"
+        },
+        {
+          "texto": "No salgas al encuentro del rival a mitad de la corriente",
+          "pagina": 26,
+          "cita": "When an invading force crosses a river in its onward march, do not advance to meet it in mid-stream. It will be best to"
+        },
+        {
+          "texto": "Alejate de acantilados, hondonadas y matorrales cerrados",
+          "pagina": 27,
+          "cita": "Country in which there are precipitous cliffs with torrents running between, deep natural hollows, confined places, tangled thickets, quagmires and crevasses, should be left with all possible speed and not"
+        },
+        {
+          "texto": "Que el rival se acerque a ellos y vos los tengas de frente",
+          "pagina": 27,
+          "cita": "While we keep away from such places, we should get the enemy to approach them; while we face them, we"
+        },
+        {
+          "texto": "Revisá los lugares donde pueda haber emboscadas o espías",
+          "pagina": 27,
+          "cita": "hilly country, ponds surrounded by aquatic grass, hollow basins filled with reeds, or woods with thick undergrowth, they must be carefully routed out and searched; for these are places where men in"
+        }
+      ]
+    },
+    {
+      "nombre": "Antes de maniobrar",
+      "contexto": "Para preparar un movimiento largo.",
+      "verificado": true,
+      "items": [
+        {
+          "texto": "Sin carros de equipaje, provisiones ni bases de abastecimiento, el ejército está perdido",
+          "pagina": 21,
+          "cita": "an army without its baggage-train is lost; without provisions it is lost; without bases of supply it is lost. 12"
+        },
+        {
+          "texto": "No hagas alianzas sin conocer las intenciones de los vecinos",
+          "pagina": 21,
+          "cita": "We cannot enter into alliances until we are acquainted with the designs of our neighbours. 13. We are"
+        },
+        {
+          "texto": "Conocé el terreno",
+          "pagina": 21,
+          "cita": "We are not fit to lead an army on the march unless we are familiar with the face of the country—its mountains and forests"
+        },
+        {
+          "texto": "Usá guías locales",
+          "pagina": 21,
+          "cita": "We shall be unable to turn natural advantages to account unless we make use of local guides. 15"
+        },
+        {
+          "texto": "Concentrar o dividir depende de las circunstancias",
+          "pagina": 21,
+          "cita": "Whether to concentrate or to divide your troops, must be decided by circumstances. 17"
+        }
+      ]
+    },
+    {
+      "nombre": "Variar la táctica y estar preparado",
+      "contexto": "Para no aferrarte a un plan único.",
+      "verificado": true,
+      "items": [
+        {
+          "texto": "Hay caminos que no hay que tomar y órdenes que no hay que obedecer",
+          "pagina": 24,
+          "cita": "There are roads which must not be followed, armies which must be not attacked, towns which must not be besieged, positions which must not be contested, commands of the sovereign which must not be"
+        },
+        {
+          "texto": "Combiná en el plan las ventajas y las desventajas",
+          "pagina": 24,
+          "cita": "considerations of advantage and of disadvantage will be blended together. 8. If our expectation of advantage"
+        },
+        {
+          "texto": "No dependas de que el rival no venga: confiá en tu preparación",
+          "pagina": 25,
+          "cita": "The art of war teaches us to rely not on the likelihood of the enemy’s not coming, but on our own readiness to receive him; not on the chance of"
+        }
+      ]
+    },
+    {
+      "nombre": "Actuar con rapidez en territorio ajeno",
+      "contexto": "Para ejecutar un movimiento rápido y decisivo.",
+      "verificado": true,
+      "items": [
+        {
+          "texto": "La rapidez es la esencia: aprovechá que el rival no está listo",
+          "pagina": 36,
+          "cita": "Rapidity is the essence of war: take advantage of the enemy’s unreadiness, make your way by unexpected routes, and attack unguarded spots"
+        },
+        {
+          "texto": "Si el rival deja una puerta abierta, entrá",
+          "pagina": 41,
+          "cita": "If the enemy leaves a door open, you must rush in. 66"
+        },
+        {
+          "texto": "Anticipate tomando lo que él más valora",
+          "pagina": 41,
+          "cita": "Forestall your opponent by seizing what he holds dear"
+        },
+        {
+          "texto": "Emití órdenes sin atarte a lo planeado",
+          "pagina": 41,
+          "cita": "issue orders without regard to previous arrangements; and you will be able to handle a whole"
         }
       ]
     }
