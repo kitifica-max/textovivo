@@ -72,4 +72,4 @@ Tomé el criterio de Apple:
 - **Aviso:** cada página dice que es un prototipo. `_headers` agrega `noindex` para que no lo indexen los buscadores.
 - **No se publican:** `wrangler.jsonc`, `README.md` y `.assetsignore`.
 - **Despliegue a mano:** `npx wrangler deploy` desde `diseno/`.
-- **Despliegue automático:** al conectar el repo de GitHub en Cloudflare (Workers Builds), con *root directory* `diseno` y *deploy command* `npx wrangler deploy`. Cada push a `main` publica solo.
+- **Despliegue automático (conectado):** Workers Builds está conectado a `kitifica-max/textovivo`, rama `main`, con *root directory* `diseno` y *deploy command* `npx wrangler deploy`. Cada push a `main` publica solo.
