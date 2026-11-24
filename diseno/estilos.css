@@ -420,3 +420,13 @@ details p { margin: 10px 0 0; color: var(--gris); max-width: 44em; }
 
 /* El atributo hidden debe ganarle a cualquier display de componente */
 [hidden] { display: none !important; }
+
+
+/* Casilla de verificación (términos, dominio público). No usar dentro de .campo: ese estilo es para campos de texto. */
+.acepto { display: flex; gap: 12px; align-items: flex-start; margin: 6px 0 16px; line-height: 1.5; }
+.acepto label { margin: 0; font: 500 0.9rem/1.5 var(--sans); color: var(--gris); cursor: pointer; }
+.caja { appearance: none; -webkit-appearance: none; flex: none; width: 24px; height: 24px; margin: 1px 0 0; border: 1.5px solid var(--gris-claro, #bdb8ad); border-radius: 8px; background: #fbfaf7; display: grid; place-content: center; cursor: pointer; transition: background 0.15s, border-color 0.15s; }
+.caja::after { content: ""; width: 12px; height: 7px; border-left: 2.5px solid #fff; border-bottom: 2.5px solid #fff; transform: rotate(-45deg) translate(1px, -1px) scale(0); transition: transform 0.15s; }
+.caja:checked { background: var(--tinta); border-color: var(--tinta); }
+.caja:checked::after { transform: rotate(-45deg) translate(1px, -1px) scale(1); }
+.caja:focus-visible { outline: 3px solid color-mix(in srgb, var(--foco) 45%, transparent); outline-offset: 2px; }

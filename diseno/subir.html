@@ -19,9 +19,7 @@
   .subir textarea { min-height: 120px; resize: vertical; }
   .subir input[type=file] { width: 100%; padding: 14px; border: 1.5px dashed var(--linea); border-radius: 14px; background: #fff; }
   .subir .filas { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .subir .check { display: flex; gap: 12px; align-items: flex-start; margin: 14px 0; line-height: 1.5; font-size: 0.95rem; }
-  .subir .check input { margin-top: 4px; width: 18px; height: 18px; flex: none; }
-  .subir .check label { font-weight: 500; margin: 0; }
+  .subir .acepto label { display: inline; font-weight: 500; margin: 0; }
   .subir .error { color: #b3261e; font-weight: 600; margin: 0 0 14px; }
   .subir .ok { background: #a3d6a6; color: #0f2417; padding: 14px 18px; border-radius: 14px; font-weight: 600; margin-bottom: 18px; }
   .envios { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 10px; }
@@ -63,8 +61,8 @@
         <div class="campo"><label for="descripcion">Descripción (20 a 1000 caracteres)</label><textarea id="descripcion" name="descripcion" required maxlength="1000"></textarea></div>
         <div class="campo"><label for="archivo">Archivo (PDF con texto, TXT o MD · hasta 20 MB)</label><input id="archivo" name="archivo" type="file" accept=".pdf,.txt,.md" required></div>
 
-        <div class="check"><input id="dominio_publico" name="dominio_publico" type="checkbox"><label for="dominio_publico"><strong>Declaro que soy el titular de los derechos de esta obra</strong> (o tengo autorización completa) y <strong>acepto que pase al dominio público</strong>, de forma irrevocable, para que cualquier persona pueda usarla.</label></div>
-        <div class="check"><input id="acepto_terminos" name="acepto_terminos" type="checkbox"><label for="acepto_terminos">Acepto los <a class="enlace" href="terminos.html" target="_blank" rel="noopener">términos y condiciones</a>.</label></div>
+        <div class="acepto"><input id="dominio_publico" name="dominio_publico" type="checkbox" class="caja"><label for="dominio_publico"><strong>Declaro que soy el titular de los derechos de esta obra</strong> (o tengo autorización completa) y <strong>acepto que pase al dominio público</strong>, de forma irrevocable, para que cualquier persona pueda usarla.</label></div>
+        <div class="acepto"><input id="acepto_terminos" name="acepto_terminos" type="checkbox" class="caja"><label for="acepto_terminos">Acepto los <a class="enlace" href="terminos.html" target="_blank" rel="noopener">términos y condiciones</a>.</label></div>
 
         <div id="ts-envio" style="margin:6px 0 16px;min-height:65px"></div>
         <button class="boton" type="submit" id="enviar">Enviar para revisión</button>
