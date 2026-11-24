@@ -2,7 +2,7 @@
 // Etapas (vocabulario.ts): palabras tal cual → raíces → vocabulario del libro (traducciones y sinónimos) → cualquiera (respaldo).
 // D1 no documenta el tokenizer porter (solo FTS5 y fts5vocab), así que el stemming es propio: raíz + prefijo («lead»*).
 import { env } from "cloudflare:workers";
-import { filtrarPorUmbral, type Buscador } from "./tools.ts";
+import { filtrarPorUmbral, normalizar, type Buscador } from "./tools.ts";
 import { aplicarDesignadas, ENTRADA_DESIGNADA, matchFts, planDeBusqueda, type Termino } from "./vocabulario.ts";
 
 /** Vocabulario del libro (tabla terminos). Pocas filas por libro: una lectura por consulta, indexada por libro. */
@@ -13,6 +13,25 @@ export async function cargarTerminosD1(libro: string): Promise<Termino[]> {
   } catch {
     return []; // si la tabla aún no existe (migración pendiente), se busca solo por las palabras escritas
   }
+}
+
+/** Expande la consulta buscando términos del vocabulario del libro (traducciones y sinónimos). */
+export async function expandirConsultaConVocabulario(consulta: string, terminos: Termino[]): Promise<string> {
+  const q = normalizar(consulta);
+  const palabrasQ = q.split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+  const terminosEncontrados: string[] = [];
+  for (const t of terminos) {
+    const tNorm = normalizar(t.termino);
+    if (palabrasQ.some((p) => tNorm.includes(p) || tNorm === p)) {
+      // Añadir la traducción si no está ya
+      if (!terminosEncontrados.includes(t.traduccion)) terminosEncontrados.push(t.traduccion);
+      // Añadir el término original si es diferente
+      if (!terminosEncontrados.includes(t.termino)) terminosEncontrados.push(t.termino);
+    }
+  }
+  // Añadir los sinónimos y traducciones encontradas a la consulta
+  const expandida = [...palabrasQ, ...terminosEncontrados].join(" ");
+  return normalizar(expandida);
 }
 
 // desde: primera página que cuenta (se saltan los preliminares: portada e índice le ganarían a los capítulos).
@@ -30,7 +49,11 @@ export const buscadorD1 =
           .all<{ pagina: number; texto: string; puntuacion: number }>()
       ).results;
 
-    for (const etapa of planDeBusqueda(consulta, await cargarTerminosD1(libro))) {
+    // Expandir consulta con vocabulario antes de buscar
+    const terminos = await cargarTerminosD1(libro);
+    const consultaExpandida = await expandirConsultaConVocabulario(consulta, terminos);
+
+    for (const etapa of planDeBusqueda(consultaExpandida, terminos)) {
       const encontrados = (await consultar(matchFts(etapa))).filter(Boolean);
       const elegidos = aplicarDesignadas(
         etapa,
