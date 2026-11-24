@@ -153,6 +153,7 @@ function pintar(d, estado) {
   $("l-servicio").innerHTML =
     `<li><span>Latencia media</span><b>${lat(d.uso.latencia_media_ms)}</b></li><li><span>Latencia p95</span><b>${lat(d.uso.latencia_p95_ms)}</b></li>` +
     `<li><span>Libros en la biblioteca</span><b>${n(d.biblioteca.libros_total)}</b></li><li><span>Consultas desde siempre</span><b>${n(d.uso.consultas_total)}</b></li>` +
+    `<li><span>Documentos personales</span><b>${n(d.personales.documentos)} · ${n(d.personales.cuentas)} cuentas</b></li>` +
     `<li><span>Envíos por revisar</span><b>${n(d.envios.pendientes)}</b></li>` + (d.envios.pendientes ? `<li><a class="enlace" href="/revision.html">Ir a revisión →</a></li>` : "");
   pintarLibros();
   const hora = new Date(d.generado).toLocaleTimeString("es", { hour: "2-digit", minute: "2-digit" });

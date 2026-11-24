@@ -15,6 +15,8 @@ const json = (data: unknown, status = 200, headers: Record<string, string> = {})
   });
 const error = (mensaje: string, status = 400) => json({ error: mensaje }, status);
 const ahora = () => new Date().toISOString();
+const uno = async <T>(sql: string, ...args: unknown[]) => (await env.DB.prepare(sql).bind(...args).first<T>()) as T;
+const todos = async <T>(sql: string, ...args: unknown[]) => (await env.DB.prepare(sql).bind(...args).all<T>()).results;
 const DIA = 86_400_000;
 
 const TIPOS = ["libro", "documento", "tesis"];
@@ -42,6 +44,7 @@ async function turnstileOk(token: unknown, req: Request) {
   const j = r?.ok ? ((await r.json().catch(() => null)) as { success?: boolean } | null) : null;
   return j?.success === true;
 }
+import { MAX_BYTES_DOC, MAX_BYTES_TOTAL, MAX_DOCS, MAX_PAGINAS, PREFIJO_PERSONAL, planHabilitado } from "./personales.ts";
 const ERROR_CAPTCHA = "No pudimos verificar que sos una persona. Esperá a que termine la verificación y probá de nuevo.";
 
 /**
@@ -270,6 +273,57 @@ export async function api(req: Request, url: URL): Promise<Response> {
       mis_libros: await misLibros(u.id),
       terminos_version: TERMINOS_VERSION
     });
+  }
+
+  // ---- Documentos personales: los sube la cuenta y solo ella los consulta ----
+  if (ruta === "/api/documentos" || ruta.startsWith("/api/documentos/")) {
+    const plan = (await uno<{ plan: string }>("SELECT plan FROM users WHERE id = ?", u.id))?.plan ?? "gratis";
+    const habilitado = planHabilitado(plan, env.PLANES_PERSONALES ?? "");
+    const lista = () => todos<{ id: string; titulo: string; archivo_nombre: string; paginas: number; bytes: number; created_at: string }>(
+      "SELECT id, titulo, archivo_nombre, paginas, bytes, created_at FROM docs_personales WHERE user_id = ? ORDER BY created_at DESC", u.id);
+
+    if (req.method === "GET" && ruta === "/api/documentos")
+      return json({ plan, habilitado, limites: { max_docs: MAX_DOCS, max_bytes_doc: MAX_BYTES_DOC, max_bytes_total: MAX_BYTES_TOTAL }, documentos: await lista() });
+
+    if (!habilitado) return error("Los documentos personales son una función de pago y todavía no está activa en tu cuenta.", 403);
+    if (!u.email_verificado_at) return error("Confirmá tu email para subir documentos.", 403);
+
+    if (post && ruta === "/api/documentos") {
+      const f = await req.formData().catch(() => null);
+      if (!f) return error("Formulario inválido.");
+      const archivo = f.get("archivo");
+      const tituloIn = String(f.get("titulo") ?? "").trim();
+      if (String(f.get("acepto") ?? "") !== "on") return error("Confirmá que tenés derecho a usar este documento.");
+      if (!(archivo instanceof File) || archivo.size === 0) return error("Adjuntá el archivo.");
+      if (!EXTENSIONES.test(archivo.name)) return error("El archivo debe ser PDF, TXT o MD.");
+      if (archivo.size > MAX_BYTES_DOC) return error("El archivo pesa más de 7 MB.");
+      const actuales = await lista();
+      if (actuales.length >= MAX_DOCS) return error(`Ya tenés ${MAX_DOCS} documentos. Borrá alguno para subir otro.`, 429);
+      if (actuales.reduce((t, d) => t + d.bytes, 0) + archivo.size > MAX_BYTES_TOTAL) return error("Con este archivo pasarías el espacio total de tu cuenta. Borrá algún documento.", 429);
+      const titulo = (tituloIn || archivo.name.replace(/\.[^.]+$/, "")).slice(0, 160);
+      if (titulo.length < 2) return error("Ponele un título al documento.");
+
+      let r;
+      try { r = await extraer(archivo.name, await archivo.arrayBuffer()); } catch (e) { return error(e instanceof Error ? e.message : "No se pudo leer el archivo.", 422); }
+      if (r.paginas.length > MAX_PAGINAS) return error(`El documento tiene ${r.paginas.length} páginas; el máximo es ${MAX_PAGINAS}.`, 422);
+
+      const id = `${PREFIJO_PERSONAL}${aleatorio(10)}`;
+      for (let i = 0; i < r.paginas.length; i += 50)
+        await env.DB.batch(r.paginas.slice(i, i + 50).map((p) => env.DB.prepare("INSERT INTO paginas_fts (texto, libro, pagina) VALUES (?, ?, ?)").bind(p.texto, id, p.pagina)));
+      await env.DB.prepare("INSERT INTO docs_personales (id, user_id, titulo, archivo_nombre, idioma, paginacion, indice, paginas, bytes, created_at) VALUES (?, ?, ?, ?, 'es', ?, ?, ?, ?, ?)")
+        .bind(id, u.id, titulo, archivo.name.slice(0, 200), r.paginacion, JSON.stringify(r.indice), r.paginas.length, archivo.size, ahora()).run();
+      return json({ ok: true, id, paginas: r.paginas.length, documentos: await lista() });
+    }
+
+    const borrar = ruta.match(/^\/api\/documentos\/(mi-[a-z0-9]{10})\/borrar$/);
+    if (post && borrar) {
+      // el user_id va en la condición: nadie puede borrar (ni ver) lo de otra cuenta
+      const d = await uno<{ id: string }>("SELECT id FROM docs_personales WHERE id = ? AND user_id = ?", borrar[1], u.id);
+      if (!d) return error("No encontrado", 404);
+      await env.DB.batch([env.DB.prepare("DELETE FROM paginas_fts WHERE libro = ?").bind(d.id), env.DB.prepare("DELETE FROM docs_personales WHERE id = ? AND user_id = ?").bind(d.id, u.id)]);
+      return json({ ok: true, documentos: await lista() });
+    }
+    return error("No encontrado", 404);
   }
 
   // ---- Biblioteca personal: agregar y quitar libros ----

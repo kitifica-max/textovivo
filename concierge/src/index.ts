@@ -8,6 +8,7 @@ import catalogoJson from "../data/catalogo.json" with { type: "json" };
 import publicaciones from "../data/publicaciones.json" with { type: "json" };
 import { api, adminEnvios } from "./api.ts";
 import { buscadorD1 } from "./buscador-d1.ts";
+import { datosDestilado, esIdPersonal, puedeVer } from "./personales.ts";
 import { Destilado } from "./schema.ts";
 import {
   buscarConcepto,
@@ -34,7 +35,20 @@ async function dinamico(id: string) {
   });
   return crearLibro(d, buscadorD1(d.id));
 }
-const resolver = async (id: string) => porId.get(id) ?? (await dinamico(id));
+/** Cuenta dueña del token del conector que está llamando (null si el acceso no tiene cuenta). */
+async function duenoActual() {
+  const token = String(getMcpAuthContext()?.props.token ?? "");
+  return (await env.DB.prepare("SELECT user_id FROM buyers WHERE token = ?").bind(token).first<{ user_id: string | null }>())?.user_id ?? null;
+}
+/** Documento personal: solo se resuelve si el que consulta es su dueño; para cualquier otro «no existe». */
+async function personal(id: string) {
+  const uid = await duenoActual();
+  const r = await env.DB.prepare("SELECT id, user_id, titulo, idioma, paginacion, indice FROM docs_personales WHERE id = ?").bind(id).first<{ id: string; user_id: string; titulo: string; idioma: string; paginacion: string; indice: string }>();
+  if (!r || !puedeVer(r.user_id, uid)) return null;
+  const d = Destilado.parse(datosDestilado(r));
+  return crearLibro(d, buscadorD1(d.id));
+}
+const resolver = async (id: string) => (esIdPersonal(id) ? await personal(id) : (porId.get(id) ?? (await dinamico(id))));
 const noExiste = (id: string) => ({ mensaje: `No existe el libro «${id}». Usá listar_libros para ver los ids disponibles.` });
 const texto = (t: string) => ({ content: [{ type: "text" as const, text: t }] });
 
@@ -71,7 +85,7 @@ async function usar(herramienta: string, consulta: string, ejecutar: () => unkno
     ).bind(t, token),
     env.DB.prepare(
       "INSERT INTO events (token, tool, query, latency_ms, created_at) VALUES (?, ?, ?, ?, ?)"
-    ).bind(token, herramienta, consulta.slice(0, 500), Date.now() - inicio, t)
+    ).bind(token, herramienta, esIdPersonal(consulta.split(": ")[0]) ? "mi-doc" : consulta.slice(0, 500), Date.now() - inicio, t)
   ]);
   return texto(JSON.stringify(resultado, null, 2));
 }
@@ -92,6 +106,8 @@ function crearServidor() {
     () =>
       usar("listar_libros", "", async () => {
         const { results } = await env.DB.prepare("SELECT id, titulo, autor, idioma, descripcion, tipo, paginacion FROM libros_dyn WHERE visible = 1 ORDER BY publicado_at DESC").all<Record<string, string>>();
+        const uid = await duenoActual();
+        const propios = uid ? (await env.DB.prepare("SELECT id, titulo, paginacion, paginas FROM docs_personales WHERE user_id = ? ORDER BY created_at DESC").bind(uid).all<{ id: string; titulo: string; paginacion: string; paginas: number }>()).results : [];
         return [
           ...libros.map((l) => ({
             id: l.id,
@@ -112,6 +128,15 @@ function crearServidor() {
             paginas: notaPaginas({ paginacion: r.paginacion as "logica" | "pdf" }),
             descripcion: r.descripcion,
             aporte_de_la_comunidad: true
+          })),
+          ...propios.map((d) => ({
+            id: d.id,
+            titulo: d.titulo,
+            autor: "Documento personal",
+            idioma: "según el documento",
+            paginas: notaPaginas({ paginacion: d.paginacion as "logica" | "pdf" }),
+            descripcion: `Documento tuyo (${d.paginas} páginas). Solo vos lo ves. Usá buscar_concepto, listar_indice y citar_fuente con su id.`,
+            documento_personal: true
           }))
         ];
       })
@@ -257,10 +282,11 @@ async function panel() {
   );
   const usoDia = await todos<{ d: string; n: number }>(`SELECT substr(e.created_at, 1, 10) AS d, COUNT(*) AS n ${EV} AND e.created_at >= ?1 GROUP BY d`, d30);
   const porHerramienta = await todos<{ nombre: string; n: number }>(`SELECT e.tool AS nombre, COUNT(*) AS n ${EV} AND e.created_at >= ?1 GROUP BY e.tool ORDER BY n DESC`, d30);
-  const porLibro = (await todos<{ lib: string; n: number }>(`SELECT ${LIBRO} AS lib, COUNT(*) AS n ${EV} AND e.tool != 'listar_libros' AND e.created_at >= ?1 GROUP BY lib ORDER BY n DESC LIMIT 10`, d30)).map((r) => ({ nombre: nombre(r.lib), n: r.n }));
+  const porLibro = (await todos<{ lib: string; n: number }>(`SELECT ${LIBRO} AS lib, COUNT(*) AS n ${EV} AND e.tool != 'listar_libros' AND e.query NOT LIKE 'mi-%' AND e.created_at >= ?1 GROUP BY lib ORDER BY n DESC LIMIT 10`, d30)).map((r) => ({ nombre: nombre(r.lib), n: r.n }));
   const total30 = await uno<{ n: number }>(`SELECT COUNT(*) AS n ${EV} AND e.latency_ms IS NOT NULL AND e.created_at >= ?1`, d30);
   const p95 = total30.n ? await uno<{ v: number }>(`SELECT e.latency_ms AS v ${EV} AND e.latency_ms IS NOT NULL AND e.created_at >= ?1 ORDER BY e.latency_ms LIMIT 1 OFFSET ?2`, d30, Math.floor(total30.n * 0.95)) : null;
   const agregados = (await todos<{ id: string; n: number }>("SELECT libro_id AS id, COUNT(*) AS n FROM mis_libros GROUP BY libro_id ORDER BY n DESC LIMIT 10")).map((r) => ({ nombre: nombre(r.id), n: r.n }));
+  const personales = await uno<{ documentos: number; cuentas: number }>("SELECT COUNT(*) AS documentos, COUNT(DISTINCT user_id) AS cuentas FROM docs_personales");
   const envios = await uno<{ pendientes: number; aprobados: number }>("SELECT COALESCE(SUM(estado = 'recibido'), 0) AS pendientes, COALESCE(SUM(estado = 'aprobado'), 0) AS aprobados FROM envios");
 
   // Biblioteca viva: catálogo (fecha de data/publicaciones.json) + aportes aprobados (publicado_at).
@@ -269,7 +295,7 @@ async function panel() {
     ...Object.entries(publicaciones as Record<string, string>),
     ...dyn.map((d): [string, string] => [d.id, d.publicado_at.slice(0, 10)])
   ]);
-  const usoPorLibro = new Map((await todos<{ lib: string; n: number }>(`SELECT ${LIBRO} AS lib, COUNT(*) AS n ${EV} AND e.tool != 'listar_libros' AND e.created_at >= ?1 GROUP BY lib`, d30)).map((r) => [r.lib, r.n]));
+  const usoPorLibro = new Map((await todos<{ lib: string; n: number }>(`SELECT ${LIBRO} AS lib, COUNT(*) AS n ${EV} AND e.tool != 'listar_libros' AND e.query NOT LIKE 'mi-%' AND e.created_at >= ?1 GROUP BY lib`, d30)).map((r) => [r.lib, r.n]));
   const agregadosPorLibro = new Map((await todos<{ id: string; n: number }>("SELECT libro_id AS id, COUNT(*) AS n FROM mis_libros GROUP BY libro_id")).map((r) => [r.id, r.n]));
   const d14 = iso(14);
   const lista = [
@@ -297,7 +323,8 @@ async function panel() {
       por_dia: serie(usoDia, 30), por_herramienta: porHerramienta, libros_mas_consultados: porLibro
     },
     biblioteca: { libros_total: lista.length, libros_nuevos_14d: lista.filter((l) => l.nuevo).length, libros: lista, libros_mas_agregados: agregados },
-    envios
+    envios,
+    personales
   };
   return new Response(JSON.stringify(datos), { headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } });
 }
@@ -329,6 +356,14 @@ async function admin(req: Request, url: URL) {
       guia_personal: `${env.SITIO_URL}/guia#${token}`,
       vence: vence.toISOString()
     });
+  }
+
+  // Otorgar o quitar un plan a una cuenta (hoy a mano; después lo hará el cobro).
+  if (req.method === "POST" && url.pathname === "/admin/usuarios/plan") {
+    const { email, plan } = (await req.json().catch(() => ({}))) as { email?: string; plan?: string };
+    if (!email || !plan || !/^[a-z0-9_-]{2,20}$/.test(plan)) return json({ error: "Falta email o plan válido" }, 400);
+    const r = await env.DB.prepare("UPDATE users SET plan = ? WHERE email = ?").bind(plan, email.trim().toLowerCase()).run();
+    return json(r.meta.changes ? { ok: true, email, plan } : { error: "No hay una cuenta con ese email" }, r.meta.changes ? 200 : 404);
   }
 
   // Panel de uso (PWA del dueño): agregados, nunca el texto de las consultas.

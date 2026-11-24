@@ -36,6 +36,8 @@
     "ORIGENES_PERMITIDOS": "https://textifika.kitifica.com,https://textifika.netlify.app",
     // Turnstile (captcha). Esta es la clave de PRUEBA de Cloudflare (siempre aprueba): reemplazar por la del widget real.
     "TURNSTILE_SITE_KEY": "0x4AAAAAAGQAHk1rtQKQtxYY",
+    // Documentos personales: planes que pueden subirlos (coma-separados; «*» = todas las cuentas). Hoy solo «pro» (se otorga a mano).
+    "PLANES_PERSONALES": "pro",
     "VIDEO_URL": "",
     "PRICE_USD": "4.99",
     "RENTAL_DAYS": "30",

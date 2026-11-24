@@ -178,6 +178,17 @@ tr -d '\n' < .secreto-admin | npx wrangler secret put ADMIN_SECRET && npx wrangl
 ```
 
 
+### Documentos personales (privados por cuenta)
+
+Cada cuenta con plan habilitado sube PDF/TXT/MD desde **Mi biblioteca** y solo ella los consulta desde su conector.
+
+- **Plan:** `users.plan`; los planes que pueden usar la función están en `PLANES_PERSONALES` (`wrangler.jsonc`; «*» = todas las cuentas). Se otorga a mano: `POST /admin/usuarios/plan {"email": "...", "plan": "pro"}` con la clave de administrador.
+- **Acceso:** el documento tiene un id `mi-…` aleatorio; el conector solo lo resuelve si el `user_id` del acceso coincide con el del documento (`src/personales.ts`, con tests). Para cualquier otra cuenta, «no existe el libro».
+- **Qué se guarda:** solo el texto por páginas (`paginas_fts`) y una fila en `docs_personales`. No se guarda el archivo original. Borrar elimina ambos.
+- **Límites:** 10 documentos, 7 MB cada uno, 40 MB en total, 1500 páginas por documento.
+- **Privacidad:** el texto de las consultas a un documento personal no se registra (`events.query = 'mi-doc'`), y el panel solo cuenta documentos y cuentas, sin títulos.
+- Sin frameworks ni checklists: tools de búsqueda (`buscar_concepto`, `listar_indice`, `citar_fuente`).
+
 ### Panel de métricas (PWA del dueño)
 
 `/panel` (clave de administrador) muestra cuentas, consultas, la puerta de cobro y la biblioteca. Se alimenta solo:

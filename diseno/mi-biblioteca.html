@@ -129,6 +129,21 @@
       <div class="titulo-bloque"><h2>Mis libros</h2><span class="nota" id="n-mis-libros"></span></div>
       <ul class="lista" id="mis-libros" style="margin-bottom:40px"></ul>
 
+      <div id="bloque-docs" hidden>
+        <div class="titulo-bloque"><h2>Mis documentos</h2><span class="nota" id="n-docs"></span></div>
+        <p class="nota" style="margin:-6px 0 16px;max-width:46em">Subí tus propios PDF, TXT o MD y consultalos desde tu IA. <strong>Solo vos los ves</strong>: no se publican ni se comparten con nadie. Del archivo no guardamos nada; solo su texto, para poder buscar en él. Podés borrarlos cuando quieras.</p>
+        <div id="docs-bloqueado" class="tarjeta" hidden style="margin-bottom:40px"><strong>Función de pago.</strong> <span class="nota">Los documentos personales llegan con el plan de pago. Todavía no está activo en tu cuenta.</span></div>
+        <form id="form-doc" hidden class="tarjeta" style="display:grid;gap:12px;margin-bottom:16px">
+          <label class="nota" for="doc-archivo">Archivo (PDF, TXT o MD, hasta 7 MB)</label>
+          <input id="doc-archivo" type="file" accept=".pdf,.txt,.md" required>
+          <input id="doc-titulo" type="text" maxlength="160" placeholder="Título (opcional)" style="min-height:48px;padding:0 16px;border:1px solid var(--linea);border-radius:14px;background:var(--superficie);font:inherit;color:var(--tinta)">
+          <label class="nota" style="display:flex;gap:10px;align-items:flex-start"><input id="doc-acepto" type="checkbox" required style="margin-top:3px"> Confirmo que tengo derecho a usar este documento.</label>
+          <p class="nota" id="doc-msg" role="status" style="margin:0"></p>
+          <div><button class="boton chico" type="submit" id="doc-subir">Subir documento</button></div>
+        </form>
+        <ul class="lista" id="docs" style="margin-bottom:64px"></ul>
+      </div>
+
       <div class="titulo-bloque"><h2>Más libros en tu conector</h2><span class="nota" id="n-libros"></span></div>
       <ul class="lista" id="libros" style="margin-bottom:64px"></ul>
 
@@ -177,6 +192,39 @@ document.addEventListener("click", (ev) => {
   if (q) cambiar(q.dataset.quitar, "/api/mis-libros/quitar");
   if (a) cambiar(a.dataset.agregarLibro, "/api/mis-libros");
 });
+async function cargarDocs() {
+  const r = await fetch("/api/documentos", { credentials: "same-origin" }).catch(() => null);
+  if (!r || !r.ok) return;
+  const d = await r.json();
+  $("bloque-docs").hidden = false;
+  $("docs-bloqueado").hidden = d.habilitado;
+  $("form-doc").hidden = !d.habilitado;
+  $("n-docs").textContent = d.habilitado ? d.documentos.length + " de " + d.limites.max_docs : "";
+  const mb = (b) => (b < 1048576 ? Math.max(1, Math.round(b / 1024)) + " KB" : (b / 1048576).toFixed(1).replace(".", ",") + " MB");
+  $("docs").innerHTML = d.habilitado
+    ? (d.documentos.length
+        ? d.documentos.map((x, i) => '<li><span class="n">' + String(i + 1).padStart(2, "0") + "</span>" + esc(x.titulo) + ' <span class="nota">· ' + x.paginas + " págs · " + mb(x.bytes) + '</span><span class="der"><button type="button" class="enlace" data-borrar-doc="' + esc(x.id) + '">Borrar</button></span></li>').join("")
+        : '<li><span class="nota">Todavía no subiste documentos.</span></li>')
+    : "";
+}
+document.addEventListener("click", async (ev) => {
+  const b = ev.target.closest("[data-borrar-doc]");
+  if (!b || !confirm("¿Borrar este documento? Se elimina su texto y no se puede recuperar.")) return;
+  b.disabled = true;
+  await fetch("/api/documentos/" + b.dataset.borrarDoc + "/borrar", { method: "POST", headers: { "content-type": "application/json" }, body: "{}", credentials: "same-origin" });
+  cargarDocs();
+});
+$("form-doc").addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  const f = new FormData();
+  f.append("archivo", $("doc-archivo").files[0]); f.append("titulo", $("doc-titulo").value); if ($("doc-acepto").checked) f.append("acepto", "on");
+  $("doc-subir").disabled = true; $("doc-msg").textContent = "Procesando el documento…";
+  const r = await fetch("/api/documentos", { method: "POST", body: f, credentials: "same-origin" }).catch(() => null);
+  const j = r ? await r.json().catch(() => ({})) : {};
+  $("doc-subir").disabled = false;
+  if (r && r.ok) { $("doc-msg").textContent = "Listo: " + j.paginas + " páginas disponibles en tu conector."; ev.target.reset(); cargarDocs(); }
+  else $("doc-msg").textContent = j.error || "No se pudo subir. Probá de nuevo.";
+});
 async function cargar() {
   const r = await fetch("/api/yo", { credentials: "same-origin" }).catch(() => null);
   if (!r || !r.ok) return ($("sin-acceso").hidden = false);
@@ -201,6 +249,7 @@ async function cargar() {
   }
   pintarLibros(d);
   $("con-acceso").hidden = false;
+  cargarDocs();
   const e = await fetch("/api/envios", { credentials: "same-origin" }).then((x) => (x.ok ? x.json() : [])).catch(() => []);
   $("envios").innerHTML = e.length
     ? e.map((x, i) => '<li><span class="n">' + String(i + 1).padStart(2, "0") + "</span>" + esc(x.titulo) + ' <span class="nota">· ' + esc(x.tipo) + '</span><span class="der">' + (x.libro_id ? '<a class="enlace" href="aporte.html?id=' + encodeURIComponent(x.libro_id) + '">' + ESTADOS[x.estado] + "</a>" : ESTADOS[x.estado] || esc(x.estado)) + "</span></li>").join("")
