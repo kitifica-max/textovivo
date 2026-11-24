@@ -35,12 +35,15 @@ const pagina = (titulo: string, cuerpo: string, script = "") => `<!doctype html>
 <title>${esc(titulo)}</title><style>${estilos}</style></head>
 <body><main>${cuerpo}</main>${script ? `<script>${script}</script>` : ""}</body></html>`;
 
-type Config = Pick<Env, "WOMPI_LINK_URL" | "VIDEO_URL" | "PRICE_USD" | "CALLS_PER_TOKEN">;
+type Config = Pick<Env, "WOMPI_LINK_URL" | "ACCESO_GRATIS" | "VIDEO_URL" | "PRICE_USD" | "CALLS_PER_TOKEN">;
 
 export function landing(libro: Libro, env: Config) {
   const preguntas = Math.round(Number(env.CALLS_PER_TOKEN) / 3);
   const lista = (items: string[]) => (items.length ? `<ul>${items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>` : "");
-  const alquilar = env.WOMPI_LINK_URL
+  const gratis = env.ACCESO_GRATIS === "1";
+  const alquilar = gratis
+    ? `<form method="post" action="/acceso" style="display:flex;flex-wrap:wrap;gap:8px"><input type="email" name="email" required placeholder="tu@email.com" aria-label="Tu email" style="padding:12px;border-radius:10px;border:1px solid var(--line);font-size:16px"><button class="boton" type="submit">Obtener acceso gratis</button></form>`
+    : env.WOMPI_LINK_URL
     ? `<a class="boton" href="${esc(env.WOMPI_LINK_URL)}" rel="noopener">Alquilar 30 días</a>`
     : `<span class="boton" aria-disabled="true">Muy pronto</span>`;
 
@@ -55,7 +58,7 @@ ${libro.descripcion ? `<p class="nota">${esc(libro.descripcion)}</p>` : ""}
 ${env.VIDEO_URL ? `<p><a class="secundario" href="${esc(env.VIDEO_URL)}" rel="noopener">▶ Ver la demo de 30 segundos</a></p>` : ""}
 
 <div class="card precio">
-  <div><div class="monto">US$${esc(env.PRICE_USD)}</div><div class="nota">30 días de acceso · hasta ~${preguntas} preguntas</div></div>
+  <div><div class="monto">${gratis ? "Gratis" : `US$${esc(env.PRICE_USD)}`}</div><div class="nota">30 días de acceso · hasta ~${preguntas} preguntas</div></div>
   ${alquilar}
 </div>
 
@@ -66,8 +69,7 @@ ${lista(libro.checklists.map((c) => `Checklist: ${c.nombre}`))}
 
 <h2>Cómo funciona</h2>
 <ol>
-  <li>Pagás con tarjeta en la pantalla segura de Wompi.</li>
-  <li>Ese mismo día te llega por email tu link personal.</li>
+  ${gratis ? "<li>Dejás tu email.</li><li>Al instante ves tu link personal. Guardalo: es tu acceso.</li>" : "<li>Pagás con tarjeta en la pantalla segura de Wompi.</li><li>Ese mismo día te llega por email tu link personal.</li>"}
   <li>Lo conectás en tu IA siguiendo la <a class="secundario" href="/guia">guía de conexión</a> (2 a 3 minutos).</li>
   <li>Trabajás como siempre: tu IA consulta el libro cuando lo necesita.</li>
 </ol>

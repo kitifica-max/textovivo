@@ -239,6 +239,28 @@ export default {
       return mcp(new Request(url, req), env, ctxConToken);
     }
 
+    if (url.pathname === "/acceso" && req.method === "POST" && env.ACCESO_GRATIS === "1") {
+      const form = await req.formData().catch(() => new FormData());
+      const email = String(form.get("email") ?? "").trim().toLowerCase();
+      if (!/^\S+@\S+\.\S+$/.test(email) || email.length > 200) return new Response("Email inválido", { status: 400 });
+      // Mismo email con acceso vigente: reusa el token.
+      const previo = await env.DB.prepare(
+        "SELECT token FROM buyers WHERE email = ? AND es_prueba = 0 AND expires_at > ? ORDER BY created_at DESC"
+      )
+        .bind(email, new Date().toISOString())
+        .first<{ token: string }>();
+      let token = previo?.token;
+      if (!token) {
+        token = crypto.randomUUID().replaceAll("-", "");
+        const creado = new Date();
+        const vence = new Date(creado.getTime() + Number(env.RENTAL_DAYS) * 86_400_000);
+        await env.DB.prepare("INSERT INTO buyers (token, email, es_prueba, created_at, expires_at) VALUES (?, ?, 0, ?, ?)")
+          .bind(token, email, creado.toISOString(), vence.toISOString())
+          .run();
+      }
+      return new Response(null, { status: 303, headers: { location: `/guia#${token}`, "referrer-policy": "no-referrer" } });
+    }
+
     if (url.pathname === "/" && req.method === "GET") return html(landing(libro, env));
     if (url.pathname === "/guia" && req.method === "GET") return html(guia(libro));
     if (url.pathname.startsWith("/admin/")) return admin(req, url);

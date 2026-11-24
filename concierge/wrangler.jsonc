@@ -19,6 +19,8 @@
     // Enlace de pago de Wompi creado a mano en el panel (vacío = botón deshabilitado).
     "WOMPI_LINK_URL": "",
     // Video demo antes/después de 30 s (vacío = no se muestra).
+    // "1" = acceso gratis con solo el email (sin pago); vacío = flujo de Wompi.
+    "ACCESO_GRATIS": "1",
     "VIDEO_URL": "",
     "PRICE_USD": "4.99",
     "RENTAL_DAYS": "30",
