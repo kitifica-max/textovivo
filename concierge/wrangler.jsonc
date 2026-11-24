@@ -30,7 +30,7 @@
     // "1" = acceso gratis con solo el email (sin pago); vacío = flujo de Wompi.
     "ACCESO_GRATIS": "1",
     // Turnstile (captcha). Esta es la clave de PRUEBA de Cloudflare (siempre aprueba): reemplazar por la del widget real.
-    "TURNSTILE_SITE_KEY": "1x00000000000000000000AA",
+    "TURNSTILE_SITE_KEY": "0x4AAAAAAGQAHk1rtQKQtxYY",
     "VIDEO_URL": "",
     "PRICE_USD": "4.99",
     "RENTAL_DAYS": "30",
