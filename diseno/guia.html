@@ -22,12 +22,14 @@
   .direccion code { font: 500 clamp(0.95rem, 1.6vw, 1.15rem)/1.4 var(--mono); word-break: break-all; }
 
   .panel-cliente { padding-top: 24px; }
-  .pasos { grid-template-columns: repeat(6, 1fr); }
-  .pasos .poster { aspect-ratio: 3 / 4.2; }
+  .pasos { grid-template-columns: repeat(4, 1fr); }
+  .pasos .poster { aspect-ratio: 3 / 4.4; }
   .pasos .poster .titulo { margin-top: 42%; font: 700 10.5cqi/1.12 var(--sans); letter-spacing: -0.02em; }
   .pasos .poster .titulo code { font: 500 0.82em/1 var(--mono); }
-  @media (max-width: 1060px) { .pasos { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 680px) { .pasos { grid-template-columns: repeat(2, 1fr); } }
+  .pasos .poster .detalle { display: block; margin-top: 12px; font: 500 clamp(0.82rem, 3.6cqi, 0.98rem)/1.4 var(--sans); letter-spacing: 0; opacity: .85; }
+  .pasos .poster .titulo { margin-top: 30%; font-size: 8.6cqi; }
+  @media (max-width: 900px) { .pasos { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .pasos { grid-template-columns: 1fr; } .pasos .poster { aspect-ratio: auto; min-height: 260px; } }
   .apartes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
   .apartes p { margin: 0; padding: 14px 16px; border-radius: 14px; background: color-mix(in srgb, var(--tinta) 5%, transparent); font-size: 0.9rem; color: var(--gris); }
   @media (max-width: 680px) { .apartes { grid-template-columns: 1fr; } }
@@ -80,12 +82,14 @@
 
     <section class="panel-cliente" id="p-claude" role="tabpanel" aria-labelledby="t-claude">
       <ol class="grilla pasos" style="list-style:none;padding:0;margin:0">
-        <li class="poster c-blanco"><span class="num">01</span><span class="titulo">Abrí <a class="enlace" href="https://claude.ai/customize/connectors" rel="noopener">Conectores de Claude</a>.</span></li>
-        <li class="poster c-azul"><span class="num">02</span><span class="titulo">Tocá Agregar → Agregar conector personalizado.</span></li>
-        <li class="poster c-naranja"><span class="num">03</span><span class="titulo">Nombre: <code>Textifika</code>. URL: pegá tu dirección.</span></li>
-        <li class="poster c-menta"><span class="num">04</span><span class="titulo">Tocá Continuar. Si pregunta cómo iniciar sesión, elegí «Sin inicio de sesión».</span></li>
-        <li class="poster c-manteca"><span class="num">05</span><span class="titulo">Tocá Agregar.</span></li>
-        <li class="poster c-salmon"><span class="num">06</span><span class="titulo">En un chat, abrí + y activá Textifika.</span></li>
+        <li class="poster c-blanco"><span class="num">01</span><span class="titulo">Abrí <a class="enlace" href="https://claude.ai/customize/connectors" rel="noopener">Conectores de Claude</a>.</span><span class="detalle">Tocá el enlace: abre la app de Claude en Plugins. Si no, andá a <b>Settings → Plugins</b>.</span></li>
+        <li class="poster c-azul"><span class="num">02</span><span class="titulo">Escribí algo en el buscador.</span><span class="detalle">No se ve un botón Add todavía. Al buscar (por ejemplo «Textifika») aparece la opción <b>Browse plugins</b>.</span></li>
+        <li class="poster c-naranja"><span class="num">03</span><span class="titulo">Tocá Browse plugins.</span><span class="detalle">Se abre el catálogo de plugins y conectores.</span></li>
+        <li class="poster c-menta"><span class="num">04</span><span class="titulo">Tocá Add.</span><span class="detalle">Ahora sí aparece el botón <b>Add</b>.</span></li>
+        <li class="poster c-manteca"><span class="num">05</span><span class="titulo">Elegí Add custom connector.</span><span class="detalle">Es la opción para agregar un conector que no está en el catálogo.</span></li>
+        <li class="poster c-salmon"><span class="num">06</span><span class="titulo">Poné el nombre y la dirección.</span><span class="detalle">Name: <code>Textifika</code>. URL: pegá tu dirección de arriba (botón Copiar).</span></li>
+        <li class="poster c-celeste"><span class="num">07</span><span class="titulo">Elegí «Sin inicio de sesión».</span><span class="detalle">Textifika no usa login. Si Claude pregunta cómo iniciar sesión, elegí esa opción y tocá Add.</span></li>
+        <li class="poster c-hueso"><span class="num">08</span><span class="titulo">Activalo en un chat.</span><span class="detalle">En un chat, abrí <b>+</b> y activá <b>Textifika</b>. Pedile: «Usá Textifika: ¿qué libros hay?»</span></li>
       </ol>
       <div class="apartes">
         <p>El plan gratis de Claude permite un conector personalizado. Por eso Textifika es uno solo para todos tus libros.</p>
@@ -124,7 +128,8 @@
   <section class="seccion">
     <div class="envoltura" style="max-width:860px">
       <p class="micro" style="margin-bottom:14px">¿Algo no funciona?</p>
-      <details><summary>Claude no me deja agregar otro conector</summary><p>En el plan gratis de Claude solo entra un conector personalizado. Quitá el que no uses desde Conectores, o pasá a un plan pago de Claude.</p></details>
+      <details><summary>Me sale «Couldn't register with Textifika's sign-in service»</summary><p>Elegiste iniciar sesión, y Textifika no usa login. Quitá el conector (Settings → Plugins) y agregalo otra vez eligiendo «Sin inicio de sesión».</p></details>
+      <details><summary>Claude no me deja agregar otro conector</summary><p>En el plan gratis de Claude solo entra un conector personalizado. Quitá el que no uses desde Settings → Plugins, o pasá a un plan pago de Claude.</p></details>
       <details><summary>La IA dice que mi acceso venció</summary><p>Renovalo desde <a class="enlace" href="mi-biblioteca.html">Mi biblioteca</a>. No hace falta volver a conectar nada.</p></details>
       <details><summary>La IA no usa Textifika</summary><p>Verificá que el conector esté activado en el menú + del chat, y pedíselo directo: «Usá Textifika…».</p></details>
     </div>
