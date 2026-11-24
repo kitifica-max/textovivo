@@ -62,7 +62,7 @@
  },
  {
   "id": "cajal",
-  "patron": "^CAP[I\u00cd]TULO (PRIMERO|[IVX1]+)$",
+  "patron": "^CAP[IÍ]TULO (PRIMERO|[IVX1]+)$",
   "desdeParrafo": 60
  },
  {
@@ -96,5 +96,46 @@
     "The Clay Tablets From Babylon"
    ]
   ]
+ },
+ {
+  "id": "vanishing-culture",
+  "desde": "^Vanishing Culture 1 *$",
+  "patron": "^(Prologue|Preface.*|Part [12]: .*|The Digital :? ?Memory Hole|(ll|II|Il)\\.? Recent Digital.*|Historical Losses.*|Questions for Further Research|Share Your Story:?.*)$",
+  "desdeParrafo": 1,
+  "titulos": [
+   [
+    "^Prologue",
+    "Prologue"
+   ],
+   [
+    "^Part 1",
+    "Part 1: Media Preservation and the Production of Public Memory"
+   ],
+   [
+    "^The Digital",
+    "I. The Digital Memory Hole"
+   ],
+   [
+    "^ll\\. Recent",
+    "II. Recent Digital Vanishing and Preservation Efforts"
+   ],
+   [
+    "^Historical Losses",
+    "III. Historical Losses and the Future of Cultural Preservation"
+   ],
+   [
+    "^Part 2",
+    "Part 2: Narratives of Cultural Preservation and Loss"
+   ],
+   [
+    "^Share Your Story",
+    "Share Your Story"
+   ]
+  ]
+ },
+ {
+  "id": "jamovi",
+  "desde": "^Part I *$",
+  "patron": "^Chapter [0-9]+$"
  }
 ]

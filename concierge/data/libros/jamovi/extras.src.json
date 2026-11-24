@@ -1,0 +1,610 @@
+{
+ "glosario": [
+  {
+   "termino": "Variable nominal",
+   "definicion": "Categorías sin relación particular entre ellas.",
+   "buscar": "A nominal scale variable (also referred to as a categorical variable) is one in which there is no particular relationship between the different possibilities",
+   "palabras": 24
+  },
+  {
+   "termino": "Confiabilidad necesaria, no suficiente",
+   "definicion": "Una medición puede ser confiable pero inválida.",
+   "buscar": "reliability is necessary (but not sufficient) to ensure validity",
+   "palabras": 24
+  },
+  {
+   "termino": "Factores de confusión",
+   "definicion": "Otras cosas que afectan el resultado además de la variable de interés.",
+   "buscar": "technical terms these other things (e.g., diet) are called",
+   "palabras": 24
+  },
+  {
+   "termino": "Error tipo I",
+   "definicion": "Rechazar una nula que en realidad es verdadera.",
+   "buscar": "If we reject a null hypothesis that is actually true then we have made a type I error",
+   "palabras": 24
+  },
+  {
+   "termino": "Nivel de significación",
+   "definicion": "Máxima tasa de error tipo I que se tolera.",
+   "buscar": "a hypothesis test is said to have significance level",
+   "palabras": 16
+  },
+  {
+   "termino": "Estadístico de prueba",
+   "definicion": "Cantidad calculada de los datos que guía la decisión.",
+   "buscar": "The name for this thing that we calculate to guide our choices is a test statistic",
+   "palabras": 24
+  },
+  {
+   "termino": "Tamaño del efecto",
+   "definicion": "Medida de cuánto se aparta lo observado de la nula.",
+   "buscar": "A statistic that does this is called a measure of effect size",
+   "palabras": 24
+  },
+  {
+   "termino": "Rango intercuartil",
+   "definicion": "Diferencia entre los percentiles 25 y 75.",
+   "buscar": "The interquartile range (IQR) is like the range",
+   "palabras": 24
+  },
+  {
+   "termino": "Medidas de tendencia central",
+   "definicion": "La media, la mediana y la moda.",
+   "buscar": "The three most commonly used measures are the mean, median and mode",
+   "palabras": 24
+  },
+  {
+   "termino": "Regresión a la media",
+   "definicion": "Los valores extremos tienden a moderarse en la siguiente medición.",
+   "buscar": "Regression to the mean refers to any situation where you select data based on an",
+   "palabras": 24
+  },
+  {
+   "termino": "Colinealidad",
+   "definicion": "Predictores demasiado correlacionados entre sí.",
+   "buscar": "Predictors that are too strongly correlated with each other (referred to as",
+   "palabras": 24
+  },
+  {
+   "termino": "Diagnósticos de regresión",
+   "definicion": "El arte de revisar si se cumplen los supuestos del modelo.",
+   "buscar": "regression diagnostics, a term that refers to the art of checking that the assumptions of your regression model have been met",
+   "palabras": 24
+  },
+  {
+   "termino": "Efecto placebo",
+   "definicion": "Mejora por el solo hecho de recibir tratamiento.",
+   "buscar": "The placebo effect is a specific type of demand effect that we worry a lot about",
+   "palabras": 24
+  },
+  {
+   "termino": "Factor de Bayes",
+   "definicion": "Evidencia expresada como apuestas a favor de la alternativa.",
+   "buscar": "If you run an experiment and you compute a Bayes factor of 4, it means that the evidence provided by your data corresponds to betting odds of 4:1",
+   "palabras": 24
+  },
+  {
+   "termino": "Eta cuadrado",
+   "definicion": "Medida común de tamaño del efecto en ANOVA.",
+   "buscar": "the most commonly used measures are",
+   "palabras": 12
+  },
+  {
+   "termino": "Atrición diferencial",
+   "definicion": "Pérdida desigual de participantes entre grupos.",
+   "buscar": "Differential attrition When thinking about the effects of attrition",
+   "palabras": 24
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Las escalas de medición",
+   "resumen": "Cada variable se mide en una escala (nominal, ordinal, de intervalo o de razón) y de ella depende qué cálculos tienen sentido.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Nominal",
+     "descripcion": "Categorías sin relación de orden entre ellas.",
+     "buscar": "A nominal scale variable (also referred to as a categorical variable) is one in which there is no particular relationship between the different possibilities",
+     "palabras": 22
+    },
+    {
+     "titulo": "Ordinal",
+     "descripcion": "Hay orden, pero no distancias iguales entre valores.",
+     "buscar": "ordinal scale variables are always discrete",
+     "palabras": 22
+    },
+    {
+     "titulo": "Intervalo y razón",
+     "descripcion": "El valor numérico es realmente significativo; en intervalo importan las diferencias.",
+     "buscar": "for which the numerical value is genuinely meaningful",
+     "palabras": 22
+    }
+   ]
+  },
+  {
+   "nombre": "Formas de confiabilidad de una medición",
+   "resumen": "Una medición confiable da el mismo resultado; hay cuatro formas de comprobarlo. La confiabilidad es necesaria pero no suficiente para la validez.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Test-retest",
+     "descripcion": "Repetir la medición más tarde y comparar.",
+     "buscar": "Test-retest reliability. This relates to consistency over time",
+     "palabras": 22
+    },
+    {
+     "titulo": "Inter-evaluador",
+     "descripcion": "Otra persona repite la medición.",
+     "buscar": "Inter-rater reliability. This relates to consistency across people",
+     "palabras": 22
+    },
+    {
+     "titulo": "Formas paralelas",
+     "descripcion": "Un instrumento equivalente da lo mismo.",
+     "buscar": "Parallel forms reliability. This relates to consistency across theoretically",
+     "palabras": 22
+    },
+    {
+     "titulo": "Consistencia interna",
+     "descripcion": "Las partes de una medición compuesta rinden de forma coherente.",
+     "buscar": "Internal consistency reliability. If a measurement is constructed from lots of different parts",
+     "palabras": 22
+    }
+   ]
+  },
+  {
+   "nombre": "Los cinco tipos de validez",
+   "resumen": "Validez es poder confiar en los resultados de un estudio. Interna y externa son las más importantes.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Validez interna",
+     "descripcion": "¿Se pueden sacar conclusiones causales correctas dentro del estudio?",
+     "buscar": "Internal validity refers to the extent to which you are able to draw the correct",
+     "palabras": 22
+    },
+    {
+     "titulo": "Validez externa",
+     "descripcion": "¿Se generalizan los hallazgos a la vida real?",
+     "buscar": "External validity relates to the generalisability or applicability of your findings",
+     "palabras": 22
+    },
+    {
+     "titulo": "Validez de constructo",
+     "descripcion": "¿Se mide lo que se quiere medir?",
+     "buscar": "Construct validity is basically a question of whether",
+     "palabras": 22
+    },
+    {
+     "titulo": "Validez aparente",
+     "descripcion": "Importa solo si te importan las apariencias.",
+     "buscar": "(3) Face validity isn",
+     "palabras": 22
+    },
+    {
+     "titulo": "Validez ecológica",
+     "descripcion": "Caso especial de la validez aparente.",
+     "buscar": "Ecological validity is a special case of face validity",
+     "palabras": 22
+    }
+   ]
+  },
+  {
+   "nombre": "Amenazas a la validez interna",
+   "resumen": "Los efectos que el libro enumera como los más comunes y que amenazan las conclusiones de un estudio.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Efectos de historia",
+     "descripcion": "Eventos externos durante el estudio que alteran el resultado.",
+     "buscar": "History effects refer to the possibility that specific events may occur during the study",
+     "palabras": 22
+    },
+    {
+     "titulo": "Maduración",
+     "descripcion": "Los participantes cambian con el tiempo.",
+     "buscar": "2.7.2 Maturation effects",
+     "palabras": 8
+    },
+    {
+     "titulo": "Pruebas repetidas",
+     "descripcion": "Medir varias veces influye en la medición.",
+     "buscar": "2.7.3 Repeated testing effects",
+     "palabras": 8
+    },
+    {
+     "titulo": "Sesgo de selección",
+     "descripcion": "Los grupos no se formaron de manera comparable.",
+     "buscar": "2.7.4 Selection bias",
+     "palabras": 8
+    },
+    {
+     "titulo": "Atrición diferencial",
+     "descripcion": "Se pierden participantes de forma desigual entre grupos.",
+     "buscar": "Differential attrition When thinking about the effects of attrition",
+     "palabras": 22
+    },
+    {
+     "titulo": "Sesgo por no respuesta",
+     "descripcion": "Quienes responden difieren de quienes no.",
+     "buscar": "2.7.6 Non-response bias",
+     "palabras": 8
+    },
+    {
+     "titulo": "Regresión a la media",
+     "descripcion": "Los valores extremos tienden a volver hacia el promedio.",
+     "buscar": "Regression to the mean refers to any situation where you select data based on an",
+     "palabras": 22
+    },
+    {
+     "titulo": "Sesgo del experimentador",
+     "descripcion": "El investigador influye en los resultados.",
+     "buscar": "2.7.8 Experimenter bias",
+     "palabras": 8
+    },
+    {
+     "titulo": "Demanda y reactividad",
+     "descripcion": "Los participantes responden a lo que creen que se espera.",
+     "buscar": "2.7.9 Demand effects and reactivity",
+     "palabras": 8
+    },
+    {
+     "titulo": "Efecto placebo",
+     "descripcion": "Ser tratado ya mejora los resultados.",
+     "buscar": "The placebo effect is a specific type of demand effect that we worry a lot about",
+     "palabras": 22
+    }
+   ]
+  },
+  {
+   "nombre": "Cómo funciona una prueba de hipótesis",
+   "resumen": "Se plantea una hipótesis nula, se calcula un estadístico, se compara con su distribución bajo la nula y se decide controlando el error tipo I.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Plantear hipótesis nula y alternativa",
+     "descripcion": "Traducir la pregunta de investigación a hipótesis estadísticas.",
+     "buscar": "9.1 A menagerie of hypotheses",
+     "palabras": 10
+    },
+    {
+     "titulo": "Elegir un estadístico de prueba",
+     "descripcion": "Una cantidad calculada de los datos para decidir.",
+     "buscar": "The name for this thing that we calculate to guide our choices is a test statistic",
+     "palabras": 22
+    },
+    {
+     "titulo": "Hallar su distribución bajo la nula",
+     "descripcion": "Indica qué valores esperaría la hipótesis nula.",
+     "buscar": "we need to determine what the sampling distribution of the test statistic would be if the null hypothesis were actually true",
+     "palabras": 24
+    },
+    {
+     "titulo": "Fijar el nivel de significación",
+     "descripcion": "Controla la tasa de error tipo I.",
+     "buscar": "a hypothesis test is said to have significance level",
+     "palabras": 16
+    },
+    {
+     "titulo": "Calcular el valor p y decidir",
+     "descripcion": "Rechazar o retener la hipótesis nula.",
+     "buscar": "9.5 The p-value of a test",
+     "palabras": 14
+    }
+   ]
+  },
+  {
+   "nombre": "Supuestos de la regresión lineal (LINE)",
+   "resumen": "Cuatro supuestos principales (LINE) más dos cosas por revisar: predictores no correlacionados y sin valores atípicos dañinos.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Linealidad",
+     "descripcion": "La relación entre X e Y es lineal.",
+     "buscar": "Linearity. A pretty fundamental assumption of the linear regression model",
+     "palabras": 22
+    },
+    {
+     "titulo": "Independencia",
+     "descripcion": "Los residuos son independientes entre sí.",
+     "buscar": "Independence: residuals are independent of each other",
+     "palabras": 22
+    },
+    {
+     "titulo": "Normalidad",
+     "descripcion": "Los residuos se distribuyen normalmente.",
+     "buscar": "Normality. Like many of the models in statistics",
+     "palabras": 22
+    },
+    {
+     "titulo": "Igualdad de varianza",
+     "descripcion": "La desviación de los residuos es la misma en todos los valores.",
+     "buscar": "Equality (or",
+     "palabras": 22
+    },
+    {
+     "titulo": "Predictores no correlacionados",
+     "descripcion": "Evitar la colinealidad en regresión múltiple.",
+     "buscar": "Uncorrelated predictors. The idea here is that, in a multiple regression model",
+     "palabras": 22
+    },
+    {
+     "titulo": "Sin valores atípicos dañinos",
+     "descripcion": "Que uno o dos datos anómalos no dominen el modelo.",
+     "buscar": "Again, not actually a technical assumption of the model",
+     "palabras": 22
+    }
+   ]
+  },
+  {
+   "nombre": "Supuestos del ANOVA de una vía",
+   "resumen": "Tres supuestos sobre los residuos; si hay medidas repetidas, la independencia falla y se usa otro ANOVA.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Homogeneidad de varianza",
+     "descripcion": "Misma desviación estándar poblacional en todos los grupos.",
+     "buscar": "ANOVA assumes that the population stan- dard deviation is the same for all groups",
+     "palabras": 22
+    },
+    {
+     "titulo": "Normalidad",
+     "descripcion": "Residuos normales; se revisa con gráficos QQ o Shapiro-Wilk.",
+     "buscar": "The residuals are assumed to be normally distributed",
+     "palabras": 22
+    },
+    {
+     "titulo": "Independencia",
+     "descripcion": "Conocer un residuo no dice nada de otro.",
+     "buscar": "knowing one residual tells you nothing about any other residual",
+     "palabras": 22
+    },
+    {
+     "titulo": "Medidas repetidas",
+     "descripcion": "Si una persona aparece en varias condiciones, usar ANOVA de medidas repetidas.",
+     "buscar": "you need to use something like a Repeated measures one-way ANOVA",
+     "palabras": 22
+    }
+   ]
+  },
+  {
+   "nombre": "Supuestos del t de Student para dos grupos",
+   "resumen": "Tres supuestos; si la varianza no es igual, el libro recomienda la prueba de Welch.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Normalidad",
+     "descripcion": "Ambos grupos se distribuyen normalmente.",
+     "buscar": "Normality. Like the one-sample t-test, it is assumed that the data are normally distributed",
+     "palabras": 22
+    },
+    {
+     "titulo": "Independencia",
+     "descripcion": "Observaciones independientes dentro y entre muestras.",
+     "buscar": "Independence. Once again, it is assumed that the observations are independently sampled",
+     "palabras": 22
+    },
+    {
+     "titulo": "Homogeneidad de varianza",
+     "descripcion": "La desviación poblacional es igual en ambos grupos.",
+     "buscar": "Homogeneity of variance (also called",
+     "palabras": 22
+    },
+    {
+     "titulo": "Si falla la tercera: Welch",
+     "descripcion": "La prueba de Welch no exige varianzas iguales.",
+     "buscar": "The biggest problem with using the Student test in practice is the third assumption",
+     "palabras": 22
+    }
+   ]
+  },
+  {
+   "nombre": "Cómo leer un factor de Bayes",
+   "resumen": "El factor de Bayes expresa la evidencia como apuestas a favor de la alternativa; se reporta él y no las probabilidades posteriores.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Calcular el factor de Bayes",
+     "descripcion": "Un valor de 4 equivale a apuestas 4:1 a favor de la alternativa.",
+     "buscar": "If you run an experiment and you compute a Bayes factor of 4, it means that the evidence provided by your data corresponds to betting odds of 4:1",
+     "palabras": 22
+    },
+    {
+     "titulo": "Reportar el factor y no la posterior",
+     "descripcion": "Cada lector tiene su propia previa.",
+     "buscar": "the polite thing for an applied researcher to do is report the Bayes factor",
+     "palabras": 22
+    },
+    {
+     "titulo": "Que cada lector aplique su previa",
+     "descripcion": "Se multiplica el factor por las apuestas previas propias.",
+     "buscar": "anyone reading the paper can multiply the Bayes factor by their own personal prior odds",
+     "palabras": 22
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Antes de correr un t de Student",
+   "contexto": "Para comprobar si la prueba es adecuada para tus datos.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Revisar normalidad de ambos grupos",
+     "buscar": "Normality. Like the one-sample t-test, it is assumed that the data are normally distributed",
+     "palabras": 22
+    },
+    {
+     "texto": "Confirmar que las observaciones son independientes y que nadie está en ambos grupos",
+     "buscar": "Independence. Once again, it is assumed that the observations are independently sampled",
+     "palabras": 22
+    },
+    {
+     "texto": "Comparar la varianza de los grupos; si difiere, usar Welch",
+     "buscar": "The biggest problem with using the Student test in practice is the third assumption",
+     "palabras": 22
+    },
+    {
+     "texto": "Con dos puntajes por persona, usar la prueba de muestras pareadas",
+     "buscar": "The paired-samples t-test is used when you have two scores from each person",
+     "palabras": 22
+    }
+   ]
+  },
+  {
+   "nombre": "Diagnóstico de un modelo de regresión",
+   "contexto": "Para revisar un modelo de regresión antes de interpretarlo.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Verificar los cuatro supuestos LINE",
+     "buscar": "So, we have four main assumptions for linear regression (that neatly form the acronym LINE)",
+     "palabras": 22
+    },
+    {
+     "texto": "Calcular los factores de inflación de varianza para ver colinealidad",
+     "buscar": "Another regression diagnostic is provided by variance inflation factors",
+     "palabras": 22
+    },
+    {
+     "texto": "Buscar puntos anómalos que influyan demasiado",
+     "buscar": "Again, not actually a technical assumption of the model",
+     "palabras": 22
+    },
+    {
+     "texto": "Prestar atención a la independencia de las observaciones si los diagnósticos fallan",
+     "buscar": "if your regression diagnostics are messed up then think carefully about the independence of your observations and residuals",
+     "palabras": 22
+    }
+   ]
+  },
+  {
+   "nombre": "ANOVA bien hecho y bien reportado",
+   "contexto": "Para correr y reportar un ANOVA con comparaciones post hoc.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Comprobar normalidad, homogeneidad de varianza e independencia",
+     "buscar": "There are three key assumptions that you need to be aware of: normality, homogeneity of variance and independence",
+     "palabras": 22
+    },
+    {
+     "texto": "Si hay medidas repetidas, no usar el ANOVA de una vía común",
+     "buscar": "you need to use something like a Repeated measures one-way ANOVA",
+     "palabras": 22
+    },
+    {
+     "texto": "Corregir las comparaciones post hoc por comparaciones múltiples",
+     "buscar": "The simplest of these adjustments is called the Bonferroni correction",
+     "palabras": 22
+    },
+    {
+     "texto": "Indicar qué corrección se usó",
+     "buscar": "the key thing is that you indicate that you used Holm",
+     "palabras": 22
+    },
+    {
+     "texto": "Incluir medias y desviaciones estándar de cada grupo",
+     "buscar": "assuming that elsewhere in the write up you",
+     "palabras": 22
+    }
+   ]
+  },
+  {
+   "nombre": "Evaluar la validez de un estudio",
+   "contexto": "Para juzgar si se puede confiar en un estudio, el propio o ajeno.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "¿Se separan bien las relaciones causales entre variables?",
+     "buscar": "Internal validity refers to the extent to which you are able to draw the correct",
+     "palabras": 22
+    },
+    {
+     "texto": "¿Se generalizan los hallazgos a la vida real?",
+     "buscar": "External validity relates to the generalisability or applicability of your findings",
+     "palabras": 22
+    },
+    {
+     "texto": "¿Se mide lo que se quiere medir?",
+     "buscar": "Construct validity is basically a question of whether",
+     "palabras": 22
+    },
+    {
+     "texto": "¿La medición es confiable en el tiempo y entre evaluadores?",
+     "buscar": "Test-retest reliability. This relates to consistency over time",
+     "palabras": 22
+    },
+    {
+     "texto": "¿Pudo un evento externo influir en el resultado?",
+     "buscar": "History effects refer to the possibility that specific events may occur during the study",
+     "palabras": 22
+    }
+   ]
+  },
+  {
+   "nombre": "Análisis factorial: comprobaciones previas",
+   "contexto": "Antes de interpretar factores o escalas.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Probar la esfericidad de Bartlett",
+     "buscar": "test for sphericity checks whether the observed correlation matrix diverges significantly",
+     "palabras": 22
+    },
+    {
+     "texto": "Comprobar la adecuación del muestreo con el KMO",
+     "buscar": "Measure of Sampling Adequacy (MSA)",
+     "palabras": 10
+    },
+    {
+     "texto": "Para escalas, revisar la consistencia interna",
+     "buscar": "statistic used to check the internal consistency of a scale is",
+     "palabras": 22
+    }
+   ]
+  },
+  {
+   "nombre": "Tablas de contingencia: cuándo cambiar de prueba",
+   "contexto": "Cuando los datos son categóricos y fallan los supuestos del chi-cuadrado.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Si se viola la independencia, considerar McNemar",
+     "buscar": "where independence is violated, it may be possible to use the McNemar test",
+     "palabras": 22
+    },
+    {
+     "texto": "Si las frecuencias esperadas son muy chicas, usar Fisher exacta",
+     "buscar": "if your expected cell counts are too small, check out the Fisher exact test",
+     "palabras": 22
+    }
+   ]
+  },
+  {
+   "nombre": "Reportar una prueba de hipótesis",
+   "contexto": "Para presentar resultados sin ambigüedad.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Decir cuál es el nivel de significación",
+     "buscar": "a hypothesis test is said to have significance level",
+     "palabras": 16
+    },
+    {
+     "texto": "Acompañar el valor p con una medida de tamaño del efecto",
+     "buscar": "A statistic that does this is called a measure of effect size",
+     "palabras": 22
+    },
+    {
+     "texto": "Para un t-test, usar la d de Cohen",
+     "buscar": "which is the stan- dard measure of effect size for a t-test",
+     "palabras": 22
+    }
+   ]
+  }
+ ]
+}

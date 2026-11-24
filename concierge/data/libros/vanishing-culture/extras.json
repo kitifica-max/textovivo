@@ -1,0 +1,170 @@
+{
+ "glosario": [
+  {
+   "termino": "Obras huérfanas",
+   "definicion": "Obras con copyright cuyo titular no se puede ubicar; en software, «abandonware».",
+   "pagina": 42,
+   "cita": "Orphan works (more frequently called “abandonware\" in software communities) are any works protected by copyright, such as books, films, music, or software, that publishers"
+  },
+  {
+   "termino": "Desaparición cultural",
+   "definicion": "Expresión cultural que sale del acceso público por decisión de las grandes empresas de medios.",
+   "pagina": 4,
+   "cita": "cultural expression is vanishing from public access largely at the whims of media conglomerates. Vanishing Culture: A Report on Our"
+  },
+  {
+   "termino": "Olvido histórico",
+   "definicion": "Lo normal es que casi toda expresión humana se pierda sin intervención.",
+   "pagina": 10,
+   "cita": "oblivion is the default, not the exception” to the human record, writes game designer Jordan Mechner in his contribution to this report.” Be it"
+  },
+  {
+   "termino": "URLs en peligro",
+   "definicion": "Enlaces que el estudio de Pew considera en riesgo de perderse.",
+   "pagina": 31,
+   "cita": "the team identified 18% of Pew's URLs as “endangered,” meaning that they are presently available on the live web, but that they have not"
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Por qué desaparece la cultura digital",
+   "resumen": "El informe identifica varias causas que se refuerzan: del ser dueño a licenciar, plataformas que borran, obsolescencia técnica y derechos de autor muy largos.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "De la propiedad a la licencia",
+     "descripcion": "Se paga por acceso temporal y condicional, no por poseer copias.",
+     "pagina": 18,
+     "cita": "Instead of owning copies of digital materials, indi- viduals and public-serving institutions now pay for temporary and conditional access to digital content."
+    },
+    {
+     "orden": 2,
+     "titulo": "Streaming y licencias temporales",
+     "descripcion": "Sin propiedad permanente, los objetos culturales pueden retirarse sin haber sido archivados.",
+     "pagina": 4,
+     "cita": "solely through streaming and temporary licensing deals, rather than through permanent ownership, cultural objects such as sound recordings, books, television shows, and films are"
+    },
+    {
+     "orden": 3,
+     "titulo": "Plataformas que no son archivos",
+     "descripcion": "Los sitios borran contenido a voluntad; sus dueños no son archivistas.",
+     "pagina": 29,
+     "cita": "most websites are not long-term archives, and their owners—often media conglomerates—are not archivists. The history of twenty-first century internet culture breaks without"
+    },
+    {
+     "orden": 4,
+     "titulo": "Obsolescencia de hardware y software",
+     "descripcion": "Sin preservación activa, los materiales se pierden.",
+     "pagina": 9,
+     "cita": "The long history of hardware, software, and media obsolescence, from the papyrus scroll to the Commodore 64, tells us that if archivists"
+    },
+    {
+     "orden": 5,
+     "titulo": "Derechos de autor largos y obras huérfanas",
+     "descripcion": "Los plazos restrictivos y la ambigüedad legal frenan la preservación.",
+     "pagina": 42,
+     "cita": "Orphan works (more frequently called “abandonware\" in software communities) are any works protected by copyright, such as books, films, music, or software"
+    }
+   ]
+  },
+  {
+   "nombre": "Qué puede hacer el público para preservar la cultura",
+   "resumen": "Las propuestas del informe: empoderar a bibliotecas y archivos, impulsar reformas legales, apoyar archivos abiertos y comprar donde se es dueño.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Empoderar a bibliotecarios y archivistas",
+     "descripcion": "Financiera, legal y culturalmente.",
+     "pagina": 58,
+     "cita": "financially, legally, and culturally empower librarians, archivists, and preservationists to do the work that they have"
+    },
+    {
+     "orden": 2,
+     "titulo": "Impulsar reformas legislativas",
+     "descripcion": "Plazos de copyright más cortos y protección a la preservación no comercial.",
+     "pagina": 59,
+     "cita": "The public can advocate for legislative reform—whether that be shorter copyright terms or protections for non-commercial preservation and accessibility efforts—so that members"
+    },
+    {
+     "orden": 3,
+     "titulo": "Apoyar archivos de acceso abierto",
+     "descripcion": "Para que la cultura no desaparezca si cae un solo archivo.",
+     "pagina": 59,
+     "cita": "Supporting and contributing to open access digital archives such as Project Gutenberg, etree, New York Public Library's Digital Collections, and the After"
+    },
+    {
+     "orden": 4,
+     "titulo": "Comprar donde uno es dueño",
+     "descripcion": "Plataformas basadas en propiedad, como Bandcamp o itch.io.",
+     "pagina": 59,
+     "cita": "buying works from ownership-based media distribution platforms such as Bandcamp and itch.io—would collectively help ensure that cultural heritage does not"
+    },
+    {
+     "orden": 5,
+     "titulo": "Custodia compartida",
+     "descripcion": "El registro se preserva mejor cuando lo comparten el pueblo y las instituciones públicas.",
+     "pagina": 60,
+     "cita": "our record is best preserved and most equitably produced when the People, and public-serving institutions, have shared custodianship over their cultural heritage."
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Riesgos de depender de streaming y licencias",
+   "contexto": "Para evaluar una plataforma o un contrato antes de apoyarte en él para guardar cultura.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "¿Formatos propietarios o DRM te atan a una plataforma?",
+     "pagina": 19,
+     "cita": "proprietary file formats and DRM, coupled with the Big Five publishing houses’ partnerships with Apple and Amazon, create ebook monopolies and monopsonies"
+    },
+    {
+     "texto": "¿Las licencias son temporales y cuestan más que el original?",
+     "pagina": 19,
+     "cita": "publishers offer temporary licenses to libraries (which often cost more than the physical books themselves), forcing libraries with limited funds to make"
+    },
+    {
+     "texto": "¿El software que usás recolecta tus datos?",
+     "pagina": 19,
+     "cita": "those platforms pose data privacy issues to consumers by forcing them to view books using software that mines and potentially sells their"
+    },
+    {
+     "texto": "¿El contenido puede retirarse o cambiarse en cualquier momento?",
+     "pagina": 18,
+     "cita": "the content can be removed or changed at any Part 1 a i Bt ican repeat a row as many times as"
+    }
+   ]
+  },
+  {
+   "nombre": "Cómo ayudar a que la cultura no se pierda",
+   "contexto": "Acciones concretas para individuos e instituciones.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Defender reformas de copyright y protecciones a la preservación",
+     "pagina": 59,
+     "cita": "The public can advocate for legislative reform—whether that be shorter copyright terms or protections for non-commercial preservation and accessibility efforts—so that members"
+    },
+    {
+     "texto": "Apoyar archivos abiertos y no depender de uno solo",
+     "pagina": 59,
+     "cita": "Supporting and contributing to open access digital archives such as Project Gutenberg, etree, New York Public Library's Digital Collections, and the After"
+    },
+    {
+     "texto": "Comprar en plataformas donde se es dueño",
+     "pagina": 59,
+     "cita": "buying works from ownership-based media distribution platforms such as Bandcamp and itch.io—would collectively help ensure that cultural heritage does not"
+    },
+    {
+     "texto": "Compartir la custodia con instituciones públicas",
+     "pagina": 60,
+     "cita": "our record is best preserved and most equitably produced when the People, and public-serving institutions, have shared custodianship over their cultural heritage."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,160 @@
+{
+ "glosario": [
+  {
+   "termino": "Obras huérfanas",
+   "definicion": "Obras con copyright cuyo titular no se puede ubicar; en software, «abandonware».",
+   "buscar": "Orphan works (more frequently called",
+   "palabras": 24
+  },
+  {
+   "termino": "Desaparición cultural",
+   "definicion": "Expresión cultural que sale del acceso público por decisión de las grandes empresas de medios.",
+   "buscar": "cultural expression is vanishing from public access largely at the whims of media conglomerates",
+   "palabras": 20
+  },
+  {
+   "termino": "Olvido histórico",
+   "definicion": "Lo normal es que casi toda expresión humana se pierda sin intervención.",
+   "buscar": "oblivion is the default, not the exception",
+   "palabras": 24
+  },
+  {
+   "termino": "URLs en peligro",
+   "definicion": "Enlaces que el estudio de Pew considera en riesgo de perderse.",
+   "buscar": "the team identified 18% of Pew",
+   "palabras": 24
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Por qué desaparece la cultura digital",
+   "resumen": "El informe identifica varias causas que se refuerzan: del ser dueño a licenciar, plataformas que borran, obsolescencia técnica y derechos de autor muy largos.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "De la propiedad a la licencia",
+     "descripcion": "Se paga por acceso temporal y condicional, no por poseer copias.",
+     "buscar": "Instead of owning copies of digital materials",
+     "palabras": 22
+    },
+    {
+     "titulo": "Streaming y licencias temporales",
+     "descripcion": "Sin propiedad permanente, los objetos culturales pueden retirarse sin haber sido archivados.",
+     "buscar": "solely through streaming and temporary licensing deals, rather than through permanent ownership",
+     "palabras": 24
+    },
+    {
+     "titulo": "Plataformas que no son archivos",
+     "descripcion": "Los sitios borran contenido a voluntad; sus dueños no son archivistas.",
+     "buscar": "most websites are not long-term archives",
+     "palabras": 22
+    },
+    {
+     "titulo": "Obsolescencia de hardware y software",
+     "descripcion": "Sin preservación activa, los materiales se pierden.",
+     "buscar": "The long history of hardware, software, and media obsolescence",
+     "palabras": 22
+    },
+    {
+     "titulo": "Derechos de autor largos y obras huérfanas",
+     "descripcion": "Los plazos restrictivos y la ambigüedad legal frenan la preservación.",
+     "buscar": "Orphan works (more frequently called",
+     "palabras": 22
+    }
+   ]
+  },
+  {
+   "nombre": "Qué puede hacer el público para preservar la cultura",
+   "resumen": "Las propuestas del informe: empoderar a bibliotecas y archivos, impulsar reformas legales, apoyar archivos abiertos y comprar donde se es dueño.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Empoderar a bibliotecarios y archivistas",
+     "descripcion": "Financiera, legal y culturalmente.",
+     "buscar": "financially, legally, and culturally empower librarians, archivists, and preservationists",
+     "palabras": 16
+    },
+    {
+     "titulo": "Impulsar reformas legislativas",
+     "descripcion": "Plazos de copyright más cortos y protección a la preservación no comercial.",
+     "buscar": "The public can advocate for legislative reform",
+     "palabras": 22
+    },
+    {
+     "titulo": "Apoyar archivos de acceso abierto",
+     "descripcion": "Para que la cultura no desaparezca si cae un solo archivo.",
+     "buscar": "Supporting and contributing to open access digital archives such as Project Gutenberg",
+     "palabras": 22
+    },
+    {
+     "titulo": "Comprar donde uno es dueño",
+     "descripcion": "Plataformas basadas en propiedad, como Bandcamp o itch.io.",
+     "buscar": "buying works from ownership-based media distribution platforms such as Bandcamp and itch.io",
+     "palabras": 20
+    },
+    {
+     "titulo": "Custodia compartida",
+     "descripcion": "El registro se preserva mejor cuando lo comparten el pueblo y las instituciones públicas.",
+     "buscar": "our record is best preserved and most equitably produced when the People",
+     "palabras": 22
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Riesgos de depender de streaming y licencias",
+   "contexto": "Para evaluar una plataforma o un contrato antes de apoyarte en él para guardar cultura.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "¿Formatos propietarios o DRM te atan a una plataforma?",
+     "buscar": "proprietary file formats and DRM, coupled with the Big Five publishing houses",
+     "palabras": 22
+    },
+    {
+     "texto": "¿Las licencias son temporales y cuestan más que el original?",
+     "buscar": "publishers offer temporary licenses to libraries (which often cost more than the physical books themselves)",
+     "palabras": 22
+    },
+    {
+     "texto": "¿El software que usás recolecta tus datos?",
+     "buscar": "those platforms pose data privacy issues to consumers",
+     "palabras": 22
+    },
+    {
+     "texto": "¿El contenido puede retirarse o cambiarse en cualquier momento?",
+     "buscar": "the content can be removed or changed at any",
+     "palabras": 22
+    }
+   ]
+  },
+  {
+   "nombre": "Cómo ayudar a que la cultura no se pierda",
+   "contexto": "Acciones concretas para individuos e instituciones.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Defender reformas de copyright y protecciones a la preservación",
+     "buscar": "The public can advocate for legislative reform",
+     "palabras": 22
+    },
+    {
+     "texto": "Apoyar archivos abiertos y no depender de uno solo",
+     "buscar": "Supporting and contributing to open access digital archives such as Project Gutenberg",
+     "palabras": 22
+    },
+    {
+     "texto": "Comprar en plataformas donde se es dueño",
+     "buscar": "buying works from ownership-based media distribution platforms such as Bandcamp and itch.io",
+     "palabras": 20
+    },
+    {
+     "texto": "Compartir la custodia con instituciones públicas",
+     "buscar": "our record is best preserved and most equitably produced when the People",
+     "palabras": 22
+    }
+   ]
+  }
+ ]
+}

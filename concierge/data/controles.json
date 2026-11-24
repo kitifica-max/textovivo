@@ -238,6 +238,23 @@
   }
  },
  {
+  "libro": "jamovi",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 907,
+  "capitulos": 16,
+  "controles": {
+   "paginas": "ok: 907 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 16 secciones cubren las 907 páginas",
+   "configuracion": "ok: sin sospechas",
+   "fidelidad": "ok: 97.6 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 86 de 86 citas existen literalmente en su página"
+  }
+ },
+ {
   "libro": "meditaciones",
   "fecha": "2026-11-24",
   "aprobado": true,
@@ -371,6 +388,23 @@
    "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
    "citas": "ok: 5 de 5 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "vanishing-culture",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 232,
+  "capitulos": 8,
+  "controles": {
+   "paginas": "ok: 232 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "aviso: 1 páginas de menos de 200 caracteres a mitad de capítulo (p. 111)",
+   "indice_cobertura": "ok: 8 secciones cubren las 232 páginas",
+   "configuracion": "aviso: 1 capítulos de una sola página (¿títulos del índice o encabezados de página?); «Part 2: Narratives of Cultural» ocupa más de la mitad del libro",
+   "fidelidad": "ok: 99.2 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 22 de 22 citas existen literalmente en su página"
   }
  }
 ]

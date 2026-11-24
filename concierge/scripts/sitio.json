@@ -240,5 +240,27 @@
   "titulo_estilo": "font-size:10cqi",
   "titulo": "The Grammar of Science",
   "autor": "Karl Pearson<br>1892"
+ },
+ {
+  "num": "023",
+  "id": "jamovi",
+  "color": "c-azul",
+  "plegado": false,
+  "tema": "investigacion",
+  "titulo_clase": "t-grotesca",
+  "titulo_estilo": "font-size:9cqi",
+  "titulo": "Learning Statistics with jamovi",
+  "autor": "Danielle Navarro<br>David Foxcroft<br>2025"
+ },
+ {
+  "num": "024",
+  "id": "vanishing-culture",
+  "color": "c-menta",
+  "plegado": false,
+  "tema": "investigacion",
+  "titulo_clase": "t-grotesca",
+  "titulo_estilo": "font-size:9cqi",
+  "titulo": "Vanishing Culture",
+  "autor": "Messarra, Freeland, Ziskina<br>2026"
  }
 ]

@@ -1,0 +1,47 @@
+{
+ "libro": "vanishing-culture",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/vanishing-culture/fuente.txt",
+ "fuente_sha256": "6f474ce8d7a89a8265bf886973bbd6e0c597bc63c85575b52ceebcd953759146",
+ "paginacion": "logica",
+ "paginas": 232,
+ "capitulos": 8,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "232 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "1 páginas de menos de 200 caracteres a mitad de capítulo (p. 111)"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "8 secciones cubren las 232 páginas"
+  },
+  "configuracion": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "1 capítulos de una sola página (¿títulos del índice o encabezados de página?); «Part 2: Narratives of Cultural» ocupa más de la mitad del libro"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "99.2 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "22 de 22 citas existen literalmente en su página"
+  }
+ }
+}

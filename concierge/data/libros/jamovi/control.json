@@ -1,0 +1,47 @@
+{
+ "libro": "jamovi",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/jamovi/fuente.txt",
+ "fuente_sha256": "105b67455dd2c755b50fde72bde99407194d9ae5c55b6e2e1c82cacb0efb026e",
+ "paginacion": "logica",
+ "paginas": 907,
+ "capitulos": 16,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "907 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin páginas cortas a mitad de capítulo"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "16 secciones cubren las 907 páginas"
+  },
+  "configuracion": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin sospechas"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "97.6 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "86 de 86 citas existen literalmente en su página"
+  }
+ }
+}

@@ -1,0 +1,50 @@
+[
+ {
+  "titulo": "Prologue",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 3
+ },
+ {
+  "titulo": "Preface",
+  "nivel": 1,
+  "pagina_inicio": 4,
+  "pagina_fin": 6
+ },
+ {
+  "titulo": "Part 1: Media Preservation and the Production of Public Memory",
+  "nivel": 1,
+  "pagina_inicio": 7,
+  "pagina_fin": 8
+ },
+ {
+  "titulo": "I. The Digital Memory Hole",
+  "nivel": 1,
+  "pagina_inicio": 9,
+  "pagina_fin": 27
+ },
+ {
+  "titulo": "II. Recent Digital Vanishing and Preservation Efforts",
+  "nivel": 1,
+  "pagina_inicio": 28,
+  "pagina_fin": 50
+ },
+ {
+  "titulo": "III. Historical Losses and the Future of Cultural Preservation",
+  "nivel": 1,
+  "pagina_inicio": 51,
+  "pagina_fin": 63
+ },
+ {
+  "titulo": "Part 2: Narratives of Cultural Preservation and Loss",
+  "nivel": 1,
+  "pagina_inicio": 64,
+  "pagina_fin": 231
+ },
+ {
+  "titulo": "Share Your Story",
+  "nivel": 1,
+  "pagina_inicio": 232,
+  "pagina_fin": 232
+ }
+]

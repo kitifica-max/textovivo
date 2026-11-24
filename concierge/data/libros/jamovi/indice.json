@@ -1,0 +1,98 @@
+[
+ {
+  "titulo": "Chapter 1. Why do we learn statistics",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 21
+ },
+ {
+  "titulo": "Chapter 2. A brief introduction to research design",
+  "nivel": 1,
+  "pagina_inicio": 22,
+  "pagina_fin": 86
+ },
+ {
+  "titulo": "Chapter 3. Getting started with jamovi",
+  "nivel": 1,
+  "pagina_inicio": 87,
+  "pagina_fin": 109
+ },
+ {
+  "titulo": "Chapter 4. Descriptive statistics",
+  "nivel": 1,
+  "pagina_inicio": 110,
+  "pagina_fin": 151
+ },
+ {
+  "titulo": "Chapter 5. Drawing graphs",
+  "nivel": 1,
+  "pagina_inicio": 152,
+  "pagina_fin": 166
+ },
+ {
+  "titulo": "Chapter 6. Pragmatic matters",
+  "nivel": 1,
+  "pagina_inicio": 167,
+  "pagina_fin": 206
+ },
+ {
+  "titulo": "Chapter 7. Introduction to probability",
+  "nivel": 1,
+  "pagina_inicio": 207,
+  "pagina_fin": 248
+ },
+ {
+  "titulo": "Chapter 8. Estimating unknown quantities from a sample",
+  "nivel": 1,
+  "pagina_inicio": 249,
+  "pagina_fin": 299
+ },
+ {
+  "titulo": "Chapter 9. Hypothesis testing",
+  "nivel": 1,
+  "pagina_inicio": 300,
+  "pagina_fin": 357
+ },
+ {
+  "titulo": "Chapter 10. Categorical data analysis",
+  "nivel": 1,
+  "pagina_inicio": 358,
+  "pagina_fin": 407
+ },
+ {
+  "titulo": "Chapter 11. Comparing two means",
+  "nivel": 1,
+  "pagina_inicio": 408,
+  "pagina_fin": 473
+ },
+ {
+  "titulo": "Chapter 12. Correlation and linear regression",
+  "nivel": 1,
+  "pagina_inicio": 474,
+  "pagina_fin": 544
+ },
+ {
+  "titulo": "Chapter 13. Comparing several means (one-way ANOVA)",
+  "nivel": 1,
+  "pagina_inicio": 545,
+  "pagina_fin": 593
+ },
+ {
+  "titulo": "Chapter 14. Factorial ANOVA",
+  "nivel": 1,
+  "pagina_inicio": 594,
+  "pagina_fin": 697
+ },
+ {
+  "titulo": "Chapter 15. Factor Analysis",
+  "nivel": 1,
+  "pagina_inicio": 698,
+  "pagina_fin": 752
+ },
+ {
+  "titulo": "Chapter 16. Bayesian statistics",
+  "nivel": 1,
+  "pagina_inicio": 753,
+  "pagina_fin": 907
+ }
+]
