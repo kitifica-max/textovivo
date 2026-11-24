@@ -178,6 +178,33 @@ tr -d '\n' < .secreto-admin | npx wrangler secret put ADMIN_SECRET && npx wrangl
 ```
 
 
+### Cobro con Wompi (plan Pro, pago único de 30 días)
+
+Sin suscripción: Wompi no avisa cada cobro recurrente, así que cada renovación es un pago nuevo. El precio sale de `PRICE_USD` (hoy 4.99).
+
+- **Flujo:** `POST /api/pago/crear` crea un enlace de pago en Wompi (`POST /EnlacePago`) con el id del pago como `identificadorEnlaceComercio`; el cliente paga en la página de Wompi (nunca tocamos tarjetas). Wompi avisa a `POST /api/wompi/webhook` y vuelve a `/pago/resultado.html`.
+- **Confirmación:** el webhook se acepta solo con la firma `wompi_hash` (HMAC-SHA256 del cuerpo crudo con el API Secret) y, además, se confirma con `GET /TransaccionCompra/{id}` (aprobada, real y monto igual). Cada transacción activa un solo pago; repetir un webhook no suma días. El redirect solo confirma si su `hash` es válido; si no, el plan se activa por el webhook.
+- **Plan:** cada pago suma 30 días (si todavía queda plan, se suman al final). `users.plan_vence_at`; sin fecha = plan otorgado a mano, no vence. Vencido: los documentos personales siguen guardados pero no se suben ni se consultan.
+- **Avisos:** tarea programada diaria (14:00 UTC) que manda un correo a los 7 días y otro el último día (`src/avisos.ts`).
+- **Secretos:** `.secreto-wompi-appid` y `.secreto-wompi-apisecret` (los sube `npm run deploy`). El mismo API Secret firma los webhooks.
+- **Modo:** `WOMPI_MODO` en `wrangler.jsonc`. `pruebas` acepta pagos de desarrollo (negocio «en desarrollo» en el panel de Wompi; llegan con `esReal = false`). `produccion` exige `esReal = true`. Para pasar a producción: quitar el modo desarrollo del negocio en Wompi, poner `"produccion"` y volver a desplegar.
+- **Webhook y redirect:** en el dominio propio (`https://textifika.kitifica.com/api/wompi/webhook` y `/pago/resultado.html`); Netlify reenvía `/api/*` al Worker. Riesgo a comprobar una vez: que el proxy no descarte el encabezado `wompi_hash` (lleva guion bajo). Prueba: `curl -s -X POST https://textifika.kitifica.com/api/wompi/webhook -H "wompi_hash: x" -d "{}"` debe responder «Firma inválida»; si responde «Falta el encabezado wompi_hash», usar `PUBLIC_URL` (workers.dev) como `urlWebhook` en `crear pago`.
+- **No documentado por Wompi** (confirmar con una compra de prueba): los valores posibles del resultado de una transacción y si el orden del hash del redirect (`identificadorEnlaceComercio + idTransaccion + idEnlace + monto`, sin separador) es exacto.
+- **Probar en local:** hay un Wompi simulado (token, enlace, transacción y webhooks firmados) en la carpeta de trabajo de la sesión; no está en el repositorio.
+
+### Revisión automática de aportes públicos
+
+Cada envío se evalúa en segundo plano al subirlo (`src/evaluacion.ts`, reglas en `src/moderacion.ts`, con tests):
+
+- **Reglas:** instrucciones dirigidas a una IA (inglés y español), caracteres invisibles, HTML/JS activo, marcas de derechos de autor, datos personales, enlaces y cadenas sospechosas, legibilidad.
+- **Duplicados:** misma huella de texto ya enviada, y copia literal de algo que ya está en la biblioteca (8 tramos de 10 palabras buscados en `paginas_fts`).
+- **IA de Cloudflare (Workers AI):** Llama Guard para seguridad y un modelo instruct (`MODELO_REVISION`) que clasifica derechos de terceros, inyección y spam sobre fragmentos repartidos del documento. Si la IA falla, el envío va a revisión manual: nunca se aprueba sin ella.
+- **Veredicto:** `auto_ok` (pasa todo), `revision` (algo dudoso) o `bloqueado` (inyección, caracteres ocultos, código activo o contenido no seguro). Se guarda en `envios.veredicto/puntaje/motivos` y se ve en `revision.html`.
+- **Modo (`APROBACION_AUTO` en `wrangler.jsonc`):** `off` no evalúa · `sombra` (por defecto) evalúa pero siempre pide aprobación manual · `on` publica solo lo que pasa todo. Conviene correr unas semanas en `sombra`, comparar el veredicto con tu decisión y pasar a `on` cuando coincidan.
+- **Defensa al servir:** las respuestas del conector sobre libros aportados (`u-…`) y documentos personales (`mi-…`) llevan `aviso_de_seguridad`, para que la IA los trate como material y no como instrucciones.
+- `POST /admin/envios/<id>/evaluar` repite la evaluación (también sirve para envíos anteriores al sistema).
+- La IA de Cloudflare se factura por uso, incluso en `wrangler dev` (el binding siempre va a la nube).
+
 ### Documentos personales (privados por cuenta)
 
 Cada cuenta con plan habilitado sube PDF/TXT/MD desde **Mi biblioteca** y solo ella los consulta desde su conector.

@@ -59,6 +59,14 @@ let clave = "";
 try { clave = sessionStorage.getItem("tv_admin") || ""; } catch {}
 const h = () => ({ authorization: "Bearer " + clave });
 const kb = (n) => (n > 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.ceil(n / 1024) + " KB");
+const ROTULO = { auto_ok: ["Pasa todo: se aprobaría sola", "#1f6b43"], revision: ["Necesita tu revisión", "#8a6a00"], bloqueado: ["Bloqueado por seguridad", "#b3261e"] };
+function revisionAuto(e) {
+  if (!e.veredicto) return '<p class="nota">Revisión automática: sin evaluar.</p>';
+  const [t, c] = ROTULO[e.veredicto] || [e.veredicto, "inherit"];
+  let m = []; try { m = JSON.parse(e.motivos || "[]"); } catch {}
+  return '<div style="margin:8px 0;padding:10px 14px;border-left:4px solid ' + c + ';background:color-mix(in srgb,' + c + ' 8%,transparent);border-radius:10px"><strong style="color:' + c + '">' + t + '</strong> <span class="nota">· puntaje ' + (e.puntaje ?? 0) + (e.aprobado_por ? " · aprobado " + (e.aprobado_por === "auto" ? "por el sistema" : "por vos") : "") + "</span>" +
+    (m.length ? '<ul class="nota" style="margin:6px 0 0;padding-left:18px">' + m.map((x) => "<li><b>" + esc(x.codigo) + "</b> (" + esc(x.gravedad) + "): " + esc(x.detalle) + "</li>").join("") + "</ul>" : '<p class="nota" style="margin:4px 0 0">Sin hallazgos.</p>') + "</div>";
+}
 async function cargar() {
   $("msg").textContent = "Cargando…";
   const r = await fetch("/admin/envios", { headers: h() }).catch(() => null);
@@ -66,7 +74,7 @@ async function cargar() {
   try { sessionStorage.setItem("tv_admin", clave); } catch {}
   const d = await r.json();
   $("msg").textContent = d.length + " envíos";
-  $("lista").innerHTML = d.map((e) => '<article class="tarjeta" data-id="' + e.id + '"><div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><strong>' + esc(e.titulo) + '</strong><span class="estado' + (e.estado === "aprobado" ? " vivo" : "") + '">' + esc(e.estado) + '</span></div><p class="nota" style="margin:6px 0">' + esc(e.autor_nombre) + " · " + esc(e.tipo) + " · " + esc(e.idioma) + " · " + esc(e.archivo_nombre) + " (" + kb(e.archivo_bytes) + ") · cuenta: " + esc(e.cuenta) + " &lt;" + esc(e.email) + "&gt; · " + new Date(e.created_at).toLocaleString("es") + '</p><p>' + esc(e.descripcion) + '</p>' + (e.nota ? '<p class="nota" style="color:#b3261e">Nota: ' + esc(e.nota) + "</p>" : "") + '<p class="nota">Aceptó términos ' + esc(e.terms_version) + " y dominio público el " + new Date(e.dominio_publico_at).toLocaleString("es") + '</p><div class="acciones" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"><button class="boton chico claro" data-a="archivo" type="button">Descargar</button>' + (e.estado === "recibido" ? '<button class="boton chico" data-a="aprobar" type="button">Aprobar y publicar</button>' : "") + (e.estado !== "retirado" ? '<button class="boton chico claro" data-a="retirar" type="button">Retirar (ilegal o infractor)</button>' : "") + (e.libro_id ? ' <a class="enlace" href="aporte.html?id=' + encodeURIComponent(e.libro_id) + '">ver publicado</a>' : "") + "</div></article>").join("");
+  $("lista").innerHTML = d.map((e) => '<article class="tarjeta" data-id="' + e.id + '"><div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><strong>' + esc(e.titulo) + '</strong><span class="estado' + (e.estado === "aprobado" ? " vivo" : "") + '">' + esc(e.estado) + '</span></div><p class="nota" style="margin:6px 0">' + esc(e.autor_nombre) + " · " + esc(e.tipo) + " · " + esc(e.idioma) + " · " + esc(e.archivo_nombre) + " (" + kb(e.archivo_bytes) + ") · cuenta: " + esc(e.cuenta) + " &lt;" + esc(e.email) + "&gt; · " + new Date(e.created_at).toLocaleString("es") + '</p><p>' + esc(e.descripcion) + '</p>' + (e.nota ? '<p class="nota" style="color:#b3261e">Nota: ' + esc(e.nota) + "</p>" : "") + revisionAuto(e) + '<p class="nota">Aceptó términos ' + esc(e.terms_version) + " y dominio público el " + new Date(e.dominio_publico_at).toLocaleString("es") + '</p><div class="acciones" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"><button class="boton chico claro" data-a="archivo" type="button">Descargar</button>' + (e.estado === "recibido" ? '<button class="boton chico" data-a="aprobar" type="button">Aprobar y publicar</button>' : "") + (e.estado !== "retirado" ? '<button class="boton chico claro" data-a="retirar" type="button">Retirar (ilegal o infractor)</button>' : "") + (e.libro_id ? ' <a class="enlace" href="aporte.html?id=' + encodeURIComponent(e.libro_id) + '">ver publicado</a>' : "") + "</div></article>").join("");
 }
 $("lista").addEventListener("click", async (ev) => {
   const b = ev.target.closest("button[data-a]"); if (!b) return;

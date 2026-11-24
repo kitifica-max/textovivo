@@ -18,3 +18,5 @@ worker-configuration.d.ts
 concierge/data/semilla/
 .secreto-turnstile
 .secreto-resend
+
+.secreto-*

@@ -153,8 +153,14 @@ function pintar(d, estado) {
   $("l-servicio").innerHTML =
     `<li><span>Latencia media</span><b>${lat(d.uso.latencia_media_ms)}</b></li><li><span>Latencia p95</span><b>${lat(d.uso.latencia_p95_ms)}</b></li>` +
     `<li><span>Libros en la biblioteca</span><b>${n(d.biblioteca.libros_total)}</b></li><li><span>Consultas desde siempre</span><b>${n(d.uso.consultas_total)}</b></li>` +
+    `<li><span>Cobro (${esc(d.cobro.modo)}): pagos · ingresos</span><b>${n(d.cobro.aprobados)} · US$${Number(d.cobro.ingresos).toFixed(2)}</b></li>` +
+    `<li><span>Cuentas con plan Pro activo</span><b>${n(d.cobro.pro_activos)}</b></li>` +
     `<li><span>Documentos personales</span><b>${n(d.personales.documentos)} · ${n(d.personales.cuentas)} cuentas</b></li>` +
-    `<li><span>Envíos por revisar</span><b>${n(d.envios.pendientes)}</b></li>` + (d.envios.pendientes ? `<li><a class="enlace" href="/revision.html">Ir a revisión →</a></li>` : "");
+    `<li><span>Aportes por revisar</span><b>${n(d.envios.pendientes)}</b></li>` +
+    `<li><span>Revisión automática</span><b>${esc({ sombra: "en sombra", on: "activa", off: "apagada" }[d.envios.modo_auto] || d.envios.modo_auto)}</b></li>` +
+    `<li><span>Aprobados: solos · por vos</span><b>${n(d.envios.auto)} · ${n(d.envios.manual)}</b></li>` +
+    (d.envios.listos_para_auto ? `<li><span>Pasan todo y esperan (modo sombra)</span><b>${n(d.envios.listos_para_auto)}</b></li>` : "") +
+    (d.envios.bloqueados ? `<li><span>Bloqueados por seguridad</span><b>${n(d.envios.bloqueados)}</b></li>` : "") + (d.envios.pendientes ? `<li><a class="enlace" href="/revision.html">Ir a revisión →</a></li>` : "");
   pintarLibros();
   const hora = new Date(d.generado).toLocaleTimeString("es", { hour: "2-digit", minute: "2-digit" });
   estadoVivo(estado === "cache" ? "sin" : "ok", estado === "cache" ? `Sin conexión · datos de las ${hora}` : `Actualizado ${hora}`);

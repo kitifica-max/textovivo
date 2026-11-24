@@ -5,6 +5,10 @@
   "compatibility_date": "2026-11-01",
   "compatibility_flags": ["nodejs_compat"],
   "observability": { "enabled": true },
+  // IA de Cloudflare: moderación de aportes públicos (src/moderacion.ts).
+  "ai": { "binding": "AI" },
+  // Avisos de vencimiento del plan: todos los días a las 14:00 UTC.
+  "triggers": { "crons": ["0 14 * * *"] },
   // El sitio (../diseno) se sirve desde el mismo Worker: un solo origen, sin CORS.
   // Solo estas rutas pasan por el código; todo lo demás sale directo de los archivos.
   "assets": {
@@ -38,6 +42,15 @@
     "TURNSTILE_SITE_KEY": "0x4AAAAAAGQAHk1rtQKQtxYY",
     // Documentos personales: planes que pueden subirlos (coma-separados; «*» = todas las cuentas). Hoy solo «pro» (se otorga a mano).
     "PLANES_PERSONALES": "pro",
+    // Revisión automática de aportes: «off» no evalúa · «sombra» evalúa pero siempre pide revisión manual · «on» publica lo que pasa todo.
+    "APROBACION_AUTO": "sombra",
+    // Modelos de Workers AI (vacío = los que trae el código por defecto).
+    "MODELO_REVISION": "",
+    "MODELO_SEGURIDAD": "",
+    // Cobro con Wompi: «pruebas» acepta pagos de desarrollo (negocio «en desarrollo» en el panel); «produccion» solo pagos reales.
+    "WOMPI_MODO": "pruebas",
+    "WOMPI_API_URL": "https://api.wompi.sv",
+    "WOMPI_ID_URL": "https://id.wompi.sv",
     "VIDEO_URL": "",
     "PRICE_USD": "4.99",
     "RENTAL_DAYS": "30",

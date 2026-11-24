@@ -19,4 +19,11 @@ if [ -s .secreto-resend ]; then
 else
   echo "AVISO: sin .secreto-resend; el Worker no podrá enviar correos de confirmación." >&2
 fi
+# Wompi: App ID y API Secret del negocio en .secreto-wompi-appid y .secreto-wompi-apisecret. Sin ellos el cobro queda apagado.
+if [ -s .secreto-wompi-appid ] && [ -s .secreto-wompi-apisecret ]; then
+  printf 'WOMPI_APP_ID=%s\n' "$(tr -d '\n' < .secreto-wompi-appid)" >> "$tmp"
+  printf 'WOMPI_API_SECRET=%s\n' "$(tr -d '\n' < .secreto-wompi-apisecret)" >> "$tmp"
+else
+  echo "AVISO: sin .secreto-wompi-appid/.secreto-wompi-apisecret; el cobro con Wompi queda apagado." >&2
+fi
 npx wrangler deploy --secrets-file "$tmp" "$@"

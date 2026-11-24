@@ -47,3 +47,12 @@ export function correoRestablecer(nombre: string, enlace: string) {
     texto: `Hola ${nombre},\n\nAlguien pidió restablecer la contraseña de tu cuenta de Textifika. El enlace vence en 1 hora y sirve una sola vez:\n${enlace}\n\nSi no fuiste vos, ignorá este correo: tu contraseña no cambia hasta que uses el enlace.`
   };
 }
+
+export function correoVencePronto(nombre: string, dias: number, enlace: string) {
+  const cuando = dias <= 1 ? "mañana" : `en ${dias} días`;
+  return {
+    asunto: dias <= 1 ? "Tu plan Pro de Textifika vence mañana" : `Tu plan Pro de Textifika vence en ${dias} días`,
+    html: marco(`Tu plan Pro vence ${cuando}`, `Hola ${esc(nombre)}, tu plan Pro vence ${cuando}. Después de esa fecha no podrás subir ni consultar tus documentos personales (siguen guardados). Renovar suma 30 días a lo que te queda, no los pierdes.`, "Renovar mi plan", enlace, "Es un pago único de 30 días, no una suscripción: no te cobramos nada solos."),
+    texto: `Hola ${nombre},\n\nTu plan Pro vence ${cuando}. Después no podrás subir ni consultar tus documentos personales (siguen guardados). Renovar suma 30 días a lo que te queda.\n\nRenovar: ${enlace}\n\nEs un pago único de 30 días, no una suscripción: no te cobramos nada solos.`
+  };
+}

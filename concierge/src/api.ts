@@ -6,6 +6,9 @@ import {
 } from "./auth.ts";
 import { correoRestablecer, correoVerificacion, enviarCorreo } from "./correo.ts";
 import { extraer } from "./extraer.ts";
+import { evaluarEnvio, publicarEnvio, slug } from "./evaluacion.ts";
+import { DIAS_PLAN, diasRestantes, extenderVencimiento, firmaHmac, firmaValida, iguales, leerEvento, montoCoincide, planEfectivo } from "./plan.ts";
+import { apiSecret, crearEnlace, modoPruebas, obtenerTransaccion, wompiConfigurado } from "./wompi.ts";
 import { notaPaginas } from "./tools.ts";
 
 const json = (data: unknown, status = 200, headers: Record<string, string> = {}) =>
@@ -141,7 +144,40 @@ async function consumirEnlace(token: unknown, tipo: string) {
 }
 const ENLACE_INVALIDO = "El enlace venció o ya se usó. Pedí uno nuevo.";
 
-export async function api(req: Request, url: URL): Promise<Response> {
+// ---- Cobro con Wompi: pago único de 30 días ----
+type PagoFila = { id: string; user_id: string; monto: number; estado: string };
+
+async function activarPago(p: PagoFila, idTransaccion: string) {
+  const t = ahora();
+  try {
+    const r = await env.DB.prepare("UPDATE pagos SET estado = 'aprobado', transaccion_id = ?, aprobado_at = ? WHERE id = ? AND estado = 'pendiente'").bind(idTransaccion, t, p.id).run();
+    if (!r.meta.changes) return false; // ya estaba aprobado: no se suma dos veces
+  } catch { return false; } // esa transacción ya activó otro pago
+  const u = await uno<{ plan: string; plan_vence_at: string | null }>("SELECT plan, plan_vence_at FROM users WHERE id = ?", p.user_id);
+  if (u.plan !== "gratis" && !u.plan_vence_at) return true; // plan otorgado a mano, sin vencimiento: no se toca
+  await env.DB.prepare("UPDATE users SET plan = 'pro', plan_vence_at = ?, plan_aviso = 0 WHERE id = ?").bind(extenderVencimiento(u.plan_vence_at, t), p.user_id).run();
+  return true;
+}
+
+/** Confirma con Wompi (fuente de verdad) y activa el plan. Devuelve el estado del pago. */
+async function confirmarPago(pagoId: string, idTransaccion: string, productiva: boolean | null = null) {
+  const p = await uno<PagoFila | null>("SELECT id, user_id, monto, estado FROM pagos WHERE id = ?", pagoId);
+  if (!p) return "desconocido";
+  if (p.estado === "aprobado") return "aprobado";
+  const t = await obtenerTransaccion(idTransaccion).catch(() => null);
+  if (!t) return "pendiente";
+  const real = modoPruebas() ? true : t.esReal === true && productiva !== false;
+  if (t.esAprobada === true && real && montoCoincide(Number(t.monto ?? t.montoOriginal), p.monto)) await activarPago(p, idTransaccion);
+  return (await uno<{ estado: string }>("SELECT estado FROM pagos WHERE id = ?", pagoId)).estado;
+}
+
+/** El hash del redirect (HMAC con el API Secret) confirma que Wompi no alteró los parámetros. */
+async function hashRedirectValido(q: { pago?: string; transaccion?: string; enlace?: string; monto?: string; hash?: string }) {
+  if (!q.hash) return false;
+  return firmaValida(apiSecret(), `${q.pago ?? ""}${q.transaccion ?? ""}${q.enlace ?? ""}${q.monto ?? ""}`, q.hash);
+}
+
+export async function api(req: Request, url: URL, ctx?: ExecutionContext): Promise<Response> {
   const ruta = url.pathname;
   const post = req.method === "POST";
   if (post && !mismoOrigen(req, url)) return error("Origen no permitido", 403);
@@ -258,6 +294,18 @@ export async function api(req: Request, url: URL): Promise<Response> {
     });
   }
 
+  // Webhook de Wompi: sin sesión; se confía en la firma HMAC del cuerpo y, además, se confirma con la API de Wompi.
+  if (post && ruta === "/api/wompi/webhook") {
+    const crudo = await req.text();
+    const firma = req.headers.get("wompi_hash");
+    if (!firma) return error("Falta el encabezado wompi_hash", 401);
+    if (!(await firmaValida(apiSecret(), crudo, firma))) return error("Firma inválida", 401);
+    let evento = null;
+    try { evento = leerEvento(JSON.parse(crudo)); } catch { /* cuerpo no JSON */ }
+    if (evento) await confirmarPago(evento.pagoId, evento.idTransaccion, evento.esProductiva);
+    return json({ ok: true }); // siempre 200 con firma válida: así Wompi no reintenta eventos que no nos sirven
+  }
+
   // ---- Desde acá hace falta sesión ----
   const u = await usuarioActual(req);
   if (!u) return error("Iniciá sesión para continuar.", 401);
@@ -277,13 +325,14 @@ export async function api(req: Request, url: URL): Promise<Response> {
 
   // ---- Documentos personales: los sube la cuenta y solo ella los consulta ----
   if (ruta === "/api/documentos" || ruta.startsWith("/api/documentos/")) {
-    const plan = (await uno<{ plan: string }>("SELECT plan FROM users WHERE id = ?", u.id))?.plan ?? "gratis";
+    const fp = await uno<{ plan: string; plan_vence_at: string | null }>("SELECT plan, plan_vence_at FROM users WHERE id = ?", u.id);
+    const plan = planEfectivo(fp?.plan ?? "gratis", fp?.plan_vence_at ?? null);
     const habilitado = planHabilitado(plan, env.PLANES_PERSONALES ?? "");
     const lista = () => todos<{ id: string; titulo: string; archivo_nombre: string; paginas: number; bytes: number; created_at: string }>(
       "SELECT id, titulo, archivo_nombre, paginas, bytes, created_at FROM docs_personales WHERE user_id = ? ORDER BY created_at DESC", u.id);
 
     if (req.method === "GET" && ruta === "/api/documentos")
-      return json({ plan, habilitado, limites: { max_docs: MAX_DOCS, max_bytes_doc: MAX_BYTES_DOC, max_bytes_total: MAX_BYTES_TOTAL }, documentos: await lista() });
+      return json({ plan, habilitado, vence: fp?.plan_vence_at ?? null, precio: Number(env.PRICE_USD), cobro_activo: wompiConfigurado(), limites: { max_docs: MAX_DOCS, max_bytes_doc: MAX_BYTES_DOC, max_bytes_total: MAX_BYTES_TOTAL }, documentos: await lista() });
 
     if (!habilitado) return error("Los documentos personales son una función de pago y todavía no está activa en tu cuenta.", 403);
     if (!u.email_verificado_at) return error("Confirmá tu email para subir documentos.", 403);
@@ -324,6 +373,41 @@ export async function api(req: Request, url: URL): Promise<Response> {
       return json({ ok: true, documentos: await lista() });
     }
     return error("No encontrado", 404);
+  }
+
+  // ---- Plan y pago ----
+  if (req.method === "GET" && ruta === "/api/plan") {
+    const r = await uno<{ plan: string; plan_vence_at: string | null }>("SELECT plan, plan_vence_at FROM users WHERE id = ?", u.id);
+    return json({ plan: planEfectivo(r.plan, r.plan_vence_at), vence: r.plan_vence_at, dias_restantes: diasRestantes(r.plan_vence_at), precio: Number(env.PRICE_USD), moneda: "USD", dias: DIAS_PLAN, cobro_activo: wompiConfigurado() });
+  }
+
+  if (post && ruta === "/api/pago/crear") {
+    if (!u.email_verificado_at) return error("Confirmá tu email antes de pagar.", 403);
+    if (!wompiConfigurado()) return error("El cobro todavía no está activo.", 503);
+    const recientes = await uno<{ n: number }>("SELECT COUNT(*) AS n FROM pagos WHERE user_id = ? AND estado = 'pendiente' AND created_at > ?", u.id, new Date(Date.now() - 3_600_000).toISOString());
+    if (recientes.n >= 5) return error("Ya generaste varios pagos en la última hora. Usá el último enlace o esperá un rato.", 429);
+    const id = aleatorio(8), monto = Number(env.PRICE_USD), producto = `Textifika Pro · ${DIAS_PLAN} días`;
+    await env.DB.prepare("INSERT INTO pagos (id, user_id, producto, monto, modo, created_at) VALUES (?, ?, ?, ?, ?, ?)").bind(id, u.id, producto, monto, modoPruebas() ? "pruebas" : "produccion", ahora()).run();
+    try {
+      // Redirect y webhook en el dominio propio: Netlify reenvía /api/* al Worker. Si algún día el proxy descartara el encabezado
+      // wompi_hash (lleva guion bajo), el webhook respondería «Falta el encabezado»; en ese caso basta usar PUBLIC_URL aquí.
+      const e = await crearEnlace({ pagoId: id, monto, nombreProducto: producto, urlRedirect: `${env.SITIO_URL}/pago/resultado.html`, urlWebhook: `${env.SITIO_URL}/api/wompi/webhook` });
+      await env.DB.prepare("UPDATE pagos SET enlace_id = ?, enlace_url = ? WHERE id = ?").bind(e.idEnlace, e.urlEnlace, id).run();
+      return json({ ok: true, pago: id, url: e.urlEnlace });
+    } catch (err) {
+      console.error("pago/crear", err);
+      return error("No pudimos crear el enlace de pago. Probá de nuevo en unos minutos.", 502);
+    }
+  }
+
+  if (post && ruta === "/api/pago/estado") {
+    const b = (await req.json().catch(() => ({}))) as { pago?: string; transaccion?: string; enlace?: string; monto?: string; hash?: string };
+    const p = b.pago ? await uno<PagoFila | null>("SELECT id, user_id, monto, estado FROM pagos WHERE id = ? AND user_id = ?", b.pago, u.id) : null;
+    if (!p) return error("No encontrado", 404);
+    let estado = p.estado;
+    if (estado === "pendiente" && b.transaccion && (await hashRedirectValido(b))) estado = await confirmarPago(p.id, b.transaccion);
+    const r = await uno<{ plan: string; plan_vence_at: string | null }>("SELECT plan, plan_vence_at FROM users WHERE id = ?", u.id);
+    return json({ estado, plan: planEfectivo(r.plan, r.plan_vence_at), vence: r.plan_vence_at });
   }
 
   // ---- Biblioteca personal: agregar y quitar libros ----
@@ -408,6 +492,8 @@ export async function api(req: Request, url: URL): Promise<Response> {
     )
       .bind(id, u.id, titulo, autor, tipo, idioma, descripcion, key, archivo.name.slice(0, 200), archivo.size, TERMINOS_VERSION, ahora(), ahora(), ahora())
       .run();
+    // Revisión automática en segundo plano: no hace esperar a quien sube.
+    ctx?.waitUntil(evaluarEnvio(id).catch((err) => console.error("evaluarEnvio", err)));
     return json({ ok: true, id }, 201);
   }
 
@@ -420,9 +506,6 @@ type Envio = {
   archivo_key: string; archivo_nombre: string; estado: string; libro_id: string | null;
 };
 
-const slug = (s: string) =>
-  s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "obra";
-
 export async function adminEnvios(req: Request, url: URL): Promise<Response> {
   const ruta = url.pathname;
 
@@ -430,7 +513,7 @@ export async function adminEnvios(req: Request, url: URL): Promise<Response> {
     const estado = url.searchParams.get("estado");
     const { results } = await env.DB.prepare(
       `SELECT e.id, e.titulo, e.autor_nombre, e.tipo, e.idioma, e.descripcion, e.archivo_nombre, e.archivo_bytes, e.estado,
-              e.created_at, e.revisado_at, e.nota, e.libro_id, e.terms_version, e.dominio_publico_at, u.email, u.nombre AS cuenta
+              e.created_at, e.revisado_at, e.nota, e.libro_id, e.terms_version, e.dominio_publico_at, e.veredicto, e.puntaje, e.motivos, e.evaluado_at, e.aprobado_por, u.email, u.nombre AS cuenta
          FROM envios e JOIN users u ON u.id = e.user_id
         ${estado ? "WHERE e.estado = ?1" : ""} ORDER BY e.created_at DESC LIMIT 200`
     )
@@ -439,7 +522,7 @@ export async function adminEnvios(req: Request, url: URL): Promise<Response> {
     return json(results);
   }
 
-  const m = ruta.match(/^\/admin\/envios\/([a-f0-9]{16})\/(archivo|aprobar|retirar)$/);
+  const m = ruta.match(/^\/admin\/envios\/([a-f0-9]{16})\/(archivo|aprobar|retirar|evaluar)$/);
   if (!m) return error("No encontrado", 404);
   const e = await env.DB.prepare("SELECT * FROM envios WHERE id = ?").bind(m[1]).first<Envio>();
   if (!e) return error("No encontrado", 404);
@@ -454,6 +537,12 @@ export async function adminEnvios(req: Request, url: URL): Promise<Response> {
 
   if (req.method !== "POST") return error("Método no permitido", 405);
 
+  if (m[2] === "evaluar") {
+    // Vuelve a correr la revisión automática (útil para calibrar o para envíos anteriores al sistema).
+    const d = await evaluarEnvio(e.id);
+    return json({ ok: true, resultado: d });
+  }
+
   if (m[2] === "aprobar") {
     if (e.estado === "aprobado") return error("Ya está aprobado", 409);
     const o = await env.ENVIOS.get(e.archivo_key);
@@ -466,20 +555,7 @@ export async function adminEnvios(req: Request, url: URL): Promise<Response> {
       await env.DB.prepare("UPDATE envios SET nota = ? WHERE id = ?").bind(msg.slice(0, 500), e.id).run();
       return error(msg, 422);
     }
-    const libroId = `u-${slug(e.titulo)}-${e.id.slice(0, 6)}`;
-    await env.DB.prepare("DELETE FROM paginas_fts WHERE libro = ?").bind(libroId).run();
-    for (let i = 0; i < r.paginas.length; i += 50)
-      await env.DB.batch(
-        r.paginas.slice(i, i + 50).map((p) => env.DB.prepare("INSERT INTO paginas_fts (texto, libro, pagina) VALUES (?, ?, ?)").bind(p.texto, libroId, p.pagina))
-      );
-    const t = ahora();
-    await env.DB.batch([
-      env.DB.prepare(
-        `INSERT OR REPLACE INTO libros_dyn (id, envio_id, titulo, autor, tipo, idioma, descripcion, paginacion, indice, paginas, publicado_at, visible)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)`
-      ).bind(libroId, e.id, e.titulo, e.autor_nombre, e.tipo, e.idioma, e.descripcion, r.paginacion, JSON.stringify(r.indice), r.paginas.length, t),
-      env.DB.prepare("UPDATE envios SET estado = 'aprobado', revisado_at = ?, libro_id = ?, nota = NULL WHERE id = ?").bind(t, libroId, e.id)
-    ]);
+    const libroId = await publicarEnvio(e, r, "manual");
     return json({ ok: true, libro_id: libroId, paginas: r.paginas.length });
   }
 

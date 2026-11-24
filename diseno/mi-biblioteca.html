@@ -132,7 +132,10 @@
       <div id="bloque-docs" hidden>
         <div class="titulo-bloque"><h2>Mis documentos</h2><span class="nota" id="n-docs"></span></div>
         <p class="nota" style="margin:-6px 0 16px;max-width:46em">Subí tus propios PDF, TXT o MD y consultalos desde tu IA. <strong>Solo vos los ves</strong>: no se publican ni se comparten con nadie. Del archivo no guardamos nada; solo su texto, para poder buscar en él. Podés borrarlos cuando quieras.</p>
-        <div id="docs-bloqueado" class="tarjeta" hidden style="margin-bottom:40px"><strong>Función de pago.</strong> <span class="nota">Los documentos personales llegan con el plan de pago. Todavía no está activo en tu cuenta.</span></div>
+        <div id="plan-card" class="tarjeta" hidden style="margin-bottom:24px;display:grid;gap:10px">
+          <div><strong id="plan-titulo"></strong> <span class="nota" id="plan-detalle"></span></div>
+          <div id="plan-acciones" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center"><button class="boton chico" type="button" id="plan-pagar"></button><span class="nota" id="plan-msg" role="status"></span></div>
+        </div>
         <form id="form-doc" hidden class="tarjeta" style="display:grid;gap:12px;margin-bottom:16px">
           <label class="nota" for="doc-archivo">Archivo (PDF, TXT o MD, hasta 7 MB)</label>
           <input id="doc-archivo" type="file" accept=".pdf,.txt,.md" required>
@@ -192,12 +195,31 @@ document.addEventListener("click", (ev) => {
   if (q) cambiar(q.dataset.quitar, "/api/mis-libros/quitar");
   if (a) cambiar(a.dataset.agregarLibro, "/api/mis-libros");
 });
+const usd = (n) => "US$" + Number(n).toFixed(2);
+const fechaLarga = (iso) => new Date(iso).toLocaleDateString("es", { day: "numeric", month: "long", year: "numeric" });
+function pintarPlan(d) {
+  const c = $("plan-card"), b = $("plan-pagar");
+  c.hidden = false; b.hidden = false;
+  const detalle = " Es un pago único de 30 días, no una suscripción.";
+  if (d.habilitado && d.vence) { $("plan-titulo").textContent = "Plan Pro activo hasta el " + fechaLarga(d.vence) + "."; $("plan-detalle").textContent = "Renovar suma 30 días a lo que te queda."; b.textContent = "Renovar +30 días · " + usd(d.precio); }
+  else if (d.habilitado) { $("plan-titulo").textContent = "Plan Pro activo."; $("plan-detalle").textContent = "Sin fecha de vencimiento."; b.hidden = true; }
+  else if (d.cobro_activo) { $("plan-titulo").textContent = "Plan Pro · " + usd(d.precio) + " por 30 días."; $("plan-detalle").textContent = "Incluye documentos personales privados." + detalle; b.textContent = "Activar Pro · " + usd(d.precio); }
+  else { $("plan-titulo").textContent = "Función de pago."; $("plan-detalle").textContent = "Los documentos personales llegan con el plan Pro. Todavía no está abierto a todas las cuentas."; b.hidden = true; }
+  b.disabled = !d.cobro_activo;
+}
+$("plan-pagar").addEventListener("click", async () => {
+  const b = $("plan-pagar"); b.disabled = true; $("plan-msg").textContent = "Creando tu enlace de pago…";
+  const r = await fetch("/api/pago/crear", { method: "POST", headers: { "content-type": "application/json" }, body: "{}", credentials: "same-origin" }).catch(() => null);
+  const j = r ? await r.json().catch(() => ({})) : {};
+  if (r && r.ok && j.url) { location.href = j.url; return; }
+  b.disabled = false; $("plan-msg").textContent = j.error || "No se pudo crear el pago. Probá de nuevo.";
+});
 async function cargarDocs() {
   const r = await fetch("/api/documentos", { credentials: "same-origin" }).catch(() => null);
   if (!r || !r.ok) return;
   const d = await r.json();
   $("bloque-docs").hidden = false;
-  $("docs-bloqueado").hidden = d.habilitado;
+  pintarPlan(d);
   $("form-doc").hidden = !d.habilitado;
   $("n-docs").textContent = d.habilitado ? d.documentos.length + " de " + d.limites.max_docs : "";
   const mb = (b) => (b < 1048576 ? Math.max(1, Math.round(b / 1024)) + " KB" : (b / 1048576).toFixed(1).replace(".", ",") + " MB");

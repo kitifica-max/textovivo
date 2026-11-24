@@ -4,3 +4,6 @@ node_modules/
 worker-configuration.d.ts
 .secreto-admin
 .mi-guia-de-prueba.txt
+
+# Cualquier secreto local (Wompi, etc.): nunca se sube
+.secreto-*
