@@ -11,9 +11,90 @@
    "definicion": "La guerra es un instrumento político, no solo un acto político.",
    "pagina": 33,
    "cita": "24. WAR IS A MERE CONTINUATION OF POLICY BY OTHER MEANS. We see, therefore, that War is not merely a political act, but also a real political instrument, a continuation"
+  },
+  {
+   "termino": "Estrategia",
+   "definicion": "El empleo del combate para alcanzar el fin de la guerra; da un fin a toda la acción militar.",
+   "pagina": 251,
+   "cita": "Strategy is the employment of the battle to gain the end of the War; it must therefore give an aim to the whole military action, which must be in accordance"
+  },
+  {
+   "termino": "Centro de gravedad",
+   "definicion": "Lo que se debe considerar el verdadero centro de la guerra: el combate decisivo.",
+   "pagina": 415,
+   "cita": "the real centre of gravity of the War, and therefore its distinguishing character is, that unlike all other encounters, it"
+  },
+  {
+   "termino": "Estratagema",
+   "definicion": "Una intención oculta, opuesta al trato directo.",
+   "pagina": 314,
+   "cita": "STRATAGEM implies a concealed intention, and therefore is opposed to straightforward dealing, in the same way"
+  },
+  {
+   "termino": "Elementos de la estrategia",
+   "definicion": "Se agrupan en morales, físicos, matemáticos, geográficos y estadísticos.",
+   "pagina": 267,
+   "cita": "the moral, physical, mathematical, geographical and statistical elements. The first class includes all that can be"
   }
  ],
- "frameworks": [],
+ "frameworks": [
+  {
+   "nombre": "La trinidad de la guerra",
+   "resumen": "La guerra es una trinidad: violencia y odio, azar y probabilidad, y subordinación a la política.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Violencia original, odio y animosidad",
+     "descripcion": "Instinto ciego, ligado al pueblo.",
+     "pagina": 37,
+     "cita": "the original violence of its elements, hatred and animosity, which may be"
+    },
+    {
+     "orden": 2,
+     "titulo": "Juego de probabilidades y azar",
+     "descripcion": "Actividad libre del ánimo, ligada al general y su ejército.",
+     "pagina": 37,
+     "cita": "the play of probabilities and chance, which make it a free activity of the soul; and"
+    },
+    {
+     "orden": 3,
+     "titulo": "Naturaleza subordinada de instrumento político",
+     "descripcion": "Pertenece a la razón y al gobierno.",
+     "pagina": 37,
+     "cita": "the subordinate nature of a political instrument, by which it belongs purely to the reason."
+    }
+   ]
+  },
+  {
+   "nombre": "Táctica y estrategia",
+   "resumen": "Clausewitz separa el uso de las fuerzas en el combate del uso de los combates para el fin de la guerra.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Táctica: uso de las fuerzas en el combate",
+     "descripcion": "Teoría del empleo de las fuerzas militares en el combate.",
+     "pagina": 132,
+     "cita": "tactics IS THE THEORY OF THE USE OF MILITARY FORCES IN COMBAT. Strategy IS"
+    },
+    {
+     "orden": 2,
+     "titulo": "Estrategia: uso de los combates para el fin de la guerra",
+     "descripcion": "Teoría del empleo de los combates para el objeto de la guerra.",
+     "pagina": 132,
+     "cita": "Strategy IS THE THEORY OF THE USE OF COMBATS FOR THE OBJECT OF THE WAR. The"
+    },
+    {
+     "orden": 3,
+     "titulo": "La estrategia da un fin a toda la acción",
+     "descripcion": "Todo combate se subordina al objetivo de la guerra.",
+     "pagina": 251,
+     "cita": "it must therefore give an aim to the whole military action, which must be"
+    }
+   ]
+  }
+ ],
  "checklists": [
   {
    "nombre": "Ideas centrales de Clausewitz",
@@ -29,6 +110,38 @@
      "texto": "Todo acto de guerra es un instrumento de la política",
      "pagina": 33,
      "cita": "War is not merely a political act, but also a real political instrument, a continuation of political commerce, a carrying out of the same by other means. All beyond this"
+    }
+   ]
+  },
+  {
+   "nombre": "Principios de Clausewitz para decidir con incertidumbre",
+   "contexto": "Para revisar un plan o una decisión en un entorno incierto o competitivo.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Desconfiá de la información: mucha es contradictoria o falsa",
+     "pagina": 116,
+     "cita": "information obtained in War is contradictory, a still greater part is false, and by far the greatest part is of a doubtful character. What"
+    },
+    {
+     "texto": "Todo es simple, pero lo más simple es difícil: contá con la fricción",
+     "pagina": 120,
+     "cita": "is very simple in War, but the simplest thing is difficult. These difficulties accumulate and produce a friction which no man can imagine exactly"
+    },
+    {
+     "texto": "Concentrá superioridad en el momento y lugar decisivos",
+     "pagina": 149,
+     "cita": "IN A CERTAIN TIME, AT A CERTAIN POINT, TO BRING UP SUPERIOR MASSES--was a restriction overruled by the force of"
+    },
+    {
+     "texto": "Ponelo todo en destruir la fuerza principal del adversario",
+     "pagina": 373,
+     "cita": "the destruction of the enemy's force as the principal object, not only in the War as a whole but also in each"
+    },
+    {
+     "texto": "Resolución, firmeza y perseverancia cuentan tanto como el cálculo",
+     "pagina": 108,
+     "cita": "resolution, firmness, perseverance, and force of character. If, however, this elevated condition of heart and mind in the General did"
     }
    ]
   }

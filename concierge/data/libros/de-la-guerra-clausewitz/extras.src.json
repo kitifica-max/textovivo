@@ -11,6 +11,30 @@
    "definicion": "La guerra es un instrumento político, no solo un acto político.",
    "buscar": "24. WAR IS A MERE CONTINUATION OF POLICY BY OTHER MEANS",
    "palabras": 30
+  },
+  {
+   "termino": "Estrategia",
+   "definicion": "El empleo del combate para alcanzar el fin de la guerra; da un fin a toda la acción militar.",
+   "buscar": "Strategy is the employment of the battle to gain the end of the War",
+   "palabras": 30
+  },
+  {
+   "termino": "Centro de gravedad",
+   "definicion": "Lo que se debe considerar el verdadero centro de la guerra: el combate decisivo.",
+   "buscar": "the real centre of gravity of the War",
+   "palabras": 20
+  },
+  {
+   "termino": "Estratagema",
+   "definicion": "Una intención oculta, opuesta al trato directo.",
+   "buscar": "STRATAGEM implies a concealed intention",
+   "palabras": 16
+  },
+  {
+   "termino": "Elementos de la estrategia",
+   "definicion": "Se agrupan en morales, físicos, matemáticos, geográficos y estadísticos.",
+   "buscar": "the moral, physical, mathematical, geographical and statistical elements",
+   "palabras": 16
   }
  ],
  "checklists": [
@@ -28,6 +52,90 @@
      "texto": "Todo acto de guerra es un instrumento de la política",
      "buscar": "War is not merely a political act, but also a real political instrument",
      "palabras": 30
+    }
+   ]
+  },
+  {
+   "nombre": "Principios de Clausewitz para decidir con incertidumbre",
+   "contexto": "Para revisar un plan o una decisión en un entorno incierto o competitivo.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Desconfiá de la información: mucha es contradictoria o falsa",
+     "buscar": "information obtained in War is contradictory, a still greater part is false",
+     "palabras": 24
+    },
+    {
+     "texto": "Todo es simple, pero lo más simple es difícil: contá con la fricción",
+     "buscar": "is very simple in War, but the simplest thing is difficult",
+     "palabras": 24
+    },
+    {
+     "texto": "Concentrá superioridad en el momento y lugar decisivos",
+     "buscar": "IN A CERTAIN TIME, AT A CERTAIN POINT",
+     "palabras": 20
+    },
+    {
+     "texto": "Ponelo todo en destruir la fuerza principal del adversario",
+     "buscar": "the destruction of the enemy's force as the principal object",
+     "palabras": 22
+    },
+    {
+     "texto": "Resolución, firmeza y perseverancia cuentan tanto como el cálculo",
+     "buscar": "resolution, firmness, perseverance, and force of character",
+     "palabras": 20
+    }
+   ]
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "La trinidad de la guerra",
+   "resumen": "La guerra es una trinidad: violencia y odio, azar y probabilidad, y subordinación a la política.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Violencia original, odio y animosidad",
+     "descripcion": "Instinto ciego, ligado al pueblo.",
+     "buscar": "the original violence of its elements, hatred and animosity",
+     "palabras": 12
+    },
+    {
+     "titulo": "Juego de probabilidades y azar",
+     "descripcion": "Actividad libre del ánimo, ligada al general y su ejército.",
+     "buscar": "the play of probabilities and chance",
+     "palabras": 16
+    },
+    {
+     "titulo": "Naturaleza subordinada de instrumento político",
+     "descripcion": "Pertenece a la razón y al gobierno.",
+     "buscar": "the subordinate nature of a political instrument",
+     "palabras": 16
+    }
+   ]
+  },
+  {
+   "nombre": "Táctica y estrategia",
+   "resumen": "Clausewitz separa el uso de las fuerzas en el combate del uso de los combates para el fin de la guerra.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Táctica: uso de las fuerzas en el combate",
+     "descripcion": "Teoría del empleo de las fuerzas militares en el combate.",
+     "buscar": "tactics IS THE THEORY OF THE USE OF MILITARY FORCES IN COMBAT",
+     "palabras": 14
+    },
+    {
+     "titulo": "Estrategia: uso de los combates para el fin de la guerra",
+     "descripcion": "Teoría del empleo de los combates para el objeto de la guerra.",
+     "buscar": "Strategy IS THE THEORY OF THE USE OF COMBATS FOR THE OBJECT OF THE WAR",
+     "palabras": 16
+    },
+    {
+     "titulo": "La estrategia da un fin a toda la acción",
+     "descripcion": "Todo combate se subordina al objetivo de la guerra.",
+     "buscar": "it must therefore give an aim to the whole military action",
+     "palabras": 14
     }
    ]
   }

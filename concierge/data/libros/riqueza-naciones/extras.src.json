@@ -11,6 +11,42 @@
    "definicion": "Cada individuo, al buscar su interés, promueve un fin que no estaba en su intención.",
    "buscar": "led by an invisible hand to promote an end",
    "palabras": 20
+  },
+  {
+   "termino": "Valor de uso y valor de cambio",
+   "definicion": "Una cosa puede valer mucho para usarla y poco para intercambiarla, y al revés.",
+   "buscar": "The one may be called ‘value in use;’ the other, ‘value in exchange.’",
+   "palabras": 34
+  },
+  {
+   "termino": "Trabajo como medida del valor",
+   "definicion": "Para Smith, el trabajo es la medida real del valor de cambio de todas las mercancías.",
+   "buscar": "Labour therefore, is the real measure of the exchangeable value of all commodities",
+   "palabras": 18
+  },
+  {
+   "termino": "Precio natural y precio de mercado",
+   "definicion": "El precio de mercado es el efectivo; el natural es el que lo cubre todo y hacia el que tiende.",
+   "buscar": "the market price, that is, the actual price of commodities",
+   "palabras": 24
+  },
+  {
+   "termino": "Demanda efectiva",
+   "definicion": "La de quienes están dispuestos a pagar todo lo que cuesta llevar la mercancía al mercado.",
+   "buscar": "Such people may be called the effectual demanders",
+   "palabras": 26
+  },
+  {
+   "termino": "Capital circulante",
+   "definicion": "El que se emplea y se recupera con ganancia al cambiar de manos.",
+   "buscar": "may very properly be called circulating capitals",
+   "palabras": 14
+  },
+  {
+   "termino": "Consumo como fin de la producción",
+   "definicion": "El interés del productor solo importa en cuanto sirve al del consumidor.",
+   "buscar": "Consumption is the sole end and purpose of all production",
+   "palabras": 26
   }
  ],
  "checklists": [
@@ -38,6 +74,85 @@
      "texto": "Que saque y deje fuera de los bolsillos lo menos posible",
      "buscar": "4. Every tax ought to be so contrived",
      "palabras": 30
+    }
+   ]
+  },
+  {
+   "nombre": "Reglas de política económica de Smith",
+   "contexto": "Para evaluar una decisión de compra, producción, salarios o comercio.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "No produzcas en casa lo que te cuesta más que comprarlo",
+     "buscar": "never to attempt to make at home what it will cost him more to make than to buy",
+     "palabras": 30
+    },
+    {
+     "texto": "Los salarios altos estimulan la laboriosidad",
+     "buscar": "The wages of labour are the encouragement of industry",
+     "palabras": 20
+    },
+    {
+     "texto": "Una recompensa generosa del trabajo es señal de riqueza creciente",
+     "buscar": "The liberal reward of labour, therefore, as it is the necessary effect",
+     "palabras": 24
+    },
+    {
+     "texto": "Un monopolio funciona como un secreto de comercio: mantiene el mercado desabastecido",
+     "buscar": "A monopoly granted either to an individual or to a trading company",
+     "palabras": 24
+    }
+   ]
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Tres causas de la mayor productividad por la división del trabajo",
+   "resumen": "Smith atribuye el aumento de la capacidad productiva a tres circunstancias.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Más destreza en cada trabajador",
+     "descripcion": "Quien repite una sola tarea la hace cada vez mejor.",
+     "buscar": "first, to the increase of dexterity in every particular workman",
+     "palabras": 12
+    },
+    {
+     "titulo": "Ahorro del tiempo que se pierde al cambiar de tarea",
+     "descripcion": "Pasar de una labor a otra consume tiempo.",
+     "buscar": "secondly, to the saving of the time which is commonly lost in passing",
+     "palabras": 22
+    },
+    {
+     "titulo": "Invención de máquinas que abrevian el trabajo",
+     "descripcion": "Las máquinas permiten que un hombre haga el trabajo de muchos.",
+     "buscar": "lastly, to the invention of a great number of machines",
+     "palabras": 24
+    }
+   ]
+  },
+  {
+   "nombre": "Los tres deberes del soberano",
+   "resumen": "En el sistema de libertad natural, el soberano solo atiende tres deberes.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Proteger a la sociedad de la violencia externa",
+     "descripcion": "Defensa frente a otras sociedades independientes.",
+     "buscar": "first, the duty of protecting the society from the violence",
+     "palabras": 24
+    },
+    {
+     "titulo": "Establecer una justicia exacta",
+     "descripcion": "Proteger a cada miembro de la injusticia de los demás.",
+     "buscar": "secondly, the duty of protecting, as far as possible, every member of the society",
+     "palabras": 28
+    },
+    {
+     "titulo": "Erigir y mantener ciertas obras públicas",
+     "descripcion": "Las que a ningún particular le conviene sostener.",
+     "buscar": "thirdly, the duty of erecting and maintaining certain public works",
+     "palabras": 24
     }
    ]
   }

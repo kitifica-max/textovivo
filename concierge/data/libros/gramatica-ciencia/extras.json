@@ -1,5 +1,36 @@
 {
- "glosario": [],
+ "glosario": [
+  {
+   "termino": "Ley científica",
+   "definicion": "Es una descripción, no una prescripción: vale para todos los humanos normales.",
+   "pagina": 152,
+   "cita": "the scientific law is a description, not a pre- scription. The civil law is valid only for a special community at a special time ; the scientific law is valid"
+  },
+  {
+   "termino": "Economía del pensamiento",
+   "definicion": "La ciencia permite actuar con el mínimo de pensamiento sobre impresiones almacenadas.",
+   "pagina": 115,
+   "cita": "Science is in this respect an economy of thought — a delicate tuning in the interests of the individual of those organs"
+  },
+  {
+   "termino": "Taquigrafía mental",
+   "definicion": "Una ley resume en una fórmula una gran cantidad de secuencias observadas.",
+   "pagina": 150,
+   "cita": "by what we may term mental shorthand, resumes a vast number of observed sequences. The statement of this formula was"
+  },
+  {
+   "termino": "Ley en sentido científico",
+   "definicion": "Un producto de la mente humana, sin sentido fuera del ser humano.",
+   "pagina": 151,
+   "cita": "Law in the scientific sense is thus essentially a product of the human mind and has no meaning apart from man. It owes its"
+  },
+  {
+   "termino": "Causación y probabilidad",
+   "definicion": "Que una secuencia se repitió es causación; que seguirá repitiéndose es creencia expresada como probabilidad.",
+   "pagina": 197,
+   "cita": "expression in the concept causation ; that it will continue to recur in the future is a matter of belief to which we give expression in the concept probability. Science"
+  }
+ ],
  "frameworks": [
   {
    "nombre": "Rasgos del método científico",
@@ -45,6 +76,28 @@
      "texto": "Clasificar hechos y juzgar sin sesgo individual",
      "pagina": 11,
      "cita": "The classification of facts and the formation of absolute judgments upon the basis of this classification — judgments independent of the idio- syncrasies of"
+    }
+   ]
+  },
+  {
+   "nombre": "Para revisar si un razonamiento es científico",
+   "contexto": "Antes de aceptar una conclusión o de presentar un análisis como objetivo.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Observá la correlación y la secuencia, y juzgá de forma absoluta, no individual",
+     "pagina": 49,
+     "cita": "the observation of their correlation and sequence, the resulting absolute, as opposed to the individual judgment — these are the sole means by which we can reach truth"
+    },
+    {
+     "texto": "Liberate del sesgo individual al formar juicios",
+     "pagina": 22,
+     "cita": "freed from individual bias in the formation of its judg- ments— one of the conditions, as we have seen, for"
+    },
+    {
+     "texto": "Cualquiera que clasifica hechos y describe sus secuencias aplica el método científico",
+     "pagina": 23,
+     "cita": "The man who classifies facts of any kind whatever, who sees their mutual relation and describes their sequences, is applying the scientific method and is a man of science. The facts may"
     }
    ]
   }

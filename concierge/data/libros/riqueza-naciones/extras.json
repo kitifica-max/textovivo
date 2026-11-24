@@ -11,9 +11,102 @@
    "definicion": "Cada individuo, al buscar su interés, promueve un fin que no estaba en su intención.",
    "pagina": 819,
    "cita": "led by an invisible hand to promote an end which was no part of his intention. Nor is it always"
+  },
+  {
+   "termino": "Valor de uso y valor de cambio",
+   "definicion": "Una cosa puede valer mucho para usarla y poco para intercambiarla, y al revés.",
+   "pagina": 52,
+   "cita": "The one may be called ‘value in use;’ the other, ‘value in exchange.’ The things which have the greatest value in use have frequently little or no value in exchange; and, on the contrary"
+  },
+  {
+   "termino": "Trabajo como medida del valor",
+   "definicion": "Para Smith, el trabajo es la medida real del valor de cambio de todas las mercancías.",
+   "pagina": 54,
+   "cita": "Labour therefore, is the real measure of the exchangeable value of all commodities."
+  },
+  {
+   "termino": "Precio natural y precio de mercado",
+   "definicion": "El precio de mercado es el efectivo; el natural es el que lo cubre todo y hacia el que tiende.",
+   "pagina": 53,
+   "cita": "the market price, that is, the actual price of commodities, from coinciding exactly with what may be called their natural price. I shall endeavour"
+  },
+  {
+   "termino": "Demanda efectiva",
+   "definicion": "La de quienes están dispuestos a pagar todo lo que cuesta llevar la mercancía al mercado.",
+   "pagina": 107,
+   "cita": "Such people may be called the effectual demanders, and their demand the effectual demand; since it maybe sufficient to effectuate the bringing of the commodity to"
+  },
+  {
+   "termino": "Capital circulante",
+   "definicion": "El que se emplea y se recupera con ganancia al cambiar de manos.",
+   "pagina": 495,
+   "cita": "may very properly be called circulating capitals. Secondly, it may be employed in the"
+  },
+  {
+   "termino": "Consumo como fin de la producción",
+   "definicion": "El interés del productor solo importa en cuanto sirve al del consumidor.",
+   "pagina": 1229,
+   "cita": "Consumption is the sole end and purpose of all production; and the interest of the producer ought to be attended to, only so far as it"
   }
  ],
- "frameworks": [],
+ "frameworks": [
+  {
+   "nombre": "Tres causas de la mayor productividad por la división del trabajo",
+   "resumen": "Smith atribuye el aumento de la capacidad productiva a tres circunstancias.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Más destreza en cada trabajador",
+     "descripcion": "Quien repite una sola tarea la hace cada vez mejor.",
+     "pagina": 15,
+     "cita": "first, to the increase of dexterity in every particular workman; secondly, to"
+    },
+    {
+     "orden": 2,
+     "titulo": "Ahorro del tiempo que se pierde al cambiar de tarea",
+     "descripcion": "Pasar de una labor a otra consume tiempo.",
+     "pagina": 15,
+     "cita": "secondly, to the saving of the time which is commonly lost in passing from one species of work to another; and, lastly"
+    },
+    {
+     "orden": 3,
+     "titulo": "Invención de máquinas que abrevian el trabajo",
+     "descripcion": "Las máquinas permiten que un hombre haga el trabajo de muchos.",
+     "pagina": 15,
+     "cita": "lastly, to the invention of a great number of machines which facilitate and abridge labour, and enable one man to do the work of"
+    }
+   ]
+  },
+  {
+   "nombre": "Los tres deberes del soberano",
+   "resumen": "En el sistema de libertad natural, el soberano solo atiende tres deberes.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Proteger a la sociedad de la violencia externa",
+     "descripcion": "Defensa frente a otras sociedades independientes.",
+     "pagina": 1283,
+     "cita": "first, the duty of protecting the society from the violence and invasion of other independent societies; secondly, the duty of protecting, as far as"
+    },
+    {
+     "orden": 2,
+     "titulo": "Establecer una justicia exacta",
+     "descripcion": "Proteger a cada miembro de la injusticia de los demás.",
+     "pagina": 1283,
+     "cita": "secondly, the duty of protecting, as far as possible, every member of the society from the injustice or oppression of every other member of it, or the duty"
+    },
+    {
+     "orden": 3,
+     "titulo": "Erigir y mantener ciertas obras públicas",
+     "descripcion": "Las que a ningún particular le conviene sostener.",
+     "pagina": 1283,
+     "cita": "thirdly, the duty of erecting and maintaining certain public works, and certain public institutions, which it can never be for the interest of any"
+    }
+   ]
+  }
+ ],
  "checklists": [
   {
    "nombre": "Las cuatro máximas de los impuestos",
@@ -39,6 +132,33 @@
      "texto": "Que saque y deje fuera de los bolsillos lo menos posible",
      "pagina": 1551,
      "cita": "4. Every tax ought to be so contrived, as both to take out and to keep out of the pockets of the people as little as possible, over and above"
+    }
+   ]
+  },
+  {
+   "nombre": "Reglas de política económica de Smith",
+   "contexto": "Para evaluar una decisión de compra, producción, salarios o comercio.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "No produzcas en casa lo que te cuesta más que comprarlo",
+     "pagina": 821,
+     "cita": "never to attempt to make at home what it will cost him more to make than to buy. The tailor does not attempt to make his own shoes, but buys"
+    },
+    {
+     "texto": "Los salarios altos estimulan la laboriosidad",
+     "pagina": 154,
+     "cita": "The wages of labour are the encouragement of industry, which, like every other human quality, improves in proportion to the"
+    },
+    {
+     "texto": "Una recompensa generosa del trabajo es señal de riqueza creciente",
+     "pagina": 139,
+     "cita": "The liberal reward of labour, therefore, as it is the necessary effect, so it is the natural symptom of increasing national wealth. The scanty"
+    },
+    {
+     "texto": "Un monopolio funciona como un secreto de comercio: mantiene el mercado desabastecido",
+     "pagina": 118,
+     "cita": "A monopoly granted either to an individual or to a trading company, has the same effect as a secret in trade or manufactures. The"
     }
    ]
   }

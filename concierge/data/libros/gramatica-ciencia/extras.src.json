@@ -43,6 +43,60 @@
      "palabras": 24
     }
    ]
+  },
+  {
+   "nombre": "Para revisar si un razonamiento es científico",
+   "contexto": "Antes de aceptar una conclusión o de presentar un análisis como objetivo.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Observá la correlación y la secuencia, y juzgá de forma absoluta, no individual",
+     "buscar": "the observation of their correlation and sequence, the resulting absolute",
+     "palabras": 28
+    },
+    {
+     "texto": "Liberate del sesgo individual al formar juicios",
+     "buscar": "freed from individual bias in the formation of its judg",
+     "palabras": 20
+    },
+    {
+     "texto": "Cualquiera que clasifica hechos y describe sus secuencias aplica el método científico",
+     "buscar": "The man who classifies facts of any kind whatever",
+     "palabras": 32
+    }
+   ]
+  }
+ ],
+ "glosario": [
+  {
+   "termino": "Ley científica",
+   "definicion": "Es una descripción, no una prescripción: vale para todos los humanos normales.",
+   "buscar": "the scientific law is a description, not a pre- scription",
+   "palabras": 30
+  },
+  {
+   "termino": "Economía del pensamiento",
+   "definicion": "La ciencia permite actuar con el mínimo de pensamiento sobre impresiones almacenadas.",
+   "buscar": "Science is in this respect an economy of thought",
+   "palabras": 22
+  },
+  {
+   "termino": "Taquigrafía mental",
+   "definicion": "Una ley resume en una fórmula una gran cantidad de secuencias observadas.",
+   "buscar": "by what we may term mental shorthand, resumes a vast number of observed sequences",
+   "palabras": 20
+  },
+  {
+   "termino": "Ley en sentido científico",
+   "definicion": "Un producto de la mente humana, sin sentido fuera del ser humano.",
+   "buscar": "Law in the scientific sense is thus essentially a product of the human mind",
+   "palabras": 24
+  },
+  {
+   "termino": "Causación y probabilidad",
+   "definicion": "Que una secuencia se repitió es causación; que seguirá repitiéndose es creencia expresada como probabilidad.",
+   "buscar": "expression in the concept causation",
+   "palabras": 30
   }
  ]
 }
