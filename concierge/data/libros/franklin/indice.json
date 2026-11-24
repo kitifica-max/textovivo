@@ -1,8 +1,50 @@
 [
  {
-  "titulo": "Texto completo",
+  "titulo": "Preliminaries",
   "nivel": 1,
   "pagina_inicio": 1,
+  "pagina_fin": 4
+ },
+ {
+  "titulo": "Part One: Youth and Early Career",
+  "nivel": 1,
+  "pagina_inicio": 5,
+  "pagina_fin": 133
+ },
+ {
+  "titulo": "Letters from Abel James and Benjamin Vaughan",
+  "nivel": 1,
+  "pagina_inicio": 134,
+  "pagina_fin": 144
+ },
+ {
+  "titulo": "Part Two: The Plan for Moral Perfection (Passy, 1784)",
+  "nivel": 1,
+  "pagina_inicio": 145,
+  "pagina_fin": 171
+ },
+ {
+  "titulo": "Part Three: Public Projects in Philadelphia (1788)",
+  "nivel": 1,
+  "pagina_inicio": 172,
+  "pagina_fin": 263
+ },
+ {
+  "titulo": "Part Three, continued: Braddock's Expedition and Pennsylvania Politics",
+  "nivel": 1,
+  "pagina_inicio": 264,
+  "pagina_fin": 327
+ },
+ {
+  "titulo": "Chronology of Franklin's Life",
+  "nivel": 1,
+  "pagina_inicio": 328,
+  "pagina_fin": 330
+ },
+ {
+  "titulo": "Appendix: On Franklin's Autobiography",
+  "nivel": 1,
+  "pagina_inicio": 331,
   "pagina_fin": 334
  }
 ]

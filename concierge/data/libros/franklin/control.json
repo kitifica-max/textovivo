@@ -5,7 +5,7 @@
  "fuente_sha256": "0bd4abdeef93784df384545f5830b57c80ab11b7f84598f367307ad548d0bada",
  "paginacion": "logica",
  "paginas": 334,
- "capitulos": 1,
+ "capitulos": 8,
  "aprobado": true,
  "controles": {
   "paginas": {
@@ -21,12 +21,12 @@
   "indice_cobertura": {
    "ok": true,
    "nivel": "error",
-   "detalle": "1 secciones cubren las 334 páginas"
+   "detalle": "8 secciones cubren las 334 páginas"
   },
   "configuracion": {
-   "ok": false,
+   "ok": true,
    "nivel": "aviso",
-   "detalle": "un solo capítulo en un libro de 334 páginas (¿falló el patrón?)"
+   "detalle": "sin sospechas"
   },
   "fidelidad": {
    "ok": true,

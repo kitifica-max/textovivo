@@ -111,7 +111,7 @@ function ejemplo(d: Libro) {
           </div>
         </div>
         <div>
-          <span class="micro etiqueta" style="color:#df2a1f">Con Textifika</span>
+          <span class="micro etiqueta" style="color:#c8231a">Con Textifika</span>
           <div class="terminal">
             <div class="barra"><i></i><i></i><i></i><span>claude · Textifika</span></div>
             <div class="cuerpo">
@@ -185,11 +185,11 @@ ${d.indice.map((s, i) => `        <li><span class="n">${String(i + 1).padStart(2
     </div>
   </section>`;
 
+  const resumenMeta = `${titulo}, de ${d.autor}. ${d.descripcion} Consultalo desde tu IA con citas literales.`.slice(0, 300);
   const pagina = `<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -197,6 +197,13 @@ ${d.indice.map((s, i) => `        <li><span class="n">${String(i + 1).padStart(2
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#f3f0e8">
 <title>${esc(titulo)} — Textifika</title>
+<meta name="description" content="${esc(resumenMeta)}">
+<link rel="canonical" href="https://textifika.kitifica.com/libros/${f.id}">
+<meta property="og:site_name" content="Textifika">
+<meta property="og:type" content="book">
+<meta property="og:title" content="${esc(titulo)} — Textifika">
+<meta property="og:description" content="${esc(resumenMeta)}">
+<meta property="og:url" content="https://textifika.kitifica.com/libros/${f.id}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -300,4 +307,8 @@ ${secFrameworks}${secChecklists}${ejemplo(d)}${secGlosario}${secIndice}
   await writeFile(`../diseno/libros/${f.id}.html`, pagina);
   n++;
 }
+// Mapa del sitio: páginas públicas + una ficha por libro disponible.
+const BASE = "https://textifika.kitifica.com";
+const urls = ["/", "/biblioteca", "/guia", "/autores", "/terminos", "/privacidad", ...fichas.filter(disponible).map((f) => `/libros/${f.id}`)];
+await writeFile("../diseno/sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${BASE}${u}</loc></url>\n`).join("")}</urlset>\n`);
 console.log(`biblioteca: ${fichas.filter(disponible).length} disponibles de ${fichas.length}; fichas nuevas: ${n}`);

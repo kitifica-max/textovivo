@@ -175,12 +175,12 @@
   "aprobado": true,
   "paginacion": "logica",
   "paginas": 334,
-  "capitulos": 1,
+  "capitulos": 8,
   "controles": {
    "paginas": "ok: 334 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
    "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
-   "indice_cobertura": "ok: 1 secciones cubren las 334 páginas",
-   "configuracion": "aviso: un solo capítulo en un libro de 334 páginas (¿falló el patrón?)",
+   "indice_cobertura": "ok: 8 secciones cubren las 334 páginas",
+   "configuracion": "ok: sin sospechas",
    "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 10 de 10 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
    "citas": "ok: 17 de 17 citas existen literalmente en su página"

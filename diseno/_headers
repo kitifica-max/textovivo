@@ -1,6 +1,5 @@
-# Es un prototipo: que no lo indexen los buscadores
+# Las páginas privadas llevan su propio <meta name="robots" content="noindex">; las públicas (inicio, biblioteca, fichas) sí se indexan.
 /*
-  X-Robots-Tag: noindex
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains

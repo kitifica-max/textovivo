@@ -129,12 +129,12 @@
   /* El préstamo ocupa dos columnas: es lo más importante del panel */
   .prestamo { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 0 6cqi; align-content: start; }
   .prestamo > * { grid-column: 1; }
-  .prestamo .titulo { margin-top: 14cqi; font-size: 10cqi; color: #ffb089; text-align: left; }
+  .prestamo .titulo { margin-top: 14cqi; font-size: 10cqi; color: #ffd2b8; text-align: left; }
   .prestamo .lado { grid-column: 2; grid-row: 1 / span 3; align-self: end; padding-top: 16cqi; }
-  .prestamo .dias { font: 800 15cqi/0.85 var(--sans); letter-spacing: -0.05em; margin: 0; }
-  .prestamo .dias small { display: block; font: 600 max(0.8rem, 2.6cqi)/1.3 var(--sans); letter-spacing: 0; margin-top: 6px; }
+  .prestamo .dias { font: 800 15cqi/0.85 var(--sans); letter-spacing: -0.05em; margin: 0; color: #ffd2b8; }
+  .prestamo .dias small { display: block; font: 600 max(0.8rem, 2.6cqi)/1.3 var(--sans); letter-spacing: 0; margin-top: 6px; color: #fff; }
   .prestamo .medidor { margin: 14px 0 6px; }
-  .prestamo .uso { font: 500 max(0.75rem, 2.3cqi)/1.3 var(--sans); }
+  .prestamo .uso { font: 500 max(0.75rem, 2.3cqi)/1.3 var(--sans); color: #fff; }
   @media (max-width: 680px) {
     .prestamo { grid-template-columns: 1fr; }
     .prestamo .lado { grid-column: 1; grid-row: auto; margin-top: 10cqi; }
@@ -231,7 +231,7 @@
           <div id="plan-acciones" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center"><button class="boton chico" type="button" id="plan-pagar"></button><span class="nota" id="plan-msg" role="status"></span></div>
         </div>
         <form id="form-doc" class="subida" hidden novalidate>
-          <input id="doc-archivo" class="sr-only" type="file" accept=".pdf,.txt,.md,application/pdf,text/plain,text/markdown" tabindex="-1" aria-hidden="true">
+          <input id="doc-archivo" class="sr-only" type="file" accept=".pdf,.txt,.md,application/pdf,text/plain,text/markdown" tabindex="-1" aria-hidden="true" aria-label="Elegir un archivo">
           <div id="zona" class="zona" role="button" tabindex="0" data-estado="vacio" aria-describedby="zona-ayuda">
             <div class="z-vacio">
               <span class="z-icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 17v-6"/><path d="m9.5 13.5 2.5-2.5 2.5 2.5"/></svg></span>

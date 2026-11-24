@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /c/
+Disallow: /pago/
+Disallow: /panel
+Disallow: /mi-biblioteca
+Disallow: /subir
+Disallow: /revision
+
+Sitemap: https://textifika.kitifica.com/sitemap.xml
