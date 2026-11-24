@@ -1,0 +1,45 @@
+{
+ "glosario": [
+  {
+   "termino": "Publicidad con clave (keyed)",
+   "definicion": "Anuncios con un cupón o código para saber cuál trajo cada respuesta y comparar métodos con resultados.",
+   "pagina": 2,
+   "cita": "This is done through Keyed advertising, by traced returns, largely by the use of coupons. We compare one way with many others, backward and"
+  }
+ ],
+ "frameworks": [],
+ "checklists": [
+  {
+   "nombre": "Principios de Hopkins para revisar un anuncio",
+   "contexto": "Para revisar un anuncio o una campaña antes de publicarlos.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "El único fin de la publicidad es vender",
+     "pagina": 7,
+     "cita": "The only purpose of advertising is to make sales. It is profitable or unprofitable according to its actual sales. It"
+    },
+    {
+     "texto": "No escribas para entretener",
+     "pagina": 10,
+     "cita": "Ads are not written to entertain. When they do, those entertainment seekers are little likely to be the people whom"
+    },
+    {
+     "texto": "Ofrecé un servicio: la gente es egoísta",
+     "pagina": 12,
+     "cita": "Remember the people you address are selfish, as we all are. They care nothing about your interest or your profit. They seek"
+    },
+    {
+     "texto": "Sé específico: las generalidades no dejan huella",
+     "pagina": 33,
+     "cita": "Platitudes and generalities roll off the human understanding like water from a duck. They leave no impression whatever. To say"
+    },
+    {
+     "texto": "Medí: compará métodos con resultados rastreados",
+     "pagina": 2,
+     "cita": "We compare one way with many others, backward and forward, and record the results. When one method invariably proves best, that method"
+    }
+   ]
+  }
+ ]
+}

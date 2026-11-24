@@ -1,0 +1,33 @@
+{
+ "glosario": [],
+ "frameworks": [],
+ "checklists": [
+  {
+   "nombre": "Plan de Bennett para aprovechar el día",
+   "contexto": "Para revisar cómo usás tu tiempo libre.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Levantate más temprano",
+     "pagina": 6,
+     "cita": "get up earlier in the morning. You say you cannot. You say it is impossible for you to go earlier"
+    },
+    {
+     "texto": "Dejá tres tardes libres para amigos y descanso",
+     "pagina": 29,
+     "cita": "You will still be left with three evenings for friends, bridge, tennis, domestic scenes, odd reading, pipes, gardening, pottering, and prize competitions."
+    },
+    {
+     "texto": "Siete horas y media por semana de estudio",
+     "pagina": 32,
+     "cita": "one hour and a half on three evenings a week. Total, seven hours and a half a week."
+    },
+    {
+     "texto": "Entrená la concentración camino al trabajo",
+     "pagina": 37,
+     "cita": "When you leave your house, concentrate your mind on a subject (no matter what, to begin with). You will not have gone ten yards"
+    }
+   ]
+  }
+ ]
+}

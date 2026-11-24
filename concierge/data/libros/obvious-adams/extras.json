@@ -1,0 +1,28 @@
+{
+ "glosario": [],
+ "frameworks": [],
+ "checklists": [
+  {
+   "nombre": "Cómo trabaja Adams un problema",
+   "contexto": "Para atacar un problema de negocio o de comunicación.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Mirá los hechos de frente y analizalos",
+     "pagina": 19,
+     "cita": "he just looks them squarely in the face and then proceeds to analyze, and that is half of the battle.\" Thus spoke Mr. Oswald"
+    },
+    {
+     "texto": "Conseguí los hechos antes de opinar",
+     "pagina": 20,
+     "cita": "He had to have the facts. He was given a guide, and for the next two"
+    },
+    {
+     "texto": "Un cambio simple, aprobado, puede bastar",
+     "pagina": 8,
+     "cita": "The change was simple and he was told to go ahead. After the new plan had"
+    }
+   ]
+  }
+ ]
+}

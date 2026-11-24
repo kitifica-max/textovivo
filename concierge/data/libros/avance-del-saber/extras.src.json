@@ -1,0 +1,29 @@
+{
+ "frameworks": [
+  {
+   "nombre": "Las tres vanidades del saber",
+   "resumen": "Bacon distingue tres vanidades por las que el estudio ha sido criticado.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Aprendizaje fantástico",
+     "descripcion": "Vanas imaginaciones.",
+     "buscar": "the first, fantastical learning",
+     "palabras": 10
+    },
+    {
+     "titulo": "Aprendizaje contencioso",
+     "descripcion": "Vanas disputas.",
+     "buscar": "the second, contentious learning",
+     "palabras": 10
+    },
+    {
+     "titulo": "Aprendizaje delicado",
+     "descripcion": "Vana afectación.",
+     "buscar": "and the last, delicate learning",
+     "palabras": 14
+    }
+   ]
+  }
+ ]
+}

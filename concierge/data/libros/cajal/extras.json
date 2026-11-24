@@ -1,0 +1,28 @@
+{
+ "glosario": [],
+ "frameworks": [],
+ "checklists": [
+  {
+   "nombre": "Cualidades del investigador según Cajal",
+   "contexto": "Para revisar tus condiciones y hábitos de trabajo científico.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Curiosidad intelectual y perseverancia en el trabajo",
+     "pagina": 46,
+     "cita": "la curiosidad intelectual, la perseverancia en el trabajo, la religión de la patria y el amor a la gloria. De"
+    },
+    {
+     "texto": "Sentido crítico y espíritu de duda",
+     "pagina": 49,
+     "cita": "sentido crítico y al espíritu de duda. Cierto que no es tan urgente hoy"
+    },
+    {
+     "texto": "Patriotismo como estímulo del sabio",
+     "pagina": 70,
+     "cita": "Entre los sentimientos que deben animar al hombre de ciencia, merece particular mención el patriotismo. Este sentimiento tiene en ei sabio signo exclusivamente positivo"
+    }
+   ]
+  }
+ ]
+}

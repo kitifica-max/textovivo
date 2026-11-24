@@ -1,0 +1,33 @@
+{
+ "glosario": [],
+ "frameworks": [],
+ "checklists": [
+  {
+   "nombre": "Revisión de la mañana de Marco Aurelio",
+   "contexto": "Para prepararte al día y a los tratos difíciles.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Anticipá a la gente difícil antes de salir",
+     "pagina": 41,
+     "cita": "Betimes in the morning say to thyself, This day I shalt have to do with an idle curious man, with an unthankful man, a railer, a crafty, false, or an"
+    },
+    {
+     "texto": "Podés retirarte dentro de vos cuando quieras",
+     "pagina": 70,
+     "cita": "it is in thy power to retire into thyself, and to be at rest, and free from all businesses."
+    },
+    {
+     "texto": "Dondequiera que vivas, podés vivir bien",
+     "pagina": 108,
+     "cita": "there it is in thy power to live well and happy. But thou mayest live at the Court, there then"
+    },
+    {
+     "texto": "Que tu opinión no contradiga la naturaleza ni la razón",
+     "pagina": 65,
+     "cita": "that thy opinion do not beget in thy understanding anything contrary to either nature, or the proper constitution of a rational creature. The end"
+    }
+   ]
+  }
+ ]
+}

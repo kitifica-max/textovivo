@@ -1,0 +1,48 @@
+{
+ "frameworks": [
+  {
+   "nombre": "Rasgos del método científico",
+   "resumen": "Pearson resume el método científico en tres rasgos.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Clasificar los hechos con cuidado",
+     "descripcion": "Observar su correlación y secuencia.",
+     "buscar": "(a) Careful and accurate classification of facts",
+     "palabras": 18
+    },
+    {
+     "titulo": "Descubrir leyes con imaginación creadora",
+     "descripcion": "Las leyes salen de la imaginación aplicada a los hechos.",
+     "buscar": "the discovery of scientific laws by aid of the creative imagina",
+     "palabras": 14
+    },
+    {
+     "titulo": "Autocrítica y validez para todos",
+     "descripcion": "El contraste final es la validez igual para toda mente normal.",
+     "buscar": "self-criticism and the final touchstone",
+     "palabras": 16
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Criterios de ciencia de Pearson",
+   "contexto": "Para revisar si un razonamiento es científico.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "La unidad de la ciencia está en su método, no en su material",
+     "buscar": "The unity of all science consists alone in its method",
+     "palabras": 22
+    },
+    {
+     "texto": "Clasificar hechos y juzgar sin sesgo individual",
+     "buscar": "The classification of facts and the formation of absolute judgments",
+     "palabras": 24
+    }
+   ]
+  }
+ ]
+}

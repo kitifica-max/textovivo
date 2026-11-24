@@ -1,0 +1,36 @@
+{
+ "glosario": [
+  {
+   "termino": "Fricción",
+   "definicion": "El peligro, el esfuerzo y la incertidumbre de la guerra le restan eficacia a lo planeado.",
+   "pagina": 112,
+   "cita": "Danger in War belongs to its friction; a correct idea of its influence is necessary for truth of perception, and therefore it is brought"
+  },
+  {
+   "termino": "Guerra como continuación de la política",
+   "definicion": "La guerra es un instrumento político, no solo un acto político.",
+   "pagina": 33,
+   "cita": "24. WAR IS A MERE CONTINUATION OF POLICY BY OTHER MEANS. We see, therefore, that War is not merely a political act, but also a real political instrument, a continuation"
+  }
+ ],
+ "frameworks": [],
+ "checklists": [
+  {
+   "nombre": "Ideas centrales de Clausewitz",
+   "contexto": "Para pensar un conflicto o una competencia.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "El fin de toda acción es desarmar al enemigo",
+     "pagina": 6,
+     "cita": "the aim of all action in War is to disarm the enemy, and we shall now show that this, theoretically at least, is indispensable."
+    },
+    {
+     "texto": "Todo acto de guerra es un instrumento de la política",
+     "pagina": 33,
+     "cita": "War is not merely a political act, but also a real political instrument, a continuation of political commerce, a carrying out of the same by other means. All beyond this"
+    }
+   ]
+  }
+ ]
+}

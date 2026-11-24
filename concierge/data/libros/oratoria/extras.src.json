@@ -1,0 +1,31 @@
+{
+ "checklists": [
+  {
+   "nombre": "Antes de hablar en público",
+   "contexto": "Para prepararte antes de dar un discurso.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Sabé tu tema mejor que tu público",
+     "buscar": "Know your subject better than your hearers know it",
+     "palabras": 20
+    },
+    {
+     "texto": "Practicá, practicá, practicá",
+     "buscar": "Practise, practise, PRACTISE",
+     "palabras": 14
+    },
+    {
+     "texto": "Vivía con tu tema hasta estar convencido",
+     "buscar": "Live with your subject until you are convinced",
+     "palabras": 20
+    },
+    {
+     "texto": "Sé natural",
+     "buscar": "warn the student that he must be natural",
+     "palabras": 16
+    }
+   ]
+  }
+ ]
+}

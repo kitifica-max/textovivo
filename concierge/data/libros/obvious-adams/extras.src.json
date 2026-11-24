@@ -1,0 +1,26 @@
+{
+ "checklists": [
+  {
+   "nombre": "Cómo trabaja Adams un problema",
+   "contexto": "Para atacar un problema de negocio o de comunicación.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Mirá los hechos de frente y analizalos",
+     "buscar": "he just looks them squarely in the face and then proceeds to analyze",
+     "palabras": 24
+    },
+    {
+     "texto": "Conseguí los hechos antes de opinar",
+     "buscar": "He had to have the facts",
+     "palabras": 16
+    },
+    {
+     "texto": "Un cambio simple, aprobado, puede bastar",
+     "buscar": "The change was simple and he was told to go ahead",
+     "palabras": 16
+    }
+   ]
+  }
+ ]
+}

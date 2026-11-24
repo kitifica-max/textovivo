@@ -1,0 +1,35 @@
+{
+ "glosario": [
+  {
+   "termino": "Gobierno invisible",
+   "definicion": "Quienes manipulan los hábitos y opiniones de las masas forman el verdadero poder gobernante.",
+   "buscar": "constitute an invisible government which is the true ruling power of our country",
+   "palabras": 24
+  },
+  {
+   "termino": "Consejero en relaciones públicas",
+   "definicion": "El agente que, con los medios modernos y los grupos sociales, lleva una idea a la conciencia del público.",
+   "buscar": "The public relations counsel, then, is the agent who",
+   "palabras": 30
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Ideas centrales de Bernays",
+   "contexto": "Para entender cómo se forma la opinión pública.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "La manipulación consciente de hábitos y opiniones es un elemento de la sociedad democrática",
+     "buscar": "The conscious and intelligent manipulation of the organized habits and opinions of the masses",
+     "palabras": 30
+    },
+    {
+     "texto": "El grupo tiene características mentales distintas de las del individuo",
+     "buscar": "has mental characteristics distinct from those of the individual",
+     "palabras": 24
+    }
+   ]
+  }
+ ]
+}

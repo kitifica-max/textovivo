@@ -1,0 +1,87 @@
+{
+ "frameworks": [
+  {
+   "nombre": "Las siete curas para una bolsa vacía",
+   "resumen": "Siete reglas de Arkad para pasar de gastar todo a acumular y hacer crecer el dinero.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Empezá a engordar tu bolsa",
+     "descripcion": "Apartar una parte de cada ingreso antes de gastar.",
+     "buscar": "THE FIRST CURE Start thy purse to fattening",
+     "palabras": 14
+    },
+    {
+     "titulo": "Controlá tus gastos",
+     "descripcion": "Presupuestar para que sobren monedas.",
+     "buscar": "THE SECOND CURE Control thy expenditures",
+     "palabras": 14
+    },
+    {
+     "titulo": "Hacé multiplicar tu oro",
+     "descripcion": "Ponerlo a trabajar en vez de dejarlo quieto.",
+     "buscar": "THE THIRD CURE Make thy gold multiply",
+     "palabras": 14
+    },
+    {
+     "titulo": "Protegé tus tesoros de la pérdida",
+     "descripcion": "No arriesgar donde no se conoce el negocio.",
+     "buscar": "THE FOURTH CURE Guard thy treasures from loss",
+     "palabras": 14
+    },
+    {
+     "titulo": "Hacé de tu casa una buena inversión",
+     "descripcion": "Dejar de pagar alquiler a otro.",
+     "buscar": "THE FIFTH CURE Make of thy dwelling a profitable investment",
+     "palabras": 14
+    },
+    {
+     "titulo": "Asegurá un ingreso futuro",
+     "descripcion": "Prever la vejez y la protección de la familia.",
+     "buscar": "THE SIXTH CURE Insure a future income",
+     "palabras": 14
+    },
+    {
+     "titulo": "Aumentá tu capacidad de ganar",
+     "descripcion": "Invertir en saber más y hacer mejor tu oficio.",
+     "buscar": "THE SEVENTH CURE Increase thy ability to earn",
+     "palabras": 14
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Las cinco leyes del oro",
+   "contexto": "Para revisar una decisión de ahorro o inversión.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "El oro llega a quien aparta al menos un décimo",
+     "buscar": "I. Gold cometh gladly",
+     "palabras": 30
+    },
+    {
+     "texto": "El oro trabaja para quien lo emplea con sabiduría",
+     "buscar": "II. Gold laboreth diligently",
+     "palabras": 28
+    },
+    {
+     "texto": "El oro se queda con el dueño cauto que sigue buen consejo",
+     "buscar": "III. Gold clingeth",
+     "palabras": 26
+    },
+    {
+     "texto": "El oro huye de quien invierte en lo que no conoce",
+     "buscar": "IV. Gold slippeth away",
+     "palabras": 30
+    },
+    {
+     "texto": "El oro huye de quien busca ganancias imposibles",
+     "buscar": "V. Gold flees",
+     "palabras": 30
+    }
+   ]
+  }
+ ]
+}

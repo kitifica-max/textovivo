@@ -1,0 +1,95 @@
+{
+ "glosario": [],
+ "frameworks": [
+  {
+   "nombre": "Las siete curas para una bolsa vacía",
+   "resumen": "Siete reglas de Arkad para pasar de gastar todo a acumular y hacer crecer el dinero.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Empezá a engordar tu bolsa",
+     "descripcion": "Apartar una parte de cada ingreso antes de gastar.",
+     "pagina": 42,
+     "cita": "THE FIRST CURE Start thy purse to fattening Arkad addressed a thoughtful man in"
+    },
+    {
+     "orden": 2,
+     "titulo": "Controlá tus gastos",
+     "descripcion": "Presupuestar para que sobren monedas.",
+     "pagina": 44,
+     "cita": "THE SECOND CURE Control thy expenditures 19"
+    },
+    {
+     "orden": 3,
+     "titulo": "Hacé multiplicar tu oro",
+     "descripcion": "Ponerlo a trabajar en vez de dejarlo quieto.",
+     "pagina": 47,
+     "cita": "THE THIRD CURE Make thy gold multiply"
+    },
+    {
+     "orden": 4,
+     "titulo": "Protegé tus tesoros de la pérdida",
+     "descripcion": "No arriesgar donde no se conoce el negocio.",
+     "pagina": 50,
+     "cita": "THE FOURTH CURE Guard thy treasures from loss \"Misfortune loves a shining mark. Gold"
+    },
+    {
+     "orden": 5,
+     "titulo": "Hacé de tu casa una buena inversión",
+     "descripcion": "Dejar de pagar alquiler a otro.",
+     "pagina": 52,
+     "cita": "THE FIFTH CURE Make of thy dwelling a profitable investment \"If a man setteth"
+    },
+    {
+     "orden": 6,
+     "titulo": "Asegurá un ingreso futuro",
+     "descripcion": "Prever la vejez y la protección de la familia.",
+     "pagina": 54,
+     "cita": "THE SIXTH CURE Insure a future income \"The life of every man proceedeth from"
+    },
+    {
+     "orden": 7,
+     "titulo": "Aumentá tu capacidad de ganar",
+     "descripcion": "Invertir en saber más y hacer mejor tu oficio.",
+     "pagina": 57,
+     "cita": "THE SEVENTH CURE Increase thy ability to earn \"This day do I speak to"
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Las cinco leyes del oro",
+   "contexto": "Para revisar una decisión de ahorro o inversión.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "El oro llega a quien aparta al menos un décimo",
+     "pagina": 87,
+     "cita": "I. Gold cometh gladly and in increasing quantity to any man who will put by not less than one-tenth of his earngs to create an estate for his future and"
+    },
+    {
+     "texto": "El oro trabaja para quien lo emplea con sabiduría",
+     "pagina": 87,
+     "cita": "II. Gold laboreth diligently and contentedly for the wise owner who finds for it profitable employment, multiplying even as the flocks of the field. III. Gold clingeth to"
+    },
+    {
+     "texto": "El oro se queda con el dueño cauto que sigue buen consejo",
+     "pagina": 87,
+     "cita": "III. Gold clingeth to the protection of the cautious owner who invests it under the advice of men wise in its handling. IV. Gold slippeth away"
+    },
+    {
+     "texto": "El oro huye de quien invierte en lo que no conoce",
+     "pagina": 87,
+     "cita": "IV. Gold slippeth away from the man who invests it in businesses or purposes with which he is not familiar or which are not approved by those skilled in its"
+    },
+    {
+     "texto": "El oro huye de quien busca ganancias imposibles",
+     "pagina": 88,
+     "cita": "V. Gold flees the man who would force it to impossible earnings or who followeth the alluring advice of tricksters and schemers or who trusts it to his own inexperience"
+    }
+   ]
+  }
+ ]
+}

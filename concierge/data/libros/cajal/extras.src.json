@@ -1,0 +1,26 @@
+{
+ "checklists": [
+  {
+   "nombre": "Cualidades del investigador según Cajal",
+   "contexto": "Para revisar tus condiciones y hábitos de trabajo científico.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Curiosidad intelectual y perseverancia en el trabajo",
+     "buscar": "la curiosidad intelectual, la perseverancia en el trabajo",
+     "palabras": 20
+    },
+    {
+     "texto": "Sentido crítico y espíritu de duda",
+     "buscar": "sentido crítico y al espíritu de duda",
+     "palabras": 14
+    },
+    {
+     "texto": "Patriotismo como estímulo del sabio",
+     "buscar": "Entre los sentimientos que deben animar al hombre de ciencia",
+     "palabras": 24
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "glosario": [],
+ "frameworks": [
+  {
+   "nombre": "Rasgos del método científico",
+   "resumen": "Pearson resume el método científico en tres rasgos.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Clasificar los hechos con cuidado",
+     "descripcion": "Observar su correlación y secuencia.",
+     "pagina": 66,
+     "cita": "(a) Careful and accurate classification of facts and observation of their correlation and sequence ; (6) the discovery"
+    },
+    {
+     "orden": 2,
+     "titulo": "Descubrir leyes con imaginación creadora",
+     "descripcion": "Las leyes salen de la imaginación aplicada a los hechos.",
+     "pagina": 66,
+     "cita": "the discovery of scientific laws by aid of the creative imagina- tion ; (c)"
+    },
+    {
+     "orden": 3,
+     "titulo": "Autocrítica y validez para todos",
+     "descripcion": "El contraste final es la validez igual para toda mente normal.",
+     "pagina": 66,
+     "cita": "self-criticism and the final touchstone of equal validity for all normally constituted minds. 3. The claims"
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Criterios de ciencia de Pearson",
+   "contexto": "Para revisar si un razonamiento es científico.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "La unidad de la ciencia está en su método, no en su material",
+     "pagina": 23,
+     "cita": "The unity of all science consists alone in its method, not in its material. The man who classifies facts of any kind"
+    },
+    {
+     "texto": "Clasificar hechos y juzgar sin sesgo individual",
+     "pagina": 11,
+     "cita": "The classification of facts and the formation of absolute judgments upon the basis of this classification — judgments independent of the idio- syncrasies of"
+    }
+   ]
+  }
+ ]
+}

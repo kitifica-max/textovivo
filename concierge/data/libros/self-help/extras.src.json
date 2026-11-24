@@ -1,0 +1,26 @@
+{
+ "checklists": [
+  {
+   "nombre": "Ideas de Smiles sobre el esfuerzo propio",
+   "contexto": "Para revisar si dependés de otros o de tu propio esfuerzo.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "El cielo ayuda a quien se ayuda",
+     "buscar": "HEAVEN helps those who help themselves",
+     "palabras": 18
+    },
+    {
+     "texto": "Todo se apoya en la propia disciplina",
+     "buscar": "upon their own diligent self-culture, self-discipline, and self-control",
+     "palabras": 24
+    },
+    {
+     "texto": "No te desesperes nunca",
+     "buscar": "Never Despair",
+     "palabras": 14
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+{
+ "checklists": [
+  {
+   "nombre": "Plan de Bennett para aprovechar el día",
+   "contexto": "Para revisar cómo usás tu tiempo libre.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Levantate más temprano",
+     "buscar": "get up earlier in the morning",
+     "palabras": 20
+    },
+    {
+     "texto": "Dejá tres tardes libres para amigos y descanso",
+     "buscar": "You will still be left with three evenings",
+     "palabras": 22
+    },
+    {
+     "texto": "Siete horas y media por semana de estudio",
+     "buscar": "one hour and a half on three evenings a week",
+     "palabras": 22
+    },
+    {
+     "texto": "Entrená la concentración camino al trabajo",
+     "buscar": "When you leave your house, concentrate your mind on a subject",
+     "palabras": 24
+    }
+   ]
+  }
+ ]
+}

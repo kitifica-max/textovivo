@@ -141,7 +141,8 @@ function elegir<T extends { nombre: string }>(items: T[], consulta: string, text
     .filter((r) => r.p > 0)
     .sort((a, b) => b.p - a.p);
 
-  if (puntuados.length === 0) return { item: undefined, candidatos: [] };
+  // Si el libro tiene uno solo, es ese: la consulta puede estar en otro idioma o con otras palabras.
+  if (puntuados.length === 0) return { item: items.length === 1 ? items[0] : undefined, candidatos: [] };
   if (puntuados.length === 1 || puntuados[0].p >= 1.5 * puntuados[1].p)
     return { item: puntuados[0].x, candidatos: [] };
   return { item: undefined, candidatos: puntuados.slice(0, 5).map((r) => r.x.nombre) };
@@ -158,7 +159,7 @@ export function obtenerFramework(l: Libro, tema: string) {
   const { item: f, candidatos } = elegir(
     l.frameworks,
     tema,
-    (f) => `${f.resumen} ${f.pasos.map((p) => p.titulo).join(" ")}`
+    (f) => `${f.resumen} ${f.pasos.map((p) => `${p.titulo} ${p.descripcion} ${p.cita}`).join(" ")}`
   );
   if (!f) return sinResultado("frameworks", tema, candidatos, l.frameworks.map((x) => x.nombre));
   return {
@@ -179,7 +180,7 @@ export function obtenerChecklist(l: Libro, tema: string) {
   const { item: c, candidatos } = elegir(
     l.checklists,
     tema,
-    (c) => `${c.contexto} ${c.items.map((i) => i.texto).join(" ")}`
+    (c) => `${c.contexto} ${c.items.map((i) => `${i.texto} ${i.cita}`).join(" ")}`
   );
   if (!c) return sinResultado("checklists", tema, candidatos, l.checklists.map((x) => x.nombre));
   return {

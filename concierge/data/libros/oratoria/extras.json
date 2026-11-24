@@ -1,0 +1,33 @@
+{
+ "glosario": [],
+ "frameworks": [],
+ "checklists": [
+  {
+   "nombre": "Antes de hablar en público",
+   "contexto": "Para prepararte antes de dar un discurso.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Sabé tu tema mejor que tu público",
+     "pagina": 12,
+     "cita": "Know your subject better than your hearers know it, and you have nothing to fear. After Preparing for Success, Expect"
+    },
+    {
+     "texto": "Practicá, practicá, practicá",
+     "pagina": 9,
+     "cita": "Practise, practise, PRACTISE in speaking before an audience will tend to remove all fear"
+    },
+    {
+     "texto": "Vivía con tu tema hasta estar convencido",
+     "pagina": 123,
+     "cita": "Live with your subject until you are convinced of its importance. If your message does not of itself arouse you"
+    },
+    {
+     "texto": "Sé natural",
+     "pagina": 23,
+     "cita": "warn the student that he must be natural. To be natural may be to be monotonous."
+    }
+   ]
+  }
+ ]
+}

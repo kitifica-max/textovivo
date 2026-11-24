@@ -1,0 +1,63 @@
+{
+ "frameworks": [
+  {
+   "nombre": "Tres maneras de conservar un Estado acostumbrado a sus leyes",
+   "resumen": "Maquiavelo ofrece tres cursos para quien quiere conservar ciudades que vivían bajo sus propias leyes.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Arruinarlas",
+     "descripcion": "Destruirlas es el primer camino.",
+     "buscar": "the first is to ruin them",
+     "palabras": 14
+    },
+    {
+     "titulo": "Residir en persona",
+     "descripcion": "Vivir allí el propio príncipe.",
+     "buscar": "the next is to reside there in person",
+     "palabras": 14
+    },
+    {
+     "titulo": "Dejarlas con sus leyes",
+     "descripcion": "Cobrar tributo y poner una oligarquía amiga.",
+     "buscar": "the third is to permit them to live under their own laws",
+     "palabras": 24
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Principios de gobierno de Maquiavelo",
+   "contexto": "Para revisar una decisión de liderazgo o de mando.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Es más seguro ser temido que amado, si hay que elegir",
+     "buscar": "it is much safer to be feared than loved",
+     "palabras": 26
+    },
+    {
+     "texto": "Mirá a quienes rodean al líder: ahí se juzga su criterio",
+     "buscar": "the first opinion which one forms of a prince, and of his understanding",
+     "palabras": 30
+    },
+    {
+     "texto": "Evitá a los aduladores",
+     "buscar": "I do not wish to leave out an important branch of this subject",
+     "palabras": 30
+    },
+    {
+     "texto": "Quien manda debe dedicarse al arte de la guerra",
+     "buscar": "A prince ought to have no other aim or thought",
+     "palabras": 30
+    },
+    {
+     "texto": "No cumplas una promesa si hacerlo te perjudica y su causa ya no existe",
+     "buscar": "cannot, nor ought he to, keep faith",
+     "palabras": 30
+    }
+   ]
+  }
+ ]
+}

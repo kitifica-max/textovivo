@@ -1,0 +1,31 @@
+{
+ "checklists": [
+  {
+   "nombre": "Revisión de la mañana de Marco Aurelio",
+   "contexto": "Para prepararte al día y a los tratos difíciles.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Anticipá a la gente difícil antes de salir",
+     "buscar": "Betimes in the morning say to thyself",
+     "palabras": 30
+    },
+    {
+     "texto": "Podés retirarte dentro de vos cuando quieras",
+     "buscar": "it is in thy power to retire into thyself",
+     "palabras": 20
+    },
+    {
+     "texto": "Dondequiera que vivas, podés vivir bien",
+     "buscar": "there it is in thy power to live well and happy",
+     "palabras": 20
+    },
+    {
+     "texto": "Que tu opinión no contradiga la naturaleza ni la razón",
+     "buscar": "that thy opinion do not beget",
+     "palabras": 24
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,44 @@
+{
+ "glosario": [
+  {
+   "termino": "Publicidad con clave (keyed)",
+   "definicion": "Anuncios con un cupón o código para saber cuál trajo cada respuesta y comparar métodos con resultados.",
+   "buscar": "This is done through Keyed advertising",
+   "palabras": 24
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Principios de Hopkins para revisar un anuncio",
+   "contexto": "Para revisar un anuncio o una campaña antes de publicarlos.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "El único fin de la publicidad es vender",
+     "buscar": "The only purpose of advertising is to make sales",
+     "palabras": 20
+    },
+    {
+     "texto": "No escribas para entretener",
+     "buscar": "Ads are not written to entertain",
+     "palabras": 20
+    },
+    {
+     "texto": "Ofrecé un servicio: la gente es egoísta",
+     "buscar": "Remember the people you address are selfish",
+     "palabras": 22
+    },
+    {
+     "texto": "Sé específico: las generalidades no dejan huella",
+     "buscar": "Platitudes and generalities roll off the human understanding",
+     "palabras": 20
+    },
+    {
+     "texto": "Medí: compará métodos con resultados rastreados",
+     "buscar": "We compare one way with many others",
+     "palabras": 22
+    }
+   ]
+  }
+ ]
+}

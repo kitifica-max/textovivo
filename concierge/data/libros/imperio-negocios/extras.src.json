@@ -1,0 +1,31 @@
+{
+ "checklists": [
+  {
+   "nombre": "Consejos de Carnegie a los jóvenes de negocios",
+   "contexto": "Para revisar tu rumbo profesional y financiero.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Apuntá alto: verte como socio, no como empleado",
+     "buscar": "I would not give a fig for the young man who does not already see himself the partner",
+     "palabras": 30
+    },
+    {
+     "texto": "Concentrá energía, pensamiento y capital en tu negocio",
+     "buscar": "concentrate your energy, thought, and capital exclusively upon the business",
+     "palabras": 24
+    },
+    {
+     "texto": "Poné todos los huevos en una canasta y vigilá la canasta",
+     "buscar": "put all your eggs in one basket, and then watch that basket",
+     "palabras": 24
+    },
+    {
+     "texto": "El excedente de riqueza debe servir al desarrollo propio",
+     "buscar": "Your surplus wealth should contribute",
+     "palabras": 24
+    }
+   ]
+  }
+ ]
+}

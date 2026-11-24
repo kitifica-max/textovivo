@@ -1,0 +1,67 @@
+{
+ "glosario": [],
+ "frameworks": [
+  {
+   "nombre": "Tres maneras de conservar un Estado acostumbrado a sus leyes",
+   "resumen": "Maquiavelo ofrece tres cursos para quien quiere conservar ciudades que vivían bajo sus propias leyes.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Arruinarlas",
+     "descripcion": "Destruirlas es el primer camino.",
+     "pagina": 23,
+     "cita": "the first is to ruin them, the next is to reside there in person"
+    },
+    {
+     "orden": 2,
+     "titulo": "Residir en persona",
+     "descripcion": "Vivir allí el propio príncipe.",
+     "pagina": 23,
+     "cita": "the next is to reside there in person, the third is to permit them"
+    },
+    {
+     "orden": 3,
+     "titulo": "Dejarlas con sus leyes",
+     "descripcion": "Cobrar tributo y poner una oligarquía amiga.",
+     "pagina": 23,
+     "cita": "the third is to permit them to live under their own laws, drawing a tribute, and establishing within it an oligarchy which will keep"
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Principios de gobierno de Maquiavelo",
+   "contexto": "Para revisar una decisión de liderazgo o de mando.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Es más seguro ser temido que amado, si hay que elegir",
+     "pagina": 99,
+     "cita": "it is much safer to be feared than loved, when, of the two, either must be dispensed with. Because this is to be asserted in general"
+    },
+    {
+     "texto": "Mirá a quienes rodean al líder: ahí se juzga su criterio",
+     "pagina": 144,
+     "cita": "the first opinion which one forms of a prince, and of his understanding, is by observing the men he has around him; and when they are capable and faithful he"
+    },
+    {
+     "texto": "Evitá a los aduladores",
+     "pagina": 146,
+     "cita": "I do not wish to leave out an important branch of this subject, for it is a danger from which princes are with difficulty preserved, unless they are very careful"
+    },
+    {
+     "texto": "Quien manda debe dedicarse al arte de la guerra",
+     "pagina": 85,
+     "cita": "A prince ought to have no other aim or thought, nor select anything else for his study, than war and its rules and discipline; for this is the sole art"
+    },
+    {
+     "texto": "No cumplas una promesa si hacerlo te perjudica y su causa ya no existe",
+     "pagina": 104,
+     "cita": "cannot, nor ought he to, keep faith when such observance may be turned against him, and when the reasons that caused him to pledge it exist no longer. If men"
+    }
+   ]
+  }
+ ]
+}

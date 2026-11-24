@@ -1,0 +1,45 @@
+{
+ "glosario": [
+  {
+   "termino": "División del trabajo",
+   "definicion": "El poder de intercambiar da lugar a la división del trabajo; su alcance depende del tamaño del mercado.",
+   "buscar": "As it is the power of exchanging that gives occasion to the division of labour",
+   "palabras": 30
+  },
+  {
+   "termino": "Mano invisible",
+   "definicion": "Cada individuo, al buscar su interés, promueve un fin que no estaba en su intención.",
+   "buscar": "led by an invisible hand to promote an end",
+   "palabras": 20
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Las cuatro máximas de los impuestos",
+   "contexto": "Para evaluar si un impuesto o un cobro es razonable.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Proporcional a la capacidad de cada uno",
+     "buscar": "1. The subjects of every state ought to contribute",
+     "palabras": 30
+    },
+    {
+     "texto": "Cierto y no arbitrario",
+     "buscar": "2. The tax which each individual is bound to pay",
+     "palabras": 30
+    },
+    {
+     "texto": "Cobrado cuando y como sea cómodo pagarlo",
+     "buscar": "3. Every tax ought to be levied at the time",
+     "palabras": 30
+    },
+    {
+     "texto": "Que saque y deje fuera de los bolsillos lo menos posible",
+     "buscar": "4. Every tax ought to be so contrived",
+     "palabras": 30
+    }
+   ]
+  }
+ ]
+}

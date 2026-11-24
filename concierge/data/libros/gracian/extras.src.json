@@ -1,0 +1,95 @@
+{
+ "checklists": [
+  {
+   "nombre": "Aforismos de prudencia para el trabajo y los tratos",
+   "contexto": "Para revisar cómo tratás con la gente y cómo decidís.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "26. Conocer qué mueve a cada persona.",
+     "buscar": "26. Hallarle su torcedor a cada uno.",
+     "palabras": 16,
+     "pagina": 26
+    },
+    {
+     "texto": "55. Saber esperar.",
+     "buscar": "55. Hombre de espera.",
+     "palabras": 16,
+     "pagina": 55
+    },
+    {
+     "texto": "70. Aprender a decir que no.",
+     "buscar": "70. Saber negar.",
+     "palabras": 16,
+     "pagina": 70
+    },
+    {
+     "texto": "105. No abrumar con insistencia.",
+     "buscar": "105. No cansar.",
+     "palabras": 16,
+     "pagina": 105
+    },
+    {
+     "texto": "117. No hablar de uno mismo.",
+     "buscar": "117. Nunca hablar de sí.",
+     "palabras": 16,
+     "pagina": 117
+    },
+    {
+     "texto": "130. Hacer bien y que se note.",
+     "buscar": "130. Hacer, y hacer parecer.",
+     "palabras": 16,
+     "pagina": 130
+    },
+    {
+     "texto": "150. Presentar lo propio.",
+     "buscar": "150. Saber vender sus cosas.",
+     "palabras": 16,
+     "pagina": 150
+    },
+    {
+     "texto": "151. Pensar hoy para mañana.",
+     "buscar": "151. Pensar anticipado",
+     "palabras": 16,
+     "pagina": 151
+    },
+    {
+     "texto": "169. Evitar el error, más que sumar aciertos.",
+     "buscar": "169. Atención a no errar una",
+     "palabras": 16,
+     "pagina": 169
+    },
+    {
+     "texto": "174. Evitar la prisa.",
+     "buscar": "174. No vivir a prisa.",
+     "palabras": 16,
+     "pagina": 174
+    },
+    {
+     "texto": "181. Callar sin mentir.",
+     "buscar": "181. Sin mentir, no decir todas las verdades.",
+     "palabras": 16,
+     "pagina": 181
+    },
+    {
+     "texto": "231. Terminar lo que se empieza.",
+     "buscar": "231. Nunca permitir a medio hacer las cosas.",
+     "palabras": 16,
+     "pagina": 231
+    },
+    {
+     "texto": "287. No decidir con pasión.",
+     "buscar": "287. Nunca obrar apasionado",
+     "palabras": 16,
+     "pagina": 287
+    },
+    {
+     "texto": "299. No saciar.",
+     "buscar": "299. Dejar con hambre.",
+     "palabras": 16,
+     "pagina": 299
+    }
+   ]
+  }
+ ]
+}

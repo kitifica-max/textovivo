@@ -1,0 +1,46 @@
+{
+ "glosario": [
+  {
+   "termino": "División del trabajo",
+   "definicion": "El poder de intercambiar da lugar a la división del trabajo; su alcance depende del tamaño del mercado.",
+   "pagina": 33,
+   "cita": "As it is the power of exchanging that gives occasion to the division of labour, so the extent of this division must always be limited by the extent of that"
+  },
+  {
+   "termino": "Mano invisible",
+   "definicion": "Cada individuo, al buscar su interés, promueve un fin que no estaba en su intención.",
+   "pagina": 819,
+   "cita": "led by an invisible hand to promote an end which was no part of his intention. Nor is it always"
+  }
+ ],
+ "frameworks": [],
+ "checklists": [
+  {
+   "nombre": "Las cuatro máximas de los impuestos",
+   "contexto": "Para evaluar si un impuesto o un cobro es razonable.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Proporcional a la capacidad de cada uno",
+     "pagina": 1549,
+     "cita": "1. The subjects of every state ought to contribute towards the support of the government, as nearly as possible, in proportion to their respective abilities; that is, in proportion to"
+    },
+    {
+     "texto": "Cierto y no arbitrario",
+     "pagina": 1550,
+     "cita": "2. The tax which each individual is bound to pay, ought to be certain and not arbitrary. The time of payment, the manner of payment, the quantity to be paid"
+    },
+    {
+     "texto": "Cobrado cuando y como sea cómodo pagarlo",
+     "pagina": 1551,
+     "cita": "3. Every tax ought to be levied at the time, or in the manner, in which it is most likely to be convenient for the contributor to pay it. A"
+    },
+    {
+     "texto": "Que saque y deje fuera de los bolsillos lo menos posible",
+     "pagina": 1551,
+     "cita": "4. Every tax ought to be so contrived, as both to take out and to keep out of the pockets of the people as little as possible, over and above"
+    }
+   ]
+  }
+ ]
+}
