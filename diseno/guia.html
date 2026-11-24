@@ -28,8 +28,11 @@
   .pasos .poster .titulo code { font: 500 0.82em/1 var(--mono); }
   .pasos .poster .detalle { display: block; margin-top: 12px; font: 500 clamp(0.82rem, 3.6cqi, 0.98rem)/1.4 var(--sans); letter-spacing: 0; opacity: .85; }
   .pasos .poster .titulo { margin-top: 30%; font-size: 8.6cqi; }
+  .pasos-6 { grid-template-columns: repeat(6, 1fr); }
+  .pasos-6 .poster .titulo { margin-top: 42%; font-size: 10.5cqi; }
+  @media (max-width: 1060px) { .pasos-6 { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 900px) { .pasos { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 520px) { .pasos { grid-template-columns: 1fr; } .pasos .poster { aspect-ratio: auto; min-height: 260px; } }
+  @media (max-width: 520px) { .pasos, .pasos-6 { grid-template-columns: 1fr; } .pasos .poster { aspect-ratio: auto; min-height: 260px; } }
   .apartes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
   .apartes p { margin: 0; padding: 14px 16px; border-radius: 14px; background: color-mix(in srgb, var(--tinta) 5%, transparent); font-size: 0.9rem; color: var(--gris); }
   @media (max-width: 680px) { .apartes { grid-template-columns: 1fr; } }
@@ -81,16 +84,32 @@
     </div>
 
     <section class="panel-cliente" id="p-claude" role="tabpanel" aria-labelledby="t-claude">
-      <ol class="grilla pasos" style="list-style:none;padding:0;margin:0">
-        <li class="poster c-blanco"><span class="num">01</span><span class="titulo">Abrí <a class="enlace" href="https://claude.ai/customize/connectors" rel="noopener">Conectores de Claude</a>.</span><span class="detalle">Tocá el enlace: abre la app de Claude en Plugins. Si no, andá a <b>Settings → Plugins</b>.</span></li>
-        <li class="poster c-azul"><span class="num">02</span><span class="titulo">Escribí algo en el buscador.</span><span class="detalle">No se ve un botón Add todavía. Al buscar (por ejemplo «Textifika») aparece la opción <b>Browse plugins</b>.</span></li>
-        <li class="poster c-naranja"><span class="num">03</span><span class="titulo">Tocá Browse plugins.</span><span class="detalle">Se abre el catálogo de plugins y conectores.</span></li>
-        <li class="poster c-menta"><span class="num">04</span><span class="titulo">Tocá Add.</span><span class="detalle">Ahora sí aparece el botón <b>Add</b>.</span></li>
-        <li class="poster c-manteca"><span class="num">05</span><span class="titulo">Elegí Add custom connector.</span><span class="detalle">Es la opción para agregar un conector que no está en el catálogo.</span></li>
+      <div class="segmentado" role="tablist" aria-label="Cómo usás Claude" style="margin-bottom:20px">
+        <button role="tab" id="t-nav" aria-controls="s-nav" aria-selected="true">Desde el navegador</button>
+        <button role="tab" id="t-app" aria-controls="s-app" aria-selected="false" tabindex="-1">Desde la app</button>
+      </div>
+      <div id="s-nav" role="tabpanel" aria-labelledby="t-nav">
+        <ol class="grilla pasos pasos-6" style="list-style:none;padding:0;margin:0">
+        <li class="poster c-blanco"><span class="num">01</span><span class="titulo">Abrí <a class="enlace" href="https://claude.ai/customize/connectors" rel="noopener">Conectores de Claude</a>.</span></li>
+        <li class="poster c-azul"><span class="num">02</span><span class="titulo">Tocá Agregar → Agregar conector personalizado.</span></li>
+        <li class="poster c-naranja"><span class="num">03</span><span class="titulo">Nombre: <code>Textifika</code>. URL: pegá tu dirección.</span></li>
+        <li class="poster c-menta"><span class="num">04</span><span class="titulo">Tocá Continuar. Si pregunta cómo iniciar sesión, elegí «Sin inicio de sesión».</span></li>
+        <li class="poster c-manteca"><span class="num">05</span><span class="titulo">Tocá Agregar.</span></li>
+        <li class="poster c-salmon"><span class="num">06</span><span class="titulo">En un chat, abrí + y activá Textifika.</span></li>
+        </ol>
+      </div>
+      <div id="s-app" role="tabpanel" aria-labelledby="t-app" hidden>
+        <ol class="grilla pasos" style="list-style:none;padding:0;margin:0">
+        <li class="poster c-blanco"><span class="num">01</span><span class="titulo">Abrí la app de Claude y entrá a Settings.</span><span class="detalle">Settings es «Configuración». Está en el menú de tu cuenta.</span></li>
+        <li class="poster c-azul"><span class="num">02</span><span class="titulo">Elegí Plugins.</span><span class="detalle">En el menú de la izquierda de Settings, tocá <b>Plugins</b>.</span></li>
+        <li class="poster c-naranja"><span class="num">03</span><span class="titulo">Escribí algo en el buscador.</span><span class="detalle">No se ve un botón Add todavía. Al buscar (por ejemplo «Textifika») aparece la opción <b>Browse plugins</b>.</span></li>
+        <li class="poster c-menta"><span class="num">04</span><span class="titulo">Tocá Browse plugins.</span><span class="detalle">Se abre el catálogo de plugins y conectores.</span></li>
+        <li class="poster c-manteca"><span class="num">05</span><span class="titulo">Tocá Add y elegí Add custom connector.</span><span class="detalle">Ahí sí aparece <b>Add</b>. Dentro, elegí <b>Add custom connector</b>.</span></li>
         <li class="poster c-salmon"><span class="num">06</span><span class="titulo">Poné el nombre y la dirección.</span><span class="detalle">Name: <code>Textifika</code>. URL: pegá tu dirección de arriba (botón Copiar).</span></li>
         <li class="poster c-celeste"><span class="num">07</span><span class="titulo">Elegí «Sin inicio de sesión».</span><span class="detalle">Textifika no usa login. Si Claude pregunta cómo iniciar sesión, elegí esa opción y tocá Add.</span></li>
         <li class="poster c-hueso"><span class="num">08</span><span class="titulo">Activalo en un chat.</span><span class="detalle">En un chat, abrí <b>+</b> y activá <b>Textifika</b>. Pedile: «Usá Textifika: ¿qué libros hay?»</span></li>
-      </ol>
+        </ol>
+      </div>
       <div class="apartes">
         <p>El plan gratis de Claude permite un conector personalizado. Por eso Textifika es uno solo para todos tus libros.</p>
         <p>En planes Team o Enterprise, el conector lo agrega el owner. Después cada persona se conecta con su cuenta.</p>
