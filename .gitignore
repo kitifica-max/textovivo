@@ -13,3 +13,6 @@ worker-configuration.d.ts
 .env
 .env.*
 .claude/settings.local.json
+
+# Derivado: se regenera con node scripts/catalogo.ts
+concierge/data/semilla/

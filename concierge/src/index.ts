@@ -4,10 +4,10 @@ import { McpServer } from "@modelcontextprotocol/server";
 import { createMcpHandler, getMcpAuthContext } from "agents/mcp/server";
 import { env } from "cloudflare:workers";
 import { z } from "zod";
-import destiladoJson from "../data/destilado.json" with { type: "json" };
-import paginasJson from "../data/paginas.json" with { type: "json" };
+import catalogoJson from "../data/catalogo.json" with { type: "json" };
+import { buscadorD1 } from "./buscador-d1.ts";
 import { guia, landing } from "./pages.ts";
-import { Destilado, Paginas } from "./schema.ts";
+import { Destilado } from "./schema.ts";
 import {
   buscarConcepto,
   citarFuente,
@@ -17,12 +17,15 @@ import {
   obtenerFramework
 } from "./tools.ts";
 
-const libro = crearLibro(Destilado.parse(destiladoJson), Paginas.parse(paginasJson));
+const libros = catalogoJson.map((d) => crearLibro(Destilado.parse(d), buscadorD1(d.id)));
+const porId = new Map(libros.map((l) => [l.id, l]));
+const ids = libros.map((l) => l.id) as [string, ...string[]];
+const IDIOMAS: Record<string, string> = { es: "español", en: "inglés", pt: "portugués", fr: "francés" };
 const ahora = () => new Date().toISOString();
 const texto = (t: string) => ({ content: [{ type: "text" as const, text: t }] });
 
 /** Verifica el acceso del comprador, ejecuta la herramienta y registra la llamada. */
-async function usar(herramienta: string, consulta: string, ejecutar: () => unknown) {
+async function usar(herramienta: string, consulta: string, ejecutar: () => unknown | Promise<unknown>) {
   const token = String(getMcpAuthContext()?.props.token ?? "");
   const comprador = await env.DB.prepare("SELECT expires_at, calls FROM buyers WHERE token = ?")
     .bind(token)
@@ -31,16 +34,16 @@ async function usar(herramienta: string, consulta: string, ejecutar: () => unkno
   if (!comprador) return texto("Acceso no válido.");
   if (comprador.expires_at <= ahora())
     return texto(
-      `Tu acceso a «${libro.titulo}» venció el ${comprador.expires_at.slice(0, 10)}. Podés renovarlo en ${env.PUBLIC_URL}`
+      `Tu acceso a TextoVivo venció el ${comprador.expires_at.slice(0, 10)}. Podés renovarlo en ${env.PUBLIC_URL}`
     );
   const limite = Number(env.CALLS_PER_TOKEN);
   if (comprador.calls >= limite)
     return texto(
-      `Usaste las ${limite} consultas de este alquiler de «${libro.titulo}». Podés renovarlo en ${env.PUBLIC_URL}`
+      `Usaste las ${limite} consultas de este acceso. Podés renovarlo en ${env.PUBLIC_URL}`
     );
 
   const inicio = Date.now();
-  const resultado = ejecutar();
+  const resultado = await ejecutar();
   const t = ahora();
   await env.DB.batch([
     env.DB.prepare(
@@ -54,70 +57,99 @@ async function usar(herramienta: string, consulta: string, ejecutar: () => unkno
 }
 
 function crearServidor() {
-  const server = new McpServer({ name: "TextoVivo", version: "0.1.0" });
-  const idiomas: Record<string, string> = { en: "inglés", pt: "portugués", fr: "francés" };
-  const aviso = idiomas[libro.idioma] ? ` (el texto está en ${idiomas[libro.idioma]}: escribí las búsquedas en ${idiomas[libro.idioma]})` : "";
-  const obra = `«${libro.titulo}» de ${libro.autor}${aviso}`;
+  const server = new McpServer({ name: "TextoVivo", version: "0.2.0" });
   const soloLectura = { readOnlyHint: true, openWorldHint: false };
+  const libroId = z.enum(ids).describe("Id del libro (ver listar_libros)");
+  const con = (id: string) => porId.get(id)!;
+
+  server.registerTool(
+    "listar_libros",
+    {
+      description:
+        "Lista los libros de la biblioteca TextoVivo con su id, autor, idioma del texto y qué frameworks y checklists tienen. Usala primero para elegir el libro.",
+      inputSchema: z.object({}),
+      annotations: soloLectura
+    },
+    () =>
+      usar("listar_libros", "", () =>
+        libros.map((l) => ({
+          id: l.id,
+          titulo: l.titulo,
+          autor: l.autor,
+          idioma: IDIOMAS[l.idioma] ?? l.idioma,
+          descripcion: l.descripcion,
+          frameworks: l.frameworks.map((f) => f.nombre),
+          checklists: l.checklists.map((c) => c.nombre)
+        }))
+      )
+  );
 
   server.registerTool(
     "listar_indice",
     {
-      description: `Muestra qué contiene el libro ${obra}: capítulos con páginas y los nombres de sus frameworks, checklists y términos del glosario. Usala primero para orientarte.`,
-      inputSchema: z.object({}),
+      description:
+        "Muestra qué contiene un libro: capítulos con páginas y los nombres de sus frameworks, checklists y términos del glosario. El texto de cada libro está en su idioma original: escribí las búsquedas en ese idioma.",
+      inputSchema: z.object({ libro: libroId }),
       annotations: soloLectura
     },
-    () => usar("listar_indice", "", () => listarIndice(libro))
+    ({ libro }) => usar("listar_indice", libro, () => listarIndice(con(libro)))
   );
 
   server.registerTool(
     "buscar_concepto",
     {
-      description: `Busca definiciones y pasajes en ${obra}. Devuelve texto literal del libro con capítulo y páginas.`,
+      description:
+        "Busca definiciones y pasajes en un libro. Devuelve texto literal con capítulo y página. Escribí la búsqueda en el idioma del libro.",
       inputSchema: z.object({
+        libro: libroId,
         consulta: z.string().min(2).describe("Qué buscar, en palabras simples"),
         max_resultados: z.number().int().min(1).max(10).default(5)
       }),
       annotations: soloLectura
     },
-    ({ consulta, max_resultados }) =>
-      usar("buscar_concepto", consulta, () => buscarConcepto(libro, consulta, max_resultados))
+    ({ libro, consulta, max_resultados }) =>
+      usar("buscar_concepto", `${libro}: ${consulta}`, () => buscarConcepto(con(libro), consulta, max_resultados))
   );
 
   server.registerTool(
     "obtener_framework",
     {
-      description: `Devuelve una metodología de ${obra} con sus pasos ordenados, la página y una cita literal de cada paso. Si hay varias posibles, devuelve sus nombres para elegir.`,
+      description:
+        "Devuelve una metodología de un libro con sus pasos ordenados, la página y una cita literal de cada paso. Si hay varias posibles, devuelve sus nombres para elegir.",
       inputSchema: z.object({
+        libro: libroId,
         nombre_o_tema: z.string().min(2).describe("Nombre del framework o tema que resuelve")
       }),
       annotations: soloLectura
     },
-    ({ nombre_o_tema }) =>
-      usar("obtener_framework", nombre_o_tema, () => obtenerFramework(libro, nombre_o_tema))
+    ({ libro, nombre_o_tema }) =>
+      usar("obtener_framework", `${libro}: ${nombre_o_tema}`, () => obtenerFramework(con(libro), nombre_o_tema))
   );
 
   server.registerTool(
     "obtener_checklist",
     {
-      description: `Devuelve una lista de verificación de ${obra} para revisar un trabajo, con la página y la cita literal de cada punto.`,
-      inputSchema: z.object({ tema: z.string().min(2).describe("Qué se quiere revisar") }),
+      description:
+        "Devuelve una lista de verificación de un libro para revisar un trabajo, con la página y la cita literal de cada punto.",
+      inputSchema: z.object({ libro: libroId, tema: z.string().min(2).describe("Qué se quiere revisar") }),
       annotations: soloLectura
     },
-    ({ tema }) => usar("obtener_checklist", tema, () => obtenerChecklist(libro, tema))
+    ({ libro, tema }) => usar("obtener_checklist", `${libro}: ${tema}`, () => obtenerChecklist(con(libro), tema))
   );
 
   server.registerTool(
     "citar_fuente",
     {
-      description: `Encuentra en ${obra} la cita literal que respalda una afirmación o tema, con capítulo y página. La cita sale del texto del libro, nunca se inventa.`,
+      description:
+        "Encuentra en un libro la cita literal que respalda una afirmación o tema, con capítulo y página. La cita sale del texto del libro, nunca se inventa.",
       inputSchema: z.object({
+        libro: libroId,
         afirmacion_o_tema: z.string().min(2).describe("Afirmación o tema a respaldar")
       }),
       annotations: soloLectura
     },
-    ({ afirmacion_o_tema }) =>
-      usar("citar_fuente", afirmacion_o_tema, () => citarFuente(libro, afirmacion_o_tema))
+    ({ libro, afirmacion_o_tema }) =>
+      usar("citar_fuente", `${libro}: ${afirmacion_o_tema}`, () => citarFuente(con(libro), afirmacion_o_tema))
   );
 
   return server;
@@ -261,8 +293,8 @@ export default {
       return new Response(null, { status: 303, headers: { location: `/guia#${token}`, "referrer-policy": "no-referrer" } });
     }
 
-    if (url.pathname === "/" && req.method === "GET") return html(landing(libro, env));
-    if (url.pathname === "/guia" && req.method === "GET") return html(guia(libro));
+    if (url.pathname === "/" && req.method === "GET") return html(landing(libros, env));
+    if (url.pathname === "/guia" && req.method === "GET") return html(guia(libros));
     if (url.pathname.startsWith("/admin/")) return admin(req, url);
     return new Response("No encontrado", { status: 404 });
   }

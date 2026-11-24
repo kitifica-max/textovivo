@@ -1,0 +1,105 @@
+{
+ "glosario": [],
+ "frameworks": [],
+ "checklists": [
+  {
+   "nombre": "Reglas de uso y puntuación",
+   "contexto": "Para revisar la puntuación y la gramática de un texto en inglés.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Posesivo singular: agregar 's",
+     "pagina": 5,
+     "cita": "Form the possessive singular of nouns by adding 's. Follow this rule whatever the final consonant. Thus write, Charles's friend Burns's poems the witch's"
+    },
+    {
+     "texto": "En series de tres o más, coma tras cada término menos el último",
+     "pagina": 5,
+     "cita": "In a series of three or more terms with a single conjunction, use a comma after each term except the last. Thus write, red"
+    },
+    {
+     "texto": "Las expresiones parentéticas van entre comas",
+     "pagina": 5,
+     "cita": "Enclose parenthetic expressions between commas. The best way to see a country, unless you are pressed for time, is to travel on foot."
+    },
+    {
+     "texto": "Coma antes de la conjunción que introduce una cláusula coordinada",
+     "pagina": 8,
+     "cita": "Place a comma before a conjunction introducing a co-ordinate clause. The early records of the city have disappeared, and the story of its first"
+    },
+    {
+     "texto": "No unir cláusulas independientes con una coma",
+     "pagina": 10,
+     "cita": "Do not join independent clauses by a comma. If two or more clauses, grammatically complete and not joined by a conjunction, are to form"
+    },
+    {
+     "texto": "No partir una oración en dos",
+     "pagina": 11,
+     "cita": "Do not break sentences in two. In other words, do not use periods for commas. I met them on a Cunard liner several years"
+    },
+    {
+     "texto": "Una frase participial inicial debe referirse al sujeto gramatical",
+     "pagina": 12,
+     "cita": "A participial phrase at the beginning of a sentence must refer to the grammatical subject. Walking slowly down the road, he saw a woman"
+    }
+   ]
+  },
+  {
+   "nombre": "Principios de composición",
+   "contexto": "Para revisar la claridad y la estructura de un texto antes de publicarlo.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "El párrafo es la unidad: un párrafo por tema",
+     "pagina": 13,
+     "cita": "Make the paragraph the unit of composition: one paragraph to each topic. If the subject on which you are writing is of slight extent"
+    },
+    {
+     "texto": "Usar la voz activa",
+     "pagina": 20,
+     "cita": "Use the active voice. The active voice is usually more direct and vigorous than the passive: I shall always remember my first visit to"
+    },
+    {
+     "texto": "Afirmar en positivo",
+     "pagina": 22,
+     "cita": "Put statements in positive form. Make definite assertions. Avoid tame, colorless, hesitating, non-committal language. Use the word not as a means of denial or"
+    },
+    {
+     "texto": "Lenguaje definido, específico y concreto",
+     "pagina": 23,
+     "cita": "Use definite, specific, concrete language. Prefer the specific to the general, the definite to the vague, the concrete to the abstract. A period of"
+    },
+    {
+     "texto": "Omitir palabras innecesarias",
+     "pagina": 26,
+     "cita": "Omit needless words. Vigorous writing is concise. A sentence should contain no unnecessary words, a paragraph no unnecessary sentences, for the same reason that"
+    },
+    {
+     "texto": "Evitar una sucesión de oraciones sueltas",
+     "pagina": 28,
+     "cita": "Avoid a succession of loose sentences: This rule refers especially to loose sentences of a particular type, those consisting of two co-ordinate clauses, the"
+    },
+    {
+     "texto": "Expresar ideas coordinadas en forma parecida",
+     "pagina": 29,
+     "cita": "Express co-ordinate ideas in similar form."
+    },
+    {
+     "texto": "Mantener juntas las palabras relacionadas",
+     "pagina": 32,
+     "cita": "Keep related words together. The position of the words in a sentence is the principal means of showing their relationship. The writer must therefore"
+    },
+    {
+     "texto": "En resúmenes, mantener un solo tiempo verbal",
+     "pagina": 34,
+     "cita": "In summaries, keep to one tense. In summarizing the action of a drama, the writer should always use the present tense. In summarizing a"
+    },
+    {
+     "texto": "Poner las palabras enfáticas al final de la oración",
+     "pagina": 36,
+     "cita": "Place the emphatic words of a sentence at the end. The proper place in the sentence for the word, or group of words, which"
+    }
+   ]
+  }
+ ]
+}

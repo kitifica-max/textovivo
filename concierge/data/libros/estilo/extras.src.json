@@ -1,0 +1,120 @@
+{
+ "checklists": [
+  {
+   "nombre": "Reglas de uso y puntuación",
+   "contexto": "Para revisar la puntuación y la gramática de un texto en inglés.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Posesivo singular: agregar 's",
+     "buscar": "Form the possessive singular of nouns by adding 's",
+     "palabras": 24,
+     "desde": 4
+    },
+    {
+     "texto": "En series de tres o más, coma tras cada término menos el último",
+     "buscar": "In a series of three or more terms with a single conjunction, use a comma after each term except the last",
+     "palabras": 24,
+     "desde": 4
+    },
+    {
+     "texto": "Las expresiones parentéticas van entre comas",
+     "buscar": "Enclose parenthetic expressions between commas",
+     "palabras": 24,
+     "desde": 4
+    },
+    {
+     "texto": "Coma antes de la conjunción que introduce una cláusula coordinada",
+     "buscar": "Place a comma before a conjunction introducing a co-ordinate clause",
+     "palabras": 24,
+     "desde": 4
+    },
+    {
+     "texto": "No unir cláusulas independientes con una coma",
+     "buscar": "Do not join independent clauses by a comma",
+     "palabras": 24,
+     "desde": 4
+    },
+    {
+     "texto": "No partir una oración en dos",
+     "buscar": "Do not break sentences in two",
+     "palabras": 24,
+     "desde": 4
+    },
+    {
+     "texto": "Una frase participial inicial debe referirse al sujeto gramatical",
+     "buscar": "A participial phrase at the beginning of a sentence must refer to the grammatical subject",
+     "palabras": 24,
+     "desde": 4
+    }
+   ]
+  },
+  {
+   "nombre": "Principios de composición",
+   "contexto": "Para revisar la claridad y la estructura de un texto antes de publicarlo.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "El párrafo es la unidad: un párrafo por tema",
+     "buscar": "Make the paragraph the unit of composition",
+     "palabras": 24,
+     "desde": 4
+    },
+    {
+     "texto": "Usar la voz activa",
+     "buscar": "Use the active voice",
+     "palabras": 24,
+     "desde": 4
+    },
+    {
+     "texto": "Afirmar en positivo",
+     "buscar": "Put statements in positive form",
+     "palabras": 24,
+     "desde": 4
+    },
+    {
+     "texto": "Lenguaje definido, específico y concreto",
+     "buscar": "Use definite, specific, concrete language",
+     "palabras": 24,
+     "desde": 4
+    },
+    {
+     "texto": "Omitir palabras innecesarias",
+     "buscar": "Omit needless words",
+     "palabras": 24,
+     "desde": 4
+    },
+    {
+     "texto": "Evitar una sucesión de oraciones sueltas",
+     "buscar": "Avoid a succession of loose sentences",
+     "palabras": 24,
+     "desde": 4
+    },
+    {
+     "texto": "Expresar ideas coordinadas en forma parecida",
+     "buscar": "Express co-ordinate ideas in similar form",
+     "palabras": 24,
+     "desde": 4
+    },
+    {
+     "texto": "Mantener juntas las palabras relacionadas",
+     "buscar": "Keep related words together",
+     "palabras": 24,
+     "desde": 4
+    },
+    {
+     "texto": "En resúmenes, mantener un solo tiempo verbal",
+     "buscar": "In summaries, keep to one tense",
+     "palabras": 24,
+     "desde": 4
+    },
+    {
+     "texto": "Poner las palabras enfáticas al final de la oración",
+     "buscar": "Place the emphatic words of a sentence at the end",
+     "palabras": 24,
+     "desde": 4
+    }
+   ]
+  }
+ ]
+}

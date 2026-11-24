@@ -1,0 +1,35 @@
+{
+ "frameworks": [
+  {
+   "nombre": "Los cuatro principios de la administración científica",
+   "resumen": "Los deberes nuevos que asume la gerencia, agrupados en cuatro cabezas, según Taylor.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Una ciencia para cada elemento del trabajo",
+     "descripcion": "Reemplazar la regla empírica por el estudio de cada tarea.",
+     "buscar": "First. They develop a science",
+     "palabras": 22
+    },
+    {
+     "titulo": "Seleccionar y entrenar científicamente",
+     "descripcion": "Elegir y capacitar al trabajador en vez de dejar que se forme solo.",
+     "buscar": "Second. They scientifically select",
+     "palabras": 22
+    },
+    {
+     "titulo": "Cooperar con los trabajadores",
+     "descripcion": "Asegurar que el trabajo se haga según la ciencia desarrollada.",
+     "buscar": "Third. They heartily cooperate",
+     "palabras": 24
+    },
+    {
+     "titulo": "Dividir trabajo y responsabilidad",
+     "descripcion": "La gerencia asume lo que hace mejor que los trabajadores.",
+     "buscar": "Fourth. There is an almost equal division",
+     "palabras": 24
+    }
+   ]
+  }
+ ]
+}

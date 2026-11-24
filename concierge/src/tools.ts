@@ -19,11 +19,21 @@ const MAX_CARACTERES = 7000; // ≈ 2.000 tokens por respuesta (regla de la spec
 const MAX_PASAJE = 1500;
 const MAX_CITA = 300;
 
+export type Resultado = { pagina: number; texto: string; puntuacion: number };
+/** Devuelve las páginas que mejor responden a la consulta, de más a menos relevante. */
+export type Buscador = (consulta: string, max: number) => Promise<Resultado[]>;
 export type Libro = ReturnType<typeof crearLibro>;
 
-export function crearLibro(d: Destilado, paginas: Paginas) {
-  // ponytail: búsqueda TF-IDF por página en memoria. Alcanza para 1 libro;
-  // la V1 usa FTS5 (y Vectorize si hace falta) en D1.
+export function crearLibro(d: Destilado, buscar: Buscador) {
+  const seccion = (pagina: number) =>
+    d.indice
+      .filter((s) => s.pagina_inicio <= pagina && pagina <= s.pagina_fin)
+      .sort((a, b) => b.nivel - a.nivel)[0]?.titulo ?? "";
+  return { ...d, seccion, buscar };
+}
+
+/** Buscador en memoria (TF-IDF por página): para tests y desarrollo sin D1. */
+export function buscadorMemoria(paginas: Paginas): Buscador {
   const docs = paginas.map((p) => {
     const tf = new Map<string, number>();
     for (const w of palabras(p.texto)) tf.set(w, (tf.get(w) ?? 0) + 1);
@@ -33,12 +43,7 @@ export function crearLibro(d: Destilado, paginas: Paginas) {
   for (const doc of docs) for (const w of doc.tf.keys()) df.set(w, (df.get(w) ?? 0) + 1);
   const idf = (w: string) => Math.log(1 + docs.length / (df.get(w) ?? 1));
 
-  const seccion = (pagina: number) =>
-    d.indice
-      .filter((s) => s.pagina_inicio <= pagina && pagina <= s.pagina_fin)
-      .sort((a, b) => b.nivel - a.nivel)[0]?.titulo ?? "";
-
-  const puntuar = (consulta: string) => {
+  return async (consulta, max) => {
     const frase = normalizar(consulta);
     const q = palabras(consulta);
     const unicas = [...new Set(q)];
@@ -49,18 +54,16 @@ export function crearLibro(d: Destilado, paginas: Paginas) {
           const n = doc.tf.get(w) ?? 0;
           return n ? s + (1 + Math.log(n)) * idf(w) : s;
         }, 0);
-        // Premia la frase exacta y los pares de palabras seguidas: sin esto,
-        // una página que repite una palabra le gana a la que dice la frase.
+        // Premia la frase exacta y los pares de palabras seguidas.
         const bonus =
           (frase.length > 6 && doc.plano.includes(frase) ? 5 : 0) +
           pares.filter((par) => doc.plano.includes(par)).length * 2;
-        return { doc, puntuacion: tfidf ? tfidf + bonus : 0 };
+        return { pagina: doc.pagina, texto: doc.texto, puntuacion: tfidf ? tfidf + bonus : 0 };
       })
       .filter((r) => r.puntuacion > 0)
-      .sort((a, b) => b.puntuacion - a.puntuacion);
+      .sort((a, b) => b.puntuacion - a.puntuacion)
+      .slice(0, max);
   };
-
-  return { ...d, seccion, puntuar };
 }
 
 export function listarIndice(l: Libro) {
@@ -79,7 +82,7 @@ export function listarIndice(l: Libro) {
   };
 }
 
-export function buscarConcepto(l: Libro, consulta: string, max = 5) {
+export async function buscarConcepto(l: Libro, consulta: string, max = 5) {
   const q = normalizar(consulta);
   const termino = l.glosario.find((g) => {
     const t = normalizar(g.termino);
@@ -88,15 +91,15 @@ export function buscarConcepto(l: Libro, consulta: string, max = 5) {
 
   const resultados = [];
   let usados = 0;
-  for (const { doc, puntuacion } of l.puntuar(consulta).slice(0, Math.min(max, 10))) {
-    const texto = doc.texto.slice(0, Math.min(MAX_PASAJE, MAX_CARACTERES - usados));
+  for (const { pagina, texto: pag, puntuacion } of await l.buscar(consulta, Math.min(max, 10))) {
+    const texto = pag.slice(0, Math.min(MAX_PASAJE, MAX_CARACTERES - usados));
     if (!texto) break;
     usados += texto.length;
     resultados.push({
       texto,
-      seccion: l.seccion(doc.pagina),
-      pagina_inicio: doc.pagina,
-      pagina_fin: doc.pagina,
+      seccion: l.seccion(pagina),
+      pagina_inicio: pagina,
+      pagina_fin: pagina,
       puntuacion: Math.round(puntuacion * 100) / 100
     });
   }
@@ -181,20 +184,20 @@ export function obtenerChecklist(l: Libro, tema: string) {
 }
 
 /** La cita sale del texto guardado, nunca de un LLM. */
-export function citarFuente(l: Libro, afirmacion: string) {
-  const mejor = l.puntuar(afirmacion)[0];
+export async function citarFuente(l: Libro, afirmacion: string) {
+  const mejor = (await l.buscar(afirmacion, 1))[0];
   if (!mejor) return { mensaje: `No encontré en el texto nada que respalde «${afirmacion}».` };
 
   const qp = new Set(palabras(afirmacion));
-  const oracion = mejor.doc.texto
+  const oracion = mejor.texto
     .split(/(?<=[.!?…])\s+/)
     .map((o) => ({ o, p: palabras(o).filter((w) => qp.has(w)).length }))
     .sort((a, b) => b.p - a.p)[0].o;
 
   return {
     cita_literal: oracion.length > MAX_CITA ? `${oracion.slice(0, MAX_CITA - 1)}…` : oracion,
-    capitulo: l.seccion(mejor.doc.pagina),
-    pagina: mejor.doc.pagina
+    capitulo: l.seccion(mejor.pagina),
+    pagina: mejor.pagina
   };
 }
 

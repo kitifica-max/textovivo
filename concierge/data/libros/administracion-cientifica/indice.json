@@ -1,0 +1,20 @@
+[
+ {
+  "titulo": "INTRODUCTION",
+  "nivel": 1,
+  "pagina_inicio": 2,
+  "pagina_fin": 5
+ },
+ {
+  "titulo": "CHAPTER I",
+  "nivel": 1,
+  "pagina_inicio": 6,
+  "pagina_fin": 31
+ },
+ {
+  "titulo": "CHAPTER II",
+  "nivel": 1,
+  "pagina_inicio": 32,
+  "pagina_fin": 174
+ }
+]

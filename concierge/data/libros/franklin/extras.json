@@ -1,0 +1,78 @@
+{
+ "glosario": [],
+ "frameworks": [],
+ "checklists": [
+  {
+   "nombre": "Las trece virtudes de Franklin",
+   "contexto": "Lista que Franklin usó para revisar su conducta cada día, una virtud por semana.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Templanza: No comer hasta el embotamiento ni beber hasta la exaltación.",
+     "pagina": 157,
+     "cita": "Temperance. Eat not to dullness; drink not to elevation. 2. Silence. Speak not but what may"
+    },
+    {
+     "texto": "Silencio: Hablar solo de lo que beneficia a otros o a uno; evitar la conversación trivial.",
+     "pagina": 157,
+     "cita": "Silence. Speak not but what may benefit others or yourself; avoid trifling conversation. 3. Order. Let"
+    },
+    {
+     "texto": "Orden: Cada cosa en su lugar y cada parte del trabajo en su tiempo.",
+     "pagina": 157,
+     "cita": "Order. Let all your things have their places; let each part of your business have its"
+    },
+    {
+     "texto": "Resolución: Resolver hacer lo que se debe y cumplirlo sin falta.",
+     "pagina": 157,
+     "cita": "Resolution. Resolve to perform what you ought; perform without fail what you resolve. 5. Frugality. Make"
+    },
+    {
+     "texto": "Frugalidad: Gastar solo en lo que hace bien a otros o a uno; no desperdiciar.",
+     "pagina": 157,
+     "cita": "Frugality. Make no expense but to do good to others or yourself; i.e., waste nothing. 6."
+    },
+    {
+     "texto": "Laboriosidad: No perder tiempo; estar siempre en algo útil.",
+     "pagina": 157,
+     "cita": "Industry. Lose no time; be always employ'd in something useful; cut off all unnecessary actions. 7."
+    },
+    {
+     "texto": "Sinceridad: No engañar; pensar con inocencia y justicia.",
+     "pagina": 157,
+     "cita": "Sincerity. Use no hurtful deceit; think innocently and justly, and, if you speak, speak accordingly. 8."
+    },
+    {
+     "texto": "Justicia: No dañar a nadie ni omitir los beneficios que se deben.",
+     "pagina": 157,
+     "cita": "Justice. Wrong none by doing injuries, or omitting the benefits that are your duty. 9. Moderation."
+    },
+    {
+     "texto": "Moderación: Evitar los extremos; no resentir los agravios más de lo que merecen.",
+     "pagina": 157,
+     "cita": "Moderation. Avoid extreams; forbear resenting injuries so much as you think they deserve. 10. Cleanliness. Tolerate"
+    },
+    {
+     "texto": "Limpieza: No tolerar suciedad en el cuerpo, la ropa ni el lugar de trabajo.",
+     "pagina": 157,
+     "cita": "Cleanliness. Tolerate no uncleanliness in body, cloaths, or habitation. 11. Tranquillity. Be not disturbed at trifles"
+    },
+    {
+     "texto": "Tranquilidad: No alterarse por trivialidades ni por accidentes comunes o inevitables.",
+     "pagina": 157,
+     "cita": "Tranquillity. Be not disturbed at trifles, or at accidents common or unavoidable. 12. Chastity. Rarely use"
+    },
+    {
+     "texto": "Castidad: Usarla con mesura, solo por salud o descendencia.",
+     "pagina": 157,
+     "cita": "Chastity. Rarely use venery but for health or offspring, never to dulness, weakness, or the injury"
+    },
+    {
+     "texto": "Humildad: Imitar a Jesús y a Sócrates.",
+     "pagina": 157,
+     "cita": "Humility. Imitate Jesus and Socrates."
+    }
+   ]
+  }
+ ]
+}

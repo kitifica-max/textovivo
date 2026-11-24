@@ -37,7 +37,7 @@ const pagina = (titulo: string, cuerpo: string, script = "") => `<!doctype html>
 
 type Config = Pick<Env, "WOMPI_LINK_URL" | "ACCESO_GRATIS" | "VIDEO_URL" | "PRICE_USD" | "CALLS_PER_TOKEN">;
 
-export function landing(libro: Libro, env: Config) {
+export function landing(libros: Libro[], env: Config) {
   const preguntas = Math.round(Number(env.CALLS_PER_TOKEN) / 3);
   const lista = (items: string[]) => (items.length ? `<ul>${items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>` : "");
   const gratis = env.ACCESO_GRATIS === "1";
@@ -48,13 +48,12 @@ export function landing(libro: Libro, env: Config) {
     : `<span class="boton" aria-disabled="true">Muy pronto</span>`;
 
   return pagina(
-    `${libro.titulo} · TextoVivo`,
+    "TextoVivo · Biblioteca",
     `
 <div class="marca">TextoVivo</div>
-<h1>${esc(libro.titulo)}</h1>
-<p class="autor">de ${esc(libro.autor)}</p>
-${libro.descripcion ? `<p class="nota">${esc(libro.descripcion)}</p>` : ""}
-<p>Conectá este libro a tu IA. Mientras trabajás, Claude, Claude Code o Cursor consultan sus frameworks, checklists y citas con la página exacta.</p>
+<h1>Libros que trabajan dentro de tu IA</h1>
+<p class="autor">${libros.length} libros de dominio público, con la página exacta de cada idea.</p>
+<p>Conectá la biblioteca a tu IA. Mientras trabajás, Claude, Claude Code o Cursor consultan los libros, sus frameworks, checklists y citas con la página exacta.</p>
 ${env.VIDEO_URL ? `<p><a class="secundario" href="${esc(env.VIDEO_URL)}" rel="noopener">▶ Ver la demo de 30 segundos</a></p>` : ""}
 
 <div class="card precio">
@@ -63,9 +62,7 @@ ${env.VIDEO_URL ? `<p><a class="secundario" href="${esc(env.VIDEO_URL)}" rel="no
 </div>
 
 <h2>Qué incluye</h2>
-<p>${libro.frameworks.length} frameworks, ${libro.checklists.length} checklists y ${libro.glosario.length} términos de glosario, cada uno con su cita literal y la página.</p>
-${lista(libro.frameworks.map((f) => `Framework: ${f.nombre}`))}
-${lista(libro.checklists.map((c) => `Checklist: ${c.nombre}`))}
+${lista(libros.map((l) => `${l.titulo} — ${l.autor}`))}
 
 <h2>Cómo funciona</h2>
 <ol>
@@ -79,12 +76,12 @@ ${lista(libro.checklists.map((c) => `Checklist: ${c.nombre}`))}
   );
 }
 
-export function guia(libro: Libro) {
+export function guia(libros: Libro[]) {
   return pagina(
-    `Conectar ${libro.titulo} a tu IA`,
+    `Conectar TextoVivo a tu IA`,
     `
 <div class="marca">TextoVivo · Guía de conexión</div>
-<h1>Conectá «${esc(libro.titulo)}» a tu IA</h1>
+<h1>Conectá TextoVivo a tu IA</h1>
 <p id="sin-url" class="nota" hidden>Abrí esta guía desde el link de tu email para ver tu URL personal ya cargada.</p>
 
 <div class="card">
@@ -115,7 +112,7 @@ export function guia(libro: Libro) {
 <button class="boton copiar" data-copiar="cursor">Copiar configuración</button>
 
 <h2>Probalo</h2>
-<p>Pedile a tu IA: <em>«Usá TextoVivo y decime qué frameworks y checklists tiene este libro.»</em> Después, pedile que revise tu trabajo con uno de ellos.</p>
+<p>Pedile a tu IA: <em>«Usá TextoVivo y decime qué libros hay y qué frameworks y checklists tienen.»</em> Después, pedile que revise tu trabajo con uno de ellos.</p>
 
 <footer>¿No funciona? Respondé el email donde recibiste tu link y te ayudamos.</footer>`,
     `

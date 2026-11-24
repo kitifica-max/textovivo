@@ -1,0 +1,89 @@
+{
+ "checklists": [
+  {
+   "nombre": "Las trece virtudes de Franklin",
+   "contexto": "Lista que Franklin usó para revisar su conducta cada día, una virtud por semana.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Templanza: No comer hasta el embotamiento ni beber hasta la exaltación.",
+     "buscar": "Temperance. Eat not",
+     "palabras": 16,
+     "desde": 100
+    },
+    {
+     "texto": "Silencio: Hablar solo de lo que beneficia a otros o a uno; evitar la conversación trivial.",
+     "buscar": "Silence. Speak not",
+     "palabras": 16,
+     "desde": 100
+    },
+    {
+     "texto": "Orden: Cada cosa en su lugar y cada parte del trabajo en su tiempo.",
+     "buscar": "Order. Let all",
+     "palabras": 16,
+     "desde": 100
+    },
+    {
+     "texto": "Resolución: Resolver hacer lo que se debe y cumplirlo sin falta.",
+     "buscar": "Resolution. Resolve",
+     "palabras": 16,
+     "desde": 100
+    },
+    {
+     "texto": "Frugalidad: Gastar solo en lo que hace bien a otros o a uno; no desperdiciar.",
+     "buscar": "Frugality. Make no expense",
+     "palabras": 16,
+     "desde": 100
+    },
+    {
+     "texto": "Laboriosidad: No perder tiempo; estar siempre en algo útil.",
+     "buscar": "Industry. Lose no time",
+     "palabras": 16,
+     "desde": 100
+    },
+    {
+     "texto": "Sinceridad: No engañar; pensar con inocencia y justicia.",
+     "buscar": "Sincerity. Use no hurtful",
+     "palabras": 16,
+     "desde": 100
+    },
+    {
+     "texto": "Justicia: No dañar a nadie ni omitir los beneficios que se deben.",
+     "buscar": "Justice. Wrong none",
+     "palabras": 16,
+     "desde": 100
+    },
+    {
+     "texto": "Moderación: Evitar los extremos; no resentir los agravios más de lo que merecen.",
+     "buscar": "Moderation. Avoid extreams",
+     "palabras": 16,
+     "desde": 100
+    },
+    {
+     "texto": "Limpieza: No tolerar suciedad en el cuerpo, la ropa ni el lugar de trabajo.",
+     "buscar": "Cleanliness. Tolerate no uncleanliness",
+     "palabras": 16,
+     "desde": 100
+    },
+    {
+     "texto": "Tranquilidad: No alterarse por trivialidades ni por accidentes comunes o inevitables.",
+     "buscar": "Tranquillity. Be not disturbed",
+     "palabras": 16,
+     "desde": 100
+    },
+    {
+     "texto": "Castidad: Usarla con mesura, solo por salud o descendencia.",
+     "buscar": "Chastity. Rarely use",
+     "palabras": 16,
+     "desde": 100
+    },
+    {
+     "texto": "Humildad: Imitar a Jesús y a Sócrates.",
+     "buscar": "Humility. Imitate",
+     "palabras": 16,
+     "desde": 100
+    }
+   ]
+  }
+ ]
+}

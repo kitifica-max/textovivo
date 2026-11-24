@@ -1,0 +1,20 @@
+[
+ {
+  "titulo": "PART I",
+  "nivel": 1,
+  "pagina_inicio": 4,
+  "pagina_fin": 4
+ },
+ {
+  "titulo": "PART II",
+  "nivel": 1,
+  "pagina_inicio": 5,
+  "pagina_fin": 5
+ },
+ {
+  "titulo": "PART III",
+  "nivel": 1,
+  "pagina_inicio": 6,
+  "pagina_fin": 340
+ }
+]

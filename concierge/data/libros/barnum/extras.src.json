@@ -1,0 +1,77 @@
+{
+ "checklists": [
+  {
+   "nombre": "Reglas de oro de Barnum para hacer dinero",
+   "contexto": "Para revisar un negocio o una forma de trabajar contra las reglas que Barnum considera básicas.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Elegir bien el lugar",
+     "buscar": "SELECT THE RIGHT LOCATION",
+     "palabras": 22,
+     "desde": 2
+    },
+    {
+     "texto": "Evitar la deuda",
+     "buscar": "AVOID DEBT",
+     "palabras": 22,
+     "desde": 2
+    },
+    {
+     "texto": "Perseverar",
+     "buscar": "PERSEVERE",
+     "palabras": 22,
+     "desde": 2
+    },
+    {
+     "texto": "Hacer todo con todas tus fuerzas",
+     "buscar": "WHATEVER YOU DO, DO IT WITH ALL YOUR MIGHT",
+     "palabras": 22,
+     "desde": 2
+    },
+    {
+     "texto": "Usar las mejores herramientas",
+     "buscar": "USE THE BEST TOOLS",
+     "palabras": 22,
+     "desde": 2
+    },
+    {
+     "texto": "Que predomine la esperanza, sin ser iluso",
+     "buscar": "LET HOPE PREDOMINATE",
+     "palabras": 22,
+     "desde": 2
+    },
+    {
+     "texto": "Ser sistemático",
+     "buscar": "BE SYSTEMATIC",
+     "palabras": 22,
+     "desde": 2
+    },
+    {
+     "texto": "Leer los periódicos",
+     "buscar": "READ THE NEWSPAPERS",
+     "palabras": 22,
+     "desde": 2
+    },
+    {
+     "texto": "Anunciar el negocio",
+     "buscar": "ADVERTISE YOUR BUSINESS",
+     "palabras": 22,
+     "desde": 2
+    },
+    {
+     "texto": "Ser cortés y amable con los clientes",
+     "buscar": "BE POLITE AND KIND TO YOUR CUSTOMERS",
+     "palabras": 22,
+     "desde": 2
+    },
+    {
+     "texto": "Conservar la integridad",
+     "buscar": "PRESERVE YOUR INTEGRITY",
+     "palabras": 22,
+     "desde": 2
+    }
+   ]
+  }
+ ]
+}

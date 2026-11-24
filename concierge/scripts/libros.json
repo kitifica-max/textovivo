@@ -1,0 +1,15 @@
+[
+  {"id":"principe","patron":"^CHAPTER [IVXL]+\\b.*$","desde":"^THE PRINCE"},
+  {"id":"barnum","patron":"^(SELECT THE RIGHT LOCATION|AVOID DEBT|PERSEVERE|WHATEVER YOU DO.*|USE THE BEST TOOLS|LET HOPE PREDOMINATE.*|BE SYSTEMATIC|READ THE NEWSPAPERS|ADVERTISE YOUR BUSINESS|BE POLITE AND KIND.*|BE CHARITABLE|PRESERVE YOUR INTEGRITY|DON.T SCATTER YOUR POWERS|BEWARE OF.*|DEPEND UPON YOUR OWN PERSONAL.*)$","desde":"^THE ART OF MONEY GETTING"},
+  {"id":"24-horas","patron":"^(THE DAILY MIRACLE|PRECAUTIONS BEFORE BEGINNING|THE CAUSE OF THE TROUBLES|TENNIS AND THE IMMORTAL SOUL|REMEMBER HUMAN NATURE|CONTROLLING THE MIND|THE REFLECTIVE MOOD|INTEREST IN THE ARTS|NOTHING IN LIFE IS HUMDRUM|SERIOUS READING|DANGERS TO AVOID|REMINDER)$"},
+  {"id":"administracion-cientifica","patron":"^(INTRODUCTION|CHAPTER [IVX]+)$"},
+  {"id":"avance-del-saber"},
+  {"id":"self-help","patron":"^CHAPTER [IVX]+\\. [A-Z].*$"},
+  {"id":"riqueza-naciones","patron":"^(CHAPTER [IVX]+\\.?.*|BOOK [IVX]+\\.?.*)$"},
+  {"id":"de-la-guerra-clausewitz","patron":"^(CHAPTER \\d+.*|BOOK [IVX]+.*)$"},
+  {"id":"estilo","patron":"^(I\\. Introductory|II\\. Elementary Rules of Usage|III\\. Elementary Principles of Composition|IV\\. A Few Matters of Form|V\\. Words and Expressions Commonly Misused|VI\\. Words Commonly Misspelled|Introductory|Elementary Rules of Usage|Elementary Principles of Composition|A Few Matters of Form|Words and Expressions Commonly Misused)$"},
+  {"id":"franklin"},
+  {"id":"como-pensamos","patron":"^(CHAPTER [IVX]+\\b.*|PART [IVX]+\\b.*)$"},
+  {"id":"meditaciones"},
+  {"id":"oratoria","patron":"^CHAPTER [IVX]+\\b.*$"}
+]

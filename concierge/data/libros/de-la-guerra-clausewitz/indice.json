@@ -1,0 +1,32 @@
+[
+ {
+  "titulo": "BOOK I ON THE NATURE OF WAR",
+  "nivel": 1,
+  "pagina_inicio": 16,
+  "pagina_fin": 42
+ },
+ {
+  "titulo": "BOOK I. ON THE NATURE OF WAR",
+  "nivel": 1,
+  "pagina_inicio": 43,
+  "pagina_fin": 168
+ },
+ {
+  "titulo": "BOOK II. ON THE THEORY OF WAR",
+  "nivel": 1,
+  "pagina_inicio": 169,
+  "pagina_fin": 287
+ },
+ {
+  "titulo": "BOOK III. OF STRATEGY IN GENERAL",
+  "nivel": 1,
+  "pagina_inicio": 288,
+  "pagina_fin": 394
+ },
+ {
+  "titulo": "BOOK IV THE COMBAT",
+  "nivel": 1,
+  "pagina_inicio": 395,
+  "pagina_fin": 515
+ }
+]

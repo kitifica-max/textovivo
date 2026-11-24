@@ -1,0 +1,41 @@
+{
+ "frameworks": [
+  {
+   "nombre": "Las cinco fases del pensamiento reflexivo",
+   "resumen": "Dewey describe cinco pasos lógicamente distintos que sigue un pensamiento reflexivo completo, del problema sentido a la conclusión.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Una dificultad sentida",
+     "descripcion": "Todo comienza al notar un problema o una perplejidad.",
+     "buscar": "a felt difficulty",
+     "palabras": 6
+    },
+    {
+     "titulo": "Ubicarla y definirla",
+     "descripcion": "Precisar dónde está el problema y qué es exactamente.",
+     "buscar": "its location and definition",
+     "palabras": 6
+    },
+    {
+     "titulo": "Sugerir una posible solución",
+     "descripcion": "Aparece una idea de solución, todavía como hipótesis.",
+     "buscar": "suggestion of possible solution",
+     "palabras": 6
+    },
+    {
+     "titulo": "Desarrollar la idea por razonamiento",
+     "descripcion": "Razonar qué consecuencias tendría la sugerencia.",
+     "buscar": "development by reasoning of the bearings of the suggestion",
+     "palabras": 14
+    },
+    {
+     "titulo": "Observar y experimentar",
+     "descripcion": "Más observación y experimento llevan a aceptar o rechazar la idea.",
+     "buscar": "further observation and experiment leading to its acceptance or rejection",
+     "palabras": 14
+    }
+   ]
+  }
+ ]
+}

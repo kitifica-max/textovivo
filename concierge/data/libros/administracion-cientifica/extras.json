@@ -1,0 +1,41 @@
+{
+ "glosario": [],
+ "frameworks": [
+  {
+   "nombre": "Los cuatro principios de la administración científica",
+   "resumen": "Los deberes nuevos que asume la gerencia, agrupados en cuatro cabezas, según Taylor.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Una ciencia para cada elemento del trabajo",
+     "descripcion": "Reemplazar la regla empírica por el estudio de cada tarea.",
+     "pagina": 40,
+     "cita": "First. They develop a science for each element of a man's work, which replaces the old rule-of.-thumb method. Second. They scientifically select"
+    },
+    {
+     "orden": 2,
+     "titulo": "Seleccionar y entrenar científicamente",
+     "descripcion": "Elegir y capacitar al trabajador en vez de dejar que se forme solo.",
+     "pagina": 40,
+     "cita": "Second. They scientifically select and then train, teach, and develop the workman, whereas in the past he chose his own work and"
+    },
+    {
+     "orden": 3,
+     "titulo": "Cooperar con los trabajadores",
+     "descripcion": "Asegurar que el trabajo se haga según la ciencia desarrollada.",
+     "pagina": 41,
+     "cita": "Third. They heartily cooperate with the men so as to insure all of the work being done in accordance with the principles of the"
+    },
+    {
+     "orden": 4,
+     "titulo": "Dividir trabajo y responsabilidad",
+     "descripcion": "La gerencia asume lo que hace mejor que los trabajadores.",
+     "pagina": 41,
+     "cita": "Fourth. There is an almost equal division of the work and the responsibility between the management and the workmen. The management take over all"
+    }
+   ]
+  }
+ ],
+ "checklists": []
+}
