@@ -17,3 +17,4 @@ worker-configuration.d.ts
 # Derivado: se regenera con node scripts/catalogo.ts
 concierge/data/semilla/
 .secreto-turnstile
+.secreto-resend
