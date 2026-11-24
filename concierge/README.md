@@ -200,7 +200,7 @@ El registro (`/api/registro`) y los envíos (`/api/envios`) exigen un token de T
 
 ### Confirmación de email y recuperación de contraseña (Resend)
 
-- **Envío:** `src/correo.ts` usa la API de Resend desde `TextoVivo <textovivo@kitifica.com>` (dominio verificado en Resend). La clave (`RESEND_API_KEY`) solo permite enviar desde `kitifica.com` y está en `concierge/.secreto-resend` (ignorado por git); `npm run deploy` la sube.
+- **Envío:** `src/correo.ts` usa la API de Resend desde `Textifika <textifika@kitifica.com>` (dominio verificado en Resend). La clave (`RESEND_API_KEY`) solo permite enviar desde `kitifica.com` y está en `concierge/.secreto-resend` (ignorado por git); `npm run deploy` la sube.
 - **Local:** con `RESEND_API_KEY=consola` en `.dev.vars`, los correos se imprimen en la consola de `wrangler dev` en vez de enviarse.
 - **Flujo:** al registrarse sale un correo con un enlace de 24 h (`/verificar.html#t=…`). Sin email confirmado no funcionan el conector ni la subida de obras. `POST /api/reenviar` (3 por hora). Recuperar contraseña: `/recuperar.html` (con Turnstile) → enlace de 1 h → `/restablecer.html`, que cierra todas las sesiones.
 - **Tablas:** `users.email_verificado_at` y `enlaces_email` (solo el hash del token, un solo uso).

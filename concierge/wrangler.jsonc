@@ -30,7 +30,7 @@
     // "1" = acceso gratis con solo el email (sin pago); vacío = flujo de Wompi.
     "ACCESO_GRATIS": "1",
     // Correo (Resend): remitente en el dominio verificado y sitio público para armar los enlaces.
-    "CORREO_REMITENTE": "TextoVivo <textovivo@kitifica.com>",
+    "CORREO_REMITENTE": "Textifika <textifika@kitifica.com>",
     "SITIO_URL": "https://textifika.kitifica.com",
     // Sitios que pueden llamar a la API con cookie (Netlify reenvía /api/* acá). Separados por coma.
     "ORIGENES_PERMITIDOS": "https://textifika.kitifica.com,https://textifika.netlify.app",
