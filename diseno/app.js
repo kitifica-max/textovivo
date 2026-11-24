@@ -72,10 +72,11 @@ document.querySelectorAll("[data-tarjeta]").forEach((input) =>
 // tv_sesion_hint (solo una marca local, no es la sesión) evita el parpadeo de «Entrar» al cambiar de página.
 const hayHint = localStorage.getItem("tv_sesion_hint") === "1";
 function ponerSesion() {
-  document.querySelectorAll('a.boton[href$="entrar.html"]').forEach((a) => {
-    if (!a.closest(".navegacion")) return;
+  // Netlify reescribe «entrar.html» como «/entrar»: se compara por la ruta, con o sin .html.
+  document.querySelectorAll("nav.navegacion a.boton").forEach((a) => {
+    if (!/\/entrar(\.html)?$/.test(a.pathname)) return;
     a.textContent = "Mi biblioteca";
-    a.setAttribute("href", a.getAttribute("href").replace("entrar.html", "mi-biblioteca.html"));
+    a.setAttribute("href", a.getAttribute("href").replace(/entrar(\.html)?(?=$|[?#])/, "mi-biblioteca"));
   });
   document.querySelectorAll(".navegacion").forEach((nav) => {
     if (nav.querySelector("[data-salir]")) return;
@@ -98,7 +99,7 @@ if (hayHint) ponerSesion();
 fetch("/api/yo", { credentials: "same-origin" })
   .then((r) => {
     if (r.ok) { localStorage.setItem("tv_sesion_hint", "1"); ponerSesion(); }
-    else if (r.status === 401) localStorage.removeItem("tv_sesion_hint");
+    else if (r.status === 401 && hayHint) { localStorage.removeItem("tv_sesion_hint"); location.reload(); } // la marca estaba vencida
   })
   .catch(() => {});
 
