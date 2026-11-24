@@ -158,14 +158,14 @@ document.querySelectorAll("[data-agregar]").forEach(async (tarjeta) => {
 
 // Turnstile (captcha de Cloudflare): tvTurnstile("id-del-contenedor") → { token(), reset() }.
 // La clave pública sale de /api/config; el token se valida en el servidor.
-window.tvTurnstile = (id) => {
+window.tvTurnstile = (id, opciones = {}) => {
   let widget = null;
   const listo = fetch("/api/config")
     .then((r) => r.json())
     .then(
       (c) =>
         new Promise((resolve) => {
-          const montar = () => { widget = window.turnstile.render("#" + id, { sitekey: c.turnstile_site_key, language: "es" }); resolve(); };
+          const montar = () => { widget = window.turnstile.render("#" + id, { sitekey: c.turnstile_site_key, language: "es", ...opciones }); resolve(); };
           if (window.turnstile) return montar();
           window.__tvTsListo = montar;
           const s = document.createElement("script");

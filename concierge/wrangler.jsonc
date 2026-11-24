@@ -49,6 +49,13 @@
     "MODELO_SEGURIDAD": "",
     // Cobro con Wompi: «pruebas» acepta pagos de desarrollo (negocio «en desarrollo» en el panel); «produccion» solo pagos reales.
     "WOMPI_MODO": "pruebas",
+    // La API 3DS de Wompi exige estos datos del titular; el formulario solo pide nombre, email y tarjeta, así que se completan con estos.
+    "WOMPI_CIUDAD": "San Salvador",
+    "WOMPI_DIRECCION": "San Salvador",
+    "WOMPI_PAIS": "SV",
+    "WOMPI_REGION": "SV-SS",
+    "WOMPI_CODIGO_POSTAL": "1101",
+    "WOMPI_TELEFONO": "70000000",
     "WOMPI_API_URL": "https://api.wompi.sv",
     "WOMPI_ID_URL": "https://id.wompi.sv",
     "VIDEO_URL": "",

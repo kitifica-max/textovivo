@@ -55,13 +55,19 @@
 const $ = (id) => document.getElementById(id);
 const q = new URLSearchParams(location.search);
 // Wompi vuelve con estos parámetros; el pago se confirma en el servidor (con la API de Wompi), no en esta página.
-const datos = { pago: q.get("identificadorEnlaceComercio") || "", transaccion: q.get("idTransaccion") || "", enlace: q.get("idEnlace") || "", monto: q.get("monto") || "", hash: q.get("hash") || "" };
+const datos = { pago: q.get("identificadorEnlaceComercio") || q.get("pago") || "", transaccion: q.get("idTransaccion") || "", enlace: q.get("idEnlace") || "", monto: q.get("monto") || "", hash: q.get("hash") || "" };
 history.replaceState(null, "", location.pathname);
 const fecha = (iso) => new Date(iso).toLocaleDateString("es", { day: "numeric", month: "long", year: "numeric" });
 function listo(d) {
   $("titulo").textContent = "¡Listo! Tu plan Pro está activo.";
   $("texto").textContent = d.vence ? "Tenés Pro hasta el " + fecha(d.vence) + ". Ya podés subir tus documentos personales." : "Ya podés subir tus documentos personales.";
   $("boton").textContent = "Ir a Mis documentos"; $("acciones").hidden = false;
+}
+const rechazadoPorBanco = q.get("esAprobada") === "false";
+function rechazo(msg) {
+  $("titulo").textContent = "Tu pago no se completó.";
+  $("texto").textContent = (msg ? msg + " " : "") + "No se te cobró nada. Podés intentar de nuevo con la misma tarjeta u otra.";
+  $("boton").href = "/pago/"; $("boton").textContent = "Intentar de nuevo"; $("acciones").hidden = false;
 }
 (async () => {
   if (!datos.pago) { $("titulo").textContent = "No encontramos ese pago."; $("texto").textContent = "Entrá a Mi biblioteca para ver el estado de tu plan."; $("acciones").hidden = false; return; }
@@ -70,6 +76,7 @@ function listo(d) {
     if (r && r.status === 401) { $("titulo").textContent = "Iniciá sesión para ver tu pago."; $("texto").textContent = "Entrá con la misma cuenta con la que pagaste."; $("boton").href = "/entrar.html?next=mi-biblioteca.html"; $("boton").textContent = "Entrar"; $("acciones").hidden = false; return; }
     const d = r && r.ok ? await r.json() : null;
     if (d && d.estado === "aprobado") return listo(d);
+    if (rechazadoPorBanco && i >= 1) return rechazo(q.get("mensaje") || "Tu banco no aprobó el pago.");
     if (i === 3) $("texto").textContent = "Todavía estamos esperando la confirmación del banco. Puedes cerrar esta página: tu plan se activa solo cuando llegue.";
     await new Promise((res) => setTimeout(res, 3000));
   }

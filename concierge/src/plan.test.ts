@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { avisoPendiente, diasRestantes, extenderVencimiento, firmaHmac, firmaValida, iguales, leerEvento, montoCoincide, planEfectivo } from "./plan.ts";
+import { avisoPendiente, diasRestantes, extenderVencimiento, firmaHmac, firmaValida, firmarToken, iguales, leerEvento, leerToken, luhn, marcaTarjeta, montoCoincide, planEfectivo, separarNombre, validarTarjeta } from "./plan.ts";
 
 const hoy = "2026-11-24T12:00:00.000Z";
 
@@ -56,4 +56,42 @@ test("el monto debe coincidir (con tolerancia de centavos)", () => {
   assert.equal(montoCoincide(4.99, 4.99), true);
   assert.equal(montoCoincide(4.99, 0.99), false);
   assert.equal(montoCoincide(NaN, 4.99), false);
+});
+
+test("el token de pago sirve 15 minutos, solo para su pago y su cuenta, y no se puede alterar", async () => {
+  const ahora = 1_700_000_000_000;
+  const tk = await firmarToken("secreto", "pago1", "user1", ahora);
+  assert.deepEqual(await leerToken("secreto", tk, ahora + 60_000), { pagoId: "pago1", userId: "user1" });
+  assert.equal(await leerToken("secreto", tk, ahora + 16 * 60_000), null);          // vencido
+  assert.equal(await leerToken("otro", tk, ahora + 1000), null);                    // otro secreto
+  const [cuerpo, firma] = tk.split(".");
+  const alterado = btoa(JSON.stringify({ p: "pago2", u: "user1", e: ahora + 999999999 })).replace(/=+$/, "");
+  assert.equal(await leerToken("secreto", `${alterado}.${firma}`, ahora + 1000), null);
+  assert.equal(await leerToken("secreto", "basura", ahora), null);
+  assert.ok(cuerpo.length > 10);
+});
+
+test("Luhn y marcas: acepta tarjetas de prueba válidas y rechaza el resto", () => {
+  assert.equal(luhn("4111111111111111"), true);
+  assert.equal(luhn("4111111111111112"), false);
+  assert.equal(marcaTarjeta("4111111111111111"), "visa");
+  assert.equal(marcaTarjeta("5555555555554444"), "mastercard");
+  assert.equal(marcaTarjeta("378282246310005"), "otra");   // American Express: no se acepta
+});
+
+test("la tarjeta se valida entera en el servidor", () => {
+  const ok = { nombre: "Ana Pérez", numero: "4111 1111 1111 1111", cvv: "123", mes: 12, anio: 2030 };
+  const hoy = new Date("2026-11-24T00:00:00Z");
+  assert.equal(validarTarjeta(ok, hoy), null);
+  assert.match(String(validarTarjeta({ ...ok, numero: "4111111111111112" }, hoy)), /número/);
+  assert.match(String(validarTarjeta({ ...ok, numero: "378282246310005" }, hoy)), /Visa y Mastercard/);
+  assert.match(String(validarTarjeta({ ...ok, anio: 2025 }, hoy)), /vencida/);
+  assert.match(String(validarTarjeta({ ...ok, mes: 10, anio: 2026 }, hoy)), /vencida/);
+  assert.match(String(validarTarjeta({ ...ok, cvv: "12" }, hoy)), /CVV/);
+  assert.match(String(validarTarjeta({ ...ok, nombre: "" }, hoy)), /nombre/);
+});
+
+test("el nombre se separa en nombre y apellido", () => {
+  assert.deepEqual(separarNombre("Ana María Pérez"), { nombre: "Ana", apellido: "María Pérez" });
+  assert.deepEqual(separarNombre("Madonna"), { nombre: "Madonna", apellido: "Madonna" });
 });

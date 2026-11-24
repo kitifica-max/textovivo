@@ -29,6 +29,99 @@
   .conector .boton.claro { --fondo: transparent; --texto: #f3f0e8; border-color: #f3f0e855; }
   @media (max-width: 760px) { .conector { grid-template-columns: auto 1fr; } .conector .acciones { grid-column: 1 / -1; } }
 
+  /* ---------- Subida de documentos ---------- */
+  .subida { display: grid; gap: 16px; padding: clamp(18px, 3vw, 28px); border-radius: 28px; background: var(--superficie); border: 1px solid var(--linea); margin-bottom: 16px; --resorte: cubic-bezier(.22, 1, .36, 1); }
+  .zona { position: relative; min-height: 176px; display: grid; place-items: center; padding: 24px; text-align: center; cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent;
+    border-radius: 22px; border: 1.5px dashed color-mix(in srgb, var(--tinta) 24%, transparent); background: color-mix(in srgb, var(--tinta) 3%, transparent);
+    transition: transform .45s var(--resorte), background .25s ease, border-color .25s ease, box-shadow .4s ease; }
+  .zona:hover { background: color-mix(in srgb, var(--tinta) 6%, transparent); }
+  .zona:active { transform: scale(.985); transition-duration: .1s; }              /* responde al apretar, no al soltar */
+  .zona:focus-visible { outline: 3px solid color-mix(in srgb, var(--foco) 50%, transparent); outline-offset: 3px; }
+  .subida[data-cerca="si"] .zona { border-color: color-mix(in srgb, var(--foco) 55%, transparent); }   /* hay un archivo en vuelo por la ventana */
+  .zona[data-arrastre="si"] { transform: scale(1.018); border-style: solid; border-color: var(--foco); background: color-mix(in srgb, var(--foco) 10%, transparent); box-shadow: 0 22px 44px -22px color-mix(in srgb, var(--foco) 60%, transparent); }
+  .zona[data-arrastre="si"] .z-icono { transform: translateY(-7px) scale(1.1); }
+  .zona[data-estado="elegido"], .zona[data-estado="subiendo"], .zona[data-estado="procesando"] { border-style: solid; border-color: var(--linea); background: var(--crema); cursor: default; }
+  .zona[data-estado="elegido"] { cursor: pointer; }
+  .zona[data-estado="listo"] { border-style: solid; border-color: color-mix(in srgb, #2f8f5b 50%, transparent); background: color-mix(in srgb, #2f8f5b 8%, transparent); cursor: default; }
+  .zona[data-estado="error"] { border-color: color-mix(in srgb, #b3261e 55%, transparent); background: color-mix(in srgb, #b3261e 5%, transparent); }
+  .zona[aria-disabled="true"] { pointer-events: none; }
+
+  .zona > div { display: none; width: 100%; }
+  .zona[data-estado="vacio"] .z-vacio, .zona[data-estado="error"] .z-vacio { display: grid; }
+  .zona[data-estado="elegido"] .z-archivo { display: flex; }
+  .zona[data-estado="subiendo"] .z-progreso, .zona[data-estado="procesando"] .z-progreso { display: grid; }
+  .zona[data-estado="listo"] .z-listo { display: grid; }
+  .zona > div { animation: z-entra .5s var(--resorte) both; }
+  @keyframes z-entra { from { opacity: 0; transform: translateY(8px) scale(.98); } }
+
+  .z-vacio { gap: 6px; justify-items: center; }
+  .z-icono { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 8px; background: color-mix(in srgb, var(--tinta) 8%, transparent); color: var(--tinta); transition: transform .45s var(--resorte); }
+  .z-icono svg { width: 26px; height: 26px; }
+  .z-titulo { font: 800 1.2rem/1.2 var(--sans); letter-spacing: -0.025em; }
+  .z-ayuda { font-size: 0.85rem; color: var(--gris); }
+  .solo-tactil { display: none; }
+  @media (pointer: coarse) { .solo-raton { display: none; } .solo-tactil { display: inline; } }
+
+  .z-archivo { align-items: center; gap: 14px; text-align: left; }
+  .z-tipo { flex: none; width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; font: 800 0.8rem var(--sans); letter-spacing: 0.02em; color: #fff; background: #df2a1f; }
+  .z-tipo[data-t="TXT"] { background: #2f55c4; }
+  .z-tipo[data-t="MD"] { background: #2f8f5b; }
+  .z-datos { flex: 1; min-width: 0; display: grid; gap: 2px; }
+  .z-datos strong { font-size: 1rem; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .z-datos small { font-size: 0.8rem; color: var(--gris); }
+  .z-quitar { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 0; background: color-mix(in srgb, var(--tinta) 7%, transparent); color: var(--gris); cursor: pointer; display: grid; place-items: center; transition: transform .1s ease-out, background .2s, color .2s; }
+  .z-quitar:hover { background: color-mix(in srgb, var(--tinta) 12%, transparent); color: var(--tinta); }
+  .z-quitar:active { transform: scale(.92); }
+  .z-quitar svg { width: 16px; height: 16px; }
+
+  .z-progreso { gap: 12px; text-align: left; }
+  .z-progreso strong { font: 700 0.95rem var(--sans); font-variant-numeric: tabular-nums; }
+  .z-pista { display: block; height: 8px; border-radius: 8px; background: color-mix(in srgb, var(--tinta) 10%, transparent); overflow: hidden; }
+  .z-pista i { display: block; height: 100%; width: 100%; border-radius: 8px; background: var(--tinta); transform-origin: left; transform: scaleX(var(--p, 0)); transition: transform .25s linear; }
+  .zona[data-estado="procesando"] .z-pista i { transform: none; width: 40%; animation: z-vaiven 1.2s ease-in-out infinite; }
+  @keyframes z-vaiven { 0% { transform: translateX(-100%); } 100% { transform: translateX(250%); } }
+  .z-cancelar { justify-self: start; border: 0; background: none; padding: 6px 0; color: var(--gris); font: 600 0.85rem var(--sans); cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+
+  .z-listo { gap: 10px; justify-items: center; color: #1f6b43; }
+  .z-listo svg { width: 56px; height: 56px; }
+  .z-listo path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: z-trazo .55s .15s var(--resorte) forwards; }
+  @keyframes z-trazo { to { stroke-dashoffset: 0; } }
+  .z-listo strong { font: 800 1.1rem var(--sans); letter-spacing: -0.02em; color: var(--tinta); }
+
+  .z-error { margin: -4px 0 0; padding: 10px 14px; border-radius: 12px; background: color-mix(in srgb, #b3261e 10%, transparent); color: #b3261e; font-size: 0.9rem; font-weight: 600; animation: z-sacude .4s ease; }
+  @keyframes z-sacude { 20% { transform: translateX(-5px); } 45% { transform: translateX(4px); } 70% { transform: translateX(-2px); } }
+
+  .s-campo { display: grid; gap: 6px; }
+  .s-campo label { font-size: 0.8rem; font-weight: 600; color: var(--gris); }
+  .s-campo label span { font-weight: 500; opacity: .75; }
+  .s-campo input { min-height: 52px; padding: 0 16px; border: 1px solid var(--linea); border-radius: 16px; background: var(--crema); color: var(--tinta); font: 500 1rem var(--sans); width: 100%; }
+  .s-campo input:focus-visible { outline: 3px solid color-mix(in srgb, var(--foco) 45%, transparent); outline-offset: 2px; }
+
+  .chequeo { display: flex; gap: 12px; align-items: center; min-height: 44px; cursor: pointer; font-size: 0.92rem; line-height: 1.4; }
+  .chequeo input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .chequeo-caja { flex: none; width: 28px; height: 28px; border-radius: 9px; border: 1.5px solid color-mix(in srgb, var(--tinta) 30%, transparent); display: grid; place-items: center; color: var(--crema); background: transparent; transition: background .2s, border-color .2s, transform .1s ease-out; }
+  .chequeo-caja svg { width: 18px; height: 18px; }
+  .chequeo-caja path { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .3s var(--resorte); }
+  .chequeo:active .chequeo-caja { transform: scale(.9); }
+  .chequeo input:checked + .chequeo-caja { background: var(--tinta); border-color: var(--tinta); }
+  .chequeo input:checked + .chequeo-caja path { stroke-dashoffset: 0; }
+  .chequeo input:focus-visible + .chequeo-caja { outline: 3px solid color-mix(in srgb, var(--foco) 50%, transparent); outline-offset: 2px; }
+
+  .s-accion { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; }
+  .s-accion .boton { min-height: 52px; padding: 0 28px; }
+  .s-accion .boton:disabled { opacity: .32; cursor: not-allowed; }
+
+  #docs li.recien { animation: z-recien 1.6s ease; }
+  @keyframes z-recien { from { background: color-mix(in srgb, #2f8f5b 16%, transparent); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .zona, .z-icono, .zona > div, .z-error, #docs li.recien { animation: none !important; transition: background .2s, border-color .2s; }
+    .zona[data-arrastre="si"], .zona[data-arrastre="si"] .z-icono { transform: none; }
+    .zona:active { transform: none; }
+    .z-listo path { animation: none; stroke-dashoffset: 0; }
+    .zona[data-estado="procesando"] .z-pista i { animation: none; width: 100%; opacity: .5; }
+  }
+
   .titulo-bloque { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 18px; }
   .titulo-bloque h2 { font-size: clamp(1.6rem, 2.6vw, 2.2rem); }
 
@@ -134,15 +227,40 @@
         <p class="nota" style="margin:-6px 0 16px;max-width:46em">Subí tus propios PDF, TXT o MD y consultalos desde tu IA. <strong>Solo vos los ves</strong>: no se publican ni se comparten con nadie. Del archivo no guardamos nada; solo su texto, para poder buscar en él. Podés borrarlos cuando quieras.</p>
         <div id="plan-card" class="tarjeta" hidden style="margin-bottom:24px;display:grid;gap:10px">
           <div><strong id="plan-titulo"></strong> <span class="nota" id="plan-detalle"></span></div>
+          <div id="ts-pago"></div>
           <div id="plan-acciones" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center"><button class="boton chico" type="button" id="plan-pagar"></button><span class="nota" id="plan-msg" role="status"></span></div>
         </div>
-        <form id="form-doc" hidden class="tarjeta" style="display:grid;gap:12px;margin-bottom:16px">
-          <label class="nota" for="doc-archivo">Archivo (PDF, TXT o MD, hasta 7 MB)</label>
-          <input id="doc-archivo" type="file" accept=".pdf,.txt,.md" required>
-          <input id="doc-titulo" type="text" maxlength="160" placeholder="Título (opcional)" style="min-height:48px;padding:0 16px;border:1px solid var(--linea);border-radius:14px;background:var(--superficie);font:inherit;color:var(--tinta)">
-          <label class="nota" style="display:flex;gap:10px;align-items:flex-start"><input id="doc-acepto" type="checkbox" required style="margin-top:3px"> Confirmo que tengo derecho a usar este documento.</label>
-          <p class="nota" id="doc-msg" role="status" style="margin:0"></p>
-          <div><button class="boton chico" type="submit" id="doc-subir">Subir documento</button></div>
+        <form id="form-doc" class="subida" hidden novalidate>
+          <input id="doc-archivo" class="sr-only" type="file" accept=".pdf,.txt,.md,application/pdf,text/plain,text/markdown" tabindex="-1" aria-hidden="true">
+          <div id="zona" class="zona" role="button" tabindex="0" data-estado="vacio" aria-describedby="zona-ayuda">
+            <div class="z-vacio">
+              <span class="z-icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 17v-6"/><path d="m9.5 13.5 2.5-2.5 2.5 2.5"/></svg></span>
+              <strong class="z-titulo"><span class="solo-raton">Arrastrá un archivo acá</span><span class="solo-tactil">Tocá para elegir un archivo</span></strong>
+              <span class="z-ayuda" id="zona-ayuda"><span class="solo-raton">o hacé clic para elegirlo · </span>PDF, TXT o MD · hasta <span id="zona-max">7 MB</span></span>
+            </div>
+            <div class="z-archivo">
+              <span class="z-tipo" id="arch-tipo" aria-hidden="true">PDF</span>
+              <span class="z-datos"><strong id="arch-nombre"></strong><small id="arch-tam"></small></span>
+              <button type="button" class="z-quitar" id="arch-quitar" aria-label="Quitar el archivo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+            <div class="z-progreso">
+              <strong id="prog-texto">Subiendo…</strong>
+              <span class="z-pista"><i id="prog-barra"></i></span>
+              <button type="button" class="z-cancelar" id="prog-cancelar">Cancelar</button>
+            </div>
+            <div class="z-listo">
+              <svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23" fill="none" stroke="currentColor" stroke-width="2.5" opacity=".25"/><path d="M15 27l8 8 15-17" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/></svg>
+              <strong id="listo-texto">Listo</strong>
+            </div>
+          </div>
+          <p class="z-error" id="doc-error" role="alert" hidden></p>
+
+          <div class="s-campo"><label for="doc-titulo">Título <span>(opcional)</span></label><input id="doc-titulo" type="text" maxlength="160" autocomplete="off" placeholder="Se usa el nombre del archivo"></div>
+
+          <label class="chequeo"><input id="doc-acepto" type="checkbox"><span class="chequeo-caja" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7" pathLength="1"/></svg></span><span>Confirmo que tengo derecho a usar este documento.</span></label>
+
+          <div class="s-accion"><button class="boton" type="submit" id="doc-subir" disabled>Subir documento</button><span class="nota" id="doc-pista">Elegí un archivo para empezar.</span></div>
+          <p class="sr-only" role="status" aria-live="polite" id="doc-estado"></p>
         </form>
         <ul class="lista" id="docs" style="margin-bottom:64px"></ul>
       </div>
@@ -207,12 +325,20 @@ function pintarPlan(d) {
   else { $("plan-titulo").textContent = "Función de pago."; $("plan-detalle").textContent = "Los documentos personales llegan con el plan Pro. Todavía no está abierto a todas las cuentas."; b.hidden = true; }
   b.disabled = !d.cobro_activo;
 }
+// La verificación de Turnstile se hace acá, no en la página de pago: así esa página no carga scripts de terceros.
+let tsPago = null;
+async function esperarToken(ms) { const hasta = Date.now() + ms; while (Date.now() < hasta) { const t = tsPago && tsPago.token(); if (t) return t; await new Promise((r) => setTimeout(r, 300)); } return ""; }
 $("plan-pagar").addEventListener("click", async () => {
-  const b = $("plan-pagar"); b.disabled = true; $("plan-msg").textContent = "Creando tu enlace de pago…";
-  const r = await fetch("/api/pago/crear", { method: "POST", headers: { "content-type": "application/json" }, body: "{}", credentials: "same-origin" }).catch(() => null);
+  const b = $("plan-pagar"); b.disabled = true; $("plan-msg").textContent = "Verificando…";
+  if (!tsPago) tsPago = tvTurnstile("ts-pago", { appearance: "interaction-only" });
+  await tsPago.listo;
+  const token = await esperarToken(10000);
+  if (!token) { b.disabled = false; $("plan-msg").textContent = "No pudimos completar la verificación. Recargá la página e intentá de nuevo."; return; }
+  const r = await fetch("/api/pago/iniciar", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ turnstile: token }), credentials: "same-origin" }).catch(() => null);
   const j = r ? await r.json().catch(() => ({})) : {};
-  if (r && r.ok && j.url) { location.href = j.url; return; }
-  b.disabled = false; $("plan-msg").textContent = j.error || "No se pudo crear el pago. Probá de nuevo.";
+  tsPago.reset();
+  if (r && r.ok && j.pago) { try { sessionStorage.setItem("tv_pago", JSON.stringify(j)); } catch {} location.href = "/pago/"; return; }
+  b.disabled = false; $("plan-msg").textContent = j.error || "No se pudo iniciar el pago. Probá de nuevo.";
 });
 async function cargarDocs() {
   const r = await fetch("/api/documentos", { credentials: "same-origin" }).catch(() => null);
@@ -222,6 +348,7 @@ async function cargarDocs() {
   pintarPlan(d);
   $("form-doc").hidden = !d.habilitado;
   $("n-docs").textContent = d.habilitado ? d.documentos.length + " de " + d.limites.max_docs : "";
+  if (d.limites) { maxBytes = d.limites.max_bytes_doc; $("zona-max").textContent = tamano(maxBytes); }
   const mb = (b) => (b < 1048576 ? Math.max(1, Math.round(b / 1024)) + " KB" : (b / 1048576).toFixed(1).replace(".", ",") + " MB");
   $("docs").innerHTML = d.habilitado
     ? (d.documentos.length
@@ -236,16 +363,89 @@ document.addEventListener("click", async (ev) => {
   await fetch("/api/documentos/" + b.dataset.borrarDoc + "/borrar", { method: "POST", headers: { "content-type": "application/json" }, body: "{}", credentials: "same-origin" });
   cargarDocs();
 });
-$("form-doc").addEventListener("submit", async (ev) => {
+// ---------- Subida de documentos: zona de arrastre con estados ----------
+const zona = $("zona"), inputArchivo = $("doc-archivo");
+let archivo = null, subiendo = false, maxBytes = 7 * 1024 * 1024, xhrActivo = null, reinicio = 0;
+const tamano = (b) => (b < 1048576 ? Math.max(1, Math.round(b / 1024)) + " KB" : (Number.isInteger(b / 1048576) ? b / 1048576 : (b / 1048576).toFixed(1).replace(".", ",")) + " MB");
+const tipoDe = (n) => ((n.match(/\.(pdf|txt|md)$/i) || [])[1] || "").toUpperCase();
+const anunciar = (t) => { $("doc-estado").textContent = t; };
+function poner(estado) { zona.dataset.estado = estado; }
+function avisoError(m) { const e = $("doc-error"); e.hidden = !m; e.textContent = m || ""; if (m) { e.style.animation = "none"; void e.offsetWidth; e.style.animation = ""; anunciar(m); } }
+function actualizarAccion() {
+  const listo = !!archivo && $("doc-acepto").checked && !subiendo;
+  $("doc-subir").disabled = !listo;
+  $("doc-pista").hidden = listo || subiendo;
+  $("doc-pista").textContent = !archivo ? "Elegí un archivo para empezar." : "Confirmá que tenés derecho a usarlo.";
+}
+function validarArchivo(f) {
+  if (!tipoDe(f.name)) return "Solo se aceptan archivos PDF, TXT o MD.";
+  if (f.size === 0) return "El archivo está vacío.";
+  if (f.size > maxBytes) return "Pesa " + tamano(f.size) + " y el máximo es " + tamano(maxBytes) + ".";
+  return "";
+}
+function elegir(f, hayMas) {
+  clearTimeout(reinicio); avisoError("");
+  if (!f) return quitar();
+  const m = validarArchivo(f);
+  if (m) { archivo = null; inputArchivo.value = ""; poner("error"); avisoError(m); actualizarAccion(); return; }
+  archivo = f;
+  $("arch-nombre").textContent = f.name; $("arch-tam").textContent = tamano(f.size);
+  const t = tipoDe(f.name); $("arch-tipo").textContent = t; $("arch-tipo").dataset.t = t;
+  $("doc-titulo").placeholder = f.name.replace(/\.[^.]+$/, "");
+  poner("elegido"); actualizarAccion();
+  anunciar("Archivo elegido: " + f.name + ", " + tamano(f.size) + (hayMas ? ". Se subió solo el primero." : "."));
+  if (hayMas) avisoError("Subí de a un documento: elegí el primero y repetí con los demás.");
+}
+function quitar() { archivo = null; inputArchivo.value = ""; poner("vacio"); avisoError(""); actualizarAccion(); }
+
+zona.addEventListener("click", (e) => { if (e.target.closest("#arch-quitar") || e.target.closest("#prog-cancelar") || subiendo || zona.dataset.estado === "listo") return; inputArchivo.click(); });
+zona.addEventListener("keydown", (e) => { if ((e.key === "Enter" || e.key === " ") && !subiendo && e.target === zona) { e.preventDefault(); inputArchivo.click(); } });
+inputArchivo.addEventListener("change", () => elegir(inputArchivo.files[0], inputArchivo.files.length > 1));
+$("arch-quitar").addEventListener("click", (e) => { e.stopPropagation(); quitar(); });
+$("doc-acepto").addEventListener("change", actualizarAccion);
+
+// Arrastrar: la zona responde desde que el archivo entra (no al soltarlo) y el formulario avisa apenas el archivo entra a la ventana.
+let dentro = 0, enVentana = 0;
+const traeArchivos = (e) => [...(e.dataTransfer?.types || [])].includes("Files");
+zona.addEventListener("dragenter", (e) => { if (!traeArchivos(e) || subiendo) return; e.preventDefault(); dentro++; zona.dataset.arrastre = "si"; });
+zona.addEventListener("dragover", (e) => { if (!traeArchivos(e)) return; e.preventDefault(); e.dataTransfer.dropEffect = subiendo ? "none" : "copy"; });
+zona.addEventListener("dragleave", () => { dentro = Math.max(0, dentro - 1); if (!dentro) delete zona.dataset.arrastre; });
+zona.addEventListener("drop", (e) => { if (!traeArchivos(e)) return; e.preventDefault(); dentro = 0; delete zona.dataset.arrastre; if (!subiendo) { const fs = e.dataTransfer.files; elegir(fs[0], fs.length > 1); } });
+window.addEventListener("dragenter", (e) => { if (traeArchivos(e)) { enVentana++; $("form-doc").dataset.cerca = "si"; } });
+window.addEventListener("dragleave", () => { enVentana = Math.max(0, enVentana - 1); if (!enVentana) delete $("form-doc").dataset.cerca; });
+window.addEventListener("dragover", (e) => { if (traeArchivos(e)) e.preventDefault(); });   // soltar fuera de la zona no abre el archivo en el navegador
+window.addEventListener("drop", (e) => { if (traeArchivos(e)) e.preventDefault(); enVentana = 0; delete $("form-doc").dataset.cerca; });
+
+function reiniciarFormulario() { quitar(); $("doc-titulo").value = ""; $("doc-titulo").placeholder = "Se usa el nombre del archivo"; $("doc-acepto").checked = false; actualizarAccion(); }
+
+$("prog-cancelar").addEventListener("click", (e) => { e.stopPropagation(); if (xhrActivo) xhrActivo.abort(); });
+
+$("form-doc").addEventListener("submit", (ev) => {
   ev.preventDefault();
+  if (!archivo || !$("doc-acepto").checked || subiendo) return;
   const f = new FormData();
-  f.append("archivo", $("doc-archivo").files[0]); f.append("titulo", $("doc-titulo").value); if ($("doc-acepto").checked) f.append("acepto", "on");
-  $("doc-subir").disabled = true; $("doc-msg").textContent = "Procesando el documento…";
-  const r = await fetch("/api/documentos", { method: "POST", body: f, credentials: "same-origin" }).catch(() => null);
-  const j = r ? await r.json().catch(() => ({})) : {};
-  $("doc-subir").disabled = false;
-  if (r && r.ok) { $("doc-msg").textContent = "Listo: " + j.paginas + " páginas disponibles en tu conector."; ev.target.reset(); cargarDocs(); }
-  else $("doc-msg").textContent = j.error || "No se pudo subir. Probá de nuevo.";
+  f.append("archivo", archivo); f.append("titulo", $("doc-titulo").value); f.append("acepto", "on");
+  subiendo = true; zona.setAttribute("aria-disabled", "true"); avisoError(""); actualizarAccion();
+  $("doc-subir").textContent = "Subiendo…";
+  $("prog-barra").style.setProperty("--p", "0"); $("prog-texto").textContent = "Subiendo… 0 %"; poner("subiendo"); anunciar("Subiendo el documento.");
+  const fin = () => { subiendo = false; xhrActivo = null; zona.removeAttribute("aria-disabled"); $("doc-subir").textContent = "Subir documento"; actualizarAccion(); };
+  const xhr = new XMLHttpRequest(); xhrActivo = xhr;
+  xhr.open("POST", "/api/documentos"); xhr.withCredentials = true;
+  xhr.upload.onprogress = (e) => { if (!e.lengthComputable) return; const p = e.loaded / e.total; $("prog-barra").style.setProperty("--p", p.toFixed(3)); $("prog-texto").textContent = "Subiendo… " + Math.round(p * 100) + " %"; };
+  xhr.upload.onload = () => { poner("procesando"); $("prog-texto").textContent = "Leyendo el texto del documento…"; anunciar("Procesando el documento."); };
+  xhr.onload = () => {
+    let j = {}; try { j = JSON.parse(xhr.responseText); } catch {}
+    fin();
+    if (xhr.status >= 200 && xhr.status < 300) {
+      $("listo-texto").textContent = "Listo · " + j.paginas + (j.paginas === 1 ? " página" : " páginas") + " en tu conector";
+      poner("listo"); anunciar("Documento subido: " + j.paginas + " páginas disponibles en tu conector.");
+      cargarDocs().then(() => { const li = document.querySelector("#docs li"); if (li) li.classList.add("recien"); });
+      reinicio = setTimeout(reiniciarFormulario, 3200);
+    } else { poner("elegido"); avisoError(j.error || "No se pudo subir. Probá de nuevo."); }
+  };
+  xhr.onerror = () => { fin(); poner("elegido"); avisoError("Sin conexión. Revisá tu internet e intentá de nuevo."); };
+  xhr.onabort = () => { fin(); poner("elegido"); anunciar("Subida cancelada."); };
+  xhr.send(f);
 });
 async function cargar() {
   const r = await fetch("/api/yo", { credentials: "same-origin" }).catch(() => null);

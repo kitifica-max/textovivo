@@ -63,3 +63,53 @@ export function leerEvento(o: unknown): EventoWompi | null {
 }
 
 export const montoCoincide = (a: number, b: number) => Number.isFinite(a) && Number.isFinite(b) && Math.abs(a - b) < 0.005;
+
+// ---------- Token del pago con tarjeta ----------
+// El formulario manda la tarjeta directo al Worker (no pasa por Netlify), así que no hay cookie de sesión:
+// este token, firmado y de 15 minutos, dice «esta cuenta puede intentar pagar este pago».
+const b64 = (t: string) => btoa(String.fromCharCode(...new TextEncoder().encode(t))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+const deb64 = (t: string) => new TextDecoder().decode(Uint8Array.from(atob(t.replace(/-/g, "+").replace(/_/g, "/")), (c) => c.charCodeAt(0)));
+
+export async function firmarToken(secreto: string, pagoId: string, userId: string, ahoraMs = Date.now(), vigenciaMs = 15 * 60_000) {
+  const cuerpo = b64(JSON.stringify({ p: pagoId, u: userId, e: ahoraMs + vigenciaMs }));
+  return `${cuerpo}.${await firmaHmac(secreto, "token-pago:" + cuerpo)}`;
+}
+
+export async function leerToken(secreto: string, token: string, ahoraMs = Date.now()): Promise<{ pagoId: string; userId: string } | null> {
+  const [cuerpo, firma] = String(token ?? "").split(".");
+  if (!cuerpo || !firma || !secreto) return null;
+  if (!iguales(await firmaHmac(secreto, "token-pago:" + cuerpo), firma)) return null;
+  try {
+    const t = JSON.parse(deb64(cuerpo)) as { p?: string; u?: string; e?: number };
+    if (!t.p || !t.u || typeof t.e !== "number" || t.e < ahoraMs) return null;
+    return { pagoId: t.p, userId: t.u };
+  } catch { return null; }
+}
+
+// ---------- Validación de tarjeta (también en el servidor: el navegador no es de fiar) ----------
+export const luhn = (num: string) => {
+  let suma = 0, doble = false;
+  for (let i = num.length - 1; i >= 0; i--) { let d = Number(num[i]); if (doble) { d *= 2; if (d > 9) d -= 9; } suma += d; doble = !doble; }
+  return num.length >= 13 && suma % 10 === 0;
+};
+export const marcaTarjeta = (num: string): "visa" | "mastercard" | "otra" => (/^4/.test(num) ? "visa" : /^(5[1-5]|2[2-7])/.test(num) ? "mastercard" : "otra");
+
+export type EntradaTarjeta = { numero?: unknown; cvv?: unknown; mes?: unknown; anio?: unknown; nombre?: unknown };
+/** Devuelve el mensaje de error para quien paga, o null si todo está bien. */
+export function validarTarjeta(e: EntradaTarjeta, ahora = new Date()): string | null {
+  const numero = String(e.numero ?? "").replace(/\D/g, ""), cvv = String(e.cvv ?? "").replace(/\D/g, "");
+  const mes = Number(e.mes), anio = Number(e.anio);
+  if (String(e.nombre ?? "").trim().length < 2) return "Escribí tu nombre.";
+  if (numero.length < 15 || numero.length > 19 || !luhn(numero)) return "El número de tarjeta no es válido.";
+  if (marcaTarjeta(numero) === "otra") return "Solo aceptamos Visa y Mastercard.";
+  if (!Number.isInteger(mes) || mes < 1 || mes > 12) return "El mes de vencimiento no es válido.";
+  if (!Number.isInteger(anio) || anio < ahora.getFullYear() || (anio === ahora.getFullYear() && mes < ahora.getMonth() + 1)) return "La tarjeta está vencida.";
+  if (cvv.length !== 3) return "El CVV debe tener 3 dígitos.";
+  return null;
+}
+
+/** «Ana María Pérez» → { nombre: «Ana», apellido: «María Pérez» }; con una sola palabra, el apellido repite el nombre. */
+export function separarNombre(completo: string) {
+  const partes = completo.trim().split(/\s+/);
+  return { nombre: partes[0] ?? "", apellido: partes.slice(1).join(" ") || partes[0] || "" };
+}

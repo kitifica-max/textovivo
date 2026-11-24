@@ -299,6 +299,8 @@ async function panel() {
   const agregados = (await todos<{ id: string; n: number }>("SELECT libro_id AS id, COUNT(*) AS n FROM mis_libros GROUP BY libro_id ORDER BY n DESC LIMIT 10")).map((r) => ({ nombre: nombre(r.id), n: r.n }));
   const personales = await uno<{ documentos: number; cuentas: number }>("SELECT COUNT(*) AS documentos, COUNT(DISTINCT user_id) AS cuentas FROM docs_personales");
   const cobro = await uno<{ aprobados: number; ingresos: number; pendientes: number }>("SELECT COALESCE(SUM(estado = 'aprobado' AND modo = 'produccion'), 0) AS aprobados, COALESCE(SUM(CASE WHEN estado = 'aprobado' AND modo = 'produccion' THEN monto ELSE 0 END), 0) AS ingresos, COALESCE(SUM(estado = 'pendiente' AND created_at > ?1), 0) AS pendientes FROM pagos", iso(1));
+  const tarjetas = await uno<{ intentos: number; fallos: number; fallos10: number }>(
+    "SELECT COUNT(*) AS intentos, COALESCE(SUM(ok = 0), 0) AS fallos, COALESCE(SUM(ok = 0 AND created_at > ?2), 0) AS fallos10 FROM intentos_tarjeta WHERE created_at > ?1", iso(1), new Date(Date.now() - 600_000).toISOString());
   const proActivos = await uno<{ n: number }>("SELECT COUNT(*) AS n FROM users WHERE plan != 'gratis' AND (plan_vence_at IS NULL OR plan_vence_at > ?1)", ahoraIso);
   const envios = await uno<{ pendientes: number; aprobados: number; auto: number; manual: number; bloqueados: number; sin_evaluar: number; listos_para_auto: number }>("SELECT COALESCE(SUM(estado = 'recibido'), 0) AS pendientes, COALESCE(SUM(estado = 'aprobado'), 0) AS aprobados, COALESCE(SUM(aprobado_por = 'auto'), 0) AS auto, COALESCE(SUM(aprobado_por = 'manual'), 0) AS manual, COALESCE(SUM(estado = 'recibido' AND veredicto = 'bloqueado'), 0) AS bloqueados, COALESCE(SUM(estado = 'recibido' AND veredicto IS NULL), 0) AS sin_evaluar, COALESCE(SUM(estado = 'recibido' AND veredicto = 'auto_ok'), 0) AS listos_para_auto FROM envios");
 
@@ -338,7 +340,7 @@ async function panel() {
     biblioteca: { libros_total: lista.length, libros_nuevos_14d: lista.filter((l) => l.nuevo).length, libros: lista, libros_mas_agregados: agregados },
     envios: { ...envios, modo_auto: String(env.APROBACION_AUTO ?? "sombra") },
     personales,
-    cobro: { ...cobro, pro_activos: proActivos.n, modo: String(env.WOMPI_MODO ?? "pruebas") }
+    cobro: { ...cobro, intentos_24h: tarjetas.intentos, fallos_24h: tarjetas.fallos, en_pausa: tarjetas.fallos10 >= 25, pro_activos: proActivos.n, modo: String(env.WOMPI_MODO ?? "pruebas") }
   };
   return new Response(JSON.stringify(datos), { headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } });
 }

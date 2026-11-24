@@ -79,6 +79,7 @@
         <form id="p-entrar" role="tabpanel" aria-labelledby="t-entrar" hidden novalidate>
           <div class="campo"><label for="email-e">Email</label><input id="email-e" name="email" type="email" autocomplete="email" placeholder="vos@ejemplo.com" required maxlength="200"></div>
           <div class="campo"><label for="clave-e">Contraseña</label><input id="clave-e" name="clave" type="password" autocomplete="current-password" required maxlength="200"></div>
+          <div id="ts-login" style="margin:4px 0 0"></div>
           <button class="boton ancho" type="submit">Entrar</button>
           <p class="nota" style="margin-top:14px"><a class="enlace" href="recuperar.html">¿Olvidaste tu contraseña?</a></p>
         </form>
@@ -89,7 +90,7 @@
 <script src="app.js"></script>
 <script>
 const $ = (id) => document.getElementById(id);
-const SIGUIENTES = ["mi-biblioteca.html", "subir.html", "guia.html"];
+const SIGUIENTES = ["mi-biblioteca.html", "subir.html", "guia.html", "pago/"];
 const next = new URLSearchParams(location.search).get("next");
 // Desde la ficha de un libro se vuelve a ella con ?agregar=1 para completar el «agregar a mi biblioteca».
 const destino = SIGUIENTES.includes(next) ? next : /^libros\/[a-z0-9-]{3,80}\.html$/.test(next || "") ? next + "?agregar=1" : "mi-biblioteca.html";
@@ -106,6 +107,7 @@ async function enviar(url, cuerpo, boton) {
   finally { boton.disabled = false; }
 }
 const ts = tvTurnstile("ts-registro");
+const tsLogin = tvTurnstile("ts-login", { appearance: "interaction-only" }); // invisible salvo que Cloudflare necesite una comprobación
 $("p-crear").addEventListener("submit", async (ev) => {
   ev.preventDefault();
   const f = ev.target;
@@ -117,7 +119,9 @@ $("p-crear").addEventListener("submit", async (ev) => {
 $("p-entrar").addEventListener("submit", (ev) => {
   ev.preventDefault();
   const f = ev.target;
-  enviar("/api/login", { email: f.email.value, clave: f.clave.value }, f.querySelector("button[type=submit]"));
+  const token = tsLogin.token();
+  if (!token) return fallo("Esperá un segundo a que termine la verificación y probá de nuevo.");
+  enviar("/api/login", { email: f.email.value, clave: f.clave.value, turnstile: token }, f.querySelector("button[type=submit]")).then(() => tsLogin.reset());
 });
 // Si ya hay sesión, directo al destino.
 fetch("/api/yo", { credentials: "same-origin" }).then((r) => r.ok && (location.replace(destino))).catch(() => {});

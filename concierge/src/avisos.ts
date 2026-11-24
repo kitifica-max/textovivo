@@ -5,6 +5,8 @@ import { avisoPendiente, diasRestantes } from "./plan.ts";
 
 export async function avisarVencimientos() {
   const ahora = new Date().toISOString();
+  // Limpieza diaria: los intentos de tarjeta solo hacen falta unas horas.
+  await env.DB.prepare("DELETE FROM intentos_tarjeta WHERE created_at < ?").bind(new Date(Date.now() - 2 * 86_400_000).toISOString()).run();
   const { results } = await env.DB.prepare(
     "SELECT id, email, nombre, plan_vence_at, plan_aviso FROM users WHERE plan != 'gratis' AND plan_vence_at IS NOT NULL AND plan_vence_at > ? AND email_verificado_at IS NOT NULL"
   ).bind(ahora).all<{ id: string; email: string; nombre: string; plan_vence_at: string; plan_aviso: number }>();

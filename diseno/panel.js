@@ -154,6 +154,8 @@ function pintar(d, estado) {
     `<li><span>Latencia media</span><b>${lat(d.uso.latencia_media_ms)}</b></li><li><span>Latencia p95</span><b>${lat(d.uso.latencia_p95_ms)}</b></li>` +
     `<li><span>Libros en la biblioteca</span><b>${n(d.biblioteca.libros_total)}</b></li><li><span>Consultas desde siempre</span><b>${n(d.uso.consultas_total)}</b></li>` +
     `<li><span>Cobro (${esc(d.cobro.modo)}): pagos · ingresos</span><b>${n(d.cobro.aprobados)} · US$${Number(d.cobro.ingresos).toFixed(2)}</b></li>` +
+    `<li><span>Tarjetas (24 h): intentos · fallidos</span><b>${n(d.cobro.intentos_24h)} · ${n(d.cobro.fallos_24h)}</b></li>` +
+    (d.cobro.en_pausa ? `<li><span style="color:var(--mal);font-weight:700">Cobro con tarjeta EN PAUSA por seguridad</span><b>⚠</b></li>` : "") +
     `<li><span>Cuentas con plan Pro activo</span><b>${n(d.cobro.pro_activos)}</b></li>` +
     `<li><span>Documentos personales</span><b>${n(d.personales.documentos)} · ${n(d.personales.cuentas)} cuentas</b></li>` +
     `<li><span>Aportes por revisar</span><b>${n(d.envios.pendientes)}</b></li>` +

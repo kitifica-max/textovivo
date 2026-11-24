@@ -7,8 +7,8 @@ import {
 import { correoRestablecer, correoVerificacion, enviarCorreo } from "./correo.ts";
 import { extraer } from "./extraer.ts";
 import { evaluarEnvio, publicarEnvio, slug } from "./evaluacion.ts";
-import { DIAS_PLAN, diasRestantes, extenderVencimiento, firmaHmac, firmaValida, iguales, leerEvento, montoCoincide, planEfectivo } from "./plan.ts";
-import { apiSecret, crearEnlace, modoPruebas, obtenerTransaccion, wompiConfigurado } from "./wompi.ts";
+import { DIAS_PLAN, diasRestantes, extenderVencimiento, firmaValida, firmarToken, leerEvento, leerToken, montoCoincide, planEfectivo, separarNombre, validarTarjeta } from "./plan.ts";
+import { apiSecret, crearEnlace, crearTransaccion3DS, ErrorWompi, modoPruebas, obtenerTransaccion, wompiConfigurado } from "./wompi.ts";
 import { notaPaginas } from "./tools.ts";
 
 const json = (data: unknown, status = 200, headers: Record<string, string> = {}) =>
@@ -32,6 +32,14 @@ const MAX_PENDIENTES = 10;
 async function cuerpo(req: Request) {
   if (!(req.headers.get("content-type") ?? "").includes("application/json")) return null;
   return (await req.json().catch(() => null)) as Record<string, unknown> | null;
+}
+
+const MAX_INTENTOS_IP_HORA = 10;     // intentos de tarjeta por IP y por hora
+const FALLOS_PARA_PAUSA = 25;        // intentos fallidos en 10 minutos (en todo el sitio) que pausan el cobro con tarjeta
+const ipCliente = (req: Request) => req.headers.get("cf-connecting-ip") ?? req.headers.get("x-nf-client-connection-ip") ?? "";
+async function huellaIp(ip: string) {
+  const h = await crypto.subtle.digest("SHA-256", new TextEncoder().encode("ip:" + ip));
+  return [...new Uint8Array(h)].slice(0, 8).map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
 /** Turnstile: el token lo genera el widget en el navegador y se valida acá con la clave secreta. */
@@ -177,6 +185,47 @@ async function hashRedirectValido(q: { pago?: string; transaccion?: string; enla
   return firmaValida(apiSecret(), `${q.pago ?? ""}${q.transaccion ?? ""}${q.enlace ?? ""}${q.monto ?? ""}`, q.hash);
 }
 
+/** Recibe la tarjeta, la valida, inicia la transacción 3DS en Wompi y devuelve la URL de verificación del banco. Nada de esto se guarda. */
+async function pagarConTarjeta(req: Request): Promise<Response> {
+  const b = (await req.json().catch(() => null)) as Record<string, unknown> | null;
+  if (!b) return error("Solicitud inválida.");
+  const t = await leerToken(apiSecret(), String(b.token ?? ""));
+  if (!t) return error("Tu sesión de pago venció. Volvé a abrir el pago.", 401);
+  const p = await uno<{ id: string; user_id: string; monto: number; estado: string; intentos: number; transaccion_id: string | null } | null>("SELECT id, user_id, monto, estado, intentos, transaccion_id FROM pagos WHERE id = ?", t.pagoId);
+  if (!p || p.user_id !== t.userId) return error("Pago no encontrado.", 404);
+  if (p.estado === "aprobado") return error("Este pago ya fue aprobado.", 409);
+  if (p.transaccion_id) return error("Este pago ya se inició. Abrí un pago nuevo desde Mi biblioteca.", 409);
+  if (p.intentos >= 3) return error("Demasiados intentos con este pago. Abrí uno nuevo desde Mi biblioteca.", 429);
+
+  // Defensa contra pruebas masivas de tarjetas: tope por IP y freno automático si todo el sitio recibe muchos fallos seguidos.
+  const ipH = await huellaIp(ipCliente(req));
+  const porIp = await uno<{ n: number }>("SELECT COUNT(*) AS n FROM intentos_tarjeta WHERE ip_hash = ? AND created_at > ?", ipH, new Date(Date.now() - 3_600_000).toISOString());
+  if (porIp.n >= MAX_INTENTOS_IP_HORA) return error("Demasiados intentos desde tu conexión. Probá de nuevo en una hora.", 429);
+  const fallos = await uno<{ n: number }>("SELECT COUNT(*) AS n FROM intentos_tarjeta WHERE ok = 0 AND created_at > ?", new Date(Date.now() - 600_000).toISOString());
+  if (fallos.n >= FALLOS_PARA_PAUSA) return error("El cobro con tarjeta está en pausa unos minutos por seguridad. Probá de nuevo en un rato.", 503);
+  const intento = await env.DB.prepare("INSERT INTO intentos_tarjeta (ip_hash, created_at) VALUES (?, ?)").bind(ipH, ahora()).run();
+
+  const falla = validarTarjeta({ numero: b.numero, cvv: b.cvv, mes: b.mes, anio: b.anio, nombre: b.nombre });
+  if (falla) return error(falla);
+  const u = await uno<{ email: string } | null>("SELECT email FROM users WHERE id = ?", p.user_id);
+  if (!u) return error("Cuenta no encontrada.", 404);
+
+  await env.DB.prepare("UPDATE pagos SET intentos = intentos + 1 WHERE id = ?").bind(p.id).run();
+  const { nombre, apellido } = separarNombre(String(b.nombre));
+  try {
+    const r = await crearTransaccion3DS({
+      monto: p.monto, email: u.email, nombre, apellido, referencia: p.id,
+      tarjeta: { numero: String(b.numero).replace(/\D/g, ""), cvv: String(b.cvv).replace(/\D/g, ""), mes: Number(b.mes), anio: Number(b.anio) },
+      urlRedirect: `${env.SITIO_URL}/pago/resultado.html?pago=${p.id}`, urlWebhook: `${env.SITIO_URL}/api/wompi/webhook`
+    });
+    await env.DB.prepare("UPDATE pagos SET transaccion_id = ?, enlace_url = ? WHERE id = ?").bind(r.idTransaccion, r.url3ds, p.id).run();
+    await env.DB.prepare("UPDATE intentos_tarjeta SET ok = 1 WHERE id = ?").bind(intento.meta.last_row_id).run();
+    return json({ ok: true, url3ds: r.url3ds });
+  } catch (err) {
+    return error(err instanceof ErrorWompi ? err.mensajeUsuario : "No pudimos procesar el pago. Probá de nuevo.", err instanceof ErrorWompi && err.estado === 400 ? 422 : 502);
+  }
+}
+
 export async function api(req: Request, url: URL, ctx?: ExecutionContext): Promise<Response> {
   const ruta = url.pathname;
   const post = req.method === "POST";
@@ -215,6 +264,7 @@ export async function api(req: Request, url: URL, ctx?: ExecutionContext): Promi
     const email = String(b?.email ?? "").trim().toLowerCase();
     const clave = String(b?.clave ?? "");
     if (!emailValido(email) || !clave || clave.length > 200) return error("Email o contraseña incorrectos.", 401);
+    if (!(await turnstileOk(b?.turnstile, req))) return error(ERROR_CAPTCHA, 400);
 
     const f = await env.DB.prepare("SELECT fallos, bloqueado_hasta FROM login_fallos WHERE email = ?")
       .bind(email)
@@ -294,6 +344,17 @@ export async function api(req: Request, url: URL, ctx?: ExecutionContext): Promi
     });
   }
 
+  // Pago con tarjeta: el formulario manda los datos DIRECTO a este Worker (no pasan por Netlify). Sin cookie: se autoriza con un token firmado.
+  if (ruta === "/api/pago/tarjeta") {
+    const origen = req.headers.get("origin") ?? "";
+    const permitido = origen === url.origin || env.ORIGENES_PERMITIDOS.split(",").map((x) => x.trim()).includes(origen);
+    const cors: Record<string, string> = permitido ? { "access-control-allow-origin": origen, vary: "origin", "access-control-allow-methods": "POST, OPTIONS", "access-control-allow-headers": "content-type", "access-control-max-age": "600" } : {};
+    const conCors = (r: Response) => { for (const [k, v] of Object.entries(cors)) r.headers.set(k, v); r.headers.set("cache-control", "no-store"); return r; };
+    if (req.method === "OPTIONS") return conCors(new Response(null, { status: permitido ? 204 : 403 }));
+    if (!post || !permitido) return conCors(error("Origen no permitido", 403));
+    return conCors(await pagarConTarjeta(req));
+  }
+
   // Webhook de Wompi: sin sesión; se confía en la firma HMAC del cuerpo y, además, se confirma con la API de Wompi.
   if (post && ruta === "/api/wompi/webhook") {
     const crudo = await req.text();
@@ -302,7 +363,12 @@ export async function api(req: Request, url: URL, ctx?: ExecutionContext): Promi
     if (!(await firmaValida(apiSecret(), crudo, firma))) return error("Firma inválida", 401);
     let evento = null;
     try { evento = leerEvento(JSON.parse(crudo)); } catch { /* cuerpo no JSON */ }
-    if (evento) await confirmarPago(evento.pagoId, evento.idTransaccion, evento.esProductiva);
+    if (evento) {
+      // Con el formulario propio no hay enlace: el pago se identifica por la transacción que guardamos al iniciarla.
+      const porTransaccion = await uno<{ id: string } | null>("SELECT id FROM pagos WHERE transaccion_id = ?", evento.idTransaccion);
+      const pagoId = porTransaccion?.id ?? evento.pagoId;
+      if (pagoId) await confirmarPago(pagoId, evento.idTransaccion, evento.esProductiva);
+    }
     return json({ ok: true }); // siempre 200 con firma válida: así Wompi no reintenta eventos que no nos sirven
   }
 
@@ -400,12 +466,29 @@ export async function api(req: Request, url: URL, ctx?: ExecutionContext): Promi
     }
   }
 
+  if (post && ruta === "/api/pago/iniciar") {
+    const bi = (await req.json().catch(() => ({}))) as { turnstile?: string };
+    if (!(await turnstileOk(bi.turnstile, req))) return error(ERROR_CAPTCHA, 400);
+    if (!u.email_verificado_at) return error("Confirmá tu email antes de pagar.", 403);
+    if (!wompiConfigurado()) return error("El cobro todavía no está activo.", 503);
+    const recientes = await uno<{ n: number }>("SELECT COUNT(*) AS n FROM pagos WHERE user_id = ? AND estado = 'pendiente' AND created_at > ?", u.id, new Date(Date.now() - 3_600_000).toISOString());
+    if (recientes.n >= 5) return error("Ya iniciaste varios pagos en la última hora. Esperá un rato e intentá de nuevo.", 429);
+    const id = aleatorio(8), monto = Number(env.PRICE_USD), producto = `Textifika Pro · ${DIAS_PLAN} días`;
+    await env.DB.prepare("INSERT INTO pagos (id, user_id, producto, monto, modo, created_at) VALUES (?, ?, ?, ?, ?, ?)").bind(id, u.id, producto, monto, modoPruebas() ? "pruebas" : "produccion", ahora()).run();
+    // «destino»: dónde se envía la tarjeta (directo al Worker). Con el mismo origen no hace falta CORS.
+    return json({ ok: true, pago: id, token: await firmarToken(apiSecret(), id, u.id), destino: `${env.PUBLIC_URL}/api/pago/tarjeta`, monto, producto, nombre: u.nombre, email: u.email });
+  }
+
   if (post && ruta === "/api/pago/estado") {
     const b = (await req.json().catch(() => ({}))) as { pago?: string; transaccion?: string; enlace?: string; monto?: string; hash?: string };
     const p = b.pago ? await uno<PagoFila | null>("SELECT id, user_id, monto, estado FROM pagos WHERE id = ? AND user_id = ?", b.pago, u.id) : null;
     if (!p) return error("No encontrado", 404);
     let estado = p.estado;
-    if (estado === "pendiente" && b.transaccion && (await hashRedirectValido(b))) estado = await confirmarPago(p.id, b.transaccion);
+    if (estado === "pendiente") {
+      const guardada = await uno<{ transaccion_id: string | null }>("SELECT transaccion_id FROM pagos WHERE id = ?", p.id);
+      if (guardada.transaccion_id) estado = await confirmarPago(p.id, guardada.transaccion_id);      // formulario propio
+      else if (b.transaccion && (await hashRedirectValido(b))) estado = await confirmarPago(p.id, b.transaccion); // enlace de pago
+    }
     const r = await uno<{ plan: string; plan_vence_at: string | null }>("SELECT plan, plan_vence_at FROM users WHERE id = ?", u.id);
     return json({ estado, plan: planEfectivo(r.plan, r.plan_vence_at), vence: r.plan_vence_at });
   }
