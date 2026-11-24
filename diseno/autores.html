@@ -33,6 +33,18 @@
   .barra-tema span:last-child { color: var(--gris); font: 500 0.8rem/1 var(--mono); }
   @media (max-width: 860px) { .requisitos { grid-template-columns: 1fr; } }
 
+
+  .rutas { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .rutas .ruta { aspect-ratio: auto; gap: 14px; padding: clamp(22px, 3vw, 34px); }
+  .rutas .etiqueta { margin: 0; font: 700 0.78rem/1 var(--sans); letter-spacing: 0.04em; text-transform: uppercase; opacity: .75; }
+  .rutas .titulo { font: 800 clamp(1.8rem, 3.4vw, 2.6rem)/1.02 var(--sans); letter-spacing: -0.04em; margin: 0; }
+  .rutas .texto { margin: 0; font-size: 1.05rem; max-width: 30em; }
+  .rutas .puntos { list-style: none; margin: 4px 0 8px; padding: 0; display: grid; gap: 8px; font-size: 0.95rem; }
+  .rutas .puntos li { padding-left: 22px; position: relative; }
+  .rutas .puntos li::before { content: "✓"; position: absolute; left: 0; font-weight: 800; }
+  .rutas .boton { align-self: flex-start; margin-top: auto; }
+  @media (max-width: 860px) { .rutas { grid-template-columns: 1fr; } }
+
   .cierre { text-align: center; }
   .cierre h2 { margin: 12px auto 26px; max-width: 13em; }
 </style>
@@ -55,15 +67,49 @@
 <main id="contenido">
   <section class="apertura">
     <div class="envoltura">
-      <p class="micro" data-aparece style="--i:0">Para autores · gratis y abierto</p>
-      <h1 data-aparece style="--i:1">Tu libro, tesis o documento, trabajando en la IA de todos.</h1>
-      <p class="bajada" data-aparece style="--i:2">Subilo gratis. Lo revisamos, lo aprobamos y queda en la biblioteca de Textifika: cualquiera puede conectarlo a su IA y citar tus páginas. Todo lo que se publica pasa al dominio público.</p>
-      <a class="boton" data-aparece style="--i:3" href="entrar.html?next=subir.html" data-subir>Crear cuenta y subir</a>
+      <p class="micro" data-aparece style="--i:0">Para autores · y para vos</p>
+      <h1 data-aparece style="--i:1">Tus documentos, trabajando en una IA. Elegí en cuál.</h1>
+      <p class="bajada" data-aparece style="--i:2">Subí un libro, una tesis o un documento y decidí: publicarlo para que cualquiera lo conecte a su IA, o dejarlo solo para vos, privado en tu cuenta.</p>
+      <a class="boton" data-aparece style="--i:3" href="#rutas">Ver las dos formas</a>
     </div>
   </section>
 
-  <section aria-label="Condiciones">
+  <section class="seccion" id="rutas" style="padding-top:clamp(24px,4vw,56px)">
     <div class="envoltura">
+      <div class="cabeza">
+        <div><p class="micro">Elegí cómo</p><h2 style="margin-top:10px">Dos formas de usar tus documentos.</h2></div>
+        <p class="bajada" style="max-width:24em">Misma cuenta, mismo conector. Lo que cambia es quién puede consultarlo.</p>
+      </div>
+      <div class="rutas">
+        <article class="ruta poster c-menta" data-aparece style="--i:1">
+          <p class="etiqueta">Para todos</p>
+          <h3 class="titulo t-grotesca">Publicarlo en la biblioteca.</h3>
+          <p class="texto fuerte">Cualquiera lo conecta a su IA y cita tus páginas. Tu nombre aparece como autor.</p>
+          <ul class="puntos">
+            <li>Gratis, sin cuotas ni comisiones.</li>
+            <li>Lo revisamos antes de publicarlo.</li>
+            <li>Pasa al dominio público. Es irrevocable.</li>
+          </ul>
+          <a class="boton" href="entrar.html?next=subir.html" data-subir>Crear cuenta y subir</a>
+        </article>
+        <article class="ruta poster c-celeste" data-aparece style="--i:2">
+          <p class="etiqueta">Solo para vos</p>
+          <h3 class="titulo t-grotesca">Usarlo en privado.</h3>
+          <p class="texto fuerte">Tus contratos, apuntes o informes, consultables desde tu IA. Nadie más los ve.</p>
+          <ul class="puntos">
+            <li>No se publica ni se comparte con nadie.</li>
+            <li>No guardamos tu archivo: solo su texto, para buscar. Lo borrás cuando quieras.</li>
+            <li>Hasta 10 documentos de 7 MB. Es una función de pago que todavía no está abierta a todas las cuentas.</li>
+          </ul>
+          <a class="boton" href="entrar.html?next=mi-biblioteca.html">Ir a Mis documentos</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Condiciones de publicar para todos">
+    <div class="envoltura">
+      <p class="micro" style="margin-bottom:14px">Si lo publicás para todos</p>
       <div class="grilla cuatro condiciones">
         <article class="poster c-rojo"><span class="num">01</span><p class="grande">$0</p><p class="texto fuerte">Subir y publicar es gratis. Sin cuotas ni comisiones.</p></article>
         <article class="poster c-azul plegado"><span class="num">02</span><h2 class="titulo t-serif" style="margin-top:22%;font-size:16cqi">Siempre se aprueba</h2><p class="texto">Revisamos cada envío y lo aprobamos. Solo retiramos lo ilegal o lo que infrinja derechos de otros.</p></article>
@@ -76,8 +122,8 @@
   <section class="seccion">
     <div class="envoltura">
       <div class="cabeza">
-        <div><p class="micro">El proceso</p><h2 style="margin-top:10px">De tu archivo a la IA de tus lectores.</h2></div>
-        <p class="bajada" style="max-width:24em">Cinco pasos. Ves el estado de cada envío en tu cuenta.</p>
+        <div><p class="micro">El proceso de publicar</p><h2 style="margin-top:10px">De tu archivo a la IA de tus lectores.</h2></div>
+        <p class="bajada" style="max-width:24em">Para publicar en la biblioteca: cinco pasos. Ves el estado de cada envío en tu cuenta.</p>
       </div>
       <div class="grilla">
         <article class="poster c-blanco"><span class="num">01</span><h3 class="titulo t-grotesca">Creá tu cuenta.</h3><p class="texto">Con tu nombre, email y contraseña. Aceptás los términos.</p></article>
@@ -92,7 +138,7 @@
   <section class="seccion" style="padding-top:0">
     <div class="envoltura requisitos">
       <div>
-        <p class="micro">Qué podés subir</p>
+        <p class="micro">Qué podés publicar</p>
         <h2 style="margin:10px 0 24px">Obras que querés que todos puedan usar.</h2>
         <ul class="lista">
           <li><span class="n">01</span>Libros, documentos y tesis, en español, inglés u otros idiomas.</li>
@@ -117,7 +163,10 @@
   <section class="seccion" style="padding-top:0">
     <div class="envoltura" style="max-width:860px">
       <p class="micro" style="margin-bottom:14px">Preguntas</p>
-      <details><summary>¿Cuesta algo?</summary><p>No. Subir, revisar y publicar es gratis. Textifika tampoco paga por las obras: se publican en dominio público.</p></details>
+      <details><summary>¿Cuesta algo?</summary><p>Publicar en la biblioteca es gratis: subir, revisar y publicar no tiene costo, y Textifika tampoco paga por las obras porque pasan al dominio público. Los documentos personales son una función de pago que todavía no está abierta a todas las cuentas; el precio se anunciará antes de cobrar.</p></details>
+      <details><summary>¿Puedo subir un documento solo para mí?</summary><p>Sí. Con un plan que lo incluya, subís tus PDF, TXT o MD desde <em>Mi biblioteca</em> y solo vos los consultás desde tu conector. No pasan por revisión, no se publican y no tenés que dedicarlos al dominio público. Solo confirmás que tenés derecho a usarlos.</p></details>
+      <details><summary>¿Mis documentos personales son de verdad privados?</summary><p>Sí. Solo tu cuenta los puede consultar: para cualquier otra, ese documento no existe. No guardamos tu archivo original, solo su texto dividido en páginas, y el texto de tus consultas sobre ellos no se registra. Podés borrarlos cuando quieras y se elimina su texto.</p></details>
+      <details><summary>¿Qué diferencia hay entre publicar y usarlo en privado?</summary><p>Publicar lo pone en la biblioteca para que cualquiera lo use (gratis, dominio público, con revisión). El uso privado lo deja solo en tu cuenta (función de pago, sin revisión, sin publicar).</p></details>
       <details><summary>¿Qué significa dominio público?</summary><p>Que renunciás a tus derechos de autor sobre esa obra y cualquier persona puede leerla, copiarla, modificarla y usarla, incluso con fines comerciales, sin pedirte permiso. Tu nombre sigue apareciendo como autor.</p></details>
       <details><summary>¿Y si mi libro salió con una editorial?</summary><p>Normalmente los derechos digitales son de la editorial. En ese caso necesitás su autorización por escrito. Si no la tenés, no lo subas.</p></details>
       <details><summary>¿Y mi tesis?</summary><p>Revisá si tu universidad tiene derechos sobre ella o requiere permiso para publicarla. Si los tiene, necesitás su autorización.</p></details>
@@ -129,9 +178,9 @@
 
   <section class="seccion cierre" style="padding-top:0">
     <div class="envoltura">
-      <p class="micro">Gratis · abierto · dominio público</p>
-      <h2>¿Tenés algo que merece estar en la biblioteca?</h2>
-      <a class="boton" href="entrar.html?next=subir.html" data-subir>Crear cuenta y subir</a>
+      <p class="micro">Publicalo para todos · o usalo en privado</p>
+      <h2>¿Tenés un documento que tu IA debería conocer?</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center"><a class="boton" href="entrar.html?next=subir.html" data-subir>Crear cuenta y publicar</a><a class="boton claro" href="entrar.html?next=mi-biblioteca.html">Subir un documento personal</a></div>
     </div>
   </section>
 </main>
