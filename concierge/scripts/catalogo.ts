@@ -65,5 +65,13 @@ for (const id of ids) {
   await writeFile(`data/semilla/${id}.sql`, sql + "\n");
 }
 await writeFile("data/catalogo.json", JSON.stringify(catalogo));
+// Fecha en que cada libro entró al catálogo (el panel marca «Nuevo» los de las últimas 2 semanas). Vacío = ya estaba.
+const rutaPub = "data/publicaciones.json";
+const publicaciones: Record<string, string> = (await existe(rutaPub)) ? await leer(rutaPub) : {};
+const hoy = new Date().toISOString().slice(0, 10);
+const nuevos = catalogo.map((d) => d.id).filter((id) => !(id in publicaciones));
+for (const id of nuevos) publicaciones[id] = hoy;
+await writeFile(rutaPub, JSON.stringify(publicaciones, null, 1) + "\n");
+if (nuevos.length) console.log(`Libros nuevos en el catálogo (${hoy}): ${nuevos.join(", ")}`);
 await writeFile("data/controles.json", JSON.stringify(controles.map(({ libro, fecha, aprobado, paginacion, paginas, capitulos, controles: c }) => ({ libro, fecha, aprobado, paginacion, paginas, capitulos, controles: Object.fromEntries(Object.entries(c).map(([k, x]) => [k, `${x.ok ? "ok" : x.nivel}: ${x.detalle}`])) })), null, 1) + "\n");
 if (errores) process.exit(1);

@@ -178,6 +178,14 @@ tr -d '\n' < .secreto-admin | npx wrangler secret put ADMIN_SECRET && npx wrangl
 ```
 
 
+### Panel de métricas (PWA del dueño)
+
+`/panel` (clave de administrador) muestra cuentas, consultas, la puerta de cobro y la biblioteca. Se alimenta solo:
+
+- **Un libro nuevo:** `node scripts/catalogo.ts` lo estampa en `data/publicaciones.json` (fecha de hoy) y `npm run deploy` lo publica. El panel lo lista con la etiqueta «Nuevo» durante 14 días, con sus consultas y cuántas personas lo agregaron. No hay que tocar el panel.
+- **Aportes de autores:** al aprobarlos aparecen solos (usa `publicado_at`).
+- El panel solo muestra totales, nunca el texto de las consultas.
+
 ## 5. Cuentas, envíos de autores y revisión
 
 - **Cuentas:** `POST /api/registro` y `/api/login` (email + contraseña, PBKDF2-SHA256 con 100.000 iteraciones, el tope de Workers). La sesión es la cookie `tv_sesion` (HttpOnly, SameSite=Lax); en D1 solo queda su sha256. Cinco fallos de login bloquean el email 15 minutos. **No hay verificación de email ni recuperación de contraseña** (no se envían correos): hoy se resuelve a mano desde hola@kitifica.com.

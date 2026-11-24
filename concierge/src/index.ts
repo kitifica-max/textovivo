@@ -5,6 +5,7 @@ import { createMcpHandler, getMcpAuthContext } from "agents/mcp/server";
 import { env } from "cloudflare:workers";
 import { z } from "zod";
 import catalogoJson from "../data/catalogo.json" with { type: "json" };
+import publicaciones from "../data/publicaciones.json" with { type: "json" };
 import { api, adminEnvios } from "./api.ts";
 import { buscadorD1 } from "./buscador-d1.ts";
 import { Destilado } from "./schema.ts";
@@ -208,6 +209,99 @@ async function esAdmin(req: Request) {
   );
 }
 
+const DIA_MS = 86_400_000;
+const iso = (diasAtras: number) => new Date(Date.now() - diasAtras * DIA_MS).toISOString();
+/** Serie de los últimos `n` días (hoy incluido), con ceros donde no hubo datos. */
+function serie(filas: { d: string; n: number }[], n: number) {
+  const por = new Map(filas.map((f) => [f.d, f.n]));
+  return Array.from({ length: n }, (_, i) => {
+    const d = iso(n - 1 - i).slice(0, 10);
+    return { d, n: por.get(d) ?? 0 };
+  });
+}
+const uno = async <T>(sql: string, ...args: unknown[]) => (await env.DB.prepare(sql).bind(...args).first<T>()) as T;
+const todos = async <T>(sql: string, ...args: unknown[]) => (await env.DB.prepare(sql).bind(...args).all<T>()).results;
+
+async function panel() {
+  const ahoraIso = ahora();
+  const [d7, d30, d1] = [iso(7), iso(30), iso(1)];
+  const titulo = new Map<string, string>(libros.map((l) => [l.id, l.titulo]));
+  for (const r of await todos<{ id: string; titulo: string }>("SELECT id, titulo FROM libros_dyn WHERE visible = 1")) titulo.set(r.id, r.titulo);
+  const nombre = (id: string) => titulo.get(id) ?? id;
+  // Consultas reales: se excluyen los accesos de prueba y listar_libros (no dice qué libro se usa).
+  const EV = "FROM events e JOIN buyers b ON b.token = e.token WHERE b.es_prueba = 0";
+  const LIBRO = "CASE WHEN instr(e.query, ': ') > 0 THEN substr(e.query, 1, instr(e.query, ': ') - 1) ELSE e.query END";
+
+  const cuentas = await uno<{ total: number; verificadas: number; n7: number; n30: number }>(
+    "SELECT COUNT(*) AS total, COALESCE(SUM(email_verificado_at IS NOT NULL), 0) AS verificadas, COALESCE(SUM(created_at >= ?1), 0) AS n7, COALESCE(SUM(created_at >= ?2), 0) AS n30 FROM users",
+    d7, d30
+  );
+  const cuentasDia = await todos<{ d: string; n: number }>("SELECT substr(created_at, 1, 10) AS d, COUNT(*) AS n FROM users WHERE created_at >= ?1 GROUP BY d", d30);
+  const accesos = await uno<{ activos: number; vencidos: number; por_vencer: number; con_consulta: number; en_24h: number; cinco_mas: number; total: number }>(
+    `SELECT COUNT(*) AS total,
+            COALESCE(SUM(expires_at > ?1), 0) AS activos,
+            COALESCE(SUM(expires_at <= ?1), 0) AS vencidos,
+            COALESCE(SUM(expires_at > ?1 AND expires_at <= ?2), 0) AS por_vencer,
+            COALESCE(SUM(first_call_at IS NOT NULL), 0) AS con_consulta,
+            COALESCE(SUM(first_call_at IS NOT NULL AND julianday(first_call_at) - julianday(created_at) <= 1), 0) AS en_24h,
+            COALESCE(SUM(calls >= 5), 0) AS cinco_mas
+       FROM buyers WHERE es_prueba = 0`,
+    ahoraIso, new Date(Date.now() + 7 * DIA_MS).toISOString()
+  );
+  const uso = await uno<{ total: number; n7: number; n1: number; act7: number; act30: number; media: number | null }>(
+    `SELECT COUNT(*) AS total, COALESCE(SUM(e.created_at >= ?1), 0) AS n7, COALESCE(SUM(e.created_at >= ?3), 0) AS n1,
+            COUNT(DISTINCT CASE WHEN e.created_at >= ?1 THEN e.token END) AS act7,
+            COUNT(DISTINCT CASE WHEN e.created_at >= ?2 THEN e.token END) AS act30,
+            AVG(e.latency_ms) AS media ${EV}`,
+    d7, d30, d1
+  );
+  const usoDia = await todos<{ d: string; n: number }>(`SELECT substr(e.created_at, 1, 10) AS d, COUNT(*) AS n ${EV} AND e.created_at >= ?1 GROUP BY d`, d30);
+  const porHerramienta = await todos<{ nombre: string; n: number }>(`SELECT e.tool AS nombre, COUNT(*) AS n ${EV} AND e.created_at >= ?1 GROUP BY e.tool ORDER BY n DESC`, d30);
+  const porLibro = (await todos<{ lib: string; n: number }>(`SELECT ${LIBRO} AS lib, COUNT(*) AS n ${EV} AND e.tool != 'listar_libros' AND e.created_at >= ?1 GROUP BY lib ORDER BY n DESC LIMIT 10`, d30)).map((r) => ({ nombre: nombre(r.lib), n: r.n }));
+  const total30 = await uno<{ n: number }>(`SELECT COUNT(*) AS n ${EV} AND e.latency_ms IS NOT NULL AND e.created_at >= ?1`, d30);
+  const p95 = total30.n ? await uno<{ v: number }>(`SELECT e.latency_ms AS v ${EV} AND e.latency_ms IS NOT NULL AND e.created_at >= ?1 ORDER BY e.latency_ms LIMIT 1 OFFSET ?2`, d30, Math.floor(total30.n * 0.95)) : null;
+  const agregados = (await todos<{ id: string; n: number }>("SELECT libro_id AS id, COUNT(*) AS n FROM mis_libros GROUP BY libro_id ORDER BY n DESC LIMIT 10")).map((r) => ({ nombre: nombre(r.id), n: r.n }));
+  const envios = await uno<{ pendientes: number; aprobados: number }>("SELECT COALESCE(SUM(estado = 'recibido'), 0) AS pendientes, COALESCE(SUM(estado = 'aprobado'), 0) AS aprobados FROM envios");
+
+  // Biblioteca viva: catálogo (fecha de data/publicaciones.json) + aportes aprobados (publicado_at).
+  const dyn = await todos<{ id: string; titulo: string; autor: string; publicado_at: string }>("SELECT id, titulo, autor, publicado_at FROM libros_dyn WHERE visible = 1");
+  const fechas = new Map<string, string>([
+    ...Object.entries(publicaciones as Record<string, string>),
+    ...dyn.map((d): [string, string] => [d.id, d.publicado_at.slice(0, 10)])
+  ]);
+  const usoPorLibro = new Map((await todos<{ lib: string; n: number }>(`SELECT ${LIBRO} AS lib, COUNT(*) AS n ${EV} AND e.tool != 'listar_libros' AND e.created_at >= ?1 GROUP BY lib`, d30)).map((r) => [r.lib, r.n]));
+  const agregadosPorLibro = new Map((await todos<{ id: string; n: number }>("SELECT libro_id AS id, COUNT(*) AS n FROM mis_libros GROUP BY libro_id")).map((r) => [r.id, r.n]));
+  const d14 = iso(14);
+  const lista = [
+    ...catalogoJson.map((d) => ({ id: d.id, titulo: d.titulo, autor: d.autor, origen: "catálogo", frameworks: d.frameworks.length, checklists: d.checklists.length, glosario: d.glosario.length })),
+    ...dyn.map((d) => ({ id: d.id, titulo: d.titulo, autor: d.autor, origen: "aporte", frameworks: 0, checklists: 0, glosario: 0 }))
+  ].map((l) => {
+    const desde = fechas.get(l.id) ?? "";
+    return { ...l, consultas_30d: usoPorLibro.get(l.id) ?? 0, agregados: agregadosPorLibro.get(l.id) ?? 0, desde: desde || null, nuevo: desde !== "" && desde >= d14 };
+  }).sort((a, b) => b.consultas_30d - a.consultas_30d || b.agregados - a.agregados || a.titulo.localeCompare(b.titulo));
+
+  const pct = (x: number, de: number) => (de ? Math.round((x / de) * 100) : 0);
+  const datos = {
+    generado: ahoraIso,
+    puerta: {
+      // Metas del H-1: cobrar solo cuando se cumplan.
+      cuentas_con_acceso: { valor: accesos.total, meta: 30 },
+      activacion_24h_pct: { valor: pct(accesos.en_24h, accesos.total), meta: 80 },
+      cinco_o_mas_pct: { valor: pct(accesos.cinco_mas, accesos.total), meta: 50 }
+    },
+    cuentas: { total: cuentas.total, verificadas: cuentas.verificadas, nuevas_7d: cuentas.n7, nuevas_30d: cuentas.n30, por_dia: serie(cuentasDia, 30) },
+    accesos: { activos: accesos.activos, vencidos: accesos.vencidos, por_vencer_7d: accesos.por_vencer, con_primera_consulta: accesos.con_consulta, activacion_pct: pct(accesos.con_consulta, accesos.total) },
+    uso: {
+      consultas_total: uso.total, consultas_7d: uso.n7, consultas_hoy: uso.n1, usuarios_activos_7d: uso.act7, usuarios_activos_30d: uso.act30,
+      latencia_media_ms: uso.media === null ? null : Math.round(uso.media), latencia_p95_ms: p95?.v ?? null,
+      por_dia: serie(usoDia, 30), por_herramienta: porHerramienta, libros_mas_consultados: porLibro
+    },
+    biblioteca: { libros_total: lista.length, libros_nuevos_14d: lista.filter((l) => l.nuevo).length, libros: lista, libros_mas_agregados: agregados },
+    envios
+  };
+  return new Response(JSON.stringify(datos), { headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } });
+}
+
 async function admin(req: Request, url: URL) {
   if (!(await esAdmin(req))) return json({ error: "No autorizado" }, 401);
   if (url.pathname.startsWith("/admin/envios")) return adminEnvios(req, url);
@@ -236,6 +330,9 @@ async function admin(req: Request, url: URL) {
       vence: vence.toISOString()
     });
   }
+
+  // Panel de uso (PWA del dueño): agregados, nunca el texto de las consultas.
+  if (req.method === "GET" && url.pathname === "/admin/panel") return panel();
 
   // Métricas contra las metas del H-1.
   if (req.method === "GET" && url.pathname === "/admin/metricas") {
