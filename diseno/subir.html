@@ -66,6 +66,7 @@
         <div class="check"><input id="dominio_publico" name="dominio_publico" type="checkbox"><label for="dominio_publico"><strong>Declaro que soy el titular de los derechos de esta obra</strong> (o tengo autorización completa) y <strong>acepto que pase al dominio público</strong>, de forma irrevocable, para que cualquier persona pueda usarla.</label></div>
         <div class="check"><input id="acepto_terminos" name="acepto_terminos" type="checkbox"><label for="acepto_terminos">Acepto los <a class="enlace" href="terminos.html" target="_blank" rel="noopener">términos y condiciones</a>.</label></div>
 
+        <div id="ts-envio" style="margin:6px 0 16px;min-height:65px"></div>
         <button class="boton" type="submit" id="enviar">Enviar para revisión</button>
       </form>
 
@@ -107,11 +108,15 @@ async function cargarEnvios() {
     ? lista.map((e) => '<li><span>' + esc(e.titulo) + '<small>' + esc(e.tipo) + ' · ' + new Date(e.created_at).toLocaleDateString("es") + '</small></span><span class="estado' + (e.estado === "aprobado" ? " vivo" : "") + '">' + (e.libro_id ? '<a href="aporte.html?id=' + encodeURIComponent(e.libro_id) + '">' + ESTADOS[e.estado] + '</a>' : ESTADOS[e.estado] || esc(e.estado)) + "</span></li>").join("")
     : '<li><span class="nota">Todavía no subiste nada.</span></li>';
 }
+const ts = tvTurnstile("ts-envio");
 $("formulario").addEventListener("submit", async (ev) => {
   ev.preventDefault();
   $("error").hidden = true; $("ok").hidden = true;
   const f = $("formulario");
+  const token = ts.token();
+  if (!token) { $("error").textContent = "Esperá a que termine la verificación antes de enviar."; $("error").hidden = false; return; }
   const datos = new FormData(f);
+  datos.set("cf-turnstile-response", token);
   datos.set("dominio_publico", $("dominio_publico").checked ? "on" : "");
   datos.set("acepto_terminos", $("acepto_terminos").checked ? "on" : "");
   $("enviar").disabled = true; $("enviar").textContent = "Enviando…";
@@ -122,7 +127,7 @@ $("formulario").addEventListener("submit", async (ev) => {
     if (!r.ok) { $("error").textContent = j.error || "No se pudo enviar. Probá de nuevo."; $("error").hidden = false; return; }
     f.reset(); $("ok").hidden = false; cargarEnvios();
   } catch { $("error").textContent = "No hay conexión. Probá de nuevo."; $("error").hidden = false; }
-  finally { $("enviar").disabled = false; $("enviar").textContent = "Enviar para revisión"; }
+  finally { $("enviar").disabled = false; $("enviar").textContent = "Enviar para revisión"; ts.reset(); }
 });
 sesion().then((ok) => ok && cargarEnvios());
 </script>

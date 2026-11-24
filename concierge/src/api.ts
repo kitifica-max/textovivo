@@ -27,6 +27,20 @@ async function cuerpo(req: Request) {
   return (await req.json().catch(() => null)) as Record<string, unknown> | null;
 }
 
+/** Turnstile: el token lo genera el widget en el navegador y se valida acá con la clave secreta. */
+async function turnstileOk(token: unknown, req: Request) {
+  if (typeof token !== "string" || token.length < 10 || token.length > 2048) return false;
+  const datos = new FormData();
+  datos.set("secret", env.TURNSTILE_SECRET);
+  datos.set("response", token);
+  const ip = req.headers.get("cf-connecting-ip");
+  if (ip) datos.set("remoteip", ip);
+  const r = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", { method: "POST", body: datos }).catch(() => null);
+  const j = r?.ok ? ((await r.json().catch(() => null)) as { success?: boolean } | null) : null;
+  return j?.success === true;
+}
+const ERROR_CAPTCHA = "No pudimos verificar que sos una persona. Esperá a que termine la verificación y probá de nuevo.";
+
 /** Defensa extra contra CSRF: si el navegador manda Origin, tiene que ser este mismo sitio. */
 const mismoOrigen = (req: Request, url: URL) => !req.headers.get("origin") || req.headers.get("origin") === url.origin;
 
@@ -64,6 +78,8 @@ export async function api(req: Request, url: URL): Promise<Response> {
   const post = req.method === "POST";
   if (post && !mismoOrigen(req, url)) return error("Origen no permitido", 403);
 
+  if (req.method === "GET" && ruta === "/api/config") return json({ turnstile_site_key: env.TURNSTILE_SITE_KEY }, 200, { "cache-control": "public, max-age=300" });
+
   // ---- Cuentas ----
   if (post && ruta === "/api/registro") {
     const b = await cuerpo(req);
@@ -71,6 +87,7 @@ export async function api(req: Request, url: URL): Promise<Response> {
     const nombre = String(b?.nombre ?? "").trim();
     const clave = String(b?.clave ?? "");
     if (b?.acepto_terminos !== true) return error("Tenés que aceptar los términos y condiciones para crear la cuenta.");
+    if (!(await turnstileOk(b?.turnstile, req))) return error(ERROR_CAPTCHA, 400);
     if (!emailValido(email)) return error("Ese email no parece válido.");
     if (nombre.length < 2 || nombre.length > 100) return error("Escribí tu nombre (entre 2 y 100 caracteres).");
     if (clave.length < 10 || clave.length > 200) return error("La contraseña debe tener al menos 10 caracteres.");
@@ -187,6 +204,7 @@ export async function api(req: Request, url: URL): Promise<Response> {
     const descripcion = campo("descripcion");
     const archivo = f.get("archivo");
 
+    if (!(await turnstileOk(f.get("cf-turnstile-response"), req))) return error(ERROR_CAPTCHA, 400);
     if (campo("acepto_terminos") !== "on") return error("Tenés que aceptar los términos y condiciones.");
     if (campo("dominio_publico") !== "on") return error("Tenés que declarar que sos titular de los derechos y aceptar que la obra pase al dominio público.");
     if (titulo.length < 3 || titulo.length > 200) return error("El título debe tener entre 3 y 200 caracteres.");

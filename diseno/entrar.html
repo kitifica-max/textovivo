@@ -67,6 +67,7 @@
             <input id="terminos" name="terminos" type="checkbox" style="margin-top:4px;width:18px;height:18px;flex:none">
             <label for="terminos" style="margin:0;font-weight:500">Tengo 18 años o más y acepto los <a class="enlace" href="terminos.html" target="_blank" rel="noopener">términos y condiciones</a> y la <a class="enlace" href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</label>
           </div>
+          <div id="ts-registro" style="margin:4px 0 14px;min-height:65px"></div>
           <button class="boton ancho" type="submit">Crear mi cuenta</button>
         </form>
 
@@ -98,10 +99,14 @@ async function enviar(url, cuerpo, boton) {
   } catch { fallo("No hay conexión. Probá de nuevo."); }
   finally { boton.disabled = false; }
 }
-$("p-crear").addEventListener("submit", (ev) => {
+const ts = tvTurnstile("ts-registro");
+$("p-crear").addEventListener("submit", async (ev) => {
   ev.preventDefault();
   const f = ev.target;
-  enviar("/api/registro", { nombre: f.nombre.value, email: f.email.value, clave: f.clave.value, acepto_terminos: f.terminos.checked }, f.querySelector("button[type=submit]"));
+  const token = ts.token();
+  if (!token) return fallo("Esperá a que termine la verificación antes de crear la cuenta.");
+  await enviar("/api/registro", { nombre: f.nombre.value, email: f.email.value, clave: f.clave.value, acepto_terminos: f.terminos.checked, turnstile: token }, f.querySelector("button[type=submit]"));
+  ts.reset(); // si llegó acá hubo un error: el token ya se usó
 });
 $("p-entrar").addEventListener("submit", (ev) => {
   ev.preventDefault();

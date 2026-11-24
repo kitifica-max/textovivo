@@ -186,3 +186,14 @@ tr -d '\n' < .secreto-admin | npx wrangler secret put ADMIN_SECRET && npx wrangl
 - **Revisión:** `/revision.html` (pide `ADMIN_SECRET`). «Aprobar y publicar» extrae el texto (`src/extraer.ts`: PDF con `unpdf`, páginas reales; TXT/MD en secciones lógicas), lo indexa en `paginas_fts`, crea la fila en `libros_dyn` y el libro queda en la biblioteca y en el conector. Si el PDF no tiene texto, la aprobación falla con un mensaje. «Retirar» solo para contenido ilegal o infractor.
 - **Términos y privacidad:** `diseno/terminos.html` y `diseno/privacidad.html`. Si cambian, subir `TERMINOS_VERSION` en `src/auth.ts`.
 - **Despliegue:** usar `npm run deploy` (no `wrangler deploy` a secas): vuelve a subir `ADMIN_SECRET` desde `.secreto-admin`. Tras el despliegue, el secreto puede tardar unos segundos en responder.
+
+### Turnstile (captcha) en el registro y en la subida
+
+El registro (`/api/registro`) y los envíos (`/api/envios`) exigen un token de Turnstile y lo validan en el servidor. La clave pública (`TURNSTILE_SITE_KEY`, en `wrangler.jsonc`) llega al navegador por `/api/config`; la secreta (`TURNSTILE_SECRET`) es un secreto del Worker.
+
+**Hoy se usan las claves de PRUEBA de Cloudflare, que siempre aprueban: no protegen nada.** Para activar la protección real:
+
+1. Cloudflare → Turnstile → *Add widget*. Hostnames: `textovivo.kitifica.workers.dev` (y `localhost` si querés probar en local). Modo *Managed*.
+2. Pegá la *Site key* en `TURNSTILE_SITE_KEY` de `concierge/wrangler.jsonc`.
+3. Guardá la *Secret key* en `concierge/.secreto-turnstile` (ignorado por git).
+4. `cd concierge && npm run deploy`. El script sube el secreto; sin ese archivo avisa y usa el de prueba.

@@ -1,3 +1,5 @@
 # Copiar a .dev.vars para desarrollo local. En producción: npx wrangler secret put ADMIN_SECRET
 ADMIN_SECRET=cambiar-por-un-secreto-largo
 PUBLIC_URL=http://localhost:8787
+# Clave secreta de Turnstile. Esta es la de PRUEBA de Cloudflare (siempre aprueba).
+TURNSTILE_SECRET=1x0000000000000000000000000000000AA

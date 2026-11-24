@@ -83,3 +83,30 @@ fetch("/api/yo", { credentials: "same-origin" })
     });
   })
   .catch(() => {});
+
+
+// Turnstile (captcha de Cloudflare): tvTurnstile("id-del-contenedor") → { token(), reset() }.
+// La clave pública sale de /api/config; el token se valida en el servidor.
+window.tvTurnstile = (id) => {
+  let widget = null;
+  const listo = fetch("/api/config")
+    .then((r) => r.json())
+    .then(
+      (c) =>
+        new Promise((resolve) => {
+          const montar = () => { widget = window.turnstile.render("#" + id, { sitekey: c.turnstile_site_key, language: "es" }); resolve(); };
+          if (window.turnstile) return montar();
+          window.__tvTsListo = montar;
+          const s = document.createElement("script");
+          s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=__tvTsListo";
+          s.async = true;
+          document.head.appendChild(s);
+        })
+    )
+    .catch(() => {});
+  return {
+    listo,
+    token: () => (widget !== null && window.turnstile ? window.turnstile.getResponse(widget) || "" : ""),
+    reset: () => widget !== null && window.turnstile && window.turnstile.reset(widget)
+  };
+};
