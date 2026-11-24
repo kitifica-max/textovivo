@@ -33,7 +33,8 @@ async function turnstileOk(token: unknown, req: Request) {
   const datos = new FormData();
   datos.set("secret", env.TURNSTILE_SECRET);
   datos.set("response", token);
-  const ip = req.headers.get("cf-connecting-ip");
+  // Detrás del proxy de Netlify, la IP del visitante viene en este header; si no, la que ve Cloudflare.
+  const ip = req.headers.get("x-nf-client-connection-ip") ?? req.headers.get("cf-connecting-ip");
   if (ip) datos.set("remoteip", ip);
   const r = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", { method: "POST", body: datos }).catch(() => null);
   const j = r?.ok ? ((await r.json().catch(() => null)) as { success?: boolean } | null) : null;
@@ -41,8 +42,15 @@ async function turnstileOk(token: unknown, req: Request) {
 }
 const ERROR_CAPTCHA = "No pudimos verificar que sos una persona. Esperá a que termine la verificación y probá de nuevo.";
 
-/** Defensa extra contra CSRF: si el navegador manda Origin, tiene que ser este mismo sitio. */
-const mismoOrigen = (req: Request, url: URL) => !req.headers.get("origin") || req.headers.get("origin") === url.origin;
+/**
+ * Defensa extra contra CSRF: si el navegador manda Origin, tiene que ser este sitio o uno de ORIGENES_PERMITIDOS
+ * (el sitio publicado en Netlify, que reenvía /api/* a este Worker).
+ */
+const mismoOrigen = (req: Request, url: URL) => {
+  const o = req.headers.get("origin");
+  if (!o || o === url.origin) return true;
+  return env.ORIGENES_PERMITIDOS.split(",").map((x) => x.trim()).filter(Boolean).includes(o);
+};
 
 async function crearAcceso(userId: string, email: string) {
   const token = crypto.randomUUID().replaceAll("-", "");

@@ -1,0 +1,19 @@
+# Sitio estático en Netlify (diseno/). La API vive en el Worker de Cloudflare:
+# Netlify la reenvía para que el navegador la vea en el mismo dominio (cookies de sesión sin problemas entre sitios).
+# No hay paso de build: las fichas de libros ya vienen generadas (cd concierge && node scripts/sitio.ts).
+# Los headers salen de diseno/_headers.
+
+[build]
+  publish = "diseno"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://textovivo.kitifica.workers.dev/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/admin/*"
+  to = "https://textovivo.kitifica.workers.dev/admin/:splat"
+  status = 200
+  force = true

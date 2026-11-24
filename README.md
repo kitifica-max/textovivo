@@ -32,3 +32,14 @@ npx wrangler deploy
 ```
 
 GitHub Pages (`redirect/`) solo redirige a ese sitio.
+
+## Arquitectura de despliegue (Netlify + Cloudflare)
+
+El DNS de `kitifica.com` está en Netlify, y Cloudflare solo permite dominio propio en un Worker si la zona está en Cloudflare. Por eso:
+
+- **Sitio (frontend):** `diseno/` se publica en Netlify (`netlify.toml`), en `textifika.kitifica.com`.
+- **Backend:** el Worker `textovivo` en Cloudflare (D1, R2, MCP). Netlify le reenvía `/api/*` y `/admin/*` (proxy con estado 200), así que el navegador ve todo en un solo dominio y la cookie de sesión es propia del sitio.
+- **Conector MCP:** la dirección que se le da al lector sigue siendo la del Worker (`https://textovivo.kitifica.workers.dev/c/<token>/mcp`), sin pasar por Netlify.
+- **Origen permitido:** `ORIGENES_PERMITIDOS` en `concierge/wrangler.jsonc` lista los sitios que pueden llamar a la API con cookie.
+- **Turnstile:** el hostname de Netlify tiene que estar en los *Hostnames* del widget.
+- **Cambios del sitio:** `git push` → Netlify publica. **Cambios del backend:** `cd concierge && npm run deploy`.
