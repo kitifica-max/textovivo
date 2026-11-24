@@ -68,19 +68,37 @@ document.querySelectorAll("[data-tarjeta]").forEach((input) =>
 );
 
 
-// Sesión: si hay cuenta abierta, «Entrar» pasa a ser «Mi biblioteca».
+// Sesión: con cuenta abierta, «Entrar» pasa a ser «Mi biblioteca» y aparece «Salir» en la cabecera.
+// tv_sesion_hint (solo una marca local, no es la sesión) evita el parpadeo de «Entrar» al cambiar de página.
+const hayHint = localStorage.getItem("tv_sesion_hint") === "1";
+function ponerSesion() {
+  document.querySelectorAll('a.boton[href$="entrar.html"]').forEach((a) => {
+    if (!a.closest(".navegacion")) return;
+    a.textContent = "Mi biblioteca";
+    a.setAttribute("href", a.getAttribute("href").replace("entrar.html", "mi-biblioteca.html"));
+  });
+  document.querySelectorAll(".navegacion").forEach((nav) => {
+    if (nav.querySelector("[data-salir]")) return;
+    const salir = document.createElement("button");
+    salir.type = "button"; salir.className = "salir"; salir.dataset.salir = ""; salir.textContent = "Salir";
+    salir.addEventListener("click", async () => {
+      salir.disabled = true;
+      await fetch("/api/logout", { method: "POST", headers: { "content-type": "application/json" }, body: "{}", credentials: "same-origin" }).catch(() => {});
+      localStorage.removeItem("tv_sesion_hint");
+      location.href = location.pathname.includes("/libros/") ? "../index.html" : "index.html";
+    });
+    nav.append(salir);
+  });
+  document.querySelectorAll("[data-subir]").forEach((a) => {
+    a.textContent = "Subir mi obra";
+    a.setAttribute("href", "subir.html");
+  });
+}
+if (hayHint) ponerSesion();
 fetch("/api/yo", { credentials: "same-origin" })
-  .then((r) => r.ok)
-  .then((hay) => {
-    if (!hay) return;
-    document.querySelectorAll('a.boton.chico[href$="entrar.html"]').forEach((a) => {
-      a.textContent = "Mi biblioteca";
-      a.setAttribute("href", a.getAttribute("href").replace("entrar.html", "mi-biblioteca.html"));
-    });
-    document.querySelectorAll("[data-subir]").forEach((a) => {
-      a.textContent = "Subir mi obra";
-      a.setAttribute("href", "subir.html");
-    });
+  .then((r) => {
+    if (r.ok) { localStorage.setItem("tv_sesion_hint", "1"); ponerSesion(); }
+    else if (r.status === 401) localStorage.removeItem("tv_sesion_hint");
   })
   .catch(() => {});
 

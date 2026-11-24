@@ -115,6 +115,8 @@ p { margin: 0 0 1em; }
 .navegacion a:not(.boton):hover { color: var(--tinta); background: color-mix(in srgb, var(--tinta) 6%, transparent); }
 .navegacion a[aria-current="page"] { color: var(--tinta); background: color-mix(in srgb, var(--tinta) 8%, transparent); }
 .navegacion .boton { margin-left: 8px; }
+.navegacion button.salir { font: inherit; font-size: 0.9rem; font-weight: 500; color: var(--gris); background: none; border: 0; padding: 8px 12px; border-radius: 999px; cursor: pointer; }
+.navegacion button.salir:hover { color: var(--tinta); background: color-mix(in srgb, var(--tinta) 6%, transparent); }
 @media (max-width: 760px) { .navegacion .ocultable { display: none; } }
 @media (max-width: 420px) {
   .cabecera .envoltura { gap: 12px; }
