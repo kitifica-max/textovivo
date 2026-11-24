@@ -353,6 +353,28 @@
     </div>
   </section>
 
+  <section id="pedir-libro" aria-label="Pedir un libro" style="padding:clamp(56px,9vw,112px) 0 clamp(40px,6vw,80px)">
+    <div class="envoltura">
+      <div class="caja-centro" style="margin:0 auto">
+        <p class="micro">¿Falta uno?</p>
+        <h2 style="margin-top:10px">Pedinos un libro.</h2>
+        <p class="bajada" style="margin:10px 0 24px">Decinos cuál te gustaría tener en tu IA. Priorizamos los de dominio público y licencia abierta.</p>
+        <p id="pl-ok" class="ok" role="status" hidden>¡Gracias! Recibimos tu solicitud. La revisamos con calma.</p>
+        <p id="pl-error" class="error" role="alert" hidden></p>
+        <form id="pl-f" novalidate>
+          <div class="campo"><label for="pl-titulo">Título del libro</label><input id="pl-titulo" required maxlength="200" autocomplete="off"></div>
+          <div class="campo" style="margin-top:12px"><label for="pl-autor">Autor (opcional)</label><input id="pl-autor" maxlength="200" autocomplete="off"></div>
+          <div class="campo" style="margin-top:12px"><label for="pl-enlace">Enlace donde se puede leer o descargar (opcional)</label><input id="pl-enlace" type="url" inputmode="url" placeholder="https://" maxlength="500" autocomplete="off"></div>
+          <div class="campo" style="margin-top:12px"><label for="pl-motivo">¿Para qué lo usarías? (opcional)</label><textarea id="pl-motivo" rows="3" maxlength="1000" style="width:100%;box-sizing:border-box;font:inherit;padding:12px 14px;border:1px solid var(--linea,#d8d3c6);border-radius:12px;background:transparent;color:inherit;resize:vertical"></textarea></div>
+          <div class="campo" style="margin-top:12px"><label for="pl-email">Tu email, si querés que te avisemos (opcional)</label><input id="pl-email" type="email" autocomplete="email" maxlength="200"></div>
+          <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Web <input id="pl-web" tabindex="-1" autocomplete="off"></label></div>
+          <div id="pl-ts" style="margin:14px 0;min-height:65px"></div>
+          <button class="boton ancho" type="submit">Enviar solicitud</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer class="pie-sitio">
@@ -385,5 +407,31 @@
   <div class="envoltura pie-base"><span>© 2026 Textifika — Edición uno · El Salvador</span></div>
 </footer>
 <script src="app.js"></script>
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const f = $("pl-f");
+  let ts = null;
+  const montar = () => { if (!ts) ts = tvTurnstile("pl-ts"); };
+  // El captcha se carga solo cuando la persona toca el formulario o llega a la sección.
+  f.addEventListener("focusin", montar, { once: true });
+  new IntersectionObserver((e, o) => { if (e[0].isIntersecting) { montar(); o.disconnect(); } }).observe($("pedir-libro"));
+  f.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    montar();
+    $("pl-error").hidden = true;
+    const falla = (m) => { $("pl-error").textContent = m; $("pl-error").hidden = false; };
+    if ($("pl-titulo").value.trim().length < 2) return falla("Escribí el título del libro.");
+    const t = ts.token();
+    if (!t) return falla("Esperá a que termine la verificación.");
+    const r = await fetch("/api/solicitar-libro", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ titulo: $("pl-titulo").value, autor: $("pl-autor").value, enlace: $("pl-enlace").value, motivo: $("pl-motivo").value, email: $("pl-email").value, web: $("pl-web").value, turnstile: t })
+    }).then(async (x) => ({ ok: x.ok, d: await x.json().catch(() => ({})) })).catch(() => ({ ok: false, d: { error: "No hay conexión. Probá de nuevo." } }));
+    if (r.ok) { f.hidden = true; $("pl-ok").hidden = false; }
+    else { falla(r.d.error || "No se pudo enviar. Probá de nuevo."); ts.reset(); }
+  });
+})();
+</script>
 </body>
 </html>

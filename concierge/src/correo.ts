@@ -4,7 +4,7 @@ import { env } from "cloudflare:workers";
 
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
 
-export async function enviarCorreo(a: string, asunto: string, html: string, texto: string): Promise<boolean> {
+export async function enviarCorreo(a: string, asunto: string, html: string, texto: string, responderA = "hola@kitifica.com"): Promise<boolean> {
   const clave = env.RESEND_API_KEY;
   if (!clave) return false;
   if (clave === "consola") {
@@ -14,7 +14,7 @@ export async function enviarCorreo(a: string, asunto: string, html: string, text
   const r = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { authorization: `Bearer ${clave}`, "content-type": "application/json" },
-    body: JSON.stringify({ from: env.CORREO_REMITENTE, to: [a], subject: asunto, html, text: texto, reply_to: "hola@kitifica.com" })
+    body: JSON.stringify({ from: env.CORREO_REMITENTE, to: [a], subject: asunto, html, text: texto, reply_to: responderA })
   }).catch(() => null);
   if (!r?.ok) console.error(`[correo] Resend respondió ${r?.status ?? "sin respuesta"}`);
   return Boolean(r?.ok);
@@ -54,5 +54,17 @@ export function correoVencePronto(nombre: string, dias: number, enlace: string) 
     asunto: dias <= 1 ? "Tu plan Pro de Textifika vence mañana" : `Tu plan Pro de Textifika vence en ${dias} días`,
     html: marco(`Tu plan Pro vence ${cuando}`, `Hola ${esc(nombre)}, tu plan Pro vence ${cuando}. Después de esa fecha no podrás subir ni consultar tus documentos personales (siguen guardados). Renovar suma 30 días a lo que te queda, no los pierdes.`, "Renovar mi plan", enlace, "Es un pago único de 30 días, no una suscripción: no te cobramos nada solos."),
     texto: `Hola ${nombre},\n\nTu plan Pro vence ${cuando}. Después no podrás subir ni consultar tus documentos personales (siguen guardados). Renovar suma 30 días a lo que te queda.\n\nRenovar: ${enlace}\n\nEs un pago único de 30 días, no una suscripción: no te cobramos nada solos.`
+  };
+}
+
+export type Solicitud = { titulo: string; autor: string; enlace: string; motivo: string; email: string };
+
+/** Aviso interno a hola@kitifica.com: alguien pide un libro. */
+export function correoSolicitudLibro(d: Solicitud) {
+  const fila = (k: string, v: string) => `<tr><td style="padding:4px 12px 4px 0;color:#6b665c;vertical-align:top">${k}</td><td style="padding:4px 0">${esc(v) || "—"}</td></tr>`;
+  return {
+    asunto: `Solicitud de libro: ${d.titulo}`.replace(/[\r\n]+/g, " ").slice(0, 150),
+    html: `<table style="font-family:Helvetica,Arial,sans-serif;font-size:15px;color:#161616">${fila("Libro", d.titulo)}${fila("Autor", d.autor)}${fila("Enlace", d.enlace)}${fila("Motivo", d.motivo)}${fila("Contacto", d.email)}</table>`,
+    texto: `Libro: ${d.titulo}\nAutor: ${d.autor || "—"}\nEnlace: ${d.enlace || "—"}\nMotivo: ${d.motivo || "—"}\nContacto: ${d.email || "—"}`
   };
 }

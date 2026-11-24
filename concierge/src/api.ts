@@ -4,7 +4,7 @@ import catalogoJson from "../data/catalogo.json" with { type: "json" };
 import {
   TERMINOS_VERSION, abrirSesion, aleatorio, cerrarSesion, claveCorrecta, cookieVacia, emailValido, hashClave, sha256, usuarioActual
 } from "./auth.ts";
-import { correoRestablecer, correoVerificacion, enviarCorreo } from "./correo.ts";
+import { correoRestablecer, correoSolicitudLibro, correoVerificacion, enviarCorreo } from "./correo.ts";
 import { extraer } from "./extraer.ts";
 import { evaluarEnvio, publicarEnvio, slug } from "./evaluacion.ts";
 import { DIAS_PLAN, diasRestantes, extenderVencimiento, firmaValida, firmarToken, leerEvento, leerToken, montoCoincide, planEfectivo, separarNombre, validarTarjeta } from "./plan.ts";
@@ -305,6 +305,21 @@ export async function api(req: Request, url: URL, ctx?: ExecutionContext): Promi
     const u = await env.DB.prepare("SELECT id, email, nombre FROM users WHERE email = ?").bind(email).first<{ id: string; email: string; nombre: string }>();
     // Respuesta idéntica exista o no la cuenta: no se puede usar esto para averiguar qué emails están registrados.
     if (u && (await correosRecientes(u.id, "restablecer")) < MAX_CORREOS_POR_HORA) await mandarEnlace(u, "restablecer", baseSitio(req, url));
+    return json({ ok: true });
+  }
+
+  // Solicitud pública de un libro: no guarda nada, solo avisa por correo a hola@kitifica.com.
+  if (post && ruta === "/api/solicitar-libro") {
+    const b = await cuerpo(req);
+    if (b?.web) return json({ ok: true }); // campo trampa: los bots lo llenan; fingimos éxito
+    if (!(await turnstileOk(b?.turnstile, req))) return error(ERROR_CAPTCHA, 400);
+    const t = (k: string, max: number) => String(b?.[k] ?? "").trim().slice(0, max);
+    const d = { titulo: t("titulo", 200), autor: t("autor", 200), enlace: t("enlace", 500), motivo: t("motivo", 1000), email: t("email", 200).toLowerCase() };
+    if (d.titulo.length < 2) return error("Escribí el título del libro.");
+    if (d.enlace && !/^https?:\/\/\S+$/i.test(d.enlace)) return error("El enlace tiene que empezar con http:// o https://.");
+    if (d.email && !emailValido(d.email)) return error("Ese email no parece válido.");
+    const c = correoSolicitudLibro(d);
+    if (!(await enviarCorreo("hola@kitifica.com", c.asunto, c.html, c.texto, d.email || undefined))) return error("No pudimos enviar la solicitud. Probá de nuevo en un rato.", 503);
     return json({ ok: true });
   }
 
