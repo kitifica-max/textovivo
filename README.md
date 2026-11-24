@@ -1,4 +1,4 @@
-# TextoVivo
+# Textifika
 
 Lo mejor de cada libro, dentro de tu IA. Un lector alquila un libro por 30 días y lo conecta a Claude, Claude Code o Cursor (MCP). Su IA aplica los frameworks y checklists del libro y cita la página exacta.
 

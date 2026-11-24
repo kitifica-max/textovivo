@@ -4,7 +4,12 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Guía de conexión — TextoVivo</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#f3f0e8">
+<title>Guía de conexión — Textifika</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -46,7 +51,7 @@
 
 <header class="cabecera">
   <div class="envoltura">
-    <a class="marca" href="index.html" aria-label="TextoVivo, inicio">Texto<b>Vivo</b></a>
+    <a class="marca" href="index.html" aria-label="Textifika, inicio"><svg class="iso" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="var(--tile)"/><rect x="13" y="14" width="38" height="11" rx="3.5" fill="var(--barra)"/><path d="M26 25h12v26l-6-5.5L26 51z" fill="var(--cinta)"/></svg><span>Text<b>ifika</b></span></a>
     <nav class="navegacion" aria-label="Principal">
       <a href="biblioteca.html">Biblioteca</a>
       <a href="mi-biblioteca.html">Mi biblioteca</a>
@@ -58,7 +63,7 @@
 <main id="contenido" class="guia">
   <div class="envoltura">
     <p class="micro" data-aparece style="--i:0">Guía · 2 minutos, una sola vez</p>
-    <h1 data-aparece style="--i:1">Conectá TextoVivo a tu IA.</h1>
+    <h1 data-aparece style="--i:1">Conectá Textifika a tu IA.</h1>
     <p class="bajada" data-aparece style="--i:2">Es un solo conector para toda tu biblioteca. Cuando sumás otro libro, aparece solo.</p>
 
     <p id="sin-acceso" class="nota" hidden style="margin-bottom:14px">Todavía no iniciaste sesión. <a class="enlace" href="entrar.html?next=guia.html">Creá tu cuenta gratis o entrá</a> y tu dirección aparece acá.</p>
@@ -77,30 +82,30 @@
       <ol class="grilla pasos" style="list-style:none;padding:0;margin:0">
         <li class="poster c-blanco"><span class="num">01</span><span class="titulo">Abrí <a class="enlace" href="https://claude.ai/customize/connectors" rel="noopener">Conectores de Claude</a>.</span></li>
         <li class="poster c-azul"><span class="num">02</span><span class="titulo">Tocá Agregar → Agregar conector personalizado.</span></li>
-        <li class="poster c-naranja"><span class="num">03</span><span class="titulo">Nombre: <code>TextoVivo</code>. URL: pegá tu dirección.</span></li>
+        <li class="poster c-naranja"><span class="num">03</span><span class="titulo">Nombre: <code>Textifika</code>. URL: pegá tu dirección.</span></li>
         <li class="poster c-menta"><span class="num">04</span><span class="titulo">Tocá Continuar. Si pregunta cómo iniciar sesión, elegí «Sin inicio de sesión».</span></li>
         <li class="poster c-manteca"><span class="num">05</span><span class="titulo">Tocá Agregar.</span></li>
-        <li class="poster c-salmon"><span class="num">06</span><span class="titulo">En un chat, abrí + y activá TextoVivo.</span></li>
+        <li class="poster c-salmon"><span class="num">06</span><span class="titulo">En un chat, abrí + y activá Textifika.</span></li>
       </ol>
       <div class="apartes">
-        <p>El plan gratis de Claude permite un conector personalizado. Por eso TextoVivo es uno solo para todos tus libros.</p>
+        <p>El plan gratis de Claude permite un conector personalizado. Por eso Textifika es uno solo para todos tus libros.</p>
         <p>En planes Team o Enterprise, el conector lo agrega el owner. Después cada persona se conecta con su cuenta.</p>
       </div>
     </section>
 
     <section class="panel-cliente" id="p-code" role="tabpanel" aria-labelledby="t-code" hidden>
-      <div class="codigo"><pre id="cmd-code">claude mcp add --transport http textovivo <span data-url>TU_DIRECCION</span></pre><button class="boton chico" type="button" data-copiar="#cmd-code">Copiar</button></div>
+      <div class="codigo"><pre id="cmd-code">claude mcp add --transport http textifika <span data-url>TU_DIRECCION</span></pre><button class="boton chico" type="button" data-copiar="#cmd-code">Copiar</button></div>
       <div class="dos">
         <div class="poster c-celeste"><span class="num">01</span><span class="titulo">Pegá el comando en tu terminal.</span></div>
-        <div class="poster c-acero"><span class="num">02</span><span class="titulo">Verificá con <code>claude mcp list</code> que textovivo aparezca conectado.</span></div>
+        <div class="poster c-acero"><span class="num">02</span><span class="titulo">Verificá con <code>claude mcp list</code> que textifika aparezca conectado.</span></div>
       </div>
     </section>
 
     <section class="panel-cliente" id="p-cursor" role="tabpanel" aria-labelledby="t-cursor" hidden>
-      <div class="codigo"><pre id="cmd-cursor">{ "mcpServers": { "textovivo": { "url": "<span data-url>TU_DIRECCION</span>" } } }</pre><button class="boton chico" type="button" data-copiar="#cmd-cursor">Copiar</button></div>
+      <div class="codigo"><pre id="cmd-cursor">{ "mcpServers": { "textifika": { "url": "<span data-url>TU_DIRECCION</span>" } } }</pre><button class="boton chico" type="button" data-copiar="#cmd-cursor">Copiar</button></div>
       <div class="dos">
         <div class="poster c-hueso"><span class="num">01</span><span class="titulo">Pegalo en <code>~/.cursor/mcp.json</code>.</span></div>
-        <div class="poster c-bosque"><span class="num">02</span><span class="titulo">Reiniciá Cursor: textovivo aparece en sus herramientas.</span></div>
+        <div class="poster c-bosque"><span class="num">02</span><span class="titulo">Reiniciá Cursor: textifika aparece en sus herramientas.</span></div>
       </div>
     </section>
   </div>
@@ -109,7 +114,7 @@
     <div class="envoltura">
       <div class="cabeza"><div><p class="micro">Probalo</p><h2 style="margin-top:10px">Tres preguntas para empezar.</h2></div></div>
       <div class="pruebas">
-        <div class="poster c-rojo"><span class="num">01</span><p class="titulo t-grotesca" id="q1" style="font-size:8.5cqi;line-height:1.05">Usá TextoVivo: ¿qué libros hay y qué frameworks y checklists tienen?</p><button class="boton chico" type="button" data-copiar="#q1">Copiar</button></div>
+        <div class="poster c-rojo"><span class="num">01</span><p class="titulo t-grotesca" id="q1" style="font-size:8.5cqi;line-height:1.05">Usá Textifika: ¿qué libros hay y qué frameworks y checklists tienen?</p><button class="boton chico" type="button" data-copiar="#q1">Copiar</button></div>
         <div class="poster c-celeste"><span class="num">02</span><p class="titulo t-grotesca" id="q2" style="font-size:8.5cqi;line-height:1.05">Revisá mi plan de lanzamiento con los cinco factores y citá las páginas.</p><button class="boton chico" type="button" data-copiar="#q2">Copiar</button></div>
         <div class="poster c-manteca"><span class="num">03</span><p class="titulo t-grotesca" id="q3" style="font-size:8.5cqi;line-height:1.05">Compará mi producto con la competencia usando las siete consideraciones.</p><button class="boton chico" type="button" data-copiar="#q3">Copiar</button></div>
       </div>
@@ -121,7 +126,7 @@
       <p class="micro" style="margin-bottom:14px">¿Algo no funciona?</p>
       <details><summary>Claude no me deja agregar otro conector</summary><p>En el plan gratis de Claude solo entra un conector personalizado. Quitá el que no uses desde Conectores, o pasá a un plan pago de Claude.</p></details>
       <details><summary>La IA dice que mi acceso venció</summary><p>Renovalo desde <a class="enlace" href="mi-biblioteca.html">Mi biblioteca</a>. No hace falta volver a conectar nada.</p></details>
-      <details><summary>La IA no usa TextoVivo</summary><p>Verificá que el conector esté activado en el menú + del chat, y pedíselo directo: «Usá TextoVivo…».</p></details>
+      <details><summary>La IA no usa Textifika</summary><p>Verificá que el conector esté activado en el menú + del chat, y pedíselo directo: «Usá Textifika…».</p></details>
     </div>
   </section>
 </main>
@@ -129,7 +134,7 @@
 <footer class="pie-sitio">
   <div class="envoltura">
     <div>
-      <div class="firma"><b>TextoVivo</b><span>¿Te trabaste? Escribinos y te ayudamos a conectarlo</span></div>
+      <div class="firma"><b>Textifika</b><span>¿Te trabaste? Escribinos y te ayudamos a conectarlo</span></div>
       <nav aria-label="Pie"><a href="biblioteca.html">Biblioteca</a><a href="mi-biblioteca.html">Mi biblioteca</a><a href="autores.html">Para autores</a><a href="mailto:hola@kitifica.com">Ayuda</a></nav>
     </div>
     <span class="edicion">© 2026 — Edición uno · San Salvador</span>

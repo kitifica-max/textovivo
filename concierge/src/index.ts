@@ -1,4 +1,4 @@
-// TextoVivo H-1 (concierge): un libro, una URL secreta por comprador, sin OAuth.
+// Textifika H-1 (concierge): un libro, una URL secreta por comprador, sin OAuth.
 // Se descarta cuando arranca la V1.
 import { McpServer } from "@modelcontextprotocol/server";
 import { createMcpHandler, getMcpAuthContext } from "agents/mcp/server";
@@ -53,7 +53,7 @@ async function usar(herramienta: string, consulta: string, ejecutar: () => unkno
     return texto(`Confirmá tu email para usar el conector: te mandamos un correo al crear la cuenta. Podés pedir otro en ${env.SITIO_URL}/mi-biblioteca.html`);
   if (comprador.expires_at <= ahora())
     return texto(
-      `Tu acceso a TextoVivo venció el ${comprador.expires_at.slice(0, 10)}. Podés renovarlo en ${env.PUBLIC_URL}`
+      `Tu acceso a Textifika venció el ${comprador.expires_at.slice(0, 10)}. Podés renovarlo en ${env.PUBLIC_URL}`
     );
   const limite = Number(env.CALLS_PER_TOKEN);
   if (comprador.calls >= limite)
@@ -76,7 +76,7 @@ async function usar(herramienta: string, consulta: string, ejecutar: () => unkno
 }
 
 function crearServidor() {
-  const server = new McpServer({ name: "TextoVivo", version: "0.2.0" });
+  const server = new McpServer({ name: "Textifika", version: "0.2.0" });
   const soloLectura = { readOnlyHint: true, openWorldHint: false };
   const libroId = z.string().min(2).max(80).describe("Id del libro (ver listar_libros)");
 
@@ -84,7 +84,7 @@ function crearServidor() {
     "listar_libros",
     {
       description:
-        "Lista los libros de la biblioteca TextoVivo con su id, autor, idioma del texto y qué frameworks y checklists tienen. Usala primero para elegir el libro.",
+        "Lista los libros de la biblioteca Textifika con su id, autor, idioma del texto y qué frameworks y checklists tienen. Usala primero para elegir el libro.",
       inputSchema: z.object({}),
       annotations: soloLectura
     },

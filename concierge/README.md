@@ -1,4 +1,4 @@
-# TextoVivo · H-1 (validación concierge)
+# Textifika · H-1 (validación concierge)
 
 Worker mínimo para validar, antes de construir la V1, que la gente **paga, conecta y usa** un Texto Vivo.
 Un libro, una URL secreta por comprador, sin OAuth. Se descarta cuando arranca la V1 (ver `../TEXTOVIVO-SPEC-V1.md`, hito H-1).

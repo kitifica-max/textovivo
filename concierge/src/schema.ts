@@ -1,4 +1,4 @@
-// Formato de los datos de un Texto Vivo destilado a mano para el H-1.
+// Formato de los datos de un libro destilado a mano para el H-1.
 // destilado.json lo arma una persona (con ayuda de Claude); paginas.json sale del PDF.
 import { z } from "zod";
 

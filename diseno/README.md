@@ -1,4 +1,4 @@
-# TextoVivo · diseño del sitio ("guía de bolsillo")
+# Textifika · diseño del sitio ("guía de bolsillo")
 
 Prototipo navegable en HTML y CSS, sin frameworks. Es la referencia visual de la V1 (`../TEXTOVIVO-SPEC-V1.md`).
 
@@ -27,7 +27,7 @@ Tomé el criterio de Apple:
 
 | Archivo | Qué es |
 |---|---|
-| `index.html` | Portada: titular enorme y TextoVivo explicado en 10 pósters |
+| `index.html` | Portada: titular enorme y Textifika explicado en 10 pósters |
 | `biblioteca.html` | Tienda: un póster por libro, filtros con control segmentado |
 | `texto.html` | Ficha de *El arte de la guerra*: 8 frameworks y 8 checklists como pósters, con páginas reales |
 | `pagar.html` | Pago con tarjeta + 3DS (Wompi) |
