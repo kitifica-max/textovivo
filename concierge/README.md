@@ -167,3 +167,12 @@ trae además el **capítulo** y la **cita literal**, que es lo que permite ubica
 Excepción: en *Oráculo manual* la página es el número de aforismo (`paginacion: "aforismo"` en `meta.json`), que sí coincide con el libro.
 Las herramientas `listar_libros` y `listar_indice` avisan esto a la IA. Cambiar el criterio (p. ej. paginar como el PDF) exige
 fuentes con paginación y es una decisión de producto aparte.
+
+### Aviso: después de `wrangler secret put`, volver a desplegar
+
+En este Worker (assets + código), `wrangler secret put` crea una versión que dejó de enviar `/acceso`, `/api/*`, `/c/*` y `/admin/*` al código
+(todo respondía 404). Se arregla con `npx wrangler deploy`; los secretos no se borran al desplegar. Orden seguro:
+
+```bash
+tr -d '\n' < .secreto-admin | npx wrangler secret put ADMIN_SECRET && npx wrangler deploy
+```
