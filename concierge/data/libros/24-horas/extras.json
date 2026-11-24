@@ -1,6 +1,56 @@
 {
  "glosario": [],
- "frameworks": [],
+ "frameworks": [
+  {
+   "nombre": "Los hábitos de Bennett, capítulo a capítulo",
+   "resumen": "Los pasos que propone para usar bien las 24 horas del día.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Tomá precauciones antes de empezar",
+     "descripcion": "Antes de comenzar: no te propongas más de lo que podés sostener.",
+     "pagina": 18,
+     "cita": "PRECAUTIONS BEFORE BEGINNING Now that I have succeeded (if succeeded I have) in persuading you to admit to yourself that you are"
+    },
+    {
+     "orden": 2,
+     "titulo": "Controlá tu mente",
+     "descripcion": "Entrenar la concentración.",
+     "pagina": 36,
+     "cita": "CONTROLLING THE MIND People say: \"One can't help one's thoughts.\" But one can. The control of the thinking machine is perfectly possible."
+    },
+    {
+     "orden": 3,
+     "titulo": "Cultivá el ánimo reflexivo",
+     "descripcion": "Dedicar tiempo a pensar sobre tu propia vida.",
+     "pagina": 40,
+     "cita": "THE REFLECTIVE MOOD The exercise of concentrating the mind (to which at least half an hour a day should be given) is"
+    },
+    {
+     "orden": 4,
+     "titulo": "Interesate por las artes",
+     "descripcion": "Ampliar tus intereses.",
+     "pagina": 45,
+     "cita": "INTEREST IN THE ARTS Many people pursue a regular and uninterrupted course of idleness in the evenings because they think that there"
+    },
+    {
+     "orden": 5,
+     "titulo": "Nada en la vida es rutinario",
+     "descripcion": "Mirar con atención lo cotidiano.",
+     "pagina": 49,
+     "cita": "NOTHING IN LIFE IS HUMDRUM Art is a great thing. But it is not the greatest. The most important of all perceptions"
+    },
+    {
+     "orden": 6,
+     "titulo": "Leé en serio",
+     "descripcion": "Elegir lecturas que exijan esfuerzo.",
+     "pagina": 53,
+     "cita": "SERIOUS READING Novels are excluded from \"serious reading,\" so that the man who, bent on self-improvement, has been deciding to devote ninety"
+    }
+   ]
+  }
+ ],
  "checklists": [
   {
    "nombre": "Plan de Bennett para aprovechar el día",

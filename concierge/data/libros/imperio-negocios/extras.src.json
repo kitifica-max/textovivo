@@ -26,6 +26,30 @@
      "palabras": 24
     }
    ]
+  },
+  {
+   "nombre": "Los tres peligros del joven de negocios, según Carnegie",
+   "contexto": "Para revisar riesgos que arruinan una carrera.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "No bebas licor en exceso",
+     "buscar": "First, then, you must not drink liquor to excess",
+     "palabras": 24
+    },
+    {
+     "texto": "Cuidá un crédito sin mancha: no especules",
+     "buscar": "Nothing is more essential to young business men than untar- nished credit",
+     "palabras": 24
+    },
+    {
+     "texto": "Desconfiá del hábito de avalar",
+     "buscar": "It is the perilous habit of indorsing",
+     "palabras": 24
+    }
+   ]
   }
- ]
+ ],
+ "glosario": [],
+ "frameworks": []
 }

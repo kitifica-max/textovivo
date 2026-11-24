@@ -31,5 +31,20 @@
     }
    ]
   }
- ]
+ ],
+ "glosario": [
+  {
+   "termino": "Administración de iniciativa e incentivo",
+   "definicion": "El modelo anterior, en que el trabajador pone la iniciativa y la empresa el incentivo, frente a la administración científica o por tareas.",
+   "buscar": "management of \"initiative and incentive\"",
+   "palabras": 28
+  },
+  {
+   "termino": "Hombre de primera clase",
+   "definicion": "El trabajador apto para una tarea, que rinde la jornada completa que puede sostener año tras año.",
+   "buscar": "a full day's work for a first-class man",
+   "palabras": 24
+  }
+ ],
+ "checklists": []
 }

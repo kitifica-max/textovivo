@@ -30,6 +30,29 @@
      "palabras": 24
     }
    ]
+  },
+  {
+   "nombre": "Cómo investiga un consejero de relaciones públicas",
+   "contexto": "Para planificar una campaña de comunicación pública.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Averiguá quién decide: a veces es la esposa",
+     "buscar": "will not fail to investigate to what extent it is the wife who has the final word",
+     "palabras": 30
+    },
+    {
+     "texto": "Detectá hacia dónde se mueve el gusto del público",
+     "buscar": "in what new direction the public taste is veering",
+     "palabras": 20
+    },
+    {
+     "texto": "Los clichés mentales y los hábitos emocionales del público producen reacciones masivas",
+     "buscar": "the mental clichés and the emotional habits of the public",
+     "palabras": 24
+    }
+   ]
   }
- ]
+ ],
+ "frameworks": []
 }

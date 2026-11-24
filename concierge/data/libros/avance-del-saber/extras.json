@@ -30,5 +30,43 @@
    ]
   }
  ],
- "checklists": []
+ "checklists": [
+  {
+   "nombre": "Los motivos por los que se busca el saber, según Bacon",
+   "contexto": "Para revisar por qué estudiás, investigás o publicás.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Curiosidad natural",
+     "pagina": 69,
+     "cita": "upon a natural curiosity and inquisitive appetite; sometimes to entertain their minds with variety"
+    },
+    {
+     "texto": "Entretener la mente",
+     "pagina": 69,
+     "cita": "to entertain their minds with variety and delight; sometimes for ornament and reputation; and"
+    },
+    {
+     "texto": "Adorno y reputación",
+     "pagina": 69,
+     "cita": "for ornament and reputation; and sometimes to enable them to victory of"
+    },
+    {
+     "texto": "Ganar disputas",
+     "pagina": 69,
+     "cita": "to enable them to victory of wit and contradiction; and most times for lucre"
+    },
+    {
+     "texto": "Lucro y profesión",
+     "pagina": 69,
+     "cita": "for lucre and profession; and seldom sincerely to give a true account of their"
+    },
+    {
+     "texto": "El motivo que Bacon defiende: servir a los demás",
+     "pagina": 69,
+     "cita": "to give a true account of their gift of reason to the benefit and use of men: as if there were sought"
+    }
+   ]
+  }
+ ]
 }

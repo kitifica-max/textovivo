@@ -100,6 +100,33 @@
      "cita": "Place the emphatic words of a sentence at the end. The proper place in the sentence for the word, or group of words, which"
     }
    ]
+  },
+  {
+   "nombre": "Palabras y expresiones comúnmente mal usadas",
+   "contexto": "Para revisar un texto en inglés antes de publicarlo.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "«Less» no se usa por «fewer»",
+     "pagina": 50,
+     "cita": "=Less.= Should not be misused for fewer. He had less men than in the previous campaign He had fewer men"
+    },
+    {
+     "texto": "«People»: el pueblo es un término político, no el público",
+     "pagina": 53,
+     "cita": "=People.= The people is a political term, not to be confused with the public. From the people comes political support or opposition; from the"
+    },
+    {
+     "texto": "«Etc.» equivale a «y el resto»",
+     "pagina": 48,
+     "cita": "=Etc.= Equivalent to and the rest, and so forth, and hence not to be used if one of these would be insufficient, that is"
+    },
+    {
+     "texto": "«Effect» como sustantivo es resultado; no confundir con «affect»",
+     "pagina": 47,
+     "cita": "=Effect.= As noun, means result; as verb, means to bring about, accomplish (not to be confused with affect, which means \"to influence\"). As noun"
+    }
+   ]
   }
  ]
 }

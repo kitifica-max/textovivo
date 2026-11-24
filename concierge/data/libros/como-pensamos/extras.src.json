@@ -37,5 +37,32 @@
     }
    ]
   }
+ ],
+ "glosario": [
+  {
+   "termino": "Pensamiento reflexivo",
+   "definicion": "La consideración activa, persistente y cuidadosa de una creencia a la luz de los fundamentos que la sostienen.",
+   "buscar": "Active, persistent, and careful consideration of any belief",
+   "palabras": 30
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Los recursos del buen pensar según Dewey",
+   "contexto": "Para revisar cómo pensás un problema.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Desarrollar la curiosidad, la sugerencia y los hábitos de explorar y probar",
+     "buscar": "development of curiosity, suggestion, and habits of exploring and testing",
+     "palabras": 20
+    },
+    {
+     "texto": "Que las sugerencias sean ordenadas, consecutivas y apropiadas",
+     "buscar": "orderliness, consecutiveness, appropriateness in what is suggested",
+     "palabras": 20
+    }
+   ]
+  }
  ]
 }

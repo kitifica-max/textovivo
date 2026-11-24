@@ -90,6 +90,112 @@
      "pagina": 299
     }
    ]
+  },
+  {
+   "nombre": "Aforismos para tratar con la gente",
+   "contexto": "Para revisar cómo elegís y tratás amigos, colegas y rivales.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "111. Tener amigos",
+     "buscar": "111. Tener amigos.",
+     "palabras": 16,
+     "pagina": 111
+    },
+    {
+     "texto": "148. El arte de conversar",
+     "buscar": "148. Tener el arte de conversar",
+     "palabras": 16,
+     "pagina": 148
+    },
+    {
+     "texto": "156. Amigos de elección",
+     "buscar": "156. Amigos de elección.",
+     "palabras": 16,
+     "pagina": 156
+    },
+    {
+     "texto": "158. Saber usar de los amigos",
+     "buscar": "158. Saber usar de los amigos.",
+     "palabras": 16,
+     "pagina": 158
+    },
+    {
+     "texto": "159. Saber sufrir necios",
+     "buscar": "159. Saber sufrir necios.",
+     "palabras": 16,
+     "pagina": 159
+    },
+    {
+     "texto": "177. Excusar llanezas en el trato",
+     "buscar": "177. Excusar llanezas en el trato.",
+     "palabras": 16,
+     "pagina": 177
+    },
+    {
+     "texto": "197. Nunca embarazarse con necios",
+     "buscar": "197. Nunca embarazarse con necios.",
+     "palabras": 16,
+     "pagina": 197
+    },
+    {
+     "texto": "241. Sufrir las burlas, no usarlas",
+     "buscar": "241. Las burlas sufrirlas",
+     "palabras": 16,
+     "pagina": 241
+    }
+   ]
+  },
+  {
+   "nombre": "Aforismos para decidir",
+   "contexto": "Para revisar cómo tomás una decisión importante.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "57. Más seguros son los pensados",
+     "buscar": "57. Más seguros son los pensados.",
+     "palabras": 16,
+     "pagina": 57
+    },
+    {
+     "texto": "72. Ser resuelto",
+     "buscar": "72. Hombre de resolución.",
+     "palabras": 16,
+     "pagina": 72
+    },
+    {
+     "texto": "91. Obrar sin escrúpulos de imprudencia",
+     "buscar": "91. Obrar siempre sin escrúpulos",
+     "palabras": 16,
+     "pagina": 91
+    },
+    {
+     "texto": "142. No seguir el peor partido por tema",
+     "buscar": "142. Nunca por tema seguir el peor partido",
+     "palabras": 16,
+     "pagina": 142
+    },
+    {
+     "texto": "218. No obrar por tema",
+     "buscar": "218. Nunca obrar por tema, sino por atención.",
+     "palabras": 16,
+     "pagina": 218
+    },
+    {
+     "texto": "230. Abrir los ojos a tiempo",
+     "buscar": "230. Abrir los ojos con tiempo.",
+     "palabras": 16,
+     "pagina": 230
+    },
+    {
+     "texto": "249. No comenzar por donde se ha de acabar",
+     "buscar": "249. No comenzar a vivir por donde se ha de acabar.",
+     "palabras": 16,
+     "pagina": 249
+    }
+   ]
   }
- ]
+ ],
+ "glosario": [],
+ "frameworks": []
 }

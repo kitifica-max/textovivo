@@ -28,6 +28,27 @@
      "cita": "the third is to permit them to live under their own laws, drawing a tribute, and establishing within it an oligarchy which will keep"
     }
    ]
+  },
+  {
+   "nombre": "Cómo clasificar un Estado, según Maquiavelo",
+   "resumen": "Todos los Estados son repúblicas o principados, y los principados, hereditarios o nuevos.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Repúblicas o principados",
+     "descripcion": "Todo dominio es una cosa o la otra.",
+     "pagina": 1,
+     "cita": "have been and are either republics or principalities. Principalities are either hereditary, in which the family"
+    },
+    {
+     "orden": 2,
+     "titulo": "Hereditarios o nuevos",
+     "descripcion": "Los principados son de familia antigua o nuevos.",
+     "pagina": 1,
+     "cita": "Principalities are either hereditary, in which the family has been long established; or they are new. The new are either"
+    }
+   ]
   }
  ],
  "checklists": [
@@ -60,6 +81,28 @@
      "texto": "No cumplas una promesa si hacerlo te perjudica y su causa ya no existe",
      "pagina": 104,
      "cita": "cannot, nor ought he to, keep faith when such observance may be turned against him, and when the reasons that caused him to pledge it exist no longer. If men"
+    }
+   ]
+  },
+  {
+   "nombre": "Cualidades del gobernante (caps. XV a XIX)",
+   "contexto": "Para revisar el estilo de mando de un líder.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Conviene tener fama de liberal",
+     "pagina": 93,
+     "cita": "it would be well to be reputed liberal. Nevertheless, liberality exercised in a way that does not bring"
+    },
+    {
+     "texto": "Elegir ser zorro y león a la vez",
+     "pagina": 104,
+     "cita": "ought to choose the fox and the lion; because the lion cannot defend himself against snares and the fox cannot defend himself against wolves."
+    },
+    {
+     "texto": "Evitá ser despreciado y odiado",
+     "pagina": 110,
+     "cita": "THAT ONE SHOULD AVOID BEING DESPISED AND HATED Now, concerning the characteristics of which mention is made above, I have spoken of the more"
     }
    ]
   }

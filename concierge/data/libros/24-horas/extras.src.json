@@ -27,5 +27,57 @@
     }
    ]
   }
+ ],
+ "glosario": [],
+ "frameworks": [
+  {
+   "nombre": "Los hábitos de Bennett, capítulo a capítulo",
+   "resumen": "Los pasos que propone para usar bien las 24 horas del día.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Tomá precauciones antes de empezar",
+     "descripcion": "Antes de comenzar: no te propongas más de lo que podés sostener.",
+     "buscar": "PRECAUTIONS BEFORE BEGINNING",
+     "palabras": 22,
+     "desde": 12
+    },
+    {
+     "titulo": "Controlá tu mente",
+     "descripcion": "Entrenar la concentración.",
+     "buscar": "CONTROLLING THE MIND",
+     "palabras": 22,
+     "desde": 12
+    },
+    {
+     "titulo": "Cultivá el ánimo reflexivo",
+     "descripcion": "Dedicar tiempo a pensar sobre tu propia vida.",
+     "buscar": "THE REFLECTIVE MOOD",
+     "palabras": 22,
+     "desde": 12
+    },
+    {
+     "titulo": "Interesate por las artes",
+     "descripcion": "Ampliar tus intereses.",
+     "buscar": "INTEREST IN THE ARTS",
+     "palabras": 22,
+     "desde": 12
+    },
+    {
+     "titulo": "Nada en la vida es rutinario",
+     "descripcion": "Mirar con atención lo cotidiano.",
+     "buscar": "NOTHING IN LIFE IS HUMDRUM",
+     "palabras": 22,
+     "desde": 12
+    },
+    {
+     "titulo": "Leé en serio",
+     "descripcion": "Elegir lecturas que exijan esfuerzo.",
+     "buscar": "SERIOUS READING",
+     "palabras": 22,
+     "desde": 12
+    }
+   ]
+  }
  ]
 }

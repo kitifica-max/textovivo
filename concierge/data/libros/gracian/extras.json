@@ -78,6 +78,95 @@
      "cita": "299. Dejar con hambre. Hase de dejar en los labios aun con el néctar. Es el"
     }
    ]
+  },
+  {
+   "nombre": "Aforismos para tratar con la gente",
+   "contexto": "Para revisar cómo elegís y tratás amigos, colegas y rivales.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "111. Tener amigos",
+     "pagina": 111,
+     "cita": "111. Tener amigos. Es el segundo ser. Todo amigo es bueno, y sabio para el amigo."
+    },
+    {
+     "texto": "148. El arte de conversar",
+     "pagina": 148,
+     "cita": "148. Tener el arte de conversar, en que se hace muestra de ser persona. En ningún"
+    },
+    {
+     "texto": "156. Amigos de elección",
+     "pagina": 156,
+     "cita": "156. Amigos de elección. Que lo han de ser a examen de la discreción y a"
+    },
+    {
+     "texto": "158. Saber usar de los amigos",
+     "pagina": 158,
+     "cita": "158. Saber usar de los amigos. Hay en esto su arte de discreción; unos son buenos"
+    },
+    {
+     "texto": "159. Saber sufrir necios",
+     "pagina": 159,
+     "cita": "159. Saber sufrir necios. Las sabios siempre fueron mal sufridos, que quien añade ciencia añade impaciencia."
+    },
+    {
+     "texto": "177. Excusar llanezas en el trato",
+     "pagina": 177,
+     "cita": "177. Excusar llanezas en el trato. Ni se han de usar, ni se han de permitir."
+    },
+    {
+     "texto": "197. Nunca embarazarse con necios",
+     "pagina": 197,
+     "cita": "197. Nunca embarazarse con necios. Eslo el que no los conoce, y más el que, conocidos"
+    },
+    {
+     "texto": "241. Sufrir las burlas, no usarlas",
+     "pagina": 241,
+     "cita": "241. Las burlas sufrirlas, pero no usarlas. Aquello es especie de galantería, esto de empeño. El"
+    }
+   ]
+  },
+  {
+   "nombre": "Aforismos para decidir",
+   "contexto": "Para revisar cómo tomás una decisión importante.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "57. Más seguros son los pensados",
+     "pagina": 57,
+     "cita": "57. Más seguros son los pensados. Harto presto, si bien. Lo que luego se hace, luego"
+    },
+    {
+     "texto": "72. Ser resuelto",
+     "pagina": 72,
+     "cita": "72. Hombre de resolución. Menos dañosa es la mala ejecución que la irresolución. No se gastan"
+    },
+    {
+     "texto": "91. Obrar sin escrúpulos de imprudencia",
+     "pagina": 91,
+     "cita": "91. Obrar siempre sin escrúpulos de imprudencia. La sospecha de desacierto en el que ejecuta es"
+    },
+    {
+     "texto": "142. No seguir el peor partido por tema",
+     "pagina": 142,
+     "cita": "142. Nunca por tema seguir el peor partido, porque el contrario se adelantó y escogió el"
+    },
+    {
+     "texto": "218. No obrar por tema",
+     "pagina": 218,
+     "cita": "218. Nunca obrar por tema, sino por atención. Toda tema es postema, gran hija de la"
+    },
+    {
+     "texto": "230. Abrir los ojos a tiempo",
+     "pagina": 230,
+     "cita": "230. Abrir los ojos con tiempo. No todos los que ven han abierto los ojos, ni"
+    },
+    {
+     "texto": "249. No comenzar por donde se ha de acabar",
+     "pagina": 249,
+     "cita": "249. No comenzar a vivir por donde se ha de acabar. Algunos toman el descanso al"
+    }
+   ]
   }
  ]
 }

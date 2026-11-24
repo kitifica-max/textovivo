@@ -1,5 +1,12 @@
 {
- "glosario": [],
+ "glosario": [
+  {
+   "termino": "Pensamiento reflexivo",
+   "definicion": "La consideración activa, persistente y cuidadosa de una creencia a la luz de los fundamentos que la sostienen.",
+   "pagina": 8,
+   "cita": "Active, persistent, and careful consideration of any belief or supposed form of knowledge in the light of the grounds that support it, and the further conclusions to which it tends"
+  }
+ ],
  "frameworks": [
   {
    "nombre": "Las cinco fases del pensamiento reflexivo",
@@ -44,5 +51,23 @@
    ]
   }
  ],
- "checklists": []
+ "checklists": [
+  {
+   "nombre": "Los recursos del buen pensar según Dewey",
+   "contexto": "Para revisar cómo pensás un problema.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Desarrollar la curiosidad, la sugerencia y los hábitos de explorar y probar",
+     "pagina": 66,
+     "cita": "development of curiosity, suggestion, and habits of exploring and testing, as increases their scope and efficiency. A subject--any subject--is intellectual"
+    },
+    {
+     "texto": "Que las sugerencias sean ordenadas, consecutivas y apropiadas",
+     "pagina": 43,
+     "cita": "orderliness, consecutiveness, appropriateness in what is suggested. Clearly, a person may be hampered in any of these three regards: His"
+    }
+   ]
+  }
+ ]
 }

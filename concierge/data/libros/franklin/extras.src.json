@@ -85,5 +85,39 @@
     }
    ]
   }
+ ],
+ "glosario": [],
+ "frameworks": [
+  {
+   "nombre": "El método de Franklin para formar un hábito",
+   "resumen": "Cómo Franklin trabajó las trece virtudes, de a una y con registro.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Fijá el propósito",
+     "descripcion": "Adquirir el hábito de todas las virtudes.",
+     "buscar": "My intention being to acquire the habitude of all these virtues",
+     "palabras": 18
+    },
+    {
+     "titulo": "Trabajá una a la vez",
+     "descripcion": "No dispersar la atención con todas a la vez.",
+     "buscar": "to fix it on one of them at a time",
+     "palabras": 16
+    },
+    {
+     "titulo": "Llevá un registro",
+     "descripcion": "Un cuadernito con una página por virtud.",
+     "buscar": "I made a little book, in which I allotted a page for each of the virtues",
+     "palabras": 24
+    },
+    {
+     "titulo": "Una semana de atención estricta por virtud",
+     "descripcion": "Atención sucesiva a cada virtud.",
+     "buscar": "I determined to give a week's strict attention to each of the virtues successively",
+     "palabras": 24
+    }
+   ]
+  }
  ]
 }

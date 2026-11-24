@@ -72,6 +72,45 @@
      "desde": 2
     }
    ]
+  },
+  {
+   "nombre": "Errores que Barnum aconseja evitar",
+   "contexto": "Para revisar los riesgos de un negocio o de tu carrera.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "No te equivoques de vocación",
+     "buscar": "DON'T MISTAKE YOUR VOCATION",
+     "palabras": 24
+    },
+    {
+     "texto": "No te creas por encima de tu oficio",
+     "buscar": "DON'T GET ABOVE YOUR BUSINESS",
+     "palabras": 24
+    },
+    {
+     "texto": "No dispersés tus fuerzas",
+     "buscar": "DO NOT SCATTER YOUR POWERS",
+     "palabras": 24
+    },
+    {
+     "texto": "Desconfiá de las operaciones ajenas a tu negocio",
+     "buscar": "BEWARE OF \"OUTSIDE OPERATIONS\"",
+     "palabras": 24
+    },
+    {
+     "texto": "No avales a nadie sin garantía",
+     "buscar": "DON'T INDORSE WITHOUT SECURITY",
+     "palabras": 24
+    },
+    {
+     "texto": "Aprendé algo útil",
+     "buscar": "LEARN SOMETHING USEFUL",
+     "palabras": 24
+    }
+   ]
   }
- ]
+ ],
+ "glosario": [],
+ "frameworks": []
 }

@@ -21,6 +21,25 @@
      "palabras": 14
     }
    ]
+  },
+  {
+   "nombre": "Lecciones de Smiles sobre el carácter",
+   "contexto": "Para revisar qué valorás al medir un éxito.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Buscá elevación de carácter, sin la cual la capacidad no vale",
+     "buscar": "he must seek elevation of character, without which capacity is worthless",
+     "palabras": 24
+    },
+    {
+     "texto": "El fracaso vencido por la perseverancia enseña",
+     "buscar": "Failure, conquered by Perseverance, is always full of interest and instruction",
+     "palabras": 24
+    }
+   ]
   }
- ]
+ ],
+ "glosario": [],
+ "frameworks": []
 }

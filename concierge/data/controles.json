@@ -13,7 +13,7 @@
    "configuracion": "ok: sin sospechas",
    "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 11 de 11 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
-   "citas": "ok: 4 de 4 citas existen literalmente en su página"
+   "citas": "ok: 10 de 10 citas existen literalmente en su página"
   }
  },
  {
@@ -30,7 +30,7 @@
    "configuracion": "aviso: 1 capítulos de una sola página (¿títulos del índice o encabezados de página?); «CHAPTER II. THE PRINCIPLES OF » ocupa más de la mitad del libro",
    "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 11 de 11 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
-   "citas": "ok: 4 de 4 citas existen literalmente en su página"
+   "citas": "ok: 6 de 6 citas existen literalmente en su página"
   }
  },
  {
@@ -64,7 +64,7 @@
    "configuracion": "aviso: «THE SECOND BOOK.» ocupa más de la mitad del libro",
    "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 8 de 8 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
-   "citas": "ok: 3 de 3 citas existen literalmente en su página"
+   "citas": "ok: 9 de 9 citas existen literalmente en su página"
   }
  },
  {
@@ -98,7 +98,7 @@
    "configuracion": "aviso: 1 capítulos de una sola página (¿títulos del índice o encabezados de página?)",
    "fidelidad": "ok: 99.9 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
-   "citas": "ok: 11 de 11 citas existen literalmente en su página"
+   "citas": "ok: 17 de 17 citas existen literalmente en su página"
   }
  },
  {
@@ -115,7 +115,7 @@
    "configuracion": "ok: sin sospechas",
    "fidelidad": "ok: 97.9 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
-   "citas": "ok: 3 de 3 citas existen literalmente en su página"
+   "citas": "ok: 7 de 7 citas existen literalmente en su página"
   }
  },
  {
@@ -132,7 +132,7 @@
    "configuracion": "ok: sin sospechas",
    "fidelidad": "ok: 99.1 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
-   "citas": "ok: 5 de 5 citas existen literalmente en su página"
+   "citas": "ok: 8 de 8 citas existen literalmente en su página"
   }
  },
  {
@@ -166,7 +166,7 @@
    "configuracion": "ok: sin sospechas",
    "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
-   "citas": "ok: 17 de 17 citas existen literalmente en su página"
+   "citas": "ok: 21 de 21 citas existen literalmente en su página"
   }
  },
  {
@@ -183,7 +183,7 @@
    "configuracion": "aviso: un solo capítulo en un libro de 334 páginas (¿falló el patrón?)",
    "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 10 de 10 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
-   "citas": "ok: 13 de 13 citas existen literalmente en su página"
+   "citas": "ok: 17 de 17 citas existen literalmente en su página"
   }
  },
  {
@@ -200,7 +200,7 @@
    "configuracion": "ok: sin sospechas",
    "fidelidad": "ok: sin fuente.txt (texto armado desde otra fuente): no se compara",
    "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
-   "citas": "ok: 14 de 14 citas existen literalmente en su página"
+   "citas": "ok: 29 de 29 citas existen literalmente en su página"
   }
  },
  {
@@ -234,7 +234,7 @@
    "configuracion": "aviso: 2 capítulos de una sola página (¿títulos del índice o encabezados de página?)",
    "fidelidad": "ok: 97.6 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
-   "citas": "ok: 4 de 4 citas existen literalmente en su página"
+   "citas": "ok: 7 de 7 citas existen literalmente en su página"
   }
  },
  {
@@ -251,7 +251,7 @@
    "configuracion": "ok: sin sospechas",
    "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
-   "citas": "ok: 4 de 4 citas existen literalmente en su página"
+   "citas": "ok: 8 de 8 citas existen literalmente en su página"
   }
  },
  {
@@ -268,7 +268,7 @@
    "configuracion": "ok: sin sospechas",
    "fidelidad": "ok: 98.5 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
-   "citas": "ok: 3 de 3 citas existen literalmente en su página"
+   "citas": "ok: 5 de 5 citas existen literalmente en su página"
   }
  },
  {
@@ -285,7 +285,7 @@
    "configuracion": "ok: sin sospechas",
    "fidelidad": "ok: 99.6 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
-   "citas": "ok: 4 de 4 citas existen literalmente en su página"
+   "citas": "ok: 7 de 7 citas existen literalmente en su página"
   }
  },
  {
@@ -302,7 +302,7 @@
    "configuracion": "aviso: 2 capítulos de una sola página (¿títulos del índice o encabezados de página?)",
    "fidelidad": "ok: 90.4 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 8 de 8 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
-   "citas": "ok: 8 de 8 citas existen literalmente en su página"
+   "citas": "ok: 13 de 13 citas existen literalmente en su página"
   }
  },
  {
@@ -319,7 +319,7 @@
    "configuracion": "aviso: 1 capítulos de una sola página (¿títulos del índice o encabezados de página?)",
    "fidelidad": "ok: 99.9 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
-   "citas": "ok: 4 de 4 citas existen literalmente en su página"
+   "citas": "ok: 7 de 7 citas existen literalmente en su página"
   }
  },
  {
@@ -353,7 +353,7 @@
    "configuracion": "ok: sin sospechas",
    "fidelidad": "ok: 98.7 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
-   "citas": "ok: 6 de 6 citas existen literalmente en su página"
+   "citas": "ok: 14 de 14 citas existen literalmente en su página"
   }
  },
  {
@@ -370,7 +370,7 @@
    "configuracion": "ok: sin sospechas",
    "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
-   "citas": "ok: 3 de 3 citas existen literalmente en su página"
+   "citas": "ok: 5 de 5 citas existen literalmente en su página"
   }
  }
 ]

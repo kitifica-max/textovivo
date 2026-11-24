@@ -23,6 +23,33 @@
      "cita": "Entre los sentimientos que deben animar al hombre de ciencia, merece particular mención el patriotismo. Este sentimiento tiene en ei sabio signo exclusivamente positivo"
     }
    ]
+  },
+  {
+   "nombre": "Enfermedades de la voluntad del investigador",
+   "contexto": "Para detectar vicios de trabajo que frenan una carrera científica.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Contempladores: aman la naturaleza, pero solo su belleza",
+     "pagina": 116,
+     "cita": "Contempladores. — Variedad morbosa muy fre¬ cuente entre astrónomos, naturalistas, químicos, biólogos y físicos, reconócese en los síntomas siguientes: Amor a la contemplación de la Natu¬ raleza, pero sólo en"
+    },
+    {
+     "texto": "Bibliófilos y poliglotas: se pierden en acumular lecturas",
+     "pagina": 117,
+     "cita": "Bibliófilos y poliglotas. — Como el micrógrafo se recrea en la diatomea o el zoólogo en con¬ chas insectos y pájaros de vistosa librea, el bi-"
+    },
+    {
+     "texto": "Descentrados: desviados de su vocación",
+     "pagina": 126,
+     "cita": "Los descentrados crónicos parécennos enfer¬ mos desahuciados. No así los jóvenes, a quienes sugestiones de familia o tiranías del medio"
+    },
+    {
+     "texto": "Teorizantes: cabezas cultas con una forma de pereza",
+     "pagina": 127,
+     "cita": "Los teorizantes.— cabezas cultísimas y superiormente dotadas, cuya voluntad padece una forma especial de pereza, tanto más grave cuanto que"
+    }
+   ]
   }
  ]
 }

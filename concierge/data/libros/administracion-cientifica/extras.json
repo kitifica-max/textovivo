@@ -1,5 +1,18 @@
 {
- "glosario": [],
+ "glosario": [
+  {
+   "termino": "Administración de iniciativa e incentivo",
+   "definicion": "El modelo anterior, en que el trabajador pone la iniciativa y la empresa el incentivo, frente a la administración científica o por tareas.",
+   "pagina": 38,
+   "cita": "management of \"initiative and incentive\" in contradistinction to scientific management, or task management, with which it is to be compared. The writer hopes that the management of \"initiative"
+  },
+  {
+   "termino": "Hombre de primera clase",
+   "definicion": "El trabajador apto para una tarea, que rinde la jornada completa que puede sostener año tras año.",
+   "pagina": 63,
+   "cita": "a full day's work for a first-class man; the best day's work that a man could properly do, year in and year out, and"
+  }
+ ],
  "frameworks": [
   {
    "nombre": "Los cuatro principios de la administración científica",

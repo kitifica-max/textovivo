@@ -21,6 +21,35 @@
      "palabras": 24
     }
    ]
+  },
+  {
+   "nombre": "Enfermedades de la voluntad del investigador",
+   "contexto": "Para detectar vicios de trabajo que frenan una carrera científica.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Contempladores: aman la naturaleza, pero solo su belleza",
+     "buscar": "Contempladores. — Variedad morbosa muy",
+     "palabras": 30
+    },
+    {
+     "texto": "Bibliófilos y poliglotas: se pierden en acumular lecturas",
+     "buscar": "Bibliófilos y poliglotas. — Como el micrógrafo",
+     "palabras": 26
+    },
+    {
+     "texto": "Descentrados: desviados de su vocación",
+     "buscar": "Los descentrados crónicos",
+     "palabras": 20
+    },
+    {
+     "texto": "Teorizantes: cabezas cultas con una forma de pereza",
+     "buscar": "Los teorizantes.— cabezas cultísimas",
+     "palabras": 20
+    }
+   ]
   }
- ]
+ ],
+ "glosario": [],
+ "frameworks": []
 }

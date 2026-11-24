@@ -115,6 +115,35 @@
      "desde": 4
     }
    ]
+  },
+  {
+   "nombre": "Palabras y expresiones comúnmente mal usadas",
+   "contexto": "Para revisar un texto en inglés antes de publicarlo.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "«Less» no se usa por «fewer»",
+     "buscar": "=Less.= Should not be misused for fewer",
+     "palabras": 20
+    },
+    {
+     "texto": "«People»: el pueblo es un término político, no el público",
+     "buscar": "=People.= The people is a political term",
+     "palabras": 24
+    },
+    {
+     "texto": "«Etc.» equivale a «y el resto»",
+     "buscar": "=Etc.= Equivalent to and the rest",
+     "palabras": 24
+    },
+    {
+     "texto": "«Effect» como sustantivo es resultado; no confundir con «affect»",
+     "buscar": "=Effect.= As noun, means result",
+     "palabras": 24
+    }
+   ]
   }
- ]
+ ],
+ "glosario": [],
+ "frameworks": []
 }

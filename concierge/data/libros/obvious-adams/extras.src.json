@@ -21,6 +21,25 @@
      "palabras": 16
     }
    ]
+  },
+  {
+   "nombre": "Las claves de Obvious Adams",
+   "contexto": "Para encontrar la solución obvia a un problema de comunicación.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Sentido común, simple y llano",
+     "buscar": "just plain common sense",
+     "palabras": 14
+    },
+    {
+     "texto": "Para entender su éxito, empezá por el principio de su vida",
+     "buscar": "To know Obvious Adams, and to understand the secret of his success",
+     "palabras": 26
+    }
+   ]
   }
- ]
+ ],
+ "glosario": [],
+ "frameworks": []
 }

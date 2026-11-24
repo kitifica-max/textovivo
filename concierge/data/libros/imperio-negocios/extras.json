@@ -28,6 +28,28 @@
      "cita": "Your surplus wealth should contribute to the develop- ment of your own character and place you in the ranks of nature's noblemen. It is"
     }
    ]
+  },
+  {
+   "nombre": "Los tres peligros del joven de negocios, según Carnegie",
+   "contexto": "Para revisar riesgos que arruinan una carrera.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "No bebas licor en exceso",
+     "pagina": 5,
+     "cita": "First, then, you must not drink liquor to excess. Better if you fo not touch it at all — much better ; but if"
+    },
+    {
+     "texto": "Cuidá un crédito sin mancha: no especules",
+     "pagina": 7,
+     "cita": "Nothing is more essential to young business men than untar- nished credit, credit begotten of confidence in their prudence, principles and stability of character."
+    },
+    {
+     "texto": "Desconfiá del hábito de avalar",
+     "pagina": 8,
+     "cita": "It is the perilous habit of indorsing — all the more dangerous, inasmuch as it assails one generally in the garb of friendship. It"
+    }
+   ]
   }
  ]
 }

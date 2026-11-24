@@ -26,6 +26,35 @@
      "palabras": 24
     }
    ]
+  },
+  {
+   "nombre": "Preceptos de Marco Aurelio",
+   "contexto": "Para ordenar tus prioridades y tu atención.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Recordá cuánto llevás posponiendo",
+     "buscar": "Remember how long thou hast already put off these things",
+     "palabras": 30
+    },
+    {
+     "texto": "Hacé lo que tengas entre manos con seriedad genuina",
+     "buscar": "Let it be thy earnest and incessant care as a Roman and a man",
+     "palabras": 30
+    },
+    {
+     "texto": "Solo vivís el presente",
+     "buscar": "man can part with no life properly, save with that little part of life, which he now lives",
+     "palabras": 30
+    },
+    {
+     "texto": "Meditá en la muerte de los que parecían imponentes",
+     "buscar": "Let it be thy perpetual meditation, how many physicians",
+     "palabras": 24
+    }
+   ]
   }
- ]
+ ],
+ "glosario": [],
+ "frameworks": []
 }

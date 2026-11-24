@@ -24,6 +24,25 @@
      "palabras": 24
     }
    ]
+  },
+  {
+   "nombre": "Cómo clasificar un Estado, según Maquiavelo",
+   "resumen": "Todos los Estados son repúblicas o principados, y los principados, hereditarios o nuevos.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Repúblicas o principados",
+     "descripcion": "Todo dominio es una cosa o la otra.",
+     "buscar": "have been and are either republics or principalities",
+     "palabras": 16
+    },
+    {
+     "titulo": "Hereditarios o nuevos",
+     "descripcion": "Los principados son de familia antigua o nuevos.",
+     "buscar": "Principalities are either hereditary",
+     "palabras": 20
+    }
+   ]
   }
  ],
  "checklists": [
@@ -58,6 +77,29 @@
      "palabras": 30
     }
    ]
+  },
+  {
+   "nombre": "Cualidades del gobernante (caps. XV a XIX)",
+   "contexto": "Para revisar el estilo de mando de un líder.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Conviene tener fama de liberal",
+     "buscar": "it would be well to be reputed liberal",
+     "palabras": 18
+    },
+    {
+     "texto": "Elegir ser zorro y león a la vez",
+     "buscar": "ought to choose the fox and the lion",
+     "palabras": 24
+    },
+    {
+     "texto": "Evitá ser despreciado y odiado",
+     "buscar": "THAT ONE SHOULD AVOID BEING DESPISED AND HATED",
+     "palabras": 24
+    }
+   ]
   }
- ]
+ ],
+ "glosario": []
 }

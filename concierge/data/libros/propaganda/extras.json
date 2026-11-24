@@ -31,6 +31,28 @@
      "cita": "has mental characteristics distinct from those of the individual, and is motivated by impulses and emotions which cannot be explained on the basis of"
     }
    ]
+  },
+  {
+   "nombre": "Cómo investiga un consejero de relaciones públicas",
+   "contexto": "Para planificar una campaña de comunicación pública.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Averiguá quién decide: a veces es la esposa",
+     "pagina": 48,
+     "cita": "will not fail to investigate to what extent it is the wife who has the final word in the choice of her husband’s car, or of his suits and shirts."
+    },
+    {
+     "texto": "Detectá hacia dónde se mueve el gusto del público",
+     "pagina": 48,
+     "cita": "in what new direction the public taste is veering. He will not fail to investigate to what extent it is"
+    },
+    {
+     "texto": "Los clichés mentales y los hábitos emocionales del público producen reacciones masivas",
+     "pagina": 24,
+     "cita": "the mental clichés and the emotional habits of the public to produce mass reactions against the alleged atrocities, the terror and the tyranny of"
+    }
+   ]
   }
  ]
 }

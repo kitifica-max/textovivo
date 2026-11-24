@@ -28,6 +28,28 @@
      "cita": "warn the student that he must be natural. To be natural may be to be monotonous."
     }
    ]
+  },
+  {
+   "nombre": "Cómo ganar confianza ante un público",
+   "contexto": "Para prepararte antes de hablar y controlar el miedo.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Para tener confianza necesitás algo en qué confiar",
+     "pagina": 12,
+     "cita": "to acquire self-confidence you must have something in which to be confident. If you go before an audience without any preparation, or previous knowledge"
+    },
+    {
+     "texto": "Prepararte: no le robés el tiempo a tu público",
+     "pagina": 12,
+     "cita": "you ought to be ashamed to steal the time of your audience. Prepare yourself. Know what you are going to talk about, and, in"
+    },
+    {
+     "texto": "La confianza justificada debe sonar una y otra vez",
+     "pagina": 17,
+     "cita": "the note of justifiable self-confidence must sound again and again. QUESTIONS AND EXERCISES. 1. What is the cause of self-consciousness? 2. Why are animals"
+    }
+   ]
   }
  ]
 }

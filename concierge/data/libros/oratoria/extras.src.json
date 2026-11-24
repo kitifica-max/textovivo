@@ -26,6 +26,30 @@
      "palabras": 16
     }
    ]
+  },
+  {
+   "nombre": "Cómo ganar confianza ante un público",
+   "contexto": "Para prepararte antes de hablar y controlar el miedo.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Para tener confianza necesitás algo en qué confiar",
+     "buscar": "to acquire self-confidence you must have something in which to be confident",
+     "palabras": 24
+    },
+    {
+     "texto": "Prepararte: no le robés el tiempo a tu público",
+     "buscar": "you ought to be ashamed to steal the time of your audience",
+     "palabras": 24
+    },
+    {
+     "texto": "La confianza justificada debe sonar una y otra vez",
+     "buscar": "the note of justifiable self-confidence must sound again and again",
+     "palabras": 24
+    }
+   ]
   }
- ]
+ ],
+ "glosario": [],
+ "frameworks": []
 }

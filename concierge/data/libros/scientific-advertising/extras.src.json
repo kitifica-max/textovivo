@@ -39,6 +39,54 @@
      "palabras": 22
     }
    ]
+  },
+  {
+   "nombre": "Reglas de Hopkins por capítulo",
+   "contexto": "Para revisar una campaña, un anuncio o una estrategia de lanzamiento.",
+   "verificado": true,
+   "items": [
+    {
+     "texto": "Contá la historia completa",
+     "buscar": "Chapter 8 Tell Your Full Story",
+     "palabras": 22
+    },
+    {
+     "texto": "El arte en la publicidad sirve para vender, no para lucirse",
+     "buscar": "Chapter 9 Art In Advertising",
+     "palabras": 22
+    },
+    {
+     "texto": "Cuidado con las cosas demasiado costosas",
+     "buscar": "Chapter 10 Things Too Costly",
+     "palabras": 22
+    },
+    {
+     "texto": "La estrategia importa: pensá la campaña antes de gastar",
+     "buscar": "Chapter 12 Strategy",
+     "palabras": 22
+    },
+    {
+     "texto": "Usá muestras",
+     "buscar": "Chapter 13 Use Of Samples",
+     "palabras": 22
+    },
+    {
+     "texto": "Conseguí distribución",
+     "buscar": "Chapter 14 Getting Distribution",
+     "palabras": 22
+    },
+    {
+     "texto": "Construí individualidad",
+     "buscar": "Chapter 17 Individuality",
+     "palabras": 22
+    },
+    {
+     "texto": "Un nombre que ayuda",
+     "buscar": "Chapter 20 A Name That Helps",
+     "palabras": 22
+    }
+   ]
   }
- ]
+ ],
+ "frameworks": []
 }
