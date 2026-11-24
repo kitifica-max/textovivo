@@ -91,7 +91,8 @@
 const $ = (id) => document.getElementById(id);
 const SIGUIENTES = ["mi-biblioteca.html", "subir.html", "guia.html"];
 const next = new URLSearchParams(location.search).get("next");
-const destino = SIGUIENTES.includes(next) ? next : "mi-biblioteca.html";
+// Desde la ficha de un libro se vuelve a ella con ?agregar=1 para completar el «agregar a mi biblioteca».
+const destino = SIGUIENTES.includes(next) ? next : /^libros\/[a-z0-9-]{3,80}\.html$/.test(next || "") ? next + "?agregar=1" : "mi-biblioteca.html";
 function fallo(msg) { $("error").textContent = msg; $("error").hidden = false; }
 async function enviar(url, cuerpo, boton) {
   $("error").hidden = true;

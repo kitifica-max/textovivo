@@ -155,6 +155,8 @@ p { margin: 0 0 1em; }
 
 .enlace { color: inherit; text-underline-offset: 4px; text-decoration-thickness: 1px; }
 .enlace:hover { text-decoration-thickness: 2px; }
+button.enlace { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; text-decoration: underline; }
+.lista .der .boton, .lista button.boton { margin-left: 12px; }
 
 /* ---------- Póster: la pieza central ---------- */
 

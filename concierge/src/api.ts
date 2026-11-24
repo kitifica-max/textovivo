@@ -54,6 +54,17 @@ const mismoOrigen = (req: Request, url: URL) => {
   return env.ORIGENES_PERMITIDOS.split(",").map((x) => x.trim()).filter(Boolean).includes(o);
 };
 
+/** Ids de los libros que la cuenta agregó a su biblioteca (solo los que siguen existiendo y visibles). */
+async function misLibros(userId: string) {
+  const { results } = await env.DB.prepare("SELECT libro_id FROM mis_libros WHERE user_id = ? ORDER BY created_at").bind(userId).all<{ libro_id: string }>();
+  const dyn = new Set((await env.DB.prepare("SELECT id FROM libros_dyn WHERE visible = 1").all<{ id: string }>()).results.map((r) => r.id));
+  return results.map((r) => r.libro_id).filter((id) => catalogoJson.some((d) => d.id === id) || dyn.has(id));
+}
+async function existeLibro(id: string) {
+  if (catalogoJson.some((d) => d.id === id)) return true;
+  return Boolean(await env.DB.prepare("SELECT 1 FROM libros_dyn WHERE id = ? AND visible = 1").bind(id).first());
+}
+
 async function crearAcceso(userId: string, email: string) {
   const token = crypto.randomUUID().replaceAll("-", "");
   const creado = new Date();
@@ -256,8 +267,21 @@ export async function api(req: Request, url: URL): Promise<Response> {
       // Sin email confirmado no se muestra el conector (y el servidor tampoco lo atiende).
       acceso: verificado ? vistaAcceso(await accesoDe(u.id), env.SITIO_URL) : null,
       libros: [...catalogoJson.map((d) => ({ id: d.id, titulo: d.titulo, autor: d.autor })), ...results],
+      mis_libros: await misLibros(u.id),
       terminos_version: TERMINOS_VERSION
     });
+  }
+
+  // ---- Biblioteca personal: agregar y quitar libros ----
+  if (post && (ruta === "/api/mis-libros" || ruta === "/api/mis-libros/quitar")) {
+    const { libro } = (await req.json().catch(() => ({}))) as { libro?: string };
+    if (!libro || !(await existeLibro(libro))) return error("Ese libro no existe.", 404);
+    if (ruta === "/api/mis-libros") {
+      await env.DB.prepare("INSERT OR IGNORE INTO mis_libros (user_id, libro_id, created_at) VALUES (?, ?, ?)").bind(u.id, libro, ahora()).run();
+    } else {
+      await env.DB.prepare("DELETE FROM mis_libros WHERE user_id = ? AND libro_id = ?").bind(u.id, libro).run();
+    }
+    return json({ ok: true, mis_libros: await misLibros(u.id) });
   }
 
   if (post && ruta === "/api/reenviar") {

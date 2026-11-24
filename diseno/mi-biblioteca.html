@@ -126,7 +126,10 @@
 
       </div>
 
-      <div class="titulo-bloque"><h2>Libros en tu conector</h2><span class="nota" id="n-libros"></span></div>
+      <div class="titulo-bloque"><h2>Mis libros</h2><span class="nota" id="n-mis-libros"></span></div>
+      <ul class="lista" id="mis-libros" style="margin-bottom:40px"></ul>
+
+      <div class="titulo-bloque"><h2>Más libros en tu conector</h2><span class="nota" id="n-libros"></span></div>
       <ul class="lista" id="libros" style="margin-bottom:64px"></ul>
 
       <div class="titulo-bloque"><h2>Mis envíos</h2><a class="boton chico claro" href="subir.html">Subir una obra</a></div>
@@ -151,6 +154,29 @@
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const ESTADOS = { recibido: "En revisión", aprobado: "Aprobado", retirado: "Retirado" };
+let ESTADO = null;
+async function cambiar(id, ruta) {
+  const r = await fetch(ruta, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ libro: id }), credentials: "same-origin" });
+  const j = await r.json().catch(() => ({}));
+  if (r.ok) { ESTADO.mis_libros = j.mis_libros; pintarLibros(ESTADO); }
+}
+function pintarLibros(d) {
+  ESTADO = d;
+  const mios = d.libros.filter((l) => d.mis_libros.includes(l.id));
+  const resto = d.libros.filter((l) => !d.mis_libros.includes(l.id));
+  const fila = (l, i, boton) => '<li><span class="n">' + String(i + 1).padStart(2, "0") + "</span>" + esc(l.titulo) + ' <span class="nota">· ' + esc(l.autor) + '</span><span class="der">' + boton + "</span></li>";
+  $("n-mis-libros").textContent = mios.length + (mios.length === 1 ? " libro" : " libros");
+  $("mis-libros").innerHTML = mios.length
+    ? mios.map((l, i) => fila(l, i, '<button type="button" class="enlace" data-quitar="' + esc(l.id) + '">Quitar</button>')).join("")
+    : '<li><span class="nota">Todavía no agregaste libros. Elegí los que quieras desde la <a class="enlace" href="biblioteca.html">biblioteca</a> o desde la lista de abajo.</span></li>';
+  $("n-libros").textContent = resto.length + (resto.length === 1 ? " libro" : " libros");
+  $("libros").innerHTML = resto.map((l, i) => fila(l, i, '<button type="button" class="boton chico claro" data-agregar-libro="' + esc(l.id) + '">Agregar</button>')).join("");
+}
+document.addEventListener("click", (ev) => {
+  const q = ev.target.closest("[data-quitar]"), a = ev.target.closest("[data-agregar-libro]");
+  if (q) cambiar(q.dataset.quitar, "/api/mis-libros/quitar");
+  if (a) cambiar(a.dataset.agregarLibro, "/api/mis-libros");
+});
 async function cargar() {
   const r = await fetch("/api/yo", { credentials: "same-origin" }).catch(() => null);
   if (!r || !r.ok) return ($("sin-acceso").hidden = false);
@@ -173,8 +199,7 @@ async function cargar() {
     if (a.vencido) { $("estado").textContent = "Acceso vencido"; $("chip").textContent = "Vencido"; }
     if (a.vencido || a.dias_restantes <= 7) $("renovar").hidden = false;
   }
-  $("n-libros").textContent = d.libros.length + " libros";
-  $("libros").innerHTML = d.libros.map((l, i) => '<li><span class="n">' + String(i + 1).padStart(2, "0") + "</span>" + esc(l.titulo) + ' <span class="nota">· ' + esc(l.autor) + "</span></li>").join("");
+  pintarLibros(d);
   $("con-acceso").hidden = false;
   const e = await fetch("/api/envios", { credentials: "same-origin" }).then((x) => (x.ok ? x.json() : [])).catch(() => []);
   $("envios").innerHTML = e.length

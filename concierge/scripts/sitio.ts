@@ -254,10 +254,11 @@ ${d.indice.map((s, i) => `        <li><span class="n">${String(i + 1).padStart(2
           <div><strong>${d.glosario.length}</strong>términos</div>
           <div><strong>${citas}</strong>citas verificadas</div>
         </div>
-        <div class="tarjeta precio">
+        <div class="tarjeta precio" data-agregar="${f.id}">
           <div class="monto">Gratis<small>30 días · sin tarjeta · busca en el texto completo</small></div>
-          <a class="boton" href="../entrar.html">Obtener acceso gratis</a>
-          <p class="nota">¿Ya lo tenés? <a class="enlace" href="../mi-biblioteca.html">Ir a mi biblioteca</a></p>
+          <a class="boton" href="../entrar.html?next=libros/${f.id}.html" data-accion>Obtener acceso gratis</a>
+          <p class="nota" data-pie>¿Ya tenés cuenta? <a class="enlace" href="../entrar.html?next=libros/${f.id}.html">Entrar</a></p>
+          <p class="nota" data-msg role="status" aria-live="polite"></p>
         </div>
       </div>
     </div>
