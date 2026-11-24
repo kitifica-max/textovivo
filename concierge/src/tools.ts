@@ -19,7 +19,15 @@ const MAX_CARACTERES = 7000; // ≈ 2.000 tokens por respuesta (regla de la spec
 const MAX_PASAJE = 1500;
 const MAX_CITA = 300;
 
-export type Resultado = { pagina: number; texto: string; puntuacion: number };
+/** completa: la página tiene todos los términos de la consulta. parcial: solo algunos (respaldo). */
+export type Coincidencia = "completa" | "parcial";
+export type Resultado = { pagina: number; texto: string; puntuacion: number; coincidencia?: Coincidencia };
+/** Una página entra si llega al 50 % de la puntuación de la mejor: lo demás es ruido. */
+export const UMBRAL_RELEVANCIA = 0.5;
+export const filtrarPorUmbral = <T extends { puntuacion: number }>(rs: T[]) => {
+  const mejor = Math.max(0, ...rs.map((r) => r.puntuacion));
+  return rs.filter((r) => r.puntuacion >= mejor * UMBRAL_RELEVANCIA);
+};
 /** Devuelve las páginas que mejor responden a la consulta, de más a menos relevante. */
 export type Buscador = (consulta: string, max: number) => Promise<Resultado[]>;
 export type Libro = ReturnType<typeof crearLibro>;
@@ -48,7 +56,7 @@ export function buscadorMemoria(paginas: Paginas): Buscador {
     const q = palabras(consulta);
     const unicas = [...new Set(q)];
     const pares = q.slice(1).map((w, i) => `${q[i]} ${w}`);
-    return docs
+    const puntuados = docs
       .map((doc) => {
         const tfidf = unicas.reduce((s, w) => {
           const n = doc.tf.get(w) ?? 0;
@@ -58,11 +66,18 @@ export function buscadorMemoria(paginas: Paginas): Buscador {
         const bonus =
           (frase.length > 6 && doc.plano.includes(frase) ? 5 : 0) +
           pares.filter((par) => doc.plano.includes(par)).length * 2;
-        return { pagina: doc.pagina, texto: doc.texto, puntuacion: tfidf ? tfidf + bonus : 0 };
+        const completa = unicas.length > 0 && unicas.every((w) => doc.tf.has(w));
+        return { pagina: doc.pagina, texto: doc.texto, puntuacion: tfidf ? tfidf + bonus : 0, completa };
       })
-      .filter((r) => r.puntuacion > 0)
+      .filter((r) => r.puntuacion > 0);
+    // AND primero; OR solo como respaldo.
+    const completas = puntuados.filter((r) => r.completa);
+    const base = completas.length ? completas : puntuados;
+    const coincidencia: Coincidencia = completas.length ? "completa" : "parcial";
+    return filtrarPorUmbral(base)
       .sort((a, b) => b.puntuacion - a.puntuacion)
-      .slice(0, max);
+      .slice(0, max)
+      .map(({ pagina, texto, puntuacion }) => ({ pagina, texto, puntuacion, coincidencia }));
   };
 }
 
@@ -91,19 +106,40 @@ export function listarIndice(l: Libro) {
   };
 }
 
-export async function buscarConcepto(l: Libro, consulta: string, max = 5) {
-  const q = normalizar(consulta);
-  const termino = l.glosario.find((g) => {
-    const t = normalizar(g.termino);
-    return q.includes(t) || (q.length >= 4 && t.includes(q));
+/** Palabras enteras: «guerra» no activa «guerrilla» ni una consulta corta activa cualquier término que la contenga. */
+const enteras = (s: string) => normalizar(s).split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+function terminoDelGlosario(l: Libro, consulta: string) {
+  const q = enteras(consulta);
+  const qs = ` ${q.join(" ")} `;
+  return l.glosario.find((g) => {
+    const t = enteras(g.termino);
+    return qs.includes(` ${t.join(" ")} `) || (q.join("").length >= 4 && q.every((w) => t.includes(w)));
   });
+}
+
+/** Cuando la consulta no entra en el libro: términos reales del libro, en su idioma, para reintentar. */
+function sugerenciasDelLibro(l: Libro) {
+  return [
+    ...l.glosario.map((g) => g.termino),
+    ...l.frameworks.map((f) => f.nombre),
+    ...l.checklists.map((c) => c.nombre),
+    ...l.indice.map((s) => s.titulo)
+  ]
+    .filter((x, i, arr) => x && arr.indexOf(x) === i)
+    .slice(0, 8);
+}
+
+export async function buscarConcepto(l: Libro, consulta: string, max = 5) {
+  const termino = terminoDelGlosario(l, consulta);
 
   const resultados = [];
+  let coincidencia: Coincidencia | undefined;
   let usados = 0;
-  for (const { pagina, texto: pag, puntuacion } of await l.buscar(consulta, Math.min(max, 10))) {
+  for (const { pagina, texto: pag, puntuacion, coincidencia: c } of await l.buscar(consulta, Math.min(max, 10))) {
     const texto = pag.slice(0, Math.min(MAX_PASAJE, MAX_CARACTERES - usados));
     if (!texto) break;
     usados += texto.length;
+    coincidencia ??= c;
     resultados.push({
       texto,
       seccion: l.seccion(pagina),
@@ -114,7 +150,10 @@ export async function buscarConcepto(l: Libro, consulta: string, max = 5) {
   }
 
   if (!termino && resultados.length === 0)
-    return { mensaje: `No encontré nada sobre «${consulta}» en este libro.` };
+    return {
+      mensaje: `No encontré nada sobre «${consulta}» en este libro. El texto está en ${l.idioma === "es" ? "español" : l.idioma === "en" ? "inglés" : `su idioma original (${l.idioma})`}: probá con palabras de esa lengua o con alguno de estos términos del libro.`,
+      sugerencias: sugerenciasDelLibro(l)
+    };
   return {
     ...(termino && {
       glosario: {
@@ -124,6 +163,8 @@ export async function buscarConcepto(l: Libro, consulta: string, max = 5) {
         cita: termino.cita
       }
     }),
+    ...(coincidencia && { coincidencia }),
+    ...(coincidencia === "parcial" && { nota: "Ninguna página contiene todas las palabras de la consulta: estos resultados coinciden solo en parte." }),
     resultados
   };
 }
@@ -143,8 +184,8 @@ function elegir<T extends { nombre: string }>(items: T[], consulta: string, text
     .filter((r) => r.p > 0)
     .sort((a, b) => b.p - a.p);
 
-  // Si el libro tiene uno solo, es ese: la consulta puede estar en otro idioma o con otras palabras.
-  if (puntuados.length === 0) return { item: items.length === 1 ? items[0] : undefined, candidatos: [] };
+  // Sin coincidencias no se devuelve nada: ocultar el desajuste con «el único que hay» engaña al lector.
+  if (puntuados.length === 0) return { item: undefined, candidatos: [] };
   if (puntuados.length === 1 || puntuados[0].p >= 1.5 * puntuados[1].p)
     return { item: puntuados[0].x, candidatos: [] };
   return { item: undefined, candidatos: puntuados.slice(0, 5).map((r) => r.x.nombre) };
@@ -195,19 +236,29 @@ export function obtenerChecklist(l: Libro, tema: string) {
 
 /** La cita sale del texto guardado, nunca de un LLM. */
 export async function citarFuente(l: Libro, afirmacion: string) {
-  const mejor = (await l.buscar(afirmacion, 1))[0];
-  if (!mejor) return { mensaje: `No encontré en el texto nada que respalde «${afirmacion}».` };
+  const paginas = await l.buscar(afirmacion, 3);
+  if (!paginas.length) return { mensaje: `No encontré en el texto nada que respalde «${afirmacion}».` };
 
   const qp = new Set(palabras(afirmacion));
-  const oracion = mejor.texto
-    .split(/(?<=[.!?…])\s+/)
-    .map((o) => ({ o, p: palabras(o).filter((w) => qp.has(w)).length }))
-    .sort((a, b) => b.p - a.p)[0].o;
+  const candidatas = paginas
+    .flatMap((pg) =>
+      pg.texto.split(/(?<=[.!?…])\s+/).map((o) => ({ o, pagina: pg.pagina, p: palabras(o).filter((w) => qp.has(w)).length }))
+    )
+    .filter((c) => c.p > 0)
+    .sort((a, b) => b.p - a.p);
+  if (!candidatas.length) return { mensaje: `No encontré en el texto nada que respalde «${afirmacion}».` };
 
+  const recortar = (o: string) => (o.length > MAX_CITA ? `${o.slice(0, MAX_CITA - 1)}…` : o);
+  const mejor = candidatas[0];
+  // Si otra oración queda casi igual de buena, se ofrece: el lector decide cuál respalda mejor su afirmación.
+  const parecidas = candidatas.slice(1, 3).filter((c) => c.p >= 0.8 * mejor.p && c.o !== mejor.o);
   return {
-    cita_literal: oracion.length > MAX_CITA ? `${oracion.slice(0, MAX_CITA - 1)}…` : oracion,
+    cita_literal: recortar(mejor.o),
     capitulo: l.seccion(mejor.pagina),
-    pagina: mejor.pagina
+    pagina: mejor.pagina,
+    ...(parecidas.length && {
+      otras_candidatas: parecidas.map((c) => ({ cita_literal: recortar(c.o), capitulo: l.seccion(c.pagina), pagina: c.pagina }))
+    })
   };
 }
 

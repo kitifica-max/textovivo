@@ -78,3 +78,69 @@ test("citasInvalidas detecta una cita inventada", async () => {
   d.glosario[0].cita = "Esta frase no está en el libro.";
   assert.equal(citasInvalidas(d, Paginas.parse(ejemploPaginas)).length, 1);
 });
+
+// --- Cambios a la búsqueda (CAMBIOS-BUSQUEDA.md, 1, 2, 5, 6, 7, 8) ---
+const mini = (paginas: { pagina: number; texto: string }[], extra = {}) =>
+  crearLibro(
+    Destilado.parse({ id: "x", titulo: "x", autor: "x", idioma: "en", indice: [], glosario: [], frameworks: [], checklists: [], ...extra }),
+    buscadorMemoria(paginas)
+  );
+
+test("AND antes que OR: gana la página con todos los términos y se marca completa", async () => {
+  const l = mini([
+    { pagina: 1, texto: "The general must know the enemy. The general rests." },
+    { pagina: 2, texto: "Know the enemy and know yourself, and in a hundred battles you will never be in peril." }
+  ]);
+  const r = await buscarConcepto(l, "know enemy yourself");
+  assert.ok("resultados" in r && r.coincidencia === "completa" && r.resultados.length === 1 && r.resultados[0].pagina_inicio === 2);
+});
+
+test("si ninguna página tiene todo, se usa OR y se avisa como parcial", async () => {
+  const l = mini([
+    { pagina: 1, texto: "The commander must be brave." },
+    { pagina: 2, texto: "Terrain decides the battle." }
+  ]);
+  const r = await buscarConcepto(l, "commander terrain");
+  assert.ok("resultados" in r && r.coincidencia === "parcial" && "nota" in r);
+});
+
+test("el umbral descarta las páginas de ruido (menos de la mitad de la mejor)", async () => {
+  const l = mini([
+    { pagina: 1, texto: "Terrain terrain terrain terrain: ground ground ground." },
+    { pagina: 2, texto: "A single mention of ground in a long unrelated page about weather and seasons and rivers and mountains." }
+  ]);
+  const r = await buscarConcepto(l, "terrain ground");
+  assert.ok("resultados" in r && r.resultados.length === 1 && r.resultados[0].pagina_inicio === 1);
+});
+
+test("sin resultados: sugerencias con términos del libro en su idioma", async () => {
+  const l = mini([{ pagina: 1, texto: "Know the enemy." }], {
+    glosario: [{ termino: "Stratagem", definicion: "d", pagina: 1, cita: "Know the enemy." }],
+    frameworks: [{ nombre: "Know yourself", resumen: "r", verificado: true, pasos: [{ orden: 1, titulo: "t", descripcion: "d", pagina: 1, cita: "Know the enemy." }] }]
+  });
+  const r = await buscarConcepto(l, "liderazgo");
+  assert.ok("sugerencias" in r && r.sugerencias?.includes("Stratagem") && r.sugerencias.includes("Know yourself"));
+  assert.match(String(r.mensaje), /inglés/);
+});
+
+test("glosario por palabra entera: «war» no activa «warrant» ni «forward»", async () => {
+  const l = mini([{ pagina: 1, texto: "War is deceit." }], {
+    glosario: [{ termino: "Warrant", definicion: "d", pagina: 1, cita: "War" }]
+  });
+  assert.ok(!("glosario" in await buscarConcepto(l, "war")));
+  assert.ok("glosario" in await buscarConcepto(l, "the warrant"));
+});
+
+test("obtener_framework no devuelve «el único que hay» si la consulta no coincide", async () => {
+  const r = obtenerFramework(libro, "criptomonedas blockchain");
+  assert.ok("mensaje" in r && !("pasos" in r));
+});
+
+test("citar_fuente mira varias páginas y ofrece otras candidatas si están parejas", async () => {
+  const l = mini([
+    { pagina: 1, texto: "A leader who lacks courage cannot win. Other things matter." },
+    { pagina: 2, texto: "Courage in a leader decides every war. Nothing else is said." }
+  ]);
+  const r = await citarFuente(l, "a leader with courage");
+  assert.ok("cita_literal" in r && r.otras_candidatas?.length === 1);
+});
