@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
-  derivarTerminos, filasParaConsulta, matchFts, separarNombre, mismaRaiz, planDeBusqueda, posicionLiteral, raiz, sugerenciasContextuales, ubicarCoincidencia, validarTerminos, type Termino
+  construirVocabulario, derivarTerminos, filasParaConsulta, matchFts, separarNombre, mismaRaiz, planDeBusqueda, posicionLiteral, raiz, sugerenciasContextuales, ubicarCoincidencia, validarTerminos, type Termino
 } from "./vocabulario.ts";
 
 const T: Termino[] = [
@@ -102,4 +102,59 @@ test("derivarTerminos: nombre y descripción en español, traducción entre par�
   assert.ok(filas.filter((f) => f.termino.startsWith("Shuai") || f.termino.startsWith("Una serpiente")).every((f) => f.traduccion === "" && !f.verificado)); // sin paréntesis
   assert.deepEqual(separarNombre("Ley moral (Moral Law)"), { es: "Ley moral", en: "Moral Law" });
   assert.deepEqual(separarNombre("Shuai-jan"), { es: "Shuai-jan", en: "" });
+});
+
+test("capítulos con paréntesis se derivan; si el paréntesis no está literal se usa su palabra más rara que sí lo esté (derivado-parcial)", () => {
+  const paginas = [
+    { pagina: 7, texto: "In the practical art of war, the best thing is to take the enemy's country whole." },
+    { pagina: 8, texto: "This is the method of attacking by stratagem. The stratagem wins." },
+    { pagina: 9, texto: "Nothing about it." }
+  ];
+  const filas = derivarTerminos(
+    { indice: [{ titulo: "Capítulo III. Atacar con estratagemas (Attack By Stratagem)", pagina_inicio: 7, pagina_fin: 9 }, { titulo: "Capítulo IV. Sin paréntesis", pagina_inicio: 9, pagina_fin: 9 }], glosario: [], frameworks: [], checklists: [] },
+    paginas
+  );
+  assert.equal(filas.length, 1); // el capítulo sin paréntesis no aporta traducción: no se deriva
+  assert.deepEqual([filas[0].termino, filas[0].traduccion, filas[0].pagina, filas[0].fuente, filas[0].verificado], ["Atacar con estratagemas", "stratagem", 8, "derivado-parcial", true]);
+});
+
+test("construirVocabulario suma lo manual validado, no duplica lo derivado y reporta lo que ya no está literal", () => {
+  const paginas = [{ pagina: 1, texto: "The Moral Law causes the people to be in accord. The Commander stands for wisdom." }];
+  const d = { glosario: [{ termino: "Ley moral (Moral Law)", definicion: "Acuerdo.", pagina: 1 }], frameworks: [], checklists: [] };
+  const { filas, descartados } = construirVocabulario(d, paginas, [
+    { termino: "liderazgo", traduccion: "commander", pagina: 1, fuente: "sinonimo" },
+    { termino: "Ley moral", traduccion: "Moral Law", pagina: 1, fuente: "sinonimo" }, // ya derivada
+    { termino: "beneficio", traduccion: "benefit", pagina: 1, fuente: "sinonimo" } // no está en el texto
+  ]);
+  assert.equal(descartados.length, 1);
+  assert.equal(filas.filter((f) => f.traduccion === "Moral Law").length, 2); // nombre + descripción derivados, sin la repetida manual
+  assert.ok(filas.some((f) => f.termino === "liderazgo" && f.traduccion === "commander" && f.verificado));
+});
+
+import { patronesDeConsulta } from "./vocabulario.ts";
+import { filasAutomaticas, leerDiccionario } from "../scripts/vocabulario-auto.ts";
+
+test("patronesDeConsulta: palabras con contenido y su raíz (para que «lider» traiga «liderazgo»), sin comodines", () => {
+  assert.deepEqual(patronesDeConsulta("el liderazgo de los ejércitos"), ["liderazgo", "lider", "ejercitos", "ejercit"]);
+  assert.ok(patronesDeConsulta("liderazgo").includes("lider"));
+  assert.ok(patronesDeConsulta("a y el").length === 0);
+  assert.ok(patronesDeConsulta("50%_off").every((p) => !/[%_]/.test(p)));
+});
+
+test("vocabulario automático: traduce las palabras del libro que el diccionario conoce y no las demasiado comunes", () => {
+  const tei = `<entry><form><orth>commander</orth></form><sense><cit type="trans" xml:lang="es"><quote>comandante</quote></cit></sense></entry>
+<entry><form><orth>army</orth></form><sense><cit type="trans" xml:lang="es"><quote>ejército</quote></cit><cit type="trans" xml:lang="es"><quote>ejército (de tierra)</quote></cit></sense></entry>
+<entry><form><orth>enemy</orth></form><sense><cit type="trans" xml:lang="es"><quote>enemigo</quote></cit></sense></entry>`;
+  const dic = leerDiccionario(tei);
+  const paginas = [
+    { pagina: 1, texto: "The commander leads the army against the enemy." },
+    { pagina: 2, texto: "The commanders meet. Enemy lines hold." },
+    ...Array.from({ length: 8 }, (_, i) => ({ pagina: i + 3, texto: "Enemy enemy enemy everywhere." }))
+  ];
+  const filas = filasAutomaticas(paginas, dic);
+  assert.ok(filas.some((f) => f.termino === "comandante" && f.traduccion === "commander" && f.pagina === 1 && f.fuente === "diccionario"));
+  assert.ok(filas.some((f) => f.termino === "comandante" && f.traduccion === "commanders")); // forma literal del texto, traducida por su base
+  assert.ok(filas.some((f) => f.termino === "ejército" && f.traduccion === "army"));
+  assert.ok(filas.some((f) => f.termino === "ejército" && f.traduccion === "army") && filas.some((f) => f.termino === "ejército"));
+  assert.ok(!filas.some((f) => f.traduccion === "enemy")); // aparece en 9 de 10 páginas: demasiado común para distinguir
 });

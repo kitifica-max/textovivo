@@ -3,15 +3,28 @@
 // D1 no documenta el tokenizer porter (solo FTS5 y fts5vocab), así que el stemming es propio: raíz + prefijo («lead»*).
 import { env } from "cloudflare:workers";
 import { filtrarPorUmbral, type Buscador } from "./tools.ts";
-import { aplicarDesignadas, ENTRADA_DESIGNADA, matchFts, planDeBusqueda, type Termino } from "./vocabulario.ts";
+import { aplicarDesignadas, ENTRADA_DESIGNADA, matchFts, patronesDeConsulta, planDeBusqueda, type Termino } from "./vocabulario.ts";
 
-/** Vocabulario del libro (tabla terminos). Pocas filas por libro: una lectura por consulta, indexada por libro. */
-export async function cargarTerminosD1(libro: string): Promise<Termino[]> {
+/**
+ * Vocabulario del libro (tabla terminos). Con `consulta`, solo las filas que contienen sus palabras (hay miles por libro);
+ * sin ella, solo las curadas (derivadas del destilado y escritas a mano), que sirven para sugerir. Las filas anteriores a la
+ * migración 0013 tienen termino_norm vacío y se traen siempre (son pocas).
+ */
+export async function cargarTerminosD1(libro: string, consulta?: string): Promise<Termino[]> {
   try {
-    const { results } = await env.DB.prepare("SELECT termino, traduccion, pagina, fuente FROM terminos WHERE libro = ? AND verificado = 1").bind(libro).all<Termino>();
+    if (consulta === undefined) {
+      const { results } = await env.DB.prepare("SELECT termino, traduccion, pagina, fuente FROM terminos WHERE libro = ?1 AND verificado = 1 AND fuente != 'diccionario' LIMIT 400").bind(libro).all<Termino>();
+      return results;
+    }
+    const patrones = patronesDeConsulta(consulta);
+    if (!patrones.length) return [];
+    const cond = patrones.map((_, i) => `termino_norm LIKE ?${i + 2}`).join(" OR ");
+    const { results } = await env.DB.prepare(
+      `SELECT termino, traduccion, pagina, fuente FROM terminos WHERE libro = ?1 AND verificado = 1 AND (termino_norm = '' OR ${cond}) LIMIT 1500`
+    ).bind(libro, ...patrones.map((p) => `%${p}%`)).all<Termino>();
     return results;
   } catch {
-    return []; // si la tabla aún no existe (migración pendiente), se busca solo por las palabras escritas
+    return []; // si la tabla o la columna aún no existen (migración pendiente), se busca solo por las palabras escritas
   }
 }
 
@@ -31,7 +44,7 @@ export const buscadorD1 =
       ).results;
 
     // La consulta original va intacta al plan: el vocabulario se aplica por etapas (planDeBusqueda), nunca pegado al texto escrito.
-    for (const etapa of planDeBusqueda(consulta, await cargarTerminosD1(libro))) {
+    for (const etapa of planDeBusqueda(consulta, await cargarTerminosD1(libro, consulta))) {
       const encontrados = (await consultar(matchFts(etapa))).filter(Boolean);
       const elegidos = aplicarDesignadas(
         etapa,

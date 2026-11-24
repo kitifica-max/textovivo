@@ -210,6 +210,7 @@ export function sugerenciasContextuales(consulta: string, terminos: Termino[], u
 export type FilaTermino = Termino & { verificado: boolean };
 
 type Destilable = {
+  indice?: { titulo: string; pagina_inicio: number; pagina_fin: number }[];
   glosario: { termino: string; definicion: string; pagina: number }[];
   frameworks: { nombre: string; resumen: string; pasos: { pagina: number }[] }[];
   checklists: { nombre: string; contexto: string; items: { pagina: number }[] }[];
@@ -222,33 +223,79 @@ export function separarNombre(nombre: string) {
 }
 
 /**
- * Vocabulario sacado SOLO de lo que ya trae el destilado (sin modelos): para cada glosario, framework y checklist,
+ * Vocabulario sacado SOLO de lo que ya trae el destilado (sin modelos): para cada glosario, framework, checklist y capítulo,
  * el nombre y la descripción en español como `termino`, y el texto entre paréntesis del nombre como `traduccion`.
- * La página es la de su cita. La traducción se guarda solo si aparece literal en el libro; si no, queda vacía y marcada.
+ * La página es la de su cita (o el inicio del capítulo). La traducción se guarda solo si aparece literal en el libro.
+ * Si el paréntesis completo no está literal, se usa su palabra más rara que sí lo esté (fuente `derivado-parcial`);
+ * si ninguna lo está, queda vacía y marcada (verificado = false).
  */
 export function derivarTerminos(d: Destilable, paginas: { pagina: number; texto: string }[]): FilaTermino[] {
   const elementos = [
-    ...d.glosario.map((g) => ({ nombre: g.termino, descripcion: g.definicion, pagina: g.pagina, fuente: "glosario" })),
-    ...d.frameworks.map((f) => ({ nombre: f.nombre, descripcion: f.resumen, pagina: f.pasos[0]?.pagina ?? 1, fuente: "framework" })),
-    ...d.checklists.map((c) => ({ nombre: c.nombre, descripcion: c.contexto, pagina: c.items[0]?.pagina ?? 1, fuente: "checklist" }))
+    ...d.glosario.map((g) => ({ nombre: g.termino, descripcion: g.definicion, pagina: g.pagina, fuente: "glosario", hasta: g.pagina })),
+    ...d.frameworks.map((f) => ({ nombre: f.nombre, descripcion: f.resumen, pagina: f.pasos[0]?.pagina ?? 1, fuente: "framework", hasta: f.pasos[0]?.pagina ?? 1 })),
+    ...d.checklists.map((c) => ({ nombre: c.nombre, descripcion: c.contexto, pagina: c.items[0]?.pagina ?? 1, fuente: "checklist", hasta: c.items[0]?.pagina ?? 1 })),
+    // Capítulos: solo los que traen traducción entre paréntesis («Capítulo III. Atacar con estratagemas (Attack By Stratagem)»).
+    ...(d.indice ?? [])
+      .filter((c) => separarNombre(c.titulo).en)
+      .map((c) => ({ nombre: c.titulo.replace(/^cap[ií]tulo\s+[ivxlc\d]+\.?\s*/i, ""), descripcion: "", pagina: c.pagina_inicio, fuente: "capitulo", hasta: c.pagina_fin }))
   ];
+  const df = (w: string) => paginas.filter((p) => posicionLiteral(p.texto, w) >= 0).length;
   const filas: FilaTermino[] = [];
   const vistos = new Set<string>();
   for (const e of elementos) {
     const { es, en } = separarNombre(e.nombre);
     let traduccion = "";
     let pagina = e.pagina;
+    let fuente = e.fuente;
+    // Primero la página de su cita (o del capítulo); si no, la primera donde aparezca.
+    const dondeEsta = (t: string) => {
+      const en_rango = paginas.filter((p) => p.pagina >= e.pagina && p.pagina <= Math.max(e.hasta, e.pagina) + 2);
+      return en_rango.find((p) => posicionLiteral(p.texto, t) >= 0) ?? paginas.find((p) => posicionLiteral(p.texto, t) >= 0);
+    };
     if (en.length >= 3) {
-      const suya = paginas.find((p) => p.pagina === e.pagina);
-      const donde = suya && posicionLiteral(suya.texto, en) >= 0 ? suya : paginas.find((p) => posicionLiteral(p.texto, en) >= 0);
+      const donde = dondeEsta(en);
       if (donde) { traduccion = en; pagina = donde.pagina; }
+      else {
+        // El paréntesis entero no está en el texto: se prueba con sus palabras sueltas y se elige la más rara que sí esté.
+        const cand = [...new Set(palabras(en))].map((w) => ({ w, n: df(w) })).filter((x) => x.n > 0 && x.w.length >= 5).sort((a, b) => a.n - b.n || b.w.length - a.w.length)[0];
+        const donde2 = cand && dondeEsta(cand.w);
+        if (cand && donde2) { traduccion = cand.w; pagina = donde2.pagina; fuente = "derivado-parcial"; }
+      }
     }
     for (const termino of [es, e.descripcion.trim().slice(0, 300)]) {
       const clave = `${normalizar(termino)}|${normalizar(traduccion)}`;
       if (!termino || vistos.has(clave)) continue;
       vistos.add(clave);
-      filas.push({ termino, traduccion, pagina, fuente: e.fuente, verificado: traduccion !== "" });
+      filas.push({ termino, traduccion, pagina, fuente, verificado: traduccion !== "" });
     }
   }
   return filas;
+}
+
+/**
+ * Vocabulario completo de un libro: lo derivado del destilado + lo escrito en data/libros/<id>/vocabulario.json (revisado por una persona).
+ * Todo pasa por la misma regla: la traducción tiene que estar literal en el texto. `descartados` = filas manuales que ya no lo están.
+ */
+export function construirVocabulario(d: Destilable, paginas: { pagina: number; texto: string }[], manual: Candidato[] = []) {
+  const derivados = derivarTerminos(d, paginas);
+  const { buenos, descartados } = validarTerminos(manual, paginas);
+  const vistos = new Set(derivados.filter((f) => f.verificado).map((f) => `${normalizar(f.termino)}|${normalizar(f.traduccion)}`));
+  const propios: FilaTermino[] = buenos
+    .filter((t) => !vistos.has(`${normalizar(t.termino)}|${normalizar(t.traduccion)}`))
+    .map((t) => ({ ...t, verificado: true }));
+  return { filas: [...derivados, ...propios], descartados };
+}
+
+/**
+ * Fragmentos para pedirle a D1 solo las filas relacionadas con la consulta (LIKE '%fragmento%' sobre termino_norm):
+ * cada palabra con contenido, y su raíz si es más corta (4+ letras) para que «lider» traiga «liderazgo».
+ */
+export function patronesDeConsulta(consulta: string) {
+  const out = new Set<string>();
+  for (const w of palabras(consulta).slice(0, 12)) {
+    out.add(w);
+    const r = raiz(w);
+    if (r.length >= 4 && r !== w) out.add(r);
+  }
+  return [...out].map((x) => x.replace(/[%_\\]/g, ""));
 }

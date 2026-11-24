@@ -6,19 +6,22 @@
 import { readdir, readFile } from "node:fs/promises";
 import { Destilado, Paginas } from "../src/schema.ts";
 import { buscarConcepto, buscadorMemoria, crearLibro } from "../src/tools.ts";
-import { derivarTerminos, posicionLiteral } from "../src/vocabulario.ts";
+import { construirVocabulario, posicionLiteral, type Candidato, type Termino } from "../src/vocabulario.ts";
+import { filasAutomaticas, leerDiccionario } from "./vocabulario-auto.ts";
 
 export const UMBRALES = { recall5: 0.8, primero: 0.6, ceroResultados: 0.1 };
 type Consulta = { q: string; paginas?: [number, number]; contiene?: string[]; nota?: string };
 
 const leer = async (r: string) => JSON.parse(await readFile(r, "utf8"));
 
-export async function evaluar(id: string, conVocabulario = true) {
+export async function evaluar(id: string, conVocabulario = true, auto = false, sinManual = false) {
   const consultas: Consulta[] = await leer(`data/evaluacion/${id}.json`);
   const catalogo = (await leer("data/catalogo.json")).find((x: { id: string }) => x.id === id);
   const paginas = Paginas.parse(await leer(`data/libros/${id}/paginas.json`));
   // El vocabulario sale del destilado, igual que en la ingesta (solo las filas con traducción literal sirven para buscar).
-  const terminos = conVocabulario ? derivarTerminos(catalogo, paginas).filter((t) => t.verificado) : [];
+  const manual = (await readFile(`data/libros/${id}/vocabulario.json`).then((b) => JSON.parse(String(b)), () => [])) as Candidato[];
+  let terminos: Termino[] = conVocabulario ? construirVocabulario(catalogo, paginas, sinManual ? [] : manual).filas.filter((t) => t.verificado) : [];
+  if (auto) terminos = [...terminos, ...filasAutomaticas(paginas, leerDiccionario(await readFile("data/diccionario/eng-spa.tei", "utf8")))];
   const libro = crearLibro(Destilado.parse(catalogo), buscadorMemoria(paginas, terminos), async () => terminos);
   const buenas = (c: Consulta) =>
     new Set(paginas.filter((p) => (c.paginas ? p.pagina >= c.paginas[0] && p.pagina <= c.paginas[1] : (c.contiene ?? []).some((w) => posicionLiteral(p.texto, w) >= 0))).map((p) => p.pagina));
@@ -46,10 +49,12 @@ export async function evaluar(id: string, conVocabulario = true) {
 if (import.meta.url === `file://${process.argv[1]}`) {
   const args = process.argv.slice(2);
   const sin = args.includes("--sin-vocabulario");
+  const auto = args.includes("--auto");
+  const sinManual = args.includes("--sin-manual");
   const ids = args.filter((a) => !a.startsWith("--"));
   const todos = ids.length ? ids : (await readdir("data/evaluacion")).filter((f) => f.endsWith(".json")).map((f) => f.slice(0, -5));
   for (const id of todos) {
-    const r = await evaluar(id, !sin);
+    const r = await evaluar(id, !sin, auto, sinManual);
     console.log(`\n== ${id} ${sin ? "(sin vocabulario)" : ""}`);
     for (const f of r.filas) console.log(`  ${f.en5 ? "✓" : "✗"} ${f.primero ? "1º" : "  "} ${f.q.padEnd(40)} ${String(f.n).padStart(2)} res · p.${f.pags || "—"} · ${f.coincidencia}`);
     const pc = (x: number) => `${Math.round(x * 100)} %`;

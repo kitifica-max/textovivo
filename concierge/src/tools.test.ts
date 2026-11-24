@@ -146,8 +146,9 @@ test("citar_fuente mira varias páginas y ofrece otras candidatas si están pare
 });
 
 // --- Vocabulario por libro (expansión, sugerencias contextuales, dónde coincidió) ---
-import { derivarTerminos } from "./vocabulario.ts";
-const terminosArte = derivarTerminos(Destilado.parse(destilado), Paginas.parse(paginas)).filter((t) => t.verificado);
+import { construirVocabulario } from "./vocabulario.ts";
+import vocabArte from "../data/libros/arte-de-la-guerra/vocabulario.json" with { type: "json" };
+const terminosArte = construirVocabulario(Destilado.parse(destilado), Paginas.parse(paginas), vocabArte).filas.filter((t) => t.verificado);
 const arte = crearLibro(Destilado.parse(destilado), buscadorMemoria(Paginas.parse(paginas), terminosArte), async () => terminosArte);
 const pagsDe = (r: any) => (r.resultados ?? []).map((x: any) => x.pagina_inicio as number);
 
@@ -159,12 +160,19 @@ test("vocabulario derivado del destilado: «ley moral» se traduce a «Moral Law
   assert.ok(r.resultados[0].coincide_en.en_fragmento);
 });
 
-test("lo que el destilado no traduce no se inventa: «estrategias de ataque» sigue sin resultados y sugiere términos reales", async () => {
-  const r: any = await buscarConcepto(arte, "estrategias de ataque");
-  assert.equal(r.resultados, undefined);
-  assert.ok(Array.isArray(r.sugerencias) && r.sugerencias.length > 0);
-  const en: any = await buscarConcepto(arte, "attack by stratagem"); // en inglés sigue funcionando
-  assert.ok(en.resultados.some((x: any) => x.pagina_inicio >= 7 && x.pagina_inicio <= 9));
+test("capítulos y parcial literal: «estrategias de ataque» trae el capítulo III y «attack by stratagem» lo pone primero", async () => {
+  const a: any = await buscarConcepto(arte, "estrategias de ataque");
+  assert.ok(pagsDe(a).some((p: number) => p >= 7 && p <= 9));
+  const b: any = await buscarConcepto(arte, "attack by stratagem"); // en inglés: la p. 8 (capítulo III) sube sobre la p. 36 (capítulo XI)
+  assert.ok(b.resultados[0].pagina_inicio >= 7 && b.resultados[0].pagina_inicio <= 9);
+});
+
+test("vocabulario.json (sinónimos revisados): «liderazgo» y «lider» traen la p. 1 (The Commander…) y solo páginas con commander, general o leader", async () => {
+  for (const q of ["liderazgo", "lider"]) {
+    const r: any = await buscarConcepto(arte, q);
+    assert.ok(pagsDe(r).includes(1), q);
+    assert.ok(r.resultados.every((x: any) => /command|general|leader/i.test(x.texto)), q);
+  }
 });
 
 test("vocabulario: «conocer al enemigo y a ti mismo» trae la p. 9 en primer lugar y la consulta en inglés no cambia", async () => {
