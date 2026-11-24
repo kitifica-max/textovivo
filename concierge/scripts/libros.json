@@ -100,7 +100,7 @@
  {
   "id": "vanishing-culture",
   "desde": "^Vanishing Culture 1 *$",
-  "patron": "^(Prologue|Preface.*|Part [12]: .*|The Digital :? ?Memory Hole|(ll|II|Il)\\.? Recent Digital.*|Historical Losses.*|Questions for Further Research|Share Your Story:?.*)$",
+  "patron": "^(Prologue|Preface.*|Part [12]: .*|The Digital :? ?Memory Hole|(ll|II|Il)\\.? Recent Digital.*|Historical Losses.*|Questions for Further Research|Share Your Story:?.*|On\\ the\\ Importance\\ of\\ Remembering\\ Forgotten\\ Books|Preserving\\ Papiamento:\\ Safeguarding\\ Aruba's\\ Language\\ and\\ Cultural\\ Heritage|Preserving\\ African\\ Folktales:\\ Interview\\ with\\ Laura\\ Gibbs\\ and\\ Helen\\ Nde|Preserving\\ Cookbooks|Type\\ Ephemera:\\ Lessons\\ in\\ Endearment|When\\ Preservation\\ Meets\\ Social\\ Media:\\ Interview\\ with\\ Allie\\ Alvis|Cultural\\ Preservation\\ and\\ Queer\\ History|Keeping\\ the\\ Receipts|Seeing\\ is\\ Believing:\\ Preserving\\ TV\\ News\\ in\\ an\\ Age\\ of\\ Misinformation|The\\ DuMont\\ Network:\\ America's\\ Vanishing\\ Television\\ History|On\\ Television\\ News\\ and\\ Entertainment|Q\\&A\\ with\\ Philip\\ Bump,\\ The\\ Washington\\ Post|No\\ Film\\ Left\\ Unscanned|On\\ Filmstrips|On\\ 78s|Digital\\ Library\\ of\\ Amateur\\ Radio\\ and\\ Communications|Music\\ as\\ Oral\\ Tradition|Preserving\\ Gaming\\ History|Archiving\\ Community\\ Care\\ Work\\ Online|Why\\ Preserve\\ Flash\\?|Punch\\ Card\\ Knitting|Recovering\\ Lost\\ Software|What\\ Early\\ Internet\\ Era\\ GIFs\\ Show\\ Us\\ About\\ Preserving\\ Digital\\ Culture|Preserving\\ the\\ Library\\ System)$",
   "desdeParrafo": 1,
   "titulos": [
    [
@@ -130,6 +130,14 @@
    [
     "^Share Your Story",
     "Share Your Story"
+   ],
+   [
+    "^On Filmstrips",
+    "On Filmstrips"
+   ],
+   [
+    "^On 78s",
+    "On 78s"
    ]
   ]
  },

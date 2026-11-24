@@ -3441,7 +3441,7 @@ On 78s
 George Blood 
 
 
-Digital Library of Amateur Radio and Communications 
+Digital Library of Amateur Radio and Communications (índice)
 
 
 Kay Savetz 
@@ -3520,8 +3520,9 @@ Material Culture SS
 Vanishing Culture 43 
 
 
-On the Importance of Remembering 
-Forgotten Books 
+
+On the Importance of Remembering Forgotten Books
+
 
 
 tL by Brad Bigelow 
@@ -3740,9 +3741,9 @@ Vanishing Culture
 47 
 
 
-Preserving Papiamento - 
-Safeguarding Aruba’s Language 
-and Cultural Heritage 
+
+Preserving Papiamento: Safeguarding Aruba's Language and Cultural Heritage
+
 
 
 ee 
@@ -4273,9 +4274,9 @@ year's Internet Archive Hero Award.
 Part 2 
 
 
-Preserving African Folktales: 
-Interview with Laura Gibbs and 
-Helen Nde 
+
+Preserving African Folktales: Interview with Laura Gibbs and Helen Nde
+
 
 
 ee ee by Caralee Adams 
@@ -4498,7 +4499,9 @@ tech and health for a variety of publications for more than 30 years.
 56 Part 2 
 
 
-Preserving Cookbooks 
+
+Preserving Cookbooks
+
 
 
 a. by Katie Livingston 
@@ -4855,8 +4858,9 @@ films, and spending time with her cat, Loaf.
 62 Part 2 
 
 
-Type Ephemera: 
-Lessons in Endearment 
+
+Type Ephemera: Lessons in Endearment
+
 
 
 os by Eve Scarborough 
@@ -5088,8 +5092,9 @@ and more at Letterform Archive in San Francisco.
 66 Part 2 
 
 
-When Preservation Meets Social Media: 
-Interview with Allie Alvis 
+
+When Preservation Meets Social Media: Interview with Allie Alvis
+
 
 
 Pe by Caralee Adams 
@@ -5243,8 +5248,9 @@ work.”
 Vanishing Culture 
 
 
-Cultural Preservation and 
-Queer History 
+
+Cultural Preservation and Queer History
+
 
 
 ee ee Be by Brooke Palmieri 
@@ -5653,7 +5659,9 @@ News
 Part 2 
 
 
-Keeping The Receipts 
+
+Keeping the Receipts
+
 
 
 a by Maria Bustillos 
@@ -5994,10 +6002,9 @@ freedom, libraries, archives, beauty, and fun.
 Part 2 
 
 
-Preserving TV News in an Age of 
 
+Seeing is Believing: Preserving TV News in an Age of Misinformation
 
-Misinformation 
 a," + 
 
 
@@ -6289,8 +6296,9 @@ archived by the Internet Archive.
 84 Part 2 
 
 
-The DuMont Network: America’s 
-Vanishing Television History 
+
+The DuMont Network: America's Vanishing Television History
+
 
 
 a: by Taylor Cole Miller, PhD 
@@ -6681,7 +6689,9 @@ University Press.
 Part 2 
 
 
-On Television News and Entertainment 
+
+On Television News and Entertainment
+
 
 
 ee by Jeff Ubois 
@@ -6918,8 +6928,9 @@ Public Television Project.
 96 Part 2 
 
 
-Q&A with Philip Bump, 
-The Washington Post 
+
+Q&A with Philip Bump, The Washington Post
+
 
 
 = 2. by Caralee Adams 
@@ -7253,7 +7264,9 @@ Film, TV, Sound >) SS
 Vanishing Culture 103 
 
 
-No Film Left Unscanned 
+
+No Film Left Unscanned
+
 
 
 ee by Rick Prelinger 
@@ -7424,7 +7437,9 @@ University of California, Santa Cruz.
 Vanishing Culture 107 
 
 
-On Filmstrips 
+
+On Filmstrips
+
 
 
 ee by Mark O'Brien 
@@ -7727,7 +7742,9 @@ Vanishing Culture
 113 
 
 
-On 78s 
+
+On 78s
+
 
 
 es by George Blood 
@@ -7861,8 +7878,9 @@ George Blood is an expert in the audio and video preservation industry.
 116 Part 2 
 
 
-Digital Library of Amateur Radio 
-and Communications 
+
+Digital Library of Amateur Radio and Communications
+
 
 
 Pe by Kay Savetz 
@@ -8079,7 +8097,9 @@ contact kay@archive.org.
 Part 2 
 
 
-Music as Oral Tradition 
+
+Music as Oral Tradition
+
 
 
 ee by Mark F. DeWitt 
@@ -8534,7 +8554,9 @@ Se
 Part 2 
 
 
-Preserving Gaming History 
+
+Preserving Gaming History
+
 
 
 te by Jordan Mechner 
@@ -8785,8 +8807,9 @@ Pham and Alex Puvilland), Monte Cristo (with Mario Alberti), and Liberty
 Vanishing Culture 
 
 
-Archiving Community Care 
-Work Online 
+
+Archiving Community Care Work Online
+
 
 
 aS: by Amanda Gray Rendon 
@@ -9042,7 +9065,9 @@ production is a core principle of her scholarship and pedagogy.
 140 Part 2 
 
 
-Why Preserve Flash? 
+
+Why Preserve Flash?
+
 
 
 a" by Jason Scott 
@@ -9198,7 +9223,9 @@ Vanishing Culture
 143 
 
 
-Punch Card Knitting 
+
+Punch Card Knitting
+
 
 
 ee 
@@ -9727,7 +9754,9 @@ Department of English.
 Vanishing Culture 153 
 
 
-Recovering Lost Software 
+
+Recovering Lost Software
+
 
 
 es 
@@ -10063,8 +10092,9 @@ educational computer games.
 Vanishing Culture 159 
 
 
-What Early Internet Era GIFs Show 
-Us About Preserving Digital Culture 
+
+What Early Internet Era GIFs Show Us About Preserving Digital Culture
+
 
 
 ee by JD Shadel 
@@ -10473,7 +10503,9 @@ relations at the University of Exeter in southwest England.
 166 Part 2 
 
 
-Preserving the Library System 
+
+Preserving the Library System
+
 
 
 a ** .*. by Brewster Kahle 
