@@ -3,3 +3,5 @@ ADMIN_SECRET=cambiar-por-un-secreto-largo
 PUBLIC_URL=http://localhost:8787
 # Clave secreta de Turnstile. Esta es la de PRUEBA de Cloudflare (siempre aprueba).
 TURNSTILE_SECRET=1x0000000000000000000000000000000AA
+# Clave de Resend. "consola" imprime los correos en vez de enviarlos (solo para probar en local).
+RESEND_API_KEY=consola

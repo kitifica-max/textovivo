@@ -84,7 +84,12 @@
         <a class="boton claro" href="biblioteca.html">Ver libros</a>
       </div>
 
-      <section class="banda c-negro conector" aria-label="Tu conector">
+      <section id="aviso-verificar" hidden style="background:#f1e27c;color:#191919;border-radius:18px;padding:18px 22px;margin:0 0 22px">
+        <strong>Confirmá tu email.</strong> Te mandamos un correo a <span id="email-verificar"></span>. Hasta que lo confirmes, tu conector y la subida de obras están desactivados.
+        <div style="margin-top:12px"><button class="boton chico" type="button" id="reenviar">Reenviar el correo</button> <span id="msg-reenviar" class="nota" role="status"></span></div>
+      </section>
+
+      <section class="banda c-negro conector" id="banda-conector" aria-label="Tu conector">
         <span class="pulso" aria-hidden="true"></span>
         <div>
           <strong id="estado">Conector TextoVivo activo</strong>
@@ -97,7 +102,7 @@
         </div>
       </section>
 
-      <div class="titulo-bloque"><h2>Tu acceso</h2><span class="nota">gratis · 30 días</span></div>
+      <div id="bloque-acceso"><div class="titulo-bloque"><h2>Tu acceso</h2><span class="nota">gratis · 30 días</span></div>
       <div class="grilla cuatro prestamos">
         <article class="poster c-rojo plegado prestamo libre">
           <span class="estado vivo" id="chip">Activo</span>
@@ -112,6 +117,8 @@
             </div>
           </div>
         </article>
+      </div>
+
       </div>
 
       <div class="titulo-bloque"><h2>Libros en tu conector</h2><span class="nota" id="n-libros"></span></div>
@@ -145,6 +152,10 @@ async function cargar() {
   const d = await r.json();
   const a = d.acceso;
   $("quien").textContent = d.usuario.nombre + " · " + d.usuario.email;
+  if (!d.usuario.verificado) {
+    $("aviso-verificar").hidden = false; $("email-verificar").textContent = d.usuario.email;
+    $("banda-conector").hidden = true; $("bloque-acceso").hidden = true;
+  }
   if (a) {
     $("url-conector").textContent = a.url_mcp;
     $("dias").textContent = a.dias_restantes;
@@ -165,6 +176,13 @@ async function cargar() {
     ? e.map((x, i) => '<li><span class="n">' + String(i + 1).padStart(2, "0") + "</span>" + esc(x.titulo) + ' <span class="nota">· ' + esc(x.tipo) + '</span><span class="der">' + (x.libro_id ? '<a class="enlace" href="aporte.html?id=' + encodeURIComponent(x.libro_id) + '">' + ESTADOS[x.estado] + "</a>" : ESTADOS[x.estado] || esc(x.estado)) + "</span></li>").join("")
     : '<li><span class="nota">Todavía no subiste ninguna obra. Es gratis y pasa al dominio público.</span></li>';
 }
+$("reenviar").addEventListener("click", async () => {
+  $("reenviar").disabled = true; $("msg-reenviar").textContent = "Enviando…";
+  const r = await fetch("/api/reenviar", { method: "POST", headers: { "content-type": "application/json" }, body: "{}", credentials: "same-origin" });
+  const j = await r.json().catch(() => ({}));
+  $("msg-reenviar").textContent = r.ok ? "Listo: revisá tu bandeja y el spam." : (j.error || "No se pudo enviar.");
+  setTimeout(() => ($("reenviar").disabled = false), 5000);
+});
 $("boton-renovar").addEventListener("click", async () => {
   const r = await fetch("/api/renovar", { method: "POST", headers: { "content-type": "application/json" }, body: "{}", credentials: "same-origin" });
   if (r.ok) location.reload();

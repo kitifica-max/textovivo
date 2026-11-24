@@ -144,6 +144,12 @@ fetch("/api/yo", { credentials: "same-origin" })
     if (d && d.acceso) {
       document.getElementById("url").textContent = d.acceso.url_mcp;
       document.querySelectorAll("[data-url]").forEach((n) => (n.textContent = d.acceso.url_mcp));
+    } else if (d && !d.usuario.verificado) {
+      document.getElementById("url").textContent = "Confirmá tu email para ver tu dirección";
+      const s = document.getElementById("sin-acceso");
+      s.innerHTML = 'Confirmá tu email para activar el conector: te mandamos un correo a <strong></strong>. Podés pedir otro en <a class="enlace" href="mi-biblioteca.html">Mi biblioteca</a>.';
+      s.querySelector("strong").textContent = d.usuario.email;
+      s.hidden = false;
     } else {
       document.getElementById("sin-acceso").hidden = false;
     }

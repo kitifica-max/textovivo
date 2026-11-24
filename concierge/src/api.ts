@@ -2,8 +2,9 @@
 import { env } from "cloudflare:workers";
 import catalogoJson from "../data/catalogo.json" with { type: "json" };
 import {
-  TERMINOS_VERSION, abrirSesion, aleatorio, cerrarSesion, claveCorrecta, cookieVacia, emailValido, hashClave, usuarioActual
+  TERMINOS_VERSION, abrirSesion, aleatorio, cerrarSesion, claveCorrecta, cookieVacia, emailValido, hashClave, sha256, usuarioActual
 } from "./auth.ts";
+import { correoRestablecer, correoVerificacion, enviarCorreo } from "./correo.ts";
 import { extraer } from "./extraer.ts";
 import { notaPaginas } from "./tools.ts";
 
@@ -82,6 +83,50 @@ function vistaAcceso(a: Acceso | null, origin: string) {
   };
 }
 
+// ---- Enlaces por correo (confirmar email, restablecer contraseña) ----
+const HORAS_VERIFICAR = 24;
+const HORAS_RESTABLECER = 1;
+const MAX_CORREOS_POR_HORA = 3;
+
+/** Dónde viven las páginas (para armar el enlace): el sitio desde el que llegó la petición, o SITIO_URL. */
+const baseSitio = (req: Request, url: URL) => {
+  const o = req.headers.get("origin");
+  return o && (o === url.origin || env.ORIGENES_PERMITIDOS.split(",").map((x) => x.trim()).includes(o)) ? o : env.SITIO_URL;
+};
+
+async function correosRecientes(userId: string, tipo: string) {
+  const r = await env.DB.prepare("SELECT COUNT(*) AS n FROM enlaces_email WHERE user_id = ? AND tipo = ? AND created_at > ?")
+    .bind(userId, tipo, new Date(Date.now() - 3_600_000).toISOString())
+    .first<{ n: number }>();
+  return r?.n ?? 0;
+}
+
+async function mandarEnlace(u: { id: string; email: string; nombre: string }, tipo: "verificar" | "restablecer", base: string) {
+  const token = aleatorio(32);
+  const horas = tipo === "verificar" ? HORAS_VERIFICAR : HORAS_RESTABLECER;
+  await env.DB.prepare("INSERT INTO enlaces_email (token_hash, user_id, tipo, expira_at, created_at) VALUES (?, ?, ?, ?, ?)")
+    .bind(await sha256(token), u.id, tipo, new Date(Date.now() + horas * 3_600_000).toISOString(), ahora())
+    .run();
+  // El token va en el fragmento (#t=…): no llega a registros de servidores ni al Referer.
+  const enlace = `${base}/${tipo === "verificar" ? "verificar" : "restablecer"}.html#t=${token}`;
+  const c = tipo === "verificar" ? correoVerificacion(u.nombre, enlace) : correoRestablecer(u.nombre, enlace);
+  return enviarCorreo(u.email, c.asunto, c.html, c.texto);
+}
+
+/** Consume un enlace válido (vigente y sin usar). Devuelve el usuario o null. */
+async function consumirEnlace(token: unknown, tipo: string) {
+  if (typeof token !== "string" || !/^[a-f0-9]{64}$/.test(token)) return null;
+  const hash = await sha256(token);
+  const e = await env.DB.prepare("SELECT user_id FROM enlaces_email WHERE token_hash = ? AND tipo = ? AND usado_at IS NULL AND expira_at > ?")
+    .bind(hash, tipo, ahora())
+    .first<{ user_id: string }>();
+  if (!e) return null;
+  // UPDATE condicionado: si dos pestañas lo usan a la vez, solo una gana.
+  const r = await env.DB.prepare("UPDATE enlaces_email SET usado_at = ? WHERE token_hash = ? AND usado_at IS NULL").bind(ahora(), hash).run();
+  return r.meta.changes === 1 ? e.user_id : null;
+}
+const ENLACE_INVALIDO = "El enlace venció o ya se usó. Pedí uno nuevo.";
+
 export async function api(req: Request, url: URL): Promise<Response> {
   const ruta = url.pathname;
   const post = req.method === "POST";
@@ -111,7 +156,8 @@ export async function api(req: Request, url: URL): Promise<Response> {
       .bind(id, email, nombre, hash, sal, TERMINOS_VERSION, ahora(), ahora())
       .run();
     await crearAcceso(id, email);
-    return json({ ok: true }, 201, { "set-cookie": await abrirSesion(id) });
+    const enviado = await mandarEnlace({ id, email, nombre }, "verificar", baseSitio(req, url));
+    return json({ ok: true, correo_enviado: enviado }, 201, { "set-cookie": await abrirSesion(id) });
   }
 
   if (post && ruta === "/api/login") {
@@ -143,6 +189,40 @@ export async function api(req: Request, url: URL): Promise<Response> {
     return json({ ok: true }, 200, { "set-cookie": await abrirSesion(u.id) });
   }
 
+  if (post && ruta === "/api/verificar") {
+    const b = await cuerpo(req);
+    const userId = await consumirEnlace(b?.token, "verificar");
+    if (!userId) return error(ENLACE_INVALIDO, 400);
+    await env.DB.prepare("UPDATE users SET email_verificado_at = COALESCE(email_verificado_at, ?) WHERE id = ?").bind(ahora(), userId).run();
+    return json({ ok: true });
+  }
+
+  if (post && ruta === "/api/recuperar") {
+    const b = await cuerpo(req);
+    const email = String(b?.email ?? "").trim().toLowerCase();
+    if (!(await turnstileOk(b?.turnstile, req))) return error(ERROR_CAPTCHA, 400);
+    if (!emailValido(email)) return error("Ese email no parece válido.");
+    const u = await env.DB.prepare("SELECT id, email, nombre FROM users WHERE email = ?").bind(email).first<{ id: string; email: string; nombre: string }>();
+    // Respuesta idéntica exista o no la cuenta: no se puede usar esto para averiguar qué emails están registrados.
+    if (u && (await correosRecientes(u.id, "restablecer")) < MAX_CORREOS_POR_HORA) await mandarEnlace(u, "restablecer", baseSitio(req, url));
+    return json({ ok: true });
+  }
+
+  if (post && ruta === "/api/restablecer") {
+    const b = await cuerpo(req);
+    const clave = String(b?.clave ?? "");
+    if (clave.length < 10 || clave.length > 200) return error("La contraseña debe tener al menos 10 caracteres.");
+    const userId = await consumirEnlace(b?.token, "restablecer");
+    if (!userId) return error(ENLACE_INVALIDO, 400);
+    const { hash, sal } = await hashClave(clave);
+    await env.DB.batch([
+      env.DB.prepare("UPDATE users SET pass_hash = ?, pass_salt = ?, email_verificado_at = COALESCE(email_verificado_at, ?) WHERE id = ?").bind(hash, sal, ahora(), userId),
+      env.DB.prepare("DELETE FROM sessions WHERE user_id = ?").bind(userId), // cierra todas las sesiones abiertas
+      env.DB.prepare("DELETE FROM login_fallos WHERE email = (SELECT email FROM users WHERE id = ?)").bind(userId)
+    ]);
+    return json({ ok: true });
+  }
+
   if (post && ruta === "/api/logout") {
     await cerrarSesion(req);
     return json({ ok: true }, 200, { "set-cookie": cookieVacia });
@@ -170,12 +250,22 @@ export async function api(req: Request, url: URL): Promise<Response> {
 
   if (req.method === "GET" && ruta === "/api/yo") {
     const { results } = await env.DB.prepare("SELECT id, titulo, autor FROM libros_dyn WHERE visible = 1 ORDER BY publicado_at DESC").all<{ id: string; titulo: string; autor: string }>();
+    const verificado = Boolean(u.email_verificado_at);
     return json({
-      usuario: { nombre: u.nombre, email: u.email },
-      acceso: vistaAcceso(await accesoDe(u.id), url.origin),
+      usuario: { nombre: u.nombre, email: u.email, verificado },
+      // Sin email confirmado no se muestra el conector (y el servidor tampoco lo atiende).
+      acceso: verificado ? vistaAcceso(await accesoDe(u.id), url.origin) : null,
       libros: [...catalogoJson.map((d) => ({ id: d.id, titulo: d.titulo, autor: d.autor })), ...results],
       terminos_version: TERMINOS_VERSION
     });
+  }
+
+  if (post && ruta === "/api/reenviar") {
+    if (u.email_verificado_at) return error("Tu email ya está confirmado.", 409);
+    if ((await correosRecientes(u.id, "verificar")) >= MAX_CORREOS_POR_HORA)
+      return error("Ya te mandamos varios correos en la última hora. Revisá tu bandeja (y el spam) y probá de nuevo más tarde.", 429);
+    const ok = await mandarEnlace(u, "verificar", baseSitio(req, url));
+    return ok ? json({ ok: true }) : error("No pudimos enviar el correo. Probá de nuevo en unos minutos.", 502);
   }
 
   if (post && ruta === "/api/renovar") {
@@ -203,6 +293,7 @@ export async function api(req: Request, url: URL): Promise<Response> {
   }
 
   if (post && ruta === "/api/envios") {
+    if (!u.email_verificado_at) return error("Confirmá tu email para subir obras. Te mandamos un correo al crear la cuenta.", 403);
     const f = await req.formData().catch(() => null);
     if (!f) return error("Formulario inválido.");
     const campo = (k: string) => String(f.get(k) ?? "").trim();

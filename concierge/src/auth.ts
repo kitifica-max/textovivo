@@ -30,7 +30,7 @@ export async function claveCorrecta(clave: string, hash: string, sal: string) {
   return a.byteLength === b.byteLength && crypto.subtle.timingSafeEqual(a, b);
 }
 
-export type Usuario = { id: string; email: string; nombre: string };
+export type Usuario = { id: string; email: string; nombre: string; email_verificado_at: string | null };
 
 export async function abrirSesion(userId: string) {
   const token = aleatorio(32);
@@ -51,7 +51,7 @@ export async function usuarioActual(req: Request): Promise<Usuario | null> {
   const token = leerCookie(req);
   if (!/^[a-f0-9]{64}$/.test(token)) return null;
   return env.DB.prepare(
-    `SELECT u.id, u.email, u.nombre FROM sessions s JOIN users u ON u.id = s.user_id
+    `SELECT u.id, u.email, u.nombre, u.email_verificado_at FROM sessions s JOIN users u ON u.id = s.user_id
       WHERE s.token_hash = ? AND s.expires_at > ?`
   )
     .bind(await sha256(token), new Date().toISOString())

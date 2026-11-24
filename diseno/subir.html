@@ -48,6 +48,12 @@
     <p class="bajada" style="max-width:34em;margin-bottom:34px">Lo revisamos, lo aprobamos y queda en la biblioteca, consultable por cualquier IA con la página exacta. Todo lo que se publica pasa al dominio público.</p>
 
     <div class="dos">
+      <div id="necesita-verificar" class="tarjeta" hidden>
+        <p class="micro" style="margin-bottom:8px">Falta un paso</p>
+        <h2 style="margin:0 0 10px">Confirmá tu email para subir obras.</h2>
+        <p>Te mandamos un correo a <strong id="email-verificar"></strong>. Abrí el enlace y volvé acá.</p>
+        <div style="margin-top:14px"><button class="boton chico" type="button" id="reenviar">Reenviar el correo</button> <span id="msg-reenviar" class="nota" role="status"></span></div>
+      </div>
       <form id="formulario" enctype="multipart/form-data" novalidate>
         <p id="ok" class="ok" role="status" hidden>Recibimos tu obra. La vamos a revisar y la verás aprobada en «Mis envíos».</p>
         <p id="error" class="error" role="alert" hidden></p>
@@ -97,8 +103,20 @@ const ESTADOS = { recibido: "En revisión", aprobado: "Aprobado", retirado: "Ret
 async function sesion() {
   const r = await fetch("/api/yo", { credentials: "same-origin" }).catch(() => null);
   if (!r || !r.ok) { location.replace("entrar.html?next=subir.html"); return false; }
+  const d = await r.json();
+  if (!d.usuario.verificado) {
+    $("formulario").hidden = true; $("necesita-verificar").hidden = false; $("email-verificar").textContent = d.usuario.email;
+    return false;
+  }
   return true;
 }
+$("reenviar").addEventListener("click", async () => {
+  $("reenviar").disabled = true; $("msg-reenviar").textContent = "Enviando…";
+  const r = await fetch("/api/reenviar", { method: "POST", headers: { "content-type": "application/json" }, body: "{}", credentials: "same-origin" });
+  const j = await r.json().catch(() => ({}));
+  $("msg-reenviar").textContent = r.ok ? "Listo: revisá tu bandeja y el spam." : (j.error || "No se pudo enviar.");
+  setTimeout(() => ($("reenviar").disabled = false), 5000);
+});
 async function cargarEnvios() {
   const r = await fetch("/api/envios", { credentials: "same-origin" }).catch(() => null);
   const lista = r && r.ok ? await r.json() : [];

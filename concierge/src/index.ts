@@ -40,11 +40,17 @@ const texto = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
 /** Verifica el acceso del comprador, ejecuta la herramienta y registra la llamada. */
 async function usar(herramienta: string, consulta: string, ejecutar: () => unknown | Promise<unknown>) {
   const token = String(getMcpAuthContext()?.props.token ?? "");
-  const comprador = await env.DB.prepare("SELECT expires_at, calls FROM buyers WHERE token = ?")
+  const comprador = await env.DB.prepare(
+    `SELECT b.expires_at, b.calls, b.user_id, u.email_verificado_at
+       FROM buyers b LEFT JOIN users u ON u.id = b.user_id WHERE b.token = ?`
+  )
     .bind(token)
-    .first<{ expires_at: string; calls: number }>();
+    .first<{ expires_at: string; calls: number; user_id: string | null; email_verificado_at: string | null }>();
 
   if (!comprador) return texto("Acceso no válido.");
+  // Los accesos de cuentas nuevas solo funcionan con el email confirmado (los anteriores no tienen cuenta y siguen igual).
+  if (comprador.user_id && !comprador.email_verificado_at)
+    return texto(`Confirmá tu email para usar el conector: te mandamos un correo al crear la cuenta. Podés pedir otro en ${env.SITIO_URL}/mi-biblioteca.html`);
   if (comprador.expires_at <= ahora())
     return texto(
       `Tu acceso a TextoVivo venció el ${comprador.expires_at.slice(0, 10)}. Podés renovarlo en ${env.PUBLIC_URL}`
