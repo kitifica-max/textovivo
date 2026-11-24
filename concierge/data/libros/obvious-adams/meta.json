@@ -1,8 +1,8 @@
 {
  "titulo": "Obvious Adams",
  "autor": "Robert R. Updegraff",
- "descripcion": "La historia de un publicista que resuelve problemas con lo obvio. Pendiente de confirmar derechos antes de publicarse.",
+ "descripcion": "La historia de un publicista que resuelve problemas con lo obvio.",
  "idioma": "en",
- "publicar": false,
+ "publicar": true,
  "paginacion": "logica"
 }
