@@ -1,0 +1,74 @@
+[
+ {
+  "titulo": "Aforismos 1-25",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 25
+ },
+ {
+  "titulo": "Aforismos 26-50",
+  "nivel": 1,
+  "pagina_inicio": 26,
+  "pagina_fin": 50
+ },
+ {
+  "titulo": "Aforismos 51-75",
+  "nivel": 1,
+  "pagina_inicio": 51,
+  "pagina_fin": 75
+ },
+ {
+  "titulo": "Aforismos 76-100",
+  "nivel": 1,
+  "pagina_inicio": 76,
+  "pagina_fin": 100
+ },
+ {
+  "titulo": "Aforismos 101-125",
+  "nivel": 1,
+  "pagina_inicio": 101,
+  "pagina_fin": 125
+ },
+ {
+  "titulo": "Aforismos 126-150",
+  "nivel": 1,
+  "pagina_inicio": 126,
+  "pagina_fin": 150
+ },
+ {
+  "titulo": "Aforismos 151-175",
+  "nivel": 1,
+  "pagina_inicio": 151,
+  "pagina_fin": 175
+ },
+ {
+  "titulo": "Aforismos 176-200",
+  "nivel": 1,
+  "pagina_inicio": 176,
+  "pagina_fin": 200
+ },
+ {
+  "titulo": "Aforismos 201-225",
+  "nivel": 1,
+  "pagina_inicio": 201,
+  "pagina_fin": 225
+ },
+ {
+  "titulo": "Aforismos 226-250",
+  "nivel": 1,
+  "pagina_inicio": 226,
+  "pagina_fin": 250
+ },
+ {
+  "titulo": "Aforismos 251-275",
+  "nivel": 1,
+  "pagina_inicio": 251,
+  "pagina_fin": 275
+ },
+ {
+  "titulo": "Aforismos 276-300",
+  "nivel": 1,
+  "pagina_inicio": 276,
+  "pagina_fin": 300
+ }
+]

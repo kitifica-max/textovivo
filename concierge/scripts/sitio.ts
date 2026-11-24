@@ -14,7 +14,7 @@ const catalogo = JSON.parse(await readFile("data/catalogo.json", "utf8")) as {
   id: string; titulo: string; autor: string; descripcion: string; idioma: string;
   indice: { titulo: string }[]; glosario: unknown[];
   frameworks: { nombre: string; pasos: unknown[] }[]; checklists: { nombre: string; items: unknown[] }[];
-};
+}[];
 const porId = new Map(catalogo.map((d) => [d.id, d]));
 const TEMAS: Record<string, string> = { estrategia: "Estrategia", marketing: "Marketing", decisiones: "Decisiones", investigacion: "Investigación", negocios: "Negocios", escritura: "Escritura" };
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);

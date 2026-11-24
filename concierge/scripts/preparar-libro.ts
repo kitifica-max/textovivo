@@ -9,6 +9,8 @@ type Config = {
   patron?: string; // regex (flag m) de línea que abre un capítulo
   desde?: string; // el texto del libro empieza en la primera línea que cumple esto
   hasta?: string; // y termina en la primera línea (después de «desde») que cumple esto
+  quitar?: string; // regex: se descartan los párrafos que la cumplen (encabezados de página, etc.)
+  desdeParrafo?: number; // descarta los primeros N párrafos (índice inicial)
 };
 
 const [id, modo] = process.argv.slice(2);
@@ -39,14 +41,16 @@ const parrafos = crudo
       .replace(/\s+/g, " ")
       .trim()
   )
-  .filter((p) => p && !/^\[(Illustration|Footnote|Transcriber)/i.test(p));
+  .filter((p) => p && !/^\[(Illustration|Footnote|Transcriber)/i.test(p))
+  .filter((p) => !config.quitar || !new RegExp(config.quitar).test(p))
+  .slice(config.desdeParrafo ?? 0);
 
 const regex = config.patron ? new RegExp(config.patron) : null;
 const titulos: { titulo: string; parrafo: number }[] = [];
 parrafos.forEach((p, i) => {
   if (!regex) return;
   const m = p.length <= 140 && p.match(regex);
-  if (m) titulos.push({ titulo: p, parrafo: i });
+  if (m) titulos.push({ titulo: p.length < 14 && parrafos[i + 1]?.length < 90 ? `${p}. ${parrafos[i + 1]}` : p, parrafo: i });
 });
 // Descarta los títulos del índice inicial: los que tienen otro título a menos de 4 párrafos.
 for (let k = titulos.length - 2; k >= 0; k--)

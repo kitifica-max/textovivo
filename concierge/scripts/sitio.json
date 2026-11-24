@@ -23,7 +23,7 @@
  },
  {
   "num": "003",
-  "id": null,
+  "id": "gracian",
   "color": "c-hueso",
   "plegado": true,
   "tema": "decisiones",
@@ -34,7 +34,7 @@
  },
  {
   "num": "004",
-  "id": null,
+  "id": "cajal",
   "color": "c-celeste",
   "plegado": false,
   "tema": "investigacion",
@@ -78,7 +78,7 @@
  },
  {
   "num": "008",
-  "id": null,
+  "id": "obvious-adams",
   "color": "c-naranja",
   "plegado": false,
   "tema": "marketing",
@@ -155,7 +155,7 @@
  },
  {
   "num": "015",
-  "id": null,
+  "id": "imperio-negocios",
   "color": "c-bosque",
   "plegado": false,
   "tema": "negocios",
@@ -232,7 +232,7 @@
  },
  {
   "num": "022",
-  "id": null,
+  "id": "gramatica-ciencia",
   "color": "c-menta",
   "plegado": false,
   "tema": "investigacion",

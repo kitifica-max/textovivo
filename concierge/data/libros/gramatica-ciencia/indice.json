@@ -1,0 +1,74 @@
+[
+ {
+  "titulo": "CHAPTER I. INTRODUCTORY — THE SCOPE AND METHOD OF SCIENCE",
+  "nivel": 1,
+  "pagina_inicio": 2,
+  "pagina_fin": 67
+ },
+ {
+  "titulo": "CHAPTER II. THE FACTS OF SCIENCE",
+  "nivel": 1,
+  "pagina_inicio": 68,
+  "pagina_fin": 131
+ },
+ {
+  "titulo": "CHAPTER III. THE SCIENTIFIC LAW",
+  "nivel": 1,
+  "pagina_inicio": 132,
+  "pagina_fin": 196
+ },
+ {
+  "titulo": "CHAPTER IV. CAUSE AND EFFECT PROBABILITY",
+  "nivel": 1,
+  "pagina_inicio": 197,
+  "pagina_fin": 266
+ },
+ {
+  "titulo": "CHAPTER V. SPACE AND TIME",
+  "nivel": 1,
+  "pagina_inicio": 267,
+  "pagina_fin": 340
+ },
+ {
+  "titulo": "CHAPTER VI. THE GEOMETRY OF MOTION",
+  "nivel": 1,
+  "pagina_inicio": 341,
+  "pagina_fin": 418
+ },
+ {
+  "titulo": "CHAPTER VII. MATTER",
+  "nivel": 1,
+  "pagina_inicio": 419,
+  "pagina_fin": 486
+ },
+ {
+  "titulo": "CHAPTER VIII. THE LAWS OF MOTION",
+  "nivel": 1,
+  "pagina_inicio": 487,
+  "pagina_fin": 574
+ },
+ {
+  "titulo": "CHAPTER IX. LIFE",
+  "nivel": 1,
+  "pagina_inicio": 575,
+  "pagina_fin": 656
+ },
+ {
+  "titulo": "CHAPTER X. EVOLUTION (VARIATION AND SELECTION)",
+  "nivel": 1,
+  "pagina_inicio": 657,
+  "pagina_fin": 736
+ },
+ {
+  "titulo": "CHAPTER XI EVOLUTION (REPRODUCTION AND INHERITANCE)",
+  "nivel": 1,
+  "pagina_inicio": 737,
+  "pagina_fin": 870
+ },
+ {
+  "titulo": "CHAPTER XII. THE CLASSIFICATION OF THE SCIENCES",
+  "nivel": 1,
+  "pagina_inicio": 871,
+  "pagina_fin": 951
+ }
+]
