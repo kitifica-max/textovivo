@@ -68,6 +68,23 @@
   }
  },
  {
+  "libro": "babylon",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 168,
+  "capitulos": 13,
+  "controles": {
+   "paginas": "ok: 168 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 13 secciones cubren las 168 páginas",
+   "configuracion": "aviso: 1 capítulos de una sola página (¿títulos del índice o encabezados de página?)",
+   "fidelidad": "ok: 99.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 0 de 0 citas existen literalmente en su página"
+  }
+ },
+ {
   "libro": "barnum",
   "fecha": "2026-11-24",
   "aprobado": true,
@@ -289,6 +306,23 @@
   }
  },
  {
+  "libro": "propaganda",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 170,
+  "capitulos": 12,
+  "controles": {
+   "paginas": "ok: 170 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 12 secciones cubren las 170 páginas",
+   "configuracion": "aviso: 1 capítulos de una sola página (¿títulos del índice o encabezados de página?)",
+   "fidelidad": "ok: 99.9 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 0 de 0 citas existen literalmente en su página"
+  }
+ },
+ {
   "libro": "riqueza-naciones",
   "fecha": "2026-11-24",
   "aprobado": true,
@@ -302,6 +336,23 @@
    "configuracion": "ok: sin sospechas",
    "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 10 de 10 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 0 de 0 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "scientific-advertising",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 99,
+  "capitulos": 21,
+  "controles": {
+   "paginas": "ok: 99 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 21 secciones cubren las 99 páginas",
+   "configuracion": "ok: sin sospechas",
+   "fidelidad": "ok: 98.7 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
    "citas": "ok: 0 de 0 citas existen literalmente en su página"
   }
  },

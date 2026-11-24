@@ -74,5 +74,21 @@
   "patron": "^CHAPTER [IVX]+\\b.*$",
   "desdeParrafo": 255,
   "quitar": "^(THE GRAMMAR OF SCIENCE|[IVX]+\\.?|\\d{1,3})$"
+ },
+ {
+  "id": "scientific-advertising",
+  "patron": "^Chapter \\d+\\b.*$",
+  "quitar": "^Carl Galletti -\\d+- ScientificAdvertising\\.com$",
+  "desdeParrafo": 6
+ },
+ {
+  "id": "propaganda",
+  "patron": "^CHAPTER [IVX]+$",
+  "hasta": "^THE END$"
+ },
+ {
+  "id": "babylon",
+  "patron": "^(Foreword|An Historical Sketch of Babylon|The Man Who Desired Gold|The Richest Man in Babylon|Seven Cures For a Lean Purse|Meet the Goddess of Good Luck|The Five Laws of Gold|The Gold Lender of Babylon|The Walls of Babylon|The Camel Trader of Babylon|The C[A-Za-z ]+ Tablets From Babylon.*|The Luckiest Man in Babylon)$",
+  "desdeParrafo": 60
  }
 ]

@@ -12,7 +12,7 @@
  },
  {
   "num": "002",
-  "id": null,
+  "id": "scientific-advertising",
   "color": "c-manteca",
   "plegado": false,
   "tema": "marketing",
@@ -188,7 +188,7 @@
  },
  {
   "num": "018",
-  "id": null,
+  "id": "babylon",
   "color": "c-hueso",
   "plegado": false,
   "tema": "negocios",
@@ -199,7 +199,7 @@
  },
  {
   "num": "019",
-  "id": null,
+  "id": "propaganda",
   "color": "c-negro",
   "plegado": false,
   "tema": "marketing",

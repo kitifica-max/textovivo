@@ -1,0 +1,47 @@
+{
+ "libro": "babylon",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/babylon/fuente.txt",
+ "fuente_sha256": "b845ba5ff8af19cac3860ef0fc7acf78aadca7df04da4efea2222c12871b7885",
+ "paginacion": "logica",
+ "paginas": 168,
+ "capitulos": 13,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "168 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin páginas cortas a mitad de capítulo"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "13 secciones cubren las 168 páginas"
+  },
+  "configuracion": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "1 capítulos de una sola página (¿títulos del índice o encabezados de página?)"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "99.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "0 de 0 citas existen literalmente en su página"
+  }
+ }
+}

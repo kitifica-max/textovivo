@@ -1,0 +1,80 @@
+[
+ {
+  "titulo": "Preliminares",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 1
+ },
+ {
+  "titulo": "Foreword",
+  "nivel": 1,
+  "pagina_inicio": 2,
+  "pagina_fin": 3
+ },
+ {
+  "titulo": "An Historical Sketch of Babylon",
+  "nivel": 1,
+  "pagina_inicio": 4,
+  "pagina_fin": 12
+ },
+ {
+  "titulo": "The Man Who Desired Gold",
+  "nivel": 1,
+  "pagina_inicio": 13,
+  "pagina_fin": 21
+ },
+ {
+  "titulo": "The Richest Man in Babylon",
+  "nivel": 1,
+  "pagina_inicio": 22,
+  "pagina_fin": 37
+ },
+ {
+  "titulo": "Seven Cures For a Lean Purse",
+  "nivel": 1,
+  "pagina_inicio": 38,
+  "pagina_fin": 61
+ },
+ {
+  "titulo": "Meet the Goddess of Good Luck",
+  "nivel": 1,
+  "pagina_inicio": 62,
+  "pagina_fin": 80
+ },
+ {
+  "titulo": "The Five Laws of Gold",
+  "nivel": 1,
+  "pagina_inicio": 81,
+  "pagina_fin": 96
+ },
+ {
+  "titulo": "The Gold Lender of Babylon",
+  "nivel": 1,
+  "pagina_inicio": 97,
+  "pagina_fin": 113
+ },
+ {
+  "titulo": "The Walls of Babylon",
+  "nivel": 1,
+  "pagina_inicio": 114,
+  "pagina_fin": 118
+ },
+ {
+  "titulo": "The Camel Trader of Babylon",
+  "nivel": 1,
+  "pagina_inicio": 119,
+  "pagina_fin": 132
+ },
+ {
+  "titulo": "The CI ay Tablets From Babylon St. Swithin's College",
+  "nivel": 1,
+  "pagina_inicio": 133,
+  "pagina_fin": 144
+ },
+ {
+  "titulo": "The Luckiest Man in Babylon",
+  "nivel": 1,
+  "pagina_inicio": 145,
+  "pagina_fin": 168
+ }
+]
