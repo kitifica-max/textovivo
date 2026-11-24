@@ -384,15 +384,33 @@ details p { margin: 10px 0 0; color: var(--gris); max-width: 44em; }
 
 /* ---------- Pie como el de la referencia ---------- */
 
-.pie-sitio { padding: 0 0 40px; }
-.pie-sitio .envoltura { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; border-top: 1px solid var(--linea); padding-top: 28px; }
-.pie-sitio .firma b { display: block; font: 800 0.95rem/1 var(--sans); letter-spacing: -0.02em; text-transform: uppercase; }
-.pie-sitio .firma span { font-size: 0.75rem; color: var(--gris); }
-.pie-sitio nav { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 18px; font-size: 0.85rem; }
-.pie-sitio nav a { color: var(--gris); text-decoration: none; }
-.pie-sitio nav a:hover { color: var(--tinta); }
-.pie-sitio .edicion { font: 500 0.66rem/1.4 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--gris); }
-@media (max-width: 600px) { .pie-sitio .envoltura { grid-template-columns: 1fr; } }
+/* ---------- Footer ---------- */
+.pie-sitio { padding: clamp(40px, 6vw, 72px) 0 40px; --resorte: cubic-bezier(.22, 1, .36, 1); }
+.pie-sitio .pie-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.3fr; gap: 32px clamp(24px, 4vw, 56px); align-items: start; border-top: 1px solid var(--linea); padding-top: clamp(28px, 4vw, 44px); }
+.pie-sitio .pie-marca .marca { font-size: 1.5rem; }
+.pie-sitio .pie-marca p { margin: 12px 0 0; max-width: 22em; font-size: 0.95rem; line-height: 1.45; color: var(--gris); letter-spacing: 0; }
+.pie-sitio .pie-col { display: grid; gap: 2px; align-content: start; }
+.pie-sitio .pie-col h2, .pie-sitio .pie-etiqueta { margin: 0 0 10px; font: 700 0.72rem/1 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--gris); }
+.pie-sitio .pie-col a { padding: 6px 0; font-size: 0.95rem; color: color-mix(in srgb, var(--tinta) 78%, transparent); text-decoration: none; transition: color .2s; width: fit-content; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: color .2s, background-size .35s var(--resorte); }
+.pie-sitio .pie-col a:hover { color: var(--tinta); background-size: 100% 1px; }
+.pie-sitio .pie-col a:active { opacity: .6; transition-duration: .05s; }
+.pie-sitio .pie-credito { display: grid; gap: 4px; justify-items: start; }
+.pie-sitio .pie-kitifica { display: inline-flex; align-items: center; gap: 12px; padding: 12px 16px 12px 18px; border-radius: 18px; border: 1px solid var(--linea); background: var(--superficie); color: var(--gris);
+  transition: transform .4s var(--resorte), box-shadow .4s var(--resorte), border-color .2s, color .2s; }
+.pie-sitio .pie-kitifica img { display: block; height: 26px; width: auto; }
+.pie-sitio .pie-salida { width: 14px; height: 14px; opacity: .55; transition: transform .4s var(--resorte), opacity .2s; }
+.pie-sitio .pie-kitifica:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--tinta) 30%, transparent); color: var(--tinta); box-shadow: 0 16px 28px -18px rgb(20 20 20 / .45); }
+.pie-sitio .pie-kitifica:hover .pie-salida { transform: translate(2px, -2px); opacity: 1; }
+.pie-sitio .pie-kitifica:active { transform: scale(.97); transition-duration: .1s; }              /* responde al apretar */
+.pie-sitio .pie-kitifica:focus-visible, .pie-sitio .pie-col a:focus-visible, .pie-sitio .marca:focus-visible { outline: 3px solid color-mix(in srgb, var(--foco) 50%, transparent); outline-offset: 3px; border-radius: 8px; }
+.pie-sitio .pie-base { margin-top: clamp(28px, 4vw, 48px); font: 500 0.68rem/1.4 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--gris); }
+@media (max-width: 980px) { .pie-sitio .pie-grid { grid-template-columns: 1fr 1fr; } .pie-sitio .pie-marca, .pie-sitio .pie-credito { grid-column: 1 / -1; } }
+@media (prefers-reduced-motion: reduce) {
+  .pie-sitio .pie-kitifica, .pie-sitio .pie-salida, .pie-sitio .pie-col a { transition: color .2s, border-color .2s, opacity .2s; }
+  .pie-sitio .pie-kitifica:hover, .pie-sitio .pie-kitifica:active, .pie-sitio .pie-kitifica:hover .pie-salida { transform: none; }
+  .pie-sitio .pie-col a { background: none; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 4px; }
+  .pie-sitio .pie-col a:hover { text-decoration-color: currentColor; }
+}
 
 /* ---------- Entrada ---------- */
 
