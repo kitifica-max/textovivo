@@ -1,0 +1,74 @@
+[
+ {
+  "termino": "principio de mínimo privilegio",
+  "traduccion": "least privilege",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "modelado de amenazas",
+  "traduccion": "threat modeling",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "amenazas",
+  "traduccion": "threats",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "vulnerabilidades",
+  "traduccion": "vulnerabilities",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "seguridad",
+  "traduccion": "security",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "requisitos",
+  "traduccion": "requirements",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "verificación",
+  "traduccion": "verification",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "diseño",
+  "traduccion": "design",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "implementación",
+  "traduccion": "implementation",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "criptografía",
+  "traduccion": "cryptography",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "autenticación",
+  "traduccion": "authentication",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "secretos",
+  "traduccion": "secrets",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ }
+]

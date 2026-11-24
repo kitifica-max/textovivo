@@ -1,6 +1,6 @@
 // Service worker del panel (solo el dueño). Cachea el armazón para abrir rápido y sin conexión.
 // Nunca toca /admin/* ni nada fuera del panel: los datos siempre salen de la red.
-const VERSION = "panel-v1";
+const VERSION = "panel-v2";
 const ACTIVOS = ["/panel.js", "/estilos.css", "/icon-192.png", "/icon-512.png", "/panel.webmanifest"];
 
 self.addEventListener("install", (e) => { self.skipWaiting(); });

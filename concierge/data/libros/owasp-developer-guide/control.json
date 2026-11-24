@@ -1,0 +1,47 @@
+{
+ "libro": "owasp-developer-guide",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/owasp-developer-guide/fuente.txt",
+ "fuente_sha256": "b39baf2df7747e46989bf10171a27654dd5e25addf42bda8e6cee606fdd4fb8e",
+ "paginacion": "logica",
+ "paginas": 268,
+ "capitulos": 47,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "268 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin páginas cortas a mitad de capítulo"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "47 secciones cubren las 268 páginas"
+  },
+  "configuracion": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin sospechas"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "10 de 10 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "12 de 12 citas existen literalmente en su página"
+  }
+ }
+}

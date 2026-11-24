@@ -1,0 +1,123 @@
+{
+ "glosario": [
+  {
+   "termino": "Git",
+   "definicion": "Sistema de control de versiones distribuido.",
+   "pagina": 14,
+   "cita": "Git es un sistema de control de versiones distribuido. GitHub es una plata39 Git SCM. (s. f.). What is Git? Recuperado el 18 de"
+  },
+  {
+   "termino": "Rama (branch)",
+   "definicion": "Puntero móvil hacia una secuencia de commits.",
+   "pagina": 123,
+   "cita": "Una rama es un puntero móvil hacia una secuencia de commits. Cuando trabajas en una rama, cada nuevo commit avanza ese puntero. Cuando cambias"
+  },
+  {
+   "termino": "Buen commit",
+   "definicion": "Unidad de cambio coherente, comprensible y delimitada que explica una intención concreta.",
+   "pagina": 90,
+   "cita": "Un buen commit es una unidad de cambio técnicamente coherente, semánticamente comprensible y lo suficientemente delimitada para explicar una intención concreta. Su importancia emerge"
+  },
+  {
+   "termino": "Área de preparación (staging)",
+   "definicion": "Define qué cambios pasarán a la próxima confirmación.",
+   "pagina": 59,
+   "cita": "El área de preparación delimita qué cambios pasarán a la próxima confirmación. El historial conserva las confirmaciones ya registradas. La base interna almacena los"
+  },
+  {
+   "termino": "Conflicto de fusión",
+   "definicion": "Ocurre cuando Git no puede decidir qué versión de un fragmento conservar.",
+   "pagina": 142,
+   "cita": "conflicto de fusión 169 surge cuando Git no puede decidir automáticamente qué versión de un fragmento debe conservarse. Esto ocurre cuando dos ramas contienen"
+  },
+  {
+   "termino": "git reflog",
+   "definicion": "Registro local de cada movimiento de HEAD y de las ramas; la red de seguridad de Git.",
+   "pagina": 240,
+   "cita": "git reflog: la red de seguridad de Git Una de las capacidades más valiosas y menos conocidas de Git es el reflog: un registro"
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Flujo simple de trabajo en equipo (GitHub Flow)",
+   "resumen": "Las reglas mínimas del libro para que un equipo pequeño trabaje con ramas y pull requests sin enredarse.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Mantén main estable",
+     "descripcion": "Nunca hagas cambios directamente en main.",
+     "pagina": 201,
+     "cita": "1. main es estable. Nunca hagas cambios directamente en ella. 2. Crea una rama para cada tarea discreta. 3. Nombra ramas con prefijos: feature/"
+    },
+    {
+     "orden": 2,
+     "titulo": "Una rama por tarea",
+     "descripcion": "Crea una rama para cada tarea discreta.",
+     "pagina": 201,
+     "cita": "2. Crea una rama para cada tarea discreta. 3. Nombra ramas con prefijos: feature/, fix/, docs/. 4. Abre una PR antes de integrar. 5."
+    },
+    {
+     "orden": 3,
+     "titulo": "Nombra las ramas con prefijos",
+     "descripcion": "feature/, fix/, docs/.",
+     "pagina": 201,
+     "cita": "3. Nombra ramas con prefijos: feature/, fix/, docs/. 4. Abre una PR antes de integrar. 5. Integra solo cuando está aprobada. 6. Elimina la"
+    },
+    {
+     "orden": 4,
+     "titulo": "Abre una PR antes de integrar",
+     "descripcion": "La revisión va antes de la integración.",
+     "pagina": 201,
+     "cita": "4. Abre una PR antes de integrar. 5. Integra solo cuando está aprobada. 6. Elimina la rama después de integrar. Ejemplo de nombres: feature/user-authentication"
+    },
+    {
+     "orden": 5,
+     "titulo": "Integra solo lo aprobado",
+     "descripcion": "Y elimina la rama después de integrar.",
+     "pagina": 201,
+     "cita": "5. Integra solo cuando está aprobada. 6. Elimina la rama después de integrar. Ejemplo de nombres: feature/user-authentication feature/payment-integration fix/memory-leak-in-scheduler docs/installation-guide No es complicado, pero"
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Reglas mínimas de un flujo simple",
+   "contexto": "Para acordar en equipo cómo usar Git y GitHub.",
+   "items": [
+    {
+     "texto": "main es estable: no se cambia directamente",
+     "pagina": 201,
+     "cita": "1. main es estable. Nunca hagas cambios directamente en ella. 2. Crea una rama para cada tarea discreta. 3. Nombra"
+    },
+    {
+     "texto": "Cada tarea va en su propia rama",
+     "pagina": 201,
+     "cita": "2. Crea una rama para cada tarea discreta. 3. Nombra ramas con prefijos: feature/, fix/, docs/. 4. Abre una PR"
+    },
+    {
+     "texto": "Se abre una PR antes de integrar",
+     "pagina": 201,
+     "cita": "4. Abre una PR antes de integrar. 5. Integra solo cuando está aprobada. 6. Elimina la rama después de integrar."
+    },
+    {
+     "texto": "Se elimina la rama después de integrar",
+     "pagina": 201,
+     "cita": "6. Elimina la rama después de integrar. Ejemplo de nombres: feature/user-authentication feature/payment-integration fix/memory-leak-in-scheduler docs/installation-guide No es complicado, pero es consistente."
+    }
+   ]
+  },
+  {
+   "nombre": "Antes de reescribir la historia con rebase",
+   "contexto": "Regla de oro del libro.",
+   "items": [
+    {
+     "texto": "Nunca hacer rebase sobre commits ya publicados o compartidos",
+     "pagina": 147,
+     "cita": "Nunca hagas rebase sobre commits ya publicados o compartidos en un repositorio remoto. El rebase reescribe la historia, lo que causa problemas graves cuando"
+    }
+   ]
+  }
+ ]
+}

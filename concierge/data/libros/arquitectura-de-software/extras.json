@@ -1,0 +1,102 @@
+{
+ "glosario": [
+  {
+   "termino": "Decisiones tempranas de diseño",
+   "definicion": "La arquitectura encarna las decisiones de diseño más tempranas, con un peso enorme sobre el resto.",
+   "pagina": 88,
+   "cita": "Decisiones tempranas de diseño. La AS representa la encarnación de las decisiones de diseño más tempranas sobre un sistema, y esos vínculos tempranos tienen"
+  },
+  {
+   "termino": "Restricciones constructivas",
+   "definicion": "La descripción arquitectónica da blueprints parciales: componentes y dependencias entre ellos.",
+   "pagina": 88,
+   "cita": "Restricciones constructivas. Una descripción arquitectónica proporciona blueprints parciales para el desarrollo, indicando los componentes y las dependencias entre ellos. Por ejemplo, una vista en"
+  },
+  {
+   "termino": "Escenarios",
+   "definicion": "Técnicas usadas sobre todo para elicitar requerimientos.",
+   "pagina": 58,
+   "cita": "Los escenarios han sido básicamente técnicas que se implementan en la elicitación de los requerimientos, particularmente en relación a los operadores de sistemas. Típicamente"
+  },
+  {
+   "termino": "Abstracción",
+   "definicion": "Concepto con varias acepciones: proceso de abstraer o la entidad resultante.",
+   "pagina": 56,
+   "cita": "El concepto de abstracción (que a veces se usa en el sentido del proceso de abstraer, otra para designar una entidad) ha sufrido también"
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Para qué sirve una arquitectura de software",
+   "resumen": "Los usos que el libro atribuye a las descripciones arquitectónicas.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Comunicación mutua",
+     "descripcion": "Un nivel de abstracción compartido entre los interesados.",
+     "pagina": 88,
+     "cita": "La AS representa un alto nivel de abstracción común que la mayoría de los participantes, si no todos, pueden usar como base para crear entendimiento mutuo"
+    },
+    {
+     "orden": 2,
+     "titulo": "Decisiones tempranas de diseño",
+     "descripcion": "Las decisiones más tempranas pesan más.",
+     "pagina": 88,
+     "cita": "Decisiones tempranas de diseño. La AS representa la encarnación de las decisiones de diseño más tempranas sobre un sistema, y esos vínculos tempranos tienen un peso"
+    },
+    {
+     "orden": 3,
+     "titulo": "Restricciones constructivas",
+     "descripcion": "Qué componentes hay y cómo dependen entre sí.",
+     "pagina": 88,
+     "cita": "Restricciones constructivas. Una descripción arquitectónica proporciona blueprints parciales para el desarrollo, indicando los componentes y las dependencias entre ellos. Por ejemplo, una vista en capas de"
+    },
+    {
+     "orden": 4,
+     "titulo": "Evolución",
+     "descripcion": "Mostrar las dimensiones en que se espera que cambie el sistema.",
+     "pagina": 89,
+     "cita": "Evolución. La AS puede exponer las dimensiones a lo largo de las cuales puede esperarse que evolucione un sistema. Haciendo explícitas estas “paredes” perdurables, quienes mantienen"
+    },
+    {
+     "orden": 5,
+     "titulo": "Análisis",
+     "descripcion": "Verificaciones de consistencia y conformidad con restricciones.",
+     "pagina": 89,
+     "cita": "Análisis. Las descripciones arquitectónicas aportan nuevas oportunidades para el análisis, incluyendo verificaciones de consistencia del sistema, conformidad con las restricciones impuestas por un estilo, conformidad con"
+    },
+    {
+     "orden": 6,
+     "titulo": "Administración",
+     "descripcion": "Una arquitectura viable es un logro clave del proyecto.",
+     "pagina": 89,
+     "cita": "Administración. La experiencia demuestra que los proyectos exitosos consideran una arquitectura viable como un logro clave del proceso de desarrollo industrial."
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Qué debería aportarte una arquitectura de software",
+   "contexto": "Para revisar si tu descripción arquitectónica cumple su función.",
+   "items": [
+    {
+     "texto": "Dar una base común de comunicación",
+     "pagina": 88,
+     "cita": "La AS representa un alto nivel de abstracción común que la mayoría de los participantes, si no todos, pueden usar como base"
+    },
+    {
+     "texto": "Registrar las decisiones de diseño tempranas",
+     "pagina": 88,
+     "cita": "Decisiones tempranas de diseño. La AS representa la encarnación de las decisiones de diseño más tempranas sobre un sistema, y esos vínculos tempranos tienen"
+    },
+    {
+     "texto": "Mostrar cómo se espera que evolucione el sistema",
+     "pagina": 89,
+     "cita": "Evolución. La AS puede exponer las dimensiones a lo largo de las cuales puede esperarse que evolucione un sistema. Haciendo explícitas estas “paredes” perdurables, quienes mantienen"
+    }
+   ]
+  }
+ ]
+}

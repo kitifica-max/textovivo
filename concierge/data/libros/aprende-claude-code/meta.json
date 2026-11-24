@@ -1,0 +1,9 @@
+{
+ "titulo": "Aprende Claude Code",
+ "autor": "Ramón Guillamón",
+ "descripcion": "Guía práctica de Claude Code en español: instalación, primeros pasos, buenos prompts, skills, subagentes, MCP, hooks y permisos.",
+ "idioma": "es",
+ "publicar": true,
+ "paginacion": "logica",
+ "atribucion": "«Aprende Claude Code. Guía completa en español», de Ramón Guillamón (aulafy.net/cursos/claude-code), 2026, publicado bajo licencia Creative Commons Atribución 4.0 Internacional (CC BY 4.0); el código de ejemplo está bajo MIT. Textifika dividió el texto en secciones lógicas y le añadió glosario, frameworks y checklists con citas literales; no es un producto de Anthropic ni cuenta con su aval."
+}

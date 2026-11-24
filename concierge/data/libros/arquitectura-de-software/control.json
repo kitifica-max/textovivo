@@ -1,0 +1,47 @@
+{
+ "libro": "arquitectura-de-software",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/arquitectura-de-software/fuente.txt",
+ "fuente_sha256": "6f34966ab0568f9fe1d6066ebfadf6f4e4f3e4b3af4e6a9cac3645d18b9b518a",
+ "paginacion": "logica",
+ "paginas": 91,
+ "capitulos": 11,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "91 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin páginas cortas a mitad de capítulo"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "11 secciones cubren las 91 páginas"
+  },
+  "configuracion": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "1 capítulos de una sola página (¿títulos del índice o encabezados de página?)"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "99.9 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "10 de 10 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "13 de 13 citas existen literalmente en su página"
+  }
+ }
+}

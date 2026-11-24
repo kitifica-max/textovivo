@@ -306,5 +306,126 @@
   "titulo_estilo": "font-size:9cqi",
   "titulo": "Fundamentos de la programación",
   "autor": "Lara, Bonifaz, León<br>2026"
+ },
+ {
+  "num": "029",
+  "id": "twelve-factor",
+  "color": "c-bosque",
+  "plegado": false,
+  "tema": "programacion",
+  "titulo_clase": "t-grotesca",
+  "titulo_estilo": "font-size:10cqi",
+  "titulo": "The Twelve-Factor App",
+  "autor": "Adam Wiggins<br>12factor.net"
+ },
+ {
+  "num": "030",
+  "id": "google-code-review",
+  "color": "c-hueso",
+  "plegado": true,
+  "tema": "programacion",
+  "titulo_clase": "t-alta",
+  "titulo_estilo": "",
+  "titulo": "Google Engineering Practices: Code Review",
+  "autor": "Google"
+ },
+ {
+  "num": "031",
+  "id": "nist-ai-rmf",
+  "color": "c-celeste",
+  "plegado": true,
+  "tema": "ia",
+  "titulo_clase": "t-alta",
+  "titulo_estilo": "",
+  "titulo": "AI Risk Management Framework",
+  "autor": "NIST<br>2023"
+ },
+ {
+  "num": "032",
+  "id": "aprende-claude-code",
+  "color": "c-rojo",
+  "plegado": false,
+  "tema": "ia",
+  "titulo_clase": "t-grotesca",
+  "titulo_estilo": "font-size:10cqi",
+  "titulo": "Aprende Claude Code",
+  "autor": "Ramón Guillamón<br>2026"
+ },
+ {
+  "num": "033",
+  "id": "ia-agentica",
+  "color": "c-azul",
+  "plegado": true,
+  "tema": "ia",
+  "titulo_clase": "t-alta",
+  "titulo_estilo": "",
+  "titulo": "IA Agéntica",
+  "autor": "Rodrigo-Ginés<br>2026"
+ },
+ {
+  "num": "034",
+  "id": "opencode-distilled",
+  "color": "c-bosque",
+  "plegado": false,
+  "tema": "ia",
+  "titulo_clase": "t-grotesca",
+  "titulo_estilo": "font-size:9cqi",
+  "titulo": "OpenCode Distilled",
+  "autor": "Camilo Bernal<br>2026"
+ },
+ {
+  "num": "035",
+  "id": "agentes-de-ia-en-profundidad",
+  "color": "c-manteca",
+  "plegado": true,
+  "tema": "ia",
+  "titulo_clase": "t-grotesca",
+  "titulo_estilo": "font-size:8cqi",
+  "titulo": "Agentes de IA en Profundidad",
+  "autor": "Bojie Li<br>2026"
+ },
+ {
+  "num": "036",
+  "id": "etica-ia-principios",
+  "color": "c-hueso",
+  "plegado": true,
+  "tema": "ia",
+  "titulo_clase": "t-grotesca",
+  "titulo_estilo": "font-size:8cqi",
+  "titulo": "Principios normativos para una ética de la IA",
+  "autor": "Morandín-Ahuerma<br>2023"
+ },
+ {
+  "num": "037",
+  "id": "git-y-github",
+  "color": "c-menta",
+  "plegado": false,
+  "tema": "programacion",
+  "titulo_clase": "t-grotesca",
+  "titulo_estilo": "font-size:10cqi",
+  "titulo": "Git y GitHub",
+  "autor": "Kenji Kawaida<br>2026"
+ },
+ {
+  "num": "038",
+  "id": "owasp-developer-guide",
+  "color": "c-salmon",
+  "plegado": false,
+  "tema": "programacion",
+  "titulo_clase": "t-grotesca",
+  "titulo_estilo": "font-size:9cqi",
+  "titulo": "OWASP Developer Guide",
+  "autor": "OWASP Foundation<br>2026"
+ },
+ {
+  "num": "039",
+  "id": "arquitectura-de-software",
+  "color": "c-celeste",
+  "plegado": true,
+  "tema": "programacion",
+  "titulo_clase": "t-alta",
+  "titulo_estilo": "",
+  "titulo": "Introducción a la Arquitectura de Software",
+  "autor": "Carlos Reynoso<br>2004"
  }
 ]

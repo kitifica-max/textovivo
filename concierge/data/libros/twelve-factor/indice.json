@@ -1,0 +1,92 @@
+[
+ {
+  "titulo": "Introduction",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 1
+ },
+ {
+  "titulo": "Background",
+  "nivel": 1,
+  "pagina_inicio": 2,
+  "pagina_fin": 2
+ },
+ {
+  "titulo": "I. Codebase. One codebase tracked in revision control, many deploys",
+  "nivel": 1,
+  "pagina_inicio": 3,
+  "pagina_fin": 4
+ },
+ {
+  "titulo": "II. Dependencies",
+  "nivel": 1,
+  "pagina_inicio": 5,
+  "pagina_fin": 6
+ },
+ {
+  "titulo": "III. Config. Store config in the environment",
+  "nivel": 1,
+  "pagina_inicio": 7,
+  "pagina_fin": 9
+ },
+ {
+  "titulo": "IV. Backing services",
+  "nivel": 1,
+  "pagina_inicio": 10,
+  "pagina_fin": 11
+ },
+ {
+  "titulo": "V. Build, release, run",
+  "nivel": 1,
+  "pagina_inicio": 12,
+  "pagina_fin": 13
+ },
+ {
+  "titulo": "VI. Processes. Execute the app as one or more stateless processes",
+  "nivel": 1,
+  "pagina_inicio": 14,
+  "pagina_fin": 15
+ },
+ {
+  "titulo": "VII. Port binding",
+  "nivel": 1,
+  "pagina_inicio": 16,
+  "pagina_fin": 17
+ },
+ {
+  "titulo": "VIII. Concurrency",
+  "nivel": 1,
+  "pagina_inicio": 18,
+  "pagina_fin": 19
+ },
+ {
+  "titulo": "IX. Disposability",
+  "nivel": 1,
+  "pagina_inicio": 20,
+  "pagina_fin": 21
+ },
+ {
+  "titulo": "X. Dev/prod parity",
+  "nivel": 1,
+  "pagina_inicio": 22,
+  "pagina_fin": 24
+ },
+ {
+  "titulo": "XI. Logs. Treat logs as event streams",
+  "nivel": 1,
+  "pagina_inicio": 25,
+  "pagina_fin": 26
+ },
+ {
+  "titulo": "XII. Admin processes",
+  "nivel": 1,
+  "pagina_inicio": 27,
+  "pagina_fin": 28
+ },
+ {
+  "titulo": "Who should read this document?",
+  "nivel": 1,
+  "pagina_inicio": 29,
+  "pagina_fin": 29
+ }
+]

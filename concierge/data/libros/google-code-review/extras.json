@@ -1,0 +1,90 @@
+{
+ "glosario": [
+  {
+   "termino": "Propósito de la revisión de código",
+   "definicion": "Que la salud general del código mejore con el tiempo.",
+   "pagina": 4,
+   "cita": "The primary purpose of code review is to make sure that the overall code health of Google's code base is improving over time. All"
+  },
+  {
+   "termino": "Regla de los datos sobre las opiniones",
+   "definicion": "Los hechos técnicos y los datos pesan más que las preferencias personales.",
+   "pagina": 7,
+   "cita": "Technical facts and data overrule opinions and personal preferences. • On matters of style, the style guide is the absolute authority. Any purely style"
+  },
+  {
+   "termino": "Plazo de respuesta",
+   "definicion": "Un día hábil es el máximo para responder a una solicitud de revisión.",
+   "pagina": 22,
+   "cita": "One business day is the maximum time it should take to respond to a code review request (i.e., first thing the next morning)."
+  },
+  {
+   "termino": "Descripción de un CL",
+   "definicion": "Registro público del cambio: qué cambia y por qué.",
+   "pagina": 44,
+   "cita": "A CL description is a public record of change, and it is important that it communicates: 1. What change is being made? This should"
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "El estándar de la revisión de código",
+   "resumen": "El criterio para aprobar un cambio: mejorar la salud del código sin exigir perfección.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Mejorar la salud del código",
+     "descripcion": "El propósito central de toda revisión.",
+     "pagina": 4,
+     "cita": "The primary purpose of code review is to make sure that the overall code health of Google's code base is improving over"
+    },
+    {
+     "orden": 2,
+     "titulo": "Aprobar si mejora el código",
+     "descripcion": "Aprobar cuando el cambio mejora la salud general, aunque no sea perfecto.",
+     "pagina": 5,
+     "cita": "In general, reviewers should favor approving a CL once it is in a state where it definitely improves the overall code health"
+    },
+    {
+     "orden": 3,
+     "titulo": "Decidir con datos, no con gustos",
+     "descripcion": "Los hechos técnicos mandan sobre las preferencias.",
+     "pagina": 7,
+     "cita": "Technical facts and data overrule opinions and personal preferences. • On matters of style, the style guide is the absolute authority. Any"
+    },
+    {
+     "orden": 4,
+     "titulo": "Responder rápido",
+     "descripcion": "Máximo un día hábil para la primera respuesta.",
+     "pagina": 22,
+     "cita": "One business day is the maximum time it should take to respond to a code review request (i.e., first thing the next"
+    },
+    {
+     "orden": 5,
+     "titulo": "Comentar con amabilidad",
+     "descripcion": "Explicar el razonamiento y ser amable.",
+     "pagina": 27,
+     "cita": "Be kind. • Explain your reasoning. • Balance giving explicit directions with just pointing out problems and letting the developer decide. •"
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Antes de enviar un cambio a revisión",
+   "contexto": "Para quien escribe el código y lo envía a revisar.",
+   "items": [
+    {
+     "texto": "Que el cambio sea pequeño",
+     "pagina": 35,
+     "cita": "Small, simple CLs are: • Reviewed more quickly. It's easier for a reviewer to find five minutes several times to review small"
+    },
+    {
+     "texto": "Describirlo bien: qué cambia y por qué",
+     "pagina": 44,
+     "cita": "A CL description is a public record of change, and it is important that it communicates: 1. What change is being made? This should"
+    }
+   ]
+  }
+ ]
+}

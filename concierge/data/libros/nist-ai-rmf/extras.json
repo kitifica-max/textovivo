@@ -1,0 +1,167 @@
+{
+ "glosario": [
+  {
+   "termino": "Riesgo",
+   "definicion": "Combinación del impacto negativo posible y la probabilidad de que ocurra.",
+   "pagina": 7,
+   "cita": "risk is a function of 1) the negative impact, or magnitude of harm, that would arise if the circumstance or event occurs and 2)"
+  },
+  {
+   "termino": "Gestión de riesgos",
+   "definicion": "Actividades coordinadas para dirigir y controlar una organización respecto del riesgo.",
+   "pagina": 7,
+   "cita": "Risk management refers to coordinated activities to direct and control an organization with regard to risk” (Source: ISO 31000:2018). While risk management processes generally"
+  },
+  {
+   "termino": "Tolerancia al riesgo",
+   "definicion": "Disposición de la organización a asumir un riesgo para lograr sus objetivos.",
+   "pagina": 13,
+   "cita": "Risk tolerance refers to the organization’s or AI actor’s (see Appendix A) readiness to bear the risk in order to achieve its objectives. Risk"
+  },
+  {
+   "termino": "Validación",
+   "definicion": "Confirmación, con evidencia objetiva, de que se cumplen los requisitos de un uso previsto.",
+   "pagina": 26,
+   "cita": "Validation is the “confirmation, through the provision of objective evidence, that the requirements for a specific intended use or application have been fulfilled” (Source"
+  },
+  {
+   "termino": "Explicabilidad",
+   "definicion": "Representación de los mecanismos que sustentan el funcionamiento de un sistema de IA.",
+   "pagina": 32,
+   "cita": "Explainability refers to a representation of the mechanisms underlying AI systems’ operation, whereas interpretability refers to the meaning of AI systems’ output in the"
+  },
+  {
+   "termino": "Sesgo",
+   "definicion": "Más amplio que el balance demográfico: NIST distingue sesgos sistémicos, computacionales y humanos.",
+   "pagina": 35,
+   "cita": "Bias is broader than demographic balance and data representativeness. NIST has identified three major categories of AI bias to be considered and managed: systemic"
+  },
+  {
+   "termino": "Privacidad",
+   "definicion": "Normas y prácticas que protegen la autonomía, la identidad y la dignidad de las personas.",
+   "pagina": 34,
+   "cita": "Privacy refers generally to the norms and practices that help to safeguard human autonomy, identity, and dignity. These norms and practices typically address freedom"
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Las cuatro funciones del núcleo: gobernar, mapear, medir, manejar",
+   "resumen": "El núcleo del marco: cuatro funciones que se aplican de forma iterativa a lo largo del ciclo de vida de un sistema de IA.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Gobernar (GOVERN)",
+     "descripcion": "Crear y mantener una cultura de gestión de riesgos en la organización.",
+     "pagina": 42,
+     "cita": "The GOVERN function: • cultivates and implements a culture of risk management within organizations designing, developing, deploying, evaluating, or acquiring AI systems; • outlines"
+    },
+    {
+     "orden": 2,
+     "titulo": "Mapear (MAP)",
+     "descripcion": "Establecer el contexto para enmarcar los riesgos del sistema.",
+     "pagina": 48,
+     "cita": "MAP function establishes the context to frame risks related to an AI system. The AI lifecycle consists of many interdependent activities involving a diverse"
+    },
+    {
+     "orden": 3,
+     "titulo": "Medir (MEASURE)",
+     "descripcion": "Analizar, evaluar y monitorear los riesgos con métodos cuantitativos y cualitativos.",
+     "pagina": 55,
+     "cita": "The MEASURE function employs quantitative, qualitative, or mixed-method tools, techniques, and methodologies to analyze, assess, benchmark, and monitor AI risk and related impacts. It"
+    },
+    {
+     "orden": 4,
+     "titulo": "Manejar (MANAGE)",
+     "descripcion": "Asignar recursos a los riesgos mapeados y medidos, con planes de respuesta.",
+     "pagina": 61,
+     "cita": "The MANAGE function entails allocating risk resources to mapped and measured risks on a regular basis and as defined by the GOVERN function. Risk"
+    }
+   ]
+  },
+  {
+   "nombre": "Las características de una IA confiable",
+   "resumen": "Siete atributos que el marco usa para decidir si un sistema de IA es digno de confianza.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Válida y confiable",
+     "descripcion": "Cumple los requisitos de su uso previsto y funciona sin fallas.",
+     "pagina": 26,
+     "cita": "Validation is the “confirmation, through the provision of objective evidence, that the requirements for a specific intended use or application have been fulfilled” (Source"
+    },
+    {
+     "orden": 2,
+     "titulo": "Segura",
+     "descripcion": "No pone en peligro la vida, la salud, los bienes ni el ambiente en condiciones definidas.",
+     "pagina": 28,
+     "cita": "Safe AI systems should “not under defined conditions, lead to a state in which human life, health, property, or the environment is endangered” (Source"
+    },
+    {
+     "orden": 3,
+     "titulo": "Segura frente a ataques y resiliente",
+     "descripcion": "Resiste eventos adversos o cambios inesperados en su entorno.",
+     "pagina": 29,
+     "cita": "AI systems, as well as the ecosystems in which they are deployed, may be said to be resilient if they can withstand unexpected adverse"
+    },
+    {
+     "orden": 4,
+     "titulo": "Responsable y transparente",
+     "descripcion": "La confianza depende de la rendición de cuentas, que supone transparencia.",
+     "pagina": 30,
+     "cita": "Trustworthy AI depends upon accountability. Accountability presupposes transparency. Transparency reflects the extent to which information about an AI system and its outputs is available"
+    },
+    {
+     "orden": 5,
+     "titulo": "Explicable e interpretable",
+     "descripcion": "Explicar cómo funciona y qué significan sus resultados.",
+     "pagina": 32,
+     "cita": "Explainability refers to a representation of the mechanisms underlying AI systems’ operation, whereas interpretability refers to the meaning of AI systems’ output in the"
+    },
+    {
+     "orden": 6,
+     "titulo": "Con privacidad reforzada",
+     "descripcion": "Protege la autonomía, identidad y dignidad de las personas.",
+     "pagina": 34,
+     "cita": "Privacy refers generally to the norms and practices that help to safeguard human autonomy, identity, and dignity. These norms and practices typically address freedom"
+    },
+    {
+     "orden": 7,
+     "titulo": "Justa, con los sesgos dañinos gestionados",
+     "descripcion": "Atiende la igualdad y la equidad, y gestiona el sesgo dañino.",
+     "pagina": 35,
+     "cita": "Fairness in AI includes concerns for equality and equity by addressing issues such as harmful bias and discrimination. Standards of fairness can be complex"
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Antes de adoptar un sistema de IA en tu organización",
+   "contexto": "Preguntas del marco para integrar la IA a la gestión de riesgos.",
+   "items": [
+    {
+     "texto": "Integrar la gestión de riesgos de IA con la de ciberseguridad y privacidad",
+     "pagina": 17,
+     "cita": "AI risk management should be integrated and incorporated into broader enterprise risk management strategies and processes. Treating AI risks along with other critical risks, such as"
+    },
+    {
+     "texto": "Definir la tolerancia al riesgo",
+     "pagina": 13,
+     "cita": "Risk tolerance refers to the organization’s or AI actor’s (see Appendix A) readiness to bear the risk in order to achieve its objectives. Risk"
+    },
+    {
+     "texto": "Probar el sistema antes de desplegarlo y de forma periódica",
+     "pagina": 55,
+     "cita": "AI systems should be tested before their deployment and regularly while in operation. AI risk measurements include documenting aspects of systems’ functionality and trustworthiness."
+    },
+    {
+     "texto": "Establecer el contexto antes de medir",
+     "pagina": 48,
+     "cita": "MAP function establishes the context to frame risks related to an AI system. The AI lifecycle consists of many interdependent activities involving a diverse"
+    }
+   ]
+  }
+ ]
+}

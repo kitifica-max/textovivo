@@ -1,0 +1,9 @@
+{
+ "titulo": "Agentes de IA en Profundidad",
+ "autor": "Bojie Li",
+ "descripcion": "Principios de diseño y práctica de ingeniería de agentes de IA: agente = LLM + contexto + herramientas, ingeniería de contexto, memoria, MCP, evaluación, multiagente.",
+ "idioma": "es",
+ "publicar": true,
+ "paginacion": "logica",
+ "atribucion": "«Agentes de IA en Profundidad: Principios de Diseño y Práctica de Ingeniería», de Bojie Li, v2.0, 2026 (github.com/bojieli/ai-agent-book). La edición en español es una traducción comunitaria. El repositorio del libro declara la licencia Apache-2.0; el texto del PDF no incluye una licencia propia. Textifika dividió el texto en secciones lógicas y le añadió glosario, frameworks y checklists con citas literales; no es un producto de ninguna empresa de IA ni cuenta con su aval."
+}

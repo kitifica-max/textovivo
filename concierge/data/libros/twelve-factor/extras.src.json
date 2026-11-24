@@ -1,0 +1,137 @@
+{
+ "glosario": [
+  {
+   "termino": "Aplicación de doce factores",
+   "definicion": "Metodología para construir software como servicio portable, escalable y fácil de desplegar.",
+   "buscar": "The twelve-factor app is a methodology for building software-as-a-service apps",
+   "palabras": 24
+  },
+  {
+   "termino": "Servicio de respaldo (backing service)",
+   "definicion": "Cualquier servicio que la app consume por red, como una base de datos o una cola; se trata como recurso conectable.",
+   "buscar": "Treat backing services as attached resources",
+   "palabras": 24
+  },
+  {
+   "termino": "Procesos sin estado (stateless)",
+   "definicion": "La app corre como procesos sin estado; lo que debe persistir va a un servicio de respaldo.",
+   "buscar": "Execute the app as one or more stateless processes",
+   "palabras": 24
+  },
+  {
+   "termino": "Paridad entre desarrollo y producción",
+   "definicion": "Mantener desarrollo, staging y producción lo más parecidos posible.",
+   "buscar": "Keep development, staging, and production as similar as possible",
+   "palabras": 24
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Los doce factores",
+   "resumen": "Doce principios, uno por uno, para que una app sea desplegable y escalable.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "I. Código base",
+     "descripcion": "Un solo código en control de versiones, muchos despliegues.",
+     "buscar": "One codebase tracked in revision control, many deploys",
+     "palabras": 22
+    },
+    {
+     "titulo": "II. Dependencias",
+     "descripcion": "Declararlas y aislarlas explícitamente.",
+     "buscar": "Explicitly declare and isolate dependencies",
+     "palabras": 22
+    },
+    {
+     "titulo": "III. Configuración",
+     "descripcion": "Guardarla en el entorno, no en el código.",
+     "buscar": "Store config in the environment",
+     "palabras": 22
+    },
+    {
+     "titulo": "IV. Servicios de respaldo",
+     "descripcion": "Tratarlos como recursos conectables.",
+     "buscar": "Treat backing services as attached resources",
+     "palabras": 22
+    },
+    {
+     "titulo": "V. Construir, publicar, ejecutar",
+     "descripcion": "Separar estrictamente las etapas de build y de ejecución.",
+     "buscar": "Strictly separate build and run stages",
+     "palabras": 22
+    },
+    {
+     "titulo": "VI. Procesos",
+     "descripcion": "Ejecutar la app como procesos sin estado.",
+     "buscar": "Execute the app as one or more stateless processes",
+     "palabras": 22
+    },
+    {
+     "titulo": "VII. Enlace de puertos",
+     "descripcion": "Exportar los servicios mediante un puerto.",
+     "buscar": "Export services via port binding",
+     "palabras": 22
+    },
+    {
+     "titulo": "VIII. Concurrencia",
+     "descripcion": "Escalar con el modelo de procesos.",
+     "buscar": "Scale out via the process model",
+     "palabras": 22
+    },
+    {
+     "titulo": "IX. Desechabilidad",
+     "descripcion": "Arrancar rápido y apagar con elegancia.",
+     "buscar": "Maximize robustness with fast startup and graceful shutdown",
+     "palabras": 22
+    },
+    {
+     "titulo": "X. Paridad dev/prod",
+     "descripcion": "Que desarrollo, staging y producción se parezcan.",
+     "buscar": "Keep development, staging, and production as similar as possible",
+     "palabras": 22
+    },
+    {
+     "titulo": "XI. Logs",
+     "descripcion": "Tratarlos como flujos de eventos.",
+     "buscar": "Treat logs as event streams",
+     "palabras": 22
+    },
+    {
+     "titulo": "XII. Procesos de administración",
+     "descripcion": "Correrlos como procesos de una sola vez.",
+     "buscar": "Run admin/management tasks as one-off processes",
+     "palabras": 22
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "¿Tu app cumple lo básico de los doce factores?",
+   "contexto": "Revisión rápida antes de desplegar.",
+   "items": [
+    {
+     "texto": "Un solo código base en control de versiones",
+     "buscar": "One codebase tracked in revision control, many deploys",
+     "palabras": 22
+    },
+    {
+     "texto": "Dependencias declaradas explícitamente",
+     "buscar": "Explicitly declare and isolate dependencies",
+     "palabras": 22
+    },
+    {
+     "texto": "La configuración vive en el entorno",
+     "buscar": "Store config in the environment",
+     "palabras": 22
+    },
+    {
+     "texto": "Los logs se tratan como flujo de eventos",
+     "buscar": "Treat logs as event streams",
+     "palabras": 22
+    }
+   ]
+  }
+ ]
+}

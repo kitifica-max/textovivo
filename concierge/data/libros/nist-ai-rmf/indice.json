@@ -1,0 +1,134 @@
+[
+ {
+  "titulo": "Executive Summary",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 6
+ },
+ {
+  "titulo": "1. Framing Risk",
+  "nivel": 1,
+  "pagina_inicio": 7,
+  "pagina_fin": 18
+ },
+ {
+  "titulo": "2. Audience",
+  "nivel": 1,
+  "pagina_inicio": 19,
+  "pagina_fin": 21
+ },
+ {
+  "titulo": "3. AI Risks and Trustworthiness",
+  "nivel": 1,
+  "pagina_inicio": 22,
+  "pagina_fin": 25
+ },
+ {
+  "titulo": "3.1 Valid and Reliable",
+  "nivel": 1,
+  "pagina_inicio": 26,
+  "pagina_fin": 27
+ },
+ {
+  "titulo": "3.2 Safe",
+  "nivel": 1,
+  "pagina_inicio": 28,
+  "pagina_fin": 28
+ },
+ {
+  "titulo": "3.3 Secure and Resilient",
+  "nivel": 1,
+  "pagina_inicio": 29,
+  "pagina_fin": 29
+ },
+ {
+  "titulo": "3.4 Accountable and Transparent",
+  "nivel": 1,
+  "pagina_inicio": 30,
+  "pagina_fin": 31
+ },
+ {
+  "titulo": "3.5 Explainable and Interpretable",
+  "nivel": 1,
+  "pagina_inicio": 32,
+  "pagina_fin": 33
+ },
+ {
+  "titulo": "3.6 Privacy-Enhanced",
+  "nivel": 1,
+  "pagina_inicio": 34,
+  "pagina_fin": 34
+ },
+ {
+  "titulo": "3.7 Fair – with Harmful Bias Managed",
+  "nivel": 1,
+  "pagina_inicio": 35,
+  "pagina_fin": 36
+ },
+ {
+  "titulo": "4. Effectiveness of the AI RMF",
+  "nivel": 1,
+  "pagina_inicio": 37,
+  "pagina_fin": 38
+ },
+ {
+  "titulo": "5. AI RMF Core",
+  "nivel": 1,
+  "pagina_inicio": 39,
+  "pagina_fin": 41
+ },
+ {
+  "titulo": "5.1 Govern",
+  "nivel": 1,
+  "pagina_inicio": 42,
+  "pagina_fin": 47
+ },
+ {
+  "titulo": "5.2 Map",
+  "nivel": 1,
+  "pagina_inicio": 48,
+  "pagina_fin": 54
+ },
+ {
+  "titulo": "5.3 Measure",
+  "nivel": 1,
+  "pagina_inicio": 55,
+  "pagina_fin": 60
+ },
+ {
+  "titulo": "5.4 Manage",
+  "nivel": 1,
+  "pagina_inicio": 61,
+  "pagina_fin": 63
+ },
+ {
+  "titulo": "6. AI RMF Profiles",
+  "nivel": 1,
+  "pagina_inicio": 64,
+  "pagina_fin": 65
+ },
+ {
+  "titulo": "Appendix A: Descriptions of AI Actor Tasks from Figures 2 and 3",
+  "nivel": 1,
+  "pagina_inicio": 66,
+  "pagina_fin": 71
+ },
+ {
+  "titulo": "Appendix B: How AI Risks Differ from Traditional Software Risks",
+  "nivel": 1,
+  "pagina_inicio": 72,
+  "pagina_fin": 75
+ },
+ {
+  "titulo": "Appendix C: AI Risk Management and Human-AI Interaction",
+  "nivel": 1,
+  "pagina_inicio": 76,
+  "pagina_fin": 79
+ },
+ {
+  "titulo": "Appendix D: Attributes of the AI RMF",
+  "nivel": 1,
+  "pagina_inicio": 80,
+  "pagina_fin": 81
+ }
+]

@@ -1,0 +1,9 @@
+{
+ "titulo": "Introducción a la Arquitectura de Software",
+ "autor": "Carlos Reynoso",
+ "descripcion": "Visión de conjunto de la arquitectura de software: historia, definiciones, conceptos, estilos, vistas, procesos y su diferencia con el diseño.",
+ "idioma": "es",
+ "publicar": true,
+ "paginacion": "logica",
+ "atribucion": "«Introducción a la Arquitectura de Software», de Carlos Reynoso (con Nicolás Kicillof), Universidad de Buenos Aires, versión 1.0 de marzo de 2004, publicado en Zenodo (doi 10.5281/zenodo.11491905) bajo licencia Creative Commons Atribución 4.0 Internacional (CC BY 4.0). Textifika usa solo el primer documento del archivo (la introducción), dividido en secciones lógicas, y le añadió glosario, frameworks y checklists con citas literales."
+}

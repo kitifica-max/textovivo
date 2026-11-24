@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#f3f0e8">
+<title>Aprende Claude Code — Textifika</title>
+<meta name="description" content="Aprende Claude Code, de Ramón Guillamón. Guía práctica de Claude Code en español: instalación, primeros pasos, buenos prompts, skills, subagentes, MCP, hooks y permisos. Consultalo desde tu IA con citas literales.">
+<link rel="canonical" href="https://textifika.kitifica.com/libros/aprende-claude-code">
+<meta property="og:site_name" content="Textifika">
+<meta property="og:type" content="book">
+<meta property="og:title" content="Aprende Claude Code — Textifika">
+<meta property="og:description" content="Aprende Claude Code, de Ramón Guillamón. Guía práctica de Claude Code en español: instalación, primeros pasos, buenos prompts, skills, subagentes, MCP, hooks y permisos. Consultalo desde tu IA con citas literales.">
+<meta property="og:url" content="https://textifika.kitifica.com/libros/aprende-claude-code">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../estilos.css">
+<style>
+  .ficha { padding: clamp(32px, 5vw, 64px) 0 0; }
+  .ficha .envoltura { display: grid; grid-template-columns: minmax(260px, 420px) 1fr; gap: clamp(28px, 5vw, 72px); align-items: start; }
+  .ficha .poster .titulo { margin-top: 28%; }
+  .ficha h1 { font-size: clamp(2.4rem, 5vw, 4.6rem); margin: 12px 0 14px; }
+  .datos { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 26px 0; }
+  .datos div { font-size: 0.8rem; color: var(--gris); }
+  .datos strong { display: block; font: 800 2rem/1 var(--sans); letter-spacing: -0.04em; color: var(--tinta); margin-bottom: 4px; }
+  .precio { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+  .precio .monto { font: 800 2.6rem/1 var(--sans); letter-spacing: -0.045em; }
+  .precio .monto small { display: block; font: 500 0.8rem/1.4 var(--sans); letter-spacing: 0; color: var(--gris); margin-top: 6px; }
+  .precio .nota { flex-basis: 100%; margin: 0; }
+  @media (max-width: 820px) { .ficha .envoltura { grid-template-columns: 1fr; } .ficha .poster { max-width: 360px; } }
+  .comparacion { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .comparacion .terminal { height: 100%; }
+  .comparacion .etiqueta { display: block; margin-bottom: 10px; }
+  .comparacion .sin .respuesta { color: #8c897f; }
+  @media (max-width: 760px) { .comparacion { grid-template-columns: 1fr; } }
+  .indice { max-width: 860px; }
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<header class="cabecera">
+  <div class="envoltura">
+    <a class="marca" href="../index.html" aria-label="Textifika, inicio"><svg class="iso" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="var(--tile)"/><rect x="13" y="14" width="38" height="11" rx="3.5" fill="var(--barra)"/><path d="M26 25h12v26l-6-5.5L26 51z" fill="var(--cinta)"/></svg><span>Text<b>ifika</b></span></a>
+    <nav class="navegacion" aria-label="Principal">
+      <a href="../biblioteca.html" aria-current="page">Biblioteca</a>
+      <a class="ocultable" href="../index.html#guia">Cómo funciona</a>
+      <a class="ocultable" href="../autores.html">Para autores</a>
+      <a class="boton chico" href="../entrar.html">Entrar</a>
+    </nav>
+  </div>
+</header>
+<main id="contenido">
+  <section class="ficha">
+    <div class="envoltura">
+      <div class="poster c-rojo" aria-hidden="true">
+        <span class="num">032</span>
+        <span class="titulo t-grotesca" style="font-size:10cqi">Aprende Claude Code</span>
+        <span class="pie"><span class="texto fuerte">Ramón Guillamón<br>2026</span></span>
+      </div>
+      <div>
+        <p class="micro">VT·032 · IA y prompts · Texto en español</p>
+        <h1>Aprende Claude Code</h1>
+        <p class="bajada">Guía práctica de Claude Code en español: instalación, primeros pasos, buenos prompts, skills, subagentes, MCP, hooks y permisos. Pedile a tu IA que busque en el libro y te diga la página.</p>
+        <div class="datos">
+          <div><strong>25</strong>secciones</div>
+          <div><strong>2</strong>frameworks</div>
+          <div><strong>1</strong>checklists</div>
+          <div><strong>7</strong>términos</div>
+          <div><strong>21</strong>citas verificadas</div>
+        </div>
+        <div class="tarjeta precio" data-agregar="aprende-claude-code">
+          <div class="monto">Gratis<small>30 días · sin tarjeta · busca en el texto completo</small></div>
+          <a class="boton" href="../entrar.html?next=libros/aprende-claude-code.html" data-accion>Obtener acceso gratis</a>
+          <p class="nota" data-pie>¿Ya tenés cuenta? <a class="enlace" href="../entrar.html?next=libros/aprende-claude-code.html">Entrar</a></p>
+          <p class="nota" data-msg role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="envoltura">
+      <div class="cabeza">
+        <div><p class="micro">Lo que tu IA va a poder usar</p><h2 style="margin-top:10px">Dos frameworks.</h2></div>
+        <p class="bajada" style="max-width:26em">Metodologías paso a paso. Cada paso trae su cita literal y su página.</p>
+      </div>
+      <div class="grilla cuatro">
+        <article class="poster c-azul"><span class="num">01</span><h3 class="titulo t-alta" style="font-size:8.5cqi">Los 7 principios para escribir buenos prompts</h3><p class="texto mono">7 pasos · p. 26</p></article>
+        <article class="poster c-naranja"><span class="num">02</span><h3 class="titulo t-grotesca" style="font-size:8.5cqi">Trabajar con seguridad: planificar, probar y limitar permisos</h3><p class="texto mono">4 pasos · p. 50</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="seccion" style="padding-top:0">
+    <div class="envoltura">
+      <div class="cabeza">
+        <div><p class="micro">Para revisar tu trabajo</p><h2 style="margin-top:10px">Un checklist.</h2></div>
+        <p class="bajada" style="max-width:26em">Listas para que tu IA revise un plan, un texto o una decisión con el criterio del libro.</p>
+      </div>
+      <div class="grilla cuatro">
+        <article class="poster c-azul"><span class="num">01</span><h3 class="titulo t-alta" style="font-size:8.5cqi">Antes de dar permisos a Claude Code</h3><p class="texto mono">3 puntos · p. 66</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="seccion" style="padding-top:0">
+    <div class="envoltura">
+      <div class="cabeza">
+        <div><p class="micro">Ejemplo ilustrativo · la misma pregunta, dos veces</p><h2 style="margin-top:10px">¿Qué cambia cuando tu IA tiene el libro?</h2></div>
+      </div>
+      <div class="comparacion">
+        <div class="sin">
+          <span class="micro etiqueta">Sin Textifika</span>
+          <div class="terminal">
+            <div class="barra"><i></i><i></i><i></i><span>claude</span></div>
+            <div class="cuerpo">
+              <p class="persona">Revisá mi trabajo con «Antes de dar permisos a Claude Code» de Ramón Guillamón.</p>
+              <p class="respuesta">Ramón Guillamón habla de varias ideas sobre este tema. Podrías aplicarlas siendo claro con tus objetivos…</p>
+              <p class="tenue">— sin fuente, sin página</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <span class="micro etiqueta" style="color:#c8231a">Con Textifika</span>
+          <div class="terminal">
+            <div class="barra"><i></i><i></i><i></i><span>claude · Textifika</span></div>
+            <div class="cuerpo">
+              <p class="persona">Revisá mi trabajo con «Antes de dar permisos a Claude Code» de Ramón Guillamón.</p>
+              <p class="herramienta">obtener_checklist <span class="tenue">("antes de dar permisos a claude code")</span></p>
+              <p class="respuesta">Revisemos «Antes de dar permisos a Claude Code». Aplicar el principio de mínimo privilegio Después: Confirmar toda acción irreversible o fuera del proyecto</p>
+              <span class="chip">Aprende Claude Code · p. 66</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="seccion" style="padding-top:0">
+    <div class="envoltura indice">
+      <div class="cabeza"><div><p class="micro">Glosario</p><h2 style="margin-top:10px">Siete términos.</h2></div></div>
+      <ol class="lista">
+        <li><span class="n">01</span><span><strong>Terminal</strong> · Ventana donde escribes comandos de texto para darle órdenes al ordenador.</span><span class="der">p. 30</span></li>
+        <li><span class="n">02</span><span><strong>Commit</strong> · Punto de guardado en git que captura el estado del proyecto con un mensaje.</span><span class="der">p. 31</span></li>
+        <li><span class="n">03</span><span><strong>Branch (rama)</strong> · Línea de trabajo paralela en git para cambiar sin tocar la versión principal.</span><span class="der">p. 31</span></li>
+        <li><span class="n">04</span><span><strong>Skill</strong> · Conjunto reutilizable de instrucciones y procedimientos que amplían lo que Claude sabe hacer.</span><span class="der">p. 41</span></li>
+        <li><span class="n">05</span><span><strong>Subagentes</strong> · Ayudantes especializados que trabajan en paralelo mientras el agente principal coordina.</span><span class="der">p. 44</span></li>
+        <li><span class="n">06</span><span><strong>Plan Mode</strong> · Modo en que Claude investiga y propone un plan sin tocar ningún archivo.</span><span class="der">p. 50</span></li>
+        <li><span class="n">07</span><span><strong>Mínimo privilegio</strong> · Principio de permisos: confirmar toda acción potencialmente irreversible por defecto.</span><span class="der">p. 66</span></li>
+      </ol>
+    </div>
+  </section>
+  <section class="seccion" style="padding-top:0">
+    <div class="envoltura indice">
+      <div class="cabeza"><div><p class="micro">Índice</p><h2 style="margin-top:10px">25 secciones.</h2></div></div>
+      <ol class="lista">
+        <li><span class="n">01</span>1. Introducción: ¿Qué es Claude Code?<span class="der">p. 1</span></li>
+        <li><span class="n">02</span>2. Instalación<span class="der">p. 4</span></li>
+        <li><span class="n">03</span>3. Primeros pasos<span class="der">p. 7</span></li>
+        <li><span class="n">04</span>4. CLI, app de escritorio, web y móvil<span class="der">p. 10</span></li>
+        <li><span class="n">05</span>5. Recetas prácticas<span class="der">p. 14</span></li>
+        <li><span class="n">06</span>6. Proyectos guiados<span class="der">p. 22</span></li>
+        <li><span class="n">07</span>7. Cómo escribir buenos prompts<span class="der">p. 26</span></li>
+        <li><span class="n">08</span>8. Glosario<span class="der">p. 30</span></li>
+        <li><span class="n">09</span>9. Claude Code para pymes y oficina<span class="der">p. 34</span></li>
+        <li><span class="n">10</span>10. Para perfiles técnicos y equipos<span class="der">p. 38</span></li>
+        <li><span class="n">11</span>11. Skills<span class="der">p. 41</span></li>
+        <li><span class="n">12</span>12. Subagentes<span class="der">p. 44</span></li>
+        <li><span class="n">13</span>13. Plugins<span class="der">p. 47</span></li>
+        <li><span class="n">14</span>14. Flujos de trabajo pro<span class="der">p. 50</span></li>
+        <li><span class="n">15</span>15. Comandos. Referencia completa de slash commands y flags de CLI disponibles en Claude…<span class="der">p. 53</span></li>
+        <li><span class="n">16</span>16. Configuración<span class="der">p. 56</span></li>
+        <li><span class="n">17</span>17. Servidores MCP<span class="der">p. 59</span></li>
+        <li><span class="n">18</span>18. Hooks<span class="der">p. 63</span></li>
+        <li><span class="n">19</span>19. Permisos<span class="der">p. 66</span></li>
+        <li><span class="n">20</span>20. Uso avanzado<span class="der">p. 69</span></li>
+        <li><span class="n">21</span>21. Preguntas frecuentes<span class="der">p. 73</span></li>
+        <li><span class="n">22</span>22. Solución de problemas<span class="der">p. 74</span></li>
+        <li><span class="n">23</span>23. Recursos<span class="der">p. 78</span></li>
+        <li><span class="n">24</span>24. Comparativa<span class="der">p. 80</span></li>
+        <li><span class="n">25</span>25. Sugerencias y contacto<span class="der">p. 82</span></li>
+      </ol>
+      <p class="nota" style="margin-top:28px;max-width:44em">«Aprende Claude Code. Guía completa en español», de Ramón Guillamón (aulafy.net/cursos/claude-code), 2026, publicado bajo licencia Creative Commons Atribución 4.0 Internacional (CC BY 4.0); el código de ejemplo está bajo MIT. Textifika dividió el texto en secciones lógicas y le añadió glosario, frameworks y checklists con citas literales; no es un producto de Anthropic ni cuenta con su aval. Las páginas son secciones lógicas del texto digital, no las de una edición impresa. Los resúmenes en español son de Textifika; las citas son literales.</p>
+    </div>
+  </section>
+</main>
+<footer class="pie-sitio">
+  <div class="envoltura pie-grid">
+    <div class="pie-marca">
+      <a class="marca" href="/index.html" aria-label="Textifika, inicio"><svg class="iso" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="var(--tile)"/><rect x="13" y="14" width="38" height="11" rx="3.5" fill="var(--barra)"/><path d="M26 25h12v26l-6-5.5L26 51z" fill="var(--cinta)"/></svg><span>Text<b>ifika</b></span></a>
+      <p>Lo mejor de cada libro, dentro de tu IA.</p>
+    </div>
+    <nav class="pie-col" aria-labelledby="pie-t1">
+      <h2 id="pie-t1">Textifika</h2>
+      <a href="/biblioteca.html">Biblioteca</a>
+      <a href="/guia.html">Guía de conexión</a>
+      <a href="/autores.html">Para autores</a>
+      <a href="/mi-biblioteca.html">Mi biblioteca</a>
+    </nav>
+    <nav class="pie-col" aria-labelledby="pie-t2">
+      <h2 id="pie-t2">Legal</h2>
+      <a href="/terminos.html">Términos</a>
+      <a href="/privacidad.html">Privacidad</a>
+    </nav>
+    <div class="pie-credito">
+      <span class="pie-etiqueta">Una creación de</span>
+      <a class="pie-kitifica" href="https://www.kitifica.com" target="_blank" rel="noopener" aria-label="Kitifica (se abre en una pestaña nueva)">
+        <picture><source media="(prefers-color-scheme: dark)" srcset="/kitifica-claro.svg"><img src="/kitifica.svg" alt="Kitifica" width="98" height="26"></picture>
+        <svg class="pie-salida" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="envoltura pie-base"><span>© 2026 Textifika — Edición uno · El Salvador</span></div>
+</footer>
+<script src="../app.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+{
+ "glosario": [
+  {
+   "termino": "Agente de IA",
+   "definicion": "Sistema en el que un modelo decide en un bucle qué acciones ejecutar con herramientas para lograr un objetivo.",
+   "pagina": 9,
+   "cita": "Sistema en el que un modelo de lenguaje decide por sí mismo, en un bucle, qué acciones ejecutar con herramientas para alcanzar un objetivo, observando el"
+  },
+  {
+   "termino": "Guardrail",
+   "definicion": "Control que impide, limita o verifica lo que un agente puede hacer, sin confiar en el juicio del modelo.",
+   "pagina": 12,
+   "cita": "Control que impide, limita o verifica lo que un agente puede hacer, independientemente de lo que el modelo decida. Un guardrail no confía en el buen"
+  },
+  {
+   "termino": "Ventana de contexto",
+   "definicion": "Cantidad máxima de tokens que el modelo considera en una petición, entrada más salida.",
+   "pagina": 4,
+   "cita": "Cantidad máxima de tokens que el modelo puede considerar en una sola petición, sumando entrada y salida. Todo lo que el agente «sabe» en un momento"
+  },
+  {
+   "termino": "Skill",
+   "definicion": "Paquete de instrucciones para un tipo de tarea que el agente carga solo cuando la necesita.",
+   "pagina": 107,
+   "cita": "Paquete de instrucciones para un tipo de tarea, con archivos de apoyo opcionales (scripts, referencias, plantillas). A diferencia de AGENTS.md, no viaja completa en cada paso"
+  },
+  {
+   "termino": "Spec-Driven Development (SDD)",
+   "definicion": "La especificación pasa a ser el artefacto que dirige la implementación.",
+   "pagina": 139,
+   "cita": "Forma de trabajo en la que la especificación deja de ser un documento que se desactualiza y se convierte en el artefacto que dirige la implementación"
+  },
+  {
+   "termino": "Inyección de prompts",
+   "definicion": "Ataque en el que un texto leído como dato contiene instrucciones que el modelo termina siguiendo.",
+   "pagina": 167,
+   "cita": "Ataque en el que un texto que el agente lee como dato (un archivo, una página web, un issue, la respuesta de una herramienta) contiene instrucciones"
+  },
+  {
+   "termino": "AGENTS.md",
+   "definicion": "Markdown con guía persistente que el agente recibe en cada sesión.",
+   "pagina": 98,
+   "cita": "Markdown con guía persistente que el agente recibe en cada sesión. AGENTS.md es un formato abierto que OpenAI donó en diciembre de 2025 a la Agentic"
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Del vaivén a la especificación: Spec-Driven Development",
+   "resumen": "Escribir primero una especificación que un agente ejecute sin adivinar.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Entender por qué",
+     "descripcion": "Con agentes la ambigüedad se paga dos veces: en tokens y en retrabajo.",
+     "pagina": 139,
+     "cita": "la ambigüedad se paga dos veces: en tokens y en retrabajo. Aquí aprenderás a escribir una especificación que un agente ejecute sin adivinar, empezando por la"
+    },
+    {
+     "orden": 2,
+     "titulo": "Acordar qué se construye",
+     "descripcion": "La especificación dirige la implementación.",
+     "pagina": 139,
+     "cita": "Forma de trabajo en la que la especificación deja de ser un documento que se desactualiza y se convierte en el artefacto que dirige la implementación"
+    },
+    {
+     "orden": 3,
+     "titulo": "Escribirla para que se ejecute sin adivinar",
+     "descripcion": "Una especificación clara y verificable.",
+     "pagina": 139,
+     "cita": "Aquí aprenderás a escribir una especificación que un agente ejecute sin adivinar, empezando por la papelera de notas de notesservice. 23.1 Qué es DEFINICIÓN · SPEC-DRIVEN"
+    }
+   ]
+  },
+  {
+   "nombre": "Las piezas del arnés de un agente",
+   "resumen": "Qué va en cada capa: reglas, conocimiento bajo demanda y controles.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "AGENTS.md: las reglas del proyecto",
+     "descripcion": "Guía persistente en cada sesión; mantenla corta.",
+     "pagina": 98,
+     "cita": "Markdown con guía persistente que el agente recibe en cada sesión. AGENTS.md es un formato abierto que OpenAI donó en diciembre de 2025 a la Agentic"
+    },
+    {
+     "orden": 2,
+     "titulo": "Skills: conocimiento bajo demanda",
+     "descripcion": "Lo que se usa poco va como skill, no en AGENTS.md.",
+     "pagina": 107,
+     "cita": "Paquete de instrucciones para un tipo de tarea, con archivos de apoyo opcionales (scripts, referencias, plantillas). A diferencia de AGENTS.md, no viaja completa en cada paso"
+    },
+    {
+     "orden": 3,
+     "titulo": "Guardrails: lo que no puede depender del modelo",
+     "descripcion": "Los controles que acotan al agente.",
+     "pagina": 12,
+     "cita": "Control que impide, limita o verifica lo que un agente puede hacer, independientemente de lo que el modelo decida. Un guardrail no confía en el buen"
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Antes de confiar en un agente con tu repositorio",
+   "contexto": "Cuestiones del libro sobre seguridad y control.",
+   "items": [
+    {
+     "texto": "Distinguir una guía de un guardrail",
+     "pagina": 89,
+     "cita": "distinguir una guía de un guardrail y ubicar cada control de tu equipo en la capa que le corresponde. Antes de leer"
+    },
+    {
+     "texto": "Recordar que el agente es tan seguro como su entorno",
+     "pagina": 166,
+     "cita": "OpenCode es tan seguro como el entorno donde se ejecuta y la configuración que recibe. El proyecto lo dice sin rodeos en su política"
+    },
+    {
+     "texto": "Reconocer una inyección de prompts",
+     "pagina": 165,
+     "cita": "reconocer una inyección de prompts. • Endurecer la configuración y elegir el nivel de autonomía adecuado. • Ver un ataque"
+    }
+   ]
+  }
+ ]
+}

@@ -296,3 +296,11 @@ export function citasInvalidas(d: Destilado, paginas: Paginas) {
     .filter(([pagina, cita]) => !texto.get(pagina)?.includes(normalizar(cita)))
     .map(([pagina, cita]) => `p. ${pagina}: "${cita}"`);
 }
+
+/** ¿La herramienta no encontró nada? (la respuesta es solo un mensaje de «No encontré…» / «No hay…», sin resultados ni glosario). */
+export function esSinResultado(r: unknown) {
+  const o = r as Record<string, unknown> | null;
+  if (!o || typeof o !== "object" || typeof o.mensaje !== "string") return false;
+  if (["resultados", "glosario", "pasos", "items", "cita_literal", "capitulos"].some((k) => k in o && (!Array.isArray(o[k]) || (o[k] as unknown[]).length))) return false;
+  return /^No (encontré|hay)(\s|$)/.test(o.mensaje);
+}

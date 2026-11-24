@@ -1,0 +1,152 @@
+[
+ {
+  "titulo": "1. Introducción: ¿Qué es Claude Code?",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 3
+ },
+ {
+  "titulo": "2. Instalación",
+  "nivel": 1,
+  "pagina_inicio": 4,
+  "pagina_fin": 6
+ },
+ {
+  "titulo": "3. Primeros pasos",
+  "nivel": 1,
+  "pagina_inicio": 7,
+  "pagina_fin": 9
+ },
+ {
+  "titulo": "4. CLI, app de escritorio, web y móvil",
+  "nivel": 1,
+  "pagina_inicio": 10,
+  "pagina_fin": 13
+ },
+ {
+  "titulo": "5. Recetas prácticas",
+  "nivel": 1,
+  "pagina_inicio": 14,
+  "pagina_fin": 21
+ },
+ {
+  "titulo": "6. Proyectos guiados",
+  "nivel": 1,
+  "pagina_inicio": 22,
+  "pagina_fin": 25
+ },
+ {
+  "titulo": "7. Cómo escribir buenos prompts",
+  "nivel": 1,
+  "pagina_inicio": 26,
+  "pagina_fin": 29
+ },
+ {
+  "titulo": "8. Glosario",
+  "nivel": 1,
+  "pagina_inicio": 30,
+  "pagina_fin": 33
+ },
+ {
+  "titulo": "9. Claude Code para pymes y oficina",
+  "nivel": 1,
+  "pagina_inicio": 34,
+  "pagina_fin": 37
+ },
+ {
+  "titulo": "10. Para perfiles técnicos y equipos",
+  "nivel": 1,
+  "pagina_inicio": 38,
+  "pagina_fin": 40
+ },
+ {
+  "titulo": "11. Skills",
+  "nivel": 1,
+  "pagina_inicio": 41,
+  "pagina_fin": 43
+ },
+ {
+  "titulo": "12. Subagentes",
+  "nivel": 1,
+  "pagina_inicio": 44,
+  "pagina_fin": 46
+ },
+ {
+  "titulo": "13. Plugins",
+  "nivel": 1,
+  "pagina_inicio": 47,
+  "pagina_fin": 49
+ },
+ {
+  "titulo": "14. Flujos de trabajo pro",
+  "nivel": 1,
+  "pagina_inicio": 50,
+  "pagina_fin": 52
+ },
+ {
+  "titulo": "15. Comandos. Referencia completa de slash commands y flags de CLI disponibles en Claude Code.",
+  "nivel": 1,
+  "pagina_inicio": 53,
+  "pagina_fin": 55
+ },
+ {
+  "titulo": "16. Configuración",
+  "nivel": 1,
+  "pagina_inicio": 56,
+  "pagina_fin": 58
+ },
+ {
+  "titulo": "17. Servidores MCP",
+  "nivel": 1,
+  "pagina_inicio": 59,
+  "pagina_fin": 62
+ },
+ {
+  "titulo": "18. Hooks",
+  "nivel": 1,
+  "pagina_inicio": 63,
+  "pagina_fin": 65
+ },
+ {
+  "titulo": "19. Permisos",
+  "nivel": 1,
+  "pagina_inicio": 66,
+  "pagina_fin": 68
+ },
+ {
+  "titulo": "20. Uso avanzado",
+  "nivel": 1,
+  "pagina_inicio": 69,
+  "pagina_fin": 72
+ },
+ {
+  "titulo": "21. Preguntas frecuentes",
+  "nivel": 1,
+  "pagina_inicio": 73,
+  "pagina_fin": 73
+ },
+ {
+  "titulo": "22. Solución de problemas",
+  "nivel": 1,
+  "pagina_inicio": 74,
+  "pagina_fin": 77
+ },
+ {
+  "titulo": "23. Recursos",
+  "nivel": 1,
+  "pagina_inicio": 78,
+  "pagina_fin": 79
+ },
+ {
+  "titulo": "24. Comparativa",
+  "nivel": 1,
+  "pagina_inicio": 80,
+  "pagina_fin": 81
+ },
+ {
+  "titulo": "25. Sugerencias y contacto",
+  "nivel": 1,
+  "pagina_inicio": 82,
+  "pagina_fin": 82
+ }
+]

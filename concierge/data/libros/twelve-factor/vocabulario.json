@@ -1,0 +1,74 @@
+[
+ {
+  "termino": "configuración",
+  "traduccion": "config",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "configuracion del entorno",
+  "traduccion": "config",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "registros",
+  "traduccion": "logs",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "bitácora",
+  "traduccion": "logs",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "dependencias",
+  "traduccion": "dependencies",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "escalar",
+  "traduccion": "scale",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "escalabilidad",
+  "traduccion": "scale",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "despliegue",
+  "traduccion": "deploy",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "servicios de respaldo",
+  "traduccion": "backing services",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "procesos sin estado",
+  "traduccion": "stateless",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "puertos",
+  "traduccion": "port binding",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ },
+ {
+  "termino": "código base",
+  "traduccion": "codebase",
+  "pagina": 1,
+  "fuente": "sinonimo"
+ }
+]

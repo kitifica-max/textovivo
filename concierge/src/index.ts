@@ -14,6 +14,7 @@ import { planEfectivo } from "./plan.ts";
 import { Destilado } from "./schema.ts";
 import {
   buscarConcepto,
+  esSinResultado,
   citarFuente,
   crearLibro,
   listarIndice,
@@ -94,8 +95,8 @@ async function usar(herramienta: string, consulta: string, ejecutar: () => unkno
       "UPDATE buyers SET calls = calls + 1, first_call_at = COALESCE(first_call_at, ?1), last_call_at = ?1 WHERE token = ?2"
     ).bind(t, token),
     env.DB.prepare(
-      "INSERT INTO events (token, tool, query, latency_ms, created_at) VALUES (?, ?, ?, ?, ?)"
-    ).bind(token, herramienta, esIdPersonal(consulta.split(": ")[0]) ? "mi-doc" : consulta.slice(0, 500), Date.now() - inicio, t)
+      "INSERT INTO events (token, tool, query, latency_ms, created_at, sin_resultado) VALUES (?, ?, ?, ?, ?, ?)"
+    ).bind(token, herramienta, esIdPersonal(consulta.split(": ")[0]) ? "mi-doc" : consulta.slice(0, 500), Date.now() - inicio, t, esSinResultado(resultado) ? 1 : 0)
   ]);
   return texto(JSON.stringify(resultado, null, 2));
 }
@@ -295,6 +296,12 @@ async function panel() {
   const porHerramienta = await todos<{ nombre: string; n: number }>(`SELECT e.tool AS nombre, COUNT(*) AS n ${EV} AND e.created_at >= ?1 GROUP BY e.tool ORDER BY n DESC`, d30);
   const porLibro = (await todos<{ lib: string; n: number }>(`SELECT ${LIBRO} AS lib, COUNT(*) AS n ${EV} AND e.tool != 'listar_libros' AND e.query NOT LIKE 'mi-%' AND e.created_at >= ?1 GROUP BY lib ORDER BY n DESC LIMIT 10`, d30)).map((r) => ({ nombre: nombre(r.lib), n: r.n }));
   const total30 = await uno<{ n: number }>(`SELECT COUNT(*) AS n ${EV} AND e.latency_ms IS NOT NULL AND e.created_at >= ?1`, d30);
+  // Consultas que no encontraron nada (30 días): qué buscan y no hay. Sin documentos personales («mi-…»).
+  const sinRes = await todos<{ libro: string; consulta: string; veces: number; ultima: string }>(
+    `SELECT ${LIBRO} AS libro, substr(CASE WHEN instr(e.query, ': ') > 0 THEN substr(e.query, instr(e.query, ': ') + 2) ELSE e.query END, 1, 120) AS consulta, COUNT(*) AS veces, MAX(e.created_at) AS ultima
+       ${EV} AND e.sin_resultado = 1 AND e.query NOT LIKE 'mi-%' AND e.created_at >= ?1 GROUP BY libro, lower(consulta) ORDER BY veces DESC, ultima DESC LIMIT 25`, d30);
+  const sinResTotal = await uno<{ n: number }>(`SELECT COUNT(*) AS n ${EV} AND e.sin_resultado = 1 AND e.query NOT LIKE 'mi-%' AND e.created_at >= ?1`, d30);
+  const buscadas30 = await uno<{ n: number }>(`SELECT COUNT(*) AS n ${EV} AND e.tool IN ('buscar_concepto', 'citar_fuente') AND e.query NOT LIKE 'mi-%' AND e.created_at >= ?1`, d30);
   const p95 = total30.n ? await uno<{ v: number }>(`SELECT e.latency_ms AS v ${EV} AND e.latency_ms IS NOT NULL AND e.created_at >= ?1 ORDER BY e.latency_ms LIMIT 1 OFFSET ?2`, d30, Math.floor(total30.n * 0.95)) : null;
   const agregados = (await todos<{ id: string; n: number }>("SELECT libro_id AS id, COUNT(*) AS n FROM mis_libros GROUP BY libro_id ORDER BY n DESC LIMIT 10")).map((r) => ({ nombre: nombre(r.id), n: r.n }));
   const personales = await uno<{ documentos: number; cuentas: number }>("SELECT COUNT(*) AS documentos, COUNT(DISTINCT user_id) AS cuentas FROM docs_personales");
@@ -335,7 +342,8 @@ async function panel() {
     uso: {
       consultas_total: uso.total, consultas_7d: uso.n7, consultas_hoy: uso.n1, usuarios_activos_7d: uso.act7, usuarios_activos_30d: uso.act30,
       latencia_media_ms: uso.media === null ? null : Math.round(uso.media), latencia_p95_ms: p95?.v ?? null,
-      por_dia: serie(usoDia, 30), por_herramienta: porHerramienta, libros_mas_consultados: porLibro
+      por_dia: serie(usoDia, 30), por_herramienta: porHerramienta, libros_mas_consultados: porLibro,
+      sin_resultados: sinRes, sin_resultado_30d: sinResTotal.n, busquedas_30d: buscadas30.n
     },
     biblioteca: { libros_total: lista.length, libros_nuevos_14d: lista.filter((l) => l.nuevo).length, libros: lista, libros_mas_agregados: agregados },
     envios: { ...envios, modo_auto: String(env.APROBACION_AUTO ?? "sombra") },

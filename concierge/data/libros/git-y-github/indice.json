@@ -1,0 +1,104 @@
+[
+ {
+  "titulo": "Preliminares",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 1
+ },
+ {
+  "titulo": "Capítulo 1. Introducción General",
+  "nivel": 1,
+  "pagina_inicio": 2,
+  "pagina_fin": 29
+ },
+ {
+  "titulo": "Capítulo 2. Fundamentos del Control de Versiones",
+  "nivel": 1,
+  "pagina_inicio": 30,
+  "pagina_fin": 50
+ },
+ {
+  "titulo": "Capítulo 3. Primeros Pasos con Git",
+  "nivel": 1,
+  "pagina_inicio": 51,
+  "pagina_fin": 67
+ },
+ {
+  "titulo": "Capítulo 4. Flujo de Trabajo Local con Git",
+  "nivel": 1,
+  "pagina_inicio": 68,
+  "pagina_fin": 88
+ },
+ {
+  "titulo": "Capítulo 5. Escritura Correcta de Commits",
+  "nivel": 1,
+  "pagina_inicio": 89,
+  "pagina_fin": 103
+ },
+ {
+  "titulo": "Capítulo 6. Ignorar Archivos Correctamente",
+  "nivel": 1,
+  "pagina_inicio": 104,
+  "pagina_fin": 120
+ },
+ {
+  "titulo": "Capítulo 7. Ramas en Git",
+  "nivel": 1,
+  "pagina_inicio": 121,
+  "pagina_fin": 136
+ },
+ {
+  "titulo": "Capítulo 8. Combinación de Cambios",
+  "nivel": 1,
+  "pagina_inicio": 137,
+  "pagina_fin": 157
+ },
+ {
+  "titulo": "Capítulo 9. Introducción a GitHub",
+  "nivel": 1,
+  "pagina_inicio": 158,
+  "pagina_fin": 173
+ },
+ {
+  "titulo": "Capítulo 10. Trabajo Colaborativo en GitHub",
+  "nivel": 1,
+  "pagina_inicio": 174,
+  "pagina_fin": 185
+ },
+ {
+  "titulo": "Capítulo 11. Pull Requests y Revisión de Código",
+  "nivel": 1,
+  "pagina_inicio": 186,
+  "pagina_fin": 197
+ },
+ {
+  "titulo": "Capítulo 12. Estrategias de Trabajo en Equipo",
+  "nivel": 1,
+  "pagina_inicio": 198,
+  "pagina_fin": 212
+ },
+ {
+  "titulo": "Capítulo 13. Buenas Prácticas Esenciales en Git",
+  "nivel": 1,
+  "pagina_inicio": 213,
+  "pagina_fin": 228
+ },
+ {
+  "titulo": "Capítulo 14. Errores Comunes y Cómo Evitarlos",
+  "nivel": 1,
+  "pagina_inicio": 229,
+  "pagina_fin": 249
+ },
+ {
+  "titulo": "Capítulo 15. Organización y Mantenimiento del Repositorio",
+  "nivel": 1,
+  "pagina_inicio": 250,
+  "pagina_fin": 270
+ },
+ {
+  "titulo": "Capítulo 16. Cierre",
+  "nivel": 1,
+  "pagina_inicio": 271,
+  "pagina_fin": 288
+ }
+]

@@ -1,0 +1,90 @@
+{
+ "glosario": [
+  {
+   "termino": "Principio de mínimo privilegio",
+   "definicion": "Dar acceso solo según la necesidad de saber, no en un modelo de todo o nada.",
+   "buscar": "The principle of least privilege works better if access rights are not an",
+   "palabras": 26
+  },
+  {
+   "termino": "Seguro por defecto (secure by default)",
+   "definicion": "La configuración predeterminada usa los ajustes más seguros posibles, aunque no sean los más cómodos.",
+   "buscar": "Secure by default means that the default configuration settings are the most secure settings possible",
+   "palabras": 26
+  },
+  {
+   "termino": "Modelado de amenazas",
+   "definicion": "Enfoque estructurado para identificar y priorizar amenazas potenciales a un sistema.",
+   "buscar": "threat modeling is a structured approach to identifying and prioritizing potential threats to a system",
+   "palabras": 26
+  },
+  {
+   "termino": "ASVS",
+   "definicion": "Lista de requisitos de desarrollo seguro que sirve como punto de partida para los requisitos de seguridad.",
+   "buscar": "The Application Security Verification Standard provides a list of requirements for secure development",
+   "palabras": 26
+  },
+  {
+   "termino": "Security champions",
+   "definicion": "Personas de cada equipo de desarrollo que impulsan la seguridad.",
+   "buscar": "Security champions have been identified for each development team",
+   "palabras": 26
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Seguridad a lo largo del ciclo de desarrollo",
+   "resumen": "La guía recorre fundamentos, requisitos, diseño, implementación y verificación con herramientas de OWASP.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Requisitos: partir del ASVS",
+     "descripcion": "Usar el ASVS como punto de partida de los requisitos de seguridad.",
+     "buscar": "The Application Security Verification Standard provides a list of requirements for secure development",
+     "palabras": 26
+    },
+    {
+     "titulo": "Diseño: modelar amenazas",
+     "descripcion": "Identificar y priorizar amenazas de forma estructurada.",
+     "buscar": "threat modeling is a structured approach to identifying and prioritizing potential threats to a system",
+     "palabras": 26
+    },
+    {
+     "titulo": "Diseño: configuración segura por defecto",
+     "descripcion": "Los ajustes por defecto deben ser los más seguros.",
+     "buscar": "Secure by default means that the default configuration settings are the most secure settings possible",
+     "palabras": 26
+    },
+    {
+     "titulo": "Acceso: mínimo privilegio",
+     "descripcion": "Compartimentar el acceso según la necesidad de saber.",
+     "buscar": "The principle of least privilege works better if access rights are not an",
+     "palabras": 26
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Para empezar a tomarse en serio la seguridad",
+   "contexto": "Prácticas de madurez que menciona la guía.",
+   "items": [
+    {
+     "texto": "Tener un security champion en cada equipo",
+     "buscar": "Security champions have been identified for each development team",
+     "palabras": 22
+    },
+    {
+     "texto": "Usar el ASVS como base de requisitos",
+     "buscar": "The Application Security Verification Standard provides a list of requirements for secure development",
+     "palabras": 24
+    },
+    {
+     "texto": "Aplicar mínimo privilegio y configuraciones seguras por defecto",
+     "buscar": "Secure by default means that the default configuration settings are the most secure settings possible",
+     "palabras": 24
+    }
+   ]
+  }
+ ]
+}

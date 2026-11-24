@@ -1,0 +1,9 @@
+{
+ "titulo": "AI Risk Management Framework (AI RMF 1.0)",
+ "autor": "NIST (Elham Tabassi)",
+ "descripcion": "Marco de gestión de riesgos de la IA: las 7 características de una IA confiable y las 4 funciones (gobernar, mapear, medir y manejar) para gestionar sus riesgos.",
+ "idioma": "en",
+ "publicar": true,
+ "paginacion": "logica",
+ "atribucion": "«Artificial Intelligence Risk Management Framework (AI RMF 1.0)», NIST AI 100-1, de Elham Tabassi y el National Institute of Standards and Technology (NIST), enero de 2023, https://doi.org/10.6028/NIST.AI.100-1. Obra del gobierno de EE. UU., sin copyright en EE. UU.; NIST concede el derecho mundial de reimprimirla en todos los formatos. Republished courtesy of the National Institute of Standards and Technology. Está en inglés; los resúmenes, las definiciones y los nombres en español son de Textifika. NIST no avala este servicio ni lo que se diga a partir de este texto. Textifika dividió el texto en secciones lógicas y le añadió glosario, frameworks y checklists con citas literales."
+}

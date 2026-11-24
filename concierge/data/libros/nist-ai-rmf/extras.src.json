@@ -1,0 +1,156 @@
+{
+ "glosario": [
+  {
+   "termino": "Riesgo",
+   "definicion": "Combinación del impacto negativo posible y la probabilidad de que ocurra.",
+   "buscar": "risk is a function of 1) the negative impact, or magnitude of harm",
+   "palabras": 24
+  },
+  {
+   "termino": "Gestión de riesgos",
+   "definicion": "Actividades coordinadas para dirigir y controlar una organización respecto del riesgo.",
+   "buscar": "Risk management refers to coordinated activities to direct and control an organization with regard to risk",
+   "palabras": 24
+  },
+  {
+   "termino": "Tolerancia al riesgo",
+   "definicion": "Disposición de la organización a asumir un riesgo para lograr sus objetivos.",
+   "buscar": "Risk tolerance refers to the organization’s or AI actor’s",
+   "palabras": 24
+  },
+  {
+   "termino": "Validación",
+   "definicion": "Confirmación, con evidencia objetiva, de que se cumplen los requisitos de un uso previsto.",
+   "buscar": "Validation is the “confirmation, through the provision of objective evidence",
+   "palabras": 24
+  },
+  {
+   "termino": "Explicabilidad",
+   "definicion": "Representación de los mecanismos que sustentan el funcionamiento de un sistema de IA.",
+   "buscar": "Explainability refers to a representation of the mechanisms underlying AI systems’ operation",
+   "palabras": 24
+  },
+  {
+   "termino": "Sesgo",
+   "definicion": "Más amplio que el balance demográfico: NIST distingue sesgos sistémicos, computacionales y humanos.",
+   "buscar": "Bias is broader than demographic balance and data representativeness",
+   "palabras": 24
+  },
+  {
+   "termino": "Privacidad",
+   "definicion": "Normas y prácticas que protegen la autonomía, la identidad y la dignidad de las personas.",
+   "buscar": "Privacy refers generally to the norms and practices that help to safeguard human autonomy",
+   "palabras": 24
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Las cuatro funciones del núcleo: gobernar, mapear, medir, manejar",
+   "resumen": "El núcleo del marco: cuatro funciones que se aplican de forma iterativa a lo largo del ciclo de vida de un sistema de IA.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Gobernar (GOVERN)",
+     "descripcion": "Crear y mantener una cultura de gestión de riesgos en la organización.",
+     "buscar": "The GOVERN function: • cultivates and implements a culture of risk management",
+     "palabras": 24
+    },
+    {
+     "titulo": "Mapear (MAP)",
+     "descripcion": "Establecer el contexto para enmarcar los riesgos del sistema.",
+     "buscar": "MAP function establishes the context to frame risks related to an AI system",
+     "palabras": 24
+    },
+    {
+     "titulo": "Medir (MEASURE)",
+     "descripcion": "Analizar, evaluar y monitorear los riesgos con métodos cuantitativos y cualitativos.",
+     "buscar": "The MEASURE function employs quantitative, qualitative, or mixed-method tools",
+     "palabras": 24
+    },
+    {
+     "titulo": "Manejar (MANAGE)",
+     "descripcion": "Asignar recursos a los riesgos mapeados y medidos, con planes de respuesta.",
+     "buscar": "The MANAGE function entails allocating risk resources to mapped and measured risks",
+     "palabras": 24
+    }
+   ]
+  },
+  {
+   "nombre": "Las características de una IA confiable",
+   "resumen": "Siete atributos que el marco usa para decidir si un sistema de IA es digno de confianza.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Válida y confiable",
+     "descripcion": "Cumple los requisitos de su uso previsto y funciona sin fallas.",
+     "buscar": "Validation is the “confirmation, through the provision of objective evidence",
+     "palabras": 24
+    },
+    {
+     "titulo": "Segura",
+     "descripcion": "No pone en peligro la vida, la salud, los bienes ni el ambiente en condiciones definidas.",
+     "buscar": "Safe AI systems should “not under defined conditions, lead to a state in which human life, health, property, or the environment is endangered”",
+     "palabras": 24
+    },
+    {
+     "titulo": "Segura frente a ataques y resiliente",
+     "descripcion": "Resiste eventos adversos o cambios inesperados en su entorno.",
+     "buscar": "AI systems, as well as the ecosystems in which they are deployed, may be said to be resilient",
+     "palabras": 24
+    },
+    {
+     "titulo": "Responsable y transparente",
+     "descripcion": "La confianza depende de la rendición de cuentas, que supone transparencia.",
+     "buscar": "Trustworthy AI depends upon accountability",
+     "palabras": 24
+    },
+    {
+     "titulo": "Explicable e interpretable",
+     "descripcion": "Explicar cómo funciona y qué significan sus resultados.",
+     "buscar": "Explainability refers to a representation of the mechanisms underlying AI systems’ operation",
+     "palabras": 24
+    },
+    {
+     "titulo": "Con privacidad reforzada",
+     "descripcion": "Protege la autonomía, identidad y dignidad de las personas.",
+     "buscar": "Privacy refers generally to the norms and practices that help to safeguard human autonomy",
+     "palabras": 24
+    },
+    {
+     "titulo": "Justa, con los sesgos dañinos gestionados",
+     "descripcion": "Atiende la igualdad y la equidad, y gestiona el sesgo dañino.",
+     "buscar": "Fairness in AI includes concerns for equality and equity by addressing issues such as harmful bias and discrimination",
+     "palabras": 24
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Antes de adoptar un sistema de IA en tu organización",
+   "contexto": "Preguntas del marco para integrar la IA a la gestión de riesgos.",
+   "items": [
+    {
+     "texto": "Integrar la gestión de riesgos de IA con la de ciberseguridad y privacidad",
+     "buscar": "AI risk management should be integrated and incorporated into broader enterprise risk management",
+     "palabras": 26
+    },
+    {
+     "texto": "Definir la tolerancia al riesgo",
+     "buscar": "Risk tolerance refers to the organization’s or AI actor’s",
+     "palabras": 24
+    },
+    {
+     "texto": "Probar el sistema antes de desplegarlo y de forma periódica",
+     "buscar": "AI systems should be tested before their deployment and regularly while in operation",
+     "palabras": 24
+    },
+    {
+     "texto": "Establecer el contexto antes de medir",
+     "buscar": "MAP function establishes the context to frame risks related to an AI system",
+     "palabras": 24
+    }
+   ]
+  }
+ ]
+}

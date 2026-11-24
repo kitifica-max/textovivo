@@ -1,0 +1,80 @@
+[
+ {
+  "titulo": "Code review: introduction",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 2
+ },
+ {
+  "titulo": "How to do a code review",
+  "nivel": 1,
+  "pagina_inicio": 3,
+  "pagina_fin": 3
+ },
+ {
+  "titulo": "The Standard of Code Review",
+  "nivel": 1,
+  "pagina_inicio": 4,
+  "pagina_fin": 8
+ },
+ {
+  "titulo": "What to look for in a code review",
+  "nivel": 1,
+  "pagina_inicio": 9,
+  "pagina_fin": 17
+ },
+ {
+  "titulo": "Navigating a CL in review",
+  "nivel": 1,
+  "pagina_inicio": 18,
+  "pagina_fin": 20
+ },
+ {
+  "titulo": "Speed of Code Reviews",
+  "nivel": 1,
+  "pagina_inicio": 21,
+  "pagina_fin": 26
+ },
+ {
+  "titulo": "How to write code review comments",
+  "nivel": 1,
+  "pagina_inicio": 27,
+  "pagina_fin": 29
+ },
+ {
+  "titulo": "Handling pushback in code reviews",
+  "nivel": 1,
+  "pagina_inicio": 30,
+  "pagina_fin": 33
+ },
+ {
+  "titulo": "The CL author's guide to getting through code review",
+  "nivel": 1,
+  "pagina_inicio": 34,
+  "pagina_fin": 34
+ },
+ {
+  "titulo": "Small CLs. Why Write Small CLs?",
+  "nivel": 1,
+  "pagina_inicio": 35,
+  "pagina_fin": 43
+ },
+ {
+  "titulo": "Writing good CL descriptions",
+  "nivel": 1,
+  "pagina_inicio": 44,
+  "pagina_fin": 49
+ },
+ {
+  "titulo": "How to handle reviewer comments",
+  "nivel": 1,
+  "pagina_inicio": 50,
+  "pagina_fin": 53
+ },
+ {
+  "titulo": "Code review in emergencies",
+  "nivel": 1,
+  "pagina_inicio": 54,
+  "pagina_fin": 56
+ }
+]

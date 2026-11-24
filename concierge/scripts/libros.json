@@ -168,5 +168,60 @@
  {
   "id": "fundamentos-programacion",
   "patron": "^(Unidad [1-5]\\. .+|Glosario|Referencias Bibliográficas|Anexos)$"
+ },
+ {
+  "id": "twelve-factor",
+  "patron": "^(Introduction|Background|[IVX]+\\. .+|Who should read this document\\?)$",
+  "sinDescartar": true
+ },
+ {
+  "id": "google-code-review",
+  "patron": "^(Code\\ review:\\ introduction|How\\ to\\ do\\ a\\ code\\ review|The\\ Standard\\ of\\ Code\\ Review|What\\ to\\ look\\ for\\ in\\ a\\ code\\ review|Navigating\\ a\\ CL\\ in\\ review|Speed\\ of\\ Code\\ Reviews|How\\ to\\ write\\ code\\ review\\ comments|Handling\\ pushback\\ in\\ code\\ reviews|The\\ CL\\ author's\\ guide\\ to\\ getting\\ through\\ code\\ review|Small\\ CLs|Writing\\ good\\ CL\\ descriptions|How\\ to\\ handle\\ reviewer\\ comments|Code review in emergencies)$",
+  "sinDescartar": true
+ },
+ {
+  "id": "nist-ai-rmf",
+  "patron": "^(Executive\\ Summary|1\\.\\ Framing\\ Risk|2\\.\\ Audience|3\\.\\ AI\\ Risks\\ and\\ Trustworthiness|3\\.1\\ Valid\\ and\\ Reliable|3\\.2\\ Safe|3\\.3\\ Secure\\ and\\ Resilient|3\\.4\\ Accountable\\ and\\ Transparent|3\\.5\\ Explainable\\ and\\ Interpretable|3\\.6\\ Privacy\\-Enhanced|3\\.7\\ Fair\\ –\\ with\\ Harmful\\ Bias\\ Managed|4\\.\\ Effectiveness\\ of\\ the\\ AI\\ RMF|5\\.\\ AI\\ RMF\\ Core|5\\.1\\ Govern|5\\.2\\ Map|5\\.3\\ Measure|5\\.4\\ Manage|6\\.\\ AI\\ RMF\\ Profiles|Appendix\\ A:\\ Descriptions\\ of\\ AI\\ Actor\\ Tasks\\ from\\ Figures\\ 2\\ and\\ 3|Appendix\\ B:\\ How\\ AI\\ Risks\\ Differ\\ from\\ Traditional\\ Software\\ Risks|Appendix\\ C:\\ AI\\ Risk\\ Management\\ and\\ Human\\-AI\\ Interaction|Appendix\\ D:\\ Attributes\\ of\\ the\\ AI\\ RMF)$",
+  "sinDescartar": true
+ },
+ {
+  "id": "aprende-claude-code",
+  "patron": "^\\d{1,2}\\. .+$",
+  "sinDescartar": true
+ },
+ {
+  "id": "git-y-github",
+  "patron": "^Capítulo \\d{1,2}\\. .+$",
+  "sinDescartar": true
+ },
+ {
+  "id": "opencode-distilled",
+  "patron": "^Capítulo \\d{1,2}\\. .+$",
+  "sinDescartar": true
+ },
+ {
+  "id": "owasp-developer-guide",
+  "patron": "^(1\\.\\ Introduction|2\\.2\\ Security\\ fundamentals|2\\.3\\ Secure\\ development\\ and\\ integration|2\\.4\\ Principles\\ of\\ security|2\\.5\\ Principles\\ of\\ cryptography|2\\.6\\ OWASP\\ Top\\ 10|3\\.1\\ Overview|3\\.2\\ Requirements\\ in\\ practice|3\\.3\\ Risk\\ profile|3\\.4\\ OpenCRE|3\\.5\\ SecurityRAT|3\\.6\\ ASVS|3\\.7\\ MAS|3\\.8\\ SKF|4\\.1\\ Overview|4\\.2\\ Threat\\ modeling|4\\.3\\ Web\\ application\\ checklist|4\\.4\\ MAS\\ checklist|5\\.2\\ Documentation|5\\.3\\ Dependencies|5\\.4\\ Secure\\ Libraries|5\\.5\\ MASWE|6\\.2\\ Guides|6\\.3\\ Tools|6\\.4\\ Frameworks|6\\.5\\ Vulnerability\\ management|7\\.2\\ Vulnerable\\ Applications|7\\.3\\ Secure\\ Coding\\ Dojo|7\\.4\\ SKF|7\\.5\\ SamuraiWTF|7\\.6\\ OWASP\\ Top\\ 10|7\\.7\\ Mobile\\ Top\\ 10|7\\.8\\ API\\ Top\\ 10|7\\.9\\ WrongSecrets|7\\.10\\ OWASP\\ Snakes\\ and\\ Ladders|8\\.2\\ Security\\ Culture|8\\.3\\ Security\\ Champions|8\\.4\\ SAMM|8\\.5\\ ASVS|8\\.6\\ MAS|9\\.2\\ DevSecOps\\ Guideline|9\\.3\\ Coraza\\ WAF|9\\.4\\ ModSecurity\\ WAF|9\\.5\\ OWASP\\ CRS|10\\.1\\ Overview|11\\.2\\ Guides|11\\.3\\ BLT)$",
+  "sinDescartar": true
+ },
+ {
+  "id": "arquitectura-de-software",
+  "patron": "^(Introducción|Relevancia\\ de\\ la\\ Arquitectura\\ de\\ Software|Breve\\ Historia\\ de\\ la\\ Arquitectura\\ de\\ Software|Definiciones|Estilos|Lenguajes\\ de\\ descripción\\ arquitectónica|Frameworks\\ y\\ Vistas|Procesos\\ y\\ Metodologías|Abstracción|Escenarios|Problemas\\ abiertos\\ en\\ Arquitectura\\ de\\ Software)$",
+  "sinDescartar": true
+ },
+ {
+  "id": "etica-ia-principios",
+  "patron": "^(Presentación|Preámbulo|Capítulo \\d{1,2}\\. .+)$",
+  "sinDescartar": true
+ },
+ {
+  "id": "agentes-de-ia-en-profundidad",
+  "patron": "^(1\\.1\\ Agente\\ Moderno\\ =\\ LLM\\ \\+\\ Contexto\\ \\+\\ Herramientas|1\\.2\\ Ingeniería\\ de\\ Harness:\\ la\\ competitividad\\ más\\ allá\\ del\\ modelo|1\\.3\\ Patrones\\ de\\ diseño\\ que\\ recorren\\ todo\\ el\\ libro|1\\.4\\ Resumen\\ del\\ capítulo|2\\.1\\ El\\ Contexto\\ —El\\ Techo\\ de\\ las\\ Capacidades\\ del\\ Agente|2\\.2\\ Cómo\\ Invocan\\ los\\ Agentes\\ a\\ los\\ LLMs:\\ La\\ Estructura\\ de\\ Contexto\\ a\\ Nivel\\ de\\ API|2\\.3\\ Diseño\\ de\\ contexto\\ compatible\\ con\\ la\\ Caché\\ KV|2\\.4\\ Ingeniería\\ de\\ Prompts:\\ Optimizando\\ el\\ Prompt\\ del\\ Sistema|2\\.5\\ Prompts\\ dinámicos\\ y\\ Agent\\ Skills|2\\.6\\ Barra\\ de\\ estado\\ del\\ Agente:\\ mejora\\ de\\ la\\ gestión\\ de\\ trayectorias\\ mediante\\ metainformación|2\\.7\\ Estrategias\\ de\\ Compresión\\ de\\ Contexto|3\\.1\\ Sistema\\ de\\ Memoria\\ del\\ Usuario|3\\.2\\ RAG\\ Básico:\\ Construyendo\\ el\\ Canal\\ de\\ Adquisición\\ de\\ Conocimiento\\ del\\ Agente|3\\.3\\ Más\\ Allá\\ del\\ Texto\\ Plano:\\ Organización\\ y\\ Recuperación\\ del\\ Conocimiento|3\\.4\\ Resumen\\ del\\ Capítulo|4\\.2\\ Principios\\ universales\\ del\\ diseño\\ de\\ herramientas|4\\.3\\ Ecosistema\\ de\\ herramientas:\\ MCP\\ y\\ Skill\\ Hubs|4\\.5\\ Herramientas\\ de\\ percepción|4\\.6\\ Herramientas\\ de\\ ejecución|4\\.7\\ Herramientas\\ de\\ colaboración|4\\.8\\ Resumen\\ del\\ capítulo|5\\.1\\ Coding\\ Agent|5\\.2\\ El\\ código:\\ La\\ metacapacidad\\ de\\ un\\ Agente\\ general|5\\.3\\ Resumen\\ del\\ capítulo|6\\.1\\ Dos\\ ejes:\\ modalidad\\ y\\ momento|6\\.2\\ Asincronía\\ y\\ orientación\\ a\\ eventos:\\ cuando\\ el\\ mundo\\ viene\\ a\\ buscarte|6\\.3\\ Voz:\\ la\\ interfaz\\ humano\\-máquina\\ más\\ natural|6\\.4\\ Computer\\ Use:\\ Agentes\\ de\\ automatización\\ de\\ GUI|6\\.5\\ Operación\\ robótica:\\ ordenar\\ un\\ escritorio\\ con\\ XLeRobot|6\\.6\\ Resumen\\ del\\ capítulo|7\\.1\\ Anatomía\\ de\\ una\\ tarea\\ de\\ evaluación:\\ el\\ dominio\\ telecom\\ de\\ τ²\\-bench|7\\.2\\ Métricas\\ de\\ evaluación:\\ la\\ definición\\ de\\ éxito|7\\.3\\ El\\ entorno\\ de\\ evaluación|7\\.4\\ Diseño\\ del\\ conjunto\\ de\\ datos\\ de\\ evaluación|7\\.5\\ Métodos\\ de\\ evaluación\\ automatizada|7\\.6\\ Selección\\ de\\ Modelos\\ Impulsada\\ por\\ la\\ Evaluación|7\\.7\\ Significatividad\\ Estadística\\ de\\ los\\ Resultados\\ de\\ Evaluación|7\\.8\\ Observabilidad\\ del\\ Agente|7\\.9\\ De\\ Reportes\\ de\\ Benchmark\\ a\\ Mejoras\\ del\\ Sistema|7\\.11\\ Entornos\\ de\\ Simulación:\\ El\\ Puente\\ entre\\ Evaluación\\ y\\ Post\\-Entrenamiento|7\\.12\\ Resumen\\ del\\ Capítulo|8\\.1\\ Del\\ pre\\-entrenamiento\\ a\\ RL:\\ panorama\\ en\\ cuatro\\ partes|8\\.2\\ De\\ Agentes\\ de\\ RL\\ Clásicos\\ a\\ Agentes\\ Modernos\\ \\[Lectura\\ Opcional\\]|8\\.3\\ Fundamentos\\ del\\ Pre\\-entrenamiento\\ de\\ Modelos\\ \\[Lectura\\ Opcional\\]|8\\.4\\ Mid\\-training:\\ completar\\ conocimiento\\ y\\ capacidades\\ básicas|8\\.5\\ SFT\\ \\(Ajuste\\ Fino\\ Supervisado\\)|8\\.6\\ Síntesis\\ de\\ Datos\\ para\\ SFT:\\ De\\ las\\ Demostraciones\\ a\\ Trayectorias\\ Entrenables|8\\.7\\ Cuándo\\ elegir\\ Mid\\-training,\\ SFT\\ y\\ RL|8\\.8\\ RL\\ de\\ Un\\ Solo\\ Turno:\\ Memoria\\ vs\\ Generalización|8\\.9\\ Algoritmos\\ de\\ RL:\\ De\\ 16\\ Rollouts\\ a\\ Una\\ Actualización\\ de\\ Parámetros|8\\.10\\ Entornos\\ de\\ RL:\\ De\\ la\\ Evaluación\\ a\\ la\\ Simulación|8\\.11\\ De\\ Un\\ Solo\\ Turno\\ a\\ Multiturno:\\ Escenarios\\ de\\ Tarea\\ y\\ Asignación\\ de\\ Crédito|8\\.12\\ Diseño\\ de\\ recompensas:\\ convertir\\ el\\ objetivo\\ de\\ la\\ tarea\\ en\\ señal\\ de\\ aprendizaje|8\\.13\\ Destilación:\\ mejorar\\ la\\ eficiencia\\ de\\ muestra|8\\.14\\ De\\ los\\ bad\\ cases\\ al\\ postentrenamiento|8\\.15\\ Puntos\\ prácticos\\ del\\ post\\-entrenamiento|8\\.16\\ Resumen\\ del\\ Capítulo|9\\.1\\ Derivación\\ de\\ Señales\\ de\\ Aprendizaje\\ a\\ partir\\ de\\ Trayectorias\\ Operativas|9\\.2\\ Cuatro\\ Métodos\\ para\\ la\\ Evolución\\ Continua\\ del\\ Agente|9\\.3\\ Construcción\\ de\\ un\\ Bucle\\ Cerrado\\ de\\ Evolución\\ Continua\\ para\\ Operaciones\\ a\\ Largo\\ Plazo|9\\.4\\ Resumen\\ del\\ Capítulo|10\\.1\\ Marco\\ de\\ Clasificación\\ para\\ la\\ Colaboración\\ Multi\\-Agente|10\\.2\\ ¿Cuándo\\ es\\ un\\ Sistema\\ Multi\\-Agente\\ Realmente\\ Mejor\\ que\\ un\\ Agente\\ Único\\?|10\\.3\\ Colaboración\\ Multi\\-Agente\\ con\\ Contexto\\ Compartido|10\\.4\\ Colaboración\\ Multi\\-Agente\\ Sin\\ Contexto\\ Compartido|10\\.5\\ Modos\\ de\\ Falla\\ de\\ la\\ Colaboración\\ Multi\\-Agente|10\\.6\\ Sociedad\\ de\\ Agentes|10\\.7\\ Resumen\\ del\\ Capítulo|11\\.1\\ Capítulo\\ 1\\ Introducción\\ a\\ los\\ Agentes\\ de\\ IA|11\\.2\\ Capítulo\\ 2\\ Ingeniería\\ de\\ Contexto|11\\.3\\ Capítulo\\ 3\\ Memoria\\ de\\ Usuario\\ y\\ Base\\ de\\ Conocimientos|11\\.4\\ Capítulo\\ 4\\ Herramientas|11\\.5\\ Capítulo\\ 5\\ Coding\\ Agent\\ y\\ Generación\\ de\\ Código|11\\.6\\ Capítulo\\ 7\\ Evaluación\\ de\\ Agentes|11\\.7\\ Capítulo\\ 8\\ Posentrenamiento\\ de\\ Modelos|11\\.8\\ Capítulo\\ 9\\ Evolución\\ Continua\\ del\\ Agente|11\\.9\\ Capítulo\\ 10\\ Colaboración\\ Multi\\-Agente)$",
+  "sinDescartar": true
+ },
+ {
+  "id": "ia-agentica",
+  "patron": "^(Guía docente|Semana\\ 1:\\ Introducción\\ a\\ los\\ agentes\\ de\\ IA|Semana\\ 2:\\ Grandes\\ modelos\\ de\\ lenguaje\\ como\\ motores\\ de\\ razonamiento|Semana\\ 3:\\ Estrategias\\ de\\ prompting\\ para\\ comportamiento\\ agéntico|Semana\\ 4:\\ Uso\\ de\\ herramientas,\\ function\\ calling\\ y\\ MCP|Semana\\ 5:\\ Arquitecturas\\ de\\ agentes|Semana\\ 6:\\ Sistemas\\ de\\ memoria\\ para\\ agentes|Semana\\ 7:\\ RAG\\ para\\ agentes|Semana\\ 8:\\ Sistemas\\ multiagente\\ y\\ protocolos\\ de\\ comunicación|Semana\\ 9:\\ Planificación\\ y\\ descomposición\\ de\\ tareas|Semana\\ 10:\\ Evaluación\\ y\\ benchmarking\\ de\\ agentes|Semana\\ 11:\\ Seguridad,\\ alineamiento\\ y\\ guardrails\\ para\\ agentes|Semana\\ 12:\\ Interacción\\ humano\\-agente\\ y\\ supervisión|Semana\\ 13:\\ Flujos\\ de\\ trabajo\\ agénticos\\ en\\ ingeniería\\ del\\ software|Semana\\ 14:\\ Gobernanza\\ e\\ IA\\ agéntica\\ confiable|Semana\\ 15:\\ Presentaciones\\ del\\ proyecto\\ final\\ y\\ repaso)$",
+  "sinDescartar": true
  }
 ]

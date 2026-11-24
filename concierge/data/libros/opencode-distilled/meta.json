@@ -1,0 +1,9 @@
+{
+ "titulo": "OpenCode Distilled: agentes de código para ingenieros",
+ "autor": "Camilo Bernal",
+ "descripcion": "Cómo diseñar, operar y auditar el arnés de un agente de código: AGENTS.md, skills, subagentes, MCP, Spec-Driven Development, seguridad y calidad.",
+ "idioma": "es",
+ "publicar": true,
+ "paginacion": "logica",
+ "atribucion": "«OpenCode Distilled: agentes de código para ingenieros», de Camilo Bernal (camilobernal.dev/ebooks/opencode-distilled), 2026, publicado bajo licencia Creative Commons Atribución-CompartirIgual 4.0 (CC BY-SA 4.0); el código y las plantillas, además bajo MIT. El autor declara que la obra se construyó con apoyo de IA (Claude, de Anthropic) bajo su dirección editorial. Por la cláusula de compartir igual, el destilado de Textifika (glosario, frameworks y checklists) se ofrece bajo CC BY-SA 4.0. Textifika dividió el texto en secciones lógicas; no es un producto de Anthropic ni de OpenCode."
+}

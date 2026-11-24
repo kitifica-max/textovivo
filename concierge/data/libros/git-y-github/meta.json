@@ -1,0 +1,9 @@
+{
+ "titulo": "Git y GitHub: fundamentos y buenas prácticas",
+ "autor": "Kenji Kawaida Villegas",
+ "descripcion": "Manual de Git y GitHub: control de versiones, flujo local, commits, ramas, pull requests, trabajo en equipo y errores comunes.",
+ "idioma": "es",
+ "publicar": true,
+ "paginacion": "logica",
+ "atribucion": "«Git y GitHub: Fundamentos y buenas prácticas para desarrolladores», de Kenji Kawaida Villegas, Fondo Editorial UPDS, 2026 (editorial.upds.edu.bo), publicado bajo licencia Creative Commons Atribución 4.0 (CC BY 4.0). Textifika dividió el texto en secciones lógicas y le añadió glosario, frameworks y checklists con citas literales."
+}

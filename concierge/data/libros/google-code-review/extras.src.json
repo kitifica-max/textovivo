@@ -1,0 +1,85 @@
+{
+ "glosario": [
+  {
+   "termino": "Propósito de la revisión de código",
+   "definicion": "Que la salud general del código mejore con el tiempo.",
+   "buscar": "The primary purpose of code review is to make sure that the overall code health",
+   "palabras": 24
+  },
+  {
+   "termino": "Regla de los datos sobre las opiniones",
+   "definicion": "Los hechos técnicos y los datos pesan más que las preferencias personales.",
+   "buscar": "Technical facts and data overrule opinions and personal preferences",
+   "palabras": 24
+  },
+  {
+   "termino": "Plazo de respuesta",
+   "definicion": "Un día hábil es el máximo para responder a una solicitud de revisión.",
+   "buscar": "One business day is the maximum time it should take to respond to a code review request",
+   "palabras": 24
+  },
+  {
+   "termino": "Descripción de un CL",
+   "definicion": "Registro público del cambio: qué cambia y por qué.",
+   "buscar": "A CL description is a public record of change",
+   "palabras": 24
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "El estándar de la revisión de código",
+   "resumen": "El criterio para aprobar un cambio: mejorar la salud del código sin exigir perfección.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Mejorar la salud del código",
+     "descripcion": "El propósito central de toda revisión.",
+     "buscar": "The primary purpose of code review is to make sure that the overall code health",
+     "palabras": 22
+    },
+    {
+     "titulo": "Aprobar si mejora el código",
+     "descripcion": "Aprobar cuando el cambio mejora la salud general, aunque no sea perfecto.",
+     "buscar": "In general, reviewers should favor approving a CL once it is in a state where it definitely improves the overall code health",
+     "palabras": 22
+    },
+    {
+     "titulo": "Decidir con datos, no con gustos",
+     "descripcion": "Los hechos técnicos mandan sobre las preferencias.",
+     "buscar": "Technical facts and data overrule opinions and personal preferences",
+     "palabras": 22
+    },
+    {
+     "titulo": "Responder rápido",
+     "descripcion": "Máximo un día hábil para la primera respuesta.",
+     "buscar": "One business day is the maximum time it should take to respond to a code review request",
+     "palabras": 22
+    },
+    {
+     "titulo": "Comentar con amabilidad",
+     "descripcion": "Explicar el razonamiento y ser amable.",
+     "buscar": "Be kind.",
+     "palabras": 22
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Antes de enviar un cambio a revisión",
+   "contexto": "Para quien escribe el código y lo envía a revisar.",
+   "items": [
+    {
+     "texto": "Que el cambio sea pequeño",
+     "buscar": "Small, simple CLs are",
+     "palabras": 22
+    },
+    {
+     "texto": "Describirlo bien: qué cambia y por qué",
+     "buscar": "A CL description is a public record of change",
+     "palabras": 24
+    }
+   ]
+  }
+ ]
+}

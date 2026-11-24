@@ -1,0 +1,109 @@
+{
+ "glosario": [
+  {
+   "termino": "Agente moderno",
+   "definicion": "La fórmula mínima: Agente = LLM + contexto + herramientas.",
+   "buscar": "La realización mínima de ingeniería de un Agente moderno cabe en una fórmula concisa",
+   "palabras": 26
+  },
+  {
+   "termino": "Bucle ReAct",
+   "definicion": "El mecanismo central que encadena el LLM, el contexto y las herramientas: razonar y actuar.",
+   "buscar": "El bucle ReAct es justamente el mecanismo central que encadena el LLM, el contexto y las",
+   "palabras": 26
+  },
+  {
+   "termino": "Workflow",
+   "definicion": "Sistema que orquesta el LLM y las herramientas con rutas de código predefinidas y deterministas.",
+   "buscar": "Un workflow (Workflow) es un sistema que orquesta el LLM y las herramientas mediante rutas de código predefinidas",
+   "palabras": 26
+  },
+  {
+   "termino": "Guardarraíles",
+   "definicion": "La forma principal de implementar la capa de restricción, verificación y corrección: defensa en profundidad.",
+   "buscar": "Los guardarraíles son la forma principal en que se implementa la capa de",
+   "palabras": 26
+  },
+  {
+   "termino": "Ingeniería de Harness",
+   "definicion": "La competitividad de un agente más allá del modelo: la estructura que lo rodea.",
+   "buscar": "Ingeniería de Harness: la competitividad más allá del modelo",
+   "palabras": 26
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Tres principios para construir agentes eficaces",
+   "resumen": "Según la experiencia de Anthropic recogida en el libro: sencillez, transparencia y buena interfaz de herramientas.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Mantener la sencillez",
+     "descripcion": "Empezar por lo más simple y añadir complejidad solo cuando haga falta.",
+     "buscar": "Comience por la solución más sencilla y añada complejidad únicamente cuando sea realmente necesario",
+     "palabras": 26
+    },
+    {
+     "titulo": "Mantener la transparencia",
+     "descripcion": "Mostrar pasos de planificación, registros y trayectoria de decisiones.",
+     "buscar": "Muestre con claridad los pasos de planificación, los registros de ejecución y la trayectoria de decisiones del Agente",
+     "palabras": 26
+    },
+    {
+     "titulo": "Diseñar bien la interfaz de las herramientas (ACI)",
+     "descripcion": "Diseñar la interfaz desde la perspectiva del agente.",
+     "buscar": "ACI pone el énfasis en diseñar la interfaz desde la perspectiva del Agente",
+     "palabras": 26
+    }
+   ]
+  },
+  {
+   "nombre": "Cómo se compone un agente: LLM, contexto y herramientas",
+   "resumen": "Los tres componentes y el bucle que los une.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "La fórmula del agente",
+     "descripcion": "Agente = LLM + contexto + herramientas.",
+     "buscar": "La realización mínima de ingeniería de un Agente moderno cabe en una fórmula concisa",
+     "palabras": 26
+    },
+    {
+     "titulo": "El contexto: el conjunto de trabajo",
+     "descripcion": "La información de la que dependen las decisiones.",
+     "buscar": "el contexto proporciona el conjunto de información de trabajo del que dependen esas decisiones",
+     "palabras": 26
+    },
+    {
+     "titulo": "El bucle ReAct las une",
+     "descripcion": "Razonar, actuar y observar el resultado.",
+     "buscar": "El bucle ReAct es justamente el mecanismo central que encadena el LLM, el contexto y las",
+     "palabras": 26
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Antes de construir tu primer agente",
+   "contexto": "Principios del libro para empezar sin complicarte.",
+   "items": [
+    {
+     "texto": "Empezar por la solución más sencilla",
+     "buscar": "Comience por la solución más sencilla y añada complejidad únicamente cuando sea realmente necesario",
+     "palabras": 24
+    },
+    {
+     "texto": "Hacer visibles los pasos y las decisiones del agente",
+     "buscar": "Muestre con claridad los pasos de planificación, los registros de ejecución y la trayectoria de decisiones del Agente",
+     "palabras": 26
+    },
+    {
+     "texto": "Preferir llamadas directas a la API antes que frameworks complejos",
+     "buscar": "Las llamadas directas a la API son preferibles a los frameworks complejos",
+     "palabras": 22
+    }
+   ]
+  }
+ ]
+}

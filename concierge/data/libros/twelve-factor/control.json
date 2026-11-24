@@ -1,0 +1,47 @@
+{
+ "libro": "twelve-factor",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/twelve-factor/fuente.txt",
+ "fuente_sha256": "4c85333ab4465150a39828a70adf67348649b9fc3f24e7976bde42d78f2c5d47",
+ "paginacion": "logica",
+ "paginas": 29,
+ "capitulos": 15,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "29 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin páginas cortas a mitad de capítulo"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "15 secciones cubren las 29 páginas"
+  },
+  "configuracion": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin sospechas"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "99.9 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "20 de 20 citas existen literalmente en su página"
+  }
+ }
+}

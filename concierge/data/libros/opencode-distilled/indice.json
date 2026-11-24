@@ -1,0 +1,296 @@
+[
+ {
+  "titulo": "Capítulo 1. Conceptos de IA para ingenieros",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 8
+ },
+ {
+  "titulo": "Capítulo 2. Anatomía de un agente de IA",
+  "nivel": 1,
+  "pagina_inicio": 9,
+  "pagina_fin": 14
+ },
+ {
+  "titulo": "Capítulo 3. OpenCode en el ecosistema",
+  "nivel": 1,
+  "pagina_inicio": 15,
+  "pagina_fin": 20
+ },
+ {
+  "titulo": "Capítulo 4. Licencia, costos y modelo de negocio",
+  "nivel": 1,
+  "pagina_inicio": 21,
+  "pagina_fin": 25
+ },
+ {
+  "titulo": "Capítulo 5. Requisitos del entorno",
+  "nivel": 1,
+  "pagina_inicio": 26,
+  "pagina_fin": 28
+ },
+ {
+  "titulo": "Capítulo 6. Instalación y configuración inicial",
+  "nivel": 1,
+  "pagina_inicio": 29,
+  "pagina_fin": 35
+ },
+ {
+  "titulo": "Capítulo 7. La TUI a fondo",
+  "nivel": 1,
+  "pagina_inicio": 36,
+  "pagina_fin": 43
+ },
+ {
+  "titulo": "Capítulo 8. Primera sesión y trabajo con intervención humana",
+  "nivel": 1,
+  "pagina_inicio": 44,
+  "pagina_fin": 51
+ },
+ {
+  "titulo": "Capítulo 9. Arquitectura y anatomía del servidor",
+  "nivel": 1,
+  "pagina_inicio": 52,
+  "pagina_fin": 56
+ },
+ {
+  "titulo": "Capítulo 10. El bucle agéntico completo",
+  "nivel": 1,
+  "pagina_inicio": 57,
+  "pagina_fin": 64
+ },
+ {
+  "titulo": "Capítulo 11. Ventana de contexto y caché de prompts",
+  "nivel": 1,
+  "pagina_inicio": 65,
+  "pagina_fin": 71
+ },
+ {
+  "titulo": "Capítulo 12. Modelos y proveedores",
+  "nivel": 1,
+  "pagina_inicio": 72,
+  "pagina_fin": 81
+ },
+ {
+  "titulo": "Capítulo 13. API, eventos, resiliencia y concurrencia",
+  "nivel": 1,
+  "pagina_inicio": 82,
+  "pagina_fin": 88
+ },
+ {
+  "titulo": "Capítulo 14. Ingeniería de arnés y guardrails",
+  "nivel": 1,
+  "pagina_inicio": 89,
+  "pagina_fin": 93
+ },
+ {
+  "titulo": "Capítulo 15. Redacción de instrucciones y front matter",
+  "nivel": 1,
+  "pagina_inicio": 94,
+  "pagina_fin": 97
+ },
+ {
+  "titulo": "Capítulo 16. AGENTS.md: las reglas del proyecto",
+  "nivel": 1,
+  "pagina_inicio": 98,
+  "pagina_fin": 102
+ },
+ {
+  "titulo": "Capítulo 17. Comandos personalizados",
+  "nivel": 1,
+  "pagina_inicio": 103,
+  "pagina_fin": 106
+ },
+ {
+  "titulo": "Capítulo 18. Skills: conocimiento bajo demanda",
+  "nivel": 1,
+  "pagina_inicio": 107,
+  "pagina_fin": 111
+ },
+ {
+  "titulo": "Capítulo 19. Agentes y subagentes",
+  "nivel": 1,
+  "pagina_inicio": 112,
+  "pagina_fin": 119
+ },
+ {
+  "titulo": "Capítulo 20. Plugins y hooks",
+  "nivel": 1,
+  "pagina_inicio": 120,
+  "pagina_fin": 126
+ },
+ {
+  "titulo": "Capítulo 21. MCP, referencias y búsqueda web",
+  "nivel": 1,
+  "pagina_inicio": 127,
+  "pagina_fin": 132
+ },
+ {
+  "titulo": "Capítulo 22. Criterios para elegir cada pieza",
+  "nivel": 1,
+  "pagina_inicio": 133,
+  "pagina_fin": 138
+ },
+ {
+  "titulo": "Capítulo 23. Fundamentos del Spec-Driven Development",
+  "nivel": 1,
+  "pagina_inicio": 139,
+  "pagina_fin": 142
+ },
+ {
+  "titulo": "Capítulo 24. SDD con GitHub Spec Kit y con piezas nativas",
+  "nivel": 1,
+  "pagina_inicio": 143,
+  "pagina_fin": 149
+ },
+ {
+  "titulo": "Capítulo 25. Planificación antes de tocar código",
+  "nivel": 1,
+  "pagina_inicio": 150,
+  "pagina_fin": 151
+ },
+ {
+  "titulo": "Capítulo 26. Observabilidad",
+  "nivel": 1,
+  "pagina_inicio": 152,
+  "pagina_fin": 158
+ },
+ {
+  "titulo": "Capítulo 27. Varios proyectos y repositorios",
+  "nivel": 1,
+  "pagina_inicio": 159,
+  "pagina_fin": 161
+ },
+ {
+  "titulo": "Capítulo 28. Trabajo en paralelo, integración y conflictos",
+  "nivel": 1,
+  "pagina_inicio": 162,
+  "pagina_fin": 165
+ },
+ {
+  "titulo": "Capítulo 29. Modelo de amenazas",
+  "nivel": 1,
+  "pagina_inicio": 166,
+  "pagina_fin": 170
+ },
+ {
+  "titulo": "Capítulo 30. Configuración segura y guardrails operativos",
+  "nivel": 1,
+  "pagina_inicio": 171,
+  "pagina_fin": 179
+ },
+ {
+  "titulo": "Capítulo 31. Seguridad y calidad del código generado",
+  "nivel": 1,
+  "pagina_inicio": 180,
+  "pagina_fin": 183
+ },
+ {
+  "titulo": "Capítulo 32. Datos, entrenamiento y telemetría",
+  "nivel": 1,
+  "pagina_inicio": 184,
+  "pagina_fin": 186
+ },
+ {
+  "titulo": "Capítulo 33. Propiedad intelectual y cumplimiento",
+  "nivel": 1,
+  "pagina_inicio": 187,
+  "pagina_fin": 191
+ },
+ {
+  "titulo": "Capítulo 34. El scaffold ideal del arnés",
+  "nivel": 1,
+  "pagina_inicio": 192,
+  "pagina_fin": 196
+ },
+ {
+  "titulo": "Capítulo 35. Portabilidad entre máquinas",
+  "nivel": 1,
+  "pagina_inicio": 197,
+  "pagina_fin": 199
+ },
+ {
+  "titulo": "Capítulo 36. Recetas",
+  "nivel": 1,
+  "pagina_inicio": 200,
+  "pagina_fin": 204
+ },
+ {
+  "titulo": "Capítulo 37. Evaluación del arnés con evidencia",
+  "nivel": 1,
+  "pagina_inicio": 205,
+  "pagina_fin": 210
+ },
+ {
+  "titulo": "Capítulo 38. Patrones de orquestación",
+  "nivel": 1,
+  "pagina_inicio": 211,
+  "pagina_fin": 214
+ },
+ {
+  "titulo": "Capítulo 39. Contratos, salida estructurada y memoria",
+  "nivel": 1,
+  "pagina_inicio": 215,
+  "pagina_fin": 218
+ },
+ {
+  "titulo": "Capítulo 40. Autonomía de larga duración",
+  "nivel": 1,
+  "pagina_inicio": 219,
+  "pagina_fin": 221
+ },
+ {
+  "titulo": "Capítulo 41. Modos de fallo y economía multiagente",
+  "nivel": 1,
+  "pagina_inicio": 222,
+  "pagina_fin": 226
+ },
+ {
+  "titulo": "Capítulo 42. SDK, cliente y API",
+  "nivel": 1,
+  "pagina_inicio": 227,
+  "pagina_fin": 230
+ },
+ {
+  "titulo": "Capítulo 43. RPC de plugins",
+  "nivel": 1,
+  "pagina_inicio": 231,
+  "pagina_fin": 233
+ },
+ {
+  "titulo": "Capítulo 44. Console y gobierno de costos",
+  "nivel": 1,
+  "pagina_inicio": 234,
+  "pagina_fin": 236
+ },
+ {
+  "titulo": "Capítulo 45. Servidores MCP y conocimiento interno",
+  "nivel": 1,
+  "pagina_inicio": 237,
+  "pagina_fin": 239
+ },
+ {
+  "titulo": "Capítulo 46. Interoperabilidad y migración entre agentes",
+  "nivel": 1,
+  "pagina_inicio": 240,
+  "pagina_fin": 242
+ },
+ {
+  "titulo": "Capítulo 47. Prácticas de alto impacto",
+  "nivel": 1,
+  "pagina_inicio": 243,
+  "pagina_fin": 249
+ },
+ {
+  "titulo": "Capítulo 48. Antipatrones y hoja de ruta de adopción",
+  "nivel": 1,
+  "pagina_inicio": 250,
+  "pagina_fin": 251
+ },
+ {
+  "titulo": "Capítulo 49. Caso de estudio de principio a fin",
+  "nivel": 1,
+  "pagina_inicio": 252,
+  "pagina_fin": 308
+ }
+]

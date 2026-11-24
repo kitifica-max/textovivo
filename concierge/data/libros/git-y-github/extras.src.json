@@ -1,0 +1,118 @@
+{
+ "glosario": [
+  {
+   "termino": "Git",
+   "definicion": "Sistema de control de versiones distribuido.",
+   "buscar": "Git es un sistema de control de versiones distribuido",
+   "palabras": 24
+  },
+  {
+   "termino": "Rama (branch)",
+   "definicion": "Puntero móvil hacia una secuencia de commits.",
+   "buscar": "Una rama es un puntero móvil hacia una secuencia de commits",
+   "palabras": 24
+  },
+  {
+   "termino": "Buen commit",
+   "definicion": "Unidad de cambio coherente, comprensible y delimitada que explica una intención concreta.",
+   "buscar": "Un buen commit es una unidad de cambio técnicamente coherente",
+   "palabras": 24
+  },
+  {
+   "termino": "Área de preparación (staging)",
+   "definicion": "Define qué cambios pasarán a la próxima confirmación.",
+   "buscar": "El área de preparación delimita qué cambios pasarán a la próxima confirmación",
+   "palabras": 24
+  },
+  {
+   "termino": "Conflicto de fusión",
+   "definicion": "Ocurre cuando Git no puede decidir qué versión de un fragmento conservar.",
+   "buscar": "conflicto de fusión 169 surge cuando Git no puede decidir automáticamente",
+   "palabras": 24
+  },
+  {
+   "termino": "git reflog",
+   "definicion": "Registro local de cada movimiento de HEAD y de las ramas; la red de seguridad de Git.",
+   "buscar": "git reflog: la red de seguridad de Git",
+   "palabras": 24
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Flujo simple de trabajo en equipo (GitHub Flow)",
+   "resumen": "Las reglas mínimas del libro para que un equipo pequeño trabaje con ramas y pull requests sin enredarse.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Mantén main estable",
+     "descripcion": "Nunca hagas cambios directamente en main.",
+     "buscar": "1. main es estable",
+     "palabras": 24
+    },
+    {
+     "titulo": "Una rama por tarea",
+     "descripcion": "Crea una rama para cada tarea discreta.",
+     "buscar": "2. Crea una rama para cada tarea discreta",
+     "palabras": 24
+    },
+    {
+     "titulo": "Nombra las ramas con prefijos",
+     "descripcion": "feature/, fix/, docs/.",
+     "buscar": "3. Nombra ramas con prefijos",
+     "palabras": 24
+    },
+    {
+     "titulo": "Abre una PR antes de integrar",
+     "descripcion": "La revisión va antes de la integración.",
+     "buscar": "4. Abre una PR antes de integrar",
+     "palabras": 24
+    },
+    {
+     "titulo": "Integra solo lo aprobado",
+     "descripcion": "Y elimina la rama después de integrar.",
+     "buscar": "5. Integra solo cuando está aprobada",
+     "palabras": 24
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Reglas mínimas de un flujo simple",
+   "contexto": "Para acordar en equipo cómo usar Git y GitHub.",
+   "items": [
+    {
+     "texto": "main es estable: no se cambia directamente",
+     "buscar": "1. main es estable",
+     "palabras": 20
+    },
+    {
+     "texto": "Cada tarea va en su propia rama",
+     "buscar": "2. Crea una rama para cada tarea discreta",
+     "palabras": 20
+    },
+    {
+     "texto": "Se abre una PR antes de integrar",
+     "buscar": "4. Abre una PR antes de integrar",
+     "palabras": 20
+    },
+    {
+     "texto": "Se elimina la rama después de integrar",
+     "buscar": "6. Elimina la rama después de integrar",
+     "palabras": 20
+    }
+   ]
+  },
+  {
+   "nombre": "Antes de reescribir la historia con rebase",
+   "contexto": "Regla de oro del libro.",
+   "items": [
+    {
+     "texto": "Nunca hacer rebase sobre commits ya publicados o compartidos",
+     "buscar": "Nunca hagas rebase sobre commits ya publicados o compartidos en un repositorio remoto",
+     "palabras": 24
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,115 @@
+{
+ "glosario": [
+  {
+   "termino": "Agente moderno",
+   "definicion": "La fórmula mínima: Agente = LLM + contexto + herramientas.",
+   "pagina": 1,
+   "cita": "La realización mínima de ingeniería de un Agente moderno cabe en una fórmula concisa: Agente = LLM (modelo de lenguaje grande, Large Language Model) + contexto"
+  },
+  {
+   "termino": "Bucle ReAct",
+   "definicion": "El mecanismo central que encadena el LLM, el contexto y las herramientas: razonar y actuar.",
+   "pagina": 28,
+   "cita": "El bucle ReAct es justamente el mecanismo central que encadena el LLM, el contexto y las herramientas; veamos cómo un Agente piensa y actúa paso a"
+  },
+  {
+   "termino": "Workflow",
+   "definicion": "Sistema que orquesta el LLM y las herramientas con rutas de código predefinidas y deterministas.",
+   "pagina": 59,
+   "cita": "Un workflow (Workflow) es un sistema que orquesta el LLM y las herramientas mediante rutas de código predefinidas. Su ruta de ejecución es determinista y ha"
+  },
+  {
+   "termino": "Guardarraíles",
+   "definicion": "La forma principal de implementar la capa de restricción, verificación y corrección: defensa en profundidad.",
+   "pagina": 70,
+   "cita": "Los guardarraíles son la forma principal en que se implementa la capa de“restricción, verificación y corrección”del Harness: una defensa en profundidad por capas que mantiene el"
+  },
+  {
+   "termino": "Ingeniería de Harness",
+   "definicion": "La competitividad de un agente más allá del modelo: la estructura que lo rodea.",
+   "pagina": 40,
+   "cita": "Ingeniería de Harness: la competitividad más allá del modelocódigo y otras herramientas integradas en Responses API se ejecutan en un bucle cerrado en el servidor, y"
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Tres principios para construir agentes eficaces",
+   "resumen": "Según la experiencia de Anthropic recogida en el libro: sencillez, transparencia y buena interfaz de herramientas.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Mantener la sencillez",
+     "descripcion": "Empezar por lo más simple y añadir complejidad solo cuando haga falta.",
+     "pagina": 52,
+     "cita": "Comience por la solución más sencilla y añada complejidad únicamente cuando sea realmente necesario. Las llamadas directas a la API son preferibles a los frameworks complejos"
+    },
+    {
+     "orden": 2,
+     "titulo": "Mantener la transparencia",
+     "descripcion": "Mostrar pasos de planificación, registros y trayectoria de decisiones.",
+     "pagina": 52,
+     "cita": "Muestre con claridad los pasos de planificación, los registros de ejecución y la trayectoria de decisiones del Agente—esto no solo facilita la depuración, sino que también"
+    },
+    {
+     "orden": 3,
+     "titulo": "Diseñar bien la interfaz de las herramientas (ACI)",
+     "descripcion": "Diseñar la interfaz desde la perspectiva del agente.",
+     "pagina": 52,
+     "cita": "ACI pone el énfasis en diseñar la interfaz desde la perspectiva del Agente (para que le resulte fácil comprenderla y utilizarla), en lugar de diseñarla desde"
+    }
+   ]
+  },
+  {
+   "nombre": "Cómo se compone un agente: LLM, contexto y herramientas",
+   "resumen": "Los tres componentes y el bucle que los une.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "La fórmula del agente",
+     "descripcion": "Agente = LLM + contexto + herramientas.",
+     "pagina": 1,
+     "cita": "La realización mínima de ingeniería de un Agente moderno cabe en una fórmula concisa: Agente = LLM (modelo de lenguaje grande, Large Language Model) + contexto"
+    },
+    {
+     "orden": 2,
+     "titulo": "El contexto: el conjunto de trabajo",
+     "descripcion": "La información de la que dependen las decisiones.",
+     "pagina": 2,
+     "cita": "el contexto proporciona el conjunto de información de trabajo del que dependen esas decisiones, y las herramientas proporcionan las interfaces a través de las cuales las"
+    },
+    {
+     "orden": 3,
+     "titulo": "El bucle ReAct las une",
+     "descripcion": "Razonar, actuar y observar el resultado.",
+     "pagina": 28,
+     "cita": "El bucle ReAct es justamente el mecanismo central que encadena el LLM, el contexto y las herramientas; veamos cómo un Agente piensa y actúa paso a"
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Antes de construir tu primer agente",
+   "contexto": "Principios del libro para empezar sin complicarte.",
+   "items": [
+    {
+     "texto": "Empezar por la solución más sencilla",
+     "pagina": 52,
+     "cita": "Comience por la solución más sencilla y añada complejidad únicamente cuando sea realmente necesario. Las llamadas directas a la API son preferibles a los"
+    },
+    {
+     "texto": "Hacer visibles los pasos y las decisiones del agente",
+     "pagina": 52,
+     "cita": "Muestre con claridad los pasos de planificación, los registros de ejecución y la trayectoria de decisiones del Agente—esto no solo facilita la depuración, sino que también"
+    },
+    {
+     "texto": "Preferir llamadas directas a la API antes que frameworks complejos",
+     "pagina": 52,
+     "cita": "Las llamadas directas a la API son preferibles a los frameworks complejos, y el código claro es preferible a las abstracciones ingeniosas."
+    }
+   ]
+  }
+ ]
+}

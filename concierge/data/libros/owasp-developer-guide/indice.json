@@ -1,0 +1,284 @@
+[
+ {
+  "titulo": "1. Introduction",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 4
+ },
+ {
+  "titulo": "2.2 Security fundamentals",
+  "nivel": 1,
+  "pagina_inicio": 5,
+  "pagina_fin": 10
+ },
+ {
+  "titulo": "2.3 Secure development and integration",
+  "nivel": 1,
+  "pagina_inicio": 11,
+  "pagina_fin": 18
+ },
+ {
+  "titulo": "2.4 Principles of security",
+  "nivel": 1,
+  "pagina_inicio": 19,
+  "pagina_fin": 26
+ },
+ {
+  "titulo": "2.5 Principles of cryptography",
+  "nivel": 1,
+  "pagina_inicio": 27,
+  "pagina_fin": 37
+ },
+ {
+  "titulo": "2.6 OWASP Top 10",
+  "nivel": 1,
+  "pagina_inicio": 38,
+  "pagina_fin": 47
+ },
+ {
+  "titulo": "3.1 Overview",
+  "nivel": 1,
+  "pagina_inicio": 48,
+  "pagina_fin": 49
+ },
+ {
+  "titulo": "3.2 Requirements in practice",
+  "nivel": 1,
+  "pagina_inicio": 50,
+  "pagina_fin": 53
+ },
+ {
+  "titulo": "3.3 Risk profile",
+  "nivel": 1,
+  "pagina_inicio": 54,
+  "pagina_fin": 57
+ },
+ {
+  "titulo": "3.4 OpenCRE",
+  "nivel": 1,
+  "pagina_inicio": 58,
+  "pagina_fin": 61
+ },
+ {
+  "titulo": "3.5 SecurityRAT",
+  "nivel": 1,
+  "pagina_inicio": 62,
+  "pagina_fin": 66
+ },
+ {
+  "titulo": "3.6 ASVS",
+  "nivel": 1,
+  "pagina_inicio": 67,
+  "pagina_fin": 70
+ },
+ {
+  "titulo": "3.7 MAS",
+  "nivel": 1,
+  "pagina_inicio": 71,
+  "pagina_fin": 72
+ },
+ {
+  "titulo": "3.8 SKF",
+  "nivel": 1,
+  "pagina_inicio": 73,
+  "pagina_fin": 74
+ },
+ {
+  "titulo": "4.1 Overview",
+  "nivel": 1,
+  "pagina_inicio": 75,
+  "pagina_fin": 76
+ },
+ {
+  "titulo": "4.2 Threat modeling",
+  "nivel": 1,
+  "pagina_inicio": 77,
+  "pagina_fin": 106
+ },
+ {
+  "titulo": "4.3 Web application checklist",
+  "nivel": 1,
+  "pagina_inicio": 107,
+  "pagina_fin": 137
+ },
+ {
+  "titulo": "4.4 MAS checklist",
+  "nivel": 1,
+  "pagina_inicio": 138,
+  "pagina_fin": 140
+ },
+ {
+  "titulo": "5.2 Documentation",
+  "nivel": 1,
+  "pagina_inicio": 141,
+  "pagina_fin": 147
+ },
+ {
+  "titulo": "5.3 Dependencies",
+  "nivel": 1,
+  "pagina_inicio": 148,
+  "pagina_fin": 157
+ },
+ {
+  "titulo": "5.4 Secure Libraries",
+  "nivel": 1,
+  "pagina_inicio": 158,
+  "pagina_fin": 164
+ },
+ {
+  "titulo": "5.5 MASWE",
+  "nivel": 1,
+  "pagina_inicio": 165,
+  "pagina_fin": 167
+ },
+ {
+  "titulo": "6.2 Guides",
+  "nivel": 1,
+  "pagina_inicio": 168,
+  "pagina_fin": 176
+ },
+ {
+  "titulo": "6.3 Tools",
+  "nivel": 1,
+  "pagina_inicio": 177,
+  "pagina_fin": 185
+ },
+ {
+  "titulo": "6.4 Frameworks",
+  "nivel": 1,
+  "pagina_inicio": 186,
+  "pagina_fin": 188
+ },
+ {
+  "titulo": "6.5 Vulnerability management",
+  "nivel": 1,
+  "pagina_inicio": 189,
+  "pagina_fin": 192
+ },
+ {
+  "titulo": "7.2 Vulnerable Applications",
+  "nivel": 1,
+  "pagina_inicio": 193,
+  "pagina_fin": 203
+ },
+ {
+  "titulo": "7.3 Secure Coding Dojo",
+  "nivel": 1,
+  "pagina_inicio": 204,
+  "pagina_fin": 205
+ },
+ {
+  "titulo": "7.4 SKF",
+  "nivel": 1,
+  "pagina_inicio": 206,
+  "pagina_fin": 207
+ },
+ {
+  "titulo": "7.5 SamuraiWTF",
+  "nivel": 1,
+  "pagina_inicio": 208,
+  "pagina_fin": 210
+ },
+ {
+  "titulo": "7.6 OWASP Top 10",
+  "nivel": 1,
+  "pagina_inicio": 211,
+  "pagina_fin": 213
+ },
+ {
+  "titulo": "7.7 Mobile Top 10",
+  "nivel": 1,
+  "pagina_inicio": 214,
+  "pagina_fin": 216
+ },
+ {
+  "titulo": "7.8 API Top 10",
+  "nivel": 1,
+  "pagina_inicio": 217,
+  "pagina_fin": 218
+ },
+ {
+  "titulo": "7.9 WrongSecrets",
+  "nivel": 1,
+  "pagina_inicio": 219,
+  "pagina_fin": 220
+ },
+ {
+  "titulo": "7.10 OWASP Snakes and Ladders",
+  "nivel": 1,
+  "pagina_inicio": 221,
+  "pagina_fin": 223
+ },
+ {
+  "titulo": "8.2 Security Culture",
+  "nivel": 1,
+  "pagina_inicio": 224,
+  "pagina_fin": 226
+ },
+ {
+  "titulo": "8.3 Security Champions",
+  "nivel": 1,
+  "pagina_inicio": 227,
+  "pagina_fin": 238
+ },
+ {
+  "titulo": "8.4 SAMM",
+  "nivel": 1,
+  "pagina_inicio": 239,
+  "pagina_fin": 241
+ },
+ {
+  "titulo": "8.5 ASVS",
+  "nivel": 1,
+  "pagina_inicio": 242,
+  "pagina_fin": 245
+ },
+ {
+  "titulo": "8.6 MAS",
+  "nivel": 1,
+  "pagina_inicio": 246,
+  "pagina_fin": 247
+ },
+ {
+  "titulo": "9.2 DevSecOps Guideline",
+  "nivel": 1,
+  "pagina_inicio": 248,
+  "pagina_fin": 250
+ },
+ {
+  "titulo": "9.3 Coraza WAF",
+  "nivel": 1,
+  "pagina_inicio": 251,
+  "pagina_fin": 252
+ },
+ {
+  "titulo": "9.4 ModSecurity WAF",
+  "nivel": 1,
+  "pagina_inicio": 253,
+  "pagina_fin": 254
+ },
+ {
+  "titulo": "9.5 OWASP CRS",
+  "nivel": 1,
+  "pagina_inicio": 255,
+  "pagina_fin": 256
+ },
+ {
+  "titulo": "10.1 Overview",
+  "nivel": 1,
+  "pagina_inicio": 257,
+  "pagina_fin": 259
+ },
+ {
+  "titulo": "11.2 Guides",
+  "nivel": 1,
+  "pagina_inicio": 260,
+  "pagina_fin": 266
+ },
+ {
+  "titulo": "11.3 BLT",
+  "nivel": 1,
+  "pagina_inicio": 267,
+  "pagina_fin": 268
+ }
+]

@@ -1,0 +1,74 @@
+[
+ {
+  "titulo": "Presentación",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 2
+ },
+ {
+  "titulo": "Preámbulo",
+  "nivel": 1,
+  "pagina_inicio": 3,
+  "pagina_fin": 7
+ },
+ {
+  "titulo": "Capítulo 1. Veintitrés principios de Asilomar para la inteligencia artificial y el futuro de la vida",
+  "nivel": 1,
+  "pagina_inicio": 8,
+  "pagina_fin": 48
+ },
+ {
+  "titulo": "Capítulo 2. Declaración de Montreal para una IA responsable: 10 principios y 59 recomendaciones",
+  "nivel": 1,
+  "pagina_inicio": 49,
+  "pagina_fin": 153
+ },
+ {
+  "titulo": "Capítulo 3. Diez recomendaciones de la UNESCO sobre ética de la inteligencia artificial",
+  "nivel": 1,
+  "pagina_inicio": 154,
+  "pagina_fin": 169
+ },
+ {
+  "titulo": "Capítulo 4. Recomendación del Consejo sobre IA de la OCDE: desigualdad e inclusión",
+  "nivel": 1,
+  "pagina_inicio": 170,
+  "pagina_fin": 183
+ },
+ {
+  "titulo": "Capítulo 5. Propuesta axiológica de la Unión Europea: directrices éticas para una IA confiable",
+  "nivel": 1,
+  "pagina_inicio": 184,
+  "pagina_fin": 207
+ },
+ {
+  "titulo": "Capítulo 6. Asociación en IA en beneficio de las personas y la sociedad: retos y perspectivas",
+  "nivel": 1,
+  "pagina_inicio": 208,
+  "pagina_fin": 230
+ },
+ {
+  "titulo": "Capítulo 7. IEEE: un estándar global como iniciativa ética de la IA",
+  "nivel": 1,
+  "pagina_inicio": 231,
+  "pagina_fin": 247
+ },
+ {
+  "titulo": "Capítulo 8. Ética de la IA desde las empresas globales: Microsoft, Google, Meta y Apple",
+  "nivel": 1,
+  "pagina_inicio": 248,
+  "pagina_fin": 294
+ },
+ {
+  "titulo": "Capítulo 9. Estados Unidos, China y Rusia: propuestas nacionales para una ética de la IA en la nueva guerra fría",
+  "nivel": 1,
+  "pagina_inicio": 295,
+  "pagina_fin": 337
+ },
+ {
+  "titulo": "Capítulo 10. Menos es más: reconstruir una ética clásica normativa para un futuro responsable de la IA",
+  "nivel": 1,
+  "pagina_inicio": 338,
+  "pagina_fin": 391
+ }
+]

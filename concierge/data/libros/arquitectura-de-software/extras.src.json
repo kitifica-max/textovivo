@@ -1,0 +1,96 @@
+{
+ "glosario": [
+  {
+   "termino": "Decisiones tempranas de diseño",
+   "definicion": "La arquitectura encarna las decisiones de diseño más tempranas, con un peso enorme sobre el resto.",
+   "buscar": "Decisiones tempranas de diseño. La AS representa la encarnación de las decisiones de diseño más tempranas",
+   "palabras": 24
+  },
+  {
+   "termino": "Restricciones constructivas",
+   "definicion": "La descripción arquitectónica da blueprints parciales: componentes y dependencias entre ellos.",
+   "buscar": "Restricciones constructivas. Una descripción arquitectónica proporciona blueprints parciales para el desarrollo",
+   "palabras": 24
+  },
+  {
+   "termino": "Escenarios",
+   "definicion": "Técnicas usadas sobre todo para elicitar requerimientos.",
+   "buscar": "Los escenarios han sido básicamente técnicas que se implementan en la elicitación de los requerimientos",
+   "palabras": 24
+  },
+  {
+   "termino": "Abstracción",
+   "definicion": "Concepto con varias acepciones: proceso de abstraer o la entidad resultante.",
+   "buscar": "El concepto de abstracción (que a veces se usa en el sentido del proceso de abstraer",
+   "palabras": 24
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Para qué sirve una arquitectura de software",
+   "resumen": "Los usos que el libro atribuye a las descripciones arquitectónicas.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Comunicación mutua",
+     "descripcion": "Un nivel de abstracción compartido entre los interesados.",
+     "buscar": "La AS representa un alto nivel de abstracción común que la mayoría de los participantes",
+     "palabras": 26
+    },
+    {
+     "titulo": "Decisiones tempranas de diseño",
+     "descripcion": "Las decisiones más tempranas pesan más.",
+     "buscar": "Decisiones tempranas de diseño. La AS representa la encarnación de las decisiones de diseño más tempranas",
+     "palabras": 26
+    },
+    {
+     "titulo": "Restricciones constructivas",
+     "descripcion": "Qué componentes hay y cómo dependen entre sí.",
+     "buscar": "Restricciones constructivas. Una descripción arquitectónica proporciona blueprints parciales para el desarrollo",
+     "palabras": 26
+    },
+    {
+     "titulo": "Evolución",
+     "descripcion": "Mostrar las dimensiones en que se espera que cambie el sistema.",
+     "buscar": "Evolución. La AS puede exponer las dimensiones a lo largo de las cuales puede esperarse que evolucione un sistema",
+     "palabras": 26
+    },
+    {
+     "titulo": "Análisis",
+     "descripcion": "Verificaciones de consistencia y conformidad con restricciones.",
+     "buscar": "Análisis. Las descripciones arquitectónicas aportan nuevas oportunidades para el análisis",
+     "palabras": 26
+    },
+    {
+     "titulo": "Administración",
+     "descripcion": "Una arquitectura viable es un logro clave del proyecto.",
+     "buscar": "Administración. La experiencia demuestra que los proyectos exitosos consideran una arquitectura viable",
+     "palabras": 26
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Qué debería aportarte una arquitectura de software",
+   "contexto": "Para revisar si tu descripción arquitectónica cumple su función.",
+   "items": [
+    {
+     "texto": "Dar una base común de comunicación",
+     "buscar": "La AS representa un alto nivel de abstracción común que la mayoría de los participantes",
+     "palabras": 22
+    },
+    {
+     "texto": "Registrar las decisiones de diseño tempranas",
+     "buscar": "Decisiones tempranas de diseño. La AS representa la encarnación de las decisiones de diseño más tempranas",
+     "palabras": 24
+    },
+    {
+     "texto": "Mostrar cómo se espera que evolucione el sistema",
+     "buscar": "Evolución. La AS puede exponer las dimensiones a lo largo de las cuales puede esperarse que evolucione un sistema",
+     "palabras": 26
+    }
+   ]
+  }
+ ]
+}

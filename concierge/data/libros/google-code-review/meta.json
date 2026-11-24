@@ -1,0 +1,9 @@
+{
+ "titulo": "Google Engineering Practices: Code Review",
+ "autor": "Google",
+ "descripcion": "Cómo hacer y recibir revisiones de código: el estándar, qué mirar, comentarios, velocidad, CLs pequeños y descripciones claras.",
+ "idioma": "en",
+ "publicar": true,
+ "paginacion": "logica",
+ "atribucion": "«Engineering Practices Documentation: Code Review», de Google (github.com/google/eng-practices), publicado bajo licencia Creative Commons Atribución 3.0 (CC BY 3.0). Está en inglés; el resumen, las definiciones y los nombres en español son de Textifika. Textifika dividió el texto en secciones lógicas y le añadió glosario, frameworks y checklists con citas literales. Google no avala este servicio."
+}

@@ -1,0 +1,50 @@
+{
+ "glosario": [
+  {
+   "termino": "Agente de IA",
+   "definicion": "Sistema que percibe su entorno, razona sobre lo que percibe y ejecuta acciones para alcanzar objetivos.",
+   "buscar": "Un agente de IA es un sistema que percibe su entorno a través de sensores, razona sobre lo que percibe",
+   "palabras": 26
+  },
+  {
+   "termino": "RAG (generación aumentada por recuperación)",
+   "definicion": "Recuperar información pasada relevante cuando se necesita, como una biblioteca de referencia.",
+   "buscar": "Generación Aumentada por Recuperación (RAG): recuperar información pasada relevante cuando se necesita",
+   "palabras": 26
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Las cuatro unidades del curso de IA agéntica",
+   "resumen": "El curso de 15 semanas se organiza en cuatro unidades, de los fundamentos a la seguridad y las aplicaciones.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Unidad 1: Fundamentos (Semanas 1-3)",
+     "descripcion": "Definiciones, razonamiento con LLM y estrategias de prompting.",
+     "buscar": "Unidad 1: Fundamentos (Semanas 1-3)",
+     "palabras": 22
+    },
+    {
+     "titulo": "Unidad 2: Capacidades fundamentales (Semanas 4-7)",
+     "descripcion": "Herramientas, arquitecturas, memoria y RAG.",
+     "buscar": "Unidad 2: Capacidades fundamentales del agente (Semanas 4-7)",
+     "palabras": 22
+    },
+    {
+     "titulo": "Unidad 3: Temas avanzados (Semanas 8-10)",
+     "descripcion": "Multiagente, planificación y evaluación.",
+     "buscar": "Unidad 3: Temas avanzados (Semanas 8-10)",
+     "palabras": 22
+    },
+    {
+     "titulo": "Unidad 4: Seguridad, sociedad y aplicaciones (Semanas 11-15)",
+     "descripcion": "Seguridad, supervisión, flujos de trabajo y gobernanza.",
+     "buscar": "Unidad 4: Seguridad, sociedad y aplicaciones (Semanas 11-15)",
+     "palabras": 22
+    }
+   ]
+  }
+ ],
+ "checklists": []
+}

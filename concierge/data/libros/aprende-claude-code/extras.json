@@ -1,0 +1,162 @@
+{
+ "glosario": [
+  {
+   "termino": "Terminal",
+   "definicion": "Ventana donde escribes comandos de texto para darle órdenes al ordenador.",
+   "pagina": 30,
+   "cita": "Una ventana donde escribes comandos de texto para darle órdenes al ordenador, en lugar de hacer clic con el ratón. Como enviarle instrucciones escritas"
+  },
+  {
+   "termino": "Commit",
+   "definicion": "Punto de guardado en git que captura el estado del proyecto con un mensaje.",
+   "pagina": 31,
+   "cita": "Un ’punto de guardado’ en git. Cada commit captura cómo estaba tu proyecto en ese momento, con un mensaje que explica qué cambiaste. Como"
+  },
+  {
+   "termino": "Branch (rama)",
+   "definicion": "Línea de trabajo paralela en git para cambiar sin tocar la versión principal.",
+   "pagina": 31,
+   "cita": "Una línea de trabajo paralela en git. Te permite hacer cambios sin tocar la versión principal hasta que estés seguro. Como hacer una copia"
+  },
+  {
+   "termino": "Skill",
+   "definicion": "Conjunto reutilizable de instrucciones y procedimientos que amplían lo que Claude sabe hacer.",
+   "pagina": 41,
+   "cita": "Una Skill es un conjunto reutilizable de instrucciones y procedimientos (checklists, flujos de varios pasos, comportamientos especializados) que amplían lo que Claude sabe hacer."
+  },
+  {
+   "termino": "Subagentes",
+   "definicion": "Ayudantes especializados que trabajan en paralelo mientras el agente principal coordina.",
+   "pagina": 44,
+   "cita": "Los subagentes son ”ayudantes especializados” que Claude Code puede lanzar para trabajar en paralelo: uno revisa código, otro investiga, otro escribe tests... mientras el"
+  },
+  {
+   "termino": "Plan Mode",
+   "definicion": "Modo en que Claude investiga y propone un plan sin tocar ningún archivo.",
+   "pagina": 50,
+   "cita": "En Plan Mode, Claude explora e investiga tu código y propone un plan detallado, pero sin tocar ningún archivo. Tú lo revisas y, si"
+  },
+  {
+   "termino": "Mínimo privilegio",
+   "definicion": "Principio de permisos: confirmar toda acción potencialmente irreversible por defecto.",
+   "pagina": 66,
+   "cita": "Claude Code sigue el principio de mínimo privilegio: por defecto pide confirmación para cualquier acción potencialmente irreversible o que afecte a recursos fuera de"
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Los 7 principios para escribir buenos prompts",
+   "resumen": "Siete hábitos del libro para pedirle mejor las cosas a Claude Code, con ejemplos de antes y después.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "1. Sé específico, no genérico",
+     "descripcion": "«Arregla esto» obliga a Claude a adivinar: da contexto.",
+     "pagina": 26,
+     "cita": "1. Sé específico, no genérico ”Arregla esto” obliga a Claude a adivinar. Cuanto más contexto des, menos adivina y mejor acierta. Poco claroArregla mi código Mucho"
+    },
+    {
+     "orden": 2,
+     "titulo": "2. Di tu nivel y pide explicaciones",
+     "descripcion": "Claude se adapta a ti si le dices cuánto sabes.",
+     "pagina": 26,
+     "cita": "2. Di tu nivel y pide explicaciones Claude se adapta a ti. Si le dices que estás empezando, te explicará las cosas en lugar de soltar"
+    },
+    {
+     "orden": 3,
+     "titulo": "3. Pide ver antes de actuar",
+     "descripcion": "Que muestre el plan antes de cambiar nada.",
+     "pagina": 26,
+     "cita": "3. Pide ver antes de actuar Para tareas que cambian archivos o pueden tener consecuencias, pide el plan primero. Así aprendes y evitas sustos. Prompt: Plantilla"
+    },
+    {
+     "orden": 4,
+     "titulo": "4. Da contexto: pega errores, datos y ejemplos",
+     "descripcion": "Pega el error entero y enséñale el archivo.",
+     "pagina": 27,
+     "cita": "4. Da contexto: pega errores, datos y ejemplos No describas el error con tus palabras: pégalo entero. No expliques cómo son tus datos: enséñale el archivo."
+    },
+    {
+     "orden": 5,
+     "titulo": "5. Divide las tareas grandes",
+     "descripcion": "Ve por partes en lugar de pedirlo todo de golpe.",
+     "pagina": 27,
+     "cita": "5. Divide las tareas grandes En lugar de pedir todo de golpe, ve por partes. Claude trabaja mejor y tú entiendes lo que va pasando. Poco"
+    },
+    {
+     "orden": 6,
+     "titulo": "6. Describe el resultado, no la solución técnica",
+     "descripcion": "Dile qué quieres conseguir y deja que Claude proponga el cómo.",
+     "pagina": 27,
+     "cita": "6. Describe el resultado que quieres, no la solución técnica No tienes que saber cómo se hace. Describe qué quieres conseguir y deja que Claude proponga"
+    },
+    {
+     "orden": 7,
+     "titulo": "7. Pide que te corrija y te enseñe",
+     "descripcion": "Úsalo también para mejorar tú.",
+     "pagina": 28,
+     "cita": "7. Pide que te corrija y te enseñe Claude Code no es solo para que haga el trabajo: úsalo para mejorar tú. Prompt: Modo aprendizaje Cuando"
+    }
+   ]
+  },
+  {
+   "nombre": "Trabajar con seguridad: planificar, probar y limitar permisos",
+   "resumen": "Los hábitos que el libro recomienda para usar Claude Code con red de seguridad.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Planificar antes de actuar",
+     "descripcion": "Usar Plan Mode en tareas grandes.",
+     "pagina": 50,
+     "cita": "Es la mejor red de seguridad para tareas grandes. 14.1.1 Cómo activarlo • Pulsa Shift+Tab para alternar el modo (vuelve a pulsar para salir). • O"
+    },
+    {
+     "orden": 2,
+     "titulo": "Delegar con subagentes especializados",
+     "descripcion": "Revisor, planificador, depurador o investigador, en paralelo.",
+     "pagina": 44,
+     "cita": "En tareas grandes, en vez de hacerlo todo de forma lineal, Claude Code puede repartir el trabajo entre varios subagentes con roles concretos (revisor, planificador, depurador"
+    },
+    {
+     "orden": 3,
+     "titulo": "Dar solo los permisos necesarios",
+     "descripcion": "Mínimo privilegio y confirmación de lo irreversible.",
+     "pagina": 66,
+     "cita": "por defecto pide confirmación para cualquier acción potencialmente irreversible o que afecte a recursos fuera de tu proyecto. Tú decides cuándo darle más autonomía. 19.2 Herramientas"
+    },
+    {
+     "orden": 4,
+     "titulo": "Reutilizar lo que funciona como skills",
+     "descripcion": "Definir una vez las tareas repetitivas.",
+     "pagina": 41,
+     "cita": "Las defines una vez y Claude las usa cuando hacen falta. 11.1 ¿Qué es una Skill? Una Skill es un conjunto reutilizable de instrucciones y procedimientos"
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Antes de dar permisos a Claude Code",
+   "contexto": "Para decidir qué puede hacer sin preguntarte.",
+   "items": [
+    {
+     "texto": "Aplicar el principio de mínimo privilegio",
+     "pagina": 66,
+     "cita": "Claude Code sigue el principio de mínimo privilegio: por defecto pide confirmación para cualquier acción potencialmente irreversible o que afecte a recursos fuera de"
+    },
+    {
+     "texto": "Confirmar toda acción irreversible o fuera del proyecto",
+     "pagina": 66,
+     "cita": "por defecto pide confirmación para cualquier acción potencialmente irreversible o que afecte a recursos fuera de tu proyecto. Tú decides cuándo darle más autonomía."
+    },
+    {
+     "texto": "Dar más autonomía solo cuando tú lo decidas",
+     "pagina": 66,
+     "cita": "Tú decides cuándo darle más autonomía. 19.2 Herramientas y sus permisos Claude Code tiene acceso a estas herramientas, cada una"
+    }
+   ]
+  }
+ ]
+}

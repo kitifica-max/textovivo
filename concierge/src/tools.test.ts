@@ -13,7 +13,8 @@ import {
   crearLibro,
   listarIndice,
   obtenerChecklist,
-  obtenerFramework
+  obtenerFramework,
+  esSinResultado
 } from "./tools.ts";
 
 // Corre sobre el libro real cargado en data/: ninguna cita inventada llega al lector.
@@ -207,4 +208,15 @@ test("etiqueta de coincidencia: si el término queda más allá del fragmento re
   assert.match(r.aviso_fragmento, /más allá del fragmento/);
   const corto: any = await buscarConcepto(arte, "commander");
   assert.ok(corto.resultados.every((x: any) => x.coincide_en?.en_fragmento === true));
+});
+
+test("esSinResultado: solo marca las respuestas que son únicamente un «No encontré…» / «No hay…»", async () => {
+  assert.equal(esSinResultado(await buscarConcepto(libro, "criptomonedas blockchain")), true);
+  assert.equal(esSinResultado(await buscarConcepto(libro, "testimonio con cifras")), false);
+  assert.equal(esSinResultado(await buscarConcepto(libro, "fricción")), false); // glosario aunque no haya páginas
+  assert.equal(esSinResultado(obtenerFramework(libro, "criptomonedas blockchain")), true);
+  assert.equal(esSinResultado(obtenerFramework(libro, "tres preguntas para la promesa")), false);
+  assert.equal(esSinResultado(await citarFuente(libro, "los botones genéricos no sirven")), false);
+  assert.equal(esSinResultado({ mensaje: "El libro «x» no existe." }), false); // libro inexistente: no es una búsqueda sin resultado
+  assert.equal(esSinResultado(null), false);
 });

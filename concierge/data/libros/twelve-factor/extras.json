@@ -1,0 +1,149 @@
+{
+ "glosario": [
+  {
+   "termino": "Aplicación de doce factores",
+   "definicion": "Metodología para construir software como servicio portable, escalable y fácil de desplegar.",
+   "pagina": 1,
+   "cita": "The twelve-factor app is a methodology for building software-as-a-service apps that: • Use declarative formats for setup automation, to minimize time and cost for"
+  },
+  {
+   "termino": "Servicio de respaldo (backing service)",
+   "definicion": "Cualquier servicio que la app consume por red, como una base de datos o una cola; se trata como recurso conectable.",
+   "pagina": 10,
+   "cita": "Treat backing services as attached resources 1. A twelve-factor app relies on backing services for normal operation. A backing service is any service the"
+  },
+  {
+   "termino": "Procesos sin estado (stateless)",
+   "definicion": "La app corre como procesos sin estado; lo que debe persistir va a un servicio de respaldo.",
+   "pagina": 14,
+   "cita": "Execute the app as one or more stateless processes 1. A twelve-factor app runs as one or more processes. The app is executed in"
+  },
+  {
+   "termino": "Paridad entre desarrollo y producción",
+   "definicion": "Mantener desarrollo, staging y producción lo más parecidos posible.",
+   "pagina": 22,
+   "cita": "Keep development, staging, and production as similar as possible 1. A twelve-factor app minimizes the gaps between development, staging, and production. Historically, there have"
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Los doce factores",
+   "resumen": "Doce principios, uno por uno, para que una app sea desplegable y escalable.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "I. Código base",
+     "descripcion": "Un solo código en control de versiones, muchos despliegues.",
+     "pagina": 3,
+     "cita": "One codebase tracked in revision control, many deploys 1. A twelve-factor app is always tracked in a version control system. A twelve-factor"
+    },
+    {
+     "orden": 2,
+     "titulo": "II. Dependencias",
+     "descripcion": "Declararlas y aislarlas explícitamente.",
+     "pagina": 5,
+     "cita": "Explicitly declare and isolate dependencies 1\\. A twelve-factor app is built and run in deterministic environments. One benefit of explicit dependency declaration"
+    },
+    {
+     "orden": 3,
+     "titulo": "III. Configuración",
+     "descripcion": "Guardarla en el entorno, no en el código.",
+     "pagina": 7,
+     "cita": "Store config in the environment 1\\. A twelve-factor app strictly separates config from code An app's config is everything that is likely"
+    },
+    {
+     "orden": 4,
+     "titulo": "IV. Servicios de respaldo",
+     "descripcion": "Tratarlos como recursos conectables.",
+     "pagina": 10,
+     "cita": "Treat backing services as attached resources 1. A twelve-factor app relies on backing services for normal operation. A backing service is any"
+    },
+    {
+     "orden": 5,
+     "titulo": "V. Construir, publicar, ejecutar",
+     "descripcion": "Separar estrictamente las etapas de build y de ejecución.",
+     "pagina": 12,
+     "cita": "Strictly separate build and run stages 1\\. An app has distinct build, release, and run stages A codebase is transformed into a"
+    },
+    {
+     "orden": 6,
+     "titulo": "VI. Procesos",
+     "descripcion": "Ejecutar la app como procesos sin estado.",
+     "pagina": 14,
+     "cita": "Execute the app as one or more stateless processes 1. A twelve-factor app runs as one or more processes. The app is"
+    },
+    {
+     "orden": 7,
+     "titulo": "VII. Enlace de puertos",
+     "descripcion": "Exportar los servicios mediante un puerto.",
+     "pagina": 16,
+     "cita": "Export services via port binding 1. A twelve-factor app is completely self-contained and exports HTTP as a service by binding to a"
+    },
+    {
+     "orden": 8,
+     "titulo": "VIII. Concurrencia",
+     "descripcion": "Escalar con el modelo de procesos.",
+     "pagina": 18,
+     "cita": "Scale out via the process model 1. Any computer program, once run, is represented by one or more processes Any computer program"
+    },
+    {
+     "orden": 9,
+     "titulo": "IX. Desechabilidad",
+     "descripcion": "Arrancar rápido y apagar con elegancia.",
+     "pagina": 20,
+     "cita": "Maximize robustness with fast startup and graceful shutdown 1. A twelve-factor app’s processes are disposable. Processes are designed to be started or"
+    },
+    {
+     "orden": 10,
+     "titulo": "X. Paridad dev/prod",
+     "descripcion": "Que desarrollo, staging y producción se parezcan.",
+     "pagina": 22,
+     "cita": "Keep development, staging, and production as similar as possible 1. A twelve-factor app minimizes the gaps between development, staging, and production. Historically"
+    },
+    {
+     "orden": 11,
+     "titulo": "XI. Logs",
+     "descripcion": "Tratarlos como flujos de eventos.",
+     "pagina": 25,
+     "cita": "Treat logs as event streams 1\\. A twelve-factor app produces logs as a stream of time-ordered events. Logs provide visibility into the"
+    },
+    {
+     "orden": 12,
+     "titulo": "XII. Procesos de administración",
+     "descripcion": "Correrlos como procesos de una sola vez.",
+     "pagina": 27,
+     "cita": "Run admin/management tasks as one-off processes 1. A twelve-factor app distinguishes between its regular business processes and one-off administrative tasks. The process"
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "¿Tu app cumple lo básico de los doce factores?",
+   "contexto": "Revisión rápida antes de desplegar.",
+   "items": [
+    {
+     "texto": "Un solo código base en control de versiones",
+     "pagina": 3,
+     "cita": "One codebase tracked in revision control, many deploys 1. A twelve-factor app is always tracked in a version control system. A twelve-factor"
+    },
+    {
+     "texto": "Dependencias declaradas explícitamente",
+     "pagina": 5,
+     "cita": "Explicitly declare and isolate dependencies 1\\. A twelve-factor app is built and run in deterministic environments. One benefit of explicit dependency declaration"
+    },
+    {
+     "texto": "La configuración vive en el entorno",
+     "pagina": 7,
+     "cita": "Store config in the environment 1\\. A twelve-factor app strictly separates config from code An app's config is everything that is likely"
+    },
+    {
+     "texto": "Los logs se tratan como flujo de eventos",
+     "pagina": 25,
+     "cita": "Treat logs as event streams 1\\. A twelve-factor app produces logs as a stream of time-ordered events. Logs provide visibility into the"
+    }
+   ]
+  }
+ ]
+}

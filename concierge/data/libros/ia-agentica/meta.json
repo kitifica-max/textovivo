@@ -1,0 +1,9 @@
+{
+ "titulo": "IA Agéntica: fundamentos, arquitecturas y aplicaciones",
+ "autor": "Francisco-Javier Rodrigo-Ginés",
+ "descripcion": "Curso de 15 semanas sobre agentes de IA: definiciones, razonamiento, prompting, herramientas y MCP, arquitecturas, memoria, RAG, multiagente, evaluación, seguridad y gobernanza.",
+ "idioma": "es",
+ "publicar": true,
+ "paginacion": "logica",
+ "atribucion": "«IA Agéntica: Fundamentos, Arquitecturas y Aplicaciones. Material docente completo», de Francisco-Javier Rodrigo-Ginés, versión 1.0, 2026 (zenodo.org/records/19884762), publicado bajo licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0). Por la cláusula de compartir igual, el destilado de Textifika (glosario, frameworks y checklists) se ofrece bajo CC BY-SA 4.0. Textifika dividió el texto en secciones lógicas (la guía docente y las 15 semanas) y le añadió glosario, frameworks y checklists con citas literales."
+}

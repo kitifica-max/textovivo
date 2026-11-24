@@ -1,0 +1,151 @@
+{
+ "glosario": [
+  {
+   "termino": "Terminal",
+   "definicion": "Ventana donde escribes comandos de texto para darle órdenes al ordenador.",
+   "buscar": "Una ventana donde escribes comandos de texto para darle órdenes al ordenador",
+   "palabras": 24
+  },
+  {
+   "termino": "Commit",
+   "definicion": "Punto de guardado en git que captura el estado del proyecto con un mensaje.",
+   "buscar": "Un ’punto de guardado’ en git",
+   "palabras": 24
+  },
+  {
+   "termino": "Branch (rama)",
+   "definicion": "Línea de trabajo paralela en git para cambiar sin tocar la versión principal.",
+   "buscar": "Una línea de trabajo paralela en git",
+   "palabras": 24
+  },
+  {
+   "termino": "Skill",
+   "definicion": "Conjunto reutilizable de instrucciones y procedimientos que amplían lo que Claude sabe hacer.",
+   "buscar": "Una Skill es un conjunto reutilizable de instrucciones y procedimientos",
+   "palabras": 24
+  },
+  {
+   "termino": "Subagentes",
+   "definicion": "Ayudantes especializados que trabajan en paralelo mientras el agente principal coordina.",
+   "buscar": "Los subagentes son ”ayudantes especializados” que Claude Code puede lanzar para trabajar en paralelo",
+   "palabras": 24
+  },
+  {
+   "termino": "Plan Mode",
+   "definicion": "Modo en que Claude investiga y propone un plan sin tocar ningún archivo.",
+   "buscar": "En Plan Mode, Claude explora e investiga tu código y propone un plan detallado, pero sin tocar ningún archivo",
+   "palabras": 24
+  },
+  {
+   "termino": "Mínimo privilegio",
+   "definicion": "Principio de permisos: confirmar toda acción potencialmente irreversible por defecto.",
+   "buscar": "Claude Code sigue el principio de mínimo privilegio",
+   "palabras": 24
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Los 7 principios para escribir buenos prompts",
+   "resumen": "Siete hábitos del libro para pedirle mejor las cosas a Claude Code, con ejemplos de antes y después.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "1. Sé específico, no genérico",
+     "descripcion": "«Arregla esto» obliga a Claude a adivinar: da contexto.",
+     "buscar": "1. Sé específico, no genérico",
+     "palabras": 26
+    },
+    {
+     "titulo": "2. Di tu nivel y pide explicaciones",
+     "descripcion": "Claude se adapta a ti si le dices cuánto sabes.",
+     "buscar": "2. Di tu nivel y pide explicaciones",
+     "palabras": 26
+    },
+    {
+     "titulo": "3. Pide ver antes de actuar",
+     "descripcion": "Que muestre el plan antes de cambiar nada.",
+     "buscar": "3. Pide ver antes de actuar",
+     "palabras": 26
+    },
+    {
+     "titulo": "4. Da contexto: pega errores, datos y ejemplos",
+     "descripcion": "Pega el error entero y enséñale el archivo.",
+     "buscar": "4. Da contexto: pega errores, datos y ejemplos",
+     "palabras": 26
+    },
+    {
+     "titulo": "5. Divide las tareas grandes",
+     "descripcion": "Ve por partes en lugar de pedirlo todo de golpe.",
+     "buscar": "5. Divide las tareas grandes",
+     "palabras": 26
+    },
+    {
+     "titulo": "6. Describe el resultado, no la solución técnica",
+     "descripcion": "Dile qué quieres conseguir y deja que Claude proponga el cómo.",
+     "buscar": "6. Describe el resultado que quieres, no la solución técnica",
+     "palabras": 26
+    },
+    {
+     "titulo": "7. Pide que te corrija y te enseñe",
+     "descripcion": "Úsalo también para mejorar tú.",
+     "buscar": "7. Pide que te corrija y te enseñe",
+     "palabras": 26
+    }
+   ]
+  },
+  {
+   "nombre": "Trabajar con seguridad: planificar, probar y limitar permisos",
+   "resumen": "Los hábitos que el libro recomienda para usar Claude Code con red de seguridad.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Planificar antes de actuar",
+     "descripcion": "Usar Plan Mode en tareas grandes.",
+     "buscar": "Es la mejor red de seguridad para tareas grandes",
+     "palabras": 26
+    },
+    {
+     "titulo": "Delegar con subagentes especializados",
+     "descripcion": "Revisor, planificador, depurador o investigador, en paralelo.",
+     "buscar": "En tareas grandes, en vez de hacerlo todo de forma lineal",
+     "palabras": 26
+    },
+    {
+     "titulo": "Dar solo los permisos necesarios",
+     "descripcion": "Mínimo privilegio y confirmación de lo irreversible.",
+     "buscar": "por defecto pide confirmación para cualquier acción potencialmente irreversible",
+     "palabras": 26
+    },
+    {
+     "titulo": "Reutilizar lo que funciona como skills",
+     "descripcion": "Definir una vez las tareas repetitivas.",
+     "buscar": "Las defines una vez y Claude las usa cuando hacen falta",
+     "palabras": 26
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Antes de dar permisos a Claude Code",
+   "contexto": "Para decidir qué puede hacer sin preguntarte.",
+   "items": [
+    {
+     "texto": "Aplicar el principio de mínimo privilegio",
+     "buscar": "Claude Code sigue el principio de mínimo privilegio",
+     "palabras": 24
+    },
+    {
+     "texto": "Confirmar toda acción irreversible o fuera del proyecto",
+     "buscar": "por defecto pide confirmación para cualquier acción potencialmente irreversible",
+     "palabras": 24
+    },
+    {
+     "texto": "Dar más autonomía solo cuando tú lo decidas",
+     "buscar": "Tú decides cuándo darle más autonomía",
+     "palabras": 20
+    }
+   ]
+  }
+ ]
+}

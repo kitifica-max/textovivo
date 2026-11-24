@@ -1,0 +1,464 @@
+[
+ {
+  "titulo": "1.1 Agente Moderno = LLM + Contexto + Herramientas",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 39
+ },
+ {
+  "titulo": "1.2 Ingeniería de Harness: la competitividad más allá del modelo",
+  "nivel": 1,
+  "pagina_inicio": 40,
+  "pagina_fin": 76
+ },
+ {
+  "titulo": "1.3 Patrones de diseño que recorren todo el libro",
+  "nivel": 1,
+  "pagina_inicio": 77,
+  "pagina_fin": 82
+ },
+ {
+  "titulo": "1.4 Resumen del capítulo",
+  "nivel": 1,
+  "pagina_inicio": 83,
+  "pagina_fin": 89
+ },
+ {
+  "titulo": "2.1 El Contexto —El Techo de las Capacidades del Agente",
+  "nivel": 1,
+  "pagina_inicio": 90,
+  "pagina_fin": 93
+ },
+ {
+  "titulo": "2.2 Cómo Invocan los Agentes a los LLMs: La Estructura de Contexto a Nivel de API",
+  "nivel": 1,
+  "pagina_inicio": 94,
+  "pagina_fin": 115
+ },
+ {
+  "titulo": "2.3 Diseño de contexto compatible con la Caché KV",
+  "nivel": 1,
+  "pagina_inicio": 116,
+  "pagina_fin": 151
+ },
+ {
+  "titulo": "2.4 Ingeniería de Prompts: Optimizando el Prompt del Sistema",
+  "nivel": 1,
+  "pagina_inicio": 152,
+  "pagina_fin": 175
+ },
+ {
+  "titulo": "2.5 Prompts dinámicos y Agent Skills",
+  "nivel": 1,
+  "pagina_inicio": 176,
+  "pagina_fin": 189
+ },
+ {
+  "titulo": "2.6 Barra de estado del Agente: mejora de la gestión de trayectorias mediante metainformación",
+  "nivel": 1,
+  "pagina_inicio": 190,
+  "pagina_fin": 208
+ },
+ {
+  "titulo": "2.7 Estrategias de Compresión de Contexto",
+  "nivel": 1,
+  "pagina_inicio": 209,
+  "pagina_fin": 233
+ },
+ {
+  "titulo": "3.1 Sistema de Memoria del Usuario",
+  "nivel": 1,
+  "pagina_inicio": 234,
+  "pagina_fin": 258
+ },
+ {
+  "titulo": "3.2 RAG Básico: Construyendo el Canal de Adquisición de Conocimiento del Agente",
+  "nivel": 1,
+  "pagina_inicio": 259,
+  "pagina_fin": 282
+ },
+ {
+  "titulo": "3.3 Más Allá del Texto Plano: Organización y Recuperación del Conocimiento",
+  "nivel": 1,
+  "pagina_inicio": 283,
+  "pagina_fin": 326
+ },
+ {
+  "titulo": "3.4 Resumen del Capítulo",
+  "nivel": 1,
+  "pagina_inicio": 327,
+  "pagina_fin": 335
+ },
+ {
+  "titulo": "4.2 Principios universales del diseño de herramientas",
+  "nivel": 1,
+  "pagina_inicio": 336,
+  "pagina_fin": 351
+ },
+ {
+  "titulo": "4.3 Ecosistema de herramientas: MCP y Skill Hubs",
+  "nivel": 1,
+  "pagina_inicio": 352,
+  "pagina_fin": 380
+ },
+ {
+  "titulo": "4.5 Herramientas de percepción",
+  "nivel": 1,
+  "pagina_inicio": 381,
+  "pagina_fin": 389
+ },
+ {
+  "titulo": "4.6 Herramientas de ejecución",
+  "nivel": 1,
+  "pagina_inicio": 390,
+  "pagina_fin": 404
+ },
+ {
+  "titulo": "4.7 Herramientas de colaboración",
+  "nivel": 1,
+  "pagina_inicio": 405,
+  "pagina_fin": 410
+ },
+ {
+  "titulo": "4.8 Resumen del capítulo",
+  "nivel": 1,
+  "pagina_inicio": 411,
+  "pagina_fin": 418
+ },
+ {
+  "titulo": "5.1 Coding Agent",
+  "nivel": 1,
+  "pagina_inicio": 419,
+  "pagina_fin": 483
+ },
+ {
+  "titulo": "5.2 El código: La metacapacidad de un Agente general",
+  "nivel": 1,
+  "pagina_inicio": 484,
+  "pagina_fin": 540
+ },
+ {
+  "titulo": "5.3 Resumen del capítulo",
+  "nivel": 1,
+  "pagina_inicio": 541,
+  "pagina_fin": 549
+ },
+ {
+  "titulo": "6.1 Dos ejes: modalidad y momento",
+  "nivel": 1,
+  "pagina_inicio": 550,
+  "pagina_fin": 551
+ },
+ {
+  "titulo": "6.2 Asincronía y orientación a eventos: cuando el mundo viene a buscarte",
+  "nivel": 1,
+  "pagina_inicio": 552,
+  "pagina_fin": 593
+ },
+ {
+  "titulo": "6.3 Voz: la interfaz humano-máquina más natural",
+  "nivel": 1,
+  "pagina_inicio": 594,
+  "pagina_fin": 609
+ },
+ {
+  "titulo": "6.4 Computer Use: Agentes de automatización de GUI",
+  "nivel": 1,
+  "pagina_inicio": 610,
+  "pagina_fin": 628
+ },
+ {
+  "titulo": "6.5 Operación robótica: ordenar un escritorio con XLeRobot",
+  "nivel": 1,
+  "pagina_inicio": 629,
+  "pagina_fin": 648
+ },
+ {
+  "titulo": "6.6 Resumen del capítulo",
+  "nivel": 1,
+  "pagina_inicio": 649,
+  "pagina_fin": 659
+ },
+ {
+  "titulo": "7.1 Anatomía de una tarea de evaluación: el dominio telecom de τ²-bench",
+  "nivel": 1,
+  "pagina_inicio": 660,
+  "pagina_fin": 669
+ },
+ {
+  "titulo": "7.2 Métricas de evaluación: la definición de éxito",
+  "nivel": 1,
+  "pagina_inicio": 670,
+  "pagina_fin": 672
+ },
+ {
+  "titulo": "7.3 El entorno de evaluación",
+  "nivel": 1,
+  "pagina_inicio": 673,
+  "pagina_fin": 677
+ },
+ {
+  "titulo": "7.4 Diseño del conjunto de datos de evaluación",
+  "nivel": 1,
+  "pagina_inicio": 678,
+  "pagina_fin": 690
+ },
+ {
+  "titulo": "7.5 Métodos de evaluación automatizada",
+  "nivel": 1,
+  "pagina_inicio": 691,
+  "pagina_fin": 722
+ },
+ {
+  "titulo": "7.6 Selección de Modelos Impulsada por la Evaluación",
+  "nivel": 1,
+  "pagina_inicio": 723,
+  "pagina_fin": 736
+ },
+ {
+  "titulo": "7.7 Significatividad Estadística de los Resultados de Evaluación",
+  "nivel": 1,
+  "pagina_inicio": 737,
+  "pagina_fin": 739
+ },
+ {
+  "titulo": "7.8 Observabilidad del Agente",
+  "nivel": 1,
+  "pagina_inicio": 740,
+  "pagina_fin": 744
+ },
+ {
+  "titulo": "7.9 De Reportes de Benchmark a Mejoras del Sistema",
+  "nivel": 1,
+  "pagina_inicio": 745,
+  "pagina_fin": 761
+ },
+ {
+  "titulo": "7.11 Entornos de Simulación: El Puente entre Evaluación y Post-Entrenamiento",
+  "nivel": 1,
+  "pagina_inicio": 762,
+  "pagina_fin": 768
+ },
+ {
+  "titulo": "7.12 Resumen del Capítulo",
+  "nivel": 1,
+  "pagina_inicio": 769,
+  "pagina_fin": 778
+ },
+ {
+  "titulo": "8.1 Del pre-entrenamiento a RL: panorama en cuatro partes",
+  "nivel": 1,
+  "pagina_inicio": 779,
+  "pagina_fin": 795
+ },
+ {
+  "titulo": "8.2 De Agentes de RL Clásicos a Agentes Modernos [Lectura Opcional]",
+  "nivel": 1,
+  "pagina_inicio": 796,
+  "pagina_fin": 817
+ },
+ {
+  "titulo": "8.3 Fundamentos del Pre-entrenamiento de Modelos [Lectura Opcional]",
+  "nivel": 1,
+  "pagina_inicio": 818,
+  "pagina_fin": 822
+ },
+ {
+  "titulo": "8.4 Mid-training: completar conocimiento y capacidades básicas",
+  "nivel": 1,
+  "pagina_inicio": 823,
+  "pagina_fin": 828
+ },
+ {
+  "titulo": "8.5 SFT (Ajuste Fino Supervisado)",
+  "nivel": 1,
+  "pagina_inicio": 829,
+  "pagina_fin": 837
+ },
+ {
+  "titulo": "8.6 Síntesis de Datos para SFT: De las Demostraciones a Trayectorias Entrenables",
+  "nivel": 1,
+  "pagina_inicio": 838,
+  "pagina_fin": 844
+ },
+ {
+  "titulo": "8.7 Cuándo elegir Mid-training, SFT y RL",
+  "nivel": 1,
+  "pagina_inicio": 845,
+  "pagina_fin": 847
+ },
+ {
+  "titulo": "8.8 RL de Un Solo Turno: Memoria vs Generalización",
+  "nivel": 1,
+  "pagina_inicio": 848,
+  "pagina_fin": 858
+ },
+ {
+  "titulo": "8.9 Algoritmos de RL: De 16 Rollouts a Una Actualización de Parámetros",
+  "nivel": 1,
+  "pagina_inicio": 859,
+  "pagina_fin": 868
+ },
+ {
+  "titulo": "8.10 Entornos de RL: De la Evaluación a la Simulación",
+  "nivel": 1,
+  "pagina_inicio": 869,
+  "pagina_fin": 877
+ },
+ {
+  "titulo": "8.11 De Un Solo Turno a Multiturno: Escenarios de Tarea y Asignación de Crédito",
+  "nivel": 1,
+  "pagina_inicio": 878,
+  "pagina_fin": 885
+ },
+ {
+  "titulo": "8.12 Diseño de recompensas: convertir el objetivo de la tarea en señal de aprendizaje",
+  "nivel": 1,
+  "pagina_inicio": 886,
+  "pagina_fin": 894
+ },
+ {
+  "titulo": "8.13 Destilación: mejorar la eficiencia de muestra",
+  "nivel": 1,
+  "pagina_inicio": 895,
+  "pagina_fin": 903
+ },
+ {
+  "titulo": "8.14 De los bad cases al postentrenamiento",
+  "nivel": 1,
+  "pagina_inicio": 904,
+  "pagina_fin": 914
+ },
+ {
+  "titulo": "8.15 Puntos prácticos del post-entrenamiento",
+  "nivel": 1,
+  "pagina_inicio": 915,
+  "pagina_fin": 918
+ },
+ {
+  "titulo": "8.16 Resumen del Capítulo",
+  "nivel": 1,
+  "pagina_inicio": 919,
+  "pagina_fin": 930
+ },
+ {
+  "titulo": "9.1 Derivación de Señales de Aprendizaje a partir de Trayectorias Operativas",
+  "nivel": 1,
+  "pagina_inicio": 931,
+  "pagina_fin": 935
+ },
+ {
+  "titulo": "9.2 Cuatro Métodos para la Evolución Continua del Agente",
+  "nivel": 1,
+  "pagina_inicio": 936,
+  "pagina_fin": 979
+ },
+ {
+  "titulo": "9.3 Construcción de un Bucle Cerrado de Evolución Continua para Operaciones a Largo Plazo",
+  "nivel": 1,
+  "pagina_inicio": 980,
+  "pagina_fin": 996
+ },
+ {
+  "titulo": "9.4 Resumen del Capítulo",
+  "nivel": 1,
+  "pagina_inicio": 997,
+  "pagina_fin": 1002
+ },
+ {
+  "titulo": "10.1 Marco de Clasificación para la Colaboración Multi-Agente",
+  "nivel": 1,
+  "pagina_inicio": 1003,
+  "pagina_fin": 1006
+ },
+ {
+  "titulo": "10.2 ¿Cuándo es un Sistema Multi-Agente Realmente Mejor que un Agente Único?",
+  "nivel": 1,
+  "pagina_inicio": 1007,
+  "pagina_fin": 1012
+ },
+ {
+  "titulo": "10.3 Colaboración Multi-Agente con Contexto Compartido",
+  "nivel": 1,
+  "pagina_inicio": 1013,
+  "pagina_fin": 1015
+ },
+ {
+  "titulo": "10.4 Colaboración Multi-Agente Sin Contexto Compartido",
+  "nivel": 1,
+  "pagina_inicio": 1016,
+  "pagina_fin": 1087
+ },
+ {
+  "titulo": "10.5 Modos de Falla de la Colaboración Multi-Agente",
+  "nivel": 1,
+  "pagina_inicio": 1088,
+  "pagina_fin": 1097
+ },
+ {
+  "titulo": "10.6 Sociedad de Agentes",
+  "nivel": 1,
+  "pagina_inicio": 1098,
+  "pagina_fin": 1117
+ },
+ {
+  "titulo": "10.7 Resumen del Capítulo",
+  "nivel": 1,
+  "pagina_inicio": 1118,
+  "pagina_fin": 1164
+ },
+ {
+  "titulo": "11.1 Capítulo 1 Introducción a los Agentes de IA",
+  "nivel": 1,
+  "pagina_inicio": 1165,
+  "pagina_fin": 1169
+ },
+ {
+  "titulo": "11.2 Capítulo 2 Ingeniería de Contexto",
+  "nivel": 1,
+  "pagina_inicio": 1170,
+  "pagina_fin": 1175
+ },
+ {
+  "titulo": "11.3 Capítulo 3 Memoria de Usuario y Base de Conocimientos",
+  "nivel": 1,
+  "pagina_inicio": 1176,
+  "pagina_fin": 1184
+ },
+ {
+  "titulo": "11.4 Capítulo 4 Herramientas",
+  "nivel": 1,
+  "pagina_inicio": 1185,
+  "pagina_fin": 1187
+ },
+ {
+  "titulo": "11.5 Capítulo 5 Coding Agent y Generación de Código",
+  "nivel": 1,
+  "pagina_inicio": 1188,
+  "pagina_fin": 1202
+ },
+ {
+  "titulo": "11.6 Capítulo 7 Evaluación de Agentes",
+  "nivel": 1,
+  "pagina_inicio": 1203,
+  "pagina_fin": 1211
+ },
+ {
+  "titulo": "11.7 Capítulo 8 Posentrenamiento de Modelos",
+  "nivel": 1,
+  "pagina_inicio": 1212,
+  "pagina_fin": 1221
+ },
+ {
+  "titulo": "11.8 Capítulo 9 Evolución Continua del Agente",
+  "nivel": 1,
+  "pagina_inicio": 1222,
+  "pagina_fin": 1228
+ },
+ {
+  "titulo": "11.9 Capítulo 10 Colaboración Multi-Agente",
+  "nivel": 1,
+  "pagina_inicio": 1229,
+  "pagina_fin": 1237
+ }
+]

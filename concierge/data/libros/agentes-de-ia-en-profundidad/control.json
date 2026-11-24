@@ -1,0 +1,47 @@
+{
+ "libro": "agentes-de-ia-en-profundidad",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/agentes-de-ia-en-profundidad/fuente.txt",
+ "fuente_sha256": "12d2ebd3ebcc79829a83aee3474027ce7aaa9cb46bcc7c7818dae68148e40fe8",
+ "paginacion": "logica",
+ "paginas": 1237,
+ "capitulos": 77,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "1237 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin páginas cortas a mitad de capítulo"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "77 secciones cubren las 1237 páginas"
+  },
+  "configuracion": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin sospechas"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "99.5 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "11 de 11 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "14 de 14 citas existen literalmente en su página"
+  }
+ }
+}

@@ -1,0 +1,94 @@
+{
+ "glosario": [
+  {
+   "termino": "Principio de mínimo privilegio",
+   "definicion": "Dar acceso solo según la necesidad de saber, no en un modelo de todo o nada.",
+   "pagina": 22,
+   "cita": "The principle of least privilege works better if access rights are not an \"all or nothing\" access model. Instead, compartmentalize the access to information on a"
+  },
+  {
+   "termino": "Seguro por defecto (secure by default)",
+   "definicion": "La configuración predeterminada usa los ajustes más seguros posibles, aunque no sean los más cómodos.",
+   "pagina": 20,
+   "cita": "Secure by default means that the default configuration settings are the most secure settings possible. This is not necessarily the most user-friendly settings. Evaluate what the"
+  },
+  {
+   "termino": "Modelado de amenazas",
+   "definicion": "Enfoque estructurado para identificar y priorizar amenazas potenciales a un sistema.",
+   "pagina": 77,
+   "cita": "threat modeling is a structured approach to identifying and prioritizing potential threats to a system. The threat modeling process includes determining the value that potential mitigations"
+  },
+  {
+   "termino": "ASVS",
+   "definicion": "Lista de requisitos de desarrollo seguro que sirve como punto de partida para los requisitos de seguridad.",
+   "pagina": 51,
+   "cita": "The Application Security Verification Standard provides a list of requirements for secure development, and this can be used as a starting point for the security requirements."
+  },
+  {
+   "termino": "Security champions",
+   "definicion": "Personas de cada equipo de desarrollo que impulsan la seguridad.",
+   "pagina": 223,
+   "cita": "Security champions have been identified for each development team • A program is in place to support the security champions • Secure coding practices are in"
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Seguridad a lo largo del ciclo de desarrollo",
+   "resumen": "La guía recorre fundamentos, requisitos, diseño, implementación y verificación con herramientas de OWASP.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Requisitos: partir del ASVS",
+     "descripcion": "Usar el ASVS como punto de partida de los requisitos de seguridad.",
+     "pagina": 51,
+     "cita": "The Application Security Verification Standard provides a list of requirements for secure development, and this can be used as a starting point for the security requirements."
+    },
+    {
+     "orden": 2,
+     "titulo": "Diseño: modelar amenazas",
+     "descripcion": "Identificar y priorizar amenazas de forma estructurada.",
+     "pagina": 77,
+     "cita": "threat modeling is a structured approach to identifying and prioritizing potential threats to a system. The threat modeling process includes determining the value that potential mitigations"
+    },
+    {
+     "orden": 3,
+     "titulo": "Diseño: configuración segura por defecto",
+     "descripcion": "Los ajustes por defecto deben ser los más seguros.",
+     "pagina": 20,
+     "cita": "Secure by default means that the default configuration settings are the most secure settings possible. This is not necessarily the most user-friendly settings. Evaluate what the"
+    },
+    {
+     "orden": 4,
+     "titulo": "Acceso: mínimo privilegio",
+     "descripcion": "Compartimentar el acceso según la necesidad de saber.",
+     "pagina": 22,
+     "cita": "The principle of least privilege works better if access rights are not an \"all or nothing\" access model. Instead, compartmentalize the access to information on a"
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Para empezar a tomarse en serio la seguridad",
+   "contexto": "Prácticas de madurez que menciona la guía.",
+   "items": [
+    {
+     "texto": "Tener un security champion en cada equipo",
+     "pagina": 223,
+     "cita": "Security champions have been identified for each development team • A program is in place to support the security champions • Secure"
+    },
+    {
+     "texto": "Usar el ASVS como base de requisitos",
+     "pagina": 51,
+     "cita": "The Application Security Verification Standard provides a list of requirements for secure development, and this can be used as a starting point for the"
+    },
+    {
+     "texto": "Aplicar mínimo privilegio y configuraciones seguras por defecto",
+     "pagina": 20,
+     "cita": "Secure by default means that the default configuration settings are the most secure settings possible. This is not necessarily the most user-friendly settings. Evaluate"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+{
+ "libro": "git-y-github",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/git-y-github/fuente.txt",
+ "fuente_sha256": "b8622ee3003f182a4ca1ea3a712fe8fd464d8dd9fa658a976da555eb25fa1bfa",
+ "paginacion": "logica",
+ "paginas": 288,
+ "capitulos": 17,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "288 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "1 páginas de menos de 200 caracteres a mitad de capítulo (p. 105)"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "17 secciones cubren las 288 páginas"
+  },
+  "configuracion": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "1 capítulos de una sola página (¿títulos del índice o encabezados de página?)"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "99.9 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "16 de 16 citas existen literalmente en su página"
+  }
+ }
+}

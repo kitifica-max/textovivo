@@ -1,0 +1,139 @@
+{
+ "glosario": [
+  {
+   "termino": "Inteligencia artificial",
+   "definicion": "Sistema basado en una máquina que hace predicciones, recomendaciones o decisiones para objetivos definidos por humanos (definición NAIRR 2023).",
+   "buscar": "Una buena definición de inteligencia artificial redactada en 2023 por el Grupo de Trabajo Nacional",
+   "palabras": 24
+  },
+  {
+   "termino": "Principio de bienestar",
+   "definicion": "La IA debe permitir el crecimiento del bienestar de todos los seres sintientes.",
+   "buscar": "Principio de bienestar para todos los seres vivos El desarrollo y la utilización de sistemas de inteligencia artificial deben permitir el crecimiento del bienes",
+   "palabras": 24
+  },
+  {
+   "termino": "Principio de respeto a la autonomía",
+   "definicion": "La IA debe respetar la autonomía de las personas y aumentar el control sobre sus vidas.",
+   "buscar": "Principio de respeto a la autonomía La IA debe desarrollarse y utilizarse respetando la autonomía de las personas",
+   "palabras": 24
+  },
+  {
+   "termino": "Principio de prudencia y prevención",
+   "definicion": "Quien desarrolla IA debe actuar con cautela previendo las consecuencias.",
+   "buscar": "Principio de prudencia y prevención Toda persona implicada en el desarrollo de la IA debe actuar con cautela",
+   "palabras": 24
+  },
+  {
+   "termino": "Control humano",
+   "definicion": "El ser humano decide si delega o no sus decisiones en sistemas de IA.",
+   "buscar": "Control humano El ser humano debe decidir si delega o no sus decisiones en los sistemas de inteligencia artificial",
+   "palabras": 24
+  },
+  {
+   "termino": "Alineación de valores",
+   "definicion": "Los sistemas de IA muy autónomos deben poder alinear sus objetivos con los valores humanos.",
+   "buscar": "Alineación de valores Valores alineados: Los sistemas de IA altamente autónomos deben diseñarse",
+   "palabras": 24
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Los 10 principios de la Declaración de Montreal",
+   "resumen": "Una lista de principios para una IA responsable, comentados en el libro.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Bienestar",
+     "descripcion": "El desarrollo de la IA debe aumentar el bienestar de todos.",
+     "buscar": "Principio de bienestar para todos los seres vivos El desarrollo y la utilización de sistemas de inteligencia artificial deben permitir el crecimiento del bienes",
+     "palabras": 26
+    },
+    {
+     "titulo": "Autonomía",
+     "descripcion": "Respetar la autonomía y aumentar el control de cada persona.",
+     "buscar": "Principio de respeto a la autonomía La IA debe desarrollarse y utilizarse respetando la autonomía de las personas",
+     "palabras": 26
+    },
+    {
+     "titulo": "Privacidad e intimidad",
+     "descripcion": "Proteger la privacidad de la intrusión de los sistemas de adquisición de datos.",
+     "buscar": "Principio de protección a la privacidad y la intimidad La privacidad y la intimidad deben protegerse de la intrusión",
+     "palabras": 26
+    },
+    {
+     "titulo": "Participación democrática",
+     "descripcion": "Inteligibilidad, justificación y accesibilidad de los sistemas.",
+     "buscar": "Principio de participación democrática Los sistemas de IA deben cumplir criterios de inteligibilidad, justificación y accesibilidad",
+     "palabras": 26
+    },
+    {
+     "titulo": "Equidad",
+     "descripcion": "Contribuir a una sociedad justa y equitativa.",
+     "buscar": "Principio de equidad El desarrollo y la utilización de los sistemas de IA deben contribuir a la creación de una sociedad justa y equitativa",
+     "palabras": 26
+    },
+    {
+     "titulo": "Prudencia y prevención",
+     "descripcion": "Actuar con cautela previendo las consecuencias.",
+     "buscar": "Principio de prudencia y prevención Toda persona implicada en el desarrollo de la IA debe actuar con cautela",
+     "palabras": 26
+    }
+   ]
+  },
+  {
+   "nombre": "Principios de Asilomar para una IA beneficiosa",
+   "resumen": "Algunos de los 23 principios de Asilomar que el libro analiza.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "La investigación debe ser beneficiosa",
+     "descripcion": "El objetivo no es crear inteligencia sin dirección, sino inteligencia beneficiosa.",
+     "buscar": "La investigación debe ser beneficiosa El objetivo de la investigación en IA no debe ser crear inteligencia no dirigida",
+     "palabras": 26
+    },
+    {
+     "titulo": "Seguridad por encima de la competitividad",
+     "descripcion": "Cooperar para evitar carreras comerciales.",
+     "buscar": "Seguridad por encima de competitividad Evitar carreras",
+     "palabras": 26
+    },
+    {
+     "titulo": "Alineación de valores",
+     "descripcion": "Objetivos y comportamientos alineados con valores humanos.",
+     "buscar": "Alineación de valores Valores alineados: Los sistemas de IA altamente autónomos deben diseñarse",
+     "palabras": 26
+    },
+    {
+     "titulo": "Control humano",
+     "descripcion": "El humano decide si delega o no sus decisiones.",
+     "buscar": "Control humano El ser humano debe decidir si delega o no sus decisiones",
+     "palabras": 26
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Preguntas éticas antes de desplegar un sistema de IA",
+   "contexto": "Tomadas de los principios comparados en el libro.",
+   "items": [
+    {
+     "texto": "¿Mejora el bienestar de las personas?",
+     "buscar": "Principio de bienestar para todos los seres vivos El desarrollo y la utilización de sistemas de inteligencia artificial deben permitir el crecimiento del bienes",
+     "palabras": 26
+    },
+    {
+     "texto": "¿Respeta la autonomía de quienes lo usan?",
+     "buscar": "Principio de respeto a la autonomía La IA debe desarrollarse y utilizarse respetando la autonomía de las personas",
+     "palabras": 26
+    },
+    {
+     "texto": "¿Quién decide si se delega una decisión en el sistema?",
+     "buscar": "Control humano El ser humano debe decidir si delega o no sus decisiones en los sistemas de inteligencia artificial",
+     "palabras": 26
+    }
+   ]
+  }
+ ]
+}

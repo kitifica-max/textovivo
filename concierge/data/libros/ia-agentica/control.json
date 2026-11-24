@@ -1,0 +1,47 @@
+{
+ "libro": "ia-agentica",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/ia-agentica/fuente.txt",
+ "fuente_sha256": "6660a6881fde0fd68980c3a76a1dfc6d8b53c16cc7f42451e124d8ef35cdc906",
+ "paginacion": "logica",
+ "paginas": 1281,
+ "capitulos": 16,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "1281 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "2 páginas de menos de 200 caracteres a mitad de capítulo (p. 626, 796)"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "16 secciones cubren las 1281 páginas"
+  },
+  "configuracion": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin sospechas"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "97.5 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "11 de 11 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "6 de 6 citas existen literalmente en su página"
+  }
+ }
+}

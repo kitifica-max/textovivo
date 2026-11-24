@@ -1,0 +1,98 @@
+[
+ {
+  "titulo": "Guía docente. IA Agéntica Fundamentos, Arquitecturas y Aplicaciones",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 47
+ },
+ {
+  "titulo": "Semana 1: Introducción a los agentes de IA",
+  "nivel": 1,
+  "pagina_inicio": 48,
+  "pagina_fin": 117
+ },
+ {
+  "titulo": "Semana 2: Grandes modelos de lenguaje como motores de razonamiento",
+  "nivel": 1,
+  "pagina_inicio": 118,
+  "pagina_fin": 191
+ },
+ {
+  "titulo": "Semana 3: Estrategias de prompting para comportamiento agéntico",
+  "nivel": 1,
+  "pagina_inicio": 192,
+  "pagina_fin": 247
+ },
+ {
+  "titulo": "Semana 4: Uso de herramientas, function calling y MCP",
+  "nivel": 1,
+  "pagina_inicio": 248,
+  "pagina_fin": 306
+ },
+ {
+  "titulo": "Semana 5: Arquitecturas de agentes",
+  "nivel": 1,
+  "pagina_inicio": 307,
+  "pagina_fin": 360
+ },
+ {
+  "titulo": "Semana 6: Sistemas de memoria para agentes",
+  "nivel": 1,
+  "pagina_inicio": 361,
+  "pagina_fin": 431
+ },
+ {
+  "titulo": "Semana 7: RAG para agentes",
+  "nivel": 1,
+  "pagina_inicio": 432,
+  "pagina_fin": 495
+ },
+ {
+  "titulo": "Semana 8: Sistemas multiagente y protocolos de comunicación",
+  "nivel": 1,
+  "pagina_inicio": 496,
+  "pagina_fin": 569
+ },
+ {
+  "titulo": "Semana 9: Planificación y descomposición de tareas",
+  "nivel": 1,
+  "pagina_inicio": 570,
+  "pagina_fin": 619
+ },
+ {
+  "titulo": "Semana 10: Evaluación y benchmarking de agentes",
+  "nivel": 1,
+  "pagina_inicio": 620,
+  "pagina_fin": 674
+ },
+ {
+  "titulo": "Semana 11: Seguridad, alineamiento y guardrails para agentes",
+  "nivel": 1,
+  "pagina_inicio": 675,
+  "pagina_fin": 753
+ },
+ {
+  "titulo": "Semana 12: Interacción humano-agente y supervisión",
+  "nivel": 1,
+  "pagina_inicio": 754,
+  "pagina_fin": 817
+ },
+ {
+  "titulo": "Semana 13: Flujos de trabajo agénticos en ingeniería del software",
+  "nivel": 1,
+  "pagina_inicio": 818,
+  "pagina_fin": 870
+ },
+ {
+  "titulo": "Semana 14: Gobernanza e IA agéntica confiable",
+  "nivel": 1,
+  "pagina_inicio": 871,
+  "pagina_fin": 924
+ },
+ {
+  "titulo": "Semana 15: Presentaciones del proyecto final y repaso",
+  "nivel": 1,
+  "pagina_inicio": 925,
+  "pagina_fin": 1281
+ }
+]

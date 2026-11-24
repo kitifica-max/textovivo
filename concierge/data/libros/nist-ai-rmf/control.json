@@ -1,0 +1,47 @@
+{
+ "libro": "nist-ai-rmf",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/nist-ai-rmf/fuente.txt",
+ "fuente_sha256": "3e69fa94df62a2aaf06c4f32ab1162f1cc06a52ae0ca19fc02318ae0eff7b6db",
+ "paginacion": "logica",
+ "paginas": 81,
+ "capitulos": 22,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "81 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "1 páginas de menos de 200 caracteres a mitad de capítulo (p. 9)"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "22 secciones cubren las 81 páginas"
+  },
+  "configuracion": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "3 capítulos de una sola página (¿títulos del índice o encabezados de página?)"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "99.8 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "10 de 10 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "22 de 22 citas existen literalmente en su página"
+  }
+ }
+}

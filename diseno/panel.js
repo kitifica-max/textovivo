@@ -149,6 +149,10 @@ function pintar(d, estado) {
   pintarSi($("l-herramientas"), filas(d.uso.por_herramienta, "Todavía no hay consultas."));
   pintarSi($("l-consultados"), filas(d.uso.libros_mas_consultados, "Todavía no hay consultas por libro."));
   pintarSi($("l-agregados"), filas(d.biblioteca.libros_mas_agregados, "Nadie agregó libros todavía."));
+  const sr = d.uso.sin_resultados ?? [];
+  const pct = d.uso.busquedas_30d ? Math.round((d.uso.sin_resultado_30d / d.uso.busquedas_30d) * 100) : 0;
+  $("t-sinres").textContent = d.uso.busquedas_30d ? `${n(d.uso.sin_resultado_30d)} de ${n(d.uso.busquedas_30d)} búsquedas · ${pct} %` : "30 días";
+  pintarSi($("l-sinres"), filas(sr.map((x) => ({ nombre: `${x.libro} · ${x.consulta}`, n: x.veces })), "Todas las búsquedas encontraron algo (o todavía no hay)."));
   const lat = (v) => (v === null ? "—" : v + " ms");
   $("l-servicio").innerHTML =
     `<li><span>Latencia media</span><b>${lat(d.uso.latencia_media_ms)}</b></li><li><span>Latencia p95</span><b>${lat(d.uso.latencia_p95_ms)}</b></li>` +

@@ -1,0 +1,121 @@
+{
+ "glosario": [
+  {
+   "termino": "Agente de IA",
+   "definicion": "Sistema en el que un modelo decide en un bucle qué acciones ejecutar con herramientas para lograr un objetivo.",
+   "buscar": "Sistema en el que un modelo de lenguaje decide por sí mismo, en un bucle, qué acciones ejecutar",
+   "palabras": 26
+  },
+  {
+   "termino": "Guardrail",
+   "definicion": "Control que impide, limita o verifica lo que un agente puede hacer, sin confiar en el juicio del modelo.",
+   "buscar": "Control que impide, limita o verifica lo que un agente puede hacer",
+   "palabras": 26
+  },
+  {
+   "termino": "Ventana de contexto",
+   "definicion": "Cantidad máxima de tokens que el modelo considera en una petición, entrada más salida.",
+   "buscar": "Cantidad máxima de tokens que el modelo puede considerar en una sola petición",
+   "palabras": 26
+  },
+  {
+   "termino": "Skill",
+   "definicion": "Paquete de instrucciones para un tipo de tarea que el agente carga solo cuando la necesita.",
+   "buscar": "Paquete de instrucciones para un tipo de tarea, con archivos de apoyo opcionales",
+   "palabras": 26
+  },
+  {
+   "termino": "Spec-Driven Development (SDD)",
+   "definicion": "La especificación pasa a ser el artefacto que dirige la implementación.",
+   "buscar": "Forma de trabajo en la que la especificación deja de ser un documento que se desactualiza",
+   "palabras": 26
+  },
+  {
+   "termino": "Inyección de prompts",
+   "definicion": "Ataque en el que un texto leído como dato contiene instrucciones que el modelo termina siguiendo.",
+   "buscar": "Ataque en el que un texto que el agente lee como dato",
+   "palabras": 26
+  },
+  {
+   "termino": "AGENTS.md",
+   "definicion": "Markdown con guía persistente que el agente recibe en cada sesión.",
+   "buscar": "Markdown con guía persistente que el agente recibe en cada sesión",
+   "palabras": 26
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Del vaivén a la especificación: Spec-Driven Development",
+   "resumen": "Escribir primero una especificación que un agente ejecute sin adivinar.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Entender por qué",
+     "descripcion": "Con agentes la ambigüedad se paga dos veces: en tokens y en retrabajo.",
+     "buscar": "la ambigüedad se paga dos veces",
+     "palabras": 26
+    },
+    {
+     "titulo": "Acordar qué se construye",
+     "descripcion": "La especificación dirige la implementación.",
+     "buscar": "Forma de trabajo en la que la especificación deja de ser un documento que se desactualiza",
+     "palabras": 26
+    },
+    {
+     "titulo": "Escribirla para que se ejecute sin adivinar",
+     "descripcion": "Una especificación clara y verificable.",
+     "buscar": "Aquí aprenderás a escribir una especificación que un agente ejecute sin adivinar",
+     "palabras": 26
+    }
+   ]
+  },
+  {
+   "nombre": "Las piezas del arnés de un agente",
+   "resumen": "Qué va en cada capa: reglas, conocimiento bajo demanda y controles.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "AGENTS.md: las reglas del proyecto",
+     "descripcion": "Guía persistente en cada sesión; mantenla corta.",
+     "buscar": "Markdown con guía persistente que el agente recibe en cada sesión",
+     "palabras": 26
+    },
+    {
+     "titulo": "Skills: conocimiento bajo demanda",
+     "descripcion": "Lo que se usa poco va como skill, no en AGENTS.md.",
+     "buscar": "Paquete de instrucciones para un tipo de tarea, con archivos de apoyo opcionales",
+     "palabras": 26
+    },
+    {
+     "titulo": "Guardrails: lo que no puede depender del modelo",
+     "descripcion": "Los controles que acotan al agente.",
+     "buscar": "Control que impide, limita o verifica lo que un agente puede hacer",
+     "palabras": 26
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Antes de confiar en un agente con tu repositorio",
+   "contexto": "Cuestiones del libro sobre seguridad y control.",
+   "items": [
+    {
+     "texto": "Distinguir una guía de un guardrail",
+     "buscar": "distinguir una guía de un guardrail",
+     "palabras": 22
+    },
+    {
+     "texto": "Recordar que el agente es tan seguro como su entorno",
+     "buscar": "OpenCode es tan seguro como el entorno donde se ejecuta",
+     "palabras": 24
+    },
+    {
+     "texto": "Reconocer una inyección de prompts",
+     "buscar": "reconocer una inyección de prompts",
+     "palabras": 20
+    }
+   ]
+  }
+ ]
+}

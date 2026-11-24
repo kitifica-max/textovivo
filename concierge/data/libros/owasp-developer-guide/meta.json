@@ -1,0 +1,9 @@
+{
+ "titulo": "OWASP Developer Guide",
+ "autor": "OWASP Foundation",
+ "descripcion": "Mapa de las herramientas y documentos de OWASP para desarrolladores: fundamentos de seguridad, requisitos, diseño, implementación y verificación.",
+ "idioma": "en",
+ "publicar": true,
+ "paginacion": "logica",
+ "atribucion": "«OWASP Developer Guide», de la OWASP Foundation (owasp.org/www-project-developer-guide), 2026, publicado bajo licencia Creative Commons Atribución-CompartirIgual 4.0 (CC BY-SA 4.0). Está en inglés; los resúmenes, las definiciones y los nombres en español son de Textifika. Por la cláusula de compartir igual, el destilado de Textifika (glosario, frameworks y checklists) se ofrece bajo CC BY-SA 4.0. OWASP no avala este servicio. Textifika dividió el texto en secciones lógicas."
+}
