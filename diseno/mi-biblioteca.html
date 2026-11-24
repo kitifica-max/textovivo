@@ -160,6 +160,7 @@
     <a class="marca" href="index.html" aria-label="Textifika, inicio"><svg class="iso" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="var(--tile)"/><rect x="13" y="14" width="38" height="11" rx="3.5" fill="var(--barra)"/><path d="M26 25h12v26l-6-5.5L26 51z" fill="var(--cinta)"/></svg><span>Text<b>ifika</b></span></a>
     <nav class="navegacion" aria-label="Principal">
       <a href="biblioteca.html">Biblioteca</a>
+      <a href="planes.html">Planes</a>
       <a href="mi-biblioteca.html" aria-current="page">Mi biblioteca</a>
       <a class="ocultable" href="guia.html">Guía</a>
       
@@ -219,17 +220,21 @@
 
       </div>
 
+      <section id="plan" aria-labelledby="h-plan" style="margin-bottom:40px;scroll-margin-top:90px">
+        <div class="titulo-bloque"><h2 id="h-plan">Tu plan</h2><a class="enlace nota" href="planes.html">Comparar planes</a></div>
+        <div id="plan-card" class="tarjeta" hidden style="display:grid;gap:12px">
+          <div><strong id="plan-titulo" style="font-size:1.15rem"></strong><p class="nota" id="plan-detalle" style="margin:6px 0 0;max-width:46em"></p></div>
+          <div id="ts-pago"></div>
+          <div id="plan-acciones" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center"><button class="boton chico" type="button" id="plan-pagar"></button><span class="nota" id="plan-msg" role="status"></span></div>
+        </div>
+      </section>
+
       <div class="titulo-bloque"><h2>Mis libros</h2><span class="nota" id="n-mis-libros"></span></div>
       <ul class="lista" id="mis-libros" style="margin-bottom:40px"></ul>
 
       <div id="bloque-docs" hidden>
         <div class="titulo-bloque"><h2>Mis documentos</h2><span class="nota" id="n-docs"></span></div>
         <p class="nota" style="margin:-6px 0 16px;max-width:46em">Subí tus propios PDF, TXT o MD y consultalos desde tu IA. <strong>Solo vos los ves</strong>: no se publican ni se comparten con nadie. Del archivo no guardamos nada; solo su texto, para poder buscar en él. Podés borrarlos cuando quieras.</p>
-        <div id="plan-card" class="tarjeta" hidden style="margin-bottom:24px;display:grid;gap:10px">
-          <div><strong id="plan-titulo"></strong> <span class="nota" id="plan-detalle"></span></div>
-          <div id="ts-pago"></div>
-          <div id="plan-acciones" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center"><button class="boton chico" type="button" id="plan-pagar"></button><span class="nota" id="plan-msg" role="status"></span></div>
-        </div>
         <form id="form-doc" class="subida" hidden novalidate>
           <input id="doc-archivo" class="sr-only" type="file" accept=".pdf,.txt,.md,application/pdf,text/plain,text/markdown" tabindex="-1" aria-hidden="true" aria-label="Elegir un archivo">
           <div id="zona" class="zona" role="button" tabindex="0" data-estado="vacio" aria-describedby="zona-ayuda">
@@ -285,6 +290,7 @@
     <nav class="pie-col" aria-labelledby="pie-t1">
       <h2 id="pie-t1">Textifika</h2>
       <a href="/biblioteca.html">Biblioteca</a>
+      <a href="/planes.html">Planes</a>
       <a href="/guia.html">Guía de conexión</a>
       <a href="/autores.html">Para autores</a>
       <a href="/mi-biblioteca.html">Mi biblioteca</a>
@@ -337,11 +343,10 @@ const fechaLarga = (iso) => new Date(iso).toLocaleDateString("es", { day: "numer
 function pintarPlan(d) {
   const c = $("plan-card"), b = $("plan-pagar");
   c.hidden = false; b.hidden = false;
-  const detalle = " Es un pago único de 30 días, no una suscripción.";
-  if (d.habilitado && d.vence) { $("plan-titulo").textContent = "Plan Pro activo hasta el " + fechaLarga(d.vence) + "."; $("plan-detalle").textContent = "Renovar suma 30 días a lo que te queda."; b.textContent = "Renovar +30 días · " + usd(d.precio); }
+  if (d.habilitado && d.vence) { $("plan-titulo").textContent = "Plan Pro activo hasta el " + fechaLarga(d.vence) + "."; $("plan-detalle").textContent = "Tus documentos privados están activos. Renovar suma 30 días a lo que te queda; no hay cobro automático."; b.textContent = "Renovar +30 días · " + usd(d.precio); }
   else if (d.habilitado) { $("plan-titulo").textContent = "Plan Pro activo."; $("plan-detalle").textContent = "Sin fecha de vencimiento."; b.hidden = true; }
-  else if (d.cobro_activo) { $("plan-titulo").textContent = "Plan Pro · " + usd(d.precio) + " por 30 días."; $("plan-detalle").textContent = "Incluye documentos personales privados." + detalle; b.textContent = "Activar Pro · " + usd(d.precio); }
-  else { $("plan-titulo").textContent = "Función de pago."; $("plan-detalle").textContent = "Los documentos personales llegan con el plan Pro. Todavía no está abierto a todas las cuentas."; b.hidden = true; }
+  else if (d.cobro_activo) { $("plan-titulo").textContent = "Plan Gratis"; $("plan-detalle").textContent = "Tenés toda la biblioteca sin costo. Con Pro sumás tus propios documentos, solo para vos: " + usd(d.precio) + " por 30 días, pago único, sin renovación automática."; b.textContent = "Activar Pro · " + usd(d.precio); }
+  else { $("plan-titulo").textContent = "Plan Gratis"; $("plan-detalle").textContent = "Tenés toda la biblioteca sin costo. El plan Pro (tus propios documentos) todavía no está abierto a todas las cuentas."; b.hidden = true; }
   b.disabled = !d.cobro_activo;
 }
 // La verificación de Turnstile se hace acá, no en la página de pago: así esa página no carga scripts de terceros.
@@ -366,7 +371,7 @@ async function cargarDocs() {
   $("bloque-docs").hidden = false;
   pintarPlan(d);
   $("form-doc").hidden = !d.habilitado;
-  $("n-docs").textContent = d.habilitado ? d.documentos.length + " de " + d.limites.max_docs : "";
+  $("n-docs").textContent = d.habilitado ? d.documentos.length + " de " + d.limites.max_docs : "con el plan Pro";
   if (d.limites) { maxBytes = d.limites.max_bytes_doc; $("zona-max").textContent = tamano(maxBytes); }
   const mb = (b) => (b < 1048576 ? Math.max(1, Math.round(b / 1024)) + " KB" : (b / 1048576).toFixed(1).replace(".", ",") + " MB");
   $("docs").innerHTML = d.habilitado

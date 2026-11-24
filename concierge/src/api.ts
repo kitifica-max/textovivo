@@ -231,7 +231,7 @@ export async function api(req: Request, url: URL, ctx?: ExecutionContext): Promi
   const post = req.method === "POST";
   if (post && !mismoOrigen(req, url)) return error("Origen no permitido", 403);
 
-  if (req.method === "GET" && ruta === "/api/config") return json({ turnstile_site_key: env.TURNSTILE_SITE_KEY }, 200, { "cache-control": "public, max-age=300" });
+  if (req.method === "GET" && ruta === "/api/config") return json({ turnstile_site_key: env.TURNSTILE_SITE_KEY, plan_pro: { precio: Number(env.PRICE_USD), dias: DIAS_PLAN, cobro_activo: wompiConfigurado() } }, 200, { "cache-control": "public, max-age=300" });
 
   // ---- Cuentas ----
   if (post && ruta === "/api/registro") {

@@ -236,6 +236,7 @@ ${d.indice.map((s, i) => `        <li><span class="n">${String(i + 1).padStart(2
     <a class="marca" href="../index.html" aria-label="Textifika, inicio"><svg class="iso" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="var(--tile)"/><rect x="13" y="14" width="38" height="11" rx="3.5" fill="var(--barra)"/><path d="M26 25h12v26l-6-5.5L26 51z" fill="var(--cinta)"/></svg><span>Text<b>ifika</b></span></a>
     <nav class="navegacion" aria-label="Principal">
       <a href="../biblioteca.html" aria-current="page">Biblioteca</a>
+      <a href="../planes.html">Planes</a>
       <a class="ocultable" href="../index.html#guia">Cómo funciona</a>
       <a class="ocultable" href="../autores.html">Para autores</a>
       <a class="boton chico" href="../entrar.html">Entrar</a>
@@ -281,6 +282,7 @@ ${secFrameworks}${secChecklists}${ejemplo(d)}${secGlosario}${secIndice}
     <nav class="pie-col" aria-labelledby="pie-t1">
       <h2 id="pie-t1">Textifika</h2>
       <a href="/biblioteca.html">Biblioteca</a>
+      <a href="/planes.html">Planes</a>
       <a href="/guia.html">Guía de conexión</a>
       <a href="/autores.html">Para autores</a>
       <a href="/mi-biblioteca.html">Mi biblioteca</a>
@@ -309,6 +311,6 @@ ${secFrameworks}${secChecklists}${ejemplo(d)}${secGlosario}${secIndice}
 }
 // Mapa del sitio: páginas públicas + una ficha por libro disponible.
 const BASE = "https://textifika.kitifica.com";
-const urls = ["/", "/biblioteca", "/guia", "/autores", "/terminos", "/privacidad", ...fichas.filter(disponible).map((f) => `/libros/${f.id}`)];
+const urls = ["/", "/biblioteca", "/planes", "/guia", "/autores", "/terminos", "/privacidad", ...fichas.filter(disponible).map((f) => `/libros/${f.id}`)];
 await writeFile("../diseno/sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${BASE}${u}</loc></url>\n`).join("")}</urlset>\n`);
 console.log(`biblioteca: ${fichas.filter(disponible).length} disponibles de ${fichas.length}; fichas nuevas: ${n}`);
