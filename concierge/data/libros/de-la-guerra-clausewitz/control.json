@@ -1,0 +1,47 @@
+{
+ "libro": "de-la-guerra-clausewitz",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/de-la-guerra-clausewitz/fuente.txt",
+ "fuente_sha256": "e24be7fa29ee89a2e930583cec8177bfa6880dfca29b53f6cacba4b518739bd2",
+ "paginacion": "logica",
+ "paginas": 485,
+ "capitulos": 43,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "485 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "2 páginas de menos de 200 caracteres a mitad de capítulo (p. 179, 354)"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "43 secciones cubren las 485 páginas"
+  },
+  "configuracion": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "2 capítulos de una sola página (¿títulos del índice o encabezados de página?)"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "92.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "0 de 0 citas existen literalmente en su página"
+  }
+ }
+}

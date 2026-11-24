@@ -1,0 +1,47 @@
+{
+ "libro": "self-help",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/self-help/fuente.txt",
+ "fuente_sha256": "ea782e2d7178dee35eac72d9373823ba1064ed5cbb3011e9b00552155d7462d0",
+ "paginacion": "logica",
+ "paginas": 686,
+ "capitulos": 14,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "686 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "1 páginas de menos de 200 caracteres a mitad de capítulo (p. 622)"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "14 secciones cubren las 686 páginas"
+  },
+  "configuracion": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin sospechas"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "0 de 0 citas existen literalmente en su página"
+  }
+ }
+}

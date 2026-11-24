@@ -1,5 +1,11 @@
 [
  {
+  "titulo": "Preliminares",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 8
+ },
+ {
   "titulo": "CHAPTER I. OF THE DIVISION OF LABOUR.",
   "nivel": 1,
   "pagina_inicio": 9,
@@ -27,156 +33,156 @@
   "titulo": "CHAPTER V. OF THE REAL AND NOMINAL PRICE OF COMMODITIES, OR OF THEIR PRICE IN LABOUR, AND THEIR PRICE IN MONEY.",
   "nivel": 1,
   "pagina_inicio": 54,
-  "pagina_fin": 91
+  "pagina_fin": 90
  },
  {
   "titulo": "CHAPTER VI. OF THE COMPONENT PART OF THE PRICE OF COMMODITIES.",
   "nivel": 1,
-  "pagina_inicio": 92,
-  "pagina_fin": 105
+  "pagina_inicio": 91,
+  "pagina_fin": 104
  },
  {
   "titulo": "CHAPTER VII. OF THE NATURAL AND MARKET PRICE OF COMMODITIES.",
   "nivel": 1,
-  "pagina_inicio": 106,
-  "pagina_fin": 123
+  "pagina_inicio": 105,
+  "pagina_fin": 122
  },
  {
   "titulo": "CHAPTER VIII. OF THE WAGES OF LABOUR.",
   "nivel": 1,
-  "pagina_inicio": 124,
-  "pagina_fin": 166
+  "pagina_inicio": 123,
+  "pagina_fin": 165
  },
  {
   "titulo": "CHAPTER IX. OF THE PROFITS OF STOCK.",
   "nivel": 1,
-  "pagina_inicio": 167,
-  "pagina_fin": 188
+  "pagina_inicio": 166,
+  "pagina_fin": 187
  },
  {
   "titulo": "CHAPTER X. OF WAGES AND PROFIT IN THE DIFFERENT EMPLOYMENTS OF LABOUR AND STOCK.",
   "nivel": 1,
-  "pagina_inicio": 189,
-  "pagina_fin": 274
+  "pagina_inicio": 188,
+  "pagina_fin": 273
  },
  {
   "titulo": "CHAPTER XI. OF THE RENT OF LAND.",
   "nivel": 1,
-  "pagina_inicio": 275,
-  "pagina_fin": 490
+  "pagina_inicio": 274,
+  "pagina_fin": 488
  },
  {
   "titulo": "BOOK II. OF THE NATURE, ACCUMULATION, AND EMPLOYMENT OF STOCK.",
   "nivel": 1,
-  "pagina_inicio": 491,
-  "pagina_fin": 495
+  "pagina_inicio": 489,
+  "pagina_fin": 493
  },
  {
   "titulo": "CHAPTER I. OF THE DIVISION OF STOCK.",
   "nivel": 1,
-  "pagina_inicio": 496,
-  "pagina_fin": 603
+  "pagina_inicio": 494,
+  "pagina_fin": 601
  },
  {
   "titulo": "CHAPTER III. OF THE ACCUMULATION OF CAPITAL, OR OF PRODUCTIVE AND UNPRODUCTIVE LABOUR.",
   "nivel": 1,
-  "pagina_inicio": 604,
-  "pagina_fin": 642
+  "pagina_inicio": 602,
+  "pagina_fin": 640
  },
  {
   "titulo": "CHAPTER IV. OF STOCK LENT AT INTEREST.",
   "nivel": 1,
-  "pagina_inicio": 643,
-  "pagina_fin": 659
+  "pagina_inicio": 641,
+  "pagina_fin": 657
  },
  {
   "titulo": "CHAPTER V. OF THE DIFFERENT EMPLOYMENTS OF CAPITALS.",
   "nivel": 1,
-  "pagina_inicio": 660,
-  "pagina_fin": 691
+  "pagina_inicio": 658,
+  "pagina_fin": 689
  },
  {
   "titulo": "CHAPTER I. OF THE NATURAL PROGRESS OF OPULENCE.",
   "nivel": 1,
-  "pagina_inicio": 692,
-  "pagina_fin": 701
+  "pagina_inicio": 690,
+  "pagina_fin": 699
  },
  {
   "titulo": "CHAPTER II. OF THE DISCOURAGEMENT OF AGRICULTURE IN THE ANCIENT STATE OF EUROPE, AFTER THE FALL OF THE ROMAN EMPIRE.",
   "nivel": 1,
-  "pagina_inicio": 702,
-  "pagina_fin": 723
+  "pagina_inicio": 700,
+  "pagina_fin": 721
  },
  {
   "titulo": "CHAPTER III. OF THE RISE AND PROGRESS OF CITIES AND TOWNS, AFTER THE FALL OF THE ROMAN EMPIRE.",
   "nivel": 1,
-  "pagina_inicio": 724,
-  "pagina_fin": 746
+  "pagina_inicio": 722,
+  "pagina_fin": 743
  },
  {
   "titulo": "CHAPTER IV. HOW THE COMMERCE OF TOWNS CONTRIBUTED TO THE IMPROVEMENT OF THE COUNTRY.",
   "nivel": 1,
-  "pagina_inicio": 747,
-  "pagina_fin": 771
+  "pagina_inicio": 744,
+  "pagina_fin": 768
  },
  {
   "titulo": "CHAPTER I. OF THE PRINCIPLE OF THE COMMERCIAL OR MERCANTILE SYSTEM.",
   "nivel": 1,
-  "pagina_inicio": 772,
-  "pagina_fin": 815
+  "pagina_inicio": 769,
+  "pagina_fin": 812
  },
  {
   "titulo": "CHAPTER II. OF RESTRAINTS UPON IMPORTATION FROM FOREIGN COUNTRIES OF SUCH GOODS AS CAN BE PRODUCED AT HOME.",
   "nivel": 1,
-  "pagina_inicio": 816,
-  "pagina_fin": 906
+  "pagina_inicio": 813,
+  "pagina_fin": 903
  },
  {
   "titulo": "CHAPTER IV. OF DRAWBACKS.",
   "nivel": 1,
-  "pagina_inicio": 907,
-  "pagina_fin": 917
+  "pagina_inicio": 904,
+  "pagina_fin": 914
  },
  {
   "titulo": "CHAPTER V. OF BOUNTIES.",
   "nivel": 1,
-  "pagina_inicio": 918,
-  "pagina_fin": 993
+  "pagina_inicio": 915,
+  "pagina_fin": 990
  },
  {
   "titulo": "CHAPTER VI. OF TREATIES OF COMMERCE.",
   "nivel": 1,
-  "pagina_inicio": 994,
-  "pagina_fin": 1019
+  "pagina_inicio": 991,
+  "pagina_fin": 1016
  },
  {
   "titulo": "CHAPTER VII. OF COLONIES.",
   "nivel": 1,
-  "pagina_inicio": 1020,
-  "pagina_fin": 1195
+  "pagina_inicio": 1017,
+  "pagina_fin": 1192
  },
  {
   "titulo": "CHAPTER VIII. CONCLUSION OF THE MERCANTILE SYSTEM.",
   "nivel": 1,
-  "pagina_inicio": 1196,
-  "pagina_fin": 1290
+  "pagina_inicio": 1193,
+  "pagina_fin": 1287
  },
  {
   "titulo": "CHAPTER I. OF THE EXPENSES OF THE SOVEREIGN OR COMMONWEALTH.",
   "nivel": 1,
-  "pagina_inicio": 1291,
-  "pagina_fin": 1533
+  "pagina_inicio": 1288,
+  "pagina_fin": 1530
  },
  {
   "titulo": "CHAPTER II. OF THE SOURCES OF THE GENERAL OR PUBLIC REVENUE OF THE SOCIETY.",
   "nivel": 1,
-  "pagina_inicio": 1534,
-  "pagina_fin": 1727
+  "pagina_inicio": 1531,
+  "pagina_fin": 1724
  },
  {
   "titulo": "CHAPTER III. OF PUBLIC DEBTS.",
   "nivel": 1,
-  "pagina_inicio": 1728,
-  "pagina_fin": 1813
+  "pagina_inicio": 1725,
+  "pagina_fin": 1810
  }
 ]

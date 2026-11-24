@@ -3,5 +3,6 @@
  "autor": "Marcus Aurelius",
  "descripcion": "Reflexiones estoicas sobre decidir, actuar y mantener la calma. Trad. George Long.",
  "idioma": "en",
- "publicar": true
+ "publicar": true,
+ "paginacion": "logica"
 }

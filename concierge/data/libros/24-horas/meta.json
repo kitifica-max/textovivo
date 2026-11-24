@@ -3,5 +3,6 @@
  "autor": "Arnold Bennett",
  "descripcion": "Cómo usar mejor el tiempo del día: precauciones, concentración y hábitos de lectura y reflexión.",
  "idioma": "en",
- "publicar": true
+ "publicar": true,
+ "paginacion": "logica"
 }

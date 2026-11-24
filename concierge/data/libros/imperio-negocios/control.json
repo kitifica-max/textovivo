@@ -1,0 +1,47 @@
+{
+ "libro": "imperio-negocios",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/imperio-negocios/fuente.txt",
+ "fuente_sha256": "b465964357a339127feb53ab59322266499ffecd772dd6945a8e66bcbda3a54b",
+ "paginacion": "logica",
+ "paginas": 313,
+ "capitulos": 12,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "313 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin páginas cortas a mitad de capítulo"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "12 secciones cubren las 313 páginas"
+  },
+  "configuracion": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "2 capítulos de una sola página (¿títulos del índice o encabezados de página?)"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "97.6 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "0 de 0 citas existen literalmente en su página"
+  }
+ }
+}

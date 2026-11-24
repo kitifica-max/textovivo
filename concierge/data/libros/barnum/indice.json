@@ -1,5 +1,11 @@
 [
  {
+  "titulo": "Preliminares",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 19
+ },
+ {
   "titulo": "SELECT THE RIGHT LOCATION",
   "nivel": 1,
   "pagina_inicio": 20,

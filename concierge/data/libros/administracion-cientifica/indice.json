@@ -1,18 +1,24 @@
 [
  {
+  "titulo": "Preliminares",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 1
+ },
+ {
   "titulo": "INTRODUCTION",
   "nivel": 1,
   "pagina_inicio": 2,
   "pagina_fin": 5
  },
  {
-  "titulo": "CHAPTER I",
+  "titulo": "CHAPTER I. FUNDAMENTALS OF SCIENTIFIC MANAGEMENT",
   "nivel": 1,
   "pagina_inicio": 6,
   "pagina_fin": 31
  },
  {
-  "titulo": "CHAPTER II",
+  "titulo": "CHAPTER II. THE PRINCIPLES OF SCIENTIFIC MANAGEMENT",
   "nivel": 1,
   "pagina_inicio": 32,
   "pagina_fin": 174

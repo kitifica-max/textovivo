@@ -3,5 +3,6 @@
  "autor": "J. Berg Esenwein y Dale Carnegie",
  "descripcion": "Cómo preparar y dar un discurso: voz, gesto, estructura y persuasión.",
  "idioma": "en",
- "publicar": true
+ "publicar": true,
+ "paginacion": "logica"
 }

@@ -3,5 +3,6 @@
  "autor": "Carl von Clausewitz",
  "descripcion": "Teoría de la guerra: fines y medios, fricción, defensa y ataque, plan de campaña.",
  "idioma": "en",
- "publicar": true
+ "publicar": true,
+ "paginacion": "logica"
 }

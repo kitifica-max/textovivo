@@ -1,0 +1,325 @@
+[
+ {
+  "libro": "24-horas",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 62,
+  "capitulos": 12,
+  "controles": {
+   "paginas": "ok: 62 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 12 secciones cubren las 62 páginas",
+   "configuracion": "ok: sin sospechas",
+   "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 11 de 11 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 0 de 0 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "administracion-cientifica",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 174,
+  "capitulos": 4,
+  "controles": {
+   "paginas": "ok: 174 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "aviso: 1 páginas de menos de 200 caracteres a mitad de capítulo (p. 36)",
+   "indice_cobertura": "ok: 4 secciones cubren las 174 páginas",
+   "configuracion": "aviso: 1 capítulos de una sola página (¿títulos del índice o encabezados de página?); «CHAPTER II. THE PRINCIPLES OF » ocupa más de la mitad del libro",
+   "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 11 de 11 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 4 de 4 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "arte-de-la-guerra",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 48,
+  "capitulos": 13,
+  "controles": {
+   "paginas": "ok: 48 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 13 secciones cubren las 48 páginas",
+   "configuracion": "ok: sin sospechas",
+   "fidelidad": "ok: sin fuente.txt (texto armado desde otra fuente): no se compara",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 95 de 95 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "avance-del-saber",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 398,
+  "capitulos": 3,
+  "controles": {
+   "paginas": "ok: 398 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 3 secciones cubren las 398 páginas",
+   "configuracion": "aviso: «THE SECOND BOOK.» ocupa más de la mitad del libro",
+   "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 8 de 8 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 0 de 0 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "barnum",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 64,
+  "capitulos": 14,
+  "controles": {
+   "paginas": "ok: 64 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 14 secciones cubren las 64 páginas",
+   "configuracion": "aviso: 1 capítulos de una sola página (¿títulos del índice o encabezados de página?)",
+   "fidelidad": "ok: 99.9 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 11 de 11 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "cajal",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 295,
+  "capitulos": 12,
+  "controles": {
+   "paginas": "ok: 295 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 12 secciones cubren las 295 páginas",
+   "configuracion": "ok: sin sospechas",
+   "fidelidad": "ok: 97.9 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 0 de 0 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "como-pensamos",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 338,
+  "capitulos": 16,
+  "controles": {
+   "paginas": "ok: 338 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 16 secciones cubren las 338 páginas",
+   "configuracion": "ok: sin sospechas",
+   "fidelidad": "ok: 99.1 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 5 de 5 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "de-la-guerra-clausewitz",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 485,
+  "capitulos": 43,
+  "controles": {
+   "paginas": "ok: 485 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "aviso: 2 páginas de menos de 200 caracteres a mitad de capítulo (p. 179, 354)",
+   "indice_cobertura": "ok: 43 secciones cubren las 485 páginas",
+   "configuracion": "aviso: 2 capítulos de una sola página (¿títulos del índice o encabezados de página?)",
+   "fidelidad": "ok: 92.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 0 de 0 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "estilo",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 65,
+  "capitulos": 7,
+  "controles": {
+   "paginas": "ok: 65 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 7 secciones cubren las 65 páginas",
+   "configuracion": "ok: sin sospechas",
+   "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 17 de 17 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "franklin",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 334,
+  "capitulos": 1,
+  "controles": {
+   "paginas": "ok: 334 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 1 secciones cubren las 334 páginas",
+   "configuracion": "aviso: un solo capítulo en un libro de 334 páginas (¿falló el patrón?)",
+   "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 10 de 10 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 13 de 13 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "gracian",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "aforismo",
+  "paginas": 300,
+  "capitulos": 12,
+  "controles": {
+   "paginas": "ok: 300 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 12 secciones cubren las 300 páginas",
+   "configuracion": "ok: sin sospechas",
+   "fidelidad": "ok: sin fuente.txt (texto armado desde otra fuente): no se compara",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 0 de 0 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "gramatica-ciencia",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 946,
+  "capitulos": 13,
+  "controles": {
+   "paginas": "ok: 946 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "aviso: 2 páginas de menos de 200 caracteres a mitad de capítulo (p. 451, 754)",
+   "indice_cobertura": "ok: 13 secciones cubren las 946 páginas",
+   "configuracion": "aviso: 1 capítulos de una sola página (¿títulos del índice o encabezados de página?)",
+   "fidelidad": "ok: 98.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 0 de 0 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "imperio-negocios",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 313,
+  "capitulos": 12,
+  "controles": {
+   "paginas": "ok: 313 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 12 secciones cubren las 313 páginas",
+   "configuracion": "aviso: 2 capítulos de una sola página (¿títulos del índice o encabezados de página?)",
+   "fidelidad": "ok: 97.6 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 0 de 0 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "meditaciones",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 325,
+  "capitulos": 13,
+  "controles": {
+   "paginas": "ok: 325 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 13 secciones cubren las 325 páginas",
+   "configuracion": "ok: sin sospechas",
+   "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 0 de 0 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "obvious-adams",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 30,
+  "capitulos": 1,
+  "controles": {
+   "paginas": "ok: 30 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 1 secciones cubren las 30 páginas",
+   "configuracion": "ok: sin sospechas",
+   "fidelidad": "ok: 98.5 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 0 de 0 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "oratoria",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 755,
+  "capitulos": 32,
+  "controles": {
+   "paginas": "ok: 755 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "aviso: 1 páginas de menos de 200 caracteres a mitad de capítulo (p. 641)",
+   "indice_cobertura": "ok: 32 secciones cubren las 755 páginas",
+   "configuracion": "ok: sin sospechas",
+   "fidelidad": "ok: 99.6 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 0 de 0 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "principe",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 221,
+  "capitulos": 25,
+  "controles": {
+   "paginas": "ok: 221 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 25 secciones cubren las 221 páginas",
+   "configuracion": "aviso: 2 capítulos de una sola página (¿títulos del índice o encabezados de página?)",
+   "fidelidad": "ok: 90.4 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 8 de 8 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 0 de 0 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "riqueza-naciones",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 1810,
+  "capitulos": 31,
+  "controles": {
+   "paginas": "ok: 1810 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "aviso: 1 páginas de menos de 200 caracteres a mitad de capítulo (p. 1580)",
+   "indice_cobertura": "ok: 31 secciones cubren las 1810 páginas",
+   "configuracion": "ok: sin sospechas",
+   "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 10 de 10 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 0 de 0 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "self-help",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 686,
+  "capitulos": 14,
+  "controles": {
+   "paginas": "ok: 686 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "aviso: 1 páginas de menos de 200 caracteres a mitad de capítulo (p. 622)",
+   "indice_cobertura": "ok: 14 secciones cubren las 686 páginas",
+   "configuracion": "ok: sin sospechas",
+   "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 0 de 0 citas existen literalmente en su página"
+  }
+ }
+]

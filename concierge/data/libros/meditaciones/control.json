@@ -1,0 +1,47 @@
+{
+ "libro": "meditaciones",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/meditaciones/fuente.txt",
+ "fuente_sha256": "974f0dc75a281bb82b1f6989e29b25619708f48d184f11d5598c4e4359354180",
+ "paginacion": "logica",
+ "paginas": 325,
+ "capitulos": 13,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "325 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin páginas cortas a mitad de capítulo"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "13 secciones cubren las 325 páginas"
+  },
+  "configuracion": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin sospechas"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "0 de 0 citas existen literalmente en su página"
+  }
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "libro": "franklin",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/franklin/fuente.txt",
+ "fuente_sha256": "0bd4abdeef93784df384545f5830b57c80ab11b7f84598f367307ad548d0bada",
+ "paginacion": "logica",
+ "paginas": 334,
+ "capitulos": 1,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "334 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin páginas cortas a mitad de capítulo"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "1 secciones cubren las 334 páginas"
+  },
+  "configuracion": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "un solo capítulo en un libro de 334 páginas (¿falló el patrón?)"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "10 de 10 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "13 de 13 citas existen literalmente en su página"
+  }
+ }
+}

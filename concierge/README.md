@@ -126,3 +126,44 @@ Anotar aparte, porque el Worker no lo ve:
 - Sin límite de llamadas por minuto, solo la cuota de 150 por compra.
 - La URL secreta es el acceso: sin OAuth ni cuentas.
 - Altas de compradores a mano.
+
+
+---
+
+## 4. Un libro nuevo: el flujo y sus compuertas
+
+```bash
+# 1. Texto fuente en fuentes/<id>/fuente.txt; datos en data/libros/<id>/meta.json; regex en scripts/libros.json
+node scripts/preparar-libro.ts <id> --ver   # revisar los títulos detectados
+node scripts/preparar-libro.ts <id>         # páginas + índice + extras + validación
+node scripts/catalogo.ts                    # vuelve a validar todo y arma data/catalogo.json (solo libros aprobados)
+node scripts/sitio.ts                       # pósters y fichas del sitio
+```
+
+`data/libros/<id>/extras.src.json` (opcional) lista frameworks, checklists y glosario con `buscar`: el comienzo literal de la cita.
+`armar-extras.ts` encuentra la página y copia la cita del texto. Corre solo dentro de `preparar-libro.ts`, porque si el
+paginado cambia, los números de página de las citas cambian.
+
+**Compuertas** (`scripts/validar-libro.ts`). Un libro con un ERROR no entra al catálogo. Cada corrida deja el registro en
+`data/libros/<id>/control.json` (fecha, sha256 de la fuente, resultado de cada control) y el resumen en `data/controles.json`.
+
+| Control | Nivel | Qué verifica |
+|---|---|---|
+| `paginas` | error | numeradas 1..N sin saltos; ninguna vacía (menos de 40 caracteres) |
+| `indice_cobertura` | error | el índice cubre de la página 1 a la N sin huecos ni solapes (lo previo al primer capítulo es «Preliminares») |
+| `fidelidad` | error | 80 % o más de las palabras de la fuente llegaron a las páginas (el resto es cabecera, pie e índice) |
+| `busqueda` | error | 12 oraciones tomadas del libro devuelven su página entre las 3 primeras en 80 % o más |
+| `citas` | error | todas las citas del destilado existen literalmente en su página |
+| `configuracion` | aviso | un solo capítulo en un libro largo, capítulos de una página, un capítulo de más de la mitad del libro, títulos repetidos |
+| `paginas_cortas` | aviso | páginas de menos de 200 caracteres a mitad de capítulo |
+
+Los avisos no bloquean, pero quedan en el registro: casi siempre señalan una regex a ajustar.
+
+### Qué significa «página»
+
+**Decisión:** la página es **lógica**: una sección de ~1.500 caracteres del texto digital, numerada desde 1. **No es la página
+de ninguna edición impresa**, porque los textos son ediciones digitales de dominio público sin paginación fiel. Cada respuesta
+trae además el **capítulo** y la **cita literal**, que es lo que permite ubicar el pasaje en cualquier edición.
+Excepción: en *Oráculo manual* la página es el número de aforismo (`paginacion: "aforismo"` en `meta.json`), que sí coincide con el libro.
+Las herramientas `listar_libros` y `listar_indice` avisan esto a la IA. Cambiar el criterio (p. ej. paginar como el PDF) exige
+fuentes con paginación y es una decisión de producto aparte.

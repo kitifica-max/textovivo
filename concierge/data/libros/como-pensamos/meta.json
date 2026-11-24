@@ -3,5 +3,6 @@
  "autor": "John Dewey",
  "descripcion": "Qué es pensar bien, las fases del pensamiento reflexivo y cómo educarlo.",
  "idioma": "en",
- "publicar": true
+ "publicar": true,
+ "paginacion": "logica"
 }

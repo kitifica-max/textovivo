@@ -1,0 +1,47 @@
+{
+ "libro": "arte-de-la-guerra",
+ "fecha": "2026-11-24",
+ "fuente": null,
+ "fuente_sha256": null,
+ "paginacion": "logica",
+ "paginas": 48,
+ "capitulos": 13,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "48 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin páginas cortas a mitad de capítulo"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "13 secciones cubren las 48 páginas"
+  },
+  "configuracion": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin sospechas"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "info",
+   "detalle": "sin fuente.txt (texto armado desde otra fuente): no se compara"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "95 de 95 citas existen literalmente en su página"
+  }
+ }
+}

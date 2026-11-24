@@ -3,5 +3,6 @@
  "autor": "Andrew Carnegie",
  "descripcion": "Charlas y discursos sobre el camino al éxito en los negocios, el dinero, el ahorro y los usos de la riqueza.",
  "idioma": "en",
- "publicar": true
+ "publicar": true,
+ "paginacion": "logica"
 }

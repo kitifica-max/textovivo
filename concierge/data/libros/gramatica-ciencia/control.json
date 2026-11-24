@@ -1,0 +1,47 @@
+{
+ "libro": "gramatica-ciencia",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/gramatica-ciencia/fuente.txt",
+ "fuente_sha256": "ad3fedb8d8839d48b86af17a593da41163bf0165ea7d1715fa1d3f5a7c28d604",
+ "paginacion": "logica",
+ "paginas": 946,
+ "capitulos": 13,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "946 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "2 páginas de menos de 200 caracteres a mitad de capítulo (p. 451, 754)"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "13 secciones cubren las 946 páginas"
+  },
+  "configuracion": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "1 capítulos de una sola página (¿títulos del índice o encabezados de página?)"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "98.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "0 de 0 citas existen literalmente en su página"
+  }
+ }
+}

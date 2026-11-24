@@ -6,8 +6,9 @@ const VACIAS = new Set(
   "como con del las los para pero por que sin sus una uno este esta esto son hay ser muy cual cuando donde mas the and for with how what".split(" ")
 );
 
+// desde: primera página que cuenta (se saltan los preliminares: portada e índice le ganarían a los capítulos).
 export const buscadorD1 =
-  (libro: string): Buscador =>
+  (libro: string, desde = 1): Buscador =>
   async (consulta, max) => {
     const terminos = [
       ...new Set(
@@ -21,10 +22,10 @@ export const buscadorD1 =
     const match = terminos.map((t) => `"${t}"`).join(" OR ");
     const { results } = await env.DB.prepare(
       `SELECT pagina, texto, -bm25(paginas_fts) AS puntuacion
-         FROM paginas_fts WHERE paginas_fts MATCH ?1 AND libro = ?2
+         FROM paginas_fts WHERE paginas_fts MATCH ?1 AND libro = ?2 AND pagina >= ?4
         ORDER BY bm25(paginas_fts) LIMIT ?3`
     )
-      .bind(match, libro, max)
+      .bind(match, libro, max, desde)
       .all<{ pagina: number; texto: string; puntuacion: number }>();
     return results;
   };

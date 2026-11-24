@@ -3,5 +3,6 @@
  "autor": "Frederick W. Taylor",
  "descripcion": "Los principios de la gestión científica: estudio del trabajo, selección y cooperación.",
  "idioma": "en",
- "publicar": true
+ "publicar": true,
+ "paginacion": "logica"
 }

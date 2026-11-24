@@ -3,5 +3,6 @@
  "autor": "Santiago Ramón y Cajal",
  "descripcion": "Consejos para el investigador: preocupaciones del principiante, cualidades morales, método y redacción del trabajo científico.",
  "idioma": "es",
- "publicar": true
+ "publicar": true,
+ "paginacion": "logica"
 }

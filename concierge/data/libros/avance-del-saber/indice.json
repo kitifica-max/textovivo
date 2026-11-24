@@ -1,8 +1,20 @@
 [
  {
-  "titulo": "Texto completo",
+  "titulo": "Preliminares",
   "nivel": 1,
   "pagina_inicio": 1,
+  "pagina_fin": 7
+ },
+ {
+  "titulo": "THE FIRST BOOK OF FRANCIS BACON; OF THE PROFICIENCE AND ADVANCEMENT OF LEARNING, DIVINE AND HUMAN.",
+  "nivel": 1,
+  "pagina_inicio": 8,
+  "pagina_fin": 115
+ },
+ {
+  "titulo": "THE SECOND BOOK.",
+  "nivel": 1,
+  "pagina_inicio": 116,
   "pagina_fin": 398
  }
 ]

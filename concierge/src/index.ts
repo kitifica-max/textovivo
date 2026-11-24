@@ -13,11 +13,12 @@ import {
   citarFuente,
   crearLibro,
   listarIndice,
+  notaPaginas,
   obtenerChecklist,
   obtenerFramework
 } from "./tools.ts";
 
-const libros = catalogoJson.map((d) => crearLibro(Destilado.parse(d), buscadorD1(d.id)));
+const libros = catalogoJson.map((d) => crearLibro(Destilado.parse(d), buscadorD1(d.id, d.indice[0]?.titulo === "Preliminares" ? d.indice[0].pagina_fin + 1 : 1)));
 const porId = new Map(libros.map((l) => [l.id, l]));
 const ids = libros.map((l) => l.id) as [string, ...string[]];
 const IDIOMAS: Record<string, string> = { es: "español", en: "inglés", pt: "portugués", fr: "francés" };
@@ -77,6 +78,7 @@ function crearServidor() {
           titulo: l.titulo,
           autor: l.autor,
           idioma: IDIOMAS[l.idioma] ?? l.idioma,
+          paginas: notaPaginas(l),
           descripcion: l.descripcion,
           frameworks: l.frameworks.map((f) => f.nombre),
           checklists: l.checklists.map((c) => c.nombre)

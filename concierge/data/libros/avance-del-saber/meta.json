@@ -3,5 +3,6 @@
  "autor": "Francis Bacon",
  "descripcion": "Cómo avanza el conocimiento: obstáculos, método y las partes del saber.",
  "idioma": "en",
- "publicar": true
+ "publicar": true,
+ "paginacion": "logica"
 }

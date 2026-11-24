@@ -1,0 +1,47 @@
+{
+ "libro": "administracion-cientifica",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/administracion-cientifica/fuente.txt",
+ "fuente_sha256": "f44094afc0b9fb5b9f05fa991e8d51ba871be15a7f66ef3a63aceb3dde3c3e5b",
+ "paginacion": "logica",
+ "paginas": 174,
+ "capitulos": 4,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "174 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "1 páginas de menos de 200 caracteres a mitad de capítulo (p. 36)"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "4 secciones cubren las 174 páginas"
+  },
+  "configuracion": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "1 capítulos de una sola página (¿títulos del índice o encabezados de página?); «CHAPTER II. THE PRINCIPLES OF » ocupa más de la mitad del libro"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "11 de 11 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "4 de 4 citas existen literalmente en su página"
+  }
+ }
+}

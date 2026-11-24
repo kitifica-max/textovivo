@@ -10,35 +10,35 @@
      "orden": 1,
      "titulo": "Una dificultad sentida",
      "descripcion": "Todo comienza al notar un problema o una perplejidad.",
-     "pagina": 112,
+     "pagina": 106,
      "cita": "a felt difficulty; (ii) its location"
     },
     {
      "orden": 2,
      "titulo": "Ubicarla y definirla",
      "descripcion": "Precisar dónde está el problema y qué es exactamente.",
-     "pagina": 112,
+     "pagina": 106,
      "cita": "its location and definition; (iii) suggestion"
     },
     {
      "orden": 3,
      "titulo": "Sugerir una posible solución",
      "descripcion": "Aparece una idea de solución, todavía como hipótesis.",
-     "pagina": 112,
+     "pagina": 106,
      "cita": "suggestion of possible solution; (iv) development"
     },
     {
      "orden": 4,
      "titulo": "Desarrollar la idea por razonamiento",
      "descripcion": "Razonar qué consecuencias tendría la sugerencia.",
-     "pagina": 112,
+     "pagina": 106,
      "cita": "development by reasoning of the bearings of the suggestion; (v) further observation and experiment"
     },
     {
      "orden": 5,
      "titulo": "Observar y experimentar",
      "descripcion": "Más observación y experimento llevan a aceptar o rechazar la idea.",
-     "pagina": 112,
+     "pagina": 106,
      "cita": "further observation and experiment leading to its acceptance or rejection; that is, the conclusion"
     }
    ]

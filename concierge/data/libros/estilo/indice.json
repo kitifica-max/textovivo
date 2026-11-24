@@ -1,8 +1,44 @@
 [
  {
-  "titulo": "Texto completo",
+  "titulo": "Preliminares",
   "nivel": 1,
   "pagina_inicio": 1,
-  "pagina_fin": 62
+  "pagina_fin": 2
+ },
+ {
+  "titulo": "I. INTRODUCTORY",
+  "nivel": 1,
+  "pagina_inicio": 3,
+  "pagina_fin": 4
+ },
+ {
+  "titulo": "II. ELEMENTARY RULES OF USAGE",
+  "nivel": 1,
+  "pagina_inicio": 5,
+  "pagina_fin": 13
+ },
+ {
+  "titulo": "III. ELEMENTARY PRINCIPLES OF COMPOSITION",
+  "nivel": 1,
+  "pagina_inicio": 14,
+  "pagina_fin": 39
+ },
+ {
+  "titulo": "IV. A FEW MATTERS OF FORM",
+  "nivel": 1,
+  "pagina_inicio": 40,
+  "pagina_fin": 43
+ },
+ {
+  "titulo": "V. WORDS AND EXPRESSIONS COMMONLY MISUSED",
+  "nivel": 1,
+  "pagina_inicio": 44,
+  "pagina_fin": 58
+ },
+ {
+  "titulo": "VI. SPELLING",
+  "nivel": 1,
+  "pagina_inicio": 59,
+  "pagina_fin": 65
  }
 ]

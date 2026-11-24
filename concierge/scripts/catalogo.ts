@@ -6,6 +6,7 @@
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import { Destilado, Paginas } from "../src/schema.ts";
 import { citasInvalidas } from "../src/tools.ts";
+import { resumen, validar } from "./validar-libro.ts";
 
 const leer = async (ruta: string) => JSON.parse(await readFile(ruta, "utf8"));
 const existe = (ruta: string) => readFile(ruta).then(() => true, () => false);
@@ -14,6 +15,7 @@ const ids = (await readdir("data/libros", { withFileTypes: true })).filter((d) =
 await mkdir("data/semilla", { recursive: true });
 
 const catalogo: Destilado[] = [];
+const controles: Awaited<ReturnType<typeof validar>>[] = [];
 let errores = 0;
 for (const id of ids) {
   const dir = `data/libros/${id}`;
@@ -32,6 +34,7 @@ for (const id of ids) {
       autor: meta.autor,
       descripcion: meta.descripcion ?? "",
       idioma: meta.idioma ?? "es",
+      paginacion: meta.paginacion ?? "logica",
       indice: await leer(`${dir}/indice.json`),
       glosario: [],
       frameworks: [],
@@ -41,10 +44,12 @@ for (const id of ids) {
   }
   const d = Destilado.parse(bruto);
   const malas = citasInvalidas(d, paginas);
-  if (malas.length) {
-    errores += malas.length;
-    console.error(`✗ ${id}: ${malas.length} citas que no están en el texto`);
-    malas.slice(0, 5).forEach((m) => console.error(`    ${m}`));
+  const registro = await validar(id, d); // compuertas: escribe data/libros/<id>/control.json
+  controles.push(registro);
+  console.log(resumen(registro));
+  if (!registro.aprobado) {
+    errores += 1;
+    console.error(`  → ${id} NO se publica: falló una compuerta (${malas.length} citas inválidas)`);
     continue;
   }
   if (!publicar) {
@@ -58,7 +63,7 @@ for (const id of ids) {
     ...paginas.map((p) => `INSERT INTO paginas_fts (texto, libro, pagina) VALUES (${q(p.texto)}, ${q(id)}, ${p.pagina});`)
   ].join("\n");
   await writeFile(`data/semilla/${id}.sql`, sql + "\n");
-  console.log(`✓ ${id}: ${paginas.length} páginas, ${d.frameworks.length} frameworks, ${d.checklists.length} checklists, ${d.glosario.length} términos`);
 }
 await writeFile("data/catalogo.json", JSON.stringify(catalogo));
+await writeFile("data/controles.json", JSON.stringify(controles.map(({ libro, fecha, aprobado, paginacion, paginas, capitulos, controles: c }) => ({ libro, fecha, aprobado, paginacion, paginas, capitulos, controles: Object.fromEntries(Object.entries(c).map(([k, x]) => [k, `${x.ok ? "ok" : x.nivel}: ${x.detalle}`])) })), null, 1) + "\n");
 if (errores) process.exit(1);

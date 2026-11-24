@@ -66,9 +66,16 @@ export function buscadorMemoria(paginas: Paginas): Buscador {
   };
 }
 
+/** Qué significa «página» en las citas de este libro (el lector debe saberlo antes de buscarla). */
+export const notaPaginas = (l: Pick<Libro, "paginacion">) =>
+  l.paginacion === "aforismo"
+    ? "Las páginas son los números de aforismo de la obra."
+    : "Las páginas son secciones lógicas del texto digital (~1.500 caracteres), no las páginas de una edición impresa: usá el capítulo y la cita literal para ubicar el pasaje en tu ejemplar.";
+
 export function listarIndice(l: Libro) {
   return {
     titulo: l.titulo,
+    paginacion: notaPaginas(l),
     autor: l.autor,
     descripcion: l.descripcion,
     capitulos: l.indice.map((s) => ({

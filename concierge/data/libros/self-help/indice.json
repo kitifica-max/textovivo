@@ -1,5 +1,11 @@
 [
  {
+  "titulo": "Preliminares",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 25
+ },
+ {
   "titulo": "CHAPTER I. SELF-HELP—NATIONAL AND INDIVIDUAL.",
   "nivel": 1,
   "pagina_inicio": 26,

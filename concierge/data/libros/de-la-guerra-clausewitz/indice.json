@@ -1,32 +1,260 @@
 [
  {
-  "titulo": "BOOK I ON THE NATURE OF WAR",
+  "titulo": "CHAPTER I. WHAT IS WAR?",
   "nivel": 1,
-  "pagina_inicio": 16,
-  "pagina_fin": 42
+  "pagina_inicio": 1,
+  "pagina_fin": 38
  },
  {
-  "titulo": "BOOK I. ON THE NATURE OF WAR",
+  "titulo": "CHAPTER II. END AND MEANS IN WAR",
   "nivel": 1,
-  "pagina_inicio": 43,
-  "pagina_fin": 168
+  "pagina_inicio": 39,
+  "pagina_fin": 68
  },
  {
-  "titulo": "BOOK II. ON THE THEORY OF WAR",
+  "titulo": "CHAPTER III. THE GENIUS FOR WAR",
   "nivel": 1,
-  "pagina_inicio": 169,
-  "pagina_fin": 287
+  "pagina_inicio": 69,
+  "pagina_fin": 109
  },
  {
-  "titulo": "BOOK III. OF STRATEGY IN GENERAL",
+  "titulo": "CHAPTER IV. OF DANGER IN WAR",
   "nivel": 1,
-  "pagina_inicio": 288,
-  "pagina_fin": 394
+  "pagina_inicio": 110,
+  "pagina_fin": 112
  },
  {
-  "titulo": "BOOK IV THE COMBAT",
+  "titulo": "CHAPTER V. OF BODILY EXERTION IN WAR",
   "nivel": 1,
-  "pagina_inicio": 395,
-  "pagina_fin": 515
+  "pagina_inicio": 113,
+  "pagina_fin": 118
+ },
+ {
+  "titulo": "CHAPTER VII. FRICTION IN WAR",
+  "nivel": 1,
+  "pagina_inicio": 119,
+  "pagina_fin": 125
+ },
+ {
+  "titulo": "CHAPTER VIII. CONCLUDING REMARKS, BOOK I",
+  "nivel": 1,
+  "pagina_inicio": 126,
+  "pagina_fin": 128
+ },
+ {
+  "titulo": "CHAPTER I. BRANCHES OF THE ART OF WAR",
+  "nivel": 1,
+  "pagina_inicio": 129,
+  "pagina_fin": 144
+ },
+ {
+  "titulo": "CHAPTER II. ON THE THEORY OF WAR",
+  "nivel": 1,
+  "pagina_inicio": 145,
+  "pagina_fin": 178
+ },
+ {
+  "titulo": "CHAPTER III. ART OR SCIENCE OF WAR",
+  "nivel": 1,
+  "pagina_inicio": 179,
+  "pagina_fin": 184
+ },
+ {
+  "titulo": "CHAPTER IV. METHODICISM",
+  "nivel": 1,
+  "pagina_inicio": 185,
+  "pagina_fin": 196
+ },
+ {
+  "titulo": "CHAPTER V. CRITICISM",
+  "nivel": 1,
+  "pagina_inicio": 197,
+  "pagina_fin": 236
+ },
+ {
+  "titulo": "CHAPTER VI. ON EXAMPLES",
+  "nivel": 1,
+  "pagina_inicio": 237,
+  "pagina_fin": 249
+ },
+ {
+  "titulo": "CHAPTER I. STRATEGY",
+  "nivel": 1,
+  "pagina_inicio": 250,
+  "pagina_fin": 266
+ },
+ {
+  "titulo": "CHAPTER II. ELEMENTS OF STRATEGY",
+  "nivel": 1,
+  "pagina_inicio": 267,
+  "pagina_fin": 268
+ },
+ {
+  "titulo": "CHAPTER III. MORAL FORCES",
+  "nivel": 1,
+  "pagina_inicio": 269,
+  "pagina_fin": 272
+ },
+ {
+  "titulo": "CHAPTER IV. THE CHIEF MORAL POWERS",
+  "nivel": 1,
+  "pagina_inicio": 273,
+  "pagina_fin": 274
+ },
+ {
+  "titulo": "CHAPTER V. MILITARY VIRTUE OF AN ARMY",
+  "nivel": 1,
+  "pagina_inicio": 275,
+  "pagina_fin": 284
+ },
+ {
+  "titulo": "CHAPTER VI. BOLDNESS",
+  "nivel": 1,
+  "pagina_inicio": 285,
+  "pagina_fin": 294
+ },
+ {
+  "titulo": "CHAPTER VIII. SUPERIORITY OF NUMBERS",
+  "nivel": 1,
+  "pagina_inicio": 295,
+  "pagina_fin": 303
+ },
+ {
+  "titulo": "CHAPTER IX. THE SURPRISE",
+  "nivel": 1,
+  "pagina_inicio": 304,
+  "pagina_fin": 313
+ },
+ {
+  "titulo": "CHAPTER X. STRATAGEM",
+  "nivel": 1,
+  "pagina_inicio": 314,
+  "pagina_fin": 317
+ },
+ {
+  "titulo": "CHAPTER XI. ASSEMBLY OF FORCES IN SPACE",
+  "nivel": 1,
+  "pagina_inicio": 318,
+  "pagina_fin": 318
+ },
+ {
+  "titulo": "CHAPTER XII. ASSEMBLY OF FORCES IN TIME",
+  "nivel": 1,
+  "pagina_inicio": 319,
+  "pagina_fin": 331
+ },
+ {
+  "titulo": "CHAPTER XIII. STRATEGIC RESERVE",
+  "nivel": 1,
+  "pagina_inicio": 332,
+  "pagina_fin": 340
+ },
+ {
+  "titulo": "CHAPTER XV. GEOMETRICAL ELEMENT",
+  "nivel": 1,
+  "pagina_inicio": 341,
+  "pagina_fin": 343
+ },
+ {
+  "titulo": "CHAPTER XVI. ON THE SUSPENSION OF THE ACT IN WARFARE",
+  "nivel": 1,
+  "pagina_inicio": 344,
+  "pagina_fin": 353
+ },
+ {
+  "titulo": "CHAPTER XVII. ON THE CHARACTER OF MODERN WAR",
+  "nivel": 1,
+  "pagina_inicio": 354,
+  "pagina_fin": 356
+ },
+ {
+  "titulo": "CHAPTER XVIII. TENSION AND REST",
+  "nivel": 1,
+  "pagina_inicio": 357,
+  "pagina_fin": 361
+ },
+ {
+  "titulo": "CHAPTER I. INTRODUCTORY",
+  "nivel": 1,
+  "pagina_inicio": 362,
+  "pagina_fin": 362
+ },
+ {
+  "titulo": "CHAPTER II. CHARACTER OF THE MODERN BATTLE",
+  "nivel": 1,
+  "pagina_inicio": 363,
+  "pagina_fin": 365
+ },
+ {
+  "titulo": "CHAPTER III. THE COMBAT IN GENERAL",
+  "nivel": 1,
+  "pagina_inicio": 366,
+  "pagina_fin": 373
+ },
+ {
+  "titulo": "CHAPTER IV. THE COMBAT IN GENERAL (CONTINUATION)",
+  "nivel": 1,
+  "pagina_inicio": 374,
+  "pagina_fin": 389
+ },
+ {
+  "titulo": "CHAPTER V. ON THE SIGNIFICATION OF THE COMBAT",
+  "nivel": 1,
+  "pagina_inicio": 390,
+  "pagina_fin": 393
+ },
+ {
+  "titulo": "CHAPTER VI. DURATION OF THE COMBAT",
+  "nivel": 1,
+  "pagina_inicio": 394,
+  "pagina_fin": 395
+ },
+ {
+  "titulo": "CHAPTER VII. DECISION OF THE COMBAT",
+  "nivel": 1,
+  "pagina_inicio": 396,
+  "pagina_fin": 409
+ },
+ {
+  "titulo": "CHAPTER VIII. MUTUAL UNDERSTANDING AS TO A BATTLE",
+  "nivel": 1,
+  "pagina_inicio": 410,
+  "pagina_fin": 414
+ },
+ {
+  "titulo": "CHAPTER IX. THE BATTLE(*)",
+  "nivel": 1,
+  "pagina_inicio": 415,
+  "pagina_fin": 426
+ },
+ {
+  "titulo": "CHAPTER X. EFFECTS OF VICTORY (continuation)",
+  "nivel": 1,
+  "pagina_inicio": 427,
+  "pagina_fin": 437
+ },
+ {
+  "titulo": "CHAPTER XI. THE USE OF THE BATTLE (continued)",
+  "nivel": 1,
+  "pagina_inicio": 438,
+  "pagina_fin": 450
+ },
+ {
+  "titulo": "CHAPTER XII. STRATEGIC MEANS OF UTILISING VICTORY",
+  "nivel": 1,
+  "pagina_inicio": 451,
+  "pagina_fin": 471
+ },
+ {
+  "titulo": "CHAPTER XIII. RETREAT AFTER A LOST BATTLE",
+  "nivel": 1,
+  "pagina_inicio": 472,
+  "pagina_fin": 477
+ },
+ {
+  "titulo": "CHAPTER XIV. NIGHT FIGHTING",
+  "nivel": 1,
+  "pagina_inicio": 478,
+  "pagina_fin": 485
  }
 ]

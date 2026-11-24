@@ -1,20 +1,98 @@
 [
  {
-  "titulo": "PART I",
+  "titulo": "CHAPTER ONE. WHAT IS THOUGHT?",
   "nivel": 1,
-  "pagina_inicio": 4,
-  "pagina_fin": 4
+  "pagina_inicio": 1,
+  "pagina_fin": 19
  },
  {
-  "titulo": "PART II",
+  "titulo": "CHAPTER TWO. THE NEED FOR TRAINING THOUGHT",
   "nivel": 1,
-  "pagina_inicio": 5,
-  "pagina_fin": 5
+  "pagina_inicio": 20,
+  "pagina_fin": 40
  },
  {
-  "titulo": "PART III",
+  "titulo": "CHAPTER THREE. NATURAL RESOURCES IN THE TRAINING OF THOUGHT",
   "nivel": 1,
-  "pagina_inicio": 6,
-  "pagina_fin": 340
+  "pagina_inicio": 41,
+  "pagina_fin": 64
+ },
+ {
+  "titulo": "CHAPTER FOUR. SCHOOL CONDITIONS AND THE TRAINING OF THOUGHT",
+  "nivel": 1,
+  "pagina_inicio": 65,
+  "pagina_fin": 80
+ },
+ {
+  "titulo": "CHAPTER FIVE. THE MEANS AND END OF MENTAL TRAINING: THE PSYCHOLOGICAL AND THE LOGICAL",
+  "nivel": 1,
+  "pagina_inicio": 81,
+  "pagina_fin": 99
+ },
+ {
+  "titulo": "CHAPTER SIX. THE ANALYSIS OF A COMPLETE ACT OF THOUGHT",
+  "nivel": 1,
+  "pagina_inicio": 100,
+  "pagina_fin": 116
+ },
+ {
+  "titulo": "CHAPTER SEVEN. SYSTEMATIC INFERENCE: INDUCTION AND DEDUCTION",
+  "nivel": 1,
+  "pagina_inicio": 117,
+  "pagina_fin": 149
+ },
+ {
+  "titulo": "CHAPTER EIGHT. JUDGMENT: THE INTERPRETATION OF FACTS",
+  "nivel": 1,
+  "pagina_inicio": 150,
+  "pagina_fin": 171
+ },
+ {
+  "titulo": "CHAPTER NINE. MEANING: OR CONCEPTIONS AND UNDERSTANDING",
+  "nivel": 1,
+  "pagina_inicio": 172,
+  "pagina_fin": 198
+ },
+ {
+  "titulo": "CHAPTER TEN. CONCRETE AND ABSTRACT THINKING",
+  "nivel": 1,
+  "pagina_inicio": 199,
+  "pagina_fin": 213
+ },
+ {
+  "titulo": "CHAPTER ELEVEN",
+  "nivel": 1,
+  "pagina_inicio": 214,
+  "pagina_fin": 230
+ },
+ {
+  "titulo": "CHAPTER TWELVE",
+  "nivel": 1,
+  "pagina_inicio": 231,
+  "pagina_fin": 249
+ },
+ {
+  "titulo": "CHAPTER THIRTEEN",
+  "nivel": 1,
+  "pagina_inicio": 250,
+  "pagina_fin": 275
+ },
+ {
+  "titulo": "CHAPTER FOURTEEN",
+  "nivel": 1,
+  "pagina_inicio": 276,
+  "pagina_fin": 294
+ },
+ {
+  "titulo": "CHAPTER FIFTEEN",
+  "nivel": 1,
+  "pagina_inicio": 295,
+  "pagina_fin": 317
+ },
+ {
+  "titulo": "CHAPTER SIXTEEN",
+  "nivel": 1,
+  "pagina_inicio": 318,
+  "pagina_fin": 338
  }
 ]

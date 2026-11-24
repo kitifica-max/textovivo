@@ -1,0 +1,47 @@
+{
+ "libro": "estilo",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/estilo/fuente.txt",
+ "fuente_sha256": "2671f06f33ff4d44b66f87744f926dd9178df89595dd3dcaef08efdaee499bc0",
+ "paginacion": "logica",
+ "paginas": 65,
+ "capitulos": 7,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "65 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin páginas cortas a mitad de capítulo"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "7 secciones cubren las 65 páginas"
+  },
+  "configuracion": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin sospechas"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "17 de 17 citas existen literalmente en su página"
+  }
+ }
+}

@@ -1,8 +1,80 @@
 [
  {
-  "titulo": "Texto completo",
+  "titulo": "Preliminares",
   "nivel": 1,
   "pagina_inicio": 1,
-  "pagina_fin": 323
+  "pagina_fin": 25
+ },
+ {
+  "titulo": "THE FIRST BOOK",
+  "nivel": 1,
+  "pagina_inicio": 26,
+  "pagina_fin": 43
+ },
+ {
+  "titulo": "THE SECOND BOOK",
+  "nivel": 1,
+  "pagina_inicio": 44,
+  "pagina_fin": 53
+ },
+ {
+  "titulo": "THE THIRD BOOK",
+  "nivel": 1,
+  "pagina_inicio": 54,
+  "pagina_fin": 69
+ },
+ {
+  "titulo": "THE FOURTH BOOK",
+  "nivel": 1,
+  "pagina_inicio": 70,
+  "pagina_fin": 93
+ },
+ {
+  "titulo": "THE FIFTH BOOK",
+  "nivel": 1,
+  "pagina_inicio": 94,
+  "pagina_fin": 118
+ },
+ {
+  "titulo": "THE SIXTH BOOK",
+  "nivel": 1,
+  "pagina_inicio": 119,
+  "pagina_fin": 143
+ },
+ {
+  "titulo": "THE SEVENTH BOOK",
+  "nivel": 1,
+  "pagina_inicio": 144,
+  "pagina_fin": 170
+ },
+ {
+  "titulo": "THE EIGHTH BOOK",
+  "nivel": 1,
+  "pagina_inicio": 171,
+  "pagina_fin": 197
+ },
+ {
+  "titulo": "THE NINTH BOOK",
+  "nivel": 1,
+  "pagina_inicio": 198,
+  "pagina_fin": 220
+ },
+ {
+  "titulo": "THE TENTH BOOK",
+  "nivel": 1,
+  "pagina_inicio": 221,
+  "pagina_fin": 247
+ },
+ {
+  "titulo": "THE ELEVENTH BOOK",
+  "nivel": 1,
+  "pagina_inicio": 248,
+  "pagina_fin": 268
+ },
+ {
+  "titulo": "THE TWELFTH BOOK",
+  "nivel": 1,
+  "pagina_inicio": 269,
+  "pagina_fin": 325
  }
 ]

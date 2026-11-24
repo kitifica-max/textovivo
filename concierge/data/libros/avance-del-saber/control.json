@@ -1,0 +1,47 @@
+{
+ "libro": "avance-del-saber",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/avance-del-saber/fuente.txt",
+ "fuente_sha256": "7b0efa3d70e88073a79cdfac2e5288e6ce1fab062159bf1917c957eb48a8bac1",
+ "paginacion": "logica",
+ "paginas": 398,
+ "capitulos": 3,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "398 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin páginas cortas a mitad de capítulo"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "3 secciones cubren las 398 páginas"
+  },
+  "configuracion": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "«THE SECOND BOOK.» ocupa más de la mitad del libro"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "8 de 8 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "0 de 0 citas existen literalmente en su página"
+  }
+ }
+}

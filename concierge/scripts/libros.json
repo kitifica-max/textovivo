@@ -18,7 +18,8 @@
   "patron": "^(INTRODUCTION|CHAPTER [IVX]+)$"
  },
  {
-  "id": "avance-del-saber"
+  "id": "avance-del-saber",
+  "patron": "^THE (FIRST|SECOND) BOOK\\b.*$"
  },
  {
   "id": "self-help",
@@ -30,21 +31,24 @@
  },
  {
   "id": "de-la-guerra-clausewitz",
-  "patron": "^(CHAPTER \\d+.*|BOOK [IVX]+.*)$"
+  "patron": "^(BOOK [IVX]+\\..*|CHAPTER [IVX]+\\..*)$",
+  "desdeParrafo": 103
  },
  {
   "id": "estilo",
-  "patron": "^(I\\. Introductory|II\\. Elementary Rules of Usage|III\\. Elementary Principles of Composition|IV\\. A Few Matters of Form|V\\. Words and Expressions Commonly Misused|VI\\. Words Commonly Misspelled|Introductory|Elementary Rules of Usage|Elementary Principles of Composition|A Few Matters of Form|Words and Expressions Commonly Misused)$"
+  "patron": "^(I|II|III|IV|V|VI)\\. [A-Z ,'\\-]{6,}$"
  },
  {
   "id": "franklin"
  },
  {
   "id": "como-pensamos",
-  "patron": "^(CHAPTER [IVX]+\\b.*|PART [IVX]+\\b.*)$"
+  "patron": "^(CHAPTER (ONE|TWO|THREE|FOUR|FIVE|SIX|SEVEN|EIGHT|NINE|TEN|ELEVEN|TWELVE|THIRTEEN|FOURTEEN|FIFTEEN|SIXTEEN)|PART (ONE|TWO|THREE):.*)$",
+  "desdeParrafo": 39
  },
  {
-  "id": "meditaciones"
+  "id": "meditaciones",
+  "patron": "^THE [A-Z]+ BOOK$"
  },
  {
   "id": "oratoria",

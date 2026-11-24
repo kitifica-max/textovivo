@@ -72,11 +72,12 @@ const cerrar = () => {
 };
 parrafos.forEach((p, i) => {
   const esTitulo = titulos.some((t) => t.parrafo === i);
-  if (esTitulo) cerrar(); // cada capítulo empieza página nueva
+  if (esTitulo && actual.length >= 120) cerrar(); // cada capítulo empieza página nueva (salvo que solo haya un rótulo suelto)
   if (esTitulo) inicioDePagina.set(i, paginas.length + 1);
   const trozos = p.length > MAX_PAGINA ? (p.match(/[^.!?…]+[.!?…]+["”')\]]*\s*|[^.!?…]+$/g) ?? [p]) : [p];
   for (const t of trozos) {
-    if (actual && actual.length + t.length + 1 > MAX_PAGINA) cerrar();
+    // Un título suelto no se deja solo en una página: el párrafo siguiente entra aunque pase el tope.
+    if (actual.length >= 120 && actual.length + t.length + 1 > MAX_PAGINA) cerrar();
     actual += (actual && !actual.endsWith(" ") ? (actual.endsWith("\n") ? "" : trozos.length > 1 ? "" : "\n\n") : "") + t;
   }
 });
@@ -89,7 +90,20 @@ const indice = titulos.map((t, k) => {
   return { titulo: t.titulo, nivel: 1, pagina_inicio: inicio, pagina_fin: Math.max(inicio, sig - 1) };
 });
 
+// Lo que viene antes del primer capítulo (portada, prólogo) entra al índice como «Preliminares»: sin huecos.
+if (indice[0].pagina_inicio > 1)
+  indice.unshift({ titulo: "Preliminares", nivel: 1, pagina_inicio: 1, pagina_fin: indice[0].pagina_inicio - 1 });
 await mkdir(`data/libros/${id}`, { recursive: true });
 await writeFile(`data/libros/${id}/paginas.json`, JSON.stringify(paginas));
 await writeFile(`data/libros/${id}/indice.json`, JSON.stringify(indice, null, 1));
 console.log(`${id}: ${paginas.length} páginas, ${indice.length} capítulos`);
+// Las páginas pueden haber cambiado de numeración: se rearman las citas del destilado contra las páginas nuevas.
+const { existsSync } = await import("node:fs");
+if (existsSync(`data/libros/${id}/extras.src.json`)) {
+  const { execFileSync } = await import("node:child_process");
+  console.log(execFileSync(process.execPath, ["scripts/armar-extras.ts", id], { encoding: "utf8" }).trim());
+}
+const { resumen, validar } = await import("./validar-libro.ts");
+const registro = await validar(id);
+console.log(resumen(registro));
+if (!registro.aprobado) process.exitCode = 1;
