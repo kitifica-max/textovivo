@@ -94,12 +94,12 @@ p { margin: 0 0 1em; }
   background: linear-gradient(color-mix(in srgb, var(--crema) 70%, transparent), transparent);
   pointer-events: none;
 }
-.cabecera .envoltura { display: flex; align-items: center; gap: 24px; height: 64px; }
+.cabecera .envoltura { display: flex; align-items: center; gap: 24px; height: 72px; }
 
-.marca { display: inline-flex; align-items: center; gap: 0.36em; font: 400 1.35rem/1 var(--sans); letter-spacing: -0.05em; text-decoration: none; white-space: nowrap; }
+.marca { display: inline-flex; align-items: center; gap: 0.36em; font: 400 1.7rem/1 var(--sans); letter-spacing: -0.05em; text-decoration: none; white-space: nowrap; }
 .marca b { font-weight: 800; }
 /* Isotipo de Textifika: la cinta (marcador de página) es siempre roja. */
-.marca .iso { flex: none; width: 1.3em; height: 1.3em; --tile: #141414; --barra: #f3f0e8; --cinta: #df2a1f; }
+.marca .iso { flex: none; width: 1.7em; height: 1.7em; --tile: #141414; --barra: #f3f0e8; --cinta: #df2a1f; }
 @media (prefers-color-scheme: dark) { .marca .iso { --tile: #f3f0e8; --barra: #141414; } }
 
 .navegacion { display: flex; align-items: center; gap: 4px; margin-left: auto; }
@@ -118,7 +118,7 @@ p { margin: 0 0 1em; }
 @media (max-width: 760px) { .navegacion .ocultable { display: none; } }
 @media (max-width: 420px) {
   .cabecera .envoltura { gap: 12px; }
-  .marca { font-size: 1.2rem; }
+  .marca { font-size: 1.45rem; }
   .navegacion a:not(.boton) { padding: 8px; font-size: 0.85rem; }
   .navegacion .boton { margin-left: 4px; }
 }

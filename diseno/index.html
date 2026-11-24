@@ -32,9 +32,11 @@
   .usos .poster .t-cursiva, .usos .poster .t-serif { font-size: 9.4cqi; }
   .usos .poster .texto { margin-top: 5cqi; font-size: max(0.8rem, 3.5cqi); max-width: 34ch; }
 
-  .destacado { display: grid; grid-template-columns: minmax(260px, 380px) 1fr; gap: clamp(24px, 4vw, 64px); align-items: start; }
-  .destacado .poster { aspect-ratio: 3 / 4.1; }
-  .destacado .poster .titulo { margin-top: 30%; font-size: 22cqi; }
+  .demo { max-width: 860px; }
+  /* 8 libros destacados: 4 columnas (2 filas) o 2 columnas; nunca una fila a medias */
+  #libros .grilla { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 1100px) { #libros .grilla { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 360px) { #libros .grilla { grid-template-columns: 1fr; } }
   .datos { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 24px 0 28px; }
   .datos div { font-size: 0.8rem; color: var(--gris); }
   .datos strong { display: block; font: 800 2rem/1 var(--sans); letter-spacing: -0.04em; color: var(--tinta); margin-bottom: 4px; }
@@ -92,29 +94,86 @@
         </article>
         <article class="poster c-manteca" data-aparece style="--i:6">
           <span class="num">03</span>
-          <p class="libro">Scientific Advertising <span class="estado">Próximamente</span></p>
+          <p class="libro">Scientific Advertising <span class="estado vivo">Disponible</span></p>
           <h3 class="titulo t-grotesca">«Mejorá el texto de mi landing.»</h3>
           <p class="texto fuerte">Aplica los principios de Hopkins sobre titulares y pruebas, y te dice de dónde sale cada consejo.</p>
         </article>
         <article class="poster c-hueso plegado" data-aparece style="--i:7">
           <span class="num">04</span>
-          <p class="libro">Oráculo manual · Gracián <span class="estado">Próximamente</span></p>
+          <p class="libro">Oráculo manual · Gracián <span class="estado vivo">Disponible</span></p>
           <h3 class="titulo t-cursiva">«¿Acepto esta propuesta o la negocio?»</h3>
           <p class="texto cursiva">Te responde con las reglas de Gracián para decidir y negociar, y cita cada una.</p>
         </article>
         <article class="poster c-celeste" data-aparece style="--i:8">
           <span class="num">05</span>
-          <p class="libro">Ramón y Cajal <span class="estado">Próximamente</span></p>
+          <p class="libro">Ramón y Cajal <span class="estado vivo">Disponible</span></p>
           <h3 class="titulo t-grotesca">«Ayudame a armar el plan de mi investigación.»</h3>
           <p class="texto fuerte">Ordena tu plan con los consejos de Cajal para investigar, con la página de cada uno.</p>
         </article>
         <article class="poster c-bosque" data-aparece style="--i:9">
           <span class="num">06</span>
-          <p class="libro">The Art of Money Getting <span class="estado">Próximamente</span></p>
+          <p class="libro">The Art of Money Getting <span class="estado vivo">Disponible</span></p>
           <h3 class="titulo t-negra" style="font-size:7.6cqi">«Revisá cómo administro mi negocio.»</h3>
           <p class="texto fuerte">Contrasta tus decisiones con las reglas de Barnum para emprender y administrar.</p>
         </article>
       </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="libros">
+    <div class="envoltura">
+      <!--destacados-->
+      <div class="cabeza">
+        <div><p class="micro">Ya en la biblioteca</p><h2 style="margin-top:10px">Los libros más importantes.</h2></div>
+        <p class="bajada" style="max-width:26em">Clásicos de estrategia, negocios, decisiones y escritura, listos para que tu IA los consulte.</p>
+      </div>
+      <div class="grilla cuatro">
+      <a class="poster c-rojo plegado" href="texto.html" data-tema="estrategia" data-aparece style="--i:3">
+        <span class="num">001</span>
+        <h2 class="titulo t-alta" style="color:#ffb089">El arte de la guerra</h2>
+        <div class="pie"><span class="autor">Sun Tzu<br>trad. Giles, 1910</span><span class="estado vivo">Disponible</span></div>
+      </a>
+      <a class="poster c-negro" href="libros/principe.html" data-tema="estrategia" data-aparece style="--i:4">
+        <span class="num">006</span>
+        <h2 class="titulo t-alta">The Prince</h2>
+        <div class="pie"><span class="autor">Niccolò Machiavelli<br>1515</span><span class="estado vivo">Disponible</span></div>
+      </a>
+      <a class="poster c-manteca" href="libros/scientific-advertising.html" data-tema="marketing" data-aparece style="--i:5">
+        <span class="num">002</span>
+        <h2 class="titulo t-negra">Scientific Advertising</h2>
+        <div class="pie"><span class="autor">Claude C. Hopkins<br>1923</span><span class="estado vivo">Disponible</span></div>
+      </a>
+      <a class="poster c-hueso" href="libros/babylon.html" data-tema="negocios" data-aparece style="--i:6">
+        <span class="num">018</span>
+        <h2 class="titulo t-cursiva" style="font-size:10cqi">The Richest Man in Babylon</h2>
+        <div class="pie"><span class="autor">George S. Clason<br>1926</span><span class="estado vivo">Disponible</span></div>
+      </a>
+      <a class="poster c-blanco" href="libros/meditaciones.html" data-tema="decisiones" data-aparece style="--i:7">
+        <span class="num">010</span>
+        <h2 class="titulo t-cursiva">Meditations</h2>
+        <div class="pie"><span class="autor">Marco Aurelio<br>c. 180</span><span class="estado vivo">Disponible</span></div>
+      </a>
+      <a class="poster c-hueso plegado" href="libros/gracian.html" data-tema="decisiones" data-aparece style="--i:8">
+        <span class="num">003</span>
+        <h2 class="titulo t-cursiva">Oráculo manual y arte de prudencia</h2>
+        <div class="pie"><span class="autor">Baltasar Gracián<br>1647</span><span class="estado vivo">Disponible</span></div>
+      </a>
+      <a class="poster c-azul" href="libros/estilo.html" data-tema="escritura" data-aparece style="--i:9">
+        <span class="num">017</span>
+        <h2 class="titulo t-angosta" style="font-size:12cqi">The Elements of Style</h2>
+        <div class="pie"><span class="autor">William Strunk Jr.<br>1920</span><span class="estado vivo">Disponible</span></div>
+      </a>
+      <a class="poster c-negro" href="libros/propaganda.html" data-tema="marketing" data-aparece style="--i:10">
+        <span class="num">019</span>
+        <h2 class="titulo t-negra" style="font-size:12cqi">Propaganda</h2>
+        <div class="pie"><span class="autor">Edward L. Bernays<br>1928</span><span class="estado vivo">Disponible</span></div>
+      </a>
+      </div>
+      <div class="acciones" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:32px">
+        <a class="boton" href="biblioteca.html">Ver la biblioteca completa · 22 libros</a>
+        <a class="boton claro" href="entrar.html">Obtener acceso gratis</a>
+      </div>
+      <!--/destacados-->
     </div>
   </section>
 
@@ -180,21 +239,11 @@
   </section>
 
   <section class="seccion">
-    <div class="envoltura destacado">
-      <a class="poster c-rojo plegado" href="texto.html" aria-label="El arte de la guerra">
-        <span class="num">001</span>
-        <span class="titulo t-alta" style="color:#ffb089">El arte de la guerra</span>
-        <span class="pie"><span class="texto fuerte">Sun Tzu<br>trad. Lionel Giles, 1910</span><span class="estado vivo">Disponible</span></span>
-      </a>
+    <div class="envoltura demo">
       <div>
-        <p class="micro">Ya en la biblioteca</p>
-        <h2 style="margin-top:12px">Estrategia, competencia y liderazgo.</h2>
-        <div class="datos">
-          <div><strong>8</strong>frameworks</div>
-          <div><strong>8</strong>checklists</div>
-          <div><strong>10</strong>términos</div>
-          <div><strong>95</strong>citas verificadas</div>
-        </div>
+        <p class="micro">Un ejemplo con El arte de la guerra</p>
+        <h2 style="margin-top:12px">Así responde tu IA con un libro conectado.</h2>
+        <p class="bajada" style="margin:14px 0 24px;max-width:34em">Cada respuesta dice de qué libro y de qué página sale. Si una cita no está en el texto, no llega a tu IA.</p>
         <div class="terminal">
           <div class="barra"><i></i><i></i><i></i><span>claude · Textifika conectado</span></div>
           <div class="cuerpo">
@@ -205,7 +254,7 @@
           </div>
         </div>
         <div class="acciones">
-          <a class="boton" href="texto.html">Ver el libro</a>
+          <a class="boton" href="biblioteca.html">Ver la biblioteca completa</a>
           <a class="boton claro" href="entrar.html">Obtener acceso gratis</a>
         </div>
       </div>

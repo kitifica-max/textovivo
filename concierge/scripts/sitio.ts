@@ -44,6 +44,26 @@ let biblioteca = await readFile("../diseno/biblioteca.html", "utf8");
 biblioteca = biblioteca.replace(/<!--libros-->[\s\S]*<!--\/libros-->/, `<!--libros-->\n${fichas.map(poster).join("")}      <!--/libros-->`);
 await writeFile("../diseno/biblioteca.html", biblioteca);
 
+// 1b) Libros destacados del landing (index.html, entre <!--destacados--> y <!--/destacados-->)
+const DESTACADOS = ["arte-de-la-guerra", "principe", "scientific-advertising", "babylon", "meditaciones", "gracian", "estilo", "propaganda"];
+const elegidos = DESTACADOS.map((id) => fichas.find((f) => f.id === id)).filter((f): f is Ficha => Boolean(f) && disponible(f!));
+const total = fichas.filter(disponible).length;
+const bloque = `
+      <div class="cabeza">
+        <div><p class="micro">Ya en la biblioteca</p><h2 style="margin-top:10px">Los libros más importantes.</h2></div>
+        <p class="bajada" style="max-width:26em">Clásicos de estrategia, negocios, decisiones y escritura, listos para que tu IA los consulte.</p>
+      </div>
+      <div class="grilla cuatro">
+${elegidos.map(poster).join("")}      </div>
+      <div class="acciones" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:32px">
+        <a class="boton" href="biblioteca.html">Ver la biblioteca completa · ${total} libros</a>
+        <a class="boton claro" href="entrar.html">Obtener acceso gratis</a>
+      </div>
+      `;
+let inicio = await readFile("../diseno/index.html", "utf8");
+inicio = inicio.replace(/<!--destacados-->[\s\S]*<!--\/destacados-->/, `<!--destacados-->${bloque}<!--/destacados-->`);
+await writeFile("../diseno/index.html", inicio);
+
 // 2) Una ficha por libro, con las mismas secciones que texto.html (la del libro 001, hecha a mano):
 //    datos, frameworks, checklists, «¿Qué cambia cuando tu IA tiene el libro?» e índice.
 //    Todo sale de data/catalogo.json: nada se escribe a mano por libro.

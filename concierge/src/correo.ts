@@ -24,7 +24,7 @@ const marco = (titulo: string, cuerpo: string, boton: string, enlace: string, pi
 <html lang="es"><body style="margin:0;background:#f3f0e8;font-family:Helvetica,Arial,sans-serif;color:#161616">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:32px 16px">
 <table role="presentation" width="520" cellpadding="0" cellspacing="0" style="max-width:520px;background:#fbfaf7;border-radius:18px;padding:32px">
-<tr><td style="font-size:22px;letter-spacing:-0.05em;line-height:1"><img src="https://textifika.kitifica.com/isotipo-96.png" width="28" height="28" alt="" style="vertical-align:middle;border:0;margin-right:8px"><span style="vertical-align:middle"><span style="font-weight:400">Text</span><span style="font-weight:800">ifika</span></span></td></tr>
+<tr><td style="font-size:26px;letter-spacing:-0.05em;line-height:1"><img src="https://textifika.kitifica.com/isotipo-96.png" width="40" height="40" alt="" style="vertical-align:middle;border:0;margin-right:10px"><span style="vertical-align:middle"><span style="font-weight:400">Text</span><span style="font-weight:800">ifika</span></span></td></tr>
 <tr><td style="padding:22px 0 8px;font-size:24px;font-weight:700;line-height:1.2">${titulo}</td></tr>
 <tr><td style="font-size:16px;line-height:1.6;padding-bottom:22px">${cuerpo}</td></tr>
 <tr><td style="padding-bottom:22px"><a href="${enlace}" style="display:inline-block;background:#161616;color:#fff;text-decoration:none;font-weight:600;padding:14px 24px;border-radius:999px">${boton}</a></td></tr>
