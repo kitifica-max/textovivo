@@ -231,8 +231,8 @@ async function admin(req: Request, url: URL) {
 
     return json({
       email,
-      url_mcp: `${url.origin}/c/${token}/mcp`,
-      guia_personal: `${url.origin}/guia#${token}`,
+      url_mcp: `${env.SITIO_URL}/c/${token}/mcp`,
+      guia_personal: `${env.SITIO_URL}/guia#${token}`,
       vence: vence.toISOString()
     });
   }

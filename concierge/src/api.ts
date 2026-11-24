@@ -254,7 +254,7 @@ export async function api(req: Request, url: URL): Promise<Response> {
     return json({
       usuario: { nombre: u.nombre, email: u.email, verificado },
       // Sin email confirmado no se muestra el conector (y el servidor tampoco lo atiende).
-      acceso: verificado ? vistaAcceso(await accesoDe(u.id), url.origin) : null,
+      acceso: verificado ? vistaAcceso(await accesoDe(u.id), env.SITIO_URL) : null,
       libros: [...catalogoJson.map((d) => ({ id: d.id, titulo: d.titulo, autor: d.autor })), ...results],
       terminos_version: TERMINOS_VERSION
     });
@@ -274,7 +274,7 @@ export async function api(req: Request, url: URL): Promise<Response> {
       await crearAcceso(u.id, u.email);
       return json({ ok: true });
     }
-    const v = vistaAcceso(a, url.origin)!;
+    const v = vistaAcceso(a, env.SITIO_URL)!;
     if (!v.vencido && v.dias_restantes > 7) return error("Tu acceso todavía tiene más de 7 días: podés renovarlo cuando le queden menos.", 409);
     await env.DB.prepare("UPDATE buyers SET expires_at = ?, calls = 0 WHERE token = ?")
       .bind(new Date(Date.now() + Number(env.RENTAL_DAYS) * DIA).toISOString(), a.token)

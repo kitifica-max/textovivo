@@ -17,3 +17,9 @@
   to = "https://textovivo.kitifica.workers.dev/admin/:splat"
   status = 200
   force = true
+
+[[redirects]]
+  from = "/c/*"
+  to = "https://textovivo.kitifica.workers.dev/c/:splat"
+  status = 200
+  force = true
