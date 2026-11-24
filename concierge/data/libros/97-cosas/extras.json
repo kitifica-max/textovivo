@@ -1,0 +1,89 @@
+{
+ "glosario": [
+  {
+   "termino": "Deuda técnica",
+   "definicion": "Trabajo aplazado por hacerlo rápido en lugar de bien; genera intereses en forma de código difícil de cambiar.",
+   "pagina": 1,
+   "cita": "Este tipo de trabajo aplazado se conoce como deuda técnica y no es un buen amigo. Martin Fowler, en su taxonomía de la deuda"
+  },
+  {
+   "termino": "Efecto del falso consenso",
+   "definicion": "Tendencia a asumir que los demás piensan como nosotros.",
+   "pagina": 6,
+   "cita": "Los psicólogos lo llaman efecto del falso consenso. Cuando la gente piensa o actúa de un modo diferente a nosotros es muy probable que"
+  },
+  {
+   "termino": "Regla Boy Scout",
+   "definicion": "Dejar el código más limpio de como lo encontraste.",
+   "pagina": 19,
+   "cita": "Los Boy Scout tienen una regla: “Siempre deja el lugar de acampamento más limpio que como lo encontraste”. Si encuentras un desastre en el"
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "De la prisa a la calidad en el código",
+   "resumen": "Una secuencia de hábitos del libro para dejar de acumular deuda y mejorar el código poco a poco.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Actúa con prudencia",
+     "descripcion": "Hacerlo rápido ahora se paga con intereses después.",
+     "pagina": 1,
+     "cita": "En todo lo que emprendas, actúa con prudencia y considera las consecuencias” AnónimoNo importa qué tan cómoda se vea una agenda de"
+    },
+    {
+     "orden": 2,
+     "titulo": "Automatiza el estándar de codificación",
+     "descripcion": "Que la herramienta haga cumplir las reglas, no las buenas intenciones.",
+     "pagina": 9,
+     "cita": "Al comenzar un proyecto todo el mundo tiene buenas intenciones; las llamaremos “resoluciones de proyecto nuevo”. A menudo, muchas de estas resoluciones"
+    },
+    {
+     "orden": 3,
+     "titulo": "Piensa antes de refactorizar",
+     "descripcion": "Antes de tocar código existente, considera lo que tú y otros dependen de él.",
+     "pagina": 14,
+     "cita": "En algún punto todo programador necesitará refactorizar código existente. Pero antes de hacerlo por favor piensa en lo siguiente, ya que tú"
+    },
+    {
+     "orden": 4,
+     "titulo": "Aplica la Regla Boy Scout",
+     "descripcion": "Cada vez que toques el código, déjalo un poco mejor.",
+     "pagina": 19,
+     "cita": "Siempre deja el lugar de acampamento más limpio que como lo encontraste”. Si encuentras un desastre en el piso, lo limpias sin"
+    },
+    {
+     "orden": 5,
+     "titulo": "Haz revisiones de código",
+     "descripcion": "Mejoran la calidad y reducen los defectos.",
+     "pagina": 37,
+     "cita": "Deberías hacer revisiones de código. ¿Por qué? Porque incrementan la calidad del código y reducen la tasa de defectos. Pero no necesariamente"
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Antes de culpar a otros o a la herramienta",
+   "contexto": "Para cuando un programa falla y no sabes por dónde empezar.",
+   "items": [
+    {
+     "texto": "Revisa primero tu propio código",
+     "pagina": 21,
+     "cita": "Los desarrolladores –¡todos nosotros!– frecuentemente tenemos problemas creyendo que nuestro propio código está roto. Es tan improbable que, por una sola vez, debe ser"
+    },
+    {
+     "texto": "No asumas que el usuario piensa como tú",
+     "pagina": 6,
+     "cita": "Todos tendemos a asumir que los demás piensan como nosotros, pero no es así. Los psicólogos lo llaman efecto del"
+    },
+    {
+     "texto": "Elige tus herramientas con cuidado",
+     "pagina": 24,
+     "cita": "Las aplicaciones modernas rara vez son construidas desde cero. Se ensamblan usando herramientas existentes –componentes, bibliotecas y frameworks– por una serie de"
+    }
+   ]
+  }
+ ]
+}

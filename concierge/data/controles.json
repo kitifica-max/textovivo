@@ -17,6 +17,23 @@
   }
  },
  {
+  "libro": "97-cosas",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 276,
+  "capitulos": 97,
+  "controles": {
+   "paginas": "ok: 276 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 97 secciones cubren las 276 páginas",
+   "configuracion": "ok: sin sospechas",
+   "fidelidad": "ok: 99.8 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 11 de 11 citas existen literalmente en su página"
+  }
+ },
+ {
   "libro": "administracion-cientifica",
   "fecha": "2026-11-24",
   "aprobado": true,
@@ -119,6 +136,23 @@
   }
  },
  {
+  "libro": "chatgpt-100-prompts",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 176,
+  "capitulos": 7,
+  "controles": {
+   "paginas": "ok: 176 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "aviso: 1 páginas de menos de 200 caracteres a mitad de capítulo (p. 69)",
+   "indice_cobertura": "ok: 7 secciones cubren las 176 páginas",
+   "configuracion": "ok: sin sospechas",
+   "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 11 de 11 citas existen literalmente en su página"
+  }
+ },
+ {
   "libro": "como-pensamos",
   "fecha": "2026-11-24",
   "aprobado": true,
@@ -184,6 +218,23 @@
    "fidelidad": "ok: 100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 10 de 10 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
    "citas": "ok: 17 de 17 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "fundamentos-programacion",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 97,
+  "capitulos": 9,
+  "controles": {
+   "paginas": "ok: 97 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 9 secciones cubren las 97 páginas",
+   "configuracion": "aviso: 1 capítulos de una sola página (¿títulos del índice o encabezados de página?)",
+   "fidelidad": "ok: 99.7 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 11 de 11 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 13 de 13 citas existen literalmente en su página"
   }
  },
  {
@@ -337,6 +388,23 @@
    "fidelidad": "ok: 99.9 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
    "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
    "citas": "ok: 7 de 7 citas existen literalmente en su página"
+  }
+ },
+ {
+  "libro": "python-para-todos",
+  "fecha": "2026-11-24",
+  "aprobado": true,
+  "paginacion": "logica",
+  "paginas": 172,
+  "capitulos": 19,
+  "controles": {
+   "paginas": "ok: 172 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres",
+   "paginas_cortas": "ok: sin páginas cortas a mitad de capítulo",
+   "indice_cobertura": "ok: 19 secciones cubren las 172 páginas",
+   "configuracion": "ok: sin sospechas",
+   "fidelidad": "ok: 99.3 % de las palabras de la fuente están en las páginas (mínimo 80 %)",
+   "busqueda": "ok: 12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)",
+   "citas": "ok: 13 de 13 citas existen literalmente en su página"
   }
  },
  {

@@ -1,0 +1,47 @@
+{
+ "libro": "python-para-todos",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/python-para-todos/fuente.txt",
+ "fuente_sha256": "64331a6e1b21cec4d119da4b80a2621de19c950a02218007bfa4560d7001eb4b",
+ "paginacion": "logica",
+ "paginas": 172,
+ "capitulos": 19,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "172 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin páginas cortas a mitad de capítulo"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "19 secciones cubren las 172 páginas"
+  },
+  "configuracion": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin sospechas"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "99.3 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "13 de 13 citas existen literalmente en su página"
+  }
+ }
+}

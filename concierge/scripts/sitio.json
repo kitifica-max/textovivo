@@ -262,5 +262,49 @@
   "titulo_estilo": "font-size:9cqi",
   "titulo": "Vanishing Culture",
   "autor": "Messarra, Freeland, Ziskina<br>2026"
+ },
+ {
+  "num": "025",
+  "id": "python-para-todos",
+  "color": "c-celeste",
+  "plegado": false,
+  "tema": "programacion",
+  "titulo_clase": "t-grotesca",
+  "titulo_estilo": "font-size:11cqi",
+  "titulo": "Python para todos",
+  "autor": "Raúl González Duque<br>2010"
+ },
+ {
+  "num": "026",
+  "id": "97-cosas",
+  "color": "c-manteca",
+  "plegado": true,
+  "tema": "programacion",
+  "titulo_clase": "t-alta",
+  "titulo_estilo": "",
+  "titulo": "97 cosas que todo programador debería saber",
+  "autor": "Kevlin Henney y colaboradores"
+ },
+ {
+  "num": "027",
+  "id": "chatgpt-100-prompts",
+  "color": "c-salmon",
+  "plegado": false,
+  "tema": "ia",
+  "titulo_clase": "t-grotesca",
+  "titulo_estilo": "font-size:9cqi",
+  "titulo": "ChatGPT: tus primeros prompts",
+  "autor": "Hernández, Conde, Querol, Martínez, Reviriego<br>2023"
+ },
+ {
+  "num": "028",
+  "id": "fundamentos-programacion",
+  "color": "c-menta",
+  "plegado": true,
+  "tema": "programacion",
+  "titulo_clase": "t-grotesca",
+  "titulo_estilo": "font-size:9cqi",
+  "titulo": "Fundamentos de la programación",
+  "autor": "Lara, Bonifaz, León<br>2026"
  }
 ]

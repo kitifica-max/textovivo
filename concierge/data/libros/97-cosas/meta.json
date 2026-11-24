@@ -1,0 +1,9 @@
+{
+ "titulo": "97 cosas que todo programador debería saber",
+ "autor": "Kevlin Henney (editor) y colaboradores",
+ "descripcion": "97 consejos breves de programadores con experiencia sobre código limpio, diseño, pruebas, refactorización y trabajo en equipo.",
+ "idioma": "es",
+ "publicar": true,
+ "paginacion": "logica",
+ "atribucion": "«97 cosas que todo programador debería saber», editado por Kevlin Henney con textos de sus colaboradores (cada consejo indica su autor y traductor). Traducción al español tomada del repositorio midudev/libros-programacion-gratis. La obra original está bajo licencia Creative Commons Reconocimiento 3.0 (CC BY 3.0). Textifika dividió el texto en secciones lógicas y le añadió un glosario, frameworks y checklists con citas literales."
+}

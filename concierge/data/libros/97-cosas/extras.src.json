@@ -1,0 +1,84 @@
+{
+ "glosario": [
+  {
+   "termino": "Deuda técnica",
+   "definicion": "Trabajo aplazado por hacerlo rápido en lugar de bien; genera intereses en forma de código difícil de cambiar.",
+   "buscar": "Este tipo de trabajo aplazado se conoce como deuda técnica",
+   "palabras": 24
+  },
+  {
+   "termino": "Efecto del falso consenso",
+   "definicion": "Tendencia a asumir que los demás piensan como nosotros.",
+   "buscar": "Los psicólogos lo llaman efecto del falso consenso",
+   "palabras": 24
+  },
+  {
+   "termino": "Regla Boy Scout",
+   "definicion": "Dejar el código más limpio de como lo encontraste.",
+   "buscar": "Los Boy Scout tienen una regla",
+   "palabras": 24
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "De la prisa a la calidad en el código",
+   "resumen": "Una secuencia de hábitos del libro para dejar de acumular deuda y mejorar el código poco a poco.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Actúa con prudencia",
+     "descripcion": "Hacerlo rápido ahora se paga con intereses después.",
+     "buscar": "En todo lo que emprendas, actúa con prudencia y considera las consecuencias",
+     "palabras": 22
+    },
+    {
+     "titulo": "Automatiza el estándar de codificación",
+     "descripcion": "Que la herramienta haga cumplir las reglas, no las buenas intenciones.",
+     "buscar": "Al comenzar un proyecto todo el mundo tiene buenas intenciones",
+     "palabras": 22
+    },
+    {
+     "titulo": "Piensa antes de refactorizar",
+     "descripcion": "Antes de tocar código existente, considera lo que tú y otros dependen de él.",
+     "buscar": "En algún punto todo programador necesitará refactorizar código existente",
+     "palabras": 22
+    },
+    {
+     "titulo": "Aplica la Regla Boy Scout",
+     "descripcion": "Cada vez que toques el código, déjalo un poco mejor.",
+     "buscar": "Siempre deja el lugar de acampamento más limpio que como lo encontraste",
+     "palabras": 22
+    },
+    {
+     "titulo": "Haz revisiones de código",
+     "descripcion": "Mejoran la calidad y reducen los defectos.",
+     "buscar": "Deberías hacer revisiones de código",
+     "palabras": 22
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Antes de culpar a otros o a la herramienta",
+   "contexto": "Para cuando un programa falla y no sabes por dónde empezar.",
+   "items": [
+    {
+     "texto": "Revisa primero tu propio código",
+     "buscar": "Los desarrolladores –¡todos nosotros!– frecuentemente tenemos problemas creyendo que nuestro propio código está roto",
+     "palabras": 24
+    },
+    {
+     "texto": "No asumas que el usuario piensa como tú",
+     "buscar": "Todos tendemos a asumir que los demás piensan como nosotros",
+     "palabras": 20
+    },
+    {
+     "texto": "Elige tus herramientas con cuidado",
+     "buscar": "Las aplicaciones modernas rara vez son construidas desde cero",
+     "palabras": 22
+    }
+   ]
+  }
+ ]
+}

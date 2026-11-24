@@ -1,0 +1,84 @@
+{
+ "glosario": [
+  {
+   "termino": "Prompt",
+   "definicion": "La forma de hacer consultas a un LLM: una instrucción o texto inicial que guía la respuesta.",
+   "buscar": "El prompt es la forma de hacer consultas a un LLM",
+   "palabras": 24
+  },
+  {
+   "termino": "Alucinaciones",
+   "definicion": "Cuando el modelo genera información que no es correcta aunque suene plausible.",
+   "buscar": "Las alucinaciones en el contexto de ChatGPT y otros modelos de lenguaje se refieren a cuando el modelo genera información",
+   "palabras": 24
+  },
+  {
+   "termino": "Razonar paso a paso",
+   "definicion": "Pedirle al modelo que resuelva por etapas para evitar que se bloquee.",
+   "buscar": "Ayudándole a razonar paso a paso ChatGPT es un modelo de lenguaje natural",
+   "palabras": 24
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Técnicas para pedirle mejor a un LLM",
+   "resumen": "Del prompt sencillo a las técnicas avanzadas, siguiendo los capítulos del libro.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Empieza con prompts sencillos",
+     "descripcion": "Pide información de forma directa y observa la respuesta.",
+     "buscar": "En este capítulo, vamos a estudiar técnicas sencillas para obtener información",
+     "palabras": 22
+    },
+    {
+     "titulo": "Asigna un rol",
+     "descripcion": "Pídele que asuma el papel de una persona experta.",
+     "buscar": "No solo podemos pedirle a ChatGPT que asuma el rol de una persona",
+     "palabras": 22
+    },
+    {
+     "titulo": "Pídele que razone paso a paso",
+     "descripcion": "Ayuda en cálculos y problemas donde el modelo suele fallar.",
+     "buscar": "Ayudándole a razonar paso a paso ChatGPT es un modelo de lenguaje natural",
+     "palabras": 22
+    },
+    {
+     "titulo": "Itera: no te quedes con un solo intento",
+     "descripcion": "Los modelos reaccionan mucho a los cambios de redacción.",
+     "buscar": "¡No hagas un único intento! Los LLM son increíblemente reactivos a cambios",
+     "palabras": 22
+    },
+    {
+     "titulo": "Verifica antes de usar",
+     "descripcion": "No dependas por completo de la respuesta en decisiones críticas.",
+     "buscar": "asegurándote de verificar la información proporcionada y de no depender completamente de ella",
+     "palabras": 22
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Antes de confiar en una respuesta de ChatGPT",
+   "contexto": "Para decidir cuánto fiarte de lo que devuelve un modelo.",
+   "items": [
+    {
+     "texto": "Verifica la información",
+     "buscar": "asegurándote de verificar la información proporcionada y de no depender completamente de ella",
+     "palabras": 22
+    },
+    {
+     "texto": "Recuerda que puede alucinar",
+     "buscar": "Las alucinaciones en el contexto de ChatGPT y otros modelos de lenguaje se refieren a cuando el modelo genera información",
+     "palabras": 24
+    },
+    {
+     "texto": "En temas de salud, consulta a un profesional",
+     "buscar": "es importante consultar con un profesional de la salud",
+     "palabras": 22
+    }
+   ]
+  }
+ ]
+}

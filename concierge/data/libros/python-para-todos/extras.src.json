@@ -1,0 +1,92 @@
+{
+ "glosario": [
+  {
+   "termino": "Python",
+   "definicion": "Lenguaje de programación creado por Guido van Rossum a principios de los años 90.",
+   "buscar": "Python es un lenguaje de programación creado por Guido van Rossum",
+   "palabras": 22
+  },
+  {
+   "termino": "Diccionario",
+   "definicion": "Colección que relaciona una clave con un valor.",
+   "buscar": "Los diccionarios, también llamados matrices asociativas",
+   "palabras": 22
+  },
+  {
+   "termino": "Decorador",
+   "definicion": "Función que recibe una función y devuelve otra.",
+   "buscar": "Un decorador no es es mas que una función que recibe una función como parámetro",
+   "palabras": 22
+  },
+  {
+   "termino": "Encapsulación",
+   "definicion": "Impedir el acceso a ciertos métodos y atributos de un objeto desde fuera.",
+   "buscar": "La encapsulación se refiere a impedir el acceso a determinados métodos y atributos de los objetos",
+   "palabras": 22
+  },
+  {
+   "termino": "Comprensión de listas",
+   "definicion": "Forma compacta de crear listas, tomada de Haskell.",
+   "buscar": "La comprensión de listas es una característica tomada del lenguaje de programación funcional Haskell",
+   "palabras": 22
+  },
+  {
+   "termino": "Bucle while",
+   "definicion": "Ejecuta un fragmento de código mientras se cumpla una condición.",
+   "buscar": "El bucle while (mientras) ejecuta un fragmento de código mientras se cumpla una condición",
+   "palabras": 22
+  },
+  {
+   "termino": "Objeto",
+   "definicion": "Entidad que agrupa un estado y una funcionalidad relacionadas.",
+   "buscar": "Un objeto es una entidad que agrupa un estado y una funcionalidad relacionadas",
+   "palabras": 22
+  },
+  {
+   "termino": "Serialización de objetos",
+   "definicion": "Guardar un objeto en disco para recuperarlo más tarde.",
+   "buscar": "Algunas veces tenemos la necesidad de guardar un objeto a disco para poder recuperarlo más tarde",
+   "palabras": 22
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Ruta para aprender Python",
+   "resumen": "Un orden razonable para aprender el lenguaje, tal como lo plantea el libro.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Entender qué es Python",
+     "descripcion": "Un lenguaje interpretado, de tipado dinámico y orientado a objetos.",
+     "buscar": "Python es un lenguaje de programación creado por Guido van Rossum",
+     "palabras": 24
+    },
+    {
+     "titulo": "Dominar los tipos y las colecciones",
+     "descripcion": "Números, cadenas, listas, tuplas y diccionarios.",
+     "buscar": "Los diccionarios, también llamados matrices asociativas",
+     "palabras": 22
+    },
+    {
+     "titulo": "Controlar el flujo",
+     "descripcion": "Condicionales y bucles para decidir y repetir.",
+     "buscar": "El bucle while (mientras) ejecuta un fragmento de código",
+     "palabras": 20
+    },
+    {
+     "titulo": "Pasar a objetos",
+     "descripcion": "Clases, objetos y encapsulación.",
+     "buscar": "Un objeto es una entidad que agrupa un estado y una funcionalidad relacionadas",
+     "palabras": 22
+    },
+    {
+     "titulo": "Ir hacia lo funcional",
+     "descripcion": "Funciones de orden superior, decoradores y comprensión de listas.",
+     "buscar": "La comprensión de listas es una característica tomada del lenguaje de programación funcional Haskell",
+     "palabras": 24
+    }
+   ]
+  }
+ ],
+ "checklists": []
+}

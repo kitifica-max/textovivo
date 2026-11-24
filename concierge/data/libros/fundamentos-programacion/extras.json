@@ -1,0 +1,102 @@
+{
+ "glosario": [
+  {
+   "termino": "Algoritmo",
+   "definicion": "Secuencia finita de instrucciones o pasos lógicos para resolver un problema.",
+   "pagina": 79,
+   "cita": "Algoritmo: Secuencia finita de instrucciones o pasos lógicos para resolver un problema o ejecutar una tarea específica.Diagrama de Flujo: Representación gráfica de un algoritmo"
+  },
+  {
+   "termino": "Diagrama de flujo",
+   "definicion": "Representación gráfica de un algoritmo con símbolos estandarizados.",
+   "pagina": 18,
+   "cita": "Un diagrama de flujo es una representación gráfica de un proceso o algoritmo, utiliza símbolos estandarizados para mostrar las etapas del proceso, permitiendo a"
+  },
+  {
+   "termino": "Finitud",
+   "definicion": "Propiedad por la que el proceso debe terminar tras un número definido de pasos.",
+   "pagina": 79,
+   "cita": "Finitud: Propiedad esencial de un algoritmo que indica que el proceso debe finalizar tras realizar un número definido de pasos. Efectividad: Característica que establece"
+  },
+  {
+   "termino": "Efectividad",
+   "definicion": "Cada operación del algoritmo debe ser básica y realizable en tiempo finito.",
+   "pagina": 79,
+   "cita": "Efectividad: Característica que establece que cada operación del algoritmo debe ser básica y realizable en un tiempo finito. Estructura Algorítmica Secuencial: Estructura donde las"
+  },
+  {
+   "termino": "Estructura selectiva simple (If)",
+   "definicion": "Ejecuta un proceso solo si la condición es verdadera.",
+   "pagina": 79,
+   "cita": "Estructura Selectiva Simple (If): Estructura condicional que evalúa una expresión lógica y ejecuta un proceso solo si la condición es verdadera. Estructura Selectiva Doble"
+  },
+  {
+   "termino": "Estructura cíclica While",
+   "definicion": "Bucle que evalúa la condición antes de cada iteración.",
+   "pagina": 79,
+   "cita": "Estructura Cíclica While (Mientras): Bucle con evaluación previa de la condición lógica antes de cada iteración, ejecutando el bloque solo mientras esta sea verdadera."
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "De un problema a un programa",
+   "resumen": "El camino que propone el libro: analizar, diseñar el algoritmo, codificar y verificar.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Analizar el problema",
+     "descripcion": "Entender qué se pide y qué datos hay.",
+     "pagina": 2,
+     "cita": "El estudiante analiza el problema, diseña el algoritmo, codifica y verifica la solución; la programación estructurada se desarrolla en la unidad 5"
+    },
+    {
+     "orden": 2,
+     "titulo": "Diseñar el algoritmo",
+     "descripcion": "Escribir los pasos lógicos que resuelven el problema.",
+     "pagina": 79,
+     "cita": "Algoritmo: Secuencia finita de instrucciones o pasos lógicos para resolver un problema o ejecutar una tarea específica.Diagrama de Flujo: Representación gráfica de"
+    },
+    {
+     "orden": 3,
+     "titulo": "Representarlo con un diagrama de flujo",
+     "descripcion": "Usar símbolos estandarizados para ver el proceso completo.",
+     "pagina": 18,
+     "cita": "Un diagrama de flujo es una representación gráfica de un proceso o algoritmo, utiliza símbolos estandarizados para mostrar las etapas del proceso"
+    },
+    {
+     "orden": 4,
+     "titulo": "Elegir la estructura de control",
+     "descripcion": "Secuencial, selectiva o cíclica, según lo que necesites.",
+     "pagina": 79,
+     "cita": "Estructura Selectiva Doble (If-Else): Estructura que ofrece dos caminos de ejecución: uno para cuando la condición resulta verdadera y otro para cuando"
+    },
+    {
+     "orden": 5,
+     "titulo": "Codificar y verificar",
+     "descripcion": "Traducir el algoritmo a un lenguaje de programación y comprobar el resultado.",
+     "pagina": 2,
+     "cita": "La programación por computadora traduce algoritmos en lenguaje humano a lenguajes de programación como C, Java, y Python, utilizando compiladores o intérpretes"
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Un buen algoritmo cumple…",
+   "contexto": "Para revisar si tu algoritmo está bien definido.",
+   "items": [
+    {
+     "texto": "Termina tras un número definido de pasos (finitud)",
+     "pagina": 79,
+     "cita": "Finitud: Propiedad esencial de un algoritmo que indica que el proceso debe finalizar tras realizar un número definido de pasos. Efectividad: Característica que establece"
+    },
+    {
+     "texto": "Cada operación es básica y realizable (efectividad)",
+     "pagina": 18,
+     "cita": "Efectividad. - Las operaciones de un algoritmo deben ser básicas y realizables en un tiempo finito. Esto implica que cada operación puede ser llevada"
+    }
+   ]
+  }
+ ]
+}

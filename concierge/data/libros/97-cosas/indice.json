@@ -1,0 +1,584 @@
+[
+ {
+  "titulo": "1. Actúa con prudencia",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 2
+ },
+ {
+  "titulo": "2. Aplica los principios de la programación funcional",
+  "nivel": 1,
+  "pagina_inicio": 3,
+  "pagina_fin": 5
+ },
+ {
+  "titulo": "3. Averigua qué haría el usuario (tú no eres el usuario)",
+  "nivel": 1,
+  "pagina_inicio": 6,
+  "pagina_fin": 8
+ },
+ {
+  "titulo": "4. Automatiza el estándar de codificación",
+  "nivel": 1,
+  "pagina_inicio": 9,
+  "pagina_fin": 11
+ },
+ {
+  "titulo": "5. La belleza está en la simplicidad",
+  "nivel": 1,
+  "pagina_inicio": 12,
+  "pagina_fin": 13
+ },
+ {
+  "titulo": "6. Antes de Refactorizar",
+  "nivel": 1,
+  "pagina_inicio": 14,
+  "pagina_fin": 16
+ },
+ {
+  "titulo": "7. Ten cuidado al compartir",
+  "nivel": 1,
+  "pagina_inicio": 17,
+  "pagina_fin": 18
+ },
+ {
+  "titulo": "8. La Regla Boy Scout",
+  "nivel": 1,
+  "pagina_inicio": 19,
+  "pagina_fin": 20
+ },
+ {
+  "titulo": "9. Primero revisa tu código antes de buscar culpar a otros",
+  "nivel": 1,
+  "pagina_inicio": 21,
+  "pagina_fin": 23
+ },
+ {
+  "titulo": "10. Escoge tus herramientas con cuidado",
+  "nivel": 1,
+  "pagina_inicio": 24,
+  "pagina_fin": 26
+ },
+ {
+  "titulo": "11. Codifica en el lenguaje del dominio",
+  "nivel": 1,
+  "pagina_inicio": 27,
+  "pagina_fin": 30
+ },
+ {
+  "titulo": "12. El código es diseño",
+  "nivel": 1,
+  "pagina_inicio": 31,
+  "pagina_fin": 33
+ },
+ {
+  "titulo": "13. El diseño del código sí importa",
+  "nivel": 1,
+  "pagina_inicio": 34,
+  "pagina_fin": 36
+ },
+ {
+  "titulo": "14. Revisiones de código",
+  "nivel": 1,
+  "pagina_inicio": 37,
+  "pagina_fin": 39
+ },
+ {
+  "titulo": "15. Codificando con la razón",
+  "nivel": 1,
+  "pagina_inicio": 40,
+  "pagina_fin": 42
+ },
+ {
+  "titulo": "16. Un comentario acerca de los comentarios",
+  "nivel": 1,
+  "pagina_inicio": 43,
+  "pagina_fin": 45
+ },
+ {
+  "titulo": "17. Comenta sólo lo que el código no dice",
+  "nivel": 1,
+  "pagina_inicio": 46,
+  "pagina_fin": 48
+ },
+ {
+  "titulo": "18. Aprendiendo continuamente",
+  "nivel": 1,
+  "pagina_inicio": 49,
+  "pagina_fin": 51
+ },
+ {
+  "titulo": "19. La conveniencia no es una -bilidad",
+  "nivel": 1,
+  "pagina_inicio": 52,
+  "pagina_fin": 54
+ },
+ {
+  "titulo": "20. Implementa rápido y con frecuencia",
+  "nivel": 1,
+  "pagina_inicio": 55,
+  "pagina_fin": 57
+ },
+ {
+  "titulo": "21. Distingue excepciones de Negocio de las excepciones Técnicas",
+  "nivel": 1,
+  "pagina_inicio": 58,
+  "pagina_fin": 60
+ },
+ {
+  "titulo": "22. Haz mucha práctica deliberada",
+  "nivel": 1,
+  "pagina_inicio": 61,
+  "pagina_fin": 62
+ },
+ {
+  "titulo": "23. Lenguajes Específicos del Dominio (DSL)",
+  "nivel": 1,
+  "pagina_inicio": 63,
+  "pagina_fin": 65
+ },
+ {
+  "titulo": "24. No tengas miedo de romper cosas",
+  "nivel": 1,
+  "pagina_inicio": 66,
+  "pagina_fin": 67
+ },
+ {
+  "titulo": "25. No seas lindo con tus datos de prueba",
+  "nivel": 1,
+  "pagina_inicio": 68,
+  "pagina_fin": 69
+ },
+ {
+  "titulo": "26. ¡No ignores ese error!",
+  "nivel": 1,
+  "pagina_inicio": 70,
+  "pagina_fin": 72
+ },
+ {
+  "titulo": "27. No sólo aprendas el lenguaje, entiende su cultura",
+  "nivel": 1,
+  "pagina_inicio": 73,
+  "pagina_fin": 75
+ },
+ {
+  "titulo": "28. No claves tu programa en la posición vertical",
+  "nivel": 1,
+  "pagina_inicio": 76,
+  "pagina_fin": 78
+ },
+ {
+  "titulo": "29. No confíes en el \"Aquí sucede la magia\"",
+  "nivel": 1,
+  "pagina_inicio": 79,
+  "pagina_fin": 81
+ },
+ {
+  "titulo": "30. No te repitas",
+  "nivel": 1,
+  "pagina_inicio": 82,
+  "pagina_fin": 85
+ },
+ {
+  "titulo": "31. ¡No toques ese código!",
+  "nivel": 1,
+  "pagina_inicio": 86,
+  "pagina_fin": 87
+ },
+ {
+  "titulo": "32. Encapsula Comportamiento, no sólo Estado",
+  "nivel": 1,
+  "pagina_inicio": 88,
+  "pagina_fin": 89
+ },
+ {
+  "titulo": "33. Los números de punto flotante no son reales",
+  "nivel": 1,
+  "pagina_inicio": 90,
+  "pagina_fin": 92
+ },
+ {
+  "titulo": "34. Cumple tus ambiciones con Software Libre",
+  "nivel": 1,
+  "pagina_inicio": 93,
+  "pagina_fin": 95
+ },
+ {
+  "titulo": "35. La regla de oro del diseño de API",
+  "nivel": 1,
+  "pagina_inicio": 96,
+  "pagina_fin": 98
+ },
+ {
+  "titulo": "36. El mito del Gurú",
+  "nivel": 1,
+  "pagina_inicio": 99,
+  "pagina_fin": 100
+ },
+ {
+  "titulo": "37. El trabajo duro no paga",
+  "nivel": 1,
+  "pagina_inicio": 101,
+  "pagina_fin": 103
+ },
+ {
+  "titulo": "38. ¿Cómo usar un Gestor de Errores?",
+  "nivel": 1,
+  "pagina_inicio": 104,
+  "pagina_fin": 105
+ },
+ {
+  "titulo": "39. Mejora el código quitándolo",
+  "nivel": 1,
+  "pagina_inicio": 106,
+  "pagina_fin": 107
+ },
+ {
+  "titulo": "40. Instalame. Por Marcus Baker · Traducción: Espartaco Palma",
+  "nivel": 1,
+  "pagina_inicio": 108,
+  "pagina_fin": 110
+ },
+ {
+  "titulo": "41. La comunicación entre procesos afecta el tiempo de respuesta de la aplicación",
+  "nivel": 1,
+  "pagina_inicio": 111,
+  "pagina_fin": 113
+ },
+ {
+  "titulo": "42. Mantén limpia la compilación",
+  "nivel": 1,
+  "pagina_inicio": 114,
+  "pagina_fin": 116
+ },
+ {
+  "titulo": "43. Aprende a usar las herramientas de línea de comandos",
+  "nivel": 1,
+  "pagina_inicio": 117,
+  "pagina_fin": 119
+ },
+ {
+  "titulo": "44. Conoce bien más de dos lenguajes de programación",
+  "nivel": 1,
+  "pagina_inicio": 120,
+  "pagina_fin": 122
+ },
+ {
+  "titulo": "45. Conoce tu IDE",
+  "nivel": 1,
+  "pagina_inicio": 123,
+  "pagina_fin": 126
+ },
+ {
+  "titulo": "46. Conoce tus límites",
+  "nivel": 1,
+  "pagina_inicio": 127,
+  "pagina_fin": 129
+ },
+ {
+  "titulo": "47. Conoce tu próximo Commit",
+  "nivel": 1,
+  "pagina_inicio": 130,
+  "pagina_fin": 132
+ },
+ {
+  "titulo": "48. Los grandes datos interconectados pertenecen a una base de datos",
+  "nivel": 1,
+  "pagina_inicio": 133,
+  "pagina_fin": 135
+ },
+ {
+  "titulo": "49. Aprende un lenguaje extranjero",
+  "nivel": 1,
+  "pagina_inicio": 136,
+  "pagina_fin": 138
+ },
+ {
+  "titulo": "50. Aprende a hacer estimaciones",
+  "nivel": 1,
+  "pagina_inicio": 139,
+  "pagina_fin": 141
+ },
+ {
+  "titulo": "51. Aprende a decir \"Hola, Mundo\"",
+  "nivel": 1,
+  "pagina_inicio": 142,
+  "pagina_fin": 143
+ },
+ {
+  "titulo": "52. Deja que tu proyecto hable por sí mismo",
+  "nivel": 1,
+  "pagina_inicio": 144,
+  "pagina_fin": 145
+ },
+ {
+  "titulo": "53. El linker no es un programa mágico",
+  "nivel": 1,
+  "pagina_inicio": 146,
+  "pagina_fin": 148
+ },
+ {
+  "titulo": "54. La longevidad de las soluciones provisionales",
+  "nivel": 1,
+  "pagina_inicio": 149,
+  "pagina_fin": 151
+ },
+ {
+  "titulo": "55. Haz las Interfaces fáciles de usar correctamente y difíciles de usar incorrectamente",
+  "nivel": 1,
+  "pagina_inicio": 152,
+  "pagina_fin": 154
+ },
+ {
+  "titulo": "56. Haz lo invisible más visible",
+  "nivel": 1,
+  "pagina_inicio": 155,
+  "pagina_fin": 157
+ },
+ {
+  "titulo": "57. El paso de mensajes lleva a una mejor escalabilidad en sistemas paralelos",
+  "nivel": 1,
+  "pagina_inicio": 158,
+  "pagina_fin": 160
+ },
+ {
+  "titulo": "58. Mensaje al futuro",
+  "nivel": 1,
+  "pagina_inicio": 161,
+  "pagina_fin": 162
+ },
+ {
+  "titulo": "59. Oportunidades perdidas del Polimorfismo",
+  "nivel": 1,
+  "pagina_inicio": 163,
+  "pagina_fin": 165
+ },
+ {
+  "titulo": "60. Noticias raras - Los testers son tus amigos",
+  "nivel": 1,
+  "pagina_inicio": 166,
+  "pagina_fin": 168
+ },
+ {
+  "titulo": "61. Un binario",
+  "nivel": 1,
+  "pagina_inicio": 169,
+  "pagina_fin": 170
+ },
+ {
+  "titulo": "62. Sólo el código dice la verdad",
+  "nivel": 1,
+  "pagina_inicio": 171,
+  "pagina_fin": 173
+ },
+ {
+  "titulo": "63. Adueñate (y Refactoriza) la compilación",
+  "nivel": 1,
+  "pagina_inicio": 174,
+  "pagina_fin": 176
+ },
+ {
+  "titulo": "64. Programa en pareja y siente el flujo",
+  "nivel": 1,
+  "pagina_inicio": 177,
+  "pagina_fin": 179
+ },
+ {
+  "titulo": "65. Da preferencia a tipos de Dominio Específico que los tipos primitivos",
+  "nivel": 1,
+  "pagina_inicio": 180,
+  "pagina_fin": 181
+ },
+ {
+  "titulo": "66. Evita errores",
+  "nivel": 1,
+  "pagina_inicio": 182,
+  "pagina_fin": 184
+ },
+ {
+  "titulo": "67. El Programador Profesional",
+  "nivel": 1,
+  "pagina_inicio": 185,
+  "pagina_fin": 187
+ },
+ {
+  "titulo": "68. Pon todo bajo Control de Versiones",
+  "nivel": 1,
+  "pagina_inicio": 188,
+  "pagina_fin": 190
+ },
+ {
+  "titulo": "69. Suelta el ratón y aléjate del teclado",
+  "nivel": 1,
+  "pagina_inicio": 191,
+  "pagina_fin": 193
+ },
+ {
+  "titulo": "70. Lee el código",
+  "nivel": 1,
+  "pagina_inicio": 194,
+  "pagina_fin": 195
+ },
+ {
+  "titulo": "71. Lee las humanidades",
+  "nivel": 1,
+  "pagina_inicio": 196,
+  "pagina_fin": 198
+ },
+ {
+  "titulo": "72. Reinventa la rueda frecuentemente",
+  "nivel": 1,
+  "pagina_inicio": 199,
+  "pagina_fin": 201
+ },
+ {
+  "titulo": "73. Resiste la tentación del patrón Singleton",
+  "nivel": 1,
+  "pagina_inicio": 202,
+  "pagina_fin": 204
+ },
+ {
+  "titulo": "74. El camino al mejor rendimiento está lleno de sucias bombas de código",
+  "nivel": 1,
+  "pagina_inicio": 205,
+  "pagina_fin": 207
+ },
+ {
+  "titulo": "75. La Simplicidad viene de la Reducción",
+  "nivel": 1,
+  "pagina_inicio": 208,
+  "pagina_fin": 209
+ },
+ {
+  "titulo": "76. El Principio de Responsabilidad Única",
+  "nivel": 1,
+  "pagina_inicio": 210,
+  "pagina_fin": 213
+ },
+ {
+  "titulo": "77. Inicia con un Sí",
+  "nivel": 1,
+  "pagina_inicio": 214,
+  "pagina_fin": 216
+ },
+ {
+  "titulo": "78. Retrocede y Automatiza, Automatiza, Automatiza",
+  "nivel": 1,
+  "pagina_inicio": 217,
+  "pagina_fin": 219
+ },
+ {
+  "titulo": "79. Toma ventaja de las herramientas de análisis de código",
+  "nivel": 1,
+  "pagina_inicio": 220,
+  "pagina_fin": 222
+ },
+ {
+  "titulo": "80. Prueba el comportamiento requerido, no el comportamiento incidental",
+  "nivel": 1,
+  "pagina_inicio": 223,
+  "pagina_fin": 225
+ },
+ {
+  "titulo": "81. Prueba precisa y concretamente",
+  "nivel": 1,
+  "pagina_inicio": 226,
+  "pagina_fin": 229
+ },
+ {
+  "titulo": "82. Haz pruebas mientras duermes (y los fines de semana)",
+  "nivel": 1,
+  "pagina_inicio": 230,
+  "pagina_fin": 232
+ },
+ {
+  "titulo": "83. Las pruebas son el rigor ingenieril del desarrollo de software",
+  "nivel": 1,
+  "pagina_inicio": 233,
+  "pagina_fin": 235
+ },
+ {
+  "titulo": "84. Pensando en estados",
+  "nivel": 1,
+  "pagina_inicio": 236,
+  "pagina_fin": 238
+ },
+ {
+  "titulo": "85. Dos cabezas son a menudo mejores que una",
+  "nivel": 1,
+  "pagina_inicio": 239,
+  "pagina_fin": 241
+ },
+ {
+  "titulo": "86. Dos fallos pueden hacer un acierto (y es difícil de arreglar)",
+  "nivel": 1,
+  "pagina_inicio": 242,
+  "pagina_fin": 244
+ },
+ {
+  "titulo": "87. Codificación Ubuntu para tus amigos",
+  "nivel": 1,
+  "pagina_inicio": 245,
+  "pagina_fin": 246
+ },
+ {
+  "titulo": "88. Las herramientas Unix son tus amigas",
+  "nivel": 1,
+  "pagina_inicio": 247,
+  "pagina_fin": 249
+ },
+ {
+  "titulo": "89. Usa el algoritmo y estructura de datos correctos",
+  "nivel": 1,
+  "pagina_inicio": 250,
+  "pagina_fin": 253
+ },
+ {
+  "titulo": "90. Los registros detallados perturbarán tu sueño",
+  "nivel": 1,
+  "pagina_inicio": 254,
+  "pagina_fin": 255
+ },
+ {
+  "titulo": "91. El WET dispersa los cuellos de botella en el rendimiento",
+  "nivel": 1,
+  "pagina_inicio": 256,
+  "pagina_fin": 259
+ },
+ {
+  "titulo": "92. Cuando Programadores y Testers colaboran",
+  "nivel": 1,
+  "pagina_inicio": 260,
+  "pagina_fin": 262
+ },
+ {
+  "titulo": "93. Escribe código como si tuvieras que mantenerlo por el resto de tu vida",
+  "nivel": 1,
+  "pagina_inicio": 263,
+  "pagina_fin": 264
+ },
+ {
+  "titulo": "94. Escribe pequeñas funciones usando ejemplos",
+  "nivel": 1,
+  "pagina_inicio": 265,
+  "pagina_fin": 267
+ },
+ {
+  "titulo": "95. Escribe las pruebas para las personas",
+  "nivel": 1,
+  "pagina_inicio": 268,
+  "pagina_fin": 270
+ },
+ {
+  "titulo": "96. Preocúpate por el código",
+  "nivel": 1,
+  "pagina_inicio": 271,
+  "pagina_fin": 273
+ },
+ {
+  "titulo": "97. Tus clientes no quieren decir lo que dicen",
+  "nivel": 1,
+  "pagina_inicio": 274,
+  "pagina_fin": 276
+ }
+]

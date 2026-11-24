@@ -1,0 +1,9 @@
+{
+ "titulo": "Python para todos",
+ "autor": "Raúl González Duque",
+ "descripcion": "Introducción a Python paso a paso: tipos, colecciones, control de flujo, funciones, objetos, excepciones, módulos y más.",
+ "idioma": "es",
+ "publicar": true,
+ "paginacion": "logica",
+ "atribucion": "«Python para todos», de Raúl González Duque (mundogeek.net/tutorial-python), publicado bajo licencia Creative Commons Reconocimiento 2.5 España (CC BY 2.5 ES). Textifika dividió el texto en secciones lógicas y le añadió un índice, un glosario y frameworks con citas literales."
+}

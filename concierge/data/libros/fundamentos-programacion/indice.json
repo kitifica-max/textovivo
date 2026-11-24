@@ -1,0 +1,56 @@
+[
+ {
+  "titulo": "Preliminares",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 1
+ },
+ {
+  "titulo": "Unidad 1. Metodología lógica para resolver problemas computacionales",
+  "nivel": 1,
+  "pagina_inicio": 2,
+  "pagina_fin": 13
+ },
+ {
+  "titulo": "Unidad 2. Estructuras básicas y técnicas para representar algoritmos",
+  "nivel": 1,
+  "pagina_inicio": 14,
+  "pagina_fin": 27
+ },
+ {
+  "titulo": "Unidad 3. Lenguaje algorítmico y estructuras de control",
+  "nivel": 1,
+  "pagina_inicio": 28,
+  "pagina_fin": 55
+ },
+ {
+  "titulo": "Unidad 4. Arreglos, listas y matrices",
+  "nivel": 1,
+  "pagina_inicio": 56,
+  "pagina_fin": 66
+ },
+ {
+  "titulo": "Unidad 5. Programación estructurada y modular",
+  "nivel": 1,
+  "pagina_inicio": 67,
+  "pagina_fin": 77
+ },
+ {
+  "titulo": "Glosario",
+  "nivel": 1,
+  "pagina_inicio": 78,
+  "pagina_fin": 80
+ },
+ {
+  "titulo": "Referencias Bibliográficas",
+  "nivel": 1,
+  "pagina_inicio": 81,
+  "pagina_fin": 83
+ },
+ {
+  "titulo": "Anexos. Solucionario de las evaluaciones UNIDAD 1",
+  "nivel": 1,
+  "pagina_inicio": 84,
+  "pagina_fin": 97
+ }
+]

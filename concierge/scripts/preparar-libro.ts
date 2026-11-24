@@ -12,6 +12,7 @@ type Config = {
   quitar?: string; // regex: se descartan los párrafos que la cumplen (encabezados de página, etc.)
   desdeParrafo?: number; // descarta los primeros N párrafos (índice inicial)
   titulos?: [string, string][]; // [regex, título limpio]: corrige títulos que salieron mal del OCR
+  sinDescartar?: boolean; // no descarta títulos pegados: el texto ya no trae índice inicial (cada capítulo es corto)
 };
 
 const [id, modo] = process.argv.slice(2);
@@ -54,7 +55,7 @@ parrafos.forEach((p, i) => {
   if (m) titulos.push({ titulo: p.length < 14 && parrafos[i + 1]?.length < 90 ? `${p}. ${parrafos[i + 1]}` : p, parrafo: i });
 });
 // Descarta los títulos del índice inicial: los que tienen otro título a menos de 4 párrafos.
-for (let k = titulos.length - 2; k >= 0; k--)
+for (let k = titulos.length - 2; k >= 0 && !config.sinDescartar; k--)
   if (titulos[k + 1].parrafo - titulos[k].parrafo < 4) titulos.splice(k, 1);
 
 if (modo === "--ver") {

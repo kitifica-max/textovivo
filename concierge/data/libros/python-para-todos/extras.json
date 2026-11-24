@@ -1,0 +1,97 @@
+{
+ "glosario": [
+  {
+   "termino": "Python",
+   "definicion": "Lenguaje de programación creado por Guido van Rossum a principios de los años 90.",
+   "pagina": 1,
+   "cita": "Python es un lenguaje de programación creado por Guido van Rossum a principios de los años 90 cuyo nombre está inspirado en"
+  },
+  {
+   "termino": "Diccionario",
+   "definicion": "Colección que relaciona una clave con un valor.",
+   "pagina": 24,
+   "cita": "Los diccionarios, también llamados matrices asociativas, deben su nombre a que son colecciones que relacionan una clave y un valor. Por ejemplo"
+  },
+  {
+   "termino": "Decorador",
+   "definicion": "Función que recibe una función y devuelve otra.",
+   "pagina": 64,
+   "cita": "Un decorador no es es mas que una función que recibe una función como parámetro y devuelve otra función como resultado. Por"
+  },
+  {
+   "termino": "Encapsulación",
+   "definicion": "Impedir el acceso a ciertos métodos y atributos de un objeto desde fuera.",
+   "pagina": 50,
+   "cita": "La encapsulación se refiere a impedir el acceso a determinados métodos y atributos de los objetos estableciendo así qué puede utilizarse desde"
+  },
+  {
+   "termino": "Comprensión de listas",
+   "definicion": "Forma compacta de crear listas, tomada de Haskell.",
+   "pagina": 62,
+   "cita": "La comprensión de listas es una característica tomada del lenguaje de programación funcional Haskell que está presente en Python desde la versión"
+  },
+  {
+   "termino": "Bucle while",
+   "definicion": "Ejecuta un fragmento de código mientras se cumpla una condición.",
+   "pagina": 29,
+   "cita": "El bucle while (mientras) ejecuta un fragmento de código mientras se cumpla una condición. edad = 0 while edad < 18: edad"
+  },
+  {
+   "termino": "Objeto",
+   "definicion": "Entidad que agrupa un estado y una funcionalidad relacionadas.",
+   "pagina": 41,
+   "cita": "Un objeto es una entidad que agrupa un estado y una funcionalidad relacionadas. El estado del objeto se define a través de"
+  },
+  {
+   "termino": "Serialización de objetos",
+   "definicion": "Guardar un objeto en disco para recuperarlo más tarde.",
+   "pagina": 122,
+   "cita": "Algunas veces tenemos la necesidad de guardar un objeto a disco para poder recuperarlo más tarde, o puede que nos sea necesario"
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "Ruta para aprender Python",
+   "resumen": "Un orden razonable para aprender el lenguaje, tal como lo plantea el libro.",
+   "verificado": true,
+   "pasos": [
+    {
+     "orden": 1,
+     "titulo": "Entender qué es Python",
+     "descripcion": "Un lenguaje interpretado, de tipado dinámico y orientado a objetos.",
+     "pagina": 1,
+     "cita": "Python es un lenguaje de programación creado por Guido van Rossum a principios de los años 90 cuyo nombre está inspirado en el grupo"
+    },
+    {
+     "orden": 2,
+     "titulo": "Dominar los tipos y las colecciones",
+     "descripcion": "Números, cadenas, listas, tuplas y diccionarios.",
+     "pagina": 24,
+     "cita": "Los diccionarios, también llamados matrices asociativas, deben su nombre a que son colecciones que relacionan una clave y un valor. Por ejemplo"
+    },
+    {
+     "orden": 3,
+     "titulo": "Controlar el flujo",
+     "descripcion": "Condicionales y bucles para decidir y repetir.",
+     "pagina": 29,
+     "cita": "El bucle while (mientras) ejecuta un fragmento de código mientras se cumpla una condición. edad = 0 while edad <"
+    },
+    {
+     "orden": 4,
+     "titulo": "Pasar a objetos",
+     "descripcion": "Clases, objetos y encapsulación.",
+     "pagina": 41,
+     "cita": "Un objeto es una entidad que agrupa un estado y una funcionalidad relacionadas. El estado del objeto se define a través de"
+    },
+    {
+     "orden": 5,
+     "titulo": "Ir hacia lo funcional",
+     "descripcion": "Funciones de orden superior, decoradores y comprensión de listas.",
+     "pagina": 62,
+     "cita": "La comprensión de listas es una característica tomada del lenguaje de programación funcional Haskell que está presente en Python desde la versión 2.0 y"
+    }
+   ]
+  }
+ ],
+ "checklists": []
+}

@@ -12,6 +12,8 @@ export const Destilado = z.object({
   autor: z.string(),
   descripcion: z.string().default(""),
   idioma: z.string().default("es"),
+  // Atribución de la fuente (licencia, autores, qué cambió Textifika). Vacío = obra de dominio público (texto estándar de la ficha).
+  atribucion: z.string().default(""),
   // «logica»: páginas del texto digital (~1.500 caracteres), NO las del libro impreso. «aforismo»: el número del aforismo.
   paginacion: z.enum(["logica", "aforismo", "pdf"]).default("logica"),
   indice: z.array(

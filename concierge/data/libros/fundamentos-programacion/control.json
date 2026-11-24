@@ -1,0 +1,47 @@
+{
+ "libro": "fundamentos-programacion",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/fundamentos-programacion/fuente.txt",
+ "fuente_sha256": "771b10a20056673926a0270df6a1a4cbc6fca5d9cd26fcb18a25a54e889cc1ea",
+ "paginacion": "logica",
+ "paginas": 97,
+ "capitulos": 9,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "97 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin páginas cortas a mitad de capítulo"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "9 secciones cubren las 97 páginas"
+  },
+  "configuracion": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "1 capítulos de una sola página (¿títulos del índice o encabezados de página?)"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "99.7 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "11 de 11 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "13 de 13 citas existen literalmente en su página"
+  }
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "libro": "chatgpt-100-prompts",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/chatgpt-100-prompts/fuente.txt",
+ "fuente_sha256": "44c94a8f96a2f1b82f935c46197b167d304b9e015fdb688f4c2001dbcfb3149a",
+ "paginacion": "logica",
+ "paginas": 176,
+ "capitulos": 7,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "176 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": false,
+   "nivel": "aviso",
+   "detalle": "1 páginas de menos de 200 caracteres a mitad de capítulo (p. 69)"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "7 secciones cubren las 176 páginas"
+  },
+  "configuracion": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin sospechas"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "100.0 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "11 de 11 citas existen literalmente en su página"
+  }
+ }
+}

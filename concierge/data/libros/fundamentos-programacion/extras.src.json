@@ -1,0 +1,97 @@
+{
+ "glosario": [
+  {
+   "termino": "Algoritmo",
+   "definicion": "Secuencia finita de instrucciones o pasos lógicos para resolver un problema.",
+   "buscar": "Algoritmo: Secuencia finita de instrucciones o pasos lógicos para resolver un problema",
+   "palabras": 24
+  },
+  {
+   "termino": "Diagrama de flujo",
+   "definicion": "Representación gráfica de un algoritmo con símbolos estandarizados.",
+   "buscar": "Un diagrama de flujo es una representación gráfica de un proceso o algoritmo",
+   "palabras": 24
+  },
+  {
+   "termino": "Finitud",
+   "definicion": "Propiedad por la que el proceso debe terminar tras un número definido de pasos.",
+   "buscar": "Finitud: Propiedad esencial de un algoritmo que indica que el proceso debe finalizar",
+   "palabras": 24
+  },
+  {
+   "termino": "Efectividad",
+   "definicion": "Cada operación del algoritmo debe ser básica y realizable en tiempo finito.",
+   "buscar": "Efectividad: Característica que establece que cada operación del algoritmo debe ser básica",
+   "palabras": 24
+  },
+  {
+   "termino": "Estructura selectiva simple (If)",
+   "definicion": "Ejecuta un proceso solo si la condición es verdadera.",
+   "buscar": "Estructura Selectiva Simple (If): Estructura condicional que evalúa una expresión lógica",
+   "palabras": 24
+  },
+  {
+   "termino": "Estructura cíclica While",
+   "definicion": "Bucle que evalúa la condición antes de cada iteración.",
+   "buscar": "Estructura Cíclica While (Mientras): Bucle con evaluación previa de la condición lógica",
+   "palabras": 24
+  }
+ ],
+ "frameworks": [
+  {
+   "nombre": "De un problema a un programa",
+   "resumen": "El camino que propone el libro: analizar, diseñar el algoritmo, codificar y verificar.",
+   "verificado": true,
+   "pasos": [
+    {
+     "titulo": "Analizar el problema",
+     "descripcion": "Entender qué se pide y qué datos hay.",
+     "buscar": "El estudiante analiza el problema, diseña el algoritmo, codifica y verifica la solución",
+     "palabras": 22
+    },
+    {
+     "titulo": "Diseñar el algoritmo",
+     "descripcion": "Escribir los pasos lógicos que resuelven el problema.",
+     "buscar": "Algoritmo: Secuencia finita de instrucciones o pasos lógicos para resolver un problema",
+     "palabras": 22
+    },
+    {
+     "titulo": "Representarlo con un diagrama de flujo",
+     "descripcion": "Usar símbolos estandarizados para ver el proceso completo.",
+     "buscar": "Un diagrama de flujo es una representación gráfica de un proceso o algoritmo",
+     "palabras": 22
+    },
+    {
+     "titulo": "Elegir la estructura de control",
+     "descripcion": "Secuencial, selectiva o cíclica, según lo que necesites.",
+     "buscar": "Estructura Selectiva Doble (If-Else): Estructura que ofrece dos caminos de ejecución",
+     "palabras": 22
+    },
+    {
+     "titulo": "Codificar y verificar",
+     "descripcion": "Traducir el algoritmo a un lenguaje de programación y comprobar el resultado.",
+     "buscar": "La programación por computadora traduce algoritmos en lenguaje humano a lenguajes de programación",
+     "palabras": 22
+    }
+   ]
+  }
+ ],
+ "checklists": [
+  {
+   "nombre": "Un buen algoritmo cumple…",
+   "contexto": "Para revisar si tu algoritmo está bien definido.",
+   "items": [
+    {
+     "texto": "Termina tras un número definido de pasos (finitud)",
+     "buscar": "Finitud: Propiedad esencial de un algoritmo que indica que el proceso debe finalizar",
+     "palabras": 24
+    },
+    {
+     "texto": "Cada operación es básica y realizable (efectividad)",
+     "buscar": "Efectividad. - Las operaciones de un algoritmo deben ser básicas y realizables en un tiempo finito",
+     "palabras": 24
+    }
+   ]
+  }
+ ]
+}

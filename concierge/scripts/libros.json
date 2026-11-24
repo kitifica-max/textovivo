@@ -145,5 +145,28 @@
   "id": "jamovi",
   "desde": "^Part I *$",
   "patron": "^Chapter [0-9]+$"
+ },
+ {
+  "id": "python-para-todos",
+  "patron": "^(Introducción|Tipos\\ básicos|Colecciones|Control\\ de\\ flujo|Funciones|Orientación\\ a\\ Objetos|Revisitando\\ Objetos|Programación\\ funcional|Excepciones|Módulos\\ y\\ Paquetes|Entrada/Salida\\ Y\\ Ficheros|Expresiones\\ Regulares|Sockets|Interactuar\\ con\\ webs|Threads|Serialización\\ de\\ objetos|Bases\\ de\\ Datos|Documentación|Pruebas|Distribuir\\ aplicaciones\\ Python)$",
+  "titulos": [
+   [
+    "^Tipos básicos",
+    "Tipos básicos"
+   ]
+  ]
+ },
+ {
+  "id": "97-cosas",
+  "patron": "^\\d{1,2}\\. .+$",
+  "sinDescartar": true
+ },
+ {
+  "id": "chatgpt-100-prompts",
+  "patron": "^(Antes de empezar|Calentando motores|Técnicas básicas|Técnicas avanzadas|Casos de uso y aplicaciones|Jugando con imágenes|En conclusión)$"
+ },
+ {
+  "id": "fundamentos-programacion",
+  "patron": "^(Unidad [1-5]\\. .+|Glosario|Referencias Bibliográficas|Anexos)$"
  }
 ]

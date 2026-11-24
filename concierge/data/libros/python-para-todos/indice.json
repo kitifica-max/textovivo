@@ -1,0 +1,116 @@
+[
+ {
+  "titulo": "Introducción",
+  "nivel": 1,
+  "pagina_inicio": 1,
+  "pagina_fin": 10
+ },
+ {
+  "titulo": "Tipos básicos",
+  "nivel": 1,
+  "pagina_inicio": 11,
+  "pagina_fin": 19
+ },
+ {
+  "titulo": "Colecciones",
+  "nivel": 1,
+  "pagina_inicio": 20,
+  "pagina_fin": 25
+ },
+ {
+  "titulo": "Control de flujo",
+  "nivel": 1,
+  "pagina_inicio": 26,
+  "pagina_fin": 33
+ },
+ {
+  "titulo": "Funciones",
+  "nivel": 1,
+  "pagina_inicio": 34,
+  "pagina_fin": 41
+ },
+ {
+  "titulo": "Orientación a Objetos",
+  "nivel": 1,
+  "pagina_inicio": 42,
+  "pagina_fin": 56
+ },
+ {
+  "titulo": "Revisitando Objetos",
+  "nivel": 1,
+  "pagina_inicio": 57,
+  "pagina_fin": 59
+ },
+ {
+  "titulo": "Programación funcional",
+  "nivel": 1,
+  "pagina_inicio": 60,
+  "pagina_fin": 65
+ },
+ {
+  "titulo": "Excepciones",
+  "nivel": 1,
+  "pagina_inicio": 66,
+  "pagina_fin": 72
+ },
+ {
+  "titulo": "Módulos y Paquetes",
+  "nivel": 1,
+  "pagina_inicio": 73,
+  "pagina_fin": 87
+ },
+ {
+  "titulo": "Expresiones Regulares",
+  "nivel": 1,
+  "pagina_inicio": 88,
+  "pagina_fin": 94
+ },
+ {
+  "titulo": "Sockets",
+  "nivel": 1,
+  "pagina_inicio": 95,
+  "pagina_fin": 99
+ },
+ {
+  "titulo": "Interactuar con webs",
+  "nivel": 1,
+  "pagina_inicio": 100,
+  "pagina_fin": 105
+ },
+ {
+  "titulo": "Threads",
+  "nivel": 1,
+  "pagina_inicio": 106,
+  "pagina_fin": 124
+ },
+ {
+  "titulo": "Serialización de objetos",
+  "nivel": 1,
+  "pagina_inicio": 125,
+  "pagina_fin": 126
+ },
+ {
+  "titulo": "Bases de Datos",
+  "nivel": 1,
+  "pagina_inicio": 127,
+  "pagina_fin": 138
+ },
+ {
+  "titulo": "Documentación",
+  "nivel": 1,
+  "pagina_inicio": 139,
+  "pagina_fin": 147
+ },
+ {
+  "titulo": "Pruebas",
+  "nivel": 1,
+  "pagina_inicio": 148,
+  "pagina_fin": 157
+ },
+ {
+  "titulo": "Distribuir aplicaciones Python",
+  "nivel": 1,
+  "pagina_inicio": 158,
+  "pagina_fin": 172
+ }
+]

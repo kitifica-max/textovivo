@@ -13,7 +13,7 @@ const fichas: Ficha[] = JSON.parse(await readFile("scripts/sitio.json", "utf8"))
 type Paso = { titulo: string; descripcion: string; pagina: number; cita: string };
 type Item = { texto: string; pagina: number; cita: string };
 type Libro = {
-  id: string; titulo: string; autor: string; descripcion: string; idioma: string;
+  id: string; titulo: string; autor: string; descripcion: string; idioma: string; atribucion?: string;
   indice: { titulo: string; pagina_inicio: number }[];
   glosario: { termino: string; definicion: string; pagina: number }[];
   frameworks: { nombre: string; resumen: string; pasos: Paso[] }[];
@@ -21,7 +21,7 @@ type Libro = {
 };
 const catalogo = JSON.parse(await readFile("data/catalogo.json", "utf8")) as Libro[];
 const porId = new Map(catalogo.map((d) => [d.id, d]));
-const TEMAS: Record<string, string> = { estrategia: "Estrategia", marketing: "Marketing", decisiones: "Decisiones", investigacion: "Investigación", negocios: "Negocios", escritura: "Escritura" };
+const TEMAS: Record<string, string> = { estrategia: "Estrategia", marketing: "Marketing", decisiones: "Decisiones", investigacion: "Investigación", negocios: "Negocios", escritura: "Escritura", programacion: "Programación", ia: "IA y prompts" };
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
 const disponible = (f: Ficha) => Boolean(f.id && porId.has(f.id));
 const href = (f: Ficha) => `libros/${f.id}.html`;
@@ -181,7 +181,7 @@ ${d.glosario.map((g, i) => `        <li><span class="n">${String(i + 1).padStart
       <ol class="lista">
 ${d.indice.map((s, i) => `        <li><span class="n">${String(i + 1).padStart(2, "0")}</span>${esc(corto(s.titulo, 90))}<span class="der">p. ${s.pagina_inicio}</span></li>`).join("\n")}
       </ol>
-      <p class="nota" style="margin-top:28px;max-width:44em">Obra de dominio público, en su idioma original (${IDIOMA[d.idioma] ?? d.idioma}). Texto tomado de Project Gutenberg, Wikisource o archive.org. Las páginas son secciones lógicas del texto digital, no las de una edición impresa. Los resúmenes en español son de Textifika; las citas son literales.</p>
+      <p class="nota" style="margin-top:28px;max-width:44em">${d.atribucion ? esc(d.atribucion) + " " : `Obra de dominio público, en su idioma original (${IDIOMA[d.idioma] ?? d.idioma}). Texto tomado de Project Gutenberg, Wikisource o archive.org. `}Las páginas son secciones lógicas del texto digital, no las de una edición impresa. Los resúmenes en español son de Textifika; las citas son literales.</p>
     </div>
   </section>`;
 

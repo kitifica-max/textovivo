@@ -40,6 +40,7 @@ for (const id of ids) {
       autor: meta.autor,
       descripcion: meta.descripcion ?? "",
       idioma: meta.idioma ?? "es",
+      atribucion: meta.atribucion ?? "",
       paginacion: meta.paginacion ?? "logica",
       indice: await leer(`${dir}/indice.json`),
       glosario: [],

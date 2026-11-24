@@ -1,0 +1,47 @@
+{
+ "libro": "97-cosas",
+ "fecha": "2026-11-24",
+ "fuente": "fuentes/97-cosas/fuente.txt",
+ "fuente_sha256": "f48c53698dafe18a3edd8e9e38fc594ec2214a51df5d92fdf280266b8e82afc3",
+ "paginacion": "logica",
+ "paginas": 276,
+ "capitulos": 97,
+ "aprobado": true,
+ "controles": {
+  "paginas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "276 páginas; 0 saltos de numeración; 0 vacías o de menos de 40 caracteres"
+  },
+  "paginas_cortas": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin páginas cortas a mitad de capítulo"
+  },
+  "indice_cobertura": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "97 secciones cubren las 276 páginas"
+  },
+  "configuracion": {
+   "ok": true,
+   "nivel": "aviso",
+   "detalle": "sin sospechas"
+  },
+  "fidelidad": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "99.8 % de las palabras de la fuente están en las páginas (mínimo 80 %)"
+  },
+  "busqueda": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "12 de 12 oraciones del libro se encuentran en las 3 primeras respuestas (mínimo 80 %)"
+  },
+  "citas": {
+   "ok": true,
+   "nivel": "error",
+   "detalle": "11 de 11 citas existen literalmente en su página"
+  }
+ }
+}
