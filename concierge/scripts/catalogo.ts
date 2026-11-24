@@ -6,7 +6,7 @@
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import { Destilado, Paginas } from "../src/schema.ts";
 import { citasInvalidas } from "../src/tools.ts";
-import { validarTerminos, type Candidato } from "../src/vocabulario.ts";
+import { derivarTerminos } from "../src/vocabulario.ts";
 import { resumen, validar } from "./validar-libro.ts";
 
 const leer = async (ruta: string) => JSON.parse(await readFile(ruta, "utf8"));
@@ -59,20 +59,14 @@ for (const id of ids) {
   }
   catalogo.push(d);
   const q = (s: string) => `'${s.replaceAll("'", "''")}'`;
-  // Vocabulario del libro (opcional): se vuelve a validar acá; si algo ya no está literal en el texto, el libro no se publica.
-  let filasTerminos: string[] = [];
-  if (await existe(`${dir}/terminos.json`)) {
-    const { buenos, descartados } = validarTerminos(await leer(`${dir}/terminos.json`) as Candidato[], paginas);
-    if (descartados.length) {
-      errores += 1;
-      console.error(`  → ${id}: ${descartados.length} términos del vocabulario no están literales en el texto (corré node scripts/terminos.ts validar ${id})`);
-      continue;
-    }
-    filasTerminos = [
-      `DELETE FROM terminos WHERE libro = ${q(id)};`,
-      ...buenos.map((t) => `INSERT INTO terminos (libro, termino, traduccion, pagina, fuente) VALUES (${q(id)}, ${q(t.termino)}, ${q(t.traduccion)}, ${t.pagina}, ${q(t.fuente)});`)
-    ];
-  }
+  // Vocabulario del libro, derivado del destilado (sin modelos): nombre y descripción en español → texto entre paréntesis como traducción.
+  // Solo se guarda la traducción si aparece literal en el texto; si no, el término queda sin traducción y marcado (verificado = 0).
+  const filasTerminos = [
+    `DELETE FROM terminos WHERE libro = ${q(id)};`,
+    ...derivarTerminos(d, paginas).map(
+      (t) => `INSERT INTO terminos (libro, termino, traduccion, pagina, fuente, verificado) VALUES (${q(id)}, ${q(t.termino)}, ${q(t.traduccion)}, ${t.pagina}, ${q(t.fuente)}, ${t.verificado ? 1 : 0});`
+    )
+  ];
   const sql = [
     `DELETE FROM paginas_fts WHERE libro = ${q(id)};`,
     ...paginas.map((p) => `INSERT INTO paginas_fts (texto, libro, pagina) VALUES (${q(p.texto)}, ${q(id)}, ${p.pagina});`),

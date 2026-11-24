@@ -205,3 +205,50 @@ export function sugerenciasContextuales(consulta: string, terminos: Termino[], u
   const lista = puntuadas.map((x) => x.t.traduccion).filter((s) => (vistas.has(s) ? false : (vistas.add(s), true))).slice(0, max);
   return { sugerencias: lista.length ? lista : ultimoRecurso.slice(0, max), contextuales: lista.length > 0 };
 }
+
+/** Fila del vocabulario derivado del destilado. `verificado: false` = el texto entre paréntesis no está literal en el libro: queda sin traducción. */
+export type FilaTermino = Termino & { verificado: boolean };
+
+type Destilable = {
+  glosario: { termino: string; definicion: string; pagina: number }[];
+  frameworks: { nombre: string; resumen: string; pasos: { pagina: number }[] }[];
+  checklists: { nombre: string; contexto: string; items: { pagina: number }[] }[];
+};
+
+/** «Ley moral (Moral Law)» → nombre en español y traducción en inglés. Sin paréntesis final, no hay traducción. */
+export function separarNombre(nombre: string) {
+  const m = nombre.trim().match(/^(.*?)\s*\(([^()]+)\)\s*$/);
+  return m && m[1].trim() ? { es: m[1].trim(), en: m[2].trim() } : { es: nombre.trim(), en: "" };
+}
+
+/**
+ * Vocabulario sacado SOLO de lo que ya trae el destilado (sin modelos): para cada glosario, framework y checklist,
+ * el nombre y la descripción en español como `termino`, y el texto entre paréntesis del nombre como `traduccion`.
+ * La página es la de su cita. La traducción se guarda solo si aparece literal en el libro; si no, queda vacía y marcada.
+ */
+export function derivarTerminos(d: Destilable, paginas: { pagina: number; texto: string }[]): FilaTermino[] {
+  const elementos = [
+    ...d.glosario.map((g) => ({ nombre: g.termino, descripcion: g.definicion, pagina: g.pagina, fuente: "glosario" })),
+    ...d.frameworks.map((f) => ({ nombre: f.nombre, descripcion: f.resumen, pagina: f.pasos[0]?.pagina ?? 1, fuente: "framework" })),
+    ...d.checklists.map((c) => ({ nombre: c.nombre, descripcion: c.contexto, pagina: c.items[0]?.pagina ?? 1, fuente: "checklist" }))
+  ];
+  const filas: FilaTermino[] = [];
+  const vistos = new Set<string>();
+  for (const e of elementos) {
+    const { es, en } = separarNombre(e.nombre);
+    let traduccion = "";
+    let pagina = e.pagina;
+    if (en.length >= 3) {
+      const suya = paginas.find((p) => p.pagina === e.pagina);
+      const donde = suya && posicionLiteral(suya.texto, en) >= 0 ? suya : paginas.find((p) => posicionLiteral(p.texto, en) >= 0);
+      if (donde) { traduccion = en; pagina = donde.pagina; }
+    }
+    for (const termino of [es, e.descripcion.trim().slice(0, 300)]) {
+      const clave = `${normalizar(termino)}|${normalizar(traduccion)}`;
+      if (!termino || vistos.has(clave)) continue;
+      vistos.add(clave);
+      filas.push({ termino, traduccion, pagina, fuente: e.fuente, verificado: traduccion !== "" });
+    }
+  }
+  return filas;
+}

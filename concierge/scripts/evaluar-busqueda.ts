@@ -6,19 +6,19 @@
 import { readdir, readFile } from "node:fs/promises";
 import { Destilado, Paginas } from "../src/schema.ts";
 import { buscarConcepto, buscadorMemoria, crearLibro } from "../src/tools.ts";
-import { posicionLiteral, type Termino } from "../src/vocabulario.ts";
+import { derivarTerminos, posicionLiteral } from "../src/vocabulario.ts";
 
 export const UMBRALES = { recall5: 0.8, primero: 0.6, ceroResultados: 0.1 };
 type Consulta = { q: string; paginas?: [number, number]; contiene?: string[]; nota?: string };
 
 const leer = async (r: string) => JSON.parse(await readFile(r, "utf8"));
-const existe = (r: string) => readFile(r).then(() => true, () => false);
 
 export async function evaluar(id: string, conVocabulario = true) {
   const consultas: Consulta[] = await leer(`data/evaluacion/${id}.json`);
   const catalogo = (await leer("data/catalogo.json")).find((x: { id: string }) => x.id === id);
   const paginas = Paginas.parse(await leer(`data/libros/${id}/paginas.json`));
-  const terminos: Termino[] = conVocabulario && (await existe(`data/libros/${id}/terminos.json`)) ? await leer(`data/libros/${id}/terminos.json`) : [];
+  // El vocabulario sale del destilado, igual que en la ingesta (solo las filas con traducción literal sirven para buscar).
+  const terminos = conVocabulario ? derivarTerminos(catalogo, paginas).filter((t) => t.verificado) : [];
   const libro = crearLibro(Destilado.parse(catalogo), buscadorMemoria(paginas, terminos), async () => terminos);
   const buenas = (c: Consulta) =>
     new Set(paginas.filter((p) => (c.paginas ? p.pagina >= c.paginas[0] && p.pagina <= c.paginas[1] : (c.contiene ?? []).some((w) => posicionLiteral(p.texto, w) >= 0))).map((p) => p.pagina));

@@ -1,6 +1,5 @@
 // API del sitio: cuentas, acceso al conector, envíos de autores y revisión.
 import { env } from "cloudflare:workers";
-import { indexarTerminos } from "./terminos-ia.ts";
 import catalogoJson from "../data/catalogo.json" with { type: "json" };
 import {
   TERMINOS_VERSION, abrirSesion, aleatorio, cerrarSesion, claveCorrecta, cookieVacia, emailValido, hashClave, sha256, usuarioActual
@@ -428,8 +427,6 @@ export async function api(req: Request, url: URL, ctx?: ExecutionContext): Promi
         await env.DB.batch(r.paginas.slice(i, i + 50).map((p) => env.DB.prepare("INSERT INTO paginas_fts (texto, libro, pagina) VALUES (?, ?, ?)").bind(p.texto, id, p.pagina)));
       await env.DB.prepare("INSERT INTO docs_personales (id, user_id, titulo, archivo_nombre, idioma, paginacion, indice, paginas, bytes, created_at) VALUES (?, ?, ?, ?, 'es', ?, ?, ?, ?, ?)")
         .bind(id, u.id, titulo, archivo.name.slice(0, 200), r.paginacion, JSON.stringify(r.indice), r.paginas.length, archivo.size, ahora()).run();
-      // Vocabulario del documento (sinónimos y traducciones, validados contra su texto): en segundo plano, sin frenar la respuesta.
-      ctx?.waitUntil(indexarTerminos(id, "es", r.paginas).catch((err) => console.error("indexarTerminos", err)));
       return json({ ok: true, id, paginas: r.paginas.length, documentos: await lista() });
     }
 

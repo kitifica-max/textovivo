@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
-  filasParaConsulta, matchFts, mismaRaiz, planDeBusqueda, posicionLiteral, raiz, sugerenciasContextuales, ubicarCoincidencia, validarTerminos, type Termino
+  derivarTerminos, filasParaConsulta, matchFts, separarNombre, mismaRaiz, planDeBusqueda, posicionLiteral, raiz, sugerenciasContextuales, ubicarCoincidencia, validarTerminos, type Termino
 } from "./vocabulario.ts";
 
 const T: Termino[] = [
@@ -78,4 +78,28 @@ test("ubicarCoincidencia dice qué pieza coincidió y dónde", () => {
   const u = ubicarCoincidencia("Uno dos tres. El commander manda.", [{ texto: "general" }, { texto: "command", prefijo: true }]);
   assert.deepEqual(u, { termino: "command", posicion: 17 });
   assert.equal(ubicarCoincidencia("nada", [{ texto: "general" }]), null);
+});
+
+test("derivarTerminos: nombre y descripción en español, traducción entre paréntesis solo si está literal; si no, sin traducción y marcada", () => {
+  const paginas = [
+    { pagina: 1, texto: "The Commander stands for wisdom. The Moral Law causes the people to be in complete accord." },
+    { pagina: 2, texto: "Nothing else here." }
+  ];
+  const filas = derivarTerminos(
+    {
+      glosario: [
+        { termino: "Ley moral (Moral Law)", definicion: "Acuerdo entre el pueblo y su líder.", pagina: 2 },
+        { termino: "Shuai-jan", definicion: "Una serpiente de la montaña.", pagina: 2 }
+      ],
+      frameworks: [{ nombre: "Jerarquía de estrategias (Attack by stratagem)", resumen: "Mejor vencer sin pelear.", pasos: [{ pagina: 1 }] }],
+      checklists: []
+    },
+    paginas
+  );
+  const ley = filas.filter((f) => f.termino.startsWith("Ley moral") || f.termino.startsWith("Acuerdo"));
+  assert.ok(ley.length === 2 && ley.every((f) => f.traduccion === "Moral Law" && f.pagina === 1 && f.verificado && f.fuente === "glosario")); // la traducción se halla en p.1, aunque la cita era de p.2
+  assert.ok(filas.filter((f) => f.fuente === "framework").every((f) => f.traduccion === "" && !f.verificado)); // «Attack by stratagem» no está literal
+  assert.ok(filas.filter((f) => f.termino.startsWith("Shuai") || f.termino.startsWith("Una serpiente")).every((f) => f.traduccion === "" && !f.verificado)); // sin paréntesis
+  assert.deepEqual(separarNombre("Ley moral (Moral Law)"), { es: "Ley moral", en: "Moral Law" });
+  assert.deepEqual(separarNombre("Shuai-jan"), { es: "Shuai-jan", en: "" });
 });

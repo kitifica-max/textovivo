@@ -32,7 +32,7 @@ Conclusión: la verificación de citas funciona. La búsqueda falla en vocabular
 
 1. **Umbral de relevancia** en `buscadorD1`. Devolver solo páginas con puntuación ≥ 50 % de la mejor. Si ninguna pasa, `buscarConcepto` responde "sin resultados", no una lista de ruido.
 2. **AND antes que OR.** Buscar primero páginas que contengan todos los términos. Usar OR solo como respaldo y marcar la respuesta con `coincidencia: "parcial"`.
-3. **Vocabulario por libro.** En la ingesta (con `claude-haiku-5-5`), generar `terminos.json` con sinónimos y traducciones ES↔EN por framework, checklist y capítulo. Guardarlo en una tabla `terminos(libro, termino, pagina)` en D1 e indexarlo en FTS. Antes de buscar, expandir la consulta con esos términos.
+3. **Vocabulario por libro.** En la ingesta (con la IA de Cloudflare, Workers AI; sin proveedor externo), generar `terminos.json` con sinónimos y traducciones ES↔EN por framework, checklist y capítulo. Guardarlo en una tabla `terminos(libro, termino, pagina)` en D1 e indexarlo en FTS. Antes de buscar, expandir la consulta con esos términos.
 4. **Stemming.** Evaluar el tokenizador `porter` de FTS5 para el texto inglés y un truncado de sufijos propio para español. [verificar] soporte en D1 antes de implementar.
 5. **Respuesta cuando la consulta no entra en el vocabulario.** Devolver `sugerencias` con términos del libro en su idioma (sacados de `terminos`), en lugar de cero resultados sin explicación.
 6. **Glosario por palabra completa.** Reemplazar `t.includes(q)` por comparación de palabras enteras.

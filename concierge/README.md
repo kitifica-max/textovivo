@@ -257,17 +257,17 @@ El registro (`/api/registro`) y los envíos (`/api/envios`) exigen un token de T
 - **Tablas:** `users.email_verificado_at` y `enlaces_email` (solo el hash del token, un solo uso).
 - **Probar sin bandeja:** los correos a `delivered+algo@resend.dev` los acepta Resend y se pueden leer con la API (`get-email`).
 
-## Vocabulario por libro (búsqueda en otro idioma y con sinónimos)
+## Vocabulario por libro (búsqueda en otro idioma)
 
-Los libros están en su idioma original; quien consulta puede escribir en español, en inglés o con otras palabras («liderazgo» cuando el texto dice *commander*). La tabla `terminos` (migración `0011_terminos.sql`) es el puente:
+Los libros están en su idioma original; quien consulta puede escribir en español. La tabla `terminos` (migraciones `0011` y `0012`) es el puente. **No usa ningún modelo**: sale de lo que ya trae `destilado.json`.
 
-- `termino` = como lo diría quien consulta · `traduccion` = palabra o frase **copiada del texto del libro** · `pagina` = dónde aparece · `fuente` = `capitulo`, `glosario`, `framework`, `checklist` o `sinonimo`.
-- **Regla:** una traducción solo se guarda si aparece literal en el texto (`validarTerminos`, `src/vocabulario.ts`). `scripts/catalogo.ts` la vuelve a comprobar y no publica un libro cuyo vocabulario ya no coincida.
-- **Libros del catálogo:** `node scripts/terminos.ts todo <id>` pide los candidatos a `claude-haiku-5-5` (clave en `ANTHROPIC_API_KEY` o `concierge/.secreto-anthropic`, ignorado por git), los filtra y deja `data/libros/<id>/terminos.json`. Después `node scripts/catalogo.ts` lo agrega a la semilla SQL. `terminos.candidatos.json` también se puede escribir a mano: pasa por el mismo filtro.
-- **Documentos personales:** al subirlos se genera su vocabulario en segundo plano con Workers AI (`src/terminos-ia.ts`), con la misma validación. Si la IA falla, el documento se busca igual por sus palabras. Los envíos aprobados (`publicarEnvio`) todavía no generan vocabulario.
-- **Orden de la búsqueda** (`planDeBusqueda`): 1) todas las palabras tal cual (`completa`) → 2) el vocabulario del libro (`expandida`, y las páginas que señala una fila de capítulo o framework suben en el ranking) → 3) todas las palabras por raíz (`aproximada`, prefijo `"lead"*`) → 4) cualquiera (`parcial`). Cada etapa solo corre si la anterior no encontró nada, con el umbral del 50 % en todas.
+- **Cómo se llena:** `scripts/catalogo.ts` (la ingesta) llama a `derivarTerminos` (`src/vocabulario.ts`). Para cada glosario, framework y checklist toma el nombre en español y su descripción como `termino`, y el texto entre paréntesis del nombre («Ley moral **(Moral Law)**») como `traduccion`. La página es la de su cita.
+- **Regla:** la traducción solo se guarda si aparece literal en el texto del libro. Si no aparece, el término se guarda igual con `traduccion = ''` y `verificado = 0`; la búsqueda solo usa los verificados.
+- **Cobertura real:** depende de que el destilado traiga el paréntesis. Hoy casi solo `arte-de-la-guerra` lo trae (42 de 86 términos con traducción literal); el resto de los libros sale sin traducción. `node scripts/terminos.ts [id]` muestra la cobertura. Para ampliarla hay que enriquecer los nombres del destilado (p. ej. «Liderazgo (commander)»).
+- **Orden de la búsqueda** (`planDeBusqueda`): 1) todas las palabras tal cual (`completa`) → 2) el vocabulario (`expandida`; la página de la fila sube en el ranking) → 3) todas las palabras por raíz (`aproximada`, prefijo `"lead"*`) → 4) cualquiera (`parcial`). Cada etapa solo corre si la anterior no encontró nada, con el umbral del 50 % en todas.
 - **Stemming:** D1 documenta FTS5 y `fts5vocab` pero no menciona el tokenizer `porter`, así que no se depende de él: hay un truncado de sufijos propio (`raiz`) que se aplica a la consulta, con prefijo en FTS5.
-- **Sin resultados:** `sugerencias` salen del vocabulario, ordenadas por parecido con lo escrito (raíz o trigramas); solo si nada se parece vuelve el listado general del libro.
-- **Dónde coincidió:** cada resultado trae `coincide_en` (`termino`, `posicion` en la página, `en_fragmento`) y, si la coincidencia queda más allá del fragmento recortado a 1.500 caracteres, `aviso_fragmento`.
+- **Sin resultados:** `sugerencias` salen del vocabulario verificado, ordenadas por parecido (raíz o trigramas); solo si nada se parece vuelve el listado general del libro.
+- **Dónde coincidió:** cada resultado trae `coincide_en` (`termino`, `posicion`, `en_fragmento`) y, si queda más allá del fragmento recortado a 1.500 caracteres, `aviso_fragmento`.
+- **Documentos personales y envíos:** no tienen destilado, así que no tienen vocabulario: se buscan por sus palabras y raíces.
 - **Evaluación:** `node scripts/evaluar-busqueda.ts [id] [--sin-vocabulario]` con las consultas de `data/evaluacion/<id>.json` y los mismos umbrales para todos los libros (recall@5 ≥ 80 %, primero correcto ≥ 60 %, sin resultados ≤ 10 %).
-- **Al desplegar:** aplicar la migración (`npm run db:remote`) **antes** de `npm run deploy` (borrar un documento ya toca la tabla) y cargar la semilla de cada libro que tenga `terminos.json`.
+- **Al desplegar:** aplicar las migraciones (`npm run db:remote`) **antes** de `npm run deploy` y recargar las filas de `terminos` de cada libro desde `data/semilla/<id>.sql` (solo las líneas `DELETE/INSERT INTO terminos`).

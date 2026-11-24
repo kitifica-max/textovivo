@@ -146,25 +146,25 @@ test("citar_fuente mira varias páginas y ofrece otras candidatas si están pare
 });
 
 // --- Vocabulario por libro (expansión, sugerencias contextuales, dónde coincidió) ---
-import terminosArte from "../data/libros/arte-de-la-guerra/terminos.json" with { type: "json" };
+import { derivarTerminos } from "./vocabulario.ts";
+const terminosArte = derivarTerminos(Destilado.parse(destilado), Paginas.parse(paginas)).filter((t) => t.verificado);
 const arte = crearLibro(Destilado.parse(destilado), buscadorMemoria(Paginas.parse(paginas), terminosArte), async () => terminosArte);
 const pagsDe = (r: any) => (r.resultados ?? []).map((x: any) => x.pagina_inicio as number);
 
-test("vocabulario: «liderazgo» y «lider» encuentran páginas con commander o general", async () => {
-  for (const q of ["liderazgo", "lider"]) {
-    const r: any = await buscarConcepto(arte, q);
-    assert.equal(r.coincidencia, "expandida", q);
-    assert.ok(pagsDe(r).includes(1), `${q}: debería traer la página 1 (The Commander stands for…)`);
-    assert.ok(r.resultados.every((x: any) => /command|general|leader/i.test(x.texto)), q);
-    assert.match(r.nota, /vocabulario del libro/);
-  }
+test("vocabulario derivado del destilado: «ley moral» se traduce a «Moral Law» y la nota lo dice", async () => {
+  const r: any = await buscarConcepto(arte, "ley moral");
+  assert.equal(r.coincidencia, "expandida");
+  assert.ok(r.resultados.every((x: any) => /moral law/i.test(x.texto)));
+  assert.match(r.nota, /vocabulario del libro/);
+  assert.ok(r.resultados[0].coincide_en.en_fragmento);
 });
 
-test("vocabulario: «estrategias de ataque» trae el capítulo III y «attack by stratagem» lo pone primero", async () => {
-  const a: any = await buscarConcepto(arte, "estrategias de ataque");
-  assert.ok(pagsDe(a).some((p: number) => p >= 7 && p <= 9));
-  const b: any = await buscarConcepto(arte, "attack by stratagem");
-  assert.ok(b.resultados[0].pagina_inicio >= 7 && b.resultados[0].pagina_inicio <= 9, "antes salía primero la p. 36 (capítulo XI)");
+test("lo que el destilado no traduce no se inventa: «estrategias de ataque» sigue sin resultados y sugiere términos reales", async () => {
+  const r: any = await buscarConcepto(arte, "estrategias de ataque");
+  assert.equal(r.resultados, undefined);
+  assert.ok(Array.isArray(r.sugerencias) && r.sugerencias.length > 0);
+  const en: any = await buscarConcepto(arte, "attack by stratagem"); // en inglés sigue funcionando
+  assert.ok(en.resultados.some((x: any) => x.pagina_inicio >= 7 && x.pagina_inicio <= 9));
 });
 
 test("vocabulario: «conocer al enemigo y a ti mismo» trae la p. 9 en primer lugar y la consulta en inglés no cambia", async () => {
@@ -178,8 +178,8 @@ test("vocabulario: «conocer al enemigo y a ti mismo» trae la p. 9 en primer lu
 });
 
 test("sin resultados: las sugerencias dependen de la consulta; solo el último recurso se repite", async () => {
-  const typo: any = await buscarConcepto(arte, "lidrazgo");
-  assert.ok(typo.sugerencias.includes("commander") && /Lo más parecido/.test(typo.mensaje));
+  const typo: any = await buscarConcepto(arte, "moraal");
+  assert.ok(typo.sugerencias.includes("Moral Law") && /Lo más parecido/.test(typo.mensaje));
   const a: any = await buscarConcepto(arte, "criptomonedas");
   const b: any = await buscarConcepto(arte, "bitcoin y blockchain");
   assert.ok(a.sugerencias && b.sugerencias);
