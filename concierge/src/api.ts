@@ -19,7 +19,8 @@ const DIA = 86_400_000;
 const TIPOS = ["libro", "documento", "tesis"];
 const IDIOMAS = ["es", "en", "pt", "fr", "de", "it", "otro"];
 const EXTENSIONES = /\.(pdf|txt|md)$/i;
-const MAX_BYTES = 20 * 1024 * 1024;
+// Tope por el proxy de Netlify, que corta las peticiones de ~8 MB en adelante.
+const MAX_BYTES = 7 * 1024 * 1024;
 const MAX_PENDIENTES = 10;
 
 async function cuerpo(req: Request) {
@@ -222,7 +223,7 @@ export async function api(req: Request, url: URL): Promise<Response> {
     if (descripcion.length < 20 || descripcion.length > 1000) return error("La descripción debe tener entre 20 y 1000 caracteres.");
     if (!(archivo instanceof File) || archivo.size === 0) return error("Adjuntá el archivo.");
     if (!EXTENSIONES.test(archivo.name)) return error("El archivo debe ser PDF, TXT o MD.");
-    if (archivo.size > MAX_BYTES) return error("El archivo pesa más de 20 MB.");
+    if (archivo.size > MAX_BYTES) return error("El archivo pesa más de 7 MB.");
 
     const pend = await env.DB.prepare("SELECT COUNT(*) AS n FROM envios WHERE user_id = ? AND estado = 'recibido'").bind(u.id).first<{ n: number }>();
     if ((pend?.n ?? 0) >= MAX_PENDIENTES) return error(`Ya tenés ${MAX_PENDIENTES} envíos esperando revisión. Esperá a que se revisen para subir más.`, 429);

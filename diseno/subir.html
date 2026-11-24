@@ -59,7 +59,7 @@
           <div class="campo"><label for="idioma">Idioma</label><select id="idioma" name="idioma" required><option value="es">Español</option><option value="en">Inglés</option><option value="pt">Portugués</option><option value="fr">Francés</option><option value="de">Alemán</option><option value="it">Italiano</option><option value="otro">Otro</option></select></div>
         </div>
         <div class="campo"><label for="descripcion">Descripción (20 a 1000 caracteres)</label><textarea id="descripcion" name="descripcion" required maxlength="1000"></textarea></div>
-        <div class="campo"><label for="archivo">Archivo (PDF con texto, TXT o MD · hasta 20 MB)</label><input id="archivo" name="archivo" type="file" accept=".pdf,.txt,.md" required></div>
+        <div class="campo"><label for="archivo">Archivo (PDF con texto, TXT o MD · hasta 7 MB)</label><input id="archivo" name="archivo" type="file" accept=".pdf,.txt,.md" required></div>
 
         <div class="acepto"><input id="dominio_publico" name="dominio_publico" type="checkbox" class="caja"><label for="dominio_publico"><strong>Declaro que soy el titular de los derechos de esta obra</strong> (o tengo autorización completa) y <strong>acepto que pase al dominio público</strong>, de forma irrevocable, para que cualquier persona pueda usarla.</label></div>
         <div class="acepto"><input id="acepto_terminos" name="acepto_terminos" type="checkbox" class="caja"><label for="acepto_terminos">Acepto los <a class="enlace" href="terminos.html" target="_blank" rel="noopener">términos y condiciones</a>.</label></div>
@@ -111,6 +111,8 @@ $("formulario").addEventListener("submit", async (ev) => {
   ev.preventDefault();
   $("error").hidden = true; $("ok").hidden = true;
   const f = $("formulario");
+  const grande = $("archivo").files[0];
+  if (grande && grande.size > 7 * 1024 * 1024) { $("error").textContent = "El archivo pesa más de 7 MB. Probá con una versión más liviana (por ejemplo, un PDF comprimido)."; $("error").hidden = false; return; }
   const token = ts.token();
   if (!token) { $("error").textContent = "Esperá a que termine la verificación antes de enviar."; $("error").hidden = false; return; }
   const datos = new FormData(f);
