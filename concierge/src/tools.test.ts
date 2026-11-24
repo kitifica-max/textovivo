@@ -144,3 +144,59 @@ test("citar_fuente mira varias páginas y ofrece otras candidatas si están pare
   const r = await citarFuente(l, "a leader with courage");
   assert.ok("cita_literal" in r && r.otras_candidatas?.length === 1);
 });
+
+// --- Vocabulario por libro (expansión, sugerencias contextuales, dónde coincidió) ---
+import terminosArte from "../data/libros/arte-de-la-guerra/terminos.json" with { type: "json" };
+const arte = crearLibro(Destilado.parse(destilado), buscadorMemoria(Paginas.parse(paginas), terminosArte), async () => terminosArte);
+const pagsDe = (r: any) => (r.resultados ?? []).map((x: any) => x.pagina_inicio as number);
+
+test("vocabulario: «liderazgo» y «lider» encuentran páginas con commander o general", async () => {
+  for (const q of ["liderazgo", "lider"]) {
+    const r: any = await buscarConcepto(arte, q);
+    assert.equal(r.coincidencia, "expandida", q);
+    assert.ok(pagsDe(r).includes(1), `${q}: debería traer la página 1 (The Commander stands for…)`);
+    assert.ok(r.resultados.every((x: any) => /command|general|leader/i.test(x.texto)), q);
+    assert.match(r.nota, /vocabulario del libro/);
+  }
+});
+
+test("vocabulario: «estrategias de ataque» trae el capítulo III y «attack by stratagem» lo pone primero", async () => {
+  const a: any = await buscarConcepto(arte, "estrategias de ataque");
+  assert.ok(pagsDe(a).some((p: number) => p >= 7 && p <= 9));
+  const b: any = await buscarConcepto(arte, "attack by stratagem");
+  assert.ok(b.resultados[0].pagina_inicio >= 7 && b.resultados[0].pagina_inicio <= 9, "antes salía primero la p. 36 (capítulo XI)");
+});
+
+test("vocabulario: «conocer al enemigo y a ti mismo» trae la p. 9 en primer lugar y la consulta en inglés no cambia", async () => {
+  const es: any = await buscarConcepto(arte, "conocer al enemigo y a ti mismo");
+  assert.equal(es.resultados[0].pagina_inicio, 9);
+  const en: any = await buscarConcepto(arte, "know the enemy and know yourself");
+  assert.equal(en.coincidencia, "completa");
+  assert.equal(en.resultados[0].pagina_inicio, 9);
+  const f = obtenerFramework(arte, "Conocer al rival y a uno mismo");
+  assert.ok("verificado" in f && f.verificado === true);
+});
+
+test("sin resultados: las sugerencias dependen de la consulta; solo el último recurso se repite", async () => {
+  const typo: any = await buscarConcepto(arte, "lidrazgo");
+  assert.ok(typo.sugerencias.includes("commander") && /Lo más parecido/.test(typo.mensaje));
+  const a: any = await buscarConcepto(arte, "criptomonedas");
+  const b: any = await buscarConcepto(arte, "bitcoin y blockchain");
+  assert.ok(a.sugerencias && b.sugerencias);
+  assert.deepEqual(a.sugerencias, b.sugerencias); // último recurso (nada se parece): listado general del libro
+  assert.notDeepEqual(typo.sugerencias, a.sugerencias);
+});
+
+test("etiqueta de coincidencia: si el término queda más allá del fragmento recortado, se dice dónde", async () => {
+  const largo = "relleno ".repeat(260) + "el commander decide."; // ≈ 2.080 caracteres: más que MAX_PASAJE (1.500)
+  const l = crearLibro(Destilado.parse({ id: "x", titulo: "x", autor: "x", idioma: "en", indice: [], glosario: [], frameworks: [], checklists: [] }), buscadorMemoria([{ pagina: 1, texto: largo }]));
+  const r: any = await buscarConcepto(l, "commander");
+  assert.equal(r.coincidencia, "completa");
+  assert.equal(r.resultados[0].texto.length, 1500);
+  assert.equal(r.resultados[0].coincide_en.termino, "commander");
+  assert.equal(r.resultados[0].coincide_en.en_fragmento, false);
+  assert.ok(r.resultados[0].coincide_en.posicion > 1500);
+  assert.match(r.aviso_fragmento, /más allá del fragmento/);
+  const corto: any = await buscarConcepto(arte, "commander");
+  assert.ok(corto.resultados.every((x: any) => x.coincide_en?.en_fragmento === true));
+});

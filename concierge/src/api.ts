@@ -1,5 +1,6 @@
 // API del sitio: cuentas, acceso al conector, envíos de autores y revisión.
 import { env } from "cloudflare:workers";
+import { indexarTerminos } from "./terminos-ia.ts";
 import catalogoJson from "../data/catalogo.json" with { type: "json" };
 import {
   TERMINOS_VERSION, abrirSesion, aleatorio, cerrarSesion, claveCorrecta, cookieVacia, emailValido, hashClave, sha256, usuarioActual
@@ -427,6 +428,8 @@ export async function api(req: Request, url: URL, ctx?: ExecutionContext): Promi
         await env.DB.batch(r.paginas.slice(i, i + 50).map((p) => env.DB.prepare("INSERT INTO paginas_fts (texto, libro, pagina) VALUES (?, ?, ?)").bind(p.texto, id, p.pagina)));
       await env.DB.prepare("INSERT INTO docs_personales (id, user_id, titulo, archivo_nombre, idioma, paginacion, indice, paginas, bytes, created_at) VALUES (?, ?, ?, ?, 'es', ?, ?, ?, ?, ?)")
         .bind(id, u.id, titulo, archivo.name.slice(0, 200), r.paginacion, JSON.stringify(r.indice), r.paginas.length, archivo.size, ahora()).run();
+      // Vocabulario del documento (sinónimos y traducciones, validados contra su texto): en segundo plano, sin frenar la respuesta.
+      ctx?.waitUntil(indexarTerminos(id, "es", r.paginas).catch((err) => console.error("indexarTerminos", err)));
       return json({ ok: true, id, paginas: r.paginas.length, documentos: await lista() });
     }
 
@@ -435,7 +438,7 @@ export async function api(req: Request, url: URL, ctx?: ExecutionContext): Promi
       // el user_id va en la condición: nadie puede borrar (ni ver) lo de otra cuenta
       const d = await uno<{ id: string }>("SELECT id FROM docs_personales WHERE id = ? AND user_id = ?", borrar[1], u.id);
       if (!d) return error("No encontrado", 404);
-      await env.DB.batch([env.DB.prepare("DELETE FROM paginas_fts WHERE libro = ?").bind(d.id), env.DB.prepare("DELETE FROM docs_personales WHERE id = ? AND user_id = ?").bind(d.id, u.id)]);
+      await env.DB.batch([env.DB.prepare("DELETE FROM paginas_fts WHERE libro = ?").bind(d.id), env.DB.prepare("DELETE FROM terminos WHERE libro = ?").bind(d.id), env.DB.prepare("DELETE FROM docs_personales WHERE id = ? AND user_id = ?").bind(d.id, u.id)]);
       return json({ ok: true, documentos: await lista() });
     }
     return error("No encontrado", 404);
@@ -649,7 +652,7 @@ export async function adminEnvios(req: Request, url: URL): Promise<Response> {
   const stmts = [env.DB.prepare("UPDATE envios SET estado = 'retirado', revisado_at = ?, nota = ? WHERE id = ?").bind(ahora(), motivo, e.id)];
   if (e.libro_id) {
     stmts.push(env.DB.prepare("UPDATE libros_dyn SET visible = 0 WHERE id = ?").bind(e.libro_id));
-    stmts.push(env.DB.prepare("DELETE FROM paginas_fts WHERE libro = ?").bind(e.libro_id));
+    stmts.push(env.DB.prepare("DELETE FROM paginas_fts WHERE libro = ?").bind(e.libro_id), env.DB.prepare("DELETE FROM terminos WHERE libro = ?").bind(e.libro_id));
   }
   await env.DB.batch(stmts);
   return json({ ok: true });

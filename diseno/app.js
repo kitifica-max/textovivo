@@ -13,7 +13,7 @@ document.querySelectorAll("[data-copiar]").forEach((boton) => {
 });
 
 // Pestañas accesibles: [role=tablist] > button[aria-controls]
-document.querySelectorAll('[role="tablist"]').forEach((lista) => {
+document.querySelectorAll('[role="tablist"]:not([data-propio])').forEach((lista) => {
   const pestanas = [...lista.querySelectorAll('[role="tab"]')];
   const activar = (p) => {
     pestanas.forEach((x) => {
@@ -201,49 +201,72 @@ document.querySelectorAll(".cabecera").forEach((cab) => {
 });
 
 
-// Ejemplo animado (landing): tipea la pregunta, "consulta" a Textifika y muestra la respuesta con citas.
-// Con prefers-reduced-motion se muestra todo de una vez. Empieza al entrar en pantalla; «Ver de nuevo» la repite.
+// Ejemplos animados (landing): tres casos. Tipea la pregunta, "consulta" a Textifika y muestra la respuesta con citas.
+// Con prefers-reduced-motion se muestra el caso elegido de una vez. Empieza al entrar en pantalla y pasa solo por los tres una vez;
+// al elegir un caso con las pestañas deja de pasar solo. Tocar la pestaña activa lo repite.
 document.querySelectorAll("[data-ia]").forEach((ia) => {
   const espera = (ms) => new Promise((r) => setTimeout(r, ms));
   const reducido = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const texto = ia.querySelector("[data-tipeo]");
-  const fantasma = ia.querySelector("[data-fantasma]");
-  const completo = texto.dataset.tipeo;
-  const pasos = [...ia.querySelectorAll("[data-paso]")];
-  const tools = pasos.filter((p) => p.closest(".ia-tools"));
-  const citas = ia.querySelectorAll(".ia-cita");
-  let corrida = 0;
+  const escenas = [...ia.querySelectorAll("[data-escena]")];
+  const pestanas = [...ia.querySelectorAll("[data-caso]")];
+  let actual = 0, corrida = 0, solo = true;
 
-  const poner = (n) => { texto.textContent = completo.slice(0, n); fantasma.textContent = completo.slice(n); };
-  const limpiar = () => {
-    ia.dataset.estado = "";
-    pasos.forEach((p) => p.classList.remove("visible", "activo", "listo"));
-    poner(0);
+  const partes = (esc) => {
+    const texto = esc.querySelector("[data-tipeo]");
+    const pasos = [...esc.querySelectorAll("[data-paso]")];
+    return { texto, fantasma: esc.querySelector("[data-fantasma]"), completo: texto.dataset.tipeo, pasos, tools: pasos.filter((p) => p.closest(".ia-tools")), resto: pasos.filter((p) => !p.closest(".ia-tools")) };
   };
-  const mostrarTodo = () => {
-    ia.dataset.estado = "listo"; poner(completo.length);
-    tools.forEach((t) => t.classList.add("listo"));
-    pasos.filter((p) => !p.closest(".ia-tools")).forEach((p) => p.classList.add("visible"));
+  const poner = (e, n) => { e.texto.textContent = e.completo.slice(0, n); e.fantasma.textContent = e.completo.slice(n); };
+  const resultadoTool = (t) => (t.hasAttribute("data-vacio") ? "vacio" : "listo");
+  const limpiar = (e) => {
+    ia.dataset.estado = "";
+    e.pasos.forEach((p) => p.classList.remove("visible", "activo", "listo", "vacio"));
+    poner(e, 0);
+  };
+  const mostrarTodo = (e) => {
+    ia.dataset.estado = "listo"; poner(e, e.completo.length);
+    e.tools.forEach((t) => t.classList.add(resultadoTool(t)));
+    e.resto.forEach((p) => p.classList.add("visible"));
+  };
+  const elegir = (i) => {
+    actual = i;
+    escenas.forEach((esc, k) => { esc.classList.toggle("activa", k === i); esc.setAttribute("aria-hidden", String(k !== i)); });
+    pestanas.forEach((b, k) => { b.setAttribute("aria-selected", String(k === i)); b.tabIndex = k === i ? 0 : -1; });
   };
 
   async function reproducir() {
     const mia = ++corrida;
-    limpiar();
-    if (reducido) return mostrarTodo();
+    escenas.forEach((esc) => limpiar(partes(esc)));
+    const e = partes(escenas[actual]);
+    if (reducido) return mostrarTodo(e);
     const vigente = () => mia === corrida;
     ia.dataset.estado = "escribiendo";
-    for (let i = 1; i <= completo.length; i++) { if (!vigente()) return; poner(i); await espera(completo[i - 1] === " " ? 38 : 26); }
+    for (let i = 1; i <= e.completo.length; i++) { if (!vigente()) return; poner(e, i); await espera(e.completo[i - 1] === " " ? 38 : 26); }
     ia.dataset.estado = "consultando";
     await espera(500);
-    for (const t of tools) { if (!vigente()) return; t.classList.add("activo"); await espera(850); t.classList.replace("activo", "listo"); await espera(150); }
+    for (const t of e.tools) { if (!vigente()) return; t.classList.add("activo"); await espera(850); t.classList.replace("activo", resultadoTool(t)); await espera(150); }
     await espera(250);
-    const resto = pasos.filter((p) => !p.closest(".ia-tools"));
-    for (const p of resto) { if (!vigente()) return; p.classList.add("visible"); await espera(p.classList.contains("ia-cita") ? 1500 : 800); }
+    for (const p of e.resto) { if (!vigente()) return; p.classList.add("visible"); await espera(p.classList.contains("ia-cita") || p.classList.contains("ia-nada") ? 1500 : 800); }
     ia.dataset.estado = "listo";
+    // Pasa solo al siguiente caso, una sola vuelta, mientras nadie haya elegido uno.
+    if (solo && actual < escenas.length - 1) {
+      await espera(4500);
+      if (vigente() && solo) { elegir(actual + 1); reproducir(); }
+    }
   }
 
-  ia.querySelector("[data-repetir]")?.addEventListener("click", reproducir);
+  pestanas.forEach((b, k) => {
+    b.addEventListener("click", () => { solo = false; elegir(k); reproducir(); });
+    b.addEventListener("keydown", (ev) => {
+      const paso = ev.key === "ArrowRight" ? 1 : ev.key === "ArrowLeft" ? -1 : 0;
+      if (!paso) return;
+      ev.preventDefault();
+      const n = (k + paso + pestanas.length) % pestanas.length;
+      solo = false; elegir(n); pestanas[n].focus(); reproducir();
+    });
+  });
+  ia.querySelector("[data-repetir]")?.addEventListener("click", () => { solo = false; reproducir(); });
   if (reducido || !("IntersectionObserver" in window)) return reproducir();
-  limpiar();
+  escenas.forEach((esc) => limpiar(partes(esc)));
   new IntersectionObserver((e, o) => { if (e[0].isIntersecting) { o.disconnect(); reproducir(); } }, { threshold: 0.2 }).observe(ia);
 });

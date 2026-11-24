@@ -1,0 +1,182 @@
+[
+ {
+  "q": "titular",
+  "contiene": [
+   "headlines"
+  ]
+ },
+ {
+  "q": "titulares",
+  "contiene": [
+   "headlines"
+  ]
+ },
+ {
+  "q": "el titular de mi landing",
+  "contiene": [
+   "headlines"
+  ]
+ },
+ {
+  "q": "headlines",
+  "contiene": [
+   "headlines"
+  ]
+ },
+ {
+  "q": "cómo probar anuncios",
+  "contiene": [
+   "test"
+  ]
+ },
+ {
+  "q": "publicidad con clave",
+  "contiene": [
+   "keyed"
+  ]
+ },
+ {
+  "q": "cupón",
+  "contiene": [
+   "coupon"
+  ]
+ },
+ {
+  "q": "muestras gratis",
+  "contiene": [
+   "samples"
+  ]
+ },
+ {
+  "q": "costo por cliente",
+  "contiene": [
+   "cost"
+  ]
+ },
+ {
+  "q": "venta por correo",
+  "contiene": [
+   "mail order"
+  ]
+ },
+ {
+  "q": "oferta",
+  "contiene": [
+   "offer"
+  ]
+ },
+ {
+  "q": "vendedor",
+  "contiene": [
+   "salesman"
+  ]
+ },
+ {
+  "q": "psicología",
+  "contiene": [
+   "psychology"
+  ]
+ },
+ {
+  "q": "competencia",
+  "contiene": [
+   "competition"
+  ]
+ },
+ {
+  "q": "resultados de un anuncio",
+  "contiene": [
+   "returns"
+  ]
+ },
+ {
+  "q": "precio",
+  "contiene": [
+   "price"
+  ]
+ },
+ {
+  "q": "servicio",
+  "contiene": [
+   "service"
+  ]
+ },
+ {
+  "q": "cartas",
+  "contiene": [
+   "letters"
+  ]
+ },
+ {
+  "q": "propaganda",
+  "contiene": [
+   "advertising"
+  ]
+ },
+ {
+  "q": "ventas",
+  "contiene": [
+   "salesmanship"
+  ]
+ },
+ {
+  "q": "anuncios",
+  "contiene": [
+   "ads"
+  ]
+ },
+ {
+  "q": "encabezado",
+  "contiene": [
+   "headlines"
+  ]
+ },
+ {
+  "q": "salesmanship",
+  "contiene": [
+   "salesmanship"
+  ]
+ },
+ {
+  "q": "advertising",
+  "contiene": [
+   "advertising"
+  ]
+ },
+ {
+  "q": "coupon",
+  "contiene": [
+   "coupon"
+  ]
+ },
+ {
+  "q": "vender",
+  "contiene": [
+   "salesmanship"
+  ]
+ },
+ {
+  "q": "clientes",
+  "contiene": [
+   "customers"
+  ]
+ },
+ {
+  "q": "pruebas",
+  "contiene": [
+   "test"
+  ]
+ },
+ {
+  "q": "estilo",
+  "contiene": [
+   "style"
+  ]
+ },
+ {
+  "q": "consumidor",
+  "contiene": [
+   "people"
+  ]
+ }
+]

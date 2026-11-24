@@ -530,6 +530,29 @@ details p { margin: 10px 0 0; color: var(--gris); max-width: 44em; }
   .ia-usuario p { max-width: 94%; }
   .ia-pie { flex-direction: column; align-items: flex-start; }
 }
+/* Varios ejemplos: las escenas se apilan en la misma celda (la caja no salta de alto al cambiar) */
+.ia-cuerpo { grid-template-areas: "x"; }
+.ia-escena { grid-area: x; display: grid; gap: 18px; align-content: start; visibility: hidden; pointer-events: none; }
+.ia-escena.activa { visibility: visible; pointer-events: auto; }
+.ia-casos { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 20px; border-bottom: 1px solid var(--linea); }
+.ia-casos button { appearance: none; border: 1px solid var(--linea); background: transparent; color: var(--gris); font: 600 0.78rem/1 var(--sans); padding: 8px 13px; border-radius: 999px; cursor: pointer; min-height: 32px; transition: background .2s, color .2s, border-color .2s, transform .1s; }
+.ia-casos button:hover { color: var(--tinta); border-color: color-mix(in srgb, var(--tinta) 35%, transparent); }
+.ia-casos button:active { transform: scale(.96); }
+.ia-casos button[aria-selected="true"] { background: var(--tinta); border-color: var(--tinta); color: var(--crema); }
+.ia-casos button:focus-visible { outline: 3px solid color-mix(in srgb, var(--foco) 50%, transparent); outline-offset: 2px; }
+.ia-res { margin-left: 2px; padding: 2px 8px; border-radius: 999px; background: color-mix(in srgb, var(--tinta) 8%, transparent); font-size: 0.7rem; font-weight: 600; }
+.ia-tools li.vacio .ia-estado { border: 0; background: var(--gris); position: relative; }
+.ia-tools li.vacio .ia-estado::after { content: ""; position: absolute; left: 3px; top: 6px; width: 8px; height: 2px; background: #fff; border-radius: 1px; }
+.ia [data-paso].vacio { opacity: 1; transform: none; }
+.ia-nada { padding: 16px 18px; border-radius: 18px; border: 1.5px dashed var(--linea); display: grid; gap: 8px; }
+.ia-nada header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; font-size: 0.9rem; }
+.ia-nada .pagina { padding: 4px 10px; border-radius: 999px; background: color-mix(in srgb, var(--tinta) 8%, transparent); font-size: 0.74rem; font-weight: 600; }
+.ia-nada p { margin: 0; font-size: 0.92rem; line-height: 1.45; color: var(--gris); }
+.ia-nada p strong { color: var(--tinta); }
+.apertura-ia .ia-casos { padding: 8px 18px; }
+.apertura-ia .ia-casos button { font-size: 0.72rem; padding: 7px 11px; min-height: 30px; }
+@media (max-width: 600px) { .ia-casos { padding: 10px 14px; } .ia-tools li { flex-wrap: wrap; border-radius: 16px; row-gap: 4px; } .ia-tools li > span:not(.ia-estado):not(.ia-res) { flex: 1 1 100%; padding-left: 23px; margin-top: -2px; } }
+
 @media (prefers-reduced-motion: reduce) {
   .ia [data-paso] { transition: none; transform: none; }
   .ia-cita mark { transition: none; }

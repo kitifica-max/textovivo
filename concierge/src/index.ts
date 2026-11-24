@@ -7,7 +7,7 @@ import { z } from "zod";
 import catalogoJson from "../data/catalogo.json" with { type: "json" };
 import publicaciones from "../data/publicaciones.json" with { type: "json" };
 import { api, adminEnvios } from "./api.ts";
-import { buscadorD1 } from "./buscador-d1.ts";
+import { buscadorD1, cargarTerminosD1 } from "./buscador-d1.ts";
 import { avisarVencimientos } from "./avisos.ts";
 import { datosDestilado, esIdPersonal, planHabilitado, puedeVer } from "./personales.ts";
 import { planEfectivo } from "./plan.ts";
@@ -22,7 +22,7 @@ import {
   obtenerFramework
 } from "./tools.ts";
 
-const libros = catalogoJson.map((d) => crearLibro(Destilado.parse(d), buscadorD1(d.id, d.indice[0]?.titulo === "Preliminares" ? d.indice[0].pagina_fin + 1 : 1)));
+const libros = catalogoJson.map((d) => crearLibro(Destilado.parse(d), buscadorD1(d.id, d.indice[0]?.titulo === "Preliminares" ? d.indice[0].pagina_fin + 1 : 1), () => cargarTerminosD1(d.id)));
 const porId = new Map(libros.map((l) => [l.id, l]));
 const IDIOMAS: Record<string, string> = { es: "español", en: "inglés", pt: "portugués", fr: "francés" };
 const ahora = () => new Date().toISOString();
@@ -35,7 +35,7 @@ async function dinamico(id: string) {
     id: r.id, titulo: r.titulo, autor: r.autor, descripcion: r.descripcion, idioma: r.idioma === "otro" ? "es" : r.idioma,
     paginacion: r.paginacion, indice: JSON.parse(String(r.indice)), glosario: [], frameworks: [], checklists: []
   });
-  return crearLibro(d, buscadorD1(d.id));
+  return crearLibro(d, buscadorD1(d.id), () => cargarTerminosD1(d.id));
 }
 /** Cuenta dueña del token del conector que está llamando (null si el acceso no tiene cuenta). */
 async function duenoActual() {
@@ -53,7 +53,7 @@ async function personal(id: string) {
   if (!r || !puedeVer(r.user_id, uid)) return null;
   if (!(await planActivo(r.user_id))) return null; // plan vencido: los documentos siguen guardados pero no se consultan
   const d = Destilado.parse(datosDestilado(r));
-  return crearLibro(d, buscadorD1(d.id));
+  return crearLibro(d, buscadorD1(d.id), () => cargarTerminosD1(d.id));
 }
 const resolver = async (id: string) => (esIdPersonal(id) ? await personal(id) : (porId.get(id) ?? (await dinamico(id))));
 /** Los textos que aportó la comunidad (u-…) o subió una cuenta (mi-…) son material de consulta: una IA no debe obedecer lo que digan. */

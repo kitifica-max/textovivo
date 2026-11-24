@@ -2,26 +2,26 @@
 // Funciones puras: no saben nada de MCP, D1 ni Workers (se prueban con npm test).
 import type { Destilado, Paginas } from "./schema.ts";
 
-const VACIAS = new Set(
-  "como con del las los para pero por que sin sus una uno este esta esto son hay ser muy cual cuando donde mas the and for with how what".split(" ")
-);
-
-/** Minúsculas, sin tildes y con espacios colapsados. */
-export const normalizar = (s: string) =>
-  s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().replace(/\s+/g, " ").trim();
-
-const palabras = (s: string) =>
-  normalizar(s)
-    .split(/[^\p{L}\p{N}]+/u)
-    .filter((w) => w.length > 2 && !VACIAS.has(w));
+import {
+  aplicarDesignadas, filasParaConsulta, matchFts, normalizar, palabras, planDeBusqueda, posicionLiteral, sugerenciasContextuales, ubicarCoincidencia,
+  type Etapa, type Pieza, type Termino
+} from "./vocabulario.ts";
+export { normalizar, type Termino };
 
 const MAX_CARACTERES = 7000; // ≈ 2.000 tokens por respuesta (regla de la spec)
 const MAX_PASAJE = 1500;
 const MAX_CITA = 300;
 
-/** completa: la página tiene todos los términos de la consulta. parcial: solo algunos (respaldo). */
-export type Coincidencia = "completa" | "parcial";
-export type Resultado = { pagina: number; texto: string; puntuacion: number; coincidencia?: Coincidencia };
+/**
+ * completa: la página tiene todas las palabras de la consulta. aproximada: las tiene por raíz (plurales, derivadas).
+ * expandida: se tradujo la consulta con el vocabulario del libro. parcial: solo algunas (respaldo).
+ */
+export type Coincidencia = "completa" | "aproximada" | "expandida" | "parcial";
+export type Resultado = {
+  pagina: number; texto: string; puntuacion: number; coincidencia?: Coincidencia;
+  /** Lo que se buscó de verdad en esta etapa (palabras, raíces o traducciones): sirve para decir dónde coincidió. */
+  piezas?: Pieza[]; usados?: string[];
+};
 /** Una página entra si llega al 50 % de la puntuación de la mejor: lo demás es ruido. */
 export const UMBRAL_RELEVANCIA = 0.5;
 export const filtrarPorUmbral = <T extends { puntuacion: number }>(rs: T[]) => {
@@ -32,52 +32,62 @@ export const filtrarPorUmbral = <T extends { puntuacion: number }>(rs: T[]) => {
 export type Buscador = (consulta: string, max: number) => Promise<Resultado[]>;
 export type Libro = ReturnType<typeof crearLibro>;
 
-export function crearLibro(d: Destilado, buscar: Buscador) {
+/** cargarTerminos: vocabulario del libro (D1 en producción, una lista fija en pruebas). Sin él, solo se busca por las palabras escritas. */
+export function crearLibro(d: Destilado, buscar: Buscador, cargarTerminos: () => Promise<Termino[]> = async () => []) {
   const seccion = (pagina: number) =>
     d.indice
       .filter((s) => s.pagina_inicio <= pagina && pagina <= s.pagina_fin)
       .sort((a, b) => b.nivel - a.nivel)[0]?.titulo ?? "";
-  return { ...d, seccion, buscar };
+  return { ...d, seccion, buscar, cargarTerminos };
 }
 
-/** Buscador en memoria (TF-IDF por página): para tests y desarrollo sin D1. */
-export function buscadorMemoria(paginas: Paginas): Buscador {
-  const docs = paginas.map((p) => {
-    const tf = new Map<string, number>();
-    for (const w of palabras(p.texto)) tf.set(w, (tf.get(w) ?? 0) + 1);
-    return { ...p, tf, plano: normalizar(p.texto) };
-  });
+/** Cuántas veces aparece la pieza en el texto (frase entera, o palabra que empieza así si es raíz). */
+function contar(texto: string, p: Pieza) {
+  let n = 0;
+  let desde = 0;
+  const t = texto.normalize("NFD").replace(/\p{Diacritic}/gu, "");
+  for (;;) {
+    const i = posicionLiteral(t.slice(desde), p.texto, p.prefijo);
+    if (i < 0) return n;
+    n++;
+    desde += i + Math.max(1, p.texto.length);
+  }
+}
+
+/** Buscador en memoria (TF-IDF por página): para tests y desarrollo sin D1. Mismo plan de etapas que el de D1. */
+export function buscadorMemoria(paginas: Paginas, terminos: Termino[] = []): Buscador {
   const df = new Map<string, number>();
-  for (const doc of docs) for (const w of doc.tf.keys()) df.set(w, (df.get(w) ?? 0) + 1);
-  const idf = (w: string) => Math.log(1 + docs.length / (df.get(w) ?? 1));
+  const idf = (p: Pieza) => {
+    const k = `${p.texto}|${p.prefijo ? 1 : 0}`;
+    if (!df.has(k)) df.set(k, paginas.filter((d) => contar(d.texto, p) > 0).length);
+    return Math.log(1 + paginas.length / (df.get(k) || 1));
+  };
 
   return async (consulta, max) => {
-    const frase = normalizar(consulta);
-    const q = palabras(consulta);
-    const unicas = [...new Set(q)];
+    const q = [...new Set(palabras(consulta))];
     const pares = q.slice(1).map((w, i) => `${q[i]} ${w}`);
-    const puntuados = docs
-      .map((doc) => {
-        const tfidf = unicas.reduce((s, w) => {
-          const n = doc.tf.get(w) ?? 0;
-          return n ? s + (1 + Math.log(n)) * idf(w) : s;
-        }, 0);
-        // Premia la frase exacta y los pares de palabras seguidas.
-        const bonus =
-          (frase.length > 6 && doc.plano.includes(frase) ? 5 : 0) +
-          pares.filter((par) => doc.plano.includes(par)).length * 2;
-        const completa = unicas.length > 0 && unicas.every((w) => doc.tf.has(w));
-        return { pagina: doc.pagina, texto: doc.texto, puntuacion: tfidf ? tfidf + bonus : 0, completa };
-      })
-      .filter((r) => r.puntuacion > 0);
-    // AND primero; OR solo como respaldo.
-    const completas = puntuados.filter((r) => r.completa);
-    const base = completas.length ? completas : puntuados;
-    const coincidencia: Coincidencia = completas.length ? "completa" : "parcial";
-    return filtrarPorUmbral(base)
-      .sort((a, b) => b.puntuacion - a.puntuacion)
-      .slice(0, max)
-      .map(({ pagina, texto, puntuacion }) => ({ pagina, texto, puntuacion, coincidencia }));
+    for (const etapa of planDeBusqueda(consulta, terminos)) {
+      const puntuados = paginas
+        .map((doc) => {
+          const n = etapa.piezas.map((p) => contar(doc.texto, p));
+          const cumple = etapa.modo === "and" ? n.every((x) => x > 0) : n.some((x) => x > 0);
+          if (!cumple) return null;
+          const tfidf = etapa.piezas.reduce((s, p, i) => (n[i] ? s + (1 + Math.log(n[i])) * idf(p) : s), 0);
+          // Premia la frase exacta y los pares de palabras seguidas.
+          const bonus = (consulta.trim().length > 6 && posicionLiteral(doc.texto, consulta) >= 0 ? 5 : 0) + pares.filter((par) => posicionLiteral(doc.texto, par) >= 0).length * 2;
+          return { pagina: doc.pagina, texto: doc.texto, puntuacion: tfidf + bonus };
+        })
+        .filter((r): r is { pagina: number; texto: string; puntuacion: number } => r !== null && r.puntuacion > 0);
+      const elegidos = aplicarDesignadas(
+        etapa,
+        filtrarPorUmbral(puntuados),
+        (pgs, p) => paginas.filter((d) => pgs.includes(d.pagina)).map((d) => ({ pagina: d.pagina, texto: d.texto, puntuacion: p })),
+        max
+      );
+      if (!elegidos.length) continue;
+      return elegidos.map((r) => ({ ...r, coincidencia: etapa.etiqueta, piezas: etapa.piezas, usados: etapa.usados }));
+    }
+    return [];
   };
 }
 
@@ -134,26 +144,36 @@ export async function buscarConcepto(l: Libro, consulta: string, max = 5) {
 
   const resultados = [];
   let coincidencia: Coincidencia | undefined;
-  let usados = 0;
-  for (const { pagina, texto: pag, puntuacion, coincidencia: c } of await l.buscar(consulta, Math.min(max, 10))) {
-    const texto = pag.slice(0, Math.min(MAX_PASAJE, MAX_CARACTERES - usados));
+  let usados: string[] | undefined;
+  let usadosChars = 0;
+  for (const { pagina, texto: pag, puntuacion, coincidencia: c, piezas, usados: u } of await l.buscar(consulta, Math.min(max, 10))) {
+    const texto = pag.slice(0, Math.min(MAX_PASAJE, MAX_CARACTERES - usadosChars));
     if (!texto) break;
-    usados += texto.length;
+    usadosChars += texto.length;
     coincidencia ??= c;
+    usados ??= u;
+    // Dónde coincidió: si el término que hizo entrar a la página queda fuera del fragmento recortado, se dice.
+    const ubicada = piezas ? ubicarCoincidencia(pag, piezas) : null;
     resultados.push({
       texto,
       seccion: l.seccion(pagina),
       pagina_inicio: pagina,
       pagina_fin: pagina,
-      puntuacion: Math.round(puntuacion * 100) / 100
+      puntuacion: Math.round(puntuacion * 100) / 100,
+      ...(ubicada && { coincide_en: { termino: ubicada.termino, posicion: ubicada.posicion, en_fragmento: ubicada.posicion < texto.length } })
     });
   }
 
-  if (!termino && resultados.length === 0)
+  if (!termino && resultados.length === 0) {
+    const idioma = l.idioma === "es" ? "español" : l.idioma === "en" ? "inglés" : `su idioma original (${l.idioma})`;
+    const { sugerencias, contextuales } = sugerenciasContextuales(consulta, await l.cargarTerminos(), sugerenciasDelLibro(l));
     return {
-      mensaje: `No encontré nada sobre «${consulta}» en este libro. El texto está en ${l.idioma === "es" ? "español" : l.idioma === "en" ? "inglés" : `su idioma original (${l.idioma})`}: probá con palabras de esa lengua o con alguno de estos términos del libro.`,
-      sugerencias: sugerenciasDelLibro(l)
+      mensaje: contextuales
+        ? `No encontré nada sobre «${consulta}» en este libro (el texto está en ${idioma}). Lo más parecido que sí trae el libro:`
+        : `No encontré nada sobre «${consulta}» en este libro. El texto está en ${idioma}: probá con palabras de esa lengua o con alguno de estos términos del libro.`,
+      sugerencias
     };
+  }
   return {
     ...(termino && {
       glosario: {
@@ -165,6 +185,8 @@ export async function buscarConcepto(l: Libro, consulta: string, max = 5) {
     }),
     ...(coincidencia && { coincidencia }),
     ...(coincidencia === "parcial" && { nota: "Ninguna página contiene todas las palabras de la consulta: estos resultados coinciden solo en parte." }),
+    ...(coincidencia === "expandida" && usados?.length && { nota: `Tu consulta se tradujo con el vocabulario del libro: se buscó ${usados.slice(0, 6).map((x) => `«${x}»`).join(", ")}.` }),
+    ...(resultados.some((r) => r.coincide_en && !r.coincide_en.en_fragmento) && { aviso_fragmento: "En algunos resultados la coincidencia queda más allá del fragmento mostrado: mirá coincide_en.posicion." }),
     resultados
   };
 }

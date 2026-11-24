@@ -84,7 +84,13 @@
           <span class="ia-conectado"><span class="pulso" aria-hidden="true"></span>Textifika conectado</span>
         </div>
 
+        <div class="ia-casos" data-propio role="tablist" aria-label="Ejemplos de consultas">
+          <button type="button" role="tab" id="ia-tab-0" aria-controls="ia-escena-0" aria-selected="true" data-caso="0">Cobrar tras la prueba</button>
+          <button type="button" role="tab" id="ia-tab-1" aria-controls="ia-escena-1" aria-selected="false" tabindex="-1" data-caso="1">Revisar un titular</button>
+          <button type="button" role="tab" id="ia-tab-2" aria-controls="ia-escena-2" aria-selected="false" tabindex="-1" data-caso="2">Si el libro no lo dice</button>
+        </div>
         <div class="ia-cuerpo">
+<div class="ia-escena activa" data-escena id="ia-escena-0" role="tabpanel" aria-labelledby="ia-tab-0">
           <div class="ia-usuario">
             <span class="sr-only">¿Cómo cobro mi producto cuando termina la prueba gratis? Respondé con fundamento.</span>
             <p aria-hidden="true"><span data-tipeo="¿Cómo cobro mi producto cuando termina la prueba gratis? Respondé con fundamento."></span><span class="ia-fantasma" data-fantasma></span><span class="ia-cursor" data-cursor></span></p>
@@ -119,10 +125,61 @@
 
             <p class="ia-cierre" data-paso><span class="ia-ok" aria-hidden="true">✓</span> 3 citas verificadas: existen tal cual en su página. Si una no está en el libro, no llega a tu IA.</p>
           </div>
-        </div>
+</div>
+<div class="ia-escena" data-escena id="ia-escena-1" role="tabpanel" aria-labelledby="ia-tab-1" aria-hidden="true">
+<div class="ia-usuario">
+<span class="sr-only">¿Qué le cambio al titular de mi landing? Respondé con fundamento.</span>
+<p aria-hidden="true"><span data-tipeo="¿Qué le cambio al titular de mi landing? Respondé con fundamento."></span><span class="ia-fantasma" data-fantasma></span><span class="ia-cursor" data-cursor></span></p>
+</div>
 
+<ul class="ia-tools" aria-label="Consultas que hace tu IA a Textifika">
+<li data-paso data-vacio><span class="ia-estado" aria-hidden="true"></span><code>buscar_concepto</code><span>«titular» · Scientific Advertising</span><span class="ia-res">sin resultados</span></li>
+<li data-paso><span class="ia-estado" aria-hidden="true"></span><code>buscar_concepto</code><span>«headlines» · Scientific Advertising</span><span class="ia-res">5 páginas</span></li>
+</ul>
+
+<div class="ia-resp">
+<p class="ia-intro" data-paso>Busqué en español y el libro, que está en inglés, no tenía nada. Textifika me sugirió el capítulo «Headlines» y ahí encontré esto.</p>
+
+<article class="ia-cita" data-paso style="--acento:#f1e27c">
+<header><b>Scientific Advertising</b><span class="pagina">Hopkins · p. 23</span></header>
+<blockquote><mark data-marca>It is not uncommon for a change in headlines to multiply returns from five to ten times over.</mark></blockquote>
+<p><strong>Qué hacer.</strong> Escribí varios titulares y probalos de a uno. Cambiar solo el titular puede mover el resultado muchas veces.</p>
+</article>
+
+<article class="ia-cita" data-paso style="--acento:#6f8fd6">
+<header><b>Scientific Advertising</b><span class="pagina">Hopkins · p. 22</span></header>
+<blockquote><mark data-marca>They don't read ads which, at a glance, seem to offer nothing interesting.</mark></blockquote>
+<p><strong>Qué hacer.</strong> Que el titular prometa algo concreto para quien lo lee. Si a primera vista no ofrece nada, no pasan de ahí.</p>
+</article>
+
+<p class="ia-cierre" data-paso><span class="ia-ok" aria-hidden="true">✓</span> 2 citas verificadas: existen tal cual en su página. Si una no está en el libro, no llega a tu IA.</p>
+</div>
+</div>
+<div class="ia-escena" data-escena id="ia-escena-2" role="tabpanel" aria-labelledby="ia-tab-2" aria-hidden="true">
+<div class="ia-usuario">
+<span class="sr-only">¿Qué dice Marco Aurelio sobre invertir en criptomonedas?</span>
+<p aria-hidden="true"><span data-tipeo="¿Qué dice Marco Aurelio sobre invertir en criptomonedas?"></span><span class="ia-fantasma" data-fantasma></span><span class="ia-cursor" data-cursor></span></p>
+</div>
+
+<ul class="ia-tools" aria-label="Consultas que hace tu IA a Textifika">
+<li data-paso data-vacio><span class="ia-estado" aria-hidden="true"></span><code>buscar_concepto</code><span>«cryptocurrency» · Meditations</span><span class="ia-res">sin resultados</span></li>
+</ul>
+
+<div class="ia-resp">
+<p class="ia-intro" data-paso>El libro no habla de eso, y prefiero decírtelo antes que inventar una cita de Marco Aurelio.</p>
+
+<article class="ia-nada" data-paso>
+<header><b>Meditations</b><span class="pagina">Marco Aurelio</span></header>
+<p><strong>Sin cita disponible.</strong> «Criptomonedas» no aparece en el texto, así que no hay nada que citar.</p>
+<p>Lo que sí puedo darte, con cita: la <em>Revisión de la mañana de Marco Aurelio</em> o sus <em>Preceptos</em>.</p>
+</article>
+
+<p class="ia-cierre" data-paso><span class="ia-ok" aria-hidden="true">✓</span> 0 citas inventadas: si algo no está en el libro, no llega a tu IA.</p>
+</div>
+</div>
+        </div>
         <div class="ia-pie">
-          <span>Respuesta de ejemplo, armada con textos reales de la biblioteca.</span>
+          <span>Ejemplos armados con textos reales de la biblioteca.</span>
           <button class="boton chico claro" type="button" data-repetir>Ver de nuevo</button>
         </div>
       </div>
@@ -263,7 +320,7 @@
         <article class="poster c-rojo" data-aparece style="--i:8">
           <span class="num">05</span>
           <h2 class="titulo t-grotesca">Cita la página.</h2>
-          <p class="texto fuerte">Cada respuesta dice de dónde salió. Si una cita no está en el libro, no llega a tu IA.</p>
+          <p class="texto fuerte">Cada respuesta dice de dónde salió. Si una cita no está en el libro, no llega a tu IA. Los libros están en su idioma original: tu IA busca en ese idioma y te responde en el tuyo.</p>
         </article>
 
         <article class="poster c-menta" data-aparece style="--i:9">
@@ -274,7 +331,7 @@
         <article class="poster c-salmon" data-aparece style="--i:10">
           <span class="num">07</span>
           <h2 class="titulo t-negra">Ninguna cita inventada</h2>
-          <p class="texto fuerte">Las 95 citas de El arte de la guerra existen tal cual en su página. Se verifican antes de publicar.</p>
+          <p class="texto fuerte">Cada cita de los libros de la biblioteca existe tal cual en su página. Se verifica antes de publicar, libro por libro.</p>
         </article>
         <article class="poster c-cuadricula" data-aparece style="--i:11">
           <span class="num">08</span>

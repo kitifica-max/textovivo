@@ -1,0 +1,197 @@
+[
+ {
+  "q": "liderazgo",
+  "contiene": [
+   "commander",
+   "general"
+  ]
+ },
+ {
+  "q": "lider",
+  "contiene": [
+   "commander",
+   "general",
+   "leader"
+  ]
+ },
+ {
+  "q": "estrategias de ataque",
+  "paginas": [
+   7,
+   9
+  ]
+ },
+ {
+  "q": "conocer al enemigo y a ti mismo",
+  "contiene": [
+   "know the enemy and know yourself"
+  ]
+ },
+ {
+  "q": "leadership",
+  "contiene": [
+   "commander",
+   "general"
+  ]
+ },
+ {
+  "q": "attack by stratagem",
+  "paginas": [
+   7,
+   9
+  ]
+ },
+ {
+  "q": "know the enemy and know yourself",
+  "contiene": [
+   "know the enemy and know yourself"
+  ]
+ },
+ {
+  "q": "commander",
+  "contiene": [
+   "commander"
+  ]
+ },
+ {
+  "q": "espías",
+  "contiene": [
+   "spies"
+  ]
+ },
+ {
+  "q": "engaño",
+  "contiene": [
+   "deception"
+  ]
+ },
+ {
+  "q": "terreno",
+  "contiene": [
+   "ground",
+   "terrain"
+  ]
+ },
+ {
+  "q": "vencer sin pelear",
+  "contiene": [
+   "supreme excellence"
+  ]
+ },
+ {
+  "q": "ley moral",
+  "contiene": [
+   "moral law"
+  ]
+ },
+ {
+  "q": "enemigo",
+  "contiene": [
+   "enemy"
+  ]
+ },
+ {
+  "q": "valor y disciplina de las tropas",
+  "contiene": [
+   "courage",
+   "discipline"
+  ]
+ },
+ {
+  "q": "disciplina",
+  "contiene": [
+   "discipline"
+  ]
+ },
+ {
+  "q": "victoria",
+  "contiene": [
+   "victory"
+  ]
+ },
+ {
+  "q": "jefe sin valor",
+  "contiene": [
+   "commander",
+   "general",
+   "leader"
+  ]
+ },
+ {
+  "q": "competidor",
+  "contiene": [
+   "enemy"
+  ]
+ },
+ {
+  "q": "estratagema",
+  "paginas": [
+   7,
+   9
+  ]
+ },
+ {
+  "q": "lideres",
+  "contiene": [
+   "commander",
+   "general",
+   "leader"
+  ]
+ },
+ {
+  "q": "Estrategias de Ataque",
+  "paginas": [
+   7,
+   9
+  ]
+ },
+ {
+  "q": "cómo conocer al rival",
+  "contiene": [
+   "know the enemy"
+  ]
+ },
+ {
+  "q": "asedio de ciudades",
+  "contiene": [
+   "siege"
+  ]
+ },
+ {
+  "q": "fuego",
+  "contiene": [
+   "fire"
+  ]
+ },
+ {
+  "q": "soldados",
+  "contiene": [
+   "soldiers"
+  ]
+ },
+ {
+  "q": "ejército",
+  "contiene": [
+   "army"
+  ]
+ },
+ {
+  "q": "espionaje",
+  "contiene": [
+   "spies"
+  ]
+ },
+ {
+  "q": "tácticas",
+  "contiene": [
+   "tactical dispositions",
+   "tactics"
+  ]
+ },
+ {
+  "q": "cien batallas",
+  "contiene": [
+   "hundred battles"
+  ]
+ }
+]
