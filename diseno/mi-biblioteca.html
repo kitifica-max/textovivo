@@ -73,9 +73,9 @@
   <div class="envoltura">
     <section id="sin-acceso" hidden>
       <p class="micro">Mi biblioteca</p>
-      <h1 style="margin:12px 0 16px">Todavía no entraste.</h1>
-      <p class="bajada" style="margin-bottom:24px">Obtené tu acceso gratis con tu email y acá ves tu conector, tus días restantes y los libros.</p>
-      <a class="boton" href="entrar.html">Obtener acceso gratis</a>
+      <h1 style="margin:12px 0 16px">Todavía no iniciaste sesión.</h1>
+      <p class="bajada" style="margin-bottom:24px">Creá tu cuenta gratis y acá ves tu conector, tus días restantes, los libros y tus envíos.</p>
+      <a class="boton" href="entrar.html">Crear cuenta o entrar</a>
     </section>
 
     <div id="con-acceso" hidden>
@@ -107,10 +107,9 @@
             <p class="dias"><span id="dias">30</span><small id="vence">días restantes</small></p>
             <div class="medidor" role="meter" aria-label="Consultas usadas" id="medidor" aria-valuemin="0" aria-valuemax="150" aria-valuenow="0"><span id="barra" style="width:0%"></span></div>
             <span class="uso" id="uso"></span>
-            <form class="acciones" method="post" action="/acceso" id="renovar" hidden>
-              <input type="hidden" name="email" id="email-renovar">
-              <button class="boton" type="submit">Renovar 30 días gratis</button>
-            </form>
+            <div class="acciones" id="renovar" hidden>
+              <button class="boton" type="button" id="boton-renovar">Renovar 30 días gratis</button>
+            </div>
           </div>
         </article>
       </div>
@@ -118,7 +117,10 @@
       <div class="titulo-bloque"><h2>Libros en tu conector</h2><span class="nota" id="n-libros"></span></div>
       <ul class="lista" id="libros" style="margin-bottom:64px"></ul>
 
-      <p class="nota" style="margin-bottom:64px"><button class="revocar" type="button" id="salir">Salir de este navegador</button> Tu acceso sigue valiendo: para volver, entrá con el mismo email.</p>
+      <div class="titulo-bloque"><h2>Mis envíos</h2><a class="boton chico claro" href="subir.html">Subir una obra</a></div>
+      <ul class="lista" id="envios" style="margin-bottom:64px"><li><span class="nota">Cargando…</span></li></ul>
+
+      <p class="nota" style="margin-bottom:64px"><button class="revocar" type="button" id="salir">Cerrar sesión</button> Tu acceso al conector sigue valiendo: para volver, entrá con tu email y contraseña.</p>
     </div>
   </div>
 </main>
@@ -135,33 +137,42 @@
 <script src="app.js"></script>
 <script>
 const $ = (id) => document.getElementById(id);
-let token = "";
-try { token = localStorage.getItem("tv_token") || ""; } catch {}
-const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const ESTADOS = { recibido: "En revisión", aprobado: "Aprobado", retirado: "Retirado" };
 async function cargar() {
-  if (!/^[a-f0-9]{32}$/.test(token)) return ($("sin-acceso").hidden = false);
-  const r = await fetch("/api/acceso", { headers: { authorization: "Bearer " + token } }).catch(() => null);
-  if (!r || !r.ok) {
-    try { localStorage.removeItem("tv_token"); } catch {}
-    return ($("sin-acceso").hidden = false);
-  }
+  const r = await fetch("/api/yo", { credentials: "same-origin" }).catch(() => null);
+  if (!r || !r.ok) return ($("sin-acceso").hidden = false);
   const d = await r.json();
-  $("quien").textContent = "Lector · " + d.email;
-  $("url-conector").textContent = d.url_mcp;
-  $("dias").textContent = d.dias_restantes;
-  $("vence").textContent = d.vencido ? "acceso vencido" : "días restantes · vence el " + new Date(d.vence).toLocaleDateString("es", { day: "numeric", month: "short" });
-  $("uso").textContent = d.consultas_usadas + " de " + d.consultas_limite + " consultas";
-  $("medidor").setAttribute("aria-valuemax", d.consultas_limite);
-  $("medidor").setAttribute("aria-valuenow", d.consultas_usadas);
-  $("barra").style.width = Math.min(100, (d.consultas_usadas / d.consultas_limite) * 100) + "%";
-  $("ultima").textContent = d.ultima_consulta ? "Última consulta: " + new Date(d.ultima_consulta).toLocaleString("es", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "Todavía no hiciste ninguna consulta: conectalo con la guía.";
-  if (d.vencido) { $("estado").textContent = "Acceso vencido"; $("chip").textContent = "Vencido"; }
-  if (d.vencido || d.dias_restantes <= 7) { $("renovar").hidden = false; $("email-renovar").value = d.email; }
+  const a = d.acceso;
+  $("quien").textContent = d.usuario.nombre + " · " + d.usuario.email;
+  if (a) {
+    $("url-conector").textContent = a.url_mcp;
+    $("dias").textContent = a.dias_restantes;
+    $("vence").textContent = a.vencido ? "acceso vencido" : "días restantes · vence el " + new Date(a.vence).toLocaleDateString("es", { day: "numeric", month: "short" });
+    $("uso").textContent = a.consultas_usadas + " de " + a.consultas_limite + " consultas";
+    $("medidor").setAttribute("aria-valuemax", a.consultas_limite);
+    $("medidor").setAttribute("aria-valuenow", a.consultas_usadas);
+    $("barra").style.width = Math.min(100, (a.consultas_usadas / a.consultas_limite) * 100) + "%";
+    $("ultima").textContent = a.ultima_consulta ? "Última consulta: " + new Date(a.ultima_consulta).toLocaleString("es", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "Todavía no hiciste ninguna consulta: conectalo con la guía.";
+    if (a.vencido) { $("estado").textContent = "Acceso vencido"; $("chip").textContent = "Vencido"; }
+    if (a.vencido || a.dias_restantes <= 7) $("renovar").hidden = false;
+  }
   $("n-libros").textContent = d.libros.length + " libros";
   $("libros").innerHTML = d.libros.map((l, i) => '<li><span class="n">' + String(i + 1).padStart(2, "0") + "</span>" + esc(l.titulo) + ' <span class="nota">· ' + esc(l.autor) + "</span></li>").join("");
   $("con-acceso").hidden = false;
+  const e = await fetch("/api/envios", { credentials: "same-origin" }).then((x) => (x.ok ? x.json() : [])).catch(() => []);
+  $("envios").innerHTML = e.length
+    ? e.map((x, i) => '<li><span class="n">' + String(i + 1).padStart(2, "0") + "</span>" + esc(x.titulo) + ' <span class="nota">· ' + esc(x.tipo) + '</span><span class="der">' + (x.libro_id ? '<a class="enlace" href="aporte.html?id=' + encodeURIComponent(x.libro_id) + '">' + ESTADOS[x.estado] + "</a>" : ESTADOS[x.estado] || esc(x.estado)) + "</span></li>").join("")
+    : '<li><span class="nota">Todavía no subiste ninguna obra. Es gratis y pasa al dominio público.</span></li>';
 }
-$("salir").addEventListener("click", () => { try { localStorage.removeItem("tv_token"); } catch {} location.href = "index.html"; });
+$("boton-renovar").addEventListener("click", async () => {
+  const r = await fetch("/api/renovar", { method: "POST", headers: { "content-type": "application/json" }, body: "{}", credentials: "same-origin" });
+  if (r.ok) location.reload();
+});
+$("salir").addEventListener("click", async () => {
+  await fetch("/api/logout", { method: "POST", headers: { "content-type": "application/json" }, body: "{}", credentials: "same-origin" }).catch(() => {});
+  location.href = "index.html";
+});
 cargar();
 </script>
 </body>

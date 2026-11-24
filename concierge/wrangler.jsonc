@@ -10,8 +10,9 @@
   "assets": {
     "directory": "../diseno",
     "not_found_handling": "404-page",
-    "run_worker_first": ["/acceso", "/api/*", "/c/*", "/admin/*"]
+    "run_worker_first": ["/api/*", "/c/*", "/admin/*"]
   },
+  "r2_buckets": [{ "binding": "ENVIOS", "bucket_name": "textovivo-envios" }],
   "d1_databases": [
     {
       "binding": "DB",

@@ -176,3 +176,13 @@ En este Worker (assets + código), `wrangler secret put` crea una versión que d
 ```bash
 tr -d '\n' < .secreto-admin | npx wrangler secret put ADMIN_SECRET && npx wrangler deploy
 ```
+
+
+## 5. Cuentas, envíos de autores y revisión
+
+- **Cuentas:** `POST /api/registro` y `/api/login` (email + contraseña, PBKDF2-SHA256 con 100.000 iteraciones, el tope de Workers). La sesión es la cookie `tv_sesion` (HttpOnly, SameSite=Lax); en D1 solo queda su sha256. Cinco fallos de login bloquean el email 15 minutos. **No hay verificación de email ni recuperación de contraseña** (no se envían correos): hoy se resuelve a mano desde hola@kitifica.com.
+- **Conector:** cada cuenta tiene un acceso de 30 días (`buyers.user_id`); `POST /api/renovar` lo renueva cuando quedan 7 días o menos.
+- **Envíos:** `POST /api/envios` (PDF, TXT o MD, hasta 20 MB) guarda el archivo en R2 (`textovivo-envios`) y la fila en `envios`, con la versión de los términos y la fecha en que aceptó los términos y la dedicación al dominio público.
+- **Revisión:** `/revision.html` (pide `ADMIN_SECRET`). «Aprobar y publicar» extrae el texto (`src/extraer.ts`: PDF con `unpdf`, páginas reales; TXT/MD en secciones lógicas), lo indexa en `paginas_fts`, crea la fila en `libros_dyn` y el libro queda en la biblioteca y en el conector. Si el PDF no tiene texto, la aprobación falla con un mensaje. «Retirar» solo para contenido ilegal o infractor.
+- **Términos y privacidad:** `diseno/terminos.html` y `diseno/privacidad.html`. Si cambian, subir `TERMINOS_VERSION` en `src/auth.ts`.
+- **Despliegue:** usar `npm run deploy` (no `wrangler deploy` a secas): vuelve a subir `ADMIN_SECRET` desde `.secreto-admin`. Tras el despliegue, el secreto puede tardar unos segundos en responder.

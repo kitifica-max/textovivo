@@ -66,3 +66,20 @@ document.querySelectorAll("[data-tarjeta]").forEach((input) =>
     input.value = digitos.replace(/(.{4})/g, "$1 ").trim();
   })
 );
+
+
+// Sesión: si hay cuenta abierta, «Entrar» pasa a ser «Mi biblioteca».
+fetch("/api/yo", { credentials: "same-origin" })
+  .then((r) => r.ok)
+  .then((hay) => {
+    if (!hay) return;
+    document.querySelectorAll('a.boton.chico[href$="entrar.html"]').forEach((a) => {
+      a.textContent = "Mi biblioteca";
+      a.setAttribute("href", a.getAttribute("href").replace("entrar.html", "mi-biblioteca.html"));
+    });
+    document.querySelectorAll("[data-subir]").forEach((a) => {
+      a.textContent = "Subir mi obra";
+      a.setAttribute("href", "subir.html");
+    });
+  })
+  .catch(() => {});

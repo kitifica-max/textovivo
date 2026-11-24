@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Subir una obra — TextoVivo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilos.css">
+<style>
+  .subir { padding: clamp(40px, 6vw, 80px) 0 clamp(64px, 9vw, 120px); }
+  .subir .dos { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: start; }
+  .subir h1 { margin: 14px 0 12px; }
+  .subir .campo { margin-bottom: 16px; }
+  .subir label { display: block; margin-bottom: 6px; font-weight: 600; }
+  .subir input[type=text], .subir select, .subir textarea { width: 100%; font: inherit; padding: 13px 16px; border-radius: 14px; border: 1px solid var(--linea); background: #fff; color: var(--tinta); }
+  .subir textarea { min-height: 120px; resize: vertical; }
+  .subir input[type=file] { width: 100%; padding: 14px; border: 1.5px dashed var(--linea); border-radius: 14px; background: #fff; }
+  .subir .filas { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .subir .check { display: flex; gap: 12px; align-items: flex-start; margin: 14px 0; line-height: 1.5; font-size: 0.95rem; }
+  .subir .check input { margin-top: 4px; width: 18px; height: 18px; flex: none; }
+  .subir .check label { font-weight: 500; margin: 0; }
+  .subir .error { color: #b3261e; font-weight: 600; margin: 0 0 14px; }
+  .subir .ok { background: #a3d6a6; color: #0f2417; padding: 14px 18px; border-radius: 14px; font-weight: 600; margin-bottom: 18px; }
+  .envios { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 10px; }
+  .envios li { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 14px 18px; background: #fff; border: 1px solid var(--linea); border-radius: 16px; }
+  .envios small { display: block; color: var(--gris); }
+  @media (max-width: 860px) { .subir .dos, .subir .filas { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<header class="cabecera">
+  <div class="envoltura">
+    <a class="marca" href="index.html" aria-label="TextoVivo, inicio">Texto<b>Vivo</b></a>
+    <nav class="navegacion" aria-label="Principal">
+      <a href="biblioteca.html">Biblioteca</a>
+      <a href="mi-biblioteca.html">Mi biblioteca</a>
+      <a class="ocultable" href="autores.html">Para autores</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido" class="subir">
+  <div class="envoltura">
+    <p class="micro">Para autores · gratis</p>
+    <h1>Subí tu libro, documento o tesis.</h1>
+    <p class="bajada" style="max-width:34em;margin-bottom:34px">Lo revisamos, lo aprobamos y queda en la biblioteca, consultable por cualquier IA con la página exacta. Todo lo que se publica pasa al dominio público.</p>
+
+    <div class="dos">
+      <form id="formulario" enctype="multipart/form-data" novalidate>
+        <p id="ok" class="ok" role="status" hidden>Recibimos tu obra. La vamos a revisar y la verás aprobada en «Mis envíos».</p>
+        <p id="error" class="error" role="alert" hidden></p>
+
+        <div class="campo"><label for="titulo">Título</label><input id="titulo" name="titulo" type="text" required maxlength="200"></div>
+        <div class="campo"><label for="autor_nombre">Nombre del autor</label><input id="autor_nombre" name="autor_nombre" type="text" required maxlength="120"></div>
+        <div class="filas">
+          <div class="campo"><label for="tipo">Tipo</label><select id="tipo" name="tipo" required><option value="libro">Libro</option><option value="documento">Documento</option><option value="tesis">Tesis</option></select></div>
+          <div class="campo"><label for="idioma">Idioma</label><select id="idioma" name="idioma" required><option value="es">Español</option><option value="en">Inglés</option><option value="pt">Portugués</option><option value="fr">Francés</option><option value="de">Alemán</option><option value="it">Italiano</option><option value="otro">Otro</option></select></div>
+        </div>
+        <div class="campo"><label for="descripcion">Descripción (20 a 1000 caracteres)</label><textarea id="descripcion" name="descripcion" required maxlength="1000"></textarea></div>
+        <div class="campo"><label for="archivo">Archivo (PDF con texto, TXT o MD · hasta 20 MB)</label><input id="archivo" name="archivo" type="file" accept=".pdf,.txt,.md" required></div>
+
+        <div class="check"><input id="dominio_publico" name="dominio_publico" type="checkbox"><label for="dominio_publico"><strong>Declaro que soy el titular de los derechos de esta obra</strong> (o tengo autorización completa) y <strong>acepto que pase al dominio público</strong>, de forma irrevocable, para que cualquier persona pueda usarla.</label></div>
+        <div class="check"><input id="acepto_terminos" name="acepto_terminos" type="checkbox"><label for="acepto_terminos">Acepto los <a class="enlace" href="terminos.html" target="_blank" rel="noopener">términos y condiciones</a>.</label></div>
+
+        <button class="boton" type="submit" id="enviar">Enviar para revisión</button>
+      </form>
+
+      <aside>
+        <div class="tarjeta">
+          <p class="micro" style="margin-bottom:10px">Mis envíos</p>
+          <ul class="envios" id="envios"><li><span class="nota">Cargando…</span></li></ul>
+        </div>
+        <p class="nota" style="margin-top:18px">¿Dudas sobre qué podés subir? Mirá <a class="enlace" href="autores.html">Para autores</a>.</p>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="pie-sitio">
+  <div class="envoltura">
+    <div>
+      <div class="firma"><b>TextoVivo</b><span>Hecho en San Salvador por Kitifica</span></div>
+      <nav aria-label="Pie"><a href="biblioteca.html">Biblioteca</a><a href="guia.html">Guía de conexión</a><a href="autores.html">Para autores</a><a href="terminos.html">Términos</a><a href="privacidad.html">Privacidad</a></nav>
+    </div>
+    <span class="edicion">© 2026 — Edición uno · San Salvador</span>
+  </div>
+</footer>
+<script src="app.js"></script>
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const ESTADOS = { recibido: "En revisión", aprobado: "Aprobado", retirado: "Retirado" };
+
+async function sesion() {
+  const r = await fetch("/api/yo", { credentials: "same-origin" }).catch(() => null);
+  if (!r || !r.ok) { location.replace("entrar.html?next=subir.html"); return false; }
+  return true;
+}
+async function cargarEnvios() {
+  const r = await fetch("/api/envios", { credentials: "same-origin" }).catch(() => null);
+  const lista = r && r.ok ? await r.json() : [];
+  $("envios").innerHTML = lista.length
+    ? lista.map((e) => '<li><span>' + esc(e.titulo) + '<small>' + esc(e.tipo) + ' · ' + new Date(e.created_at).toLocaleDateString("es") + '</small></span><span class="estado' + (e.estado === "aprobado" ? " vivo" : "") + '">' + (e.libro_id ? '<a href="aporte.html?id=' + encodeURIComponent(e.libro_id) + '">' + ESTADOS[e.estado] + '</a>' : ESTADOS[e.estado] || esc(e.estado)) + "</span></li>").join("")
+    : '<li><span class="nota">Todavía no subiste nada.</span></li>';
+}
+$("formulario").addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  $("error").hidden = true; $("ok").hidden = true;
+  const f = $("formulario");
+  const datos = new FormData(f);
+  datos.set("dominio_publico", $("dominio_publico").checked ? "on" : "");
+  datos.set("acepto_terminos", $("acepto_terminos").checked ? "on" : "");
+  $("enviar").disabled = true; $("enviar").textContent = "Enviando…";
+  try {
+    const r = await fetch("/api/envios", { method: "POST", body: datos, credentials: "same-origin" });
+    const j = await r.json().catch(() => ({}));
+    if (r.status === 401) return location.replace("entrar.html?next=subir.html");
+    if (!r.ok) { $("error").textContent = j.error || "No se pudo enviar. Probá de nuevo."; $("error").hidden = false; return; }
+    f.reset(); $("ok").hidden = false; cargarEnvios();
+  } catch { $("error").textContent = "No hay conexión. Probá de nuevo."; $("error").hidden = false; }
+  finally { $("enviar").disabled = false; $("enviar").textContent = "Enviar para revisión"; }
+});
+sesion().then((ok) => ok && cargarEnvios());
+</script>
+</body>
+</html>

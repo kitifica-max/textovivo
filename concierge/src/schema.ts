@@ -13,7 +13,7 @@ export const Destilado = z.object({
   descripcion: z.string().default(""),
   idioma: z.string().default("es"),
   // «logica»: páginas del texto digital (~1.500 caracteres), NO las del libro impreso. «aforismo»: el número del aforismo.
-  paginacion: z.enum(["logica", "aforismo"]).default("logica"),
+  paginacion: z.enum(["logica", "aforismo", "pdf"]).default("logica"),
   indice: z.array(
     z.object({
       titulo: z.string(),

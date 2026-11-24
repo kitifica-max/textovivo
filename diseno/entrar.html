@@ -47,20 +47,69 @@
 
   <section class="lado-form">
     <div class="formulario">
-      <form method="post" action="/acceso" data-aparece style="--i:0">
-        <p class="micro">Acceso gratis · 30 días</p>
-        <h1>Entrá a tu biblioteca.</h1>
-        <p class="bajada">Sin contraseñas ni tarjeta. Dejá tu email y al instante ves tu conector para Claude, Claude Code o Cursor. Si ya tenías acceso vigente, volvés a él.</p>
+      <div data-aparece style="--i:0">
+        <p class="micro">Lectores y autores</p>
+        <h1>Tu cuenta de TextoVivo.</h1>
+        <p class="bajada">Una cuenta te da el conector para tu IA y te deja subir tus obras. Gratis.</p>
 
-        <p id="error" class="nota" role="alert" hidden style="color:#b3261e;margin-bottom:12px">Ese email no parece válido. Revisalo y probá de nuevo.</p>
-        <div class="campo"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="vos@ejemplo.com" required maxlength="200"></div>
-        <button class="boton ancho" type="submit">Obtener mi acceso</button>
-        <p class="nota" style="margin-top:18px;text-align:center">Usamos tu email solo para identificar tu acceso. Al entrar aceptás los <a class="enlace" href="#">términos</a> y la <a class="enlace" href="#">privacidad</a>.</p>
-      </form>
+        <div class="segmentado" role="tablist" aria-label="Crear cuenta o entrar" style="margin:6px 0 22px">
+          <button role="tab" id="t-crear" aria-controls="p-crear" aria-selected="true" type="button">Crear cuenta</button>
+          <button role="tab" id="t-entrar" aria-controls="p-entrar" aria-selected="false" tabindex="-1" type="button">Ya tengo cuenta</button>
+        </div>
+
+        <p id="error" class="nota" role="alert" hidden style="color:#b3261e;font-weight:600;margin-bottom:12px"></p>
+
+        <form id="p-crear" role="tabpanel" aria-labelledby="t-crear" novalidate>
+          <div class="campo"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" autocomplete="name" required maxlength="100"></div>
+          <div class="campo"><label for="email-c">Email</label><input id="email-c" name="email" type="email" autocomplete="email" placeholder="vos@ejemplo.com" required maxlength="200"></div>
+          <div class="campo"><label for="clave-c">Contraseña (mínimo 10 caracteres)</label><input id="clave-c" name="clave" type="password" autocomplete="new-password" required minlength="10" maxlength="200"></div>
+          <div class="campo" style="display:flex;gap:12px;align-items:flex-start;line-height:1.5">
+            <input id="terminos" name="terminos" type="checkbox" style="margin-top:4px;width:18px;height:18px;flex:none">
+            <label for="terminos" style="margin:0;font-weight:500">Tengo 18 años o más y acepto los <a class="enlace" href="terminos.html" target="_blank" rel="noopener">términos y condiciones</a> y la <a class="enlace" href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</label>
+          </div>
+          <button class="boton ancho" type="submit">Crear mi cuenta</button>
+        </form>
+
+        <form id="p-entrar" role="tabpanel" aria-labelledby="t-entrar" hidden novalidate>
+          <div class="campo"><label for="email-e">Email</label><input id="email-e" name="email" type="email" autocomplete="email" placeholder="vos@ejemplo.com" required maxlength="200"></div>
+          <div class="campo"><label for="clave-e">Contraseña</label><input id="clave-e" name="clave" type="password" autocomplete="current-password" required maxlength="200"></div>
+          <button class="boton ancho" type="submit">Entrar</button>
+          <p class="nota" style="margin-top:14px">¿Olvidaste tu contraseña? Escribinos a <a class="enlace" href="mailto:hola@kitifica.com">hola@kitifica.com</a>.</p>
+        </form>
+      </div>
     </div>
   </section>
 </main>
 <script src="app.js"></script>
-<script>if (new URLSearchParams(location.search).get("error")) document.getElementById("error").hidden = false;</script>
+<script>
+const $ = (id) => document.getElementById(id);
+const SIGUIENTES = ["mi-biblioteca.html", "subir.html", "guia.html"];
+const next = new URLSearchParams(location.search).get("next");
+const destino = SIGUIENTES.includes(next) ? next : "mi-biblioteca.html";
+function fallo(msg) { $("error").textContent = msg; $("error").hidden = false; }
+async function enviar(url, cuerpo, boton) {
+  $("error").hidden = true;
+  boton.disabled = true;
+  try {
+    const r = await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(cuerpo), credentials: "same-origin" });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) return fallo(j.error || "No se pudo completar. Probá de nuevo.");
+    location.href = destino;
+  } catch { fallo("No hay conexión. Probá de nuevo."); }
+  finally { boton.disabled = false; }
+}
+$("p-crear").addEventListener("submit", (ev) => {
+  ev.preventDefault();
+  const f = ev.target;
+  enviar("/api/registro", { nombre: f.nombre.value, email: f.email.value, clave: f.clave.value, acepto_terminos: f.terminos.checked }, f.querySelector("button[type=submit]"));
+});
+$("p-entrar").addEventListener("submit", (ev) => {
+  ev.preventDefault();
+  const f = ev.target;
+  enviar("/api/login", { email: f.email.value, clave: f.clave.value }, f.querySelector("button[type=submit]"));
+});
+// Si ya hay sesión, directo al destino.
+fetch("/api/yo", { credentials: "same-origin" }).then((r) => r.ok && (location.replace(destino))).catch(() => {});
+</script>
 </body>
 </html>

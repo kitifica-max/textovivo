@@ -70,6 +70,8 @@ export function buscadorMemoria(paginas: Paginas): Buscador {
 export const notaPaginas = (l: Pick<Libro, "paginacion">) =>
   l.paginacion === "aforismo"
     ? "Las páginas son los números de aforismo de la obra."
+    : l.paginacion === "pdf"
+    ? "Las páginas son las del archivo PDF que subió el autor; pueden diferir de la numeración impresa."
     : "Las páginas son secciones lógicas del texto digital (~1.500 caracteres), no las páginas de una edición impresa: usá el capítulo y la cita literal para ubicar el pasaje en tu ejemplar.";
 
 export function listarIndice(l: Libro) {
