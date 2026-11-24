@@ -11,6 +11,7 @@ type Config = {
   hasta?: string; // y termina en la primera línea (después de «desde») que cumple esto
   quitar?: string; // regex: se descartan los párrafos que la cumplen (encabezados de página, etc.)
   desdeParrafo?: number; // descarta los primeros N párrafos (índice inicial)
+  titulos?: [string, string][]; // [regex, título limpio]: corrige títulos que salieron mal del OCR
 };
 
 const [id, modo] = process.argv.slice(2);
@@ -90,6 +91,7 @@ const indice = titulos.map((t, k) => {
   return { titulo: t.titulo, nivel: 1, pagina_inicio: inicio, pagina_fin: Math.max(inicio, sig - 1) };
 });
 
+for (const s of indice) for (const [re, limpio] of config.titulos ?? []) if (new RegExp(re).test(s.titulo)) s.titulo = limpio;
 // Lo que viene antes del primer capítulo (portada, prólogo) entra al índice como «Preliminares»: sin huecos.
 if (indice[0].pagina_inicio > 1)
   indice.unshift({ titulo: "Preliminares", nivel: 1, pagina_inicio: 1, pagina_fin: indice[0].pagina_inicio - 1 });

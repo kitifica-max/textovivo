@@ -89,6 +89,12 @@
  {
   "id": "babylon",
   "patron": "^(Foreword|An Historical Sketch of Babylon|The Man Who Desired Gold|The Richest Man in Babylon|Seven Cures For a Lean Purse|Meet the Goddess of Good Luck|The Five Laws of Gold|The Gold Lender of Babylon|The Walls of Babylon|The Camel Trader of Babylon|The C[A-Za-z ]+ Tablets From Babylon.*|The Luckiest Man in Babylon)$",
-  "desdeParrafo": 60
+  "desdeParrafo": 60,
+  "titulos": [
+   [
+    "^The C.* Tablets From Babylon",
+    "The Clay Tablets From Babylon"
+   ]
+  ]
  }
 ]

@@ -20,7 +20,14 @@
   .precio { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
   .precio .monto { font: 800 2.6rem/1 var(--sans); letter-spacing: -0.045em; }
   .precio .monto small { display: block; font: 500 0.8rem/1.4 var(--sans); letter-spacing: 0; color: var(--gris); margin-top: 6px; }
+  .precio .nota { flex-basis: 100%; margin: 0; }
   @media (max-width: 820px) { .ficha .envoltura { grid-template-columns: 1fr; } .ficha .poster { max-width: 360px; } }
+  .comparacion { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .comparacion .terminal { height: 100%; }
+  .comparacion .etiqueta { display: block; margin-bottom: 10px; }
+  .comparacion .sin .respuesta { color: #8c897f; }
+  @media (max-width: 760px) { .comparacion { grid-template-columns: 1fr; } }
+  .indice { max-width: 860px; }
 </style>
 </head>
 <body>
@@ -53,11 +60,12 @@
           <div><strong>1</strong>frameworks</div>
           <div><strong>1</strong>checklists</div>
           <div><strong>0</strong>términos</div>
+          <div><strong>8</strong>citas verificadas</div>
         </div>
         <div class="tarjeta precio">
           <div class="monto">Gratis<small>30 días · sin tarjeta · busca en el texto completo</small></div>
           <a class="boton" href="../entrar.html">Obtener acceso gratis</a>
-          <p class="nota" style="flex-basis:100%;margin:0">¿Ya lo tenés? <a class="enlace" href="../mi-biblioteca.html">Ir a mi biblioteca</a></p>
+          <p class="nota">¿Ya lo tenés? <a class="enlace" href="../mi-biblioteca.html">Ir a mi biblioteca</a></p>
         </div>
       </div>
     </div>
@@ -65,22 +73,89 @@
 
   <section class="seccion">
     <div class="envoltura">
-      <p class="micro">Lo que tu IA va a poder usar</p>
-      <h2 style="margin:10px 0 18px">Frameworks y checklists con cita literal.</h2>
-      <ul class="nota" style="columns:2;gap:32px;line-height:1.8"><li>Framework: Tres maneras de conservar un Estado acostumbrado a sus leyes</li><li>Checklist: Principios de gobierno de Maquiavelo</li></ul>
-    </div>
-  </section>
-
-  <section class="seccion" style="padding-top:0">
-    <div class="envoltura">
-      <p class="micro">Índice</p>
-      <h2 style="margin:10px 0 18px">Qué hay en el libro.</h2>
-      <ul class="nota" style="columns:2;gap:32px;line-height:1.8"><li>CHAPTER I. HOW MANY KINDS OF PRINCIPALITIES THERE ARE, AND BY WHAT MEANS THEY ARE ACQUIRED</li><li>CHAPTER II. CONCERNING HEREDITARY PRINCIPALITIES</li><li>CHAPTER III. CONCERNING MIXED PRINCIPALITIES</li><li>CHAPTER IV. WHY THE KINGDOM OF DARIUS, CONQUERED BY ALEXANDER, DID NOT REBEL AGAINST THE SUCCESSORS OF ALEXANDER AT HIS DEATH</li><li>CHAPTER V. CONCERNING THE WAY TO GOVERN CITIES OR PRINCIPALITIES WHICH LIVED UNDER THEIR OWN LAWS BEFORE THEY WERE ANNEXED</li><li>CHAPTER VI. CONCERNING NEW PRINCIPALITIES WHICH ARE ACQUIRED BY ONE’S OWN ARMS AND ABILITY</li><li>CHAPTER VII. CONCERNING NEW PRINCIPALITIES WHICH ARE ACQUIRED EITHER BY THE ARMS OF OTHERS OR BY GOOD FORTUNE</li><li>CHAPTER VIII. CONCERNING THOSE WHO HAVE OBTAINED A PRINCIPALITY BY WICKEDNESS</li><li>CHAPTER IX. CONCERNING A CIVIL PRINCIPALITY</li><li>CHAPTER X. CONCERNING THE WAY IN WHICH THE STRENGTH OF ALL PRINCIPALITIES OUGHT TO BE MEASURED</li><li>CHAPTER XI. CONCERNING ECCLESIASTICAL PRINCIPALITIES</li><li>CHAPTER XII. HOW MANY KINDS OF SOLDIERY THERE ARE, AND CONCERNING MERCENARIES</li><li>CHAPTER XIII. CONCERNING AUXILIARIES, MIXED SOLDIERY, AND ONE’S OWN</li><li>CHAPTER XIV. THAT WHICH CONCERNS A PRINCE ON THE SUBJECT OF THE ART OF WAR</li><li>CHAPTER XVI. CONCERNING LIBERALITY AND MEANNESS</li><li>CHAPTER XVII. CONCERNING CRUELTY AND CLEMENCY, AND WHETHER IT IS BETTER TO BE LOVED THAN FEARED</li><li>CHAPTER XVIII.[1] CONCERNING THE WAY IN WHICH PRINCES SHOULD KEEP FAITH</li><li>CHAPTER XIX. THAT ONE SHOULD AVOID BEING DESPISED AND HATED</li><li>CHAPTER XX. ARE FORTRESSES, AND MANY OTHER THINGS TO WHICH PRINCES OFTEN RESORT, ADVANTAGEOUS OR HURTFUL?</li><li>CHAPTER XXI. HOW A PRINCE SHOULD CONDUCT HIMSELF SO AS TO GAIN RENOWN</li><li>CHAPTER XXII. CONCERNING THE SECRETARIES OF PRINCES</li><li>CHAPTER XXIII. HOW FLATTERERS SHOULD BE AVOIDED</li><li>CHAPTER XXIV. WHY THE PRINCES OF ITALY HAVE LOST THEIR STATES</li><li>CHAPTER XXV. WHAT FORTUNE CAN EFFECT IN HUMAN AFFAIRS AND HOW TO WITHSTAND HER</li><li>CHAPTER XXVI. AN EXHORTATION TO LIBERATE ITALY FROM THE BARBARIANS</li></ul>
+      <div class="cabeza">
+        <div><p class="micro">Lo que tu IA va a poder usar</p><h2 style="margin-top:10px">Un framework.</h2></div>
+        <p class="bajada" style="max-width:26em">Metodologías paso a paso. Cada paso trae su cita literal y su página.</p>
+      </div>
+      <div class="grilla cuatro">
+        <article class="poster c-azul"><span class="num">01</span><h3 class="titulo t-alta" style="font-size:8.5cqi">Tres maneras de conservar un Estado acostumbrado a sus leyes</h3><p class="texto mono">3 pasos · p. 23</p></article>
+      </div>
     </div>
   </section>
   <section class="seccion" style="padding-top:0">
     <div class="envoltura">
-      <p class="nota" style="max-width:44em">Obra de dominio público. Texto tomado de Project Gutenberg, en su idioma original. Las páginas son secciones lógicas de la edición digital. Los resúmenes en español son de TextoVivo; las citas son literales del texto.</p>
+      <div class="cabeza">
+        <div><p class="micro">Para revisar tu trabajo</p><h2 style="margin-top:10px">Un checklist.</h2></div>
+        <p class="bajada" style="max-width:26em">Listas para que tu IA revise un plan, un texto o una decisión con el criterio del libro.</p>
+      </div>
+      <div class="grilla cuatro">
+        <article class="poster c-azul"><span class="num">01</span><h3 class="titulo t-alta" style="font-size:8.5cqi">Principios de gobierno de Maquiavelo</h3><p class="texto mono">5 puntos · p. 99</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="seccion" style="padding-top:0">
+    <div class="envoltura">
+      <div class="cabeza">
+        <div><p class="micro">Ejemplo ilustrativo · la misma pregunta, dos veces</p><h2 style="margin-top:10px">¿Qué cambia cuando tu IA tiene el libro?</h2></div>
+      </div>
+      <div class="comparacion">
+        <div class="sin">
+          <span class="micro etiqueta">Sin TextoVivo</span>
+          <div class="terminal">
+            <div class="barra"><i></i><i></i><i></i><span>claude</span></div>
+            <div class="cuerpo">
+              <p class="persona">Revisá mi trabajo con «Principios de gobierno de Maquiavelo» de Niccolò Machiavelli.</p>
+              <p class="respuesta">Niccolò Machiavelli habla de varias ideas sobre este tema. Podrías aplicarlas siendo claro con tus objetivos…</p>
+              <p class="tenue">— sin fuente, sin página</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <span class="micro etiqueta" style="color:#df2a1f">Con TextoVivo</span>
+          <div class="terminal">
+            <div class="barra"><i></i><i></i><i></i><span>claude · TextoVivo</span></div>
+            <div class="cuerpo">
+              <p class="persona">Revisá mi trabajo con «Principios de gobierno de Maquiavelo» de Niccolò Machiavelli.</p>
+              <p class="herramienta">obtener_checklist <span class="tenue">("principios de gobierno de maquiavelo")</span></p>
+              <p class="respuesta">Revisemos «Principios de gobierno de Maquiavelo». Es más seguro ser temido que amado, si hay que elegir Después: Mirá a quienes rodean al líder: ahí se juzga su criterio</p>
+              <span class="chip">The Prince · p. 99</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="seccion" style="padding-top:0">
+    <div class="envoltura indice">
+      <div class="cabeza"><div><p class="micro">Índice</p><h2 style="margin-top:10px">25 secciones.</h2></div></div>
+      <ol class="lista">
+        <li><span class="n">01</span>CHAPTER I. HOW MANY KINDS OF PRINCIPALITIES THERE ARE, AND BY WHAT MEANS THEY ARE ACQUIRED<span class="der">p. 1</span></li>
+        <li><span class="n">02</span>CHAPTER II. CONCERNING HEREDITARY PRINCIPALITIES<span class="der">p. 2</span></li>
+        <li><span class="n">03</span>CHAPTER III. CONCERNING MIXED PRINCIPALITIES<span class="der">p. 3</span></li>
+        <li><span class="n">04</span>CHAPTER IV. WHY THE KINGDOM OF DARIUS, CONQUERED BY ALEXANDER, DID NOT REBEL AGAINST THE…<span class="der">p. 18</span></li>
+        <li><span class="n">05</span>CHAPTER V. CONCERNING THE WAY TO GOVERN CITIES OR PRINCIPALITIES WHICH LIVED UNDER THEIR…<span class="der">p. 23</span></li>
+        <li><span class="n">06</span>CHAPTER VI. CONCERNING NEW PRINCIPALITIES WHICH ARE ACQUIRED BY ONE’S OWN ARMS AND ABILITY<span class="der">p. 26</span></li>
+        <li><span class="n">07</span>CHAPTER VII. CONCERNING NEW PRINCIPALITIES WHICH ARE ACQUIRED EITHER BY THE ARMS OF OTHER…<span class="der">p. 34</span></li>
+        <li><span class="n">08</span>CHAPTER VIII. CONCERNING THOSE WHO HAVE OBTAINED A PRINCIPALITY BY WICKEDNESS<span class="der">p. 46</span></li>
+        <li><span class="n">09</span>CHAPTER IX. CONCERNING A CIVIL PRINCIPALITY<span class="der">p. 53</span></li>
+        <li><span class="n">10</span>CHAPTER X. CONCERNING THE WAY IN WHICH THE STRENGTH OF ALL PRINCIPALITIES OUGHT TO BE MEA…<span class="der">p. 60</span></li>
+        <li><span class="n">11</span>CHAPTER XI. CONCERNING ECCLESIASTICAL PRINCIPALITIES<span class="der">p. 64</span></li>
+        <li><span class="n">12</span>CHAPTER XII. HOW MANY KINDS OF SOLDIERY THERE ARE, AND CONCERNING MERCENARIES<span class="der">p. 69</span></li>
+        <li><span class="n">13</span>CHAPTER XIII. CONCERNING AUXILIARIES, MIXED SOLDIERY, AND ONE’S OWN<span class="der">p. 78</span></li>
+        <li><span class="n">14</span>CHAPTER XIV. THAT WHICH CONCERNS A PRINCE ON THE SUBJECT OF THE ART OF WAR<span class="der">p. 85</span></li>
+        <li><span class="n">15</span>CHAPTER XVI. CONCERNING LIBERALITY AND MEANNESS<span class="der">p. 93</span></li>
+        <li><span class="n">16</span>CHAPTER XVII. CONCERNING CRUELTY AND CLEMENCY, AND WHETHER IT IS BETTER TO BE LOVED THAN…<span class="der">p. 97</span></li>
+        <li><span class="n">17</span>CHAPTER XVIII.[1] CONCERNING THE WAY IN WHICH PRINCES SHOULD KEEP FAITH<span class="der">p. 103</span></li>
+        <li><span class="n">18</span>CHAPTER XIX. THAT ONE SHOULD AVOID BEING DESPISED AND HATED<span class="der">p. 110</span></li>
+        <li><span class="n">19</span>CHAPTER XX. ARE FORTRESSES, AND MANY OTHER THINGS TO WHICH PRINCES OFTEN RESORT, ADVANTAG…<span class="der">p. 129</span></li>
+        <li><span class="n">20</span>CHAPTER XXI. HOW A PRINCE SHOULD CONDUCT HIMSELF SO AS TO GAIN RENOWN<span class="der">p. 137</span></li>
+        <li><span class="n">21</span>CHAPTER XXII. CONCERNING THE SECRETARIES OF PRINCES<span class="der">p. 144</span></li>
+        <li><span class="n">22</span>CHAPTER XXIII. HOW FLATTERERS SHOULD BE AVOIDED<span class="der">p. 146</span></li>
+        <li><span class="n">23</span>CHAPTER XXIV. WHY THE PRINCES OF ITALY HAVE LOST THEIR STATES<span class="der">p. 150</span></li>
+        <li><span class="n">24</span>CHAPTER XXV. WHAT FORTUNE CAN EFFECT IN HUMAN AFFAIRS AND HOW TO WITHSTAND HER<span class="der">p. 152</span></li>
+        <li><span class="n">25</span>CHAPTER XXVI. AN EXHORTATION TO LIBERATE ITALY FROM THE BARBARIANS<span class="der">p. 158</span></li>
+      </ol>
+      <p class="nota" style="margin-top:28px;max-width:44em">Obra de dominio público, en su idioma original (inglés). Texto tomado de Project Gutenberg, Wikisource o archive.org. Las páginas son secciones lógicas del texto digital, no las de una edición impresa. Los resúmenes en español son de TextoVivo; las citas son literales.</p>
     </div>
   </section>
 </main>

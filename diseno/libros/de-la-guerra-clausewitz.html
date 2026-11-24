@@ -20,7 +20,14 @@
   .precio { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
   .precio .monto { font: 800 2.6rem/1 var(--sans); letter-spacing: -0.045em; }
   .precio .monto small { display: block; font: 500 0.8rem/1.4 var(--sans); letter-spacing: 0; color: var(--gris); margin-top: 6px; }
+  .precio .nota { flex-basis: 100%; margin: 0; }
   @media (max-width: 820px) { .ficha .envoltura { grid-template-columns: 1fr; } .ficha .poster { max-width: 360px; } }
+  .comparacion { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .comparacion .terminal { height: 100%; }
+  .comparacion .etiqueta { display: block; margin-bottom: 10px; }
+  .comparacion .sin .respuesta { color: #8c897f; }
+  @media (max-width: 760px) { .comparacion { grid-template-columns: 1fr; } }
+  .indice { max-width: 860px; }
 </style>
 </head>
 <body>
@@ -53,11 +60,12 @@
           <div><strong>2</strong>frameworks</div>
           <div><strong>2</strong>checklists</div>
           <div><strong>6</strong>términos</div>
+          <div><strong>19</strong>citas verificadas</div>
         </div>
         <div class="tarjeta precio">
           <div class="monto">Gratis<small>30 días · sin tarjeta · busca en el texto completo</small></div>
           <a class="boton" href="../entrar.html">Obtener acceso gratis</a>
-          <p class="nota" style="flex-basis:100%;margin:0">¿Ya lo tenés? <a class="enlace" href="../mi-biblioteca.html">Ir a mi biblioteca</a></p>
+          <p class="nota">¿Ya lo tenés? <a class="enlace" href="../mi-biblioteca.html">Ir a mi biblioteca</a></p>
         </div>
       </div>
     </div>
@@ -65,22 +73,122 @@
 
   <section class="seccion">
     <div class="envoltura">
-      <p class="micro">Lo que tu IA va a poder usar</p>
-      <h2 style="margin:10px 0 18px">Frameworks y checklists con cita literal.</h2>
-      <ul class="nota" style="columns:2;gap:32px;line-height:1.8"><li>Framework: La trinidad de la guerra</li><li>Framework: Táctica y estrategia</li><li>Checklist: Ideas centrales de Clausewitz</li><li>Checklist: Principios de Clausewitz para decidir con incertidumbre</li></ul>
-    </div>
-  </section>
-
-  <section class="seccion" style="padding-top:0">
-    <div class="envoltura">
-      <p class="micro">Índice</p>
-      <h2 style="margin:10px 0 18px">Qué hay en el libro.</h2>
-      <ul class="nota" style="columns:2;gap:32px;line-height:1.8"><li>CHAPTER I. WHAT IS WAR?</li><li>CHAPTER II. END AND MEANS IN WAR</li><li>CHAPTER III. THE GENIUS FOR WAR</li><li>CHAPTER IV. OF DANGER IN WAR</li><li>CHAPTER V. OF BODILY EXERTION IN WAR</li><li>CHAPTER VII. FRICTION IN WAR</li><li>CHAPTER VIII. CONCLUDING REMARKS, BOOK I</li><li>CHAPTER I. BRANCHES OF THE ART OF WAR</li><li>CHAPTER II. ON THE THEORY OF WAR</li><li>CHAPTER III. ART OR SCIENCE OF WAR</li><li>CHAPTER IV. METHODICISM</li><li>CHAPTER V. CRITICISM</li><li>CHAPTER VI. ON EXAMPLES</li><li>CHAPTER I. STRATEGY</li><li>CHAPTER II. ELEMENTS OF STRATEGY</li><li>CHAPTER III. MORAL FORCES</li><li>CHAPTER IV. THE CHIEF MORAL POWERS</li><li>CHAPTER V. MILITARY VIRTUE OF AN ARMY</li><li>CHAPTER VI. BOLDNESS</li><li>CHAPTER VIII. SUPERIORITY OF NUMBERS</li><li>CHAPTER IX. THE SURPRISE</li><li>CHAPTER X. STRATAGEM</li><li>CHAPTER XI. ASSEMBLY OF FORCES IN SPACE</li><li>CHAPTER XII. ASSEMBLY OF FORCES IN TIME</li><li>CHAPTER XIII. STRATEGIC RESERVE</li><li>CHAPTER XV. GEOMETRICAL ELEMENT</li><li>CHAPTER XVI. ON THE SUSPENSION OF THE ACT IN WARFARE</li><li>CHAPTER XVII. ON THE CHARACTER OF MODERN WAR</li><li>CHAPTER XVIII. TENSION AND REST</li><li>CHAPTER I. INTRODUCTORY</li><li>CHAPTER II. CHARACTER OF THE MODERN BATTLE</li><li>CHAPTER III. THE COMBAT IN GENERAL</li><li>CHAPTER IV. THE COMBAT IN GENERAL (CONTINUATION)</li><li>CHAPTER V. ON THE SIGNIFICATION OF THE COMBAT</li><li>CHAPTER VI. DURATION OF THE COMBAT</li><li>CHAPTER VII. DECISION OF THE COMBAT</li><li>CHAPTER VIII. MUTUAL UNDERSTANDING AS TO A BATTLE</li><li>CHAPTER IX. THE BATTLE(*)</li><li>CHAPTER X. EFFECTS OF VICTORY (continuation)</li><li>CHAPTER XI. THE USE OF THE BATTLE (continued)</li><li>CHAPTER XII. STRATEGIC MEANS OF UTILISING VICTORY</li><li>CHAPTER XIII. RETREAT AFTER A LOST BATTLE</li><li>CHAPTER XIV. NIGHT FIGHTING</li></ul>
+      <div class="cabeza">
+        <div><p class="micro">Lo que tu IA va a poder usar</p><h2 style="margin-top:10px">Dos frameworks.</h2></div>
+        <p class="bajada" style="max-width:26em">Metodologías paso a paso. Cada paso trae su cita literal y su página.</p>
+      </div>
+      <div class="grilla cuatro">
+        <article class="poster c-azul"><span class="num">01</span><h3 class="titulo t-alta" style="font-size:12.5cqi">La trinidad de la guerra</h3><p class="texto mono">3 pasos · p. 37</p></article>
+        <article class="poster c-naranja"><span class="num">02</span><h3 class="titulo t-grotesca" style="font-size:12.5cqi">Táctica y estrategia</h3><p class="texto mono">3 pasos · p. 132</p></article>
+      </div>
     </div>
   </section>
   <section class="seccion" style="padding-top:0">
     <div class="envoltura">
-      <p class="nota" style="max-width:44em">Obra de dominio público. Texto tomado de Project Gutenberg, en su idioma original. Las páginas son secciones lógicas de la edición digital. Los resúmenes en español son de TextoVivo; las citas son literales del texto.</p>
+      <div class="cabeza">
+        <div><p class="micro">Para revisar tu trabajo</p><h2 style="margin-top:10px">Dos checklists.</h2></div>
+        <p class="bajada" style="max-width:26em">Listas para que tu IA revise un plan, un texto o una decisión con el criterio del libro.</p>
+      </div>
+      <div class="grilla cuatro">
+        <article class="poster c-azul"><span class="num">01</span><h3 class="titulo t-alta" style="font-size:10.5cqi">Ideas centrales de Clausewitz</h3><p class="texto mono">2 puntos · p. 6</p></article>
+        <article class="poster c-naranja"><span class="num">02</span><h3 class="titulo t-grotesca" style="font-size:8.5cqi">Principios de Clausewitz para decidir con incertidumbre</h3><p class="texto mono">5 puntos · p. 116</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="seccion" style="padding-top:0">
+    <div class="envoltura">
+      <div class="cabeza">
+        <div><p class="micro">Ejemplo ilustrativo · la misma pregunta, dos veces</p><h2 style="margin-top:10px">¿Qué cambia cuando tu IA tiene el libro?</h2></div>
+      </div>
+      <div class="comparacion">
+        <div class="sin">
+          <span class="micro etiqueta">Sin TextoVivo</span>
+          <div class="terminal">
+            <div class="barra"><i></i><i></i><i></i><span>claude</span></div>
+            <div class="cuerpo">
+              <p class="persona">Revisá mi trabajo con «Ideas centrales de Clausewitz» de Carl von Clausewitz.</p>
+              <p class="respuesta">Carl von Clausewitz habla de varias ideas sobre este tema. Podrías aplicarlas siendo claro con tus objetivos…</p>
+              <p class="tenue">— sin fuente, sin página</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <span class="micro etiqueta" style="color:#df2a1f">Con TextoVivo</span>
+          <div class="terminal">
+            <div class="barra"><i></i><i></i><i></i><span>claude · TextoVivo</span></div>
+            <div class="cuerpo">
+              <p class="persona">Revisá mi trabajo con «Ideas centrales de Clausewitz» de Carl von Clausewitz.</p>
+              <p class="herramienta">obtener_checklist <span class="tenue">("ideas centrales de clausewitz")</span></p>
+              <p class="respuesta">Revisemos «Ideas centrales de Clausewitz». El fin de toda acción es desarmar al enemigo Después: Todo acto de guerra es un instrumento de la política</p>
+              <span class="chip">On War · p. 6</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="seccion" style="padding-top:0">
+    <div class="envoltura indice">
+      <div class="cabeza"><div><p class="micro">Glosario</p><h2 style="margin-top:10px">Seis términos.</h2></div></div>
+      <ol class="lista">
+        <li><span class="n">01</span><span><strong>Fricción</strong> · El peligro, el esfuerzo y la incertidumbre de la guerra le restan eficacia a lo planeado.</span><span class="der">p. 112</span></li>
+        <li><span class="n">02</span><span><strong>Guerra como continuación de la política</strong> · La guerra es un instrumento político, no solo un acto político.</span><span class="der">p. 33</span></li>
+        <li><span class="n">03</span><span><strong>Estrategia</strong> · El empleo del combate para alcanzar el fin de la guerra; da un fin a toda la acción militar.</span><span class="der">p. 251</span></li>
+        <li><span class="n">04</span><span><strong>Centro de gravedad</strong> · Lo que se debe considerar el verdadero centro de la guerra: el combate decisivo.</span><span class="der">p. 415</span></li>
+        <li><span class="n">05</span><span><strong>Estratagema</strong> · Una intención oculta, opuesta al trato directo.</span><span class="der">p. 314</span></li>
+        <li><span class="n">06</span><span><strong>Elementos de la estrategia</strong> · Se agrupan en morales, físicos, matemáticos, geográficos y estadísticos.</span><span class="der">p. 267</span></li>
+      </ol>
+    </div>
+  </section>
+  <section class="seccion" style="padding-top:0">
+    <div class="envoltura indice">
+      <div class="cabeza"><div><p class="micro">Índice</p><h2 style="margin-top:10px">43 secciones.</h2></div></div>
+      <ol class="lista">
+        <li><span class="n">01</span>CHAPTER I. WHAT IS WAR?<span class="der">p. 1</span></li>
+        <li><span class="n">02</span>CHAPTER II. END AND MEANS IN WAR<span class="der">p. 39</span></li>
+        <li><span class="n">03</span>CHAPTER III. THE GENIUS FOR WAR<span class="der">p. 69</span></li>
+        <li><span class="n">04</span>CHAPTER IV. OF DANGER IN WAR<span class="der">p. 110</span></li>
+        <li><span class="n">05</span>CHAPTER V. OF BODILY EXERTION IN WAR<span class="der">p. 113</span></li>
+        <li><span class="n">06</span>CHAPTER VII. FRICTION IN WAR<span class="der">p. 119</span></li>
+        <li><span class="n">07</span>CHAPTER VIII. CONCLUDING REMARKS, BOOK I<span class="der">p. 126</span></li>
+        <li><span class="n">08</span>CHAPTER I. BRANCHES OF THE ART OF WAR<span class="der">p. 129</span></li>
+        <li><span class="n">09</span>CHAPTER II. ON THE THEORY OF WAR<span class="der">p. 145</span></li>
+        <li><span class="n">10</span>CHAPTER III. ART OR SCIENCE OF WAR<span class="der">p. 179</span></li>
+        <li><span class="n">11</span>CHAPTER IV. METHODICISM<span class="der">p. 185</span></li>
+        <li><span class="n">12</span>CHAPTER V. CRITICISM<span class="der">p. 197</span></li>
+        <li><span class="n">13</span>CHAPTER VI. ON EXAMPLES<span class="der">p. 237</span></li>
+        <li><span class="n">14</span>CHAPTER I. STRATEGY<span class="der">p. 250</span></li>
+        <li><span class="n">15</span>CHAPTER II. ELEMENTS OF STRATEGY<span class="der">p. 267</span></li>
+        <li><span class="n">16</span>CHAPTER III. MORAL FORCES<span class="der">p. 269</span></li>
+        <li><span class="n">17</span>CHAPTER IV. THE CHIEF MORAL POWERS<span class="der">p. 273</span></li>
+        <li><span class="n">18</span>CHAPTER V. MILITARY VIRTUE OF AN ARMY<span class="der">p. 275</span></li>
+        <li><span class="n">19</span>CHAPTER VI. BOLDNESS<span class="der">p. 285</span></li>
+        <li><span class="n">20</span>CHAPTER VIII. SUPERIORITY OF NUMBERS<span class="der">p. 295</span></li>
+        <li><span class="n">21</span>CHAPTER IX. THE SURPRISE<span class="der">p. 304</span></li>
+        <li><span class="n">22</span>CHAPTER X. STRATAGEM<span class="der">p. 314</span></li>
+        <li><span class="n">23</span>CHAPTER XI. ASSEMBLY OF FORCES IN SPACE<span class="der">p. 318</span></li>
+        <li><span class="n">24</span>CHAPTER XII. ASSEMBLY OF FORCES IN TIME<span class="der">p. 319</span></li>
+        <li><span class="n">25</span>CHAPTER XIII. STRATEGIC RESERVE<span class="der">p. 332</span></li>
+        <li><span class="n">26</span>CHAPTER XV. GEOMETRICAL ELEMENT<span class="der">p. 341</span></li>
+        <li><span class="n">27</span>CHAPTER XVI. ON THE SUSPENSION OF THE ACT IN WARFARE<span class="der">p. 344</span></li>
+        <li><span class="n">28</span>CHAPTER XVII. ON THE CHARACTER OF MODERN WAR<span class="der">p. 354</span></li>
+        <li><span class="n">29</span>CHAPTER XVIII. TENSION AND REST<span class="der">p. 357</span></li>
+        <li><span class="n">30</span>CHAPTER I. INTRODUCTORY<span class="der">p. 362</span></li>
+        <li><span class="n">31</span>CHAPTER II. CHARACTER OF THE MODERN BATTLE<span class="der">p. 363</span></li>
+        <li><span class="n">32</span>CHAPTER III. THE COMBAT IN GENERAL<span class="der">p. 366</span></li>
+        <li><span class="n">33</span>CHAPTER IV. THE COMBAT IN GENERAL (CONTINUATION)<span class="der">p. 374</span></li>
+        <li><span class="n">34</span>CHAPTER V. ON THE SIGNIFICATION OF THE COMBAT<span class="der">p. 390</span></li>
+        <li><span class="n">35</span>CHAPTER VI. DURATION OF THE COMBAT<span class="der">p. 394</span></li>
+        <li><span class="n">36</span>CHAPTER VII. DECISION OF THE COMBAT<span class="der">p. 396</span></li>
+        <li><span class="n">37</span>CHAPTER VIII. MUTUAL UNDERSTANDING AS TO A BATTLE<span class="der">p. 410</span></li>
+        <li><span class="n">38</span>CHAPTER IX. THE BATTLE(*)<span class="der">p. 415</span></li>
+        <li><span class="n">39</span>CHAPTER X. EFFECTS OF VICTORY (continuation)<span class="der">p. 427</span></li>
+        <li><span class="n">40</span>CHAPTER XI. THE USE OF THE BATTLE (continued)<span class="der">p. 438</span></li>
+        <li><span class="n">41</span>CHAPTER XII. STRATEGIC MEANS OF UTILISING VICTORY<span class="der">p. 451</span></li>
+        <li><span class="n">42</span>CHAPTER XIII. RETREAT AFTER A LOST BATTLE<span class="der">p. 472</span></li>
+        <li><span class="n">43</span>CHAPTER XIV. NIGHT FIGHTING<span class="der">p. 478</span></li>
+      </ol>
+      <p class="nota" style="margin-top:28px;max-width:44em">Obra de dominio público, en su idioma original (inglés). Texto tomado de Project Gutenberg, Wikisource o archive.org. Las páginas son secciones lógicas del texto digital, no las de una edición impresa. Los resúmenes en español son de TextoVivo; las citas son literales.</p>
     </div>
   </section>
 </main>

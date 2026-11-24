@@ -10,11 +10,16 @@ type Ficha = {
   titulo_clase: string; titulo_estilo: string; titulo: string; autor: string;
 };
 const fichas: Ficha[] = JSON.parse(await readFile("scripts/sitio.json", "utf8"));
-const catalogo = JSON.parse(await readFile("data/catalogo.json", "utf8")) as {
+type Paso = { titulo: string; descripcion: string; pagina: number; cita: string };
+type Item = { texto: string; pagina: number; cita: string };
+type Libro = {
   id: string; titulo: string; autor: string; descripcion: string; idioma: string;
-  indice: { titulo: string }[]; glosario: unknown[];
-  frameworks: { nombre: string; pasos: unknown[] }[]; checklists: { nombre: string; items: unknown[] }[];
-}[];
+  indice: { titulo: string; pagina_inicio: number }[];
+  glosario: { termino: string; definicion: string; pagina: number }[];
+  frameworks: { nombre: string; resumen: string; pasos: Paso[] }[];
+  checklists: { nombre: string; contexto: string; items: Item[] }[];
+};
+const catalogo = JSON.parse(await readFile("data/catalogo.json", "utf8")) as Libro[];
 const porId = new Map(catalogo.map((d) => [d.id, d]));
 const TEMAS: Record<string, string> = { estrategia: "Estrategia", marketing: "Marketing", decisiones: "Decisiones", investigacion: "Investigación", negocios: "Negocios", escritura: "Escritura" };
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
@@ -39,17 +44,127 @@ let biblioteca = await readFile("../diseno/biblioteca.html", "utf8");
 biblioteca = biblioteca.replace(/<!--libros-->[\s\S]*<!--\/libros-->/, `<!--libros-->\n${fichas.map(poster).join("")}      <!--/libros-->`);
 await writeFile("../diseno/biblioteca.html", biblioteca);
 
-// 2) Una ficha por libro
+// 2) Una ficha por libro, con las mismas secciones que texto.html (la del libro 001, hecha a mano):
+//    datos, frameworks, checklists, «¿Qué cambia cuando tu IA tiene el libro?» e índice.
+//    Todo sale de data/catalogo.json: nada se escribe a mano por libro.
 const IDIOMA: Record<string, string> = { en: "inglés", es: "español" };
-const lista = (items: string[]) => (items.length ? `<ul class="nota" style="columns:2;gap:32px;line-height:1.8">${items.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>` : "");
+const COLORES = ["c-azul", "c-naranja", "c-hueso plegado", "c-menta", "c-salmon", "c-cuadricula", "c-celeste", "c-manteca", "c-rojo", "c-acero", "c-blanco", "c-bosque"];
+const CLASES = ["t-alta", "t-grotesca", "t-cursiva", "t-grotesca", "t-negra", "t-serif", "t-angosta", "t-grotesca", "t-angosta", "t-alta", "t-grotesca", "t-negra"];
+const NUMEROS = ["Cero", "Un", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho", "Nueve", "Diez", "Once", "Doce"];
+const cantidad = (n: number, singular: string, plural: string) => `${n <= 12 ? NUMEROS[n] : n} ${n === 1 ? singular : plural}`.replace(/^Un (framework|checklist)s?$/, (_, p) => `Un ${p}`);
+const corto = (s: string, max: number) => (s.length > max ? `${s.slice(0, max - 1).trimEnd()}…` : s);
+const tamano = (s: string) => (s.length > 34 ? "font-size:8.5cqi" : s.length > 24 ? "font-size:10.5cqi" : s.length > 16 ? "font-size:12.5cqi" : "");
+
+const tarjetas = (items: { nombre: string; detalle: string }[]) =>
+  items
+    .map((x, i) => {
+      const e = tamano(x.nombre);
+      return `        <article class="poster ${COLORES[i % COLORES.length]}"><span class="num">${String(i + 1).padStart(2, "0")}</span><h3 class="titulo ${CLASES[i % CLASES.length]}"${e ? ` style="${e}"` : ""}>${esc(x.nombre)}</h3><p class="texto mono">${esc(x.detalle)}</p></article>`;
+    })
+    .join("\n");
+
+function ejemplo(d: Libro) {
+  const ck = d.checklists[0];
+  const fw = d.frameworks[0];
+  const base = ck ?? fw;
+  if (!base) return "";
+  const puntos = ck ? ck.items.map((i) => ({ texto: i.texto, pagina: i.pagina })) : fw.pasos.map((p) => ({ texto: `${p.titulo}: ${p.descripcion}`, pagina: p.pagina }));
+  const [a, b] = puntos;
+  const pregunta = `Revisá mi trabajo con «${base.nombre}» de ${d.autor}.`;
+  const resp = `Revisemos «${base.nombre}». ${corto(a.texto, 140)}${b ? ` Después: ${corto(b.texto, 120)}` : ""}`;
+  return `
+  <section class="seccion" style="padding-top:0">
+    <div class="envoltura">
+      <div class="cabeza">
+        <div><p class="micro">Ejemplo ilustrativo · la misma pregunta, dos veces</p><h2 style="margin-top:10px">¿Qué cambia cuando tu IA tiene el libro?</h2></div>
+      </div>
+      <div class="comparacion">
+        <div class="sin">
+          <span class="micro etiqueta">Sin TextoVivo</span>
+          <div class="terminal">
+            <div class="barra"><i></i><i></i><i></i><span>claude</span></div>
+            <div class="cuerpo">
+              <p class="persona">${esc(pregunta)}</p>
+              <p class="respuesta">${esc(d.autor)} habla de varias ideas sobre este tema. Podrías aplicarlas siendo claro con tus objetivos…</p>
+              <p class="tenue">— sin fuente, sin página</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <span class="micro etiqueta" style="color:#df2a1f">Con TextoVivo</span>
+          <div class="terminal">
+            <div class="barra"><i></i><i></i><i></i><span>claude · TextoVivo</span></div>
+            <div class="cuerpo">
+              <p class="persona">${esc(pregunta)}</p>
+              <p class="herramienta">${ck ? "obtener_checklist" : "obtener_framework"} <span class="tenue">("${esc(base.nombre.toLowerCase())}")</span></p>
+              <p class="respuesta">${esc(resp)}</p>
+              <span class="chip">${esc(corto(d.titulo, 38))} · p. ${a.pagina}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
 await mkdir("../diseno/libros", { recursive: true });
 let n = 0;
 for (const f of fichas) {
-  const d = f.id && porId.get(f.id);
+  const d = f.id ? porId.get(f.id) : undefined;
   if (!d || f.id === "arte-de-la-guerra") continue;
   const titulo = f.titulo.replace(/<[^>]+>/g, "");
-  const grandes = d.indice.length > 1 ? d.indice.map((s) => s.titulo) : [];
-  const herramientas = [...d.frameworks.map((x) => `Framework: ${x.nombre}`), ...d.checklists.map((x) => `Checklist: ${x.nombre}`)];
+  const citas = d.glosario.length + d.frameworks.reduce((t, x) => t + x.pasos.length, 0) + d.checklists.reduce((t, x) => t + x.items.length, 0);
+
+  const secFrameworks = d.frameworks.length
+    ? `
+  <section class="seccion">
+    <div class="envoltura">
+      <div class="cabeza">
+        <div><p class="micro">Lo que tu IA va a poder usar</p><h2 style="margin-top:10px">${cantidad(d.frameworks.length, "framework", "frameworks")}.</h2></div>
+        <p class="bajada" style="max-width:26em">Metodologías paso a paso. Cada paso trae su cita literal y su página.</p>
+      </div>
+      <div class="grilla cuatro">
+${tarjetas(d.frameworks.map((x) => ({ nombre: x.nombre, detalle: `${x.pasos.length} pasos · p. ${x.pasos[0].pagina}` })))}
+      </div>
+    </div>
+  </section>`
+    : "";
+  const secChecklists = d.checklists.length
+    ? `
+  <section class="seccion" style="padding-top:${d.frameworks.length ? "0" : "clamp(40px,6vw,80px)"}">
+    <div class="envoltura">
+      <div class="cabeza">
+        <div><p class="micro">Para revisar tu trabajo</p><h2 style="margin-top:10px">${cantidad(d.checklists.length, "checklist", "checklists")}.</h2></div>
+        <p class="bajada" style="max-width:26em">Listas para que tu IA revise un plan, un texto o una decisión con el criterio del libro.</p>
+      </div>
+      <div class="grilla cuatro">
+${tarjetas(d.checklists.map((x) => ({ nombre: x.nombre, detalle: `${x.items.length} puntos · p. ${x.items[0].pagina}` })))}
+      </div>
+    </div>
+  </section>`
+    : "";
+  const secGlosario = d.glosario.length
+    ? `
+  <section class="seccion" style="padding-top:0">
+    <div class="envoltura indice">
+      <div class="cabeza"><div><p class="micro">Glosario</p><h2 style="margin-top:10px">${cantidad(d.glosario.length, "término", "términos")}.</h2></div></div>
+      <ol class="lista">
+${d.glosario.map((g, i) => `        <li><span class="n">${String(i + 1).padStart(2, "0")}</span><span><strong>${esc(g.termino)}</strong> · ${esc(g.definicion)}</span><span class="der">p. ${g.pagina}</span></li>`).join("\n")}
+      </ol>
+    </div>
+  </section>`
+    : "";
+  const secIndice = `
+  <section class="seccion" style="padding-top:0">
+    <div class="envoltura indice">
+      <div class="cabeza"><div><p class="micro">Índice</p><h2 style="margin-top:10px">${d.indice.length === 1 ? "Texto completo." : `${cantidad(d.indice.length, "sección", "secciones")}.`}</h2></div></div>
+      <ol class="lista">
+${d.indice.map((s, i) => `        <li><span class="n">${String(i + 1).padStart(2, "0")}</span>${esc(corto(s.titulo, 90))}<span class="der">p. ${s.pagina_inicio}</span></li>`).join("\n")}
+      </ol>
+      <p class="nota" style="margin-top:28px;max-width:44em">Obra de dominio público, en su idioma original (${IDIOMA[d.idioma] ?? d.idioma}). Texto tomado de Project Gutenberg, Wikisource o archive.org. Las páginas son secciones lógicas del texto digital, no las de una edición impresa. Los resúmenes en español son de TextoVivo; las citas son literales.</p>
+    </div>
+  </section>`;
+
   const pagina = `<!doctype html>
 <html lang="es">
 <head>
@@ -72,7 +187,14 @@ for (const f of fichas) {
   .precio { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
   .precio .monto { font: 800 2.6rem/1 var(--sans); letter-spacing: -0.045em; }
   .precio .monto small { display: block; font: 500 0.8rem/1.4 var(--sans); letter-spacing: 0; color: var(--gris); margin-top: 6px; }
+  .precio .nota { flex-basis: 100%; margin: 0; }
   @media (max-width: 820px) { .ficha .envoltura { grid-template-columns: 1fr; } .ficha .poster { max-width: 360px; } }
+  .comparacion { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .comparacion .terminal { height: 100%; }
+  .comparacion .etiqueta { display: block; margin-bottom: 10px; }
+  .comparacion .sin .respuesta { color: #8c897f; }
+  @media (max-width: 760px) { .comparacion { grid-template-columns: 1fr; } }
+  .indice { max-width: 860px; }
 </style>
 </head>
 <body>
@@ -105,36 +227,17 @@ for (const f of fichas) {
           <div><strong>${d.frameworks.length}</strong>frameworks</div>
           <div><strong>${d.checklists.length}</strong>checklists</div>
           <div><strong>${d.glosario.length}</strong>términos</div>
+          <div><strong>${citas}</strong>citas verificadas</div>
         </div>
         <div class="tarjeta precio">
           <div class="monto">Gratis<small>30 días · sin tarjeta · busca en el texto completo</small></div>
           <a class="boton" href="../entrar.html">Obtener acceso gratis</a>
-          <p class="nota" style="flex-basis:100%;margin:0">¿Ya lo tenés? <a class="enlace" href="../mi-biblioteca.html">Ir a mi biblioteca</a></p>
+          <p class="nota">¿Ya lo tenés? <a class="enlace" href="../mi-biblioteca.html">Ir a mi biblioteca</a></p>
         </div>
       </div>
     </div>
   </section>
-${herramientas.length ? `
-  <section class="seccion">
-    <div class="envoltura">
-      <p class="micro">Lo que tu IA va a poder usar</p>
-      <h2 style="margin:10px 0 18px">Frameworks y checklists con cita literal.</h2>
-      ${lista(herramientas)}
-    </div>
-  </section>` : ""}
-${grandes.length ? `
-  <section class="seccion" style="padding-top:0">
-    <div class="envoltura">
-      <p class="micro">Índice</p>
-      <h2 style="margin:10px 0 18px">Qué hay en el libro.</h2>
-      ${lista(grandes)}
-    </div>
-  </section>` : ""}
-  <section class="seccion" style="padding-top:0">
-    <div class="envoltura">
-      <p class="nota" style="max-width:44em">Obra de dominio público. Texto tomado de Project Gutenberg, en su idioma original. Las páginas son secciones lógicas de la edición digital. Los resúmenes en español son de TextoVivo; las citas son literales del texto.</p>
-    </div>
-  </section>
+${secFrameworks}${secChecklists}${ejemplo(d)}${secGlosario}${secIndice}
 </main>
 <footer class="pie-sitio">
   <div class="envoltura">
