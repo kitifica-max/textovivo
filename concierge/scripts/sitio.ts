@@ -3,6 +3,7 @@
 //   - una ficha por libro disponible en ../diseno/libros/<id>.html
 // El libro 001 también sale de acá; texto.html solo redirige a su ficha.
 // Uso: node scripts/sitio.ts   (después de node scripts/catalogo.ts)
+import { execFileSync } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { navPrincipal, pie } from "./chrome.ts";
 
@@ -205,6 +206,11 @@ ${d.indice.map((s, i) => `        <li><span class="n">${String(i + 1).padStart(2
 <meta property="og:title" content="${esc(titulo)} — Textifika">
 <meta property="og:description" content="${esc(resumenMeta)}">
 <meta property="og:url" content="https://textifika.kitifica.com/libros/${f.id}">
+<meta property="og:image" content="https://textifika.kitifica.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://textifika.kitifica.com/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -279,5 +285,9 @@ ${pie}
 // Mapa del sitio: páginas públicas + una ficha por libro disponible.
 const BASE = "https://textifika.kitifica.com";
 const urls = ["/", "/biblioteca", "/planes", "/guia", "/autores", "/terminos", "/privacidad", ...fichas.filter(disponible).map((f) => `/libros/${f.id}`)];
-await writeFile("../diseno/sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${BASE}${u}</loc></url>\n`).join("")}</urlset>\n`);
+// lastmod: fecha del último commit del archivo (sin git, se omite).
+const fichero = (u: string) => u === "/" ? "index.html" : u.startsWith("/libros/") ? `libros/${u.slice(8)}.html` : `${u.slice(1)}.html`;
+const lastmod = (u: string) => { try { return execFileSync("git", ["log", "-1", "--format=%cs", "--", fichero(u)], { cwd: "../diseno", encoding: "utf8" }).trim(); } catch { return ""; } };
+const entrada = (u: string) => { const m = lastmod(u); return `  <url><loc>${BASE}${u}</loc>${m ? `<lastmod>${m}</lastmod>` : ""}</url>\n`; };
+await writeFile("../diseno/sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(entrada).join("")}</urlset>\n`);
 console.log(`biblioteca: ${fichas.filter(disponible).length} disponibles de ${fichas.length}; fichas nuevas: ${n}`);
