@@ -37,6 +37,8 @@
   @media (max-width: 1060px) { .usos .grilla { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 680px) { .usos .grilla { grid-template-columns: 1fr; } }
   .usos .poster { aspect-ratio: 4 / 3; }
+  .usos .filtros-usos { margin: 0 0 24px; }
+  .usos .poster[hidden] { display: none; }
   .usos .poster .num { font-size: 9cqi; }
   .usos .libro { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font: 600 max(0.75rem, 3.1cqi)/1.3 var(--sans); padding-right: 14cqi; }
   .usos .poster .titulo { margin-top: auto; font-size: 8.2cqi; line-height: 1.02; }
@@ -200,46 +202,90 @@
     <div class="envoltura">
       <div class="cabeza">
         <div><p class="micro">Para qué sirve</p><h2 style="margin-top:10px">Le pedís lo de siempre. Te responde un libro.</h2></div>
-        <p class="bajada" style="max-width:24em">Seis cosas que le vas a poder pedir a tu IA, y el libro que le da la respuesta.</p>
+        <p class="bajada" style="max-width:26em">Pedidos reales de trabajo, y el libro que responde cada uno con la página exacta. Son solo doce: la <a class="enlace" href="/biblioteca.html">biblioteca</a> tiene muchos más.</p>
+      </div>
+      <div class="segmentado filtros-usos" role="group" aria-label="Filtrar casos de uso">
+        <button type="button" data-filtro="todo" aria-pressed="true">Todo</button>
+        <button type="button" data-filtro="negocio" aria-pressed="false">Negocio y estrategia</button>
+        <button type="button" data-filtro="codigo" aria-pressed="false">Código y producto</button>
+        <button type="button" data-filtro="ia" aria-pressed="false">IA y agentes</button>
+        <button type="button" data-filtro="escribir" aria-pressed="false">Pensar, escribir y datos</button>
       </div>
       <div class="grilla">
-        <article class="poster c-rojo" data-aparece style="--i:4">
+        <article class="poster c-rojo" data-grupo="negocio" data-aparece style="--i:4">
           <span class="num">01</span>
           <p class="libro">El arte de la guerra <span class="estado vivo">Disponible</span></p>
           <h3 class="titulo t-grotesca">«Revisá mi estrategia contra la competencia.»</h3>
           <p class="texto fuerte">Compara tu posición con las siete consideraciones de Sun Tzu y te dice la página de cada una.</p>
         </article>
-        <article class="poster c-azul" data-aparece style="--i:5">
+        <article class="poster c-manteca" data-grupo="negocio" data-aparece style="--i:5">
           <span class="num">02</span>
-          <p class="libro">El arte de la guerra <span class="estado vivo">Disponible</span></p>
-          <h3 class="titulo t-serif">«¿Qué estoy haciendo mal liderando a mi equipo?»</h3>
-          <p class="texto">Revisa tu caso con los cinco defectos del líder y las seis calamidades, con sus páginas.</p>
-        </article>
-        <article class="poster c-manteca" data-aparece style="--i:6">
-          <span class="num">03</span>
           <p class="libro">Scientific Advertising <span class="estado vivo">Disponible</span></p>
           <h3 class="titulo t-grotesca">«Mejorá el texto de mi landing.»</h3>
           <p class="texto fuerte">Aplica los principios de Hopkins sobre titulares y pruebas, y te dice de dónde sale cada consejo.</p>
         </article>
-        <article class="poster c-hueso plegado" data-aparece style="--i:7">
-          <span class="num">04</span>
+        <article class="poster c-hueso plegado" data-grupo="negocio" data-aparece style="--i:6">
+          <span class="num">03</span>
           <p class="libro">Oráculo manual · Gracián <span class="estado vivo">Disponible</span></p>
           <h3 class="titulo t-cursiva">«¿Acepto esta propuesta o la negocio?»</h3>
-          <p class="texto cursiva">Te responde con las reglas de Gracián para decidir y negociar, y cita cada una.</p>
+          <p class="texto">Te responde con los aforismos de Gracián para decidir y tratar con la gente, y cita cada uno.</p>
         </article>
-        <article class="poster c-celeste" data-aparece style="--i:8">
+        <article class="poster c-azul" data-grupo="codigo" data-aparece style="--i:4">
+          <span class="num">04</span>
+          <p class="libro">Google Engineering Practices <span class="estado vivo">Disponible</span></p>
+          <h3 class="titulo t-serif">«Revisá este pull request como en Google.»</h3>
+          <p class="texto">Usa el estándar de revisión de código de Google: qué mirar, cómo comentar y cuándo aprobar.</p>
+        </article>
+        <article class="poster c-negro" data-grupo="codigo" data-aparece style="--i:5">
           <span class="num">05</span>
-          <p class="libro">Ramón y Cajal <span class="estado vivo">Disponible</span></p>
-          <h3 class="titulo t-grotesca">«Ayudame a armar el plan de mi investigación.»</h3>
-          <p class="texto fuerte">Ordena tu plan con los consejos de Cajal para investigar, con la página de cada uno.</p>
+          <p class="libro">The Twelve-Factor App <span class="estado vivo">Disponible</span></p>
+          <h3 class="titulo t-grotesca">«¿Mi app está lista para escalar?»</h3>
+          <p class="texto fuerte">Revisa configuración, procesos y logs contra los doce factores, uno por uno.</p>
         </article>
-        <article class="poster c-bosque" data-aparece style="--i:9">
+        <article class="poster c-naranja" data-grupo="codigo" data-aparece style="--i:6">
           <span class="num">06</span>
-          <p class="libro">The Art of Money Getting <span class="estado vivo">Disponible</span></p>
-          <h3 class="titulo t-negra" style="font-size:7.6cqi">«Revisá cómo administro mi negocio.»</h3>
-          <p class="texto fuerte">Contrasta tus decisiones con las reglas de Barnum para emprender y administrar.</p>
+          <p class="libro">OWASP Developer Guide <span class="estado vivo">Disponible</span></p>
+          <h3 class="titulo t-negra">«¿Qué se me escapa en seguridad antes de lanzar?»</h3>
+          <p class="texto fuerte">Repasa tu proyecto con la guía de OWASP para cada etapa: requisitos, diseño, código y pruebas.</p>
+        </article>
+        <article class="poster c-celeste" data-grupo="ia" data-aparece style="--i:4">
+          <span class="num">07</span>
+          <p class="libro">Agentes de IA en profundidad <span class="estado vivo">Disponible</span></p>
+          <h3 class="titulo t-grotesca">«Diseñame un agente para atender soporte.»</h3>
+          <p class="texto fuerte">Lo arma con los tres principios del libro: el modelo, su contexto y sus herramientas.</p>
+        </article>
+        <article class="poster c-menta" data-grupo="ia" data-aparece style="--i:5">
+          <span class="num">08</span>
+          <p class="libro">NIST AI RMF <span class="estado vivo">Disponible</span></p>
+          <h3 class="titulo t-grotesca">«¿Qué riesgos tiene usar IA en mi empresa?»</h3>
+          <p class="texto fuerte">Te guía con las cuatro funciones del marco del NIST: gobernar, mapear, medir y manejar.</p>
+        </article>
+        <article class="poster c-salmon" data-grupo="ia" data-aparece style="--i:6">
+          <span class="num">09</span>
+          <p class="libro">Aprende Claude Code <span class="estado vivo">Disponible</span></p>
+          <h3 class="titulo t-cursiva">«¿Qué permisos le doy a Claude Code?»</h3>
+          <p class="texto">Te dice qué conviene permitir y qué no, con el checklist del libro y la página de cada punto.</p>
+        </article>
+        <article class="poster c-bosque" data-grupo="escribir" data-aparece style="--i:4">
+          <span class="num">10</span>
+          <p class="libro">The Elements of Style <span class="estado vivo">Disponible</span></p>
+          <h3 class="titulo t-alta">«Hacé este correo más claro y más corto.»</h3>
+          <p class="texto fuerte">Lo corrige con las reglas de Strunk para escribir con claridad, y te muestra cada regla.</p>
+        </article>
+        <article class="poster c-acero" data-grupo="escribir" data-aparece style="--i:5">
+          <span class="num">11</span>
+          <p class="libro">Learning Statistics with jamovi <span class="estado vivo">Disponible</span></p>
+          <h3 class="titulo t-grotesca">«¿Qué prueba estadística uso con estos datos?»</h3>
+          <p class="texto fuerte">Te ayuda a elegir y revisar la prueba con los supuestos de cada una, con la página exacta.</p>
+        </article>
+        <article class="poster c-cuadricula" data-grupo="escribir" data-aparece style="--i:6">
+          <span class="num">12</span>
+          <p class="libro">How We Think · Dewey <span class="estado vivo">Disponible</span></p>
+          <h3 class="titulo t-serif">«Ayudame a pensar este problema paso a paso.»</h3>
+          <p class="texto">Lo ordena con las cinco fases del pensamiento reflexivo de Dewey.</p>
         </article>
       </div>
+      <p style="margin-top:32px"><a class="boton" href="/biblioteca.html">Ver todos los libros →</a></p>
     </div>
   </section>
 
@@ -248,7 +294,7 @@
       <!--destacados-->
       <div class="cabeza">
         <div><p class="micro">Ya en la biblioteca</p><h2 style="margin-top:10px">Los libros más importantes.</h2></div>
-        <p class="bajada" style="max-width:26em">Clásicos de estrategia, negocios, decisiones y escritura, listos para que tu IA los consulte.</p>
+        <p class="bajada" style="max-width:26em">Clásicos de estrategia y negocios, guías de programación, IA y agentes, y libros para escribir, decidir y analizar datos, listos para que tu IA los consulte.</p>
       </div>
       <div class="grilla cuatro">
       <a class="poster c-rojo plegado" href="libros/arte-de-la-guerra.html" data-tema="estrategia" data-aparece style="--i:3">
@@ -416,6 +462,13 @@
   <div class="envoltura pie-base"><span>© 2026 Textifika — Edición uno · El Salvador</span></div>
 </footer>
 <script src="app.js"></script>
+<script>
+// Filtro de casos de uso por perfil.
+document.querySelectorAll(".filtros-usos button").forEach((b) => b.addEventListener("click", () => {
+  document.querySelectorAll(".filtros-usos button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+  document.querySelectorAll(".usos .poster[data-grupo]").forEach((c) => { c.hidden = b.dataset.filtro !== "todo" && c.dataset.grupo !== b.dataset.filtro; });
+}));
+</script>
 <script>
 (() => {
   const $ = (id) => document.getElementById(id);

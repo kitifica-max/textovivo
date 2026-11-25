@@ -53,7 +53,7 @@ const total = fichas.filter(disponible).length;
 const bloque = `
       <div class="cabeza">
         <div><p class="micro">Ya en la biblioteca</p><h2 style="margin-top:10px">Los libros más importantes.</h2></div>
-        <p class="bajada" style="max-width:26em">Clásicos de estrategia, negocios, decisiones y escritura, listos para que tu IA los consulte.</p>
+        <p class="bajada" style="max-width:26em">Clásicos de estrategia y negocios, guías de programación, IA y agentes, y libros para escribir, decidir y analizar datos, listos para que tu IA los consulte.</p>
       </div>
       <div class="grilla cuatro">
 ${elegidos.map(poster).join("")}      </div>
