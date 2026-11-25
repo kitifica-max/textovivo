@@ -13,6 +13,8 @@ test("el plan vence a la fecha y el otorgado a mano no vence", () => {
 
 test("renovar antes de vencer suma los 30 días al final, sin perder los que quedaban", () => {
   assert.equal(extenderVencimiento(null, hoy), "2026-12-24T12:00:00.000Z");
+  // Regla del acceso a la biblioteca: el pago suma 30 días sobre los que quedan (30 gratis + 30 pagados ≈ 60).
+  assert.equal(extenderVencimiento("2026-12-24T12:00:00.000Z", hoy, 30), "2027-01-23T12:00:00.000Z");
   assert.equal(extenderVencimiento("2026-12-01T12:00:00.000Z", hoy), "2026-12-31T12:00:00.000Z");
   assert.equal(extenderVencimiento("2026-11-01T12:00:00.000Z", hoy), "2026-12-24T12:00:00.000Z"); // ya vencido: cuenta desde hoy
   assert.equal(diasRestantes("2026-12-01T12:00:00.000Z", hoy), 7);
