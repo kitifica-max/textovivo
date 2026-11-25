@@ -220,7 +220,7 @@ document.querySelectorAll("[data-ia]").forEach((ia) => {
   };
   const poner = (e, k) => { e.texto.textContent = e.completo.slice(0, k); e.fantasma.textContent = e.completo.slice(k); };
   const resultadoTool = (t) => (t.hasAttribute("data-vacio") ? "vacio" : "listo");
-  const limpiar = (e) => { e.esc.dataset.estado = ""; e.pasos.forEach((p) => p.classList.remove("visible", "activo", "listo", "vacio")); poner(e, 0); };
+  const limpiar = (e) => { e.esc.dataset.estado = ""; const c = e.esc.querySelector(".ia-cuerpo"); if (c) c.scrollTop = 0; e.pasos.forEach((p) => p.classList.remove("visible", "activo", "listo", "vacio")); poner(e, 0); };
   const mostrarTodo = (e) => {
     e.esc.dataset.estado = "listo"; poner(e, e.completo.length);
     e.tools.forEach((t) => t.classList.add(resultadoTool(t)));
@@ -237,6 +237,9 @@ document.querySelectorAll("[data-ia]").forEach((ia) => {
     puntos.forEach((b, k) => b.setAttribute("aria-current", String(k === actual)));
   };
 
+  // En móvil el cuerpo tiene altura fija: sigue la última parte, como un chat (en escritorio no hay nada que desplazar).
+  const seguir = (e) => { const c = e.esc.querySelector(".ia-cuerpo"); if (c && c.scrollHeight > c.clientHeight) c.scrollTo({ top: c.scrollHeight, behavior: reducido ? "auto" : "smooth" }); };
+
   async function reproducir() {
     const mia = ++corrida;
     const vigente = () => mia === corrida;
@@ -250,9 +253,9 @@ document.querySelectorAll("[data-ia]").forEach((ia) => {
     for (let i = 1; i <= e.completo.length; i++) { if (!vigente()) return; poner(e, i); await espera(e.completo[i - 1] === " " ? 38 : 26); }
     e.esc.dataset.estado = "consultando";
     await espera(500);
-    for (const t of e.tools) { if (!vigente()) return; t.classList.add("activo"); await espera(850); t.classList.replace("activo", resultadoTool(t)); await espera(150); }
+    for (const t of e.tools) { if (!vigente()) return; t.classList.add("activo"); seguir(e); await espera(850); t.classList.replace("activo", resultadoTool(t)); await espera(150); }
     await espera(250);
-    for (const p of e.resto) { if (!vigente()) return; p.classList.add("visible"); await espera(p.classList.contains("ia-cita") || p.classList.contains("ia-nada") ? 1500 : 800); }
+    for (const p of e.resto) { if (!vigente()) return; p.classList.add("visible"); setTimeout(() => seguir(e), 80); setTimeout(() => seguir(e), 620); await espera(p.classList.contains("ia-cita") || p.classList.contains("ia-nada") ? 1500 : 800); }
     e.esc.dataset.estado = "listo";
     await espera(4500);
     while (pausado && vigente()) await espera(400);

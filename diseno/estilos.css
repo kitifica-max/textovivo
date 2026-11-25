@@ -624,9 +624,13 @@ details p { margin: 10px 0 0; color: var(--gris); max-width: 44em; }
   .apertura-ia .ia-tarjeta { width: 92%; }
   .ia-tarjeta[data-pos="anterior"] { transform: translateX(-7%) scale(.9); }
   .ia-tarjeta[data-pos="siguiente"] { transform: translateX(7%) scale(.9); }
-  /* En móvil la tarjeta del frente crece hacia abajo a medida que aparece cada parte, sin dejar espacio vacío:
-     solo ella marca la altura de la pila; las de atrás se ajustan a esa altura. */
+  /* En móvil la tarjeta tiene altura fija (la página no se mueve) y funciona como un chat:
+     cada parte aparece abajo y el contenido se desplaza solo hacia arriba. Las de atrás toman la misma altura. */
   .ia-pila { position: relative; align-items: start; }
+  .ia-tarjeta[data-pos="actual"] { height: min(600px, 74svh); display: flex; flex-direction: column; }
+  .ia-tarjeta .ia-cuerpo { flex: 1; min-height: 0; align-content: start; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(transparent 0, #000 22px); mask-image: linear-gradient(transparent 0, #000 22px); }
+  .ia-tarjeta .ia-cuerpo::-webkit-scrollbar { display: none; }
   .ia-tarjeta:not([data-pos="actual"]) { position: absolute; top: 0; bottom: 0; left: 4%; right: 4%; width: auto !important; overflow: hidden; }
   .ia-tarjeta[data-pos="actual"] [data-paso]:not(.visible):not(.activo):not(.listo):not(.vacio) { display: none; }
   .ia-tarjeta[data-pos="actual"] [data-paso]:is(.visible, .activo, .listo, .vacio) { animation: ia-crece .55s var(--resorte, ease) both; }
