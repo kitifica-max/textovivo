@@ -105,7 +105,7 @@
         <span class="etiqueta">Pago único · no es suscripción</span>
         <h2 id="t-pro">Pro</h2>
         <p class="precio"><span id="precio-pro">US$4.99</span><small>por 30 días</small></p>
-        <p class="lema">Seis cosas que **ya** podés pedirle a tu IA...</p>
+        <p class="lema">Todo lo del plan Gratis, más tus documentos.</p>
         <ul>
           <li>Subí tus propios documentos (PDF, TXT o MD), de hasta 7 MB cada uno</li>
           <li>Solo vos los ves: no se publican ni se comparten</li>
@@ -113,8 +113,9 @@
           <li>Conector MCP único para Claude, Claude Code y Cursor</li>
           <li>Sin renovación automática: te avisamos por correo antes de que venza</li>
         </ul>
-        <a class="boton" id="cta-pro" href="entrar.html?next=mi-biblioteca.html%23plan">Activar Pro</a>
+        <a class="boton" id="cta-pro" href="entrar.html?next=planes.html%23activar">Activar Pro</a>
         <p class="nota-estado" id="estado-pro" role="status"></p>
+        <div id="ts-pago"></div>
       </article>
     </div>
 
@@ -167,12 +168,38 @@
   if (!yo) return;
   $("cta-gratis").textContent = "Ir a Mi biblioteca"; $("cta-gratis").href = "mi-biblioteca.html";
   $("estado-gratis").textContent = "Ya tenés tu acceso gratis.";
-  if (abierto) $("cta-pro").href = "mi-biblioteca.html#plan";
   const p = await fetch("/api/plan", { credentials: "same-origin" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
   if (p && p.plan && p.plan !== "gratis") {
     $("estado-pro").textContent = p.vence ? "Tu plan Pro está activo hasta el " + fecha(p.vence) + "." : "Tu plan Pro está activo.";
     if (abierto && p.vence) $("cta-pro").textContent = "Renovar +30 días";
   }
+
+  // Con sesión y cobro abierto, el botón inicia el pago y lleva directo a la pasarela.
+  if (!abierto) return;
+  const btn = $("cta-pro"), estado = $("estado-pro");
+  if (!yo.usuario.verificado) { estado.innerHTML = 'Confirmá tu email para poder pagar. Pedí otro correo en <a class="enlace" href="mi-biblioteca.html">Mi biblioteca</a>.'; }
+  let ts = null, ocupado = false;
+  const esperar = async (ms) => { const hasta = Date.now() + ms; while (Date.now() < hasta) { const t = ts && ts.token(); if (t) return t; await new Promise((r) => setTimeout(r, 300)); } return ""; };
+  async function pagar() {
+    if (ocupado) return; ocupado = true;
+    const texto = btn.textContent; btn.textContent = "Verificando…"; btn.setAttribute("aria-disabled", "true"); estado.textContent = "";
+    const volver = (m) => { ocupado = false; btn.textContent = texto; btn.removeAttribute("aria-disabled"); estado.textContent = m; };
+    if (!yo.usuario.verificado) return volver("Confirmá tu email antes de pagar.");
+    if (!ts) ts = tvTurnstile("ts-pago", { appearance: "interaction-only" });
+    await ts.listo;
+    const token = await esperar(10000);
+    if (!token) return volver("No pudimos completar la verificación. Recargá la página e intentá de nuevo.");
+    const r = await fetch("/api/pago/iniciar", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ turnstile: token }), credentials: "same-origin" }).catch(() => null);
+    const j = r ? await r.json().catch(() => ({})) : {};
+    ts.reset();
+    if (r && r.ok && j.pago) { try { sessionStorage.setItem("tv_pago", JSON.stringify(j)); } catch {} location.href = "/pago/"; return; }
+    volver(j.error || "No se pudo iniciar el pago. Probá de nuevo.");
+  }
+  btn.removeAttribute("href"); btn.setAttribute("role", "button"); btn.tabIndex = 0;
+  btn.addEventListener("click", (e) => { e.preventDefault(); pagar(); });
+  btn.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pagar(); } });
+  // Si venía de iniciar sesión desde este botón, sigue solo hasta la pasarela.
+  if (location.hash === "#activar") { history.replaceState(null, "", location.pathname); if (yo.usuario.verificado) pagar(); }
 })();
 </script>
 
@@ -207,25 +234,5 @@
   <div class="envoltura pie-base"><span>© 2026 Textifika — Edición uno · El Salvador</span></div>
 </footer>
 <script src="app.js"></script>
-<script>
-// La dirección del conector sale de tu cuenta (sesión), no de la barra de direcciones.
-fetch("/api/yo", { credentials: "same-origin" })
-  .then((r) => (r.ok ? r.json() : null))
-  .then((d) => {
-    if (d && d.acceso) {
-      document.getElementById("url").textContent = d.acceso.url_mcp;
-      document.querySelectorAll("[data-url]").forEach((n) => (n.textContent = d.acceso.url_mcp));
-    } else if (d && !d.usuario.verificado) {
-      document.getElementById("url").textContent = "Confirmá tu email para ver tu dirección";
-      const s = document.getElementById("sin-acceso");
-      s.innerHTML = 'Confirmá tu email para activar el conector: te mandamos un correo a <strong></strong>. Podés pedir otro en <a class="enlace" href="mi-biblioteca.html">Mi biblioteca</a>.';
-      s.querySelector("strong").textContent = d.usuario.email;
-      s.hidden = false;
-    } else {
-      document.getElementById("sin-acceso").hidden = false;
-    }
-  })
-  .catch(() => (document.getElementById("sin-acceso").hidden = false));
-</script>
 </body>
 </html>
