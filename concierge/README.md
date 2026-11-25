@@ -123,7 +123,7 @@ Anotar aparte, porque el Worker no lo ve:
 ## Límites conocidos (a propósito, es una prueba)
 
 - Búsqueda por palabras en memoria (TF-IDF por página). La V1 usa FTS5 en D1.
-- Sin límite de llamadas por minuto, solo la cuota de 150 por compra.
+- Sin límite de llamadas por minuto, solo la cuota por acceso: 150 en Gratis y 450 con Pro vigente (`CONSULTAS_PRO` en `src/plan.ts`).
 - La URL secreta es el acceso: sin OAuth ni cuentas.
 - Altas de compradores a mano.
 

@@ -10,7 +10,7 @@ import { api, adminEnvios } from "./api.ts";
 import { buscadorD1, cargarTerminosD1 } from "./buscador-d1.ts";
 import { avisarVencimientos } from "./avisos.ts";
 import { datosDestilado, esIdPersonal, planHabilitado, puedeVer } from "./personales.ts";
-import { planEfectivo } from "./plan.ts";
+import { limiteConsultas, planEfectivo } from "./plan.ts";
 import { Destilado } from "./schema.ts";
 import {
   buscarConcepto,
@@ -67,11 +67,11 @@ const texto = (t: string) => ({ content: [{ type: "text" as const, text: t }] })
 async function usar(herramienta: string, consulta: string, ejecutar: () => unknown | Promise<unknown>) {
   const token = String(getMcpAuthContext()?.props.token ?? "");
   const comprador = await env.DB.prepare(
-    `SELECT b.expires_at, b.calls, b.user_id, u.email_verificado_at
+    `SELECT b.expires_at, b.calls, b.user_id, u.email_verificado_at, u.plan, u.plan_vence_at
        FROM buyers b LEFT JOIN users u ON u.id = b.user_id WHERE b.token = ?`
   )
     .bind(token)
-    .first<{ expires_at: string; calls: number; user_id: string | null; email_verificado_at: string | null }>();
+    .first<{ expires_at: string; calls: number; user_id: string | null; email_verificado_at: string | null; plan: string | null; plan_vence_at: string | null }>();
 
   if (!comprador) return texto("Acceso no válido.");
   // Los accesos de cuentas nuevas solo funcionan con el email confirmado (los anteriores no tienen cuenta y siguen igual).
@@ -81,7 +81,7 @@ async function usar(herramienta: string, consulta: string, ejecutar: () => unkno
     return texto(
       `Tu acceso a Textifika venció el ${comprador.expires_at.slice(0, 10)}. Podés renovarlo en ${env.PUBLIC_URL}`
     );
-  const limite = Number(env.CALLS_PER_TOKEN);
+  const limite = limiteConsultas(comprador.plan ?? "gratis", comprador.plan_vence_at, Number(env.CALLS_PER_TOKEN));
   if (comprador.calls >= limite)
     return texto(
       `Usaste las ${limite} consultas de este acceso. Podés renovarlo en ${env.PUBLIC_URL}`

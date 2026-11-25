@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { avisoPendiente, diasRestantes, extenderVencimiento, firmaHmac, firmaValida, firmarToken, iguales, leerEvento, leerToken, luhn, marcaTarjeta, montoCoincide, planEfectivo, separarNombre, validarTarjeta } from "./plan.ts";
+import { avisoPendiente, diasRestantes, extenderVencimiento, limiteConsultas, firmaHmac, firmaValida, firmarToken, iguales, leerEvento, leerToken, luhn, marcaTarjeta, montoCoincide, planEfectivo, separarNombre, validarTarjeta } from "./plan.ts";
 
 const hoy = "2026-11-24T12:00:00.000Z";
 
@@ -96,4 +96,11 @@ test("la tarjeta se valida entera en el servidor", () => {
 test("el nombre se separa en nombre y apellido", () => {
   assert.deepEqual(separarNombre("Ana María Pérez"), { nombre: "Ana", apellido: "María Pérez" });
   assert.deepEqual(separarNombre("Madonna"), { nombre: "Madonna", apellido: "Madonna" });
+});
+
+test("el plan Pro vigente triplica las consultas y el vencido vuelve al tope gratis", () => {
+  const hoy = "2026-11-24T12:00:00.000Z";
+  assert.equal(limiteConsultas("gratis", null, 150, hoy), 150);
+  assert.equal(limiteConsultas("pro", "2026-12-24T12:00:00.000Z", 150, hoy), 450);
+  assert.equal(limiteConsultas("pro", "2026-11-01T12:00:00.000Z", 150, hoy), 150); // venció
 });

@@ -8,6 +8,11 @@ export function planEfectivo(plan: string, venceAt: string | null, ahora = new D
   return venceAt && venceAt <= ahora ? "gratis" : plan;
 }
 
+/** Consultas por acceso de 30 días con plan Pro vigente (el plan Gratis usa CALLS_PER_TOKEN): el triple. */
+export const CONSULTAS_PRO = 450;
+export const limiteConsultas = (plan: string, venceAt: string | null, gratis: number, ahora = new Date().toISOString()) =>
+  planEfectivo(plan, venceAt, ahora) === "gratis" ? gratis : Math.max(gratis, CONSULTAS_PRO);
+
 /** Cada pago suma 30 días; si todavía queda plan vigente, se suman al final (renovar antes no pierde días). */
 export function extenderVencimiento(venceAt: string | null, ahora = new Date().toISOString(), dias = DIAS_PLAN) {
   const base = venceAt && venceAt > ahora ? venceAt : ahora;

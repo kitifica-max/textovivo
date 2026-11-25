@@ -7,7 +7,7 @@ import {
 import { correoRestablecer, correoSolicitudLibro, correoVerificacion, enviarCorreo } from "./correo.ts";
 import { extraer } from "./extraer.ts";
 import { evaluarEnvio, publicarEnvio, slug } from "./evaluacion.ts";
-import { DIAS_PLAN, diasRestantes, extenderVencimiento, firmaValida, firmarToken, leerEvento, leerToken, montoCoincide, planEfectivo, separarNombre, validarTarjeta } from "./plan.ts";
+import { DIAS_PLAN, diasRestantes, extenderVencimiento, firmaValida, firmarToken, leerEvento, leerToken, limiteConsultas, montoCoincide, planEfectivo, separarNombre, validarTarjeta } from "./plan.ts";
 import { apiSecret, crearEnlace, crearTransaccion3DS, ErrorWompi, modoPruebas, obtenerTransaccion, wompiConfigurado } from "./wompi.ts";
 import { notaPaginas } from "./tools.ts";
 
@@ -89,12 +89,17 @@ async function crearAcceso(userId: string, email: string) {
 }
 
 type Acceso = { token: string; expires_at: string; calls: number; last_call_at: string | null };
+/** Tope de consultas de la cuenta: el de Gratis, o el de Pro si tiene el plan vigente. */
+const limiteDe = async (userId: string) => {
+  const r = await env.DB.prepare("SELECT plan, plan_vence_at FROM users WHERE id = ?").bind(userId).first<{ plan: string; plan_vence_at: string | null }>();
+  return limiteConsultas(r?.plan ?? "gratis", r?.plan_vence_at ?? null, Number(env.CALLS_PER_TOKEN));
+};
 const accesoDe = (userId: string) =>
   env.DB.prepare("SELECT token, expires_at, calls, last_call_at FROM buyers WHERE user_id = ? ORDER BY created_at DESC")
     .bind(userId)
     .first<Acceso>();
 
-function vistaAcceso(a: Acceso | null, origin: string) {
+function vistaAcceso(a: Acceso | null, origin: string, limite = Number(env.CALLS_PER_TOKEN)) {
   if (!a) return null;
   const dias = Math.ceil((new Date(a.expires_at).getTime() - Date.now()) / DIA);
   return {
@@ -103,7 +108,7 @@ function vistaAcceso(a: Acceso | null, origin: string) {
     dias_restantes: Math.max(0, dias),
     vencido: a.expires_at <= ahora(),
     consultas_usadas: a.calls,
-    consultas_limite: Number(env.CALLS_PER_TOKEN),
+    consultas_limite: limite,
     ultima_consulta: a.last_call_at
   };
 }
@@ -402,7 +407,7 @@ export async function api(req: Request, url: URL, ctx?: ExecutionContext): Promi
     return json({
       usuario: { nombre: u.nombre, email: u.email, verificado },
       // Sin email confirmado no se muestra el conector (y el servidor tampoco lo atiende).
-      acceso: verificado ? vistaAcceso(await accesoDe(u.id), env.SITIO_URL) : null,
+      acceso: verificado ? vistaAcceso(await accesoDe(u.id), env.SITIO_URL, await limiteDe(u.id)) : null,
       libros: [...catalogoJson.map((d) => ({ id: d.id, titulo: d.titulo, autor: d.autor })), ...results],
       mis_libros: await misLibros(u.id),
       terminos_version: TERMINOS_VERSION
