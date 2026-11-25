@@ -115,6 +115,8 @@ p { margin: 0 0 1em; }
 .navegacion a:not(.boton):hover { color: var(--tinta); background: color-mix(in srgb, var(--tinta) 6%, transparent); }
 .navegacion a[aria-current="page"] { color: var(--tinta); background: color-mix(in srgb, var(--tinta) 8%, transparent); }
 .navegacion .boton { margin-left: 8px; }
+/* En pantallas táctiles, cada enlace del menú mide al menos 44 px de alto (área cómoda para el dedo). */
+@media (pointer: coarse) { .navegacion a:not(.boton), .navegacion button.salir { min-height: 44px; display: inline-flex; align-items: center; } }
 .navegacion button.salir { font: inherit; font-size: 0.9rem; font-weight: 500; color: var(--gris); background: none; border: 0; padding: 8px 12px; border-radius: 999px; cursor: pointer; }
 .navegacion button.salir:hover { color: var(--tinta); background: color-mix(in srgb, var(--tinta) 6%, transparent); }
 @media (max-width: 420px) {

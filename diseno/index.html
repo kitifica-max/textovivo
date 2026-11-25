@@ -32,6 +32,43 @@
   .apertura .acciones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
 
   /* Usos: lo primero después del titular */
+  /* ---------- Pedinos un libro: póster + ficha de biblioteca ---------- */
+  .pedir { padding: clamp(56px, 9vw, 112px) 0 clamp(48px, 7vw, 96px); }
+  .pedir-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(16px, 2vw, 24px); align-items: stretch; }
+  .pedir-poster { aspect-ratio: auto; min-height: 100%; }
+  .pedir-poster .num { font-size: 9cqi; }
+  .pedir-micro { color: inherit; opacity: .8; margin-top: auto; }
+  .pedir-poster .titulo { font-size: 15cqi; line-height: .95; margin: 10px 0 6cqi; }
+  .pedir-puntos { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; font: 500 max(0.92rem, 3.6cqi)/1.4 var(--sans); }
+  .pedir-puntos li { display: grid; grid-template-columns: 2.4em 1fr; border-top: 1px solid color-mix(in srgb, currentColor 30%, transparent); padding-top: 12px; }
+  .pedir-puntos span { font: 500 .8em/1.6 var(--mono); opacity: .75; }
+
+  .ficha { background: var(--superficie); padding: clamp(22px, 3vw, 40px); display: flex; flex-direction: column; }
+  .ficha-cabeza { margin: 0 0 18px; }
+  .ficha-form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; }
+  .ficha-form .ancho { grid-column: 1 / -1; }
+  .ficha .campo label small { color: var(--gris); font-size: inherit; }
+  .ficha .campo textarea { width: 100%; min-height: 96px; padding: 12px 14px; border: 1px solid var(--linea); border-radius: 12px; background: var(--superficie);
+    color: var(--tinta); font: 400 1rem/1.45 var(--sans); resize: vertical; transition: border-color .15s, box-shadow .15s; }
+  .ficha .campo textarea:focus { outline: none; border-color: var(--foco); box-shadow: 0 0 0 4px color-mix(in srgb, var(--foco) 22%, transparent); }
+  .ficha-pie { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-top: 6px; }
+  .ficha-ts { min-height: 65px; }
+  .ficha-pie .boton { min-width: 200px; }
+  .ficha .error { margin: 0 0 14px; }
+  .ficha-ok { display: grid; gap: 12px; justify-items: start; align-content: center; flex: 1; font-size: 1.05rem; }
+  .ficha-ok p { margin: 0; }
+  .ficha-check { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: color-mix(in srgb, #2f8f5b 14%, transparent); color: #2f8f5b; animation: ficha-entra .45s var(--resorte) both; }
+  .ficha-check svg { width: 28px; height: 28px; }
+  @keyframes ficha-entra { from { opacity: 0; transform: scale(.8); } }
+
+  @media (max-width: 860px) {
+    .pedir-grid { grid-template-columns: 1fr; }
+    .pedir-poster { min-height: 0; }
+    .pedir-poster .titulo { font-size: 13cqi; }
+    .ficha-form { grid-template-columns: 1fr; }
+    .ficha-pie .boton { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) { .ficha-check { animation: none; } }
   .usos { padding: clamp(8px, 2vw, 24px) 0 clamp(64px, 9vw, 112px); }
   .usos .grilla { grid-template-columns: repeat(3, 1fr); }
   @media (max-width: 1060px) { .usos .grilla { grid-template-columns: repeat(2, 1fr); } }
@@ -407,23 +444,38 @@
     </div>
   </section>
 
-  <section id="pedir-libro" aria-label="Pedir un libro" style="padding:clamp(56px,9vw,112px) 0 clamp(40px,6vw,80px)">
-    <div class="envoltura">
-      <div class="caja-centro" style="margin:0 auto">
-        <p class="micro">¿Falta uno?</p>
-        <h2 style="margin-top:10px">Pedinos un libro.</h2>
-        <p class="bajada" style="margin:10px 0 24px">Decinos cuál te gustaría tener en tu IA. Priorizamos los de dominio público y licencia abierta.</p>
-        <p id="pl-ok" class="ok" role="status" hidden>¡Gracias! Recibimos tu solicitud. La revisamos con calma.</p>
+  <section id="pedir-libro" class="pedir" aria-labelledby="pedir-titulo">
+    <div class="envoltura pedir-grid">
+      <aside class="poster c-azul pedir-poster" data-aparece style="--i:1">
+        <span class="num">¿?</span>
+        <p class="micro pedir-micro">¿Falta uno?</p>
+        <h2 class="titulo t-serif" id="pedir-titulo">Pedinos un libro.</h2>
+        <ul class="pedir-puntos">
+          <li><span aria-hidden="true">01</span>Decinos cuál te gustaría tener en tu IA.</li>
+          <li><span aria-hidden="true">02</span>Priorizamos los de dominio público y licencia abierta.</li>
+          <li><span aria-hidden="true">03</span>Si nos dejás tu email, te avisamos cuando esté.</li>
+        </ul>
+      </aside>
+
+      <div class="ficha" data-aparece style="--i:2">
+        <p class="micro ficha-cabeza">Tu solicitud</p>
         <p id="pl-error" class="error" role="alert" hidden></p>
-        <form id="pl-f" novalidate>
-          <div class="campo"><label for="pl-titulo">Título del libro</label><input id="pl-titulo" required maxlength="200" autocomplete="off"></div>
-          <div class="campo" style="margin-top:12px"><label for="pl-autor">Autor (opcional)</label><input id="pl-autor" maxlength="200" autocomplete="off"></div>
-          <div class="campo" style="margin-top:12px"><label for="pl-enlace">Enlace donde se puede leer o descargar (opcional)</label><input id="pl-enlace" type="url" inputmode="url" placeholder="https://" maxlength="500" autocomplete="off"></div>
-          <div class="campo" style="margin-top:12px"><label for="pl-motivo">¿Para qué lo usarías? (opcional)</label><textarea id="pl-motivo" rows="3" maxlength="1000" style="width:100%;box-sizing:border-box;font:inherit;padding:12px 14px;border:1px solid var(--linea,#d8d3c6);border-radius:12px;background:transparent;color:inherit;resize:vertical"></textarea></div>
-          <div class="campo" style="margin-top:12px"><label for="pl-email">Tu email, si querés que te avisemos (opcional)</label><input id="pl-email" type="email" autocomplete="email" maxlength="200"></div>
+        <div id="pl-ok" class="ficha-ok" role="status" hidden>
+          <span class="ficha-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <p><strong>¡Gracias!</strong> Recibimos tu solicitud y la revisamos con calma.</p>
+          <a class="enlace" href="/biblioteca.html">Mientras tanto, mirá la biblioteca →</a>
+        </div>
+        <form id="pl-f" class="ficha-form" novalidate>
+          <div class="campo ancho"><label for="pl-titulo">Título del libro</label><input id="pl-titulo" required maxlength="200" autocomplete="off" placeholder="Ej.: Deep Work"></div>
+          <div class="campo"><label for="pl-autor">Autor <small>(opcional)</small></label><input id="pl-autor" maxlength="200" autocomplete="off"></div>
+          <div class="campo"><label for="pl-email">Tu email <small>(opcional, para avisarte)</small></label><input id="pl-email" type="email" autocomplete="email" maxlength="200"></div>
+          <div class="campo ancho"><label for="pl-enlace">Dónde se puede leer o descargar <small>(opcional)</small></label><input id="pl-enlace" type="url" inputmode="url" placeholder="https://" maxlength="500" autocomplete="off"></div>
+          <div class="campo ancho"><label for="pl-motivo">¿Para qué lo usarías? <small>(opcional)</small></label><textarea id="pl-motivo" rows="3" maxlength="1000"></textarea></div>
           <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Web <input id="pl-web" tabindex="-1" autocomplete="off"></label></div>
-          <div id="pl-ts" style="margin:14px 0;min-height:65px"></div>
-          <button class="boton ancho" type="submit">Enviar solicitud</button>
+          <div class="ficha-pie ancho">
+            <div id="pl-ts" class="ficha-ts"></div>
+            <button class="boton" type="submit">Enviar solicitud</button>
+          </div>
         </form>
       </div>
     </div>
@@ -490,7 +542,7 @@ document.querySelectorAll(".filtros-usos button").forEach((b) => b.addEventListe
       method: "POST", headers: { "content-type": "application/json" },
       body: JSON.stringify({ titulo: $("pl-titulo").value, autor: $("pl-autor").value, enlace: $("pl-enlace").value, motivo: $("pl-motivo").value, email: $("pl-email").value, web: $("pl-web").value, turnstile: t })
     }).then(async (x) => ({ ok: x.ok, d: await x.json().catch(() => ({})) })).catch(() => ({ ok: false, d: { error: "No hay conexión. Probá de nuevo." } }));
-    if (r.ok) { f.hidden = true; $("pl-ok").hidden = false; }
+    if (r.ok) { f.hidden = true; $("pl-ok").hidden = false; $("pl-ok").scrollIntoView({ block: "nearest", behavior: "smooth" }); }
     else { falla(r.d.error || "No se pudo enviar. Probá de nuevo."); ts.reset(); }
   });
 })();
