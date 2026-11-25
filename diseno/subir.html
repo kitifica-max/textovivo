@@ -22,7 +22,41 @@
   .subir label { display: block; margin-bottom: 6px; font-weight: 600; }
   .subir input[type=text], .subir select, .subir textarea { width: 100%; font: inherit; padding: 13px 16px; border-radius: 14px; border: 1px solid var(--linea); background: #fff; color: var(--tinta); }
   .subir textarea { min-height: 120px; resize: vertical; }
-  .subir input[type=file] { width: 100%; padding: 14px; border: 1.5px dashed var(--linea); border-radius: 14px; background: #fff; }
+  /* Zona de arrastre (mismo componente que «Mis documentos») */
+  .subir .zona { position: relative; min-height: 164px; display: grid; place-items: center; padding: 24px; text-align: center; cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent; --resorte: cubic-bezier(.22, 1, .36, 1);
+    border-radius: 22px; border: 1.5px dashed color-mix(in srgb, var(--tinta) 24%, transparent); background: color-mix(in srgb, var(--tinta) 3%, transparent);
+    transition: transform .45s var(--resorte), background .25s ease, border-color .25s ease, box-shadow .4s ease; }
+  .zona:hover { background: color-mix(in srgb, var(--tinta) 6%, transparent); }
+  .zona:active { transform: scale(.985); transition-duration: .1s; }
+  .zona:focus-visible { outline: 3px solid color-mix(in srgb, var(--foco) 50%, transparent); outline-offset: 3px; }
+  .zona[data-arrastre="si"] { transform: scale(1.018); border-style: solid; border-color: var(--foco); background: color-mix(in srgb, var(--foco) 10%, transparent); box-shadow: 0 22px 44px -22px color-mix(in srgb, var(--foco) 60%, transparent); }
+  .zona[data-arrastre="si"] .z-icono { transform: translateY(-7px) scale(1.1); }
+  .zona[data-estado="elegido"] { border-style: solid; border-color: var(--linea); background: var(--superficie); }
+  .zona[data-estado="error"] { border-color: color-mix(in srgb, #b3261e 55%, transparent); background: color-mix(in srgb, #b3261e 5%, transparent); }
+  .zona > div { display: none; width: 100%; animation: z-entra .5s var(--resorte) both; }
+  .zona[data-estado="vacio"] .z-vacio, .zona[data-estado="error"] .z-vacio { display: grid; }
+  .zona[data-estado="elegido"] .z-archivo { display: flex; }
+  @keyframes z-entra { from { opacity: 0; transform: translateY(8px) scale(.98); } }
+  .z-vacio { gap: 6px; justify-items: center; }
+  .z-icono { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 8px; background: color-mix(in srgb, var(--tinta) 8%, transparent); color: var(--tinta); transition: transform .45s var(--resorte); }
+  .z-icono svg { width: 26px; height: 26px; }
+  .z-titulo { font: 800 1.2rem/1.2 var(--sans); letter-spacing: -0.025em; }
+  .z-ayuda { font-size: 0.85rem; color: var(--gris); }
+  .solo-tactil { display: none; }
+  @media (pointer: coarse) { .solo-raton { display: none; } .solo-tactil { display: inline; } }
+  .z-archivo { align-items: center; gap: 14px; text-align: left; }
+  .z-tipo { flex: none; width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; font: 800 0.8rem var(--sans); letter-spacing: 0.02em; color: #fff; background: #df2a1f; }
+  .z-tipo[data-t="TXT"] { background: #2f55c4; }
+  .z-tipo[data-t="MD"] { background: #2f8f5b; }
+  .z-datos { flex: 1; min-width: 0; display: grid; gap: 2px; }
+  .z-datos strong { font-size: 1rem; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .z-datos small { font-size: 0.8rem; color: var(--gris); }
+  .z-quitar { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 0; background: color-mix(in srgb, var(--tinta) 7%, transparent); color: var(--gris); cursor: pointer; display: grid; place-items: center; transition: transform .1s ease-out, background .2s, color .2s; }
+  .z-quitar:hover { background: color-mix(in srgb, var(--tinta) 12%, transparent); color: var(--tinta); }
+  .z-quitar:active { transform: scale(.92); }
+  .z-quitar svg { width: 16px; height: 16px; }
+  .subir .z-error { margin: 8px 0 0; padding: 10px 14px; border-radius: 12px; background: color-mix(in srgb, #b3261e 10%, transparent); color: #b3261e; font-size: 0.9rem; font-weight: 600; }
+  @media (prefers-reduced-motion: reduce) { .zona, .z-icono, .zona > div { animation: none !important; transition: background .2s, border-color .2s; } .zona[data-arrastre="si"], .zona[data-arrastre="si"] .z-icono, .zona:active { transform: none; } }
   .subir .filas { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .subir .acepto label { display: inline; font-weight: 500; margin: 0; }
   .subir .error { color: #b3261e; font-weight: 600; margin: 0 0 14px; }
@@ -41,6 +75,7 @@
     <nav class="navegacion" aria-label="Principal">
       <a href="biblioteca.html">Biblioteca</a>
       <a href="planes.html">Planes</a>
+      <a href="subir.html">Subir</a>
       <a href="mi-biblioteca.html">Mi biblioteca</a>
       <a class="ocultable" href="autores.html">Para autores</a>
     </nav>
@@ -71,7 +106,24 @@
           <div class="campo"><label for="idioma">Idioma</label><select id="idioma" name="idioma" required><option value="es">Español</option><option value="en">Inglés</option><option value="pt">Portugués</option><option value="fr">Francés</option><option value="de">Alemán</option><option value="it">Italiano</option><option value="otro">Otro</option></select></div>
         </div>
         <div class="campo"><label for="descripcion">Descripción (20 a 1000 caracteres)</label><textarea id="descripcion" name="descripcion" required maxlength="1000"></textarea></div>
-        <div class="campo"><label for="archivo">Archivo (PDF con texto, TXT o MD · hasta 7 MB)</label><input id="archivo" name="archivo" type="file" accept=".pdf,.txt,.md" required></div>
+        <div class="campo">
+          <label id="lbl-archivo">Archivo (PDF con texto, TXT o MD · hasta 7 MB)</label>
+          <input id="archivo" name="archivo" class="sr-only" type="file" accept=".pdf,.txt,.md,application/pdf,text/plain,text/markdown" tabindex="-1" aria-hidden="true">
+          <div id="zona" class="zona" role="button" tabindex="0" data-estado="vacio" aria-labelledby="lbl-archivo" aria-describedby="zona-ayuda">
+            <div class="z-vacio">
+              <span class="z-icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 17v-6"/><path d="m9.5 13.5 2.5-2.5 2.5 2.5"/></svg></span>
+              <strong class="z-titulo"><span class="solo-raton">Arrastrá un archivo acá</span><span class="solo-tactil">Tocá para elegir un archivo</span></strong>
+              <span class="z-ayuda" id="zona-ayuda"><span class="solo-raton">o hacé clic para elegirlo · </span>PDF, TXT o MD · hasta 7 MB</span>
+            </div>
+            <div class="z-archivo">
+              <span class="z-tipo" id="arch-tipo" aria-hidden="true">PDF</span>
+              <span class="z-datos"><strong id="arch-nombre"></strong><small id="arch-tam"></small></span>
+              <button type="button" class="z-quitar" id="arch-quitar" aria-label="Quitar el archivo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            </div>
+          </div>
+          <p class="z-error" id="arch-error" role="alert" hidden></p>
+          <p class="sr-only" role="status" aria-live="polite" id="arch-estado"></p>
+        </div>
 
         <div class="acepto"><input id="dominio_publico" name="dominio_publico" type="checkbox" class="caja"><label for="dominio_publico"><strong>Declaro que soy el titular de los derechos de esta obra</strong> (o tengo autorización completa) y <strong>acepto que pase al dominio público</strong>, de forma irrevocable, para que cualquier persona pueda usarla.</label></div>
         <div class="acepto"><input id="acepto_terminos" name="acepto_terminos" type="checkbox" class="caja"><label for="acepto_terminos">Acepto los <a class="enlace" href="terminos.html" target="_blank" rel="noopener">términos y condiciones</a>.</label></div>
@@ -101,6 +153,7 @@
       <h2 id="pie-t1">Textifika</h2>
       <a href="/biblioteca.html">Biblioteca</a>
       <a href="/planes.html">Planes</a>
+      <a href="/subir.html">Subir una obra</a>
       <a href="/guia.html">Guía de conexión</a>
       <a href="/autores.html">Para autores</a>
       <a href="/mi-biblioteca.html">Mi biblioteca</a>
@@ -150,12 +203,45 @@ async function cargarEnvios() {
     ? lista.map((e) => '<li><span>' + esc(e.titulo) + '<small>' + esc(e.tipo) + ' · ' + new Date(e.created_at).toLocaleDateString("es") + '</small></span><span class="estado' + (e.estado === "aprobado" ? " vivo" : "") + '">' + (e.libro_id ? '<a href="aporte.html?id=' + encodeURIComponent(e.libro_id) + '">' + ESTADOS[e.estado] + '</a>' : ESTADOS[e.estado] || esc(e.estado)) + "</span></li>").join("")
     : '<li><span class="nota">Todavía no subiste nada.</span></li>';
 }
+
+// ---------- Zona de arrastre del archivo ----------
+const zona = $("zona"), inputArchivo = $("archivo");
+const MAX = 7 * 1024 * 1024;
+const tamano = (b) => (b < 1048576 ? Math.max(1, Math.round(b / 1024)) + " KB" : (b / 1048576).toFixed(1).replace(".", ",") + " MB");
+const tipoDe = (n) => ((n.match(/\.(pdf|txt|md)$/i) || [])[1] || "").toUpperCase();
+function avisoArchivo(m) { $("arch-error").hidden = !m; $("arch-error").textContent = m || ""; if (m) $("arch-estado").textContent = m; }
+function quitarArchivo() { inputArchivo.value = ""; zona.dataset.estado = "vacio"; avisoArchivo(""); }
+function elegirArchivo(f, hayMas) {
+  avisoArchivo("");
+  if (!f) return quitarArchivo();
+  const m = !tipoDe(f.name) ? "Solo se aceptan archivos PDF, TXT o MD." : f.size === 0 ? "El archivo está vacío." : f.size > MAX ? "Pesa " + tamano(f.size) + " y el máximo es 7 MB. Probá con una versión más liviana." : "";
+  if (m) { inputArchivo.value = ""; zona.dataset.estado = "error"; return avisoArchivo(m); }
+  const dt = new DataTransfer(); dt.items.add(f); inputArchivo.files = dt.files;   // el formulario envía este input
+  $("arch-nombre").textContent = f.name; $("arch-tam").textContent = tamano(f.size);
+  const t = tipoDe(f.name); $("arch-tipo").textContent = t; $("arch-tipo").dataset.t = t;
+  zona.dataset.estado = "elegido";
+  $("arch-estado").textContent = "Archivo elegido: " + f.name + ", " + tamano(f.size) + ".";
+  if (hayMas) avisoArchivo("Subí de a una obra: se tomó solo el primer archivo.");
+}
+zona.addEventListener("click", (e) => { if (!e.target.closest("#arch-quitar")) inputArchivo.click(); });
+zona.addEventListener("keydown", (e) => { if ((e.key === "Enter" || e.key === " ") && e.target === zona) { e.preventDefault(); inputArchivo.click(); } });
+inputArchivo.addEventListener("change", () => elegirArchivo(inputArchivo.files[0], inputArchivo.files.length > 1));
+$("arch-quitar").addEventListener("click", (e) => { e.stopPropagation(); quitarArchivo(); });
+let dentro = 0;
+const traeArchivos = (e) => [...(e.dataTransfer?.types || [])].includes("Files");
+zona.addEventListener("dragenter", (e) => { if (!traeArchivos(e)) return; e.preventDefault(); dentro++; zona.dataset.arrastre = "si"; });
+zona.addEventListener("dragover", (e) => { if (traeArchivos(e)) { e.preventDefault(); e.dataTransfer.dropEffect = "copy"; } });
+zona.addEventListener("dragleave", () => { dentro = Math.max(0, dentro - 1); if (!dentro) delete zona.dataset.arrastre; });
+zona.addEventListener("drop", (e) => { if (!traeArchivos(e)) return; e.preventDefault(); dentro = 0; delete zona.dataset.arrastre; const fs = e.dataTransfer.files; elegirArchivo(fs[0], fs.length > 1); });
+window.addEventListener("dragover", (e) => { if (traeArchivos(e)) e.preventDefault(); });
+window.addEventListener("drop", (e) => { if (traeArchivos(e)) e.preventDefault(); });
 const ts = tvTurnstile("ts-envio");
 $("formulario").addEventListener("submit", async (ev) => {
   ev.preventDefault();
   $("error").hidden = true; $("ok").hidden = true;
   const f = $("formulario");
   const grande = $("archivo").files[0];
+  if (!grande) { zona.dataset.estado = "error"; avisoArchivo("Elegí el archivo de tu obra."); $("error").textContent = "Falta el archivo."; $("error").hidden = false; return; }
   if (grande && grande.size > 7 * 1024 * 1024) { $("error").textContent = "El archivo pesa más de 7 MB. Probá con una versión más liviana (por ejemplo, un PDF comprimido)."; $("error").hidden = false; return; }
   const token = ts.token();
   if (!token) { $("error").textContent = "Esperá a que termine la verificación antes de enviar."; $("error").hidden = false; return; }
@@ -169,7 +255,7 @@ $("formulario").addEventListener("submit", async (ev) => {
     const j = await r.json().catch(() => ({}));
     if (r.status === 401) return location.replace("entrar.html?next=subir.html");
     if (!r.ok) { $("error").textContent = j.error || "No se pudo enviar. Probá de nuevo."; $("error").hidden = false; return; }
-    f.reset(); $("ok").hidden = false; cargarEnvios();
+    f.reset(); quitarArchivo(); $("ok").hidden = false; cargarEnvios();
   } catch { $("error").textContent = "No hay conexión. Probá de nuevo."; $("error").hidden = false; }
   finally { $("enviar").disabled = false; $("enviar").textContent = "Enviar para revisión"; ts.reset(); }
 });

@@ -48,7 +48,7 @@
     "MODELO_REVISION": "",
     "MODELO_SEGURIDAD": "",
     // Cobro con Wompi: «pruebas» acepta pagos de desarrollo (negocio «en desarrollo» en el panel); «produccion» solo pagos reales.
-    "WOMPI_MODO": "pruebas",
+    "WOMPI_MODO": "produccion",
     // La API 3DS de Wompi exige estos datos del titular; el formulario solo pide nombre, email y tarjeta, así que se completan con estos.
     "WOMPI_CIUDAD": "San Salvador",
     "WOMPI_DIRECCION": "San Salvador",
