@@ -104,6 +104,7 @@ p { margin: 0 0 1em; }
 
 .navegacion { display: flex; align-items: center; gap: 4px; margin-left: auto; }
 .navegacion a:not(.boton) {
+  white-space: nowrap;
   font-size: 0.9rem;
   font-weight: 500;
   text-decoration: none;
@@ -457,7 +458,7 @@ details p { margin: 10px 0 0; color: var(--gris); max-width: 44em; }
 
 /* ---------- Menú de hamburguesa (móvil) ---------- */
 .menu-boton { display: none; }
-@media (max-width: 760px) {
+@media (max-width: 1100px) { /* con 7 enlaces, el menú completo no entra debajo de ~1100 px */
   .cabecera .envoltura { position: relative; }
   .menu-boton {
     display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
@@ -602,8 +603,9 @@ details p { margin: 10px 0 0; color: var(--gris); max-width: 44em; }
 .ia-tarjeta:not([data-pos="actual"]) * { pointer-events: none; }
 .ia-tarjeta[data-pos="anterior"]:hover, .ia-tarjeta[data-pos="siguiente"]:hover { opacity: .85; }
 
-.ia-control { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin: 16px 6% 0; }
-.ia-nota { font-size: .78rem; color: var(--gris); }
+/* Controles siempre centrados bajo la pila: primero el mando, debajo la nota. */
+.ia-control { display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 18px 0 0; text-align: center; }
+.ia-nota { order: 2; font-size: .78rem; color: var(--gris); }
 .ia-mando { display: inline-flex; align-items: center; gap: 6px; }
 .ia-flecha { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--linea); background: var(--superficie); color: var(--tinta); display: grid; place-items: center; cursor: pointer; transition: transform .1s ease-out, background .2s; }
 .ia-flecha:hover { background: color-mix(in srgb, var(--tinta) 6%, var(--superficie)); }
@@ -622,8 +624,6 @@ details p { margin: 10px 0 0; color: var(--gris); max-width: 44em; }
   .apertura-ia .ia-tarjeta { width: 92%; }
   .ia-tarjeta[data-pos="anterior"] { transform: translateX(-7%) scale(.9); }
   .ia-tarjeta[data-pos="siguiente"] { transform: translateX(7%) scale(.9); }
-  .ia-control { margin: 14px 0 0; justify-content: center; }
-  .ia-nota { flex: 1 1 100%; text-align: center; order: 2; }
   /* En móvil la tarjeta del frente crece hacia abajo a medida que aparece cada parte, sin dejar espacio vacío:
      solo ella marca la altura de la pila; las de atrás se ajustan a esa altura. */
   .ia-pila { position: relative; align-items: start; }
