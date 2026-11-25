@@ -161,7 +161,12 @@ async function activarPago(p: PagoFila, idTransaccion: string) {
     const r = await env.DB.prepare("UPDATE pagos SET estado = 'aprobado', transaccion_id = ?, aprobado_at = ? WHERE id = ? AND estado = 'pendiente'").bind(idTransaccion, t, p.id).run();
     if (!r.meta.changes) return false; // ya estaba aprobado: no se suma dos veces
   } catch { return false; } // esa transacción ya activó otro pago
-  const u = await uno<{ plan: string; plan_vence_at: string | null }>("SELECT plan, plan_vence_at FROM users WHERE id = ?", p.user_id);
+  // Pagar siempre incluye el acceso a la biblioteca: suma RENTAL_DAYS a lo que quede y reinicia el contador de consultas.
+  const cuenta = await uno<{ email: string; plan: string; plan_vence_at: string | null }>("SELECT email, plan, plan_vence_at FROM users WHERE id = ?", p.user_id);
+  const acc = await accesoDe(p.user_id);
+  if (acc) await env.DB.prepare("UPDATE buyers SET expires_at = ?, calls = 0 WHERE token = ?").bind(extenderVencimiento(acc.expires_at, t, Number(env.RENTAL_DAYS)), acc.token).run();
+  else await crearAcceso(p.user_id, cuenta.email);
+  const u = cuenta;
   if (u.plan !== "gratis" && !u.plan_vence_at) return true; // plan otorgado a mano, sin vencimiento: no se toca
   await env.DB.prepare("UPDATE users SET plan = 'pro', plan_vence_at = ?, plan_aviso = 0 WHERE id = ?").bind(extenderVencimiento(u.plan_vence_at, t), p.user_id).run();
   return true;
