@@ -201,72 +201,74 @@ document.querySelectorAll(".cabecera").forEach((cab) => {
 });
 
 
-// Ejemplos animados (landing): tres casos. Tipea la pregunta, "consulta" a Textifika y muestra la respuesta con citas.
-// Con prefers-reduced-motion se muestra el caso elegido de una vez. Empieza al entrar en pantalla y pasa solo por los tres una vez;
-// al elegir un caso con las pestañas deja de pasar solo. Tocar la pestaña activa lo repite.
+// Ejemplos animados (landing): carrusel de tarjetas en loop. La del frente tipea la pregunta, "consulta" a Textifika
+// y muestra la respuesta con citas; al terminar pasa sola a la siguiente y vuelve a empezar al final.
+// Con prefers-reduced-motion no se anima ni avanza solo: cada caso se ve completo y se cambia con los controles.
 document.querySelectorAll("[data-ia]").forEach((ia) => {
   const espera = (ms) => new Promise((r) => setTimeout(r, ms));
   const reducido = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const escenas = [...ia.querySelectorAll("[data-escena]")];
-  const pestanas = [...ia.querySelectorAll("[data-caso]")];
-  let actual = 0, corrida = 0, solo = true;
+  const tarjetas = [...ia.querySelectorAll("[data-escena]")];
+  const puntos = [...ia.querySelectorAll("[data-ir]")];
+  const pausa = ia.querySelector("[data-pausa]");
+  const n = tarjetas.length;
+  let actual = 0, corrida = 0, pausado = reducido;
 
   const partes = (esc) => {
     const texto = esc.querySelector("[data-tipeo]");
     const pasos = [...esc.querySelectorAll("[data-paso]")];
-    return { texto, fantasma: esc.querySelector("[data-fantasma]"), completo: texto.dataset.tipeo, pasos, tools: pasos.filter((p) => p.closest(".ia-tools")), resto: pasos.filter((p) => !p.closest(".ia-tools")) };
+    return { esc, texto, fantasma: esc.querySelector("[data-fantasma]"), completo: texto.dataset.tipeo, pasos, tools: pasos.filter((p) => p.closest(".ia-tools")), resto: pasos.filter((p) => !p.closest(".ia-tools")) };
   };
-  const poner = (e, n) => { e.texto.textContent = e.completo.slice(0, n); e.fantasma.textContent = e.completo.slice(n); };
+  const poner = (e, k) => { e.texto.textContent = e.completo.slice(0, k); e.fantasma.textContent = e.completo.slice(k); };
   const resultadoTool = (t) => (t.hasAttribute("data-vacio") ? "vacio" : "listo");
-  const limpiar = (e) => {
-    ia.dataset.estado = "";
-    e.pasos.forEach((p) => p.classList.remove("visible", "activo", "listo", "vacio"));
-    poner(e, 0);
-  };
+  const limpiar = (e) => { e.esc.dataset.estado = ""; e.pasos.forEach((p) => p.classList.remove("visible", "activo", "listo", "vacio")); poner(e, 0); };
   const mostrarTodo = (e) => {
-    ia.dataset.estado = "listo"; poner(e, e.completo.length);
+    e.esc.dataset.estado = "listo"; poner(e, e.completo.length);
     e.tools.forEach((t) => t.classList.add(resultadoTool(t)));
     e.resto.forEach((p) => p.classList.add("visible"));
   };
-  const elegir = (i) => {
-    actual = i;
-    escenas.forEach((esc, k) => { esc.classList.toggle("activa", k === i); esc.setAttribute("aria-hidden", String(k !== i)); });
-    pestanas.forEach((b, k) => { b.setAttribute("aria-selected", String(k === i)); b.tabIndex = k === i ? 0 : -1; });
+  const ubicar = () => {
+    tarjetas.forEach((t, k) => {
+      const rel = (k - actual + n) % n;
+      t.dataset.pos = rel === 0 ? "actual" : rel === 1 ? "siguiente" : rel === n - 1 ? "anterior" : "oculta";
+      const fuera = rel !== 0;
+      t.setAttribute("aria-hidden", String(fuera));
+      t.inert = fuera;
+    });
+    puntos.forEach((b, k) => b.setAttribute("aria-current", String(k === actual)));
   };
 
   async function reproducir() {
     const mia = ++corrida;
-    escenas.forEach((esc) => limpiar(partes(esc)));
-    const e = partes(escenas[actual]);
-    if (reducido) return mostrarTodo(e);
     const vigente = () => mia === corrida;
-    ia.dataset.estado = "escribiendo";
+    tarjetas.forEach((t) => limpiar(partes(t)));
+    const e = partes(tarjetas[actual]);
+    // Las vecinas se ven con su respuesta completa, como en una pila de ejemplos.
+    tarjetas.forEach((t, k) => { if (k !== actual) mostrarTodo(partes(t)); });
+    if (reducido) return mostrarTodo(e);
+    await espera(700); // deja terminar el deslizamiento
+    e.esc.dataset.estado = "escribiendo";
     for (let i = 1; i <= e.completo.length; i++) { if (!vigente()) return; poner(e, i); await espera(e.completo[i - 1] === " " ? 38 : 26); }
-    ia.dataset.estado = "consultando";
+    e.esc.dataset.estado = "consultando";
     await espera(500);
     for (const t of e.tools) { if (!vigente()) return; t.classList.add("activo"); await espera(850); t.classList.replace("activo", resultadoTool(t)); await espera(150); }
     await espera(250);
     for (const p of e.resto) { if (!vigente()) return; p.classList.add("visible"); await espera(p.classList.contains("ia-cita") || p.classList.contains("ia-nada") ? 1500 : 800); }
-    ia.dataset.estado = "listo";
-    // Pasa solo al siguiente caso, una sola vuelta, mientras nadie haya elegido uno.
-    if (solo && actual < escenas.length - 1) {
-      await espera(4500);
-      if (vigente() && solo) { elegir(actual + 1); reproducir(); }
-    }
+    e.esc.dataset.estado = "listo";
+    await espera(4500);
+    while (pausado && vigente()) await espera(400);
+    if (vigente()) ir(actual + 1);
   }
+  const ir = (k) => { actual = (k + n) % n; ubicar(); reproducir(); };
 
-  pestanas.forEach((b, k) => {
-    b.addEventListener("click", () => { solo = false; elegir(k); reproducir(); });
-    b.addEventListener("keydown", (ev) => {
-      const paso = ev.key === "ArrowRight" ? 1 : ev.key === "ArrowLeft" ? -1 : 0;
-      if (!paso) return;
-      ev.preventDefault();
-      const n = (k + paso + pestanas.length) % pestanas.length;
-      solo = false; elegir(n); pestanas[n].focus(); reproducir();
-    });
-  });
-  ia.querySelector("[data-repetir]")?.addEventListener("click", () => { solo = false; reproducir(); });
+  tarjetas.forEach((t, k) => t.addEventListener("click", () => { if (k !== actual) ir(k); }));
+  puntos.forEach((b, k) => b.addEventListener("click", () => ir(k)));
+  ia.querySelectorAll("[data-mover]").forEach((b) => b.addEventListener("click", () => ir(actual + Number(b.dataset.mover))));
+  ia.addEventListener("keydown", (ev) => { if (ev.key === "ArrowRight" || ev.key === "ArrowLeft") { if (ev.target.closest("input,textarea")) return; ev.preventDefault(); ir(actual + (ev.key === "ArrowRight" ? 1 : -1)); } });
+  pausa?.addEventListener("click", () => { pausado = !pausado; pausa.setAttribute("aria-pressed", String(pausado)); pausa.setAttribute("aria-label", pausado ? "Reanudar los ejemplos" : "Pausar los ejemplos"); });
+  if (reducido && pausa) pausa.hidden = true;
+
+  ubicar();
+  tarjetas.forEach((t, k) => (k === actual ? limpiar(partes(t)) : mostrarTodo(partes(t))));
   if (reducido || !("IntersectionObserver" in window)) return reproducir();
-  escenas.forEach((esc) => limpiar(partes(esc)));
-  new IntersectionObserver((e, o) => { if (e[0].isIntersecting) { o.disconnect(); reproducir(); } }, { threshold: 0.2 }).observe(ia);
+  new IntersectionObserver((en, o) => { if (en[0].isIntersecting) { o.disconnect(); reproducir(); } }, { threshold: 0.2 }).observe(ia);
 });

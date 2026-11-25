@@ -588,3 +588,48 @@ details p { margin: 10px 0 0; color: var(--gris); max-width: 44em; }
 .apertura-ia .ia-cita blockquote { margin: 6px 0 4px; font-size: 1.08rem; }
 .apertura-ia .ia-cita p { font-size: 0.82rem; line-height: 1.35; }
 .apertura-ia .ia-cierre { font-size: 0.8rem; }
+
+/* ---------- Hero: carrusel de tarjetas apiladas (la del centro al frente, las vecinas asoman detrás) ---------- */
+.ia-carrusel { position: relative; }
+.ia-pila { display: grid; grid-template-areas: "x"; padding: 0 2%; }
+.apertura-ia .ia-tarjeta { grid-area: x; width: 80%; justify-self: center; margin: 0;
+  transition: transform .8s var(--resorte), opacity .6s ease, filter .6s ease, box-shadow .6s ease; will-change: transform; }
+.ia-tarjeta[data-pos="actual"] { z-index: 3; transform: none; opacity: 1; }
+.ia-tarjeta[data-pos="anterior"], .ia-tarjeta[data-pos="siguiente"] { z-index: 2; opacity: .7; filter: saturate(.6) brightness(.97); cursor: pointer; box-shadow: none; }
+.ia-tarjeta[data-pos="anterior"] { transform: translateX(-17%) scale(.86); }
+.ia-tarjeta[data-pos="siguiente"] { transform: translateX(17%) scale(.86); }
+.ia-tarjeta[data-pos="oculta"] { z-index: 1; opacity: 0; transform: scale(.8); pointer-events: none; }
+.ia-tarjeta:not([data-pos="actual"]) * { pointer-events: none; }
+.ia-tarjeta[data-pos="anterior"]:hover, .ia-tarjeta[data-pos="siguiente"]:hover { opacity: .85; }
+
+.ia-control { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin: 16px 6% 0; }
+.ia-nota { font-size: .78rem; color: var(--gris); }
+.ia-mando { display: inline-flex; align-items: center; gap: 6px; }
+.ia-flecha { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--linea); background: var(--superficie); color: var(--tinta); display: grid; place-items: center; cursor: pointer; transition: transform .1s ease-out, background .2s; }
+.ia-flecha:hover { background: color-mix(in srgb, var(--tinta) 6%, var(--superficie)); }
+.ia-flecha:active { transform: scale(.92); }
+.ia-flecha svg { width: 18px; height: 18px; }
+.ia-flecha .i-play { display: none; }
+.ia-flecha[aria-pressed="true"] .i-pausa { display: none; }
+.ia-flecha[aria-pressed="true"] .i-play { display: block; }
+.ia-indicadores { display: inline-flex; gap: 2px; margin: 0 4px; }
+.ia-indicadores button { width: 24px; height: 40px; border: 0; background: none; cursor: pointer; display: grid; place-items: center; padding: 0; }
+.ia-indicadores button::before { content: ""; width: 8px; height: 8px; border-radius: 999px; background: var(--linea); transition: width .4s var(--resorte), background .3s; }
+.ia-indicadores button[aria-current="true"]::before { width: 22px; background: var(--tinta); }
+
+@media (max-width: 600px) {
+  .ia-pila { padding: 0; }
+  .apertura-ia .ia-tarjeta { width: 92%; }
+  .ia-tarjeta[data-pos="anterior"] { transform: translateX(-7%) scale(.9); }
+  .ia-tarjeta[data-pos="siguiente"] { transform: translateX(7%) scale(.9); }
+  .ia-control { margin: 14px 0 0; justify-content: center; }
+  .ia-nota { flex: 1 1 100%; text-align: center; order: 2; }
+  /* En móvil la tarjeta del frente crece hacia abajo a medida que aparece cada parte, sin dejar espacio vacío:
+     solo ella marca la altura de la pila; las de atrás se ajustan a esa altura. */
+  .ia-pila { position: relative; align-items: start; }
+  .ia-tarjeta:not([data-pos="actual"]) { position: absolute; top: 0; bottom: 0; left: 4%; right: 4%; width: auto !important; overflow: hidden; }
+  .ia-tarjeta[data-pos="actual"] [data-paso]:not(.visible):not(.activo):not(.listo):not(.vacio) { display: none; }
+  .ia-tarjeta[data-pos="actual"] [data-paso]:is(.visible, .activo, .listo, .vacio) { animation: ia-crece .55s var(--resorte, ease) both; }
+}
+@keyframes ia-crece { from { max-height: 0; opacity: 0; overflow: hidden; } to { max-height: 600px; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .apertura-ia .ia-tarjeta { transition: opacity .2s ease; } .ia-tarjeta [data-paso] { animation: none !important; } }

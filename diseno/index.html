@@ -125,20 +125,15 @@
       </div>
       </div>
       <div class="apertura-ia" data-aparece style="--i:2">
-      <div class="ia" data-ia aria-label="Ejemplo animado de una consulta a Textifika">
-        <div class="ia-barra">
-          <span class="ia-puntos" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="ia-titulo">Tu IA</span>
-          <span class="ia-conectado"><span class="pulso" aria-hidden="true"></span>Textifika conectado</span>
-        </div>
-
-        <div class="ia-casos" data-propio role="tablist" aria-label="Ejemplos de consultas">
-          <button type="button" role="tab" id="ia-tab-0" aria-controls="ia-escena-0" aria-selected="true" data-caso="0">Cobrar tras la prueba</button>
-          <button type="button" role="tab" id="ia-tab-1" aria-controls="ia-escena-1" aria-selected="false" tabindex="-1" data-caso="1">Revisar un titular</button>
-          <button type="button" role="tab" id="ia-tab-2" aria-controls="ia-escena-2" aria-selected="false" tabindex="-1" data-caso="2">Si el libro no lo dice</button>
-        </div>
-        <div class="ia-cuerpo">
-<div class="ia-escena activa" data-escena id="ia-escena-0" role="tabpanel" aria-labelledby="ia-tab-0">
+      <div class="ia-carrusel" data-ia aria-roledescription="carrusel" aria-label="Ejemplos animados de consultas a Textifika">
+        <div class="ia-pila">
+        <div class="ia ia-tarjeta" data-escena role="group" aria-roledescription="diapositiva" aria-label="1 de 6: Cobrar tras la prueba">
+          <div class="ia-barra">
+            <span class="ia-puntos" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="ia-titulo">Tu IA</span>
+            <span class="ia-conectado"><span class="pulso" aria-hidden="true"></span>Textifika conectado</span>
+          </div>
+          <div class="ia-cuerpo">
           <div class="ia-usuario">
             <span class="sr-only">¿Cómo cobro mi producto cuando termina la prueba gratis? Respondé con fundamento.</span>
             <p aria-hidden="true"><span data-tipeo="¿Cómo cobro mi producto cuando termina la prueba gratis? Respondé con fundamento."></span><span class="ia-fantasma" data-fantasma></span><span class="ia-cursor" data-cursor></span></p>
@@ -147,11 +142,10 @@
           <ul class="ia-tools" aria-label="Consultas que hace tu IA a Textifika">
             <li data-paso><span class="ia-estado" aria-hidden="true"></span><code>buscar_concepto</code><span>Scientific Advertising</span></li>
             <li data-paso><span class="ia-estado" aria-hidden="true"></span><code>buscar_concepto</code><span>The Art of Money Getting</span></li>
-            <li data-paso><span class="ia-estado" aria-hidden="true"></span><code>obtener_checklist</code><span>El arte de la guerra</span></li>
           </ul>
 
           <div class="ia-resp">
-            <p class="ia-intro" data-paso>Con esto de fondo, te propongo tres pasos. Cada uno sale de un libro y de una página que podés abrir.</p>
+            <p class="ia-intro" data-paso>Con esto de fondo, te propongo dos pasos. Cada uno sale de un libro y de una página que podés abrir.</p>
 
             <article class="ia-cita" data-paso style="--acento:#f1e27c">
               <header><b>Scientific Advertising</b><span class="pagina">Hopkins · p. 75</span></header>
@@ -165,16 +159,52 @@
               <p><strong>Qué hacer.</strong> Cobrá por volver, no por cada uso. Que renovar sea fácil, y que valga la pena.</p>
             </article>
 
-            <article class="ia-cita" data-paso style="--acento:#df2a1f">
-              <header><b>El arte de la guerra</b><span class="pagina">Sun Tzu · p. 44</span></header>
-              <blockquote><mark data-marca>Move not unless you see an advantage</mark></blockquote>
-              <p><strong>Qué hacer.</strong> No lances el cobro por impulso: esperá a que los números muestren que el valor está.</p>
-            </article>
-
-            <p class="ia-cierre" data-paso><span class="ia-ok" aria-hidden="true">✓</span> 3 citas verificadas: existen tal cual en su página. Si una no está en el libro, no llega a tu IA.</p>
+            <p class="ia-cierre" data-paso><span class="ia-ok" aria-hidden="true">✓</span> 2 citas verificadas: existen tal cual en su página. Si una no está en el libro, no llega a tu IA.</p>
           </div>
+          </div>
+        </div>
+        <div class="ia ia-tarjeta" data-escena role="group" aria-roledescription="diapositiva" aria-label="2 de 6: Aprobar un pull request">
+          <div class="ia-barra">
+            <span class="ia-puntos" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="ia-titulo">Tu IA</span>
+            <span class="ia-conectado"><span class="pulso" aria-hidden="true"></span>Textifika conectado</span>
+          </div>
+          <div class="ia-cuerpo">
+<div class="ia-usuario">
+<span class="sr-only">¿Apruebo este pull request o le pido más cambios? Respondé con fundamento.</span>
+<p aria-hidden="true"><span data-tipeo="¿Apruebo este pull request o le pido más cambios? Respondé con fundamento."></span><span class="ia-fantasma" data-fantasma></span><span class="ia-cursor" data-cursor></span></p>
 </div>
-<div class="ia-escena" data-escena id="ia-escena-1" role="tabpanel" aria-labelledby="ia-tab-1" aria-hidden="true">
+
+<ul class="ia-tools" aria-label="Consultas que hace tu IA a Textifika">
+<li data-paso><span class="ia-estado" aria-hidden="true"></span><code>buscar_concepto</code><span>«approve» · Google Engineering Practices</span><span class="ia-res">1 página</span></li>
+</ul>
+
+<div class="ia-resp">
+<p class="ia-intro" data-paso>La guía de revisión de código de Google lo responde en su estándar. Dos ideas, con su página.</p>
+
+<article class="ia-cita" data-paso style="--acento:#6f8fd6">
+<header><b>Google Engineering Practices</b><span class="pagina">Google · p. 5</span></header>
+<blockquote><mark data-marca>In general, reviewers should favor approving a CL once it is in a state where it definitely improves the overall code health of the system being worked on, even if the CL isn't perfect.</mark></blockquote>
+<p><strong>Qué hacer.</strong> Si el cambio deja el código mejor que antes, aprobalo aunque no sea perfecto.</p>
+</article>
+
+<article class="ia-cita" data-paso style="--acento:#6f8fd6">
+<header><b>Google Engineering Practices</b><span class="pagina">Google · p. 5</span></header>
+<blockquote><mark data-marca>Instead of seeking perfection, what a reviewer should seek is continuous improvement.</mark></blockquote>
+<p><strong>Qué hacer.</strong> Lo que sea solo un detalle, marcalo como «Nit:» y no frenes el cambio por eso.</p>
+</article>
+
+<p class="ia-cierre" data-paso><span class="ia-ok" aria-hidden="true">✓</span> 2 citas verificadas: existen tal cual en su página. Si una no está en el libro, no llega a tu IA.</p>
+</div>
+          </div>
+        </div>
+        <div class="ia ia-tarjeta" data-escena role="group" aria-roledescription="diapositiva" aria-label="3 de 6: Revisar un titular">
+          <div class="ia-barra">
+            <span class="ia-puntos" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="ia-titulo">Tu IA</span>
+            <span class="ia-conectado"><span class="pulso" aria-hidden="true"></span>Textifika conectado</span>
+          </div>
+          <div class="ia-cuerpo">
 <div class="ia-usuario">
 <span class="sr-only">¿Qué le cambio al titular de mi landing? Respondé con fundamento.</span>
 <p aria-hidden="true"><span data-tipeo="¿Qué le cambio al titular de mi landing? Respondé con fundamento."></span><span class="ia-fantasma" data-fantasma></span><span class="ia-cursor" data-cursor></span></p>
@@ -202,8 +232,85 @@
 
 <p class="ia-cierre" data-paso><span class="ia-ok" aria-hidden="true">✓</span> 2 citas verificadas: existen tal cual en su página. Si una no está en el libro, no llega a tu IA.</p>
 </div>
+          </div>
+        </div>
+        <div class="ia ia-tarjeta" data-escena role="group" aria-roledescription="diapositiva" aria-label="4 de 6: Permisos de Claude Code">
+          <div class="ia-barra">
+            <span class="ia-puntos" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="ia-titulo">Tu IA</span>
+            <span class="ia-conectado"><span class="pulso" aria-hidden="true"></span>Textifika conectado</span>
+          </div>
+          <div class="ia-cuerpo">
+<div class="ia-usuario">
+<span class="sr-only">¿Qué permisos le doy a Claude Code en mi proyecto?</span>
+<p aria-hidden="true"><span data-tipeo="¿Qué permisos le doy a Claude Code en mi proyecto?"></span><span class="ia-fantasma" data-fantasma></span><span class="ia-cursor" data-cursor></span></p>
 </div>
-<div class="ia-escena" data-escena id="ia-escena-2" role="tabpanel" aria-labelledby="ia-tab-2" aria-hidden="true">
+
+<ul class="ia-tools" aria-label="Consultas que hace tu IA a Textifika">
+<li data-paso><span class="ia-estado" aria-hidden="true"></span><code>buscar_concepto</code><span>«permisos» · Aprende Claude Code</span><span class="ia-res">3 páginas</span></li>
+</ul>
+
+<div class="ia-resp">
+<p class="ia-intro" data-paso>El libro le dedica un capítulo a los permisos. Esto es lo central.</p>
+
+<article class="ia-cita" data-paso style="--acento:#f4a291">
+<header><b>Aprende Claude Code</b><span class="pagina">Guillamón · p. 66</span></header>
+<blockquote><mark data-marca>Claude Code sigue el principio de mínimo privilegio</mark></blockquote>
+<p><strong>Qué hacer.</strong> Dejá que pida confirmación para lo irreversible. Permití de antemano solo lo que usás seguido.</p>
+</article>
+
+<article class="ia-cita" data-paso style="--acento:#f4a291">
+<header><b>Aprende Claude Code</b><span class="pagina">Guillamón · p. 68</span></header>
+<blockquote><mark data-marca>en servidores de producción, no le des permisos de escritura a Claude.</mark></blockquote>
+<p><strong>Qué hacer.</strong> En producción, solo lectura. Y trabajá con git para poder revertir cualquier cambio.</p>
+</article>
+
+<p class="ia-cierre" data-paso><span class="ia-ok" aria-hidden="true">✓</span> 2 citas verificadas: existen tal cual en su página. Si una no está en el libro, no llega a tu IA.</p>
+</div>
+          </div>
+        </div>
+        <div class="ia ia-tarjeta" data-escena role="group" aria-roledescription="diapositiva" aria-label="5 de 6: Claves en el código">
+          <div class="ia-barra">
+            <span class="ia-puntos" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="ia-titulo">Tu IA</span>
+            <span class="ia-conectado"><span class="pulso" aria-hidden="true"></span>Textifika conectado</span>
+          </div>
+          <div class="ia-cuerpo">
+<div class="ia-usuario">
+<span class="sr-only">Tengo las API keys escritas en el código. ¿Está mal?</span>
+<p aria-hidden="true"><span data-tipeo="Tengo las API keys escritas en el código. ¿Está mal?"></span><span class="ia-fantasma" data-fantasma></span><span class="ia-cursor" data-cursor></span></p>
+</div>
+
+<ul class="ia-tools" aria-label="Consultas que hace tu IA a Textifika">
+<li data-paso><span class="ia-estado" aria-hidden="true"></span><code>buscar_concepto</code><span>«config» · The Twelve-Factor App</span><span class="ia-res">2 páginas</span></li>
+</ul>
+
+<div class="ia-resp">
+<p class="ia-intro" data-paso>Sí. El tercer factor trata justo esto.</p>
+
+<article class="ia-cita" data-paso style="--acento:#a3d6a6">
+<header><b>The Twelve-Factor App</b><span class="pagina">Wiggins · p. 7</span></header>
+<blockquote><mark data-marca>Apps sometimes store config as constants in the code. This is a violation of twelve-factor</mark></blockquote>
+<p><strong>Qué hacer.</strong> Sacá las claves del código y guardalas en variables de entorno.</p>
+</article>
+
+<article class="ia-cita" data-paso style="--acento:#a3d6a6">
+<header><b>The Twelve-Factor App</b><span class="pagina">Wiggins · p. 7</span></header>
+<blockquote><mark data-marca>whether the codebase could be made open source at any moment, without compromising any credentials.</mark></blockquote>
+<p><strong>Qué hacer.</strong> La prueba: si publicaras el repo hoy, ¿se filtraría alguna clave? Si sí, falta separar.</p>
+</article>
+
+<p class="ia-cierre" data-paso><span class="ia-ok" aria-hidden="true">✓</span> 2 citas verificadas: existen tal cual en su página. Si una no está en el libro, no llega a tu IA.</p>
+</div>
+          </div>
+        </div>
+        <div class="ia ia-tarjeta" data-escena role="group" aria-roledescription="diapositiva" aria-label="6 de 6: Si el libro no lo dice">
+          <div class="ia-barra">
+            <span class="ia-puntos" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="ia-titulo">Tu IA</span>
+            <span class="ia-conectado"><span class="pulso" aria-hidden="true"></span>Textifika conectado</span>
+          </div>
+          <div class="ia-cuerpo">
 <div class="ia-usuario">
 <span class="sr-only">¿Qué dice Marco Aurelio sobre invertir en criptomonedas?</span>
 <p aria-hidden="true"><span data-tipeo="¿Qué dice Marco Aurelio sobre invertir en criptomonedas?"></span><span class="ia-fantasma" data-fantasma></span><span class="ia-cursor" data-cursor></span></p>
@@ -224,12 +331,19 @@
 
 <p class="ia-cierre" data-paso><span class="ia-ok" aria-hidden="true">✓</span> 0 citas inventadas: si algo no está en el libro, no llega a tu IA.</p>
 </div>
-</div>
+          </div>
         </div>
-        <div class="ia-pie">
-          <span>Ejemplos armados con textos reales de la biblioteca.</span>
-          <button class="boton chico claro" type="button" data-repetir>Ver de nuevo</button>
         </div>
+        <div class="ia-control">
+          <span class="ia-nota">Ejemplos con textos reales de la biblioteca.</span>
+          <div class="ia-mando">
+            <button type="button" class="ia-flecha" data-mover="-1" aria-label="Caso anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <div class="ia-indicadores"><button type="button" data-ir="0" aria-label="Ver caso 1: Cobrar tras la prueba"></button><button type="button" data-ir="1" aria-label="Ver caso 2: Aprobar un pull request"></button><button type="button" data-ir="2" aria-label="Ver caso 3: Revisar un titular"></button><button type="button" data-ir="3" aria-label="Ver caso 4: Permisos de Claude Code"></button><button type="button" data-ir="4" aria-label="Ver caso 5: Claves en el código"></button><button type="button" data-ir="5" aria-label="Ver caso 6: Si el libro no lo dice"></button></div>
+            <button type="button" class="ia-flecha" data-mover="1" aria-label="Caso siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+            <button type="button" class="ia-flecha" data-pausa aria-label="Pausar los ejemplos" aria-pressed="false"><svg class="i-pausa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="6" width="3.2" height="12" rx="1"/><rect x="13.8" y="6" width="3.2" height="12" rx="1"/></svg><svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 6v12l10-6z"/></svg></button>
+          </div>
+        </div>
+      </div>
       </div>
       </div>
     </div>
