@@ -4,6 +4,7 @@
 // El libro 001 también sale de acá; texto.html solo redirige a su ficha.
 // Uso: node scripts/sitio.ts   (después de node scripts/catalogo.ts)
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { navPrincipal, pie } from "./chrome.ts";
 
 type Ficha = {
   num: string; id: string | null; color: string; plegado: boolean; tema: string;
@@ -234,14 +235,7 @@ ${d.indice.map((s, i) => `        <li><span class="n">${String(i + 1).padStart(2
 <header class="cabecera">
   <div class="envoltura">
     <a class="marca" href="../index.html" aria-label="Textifika, inicio"><svg class="iso" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="var(--tile)"/><rect x="13" y="14" width="38" height="11" rx="3.5" fill="var(--barra)"/><path d="M26 25h12v26l-6-5.5L26 51z" fill="var(--cinta)"/></svg><span>Text<b>ifika</b></span></a>
-    <nav class="navegacion" aria-label="Principal">
-      <a href="../biblioteca.html" aria-current="page">Biblioteca</a>
-      <a href="../planes.html">Planes</a>
-      <a href="../subir.html">Subir</a>
-      <a class="ocultable" href="../index.html#guia">Cómo funciona</a>
-      <a class="ocultable" href="../autores.html">Para autores</a>
-      <a class="boton chico" href="../entrar.html">Entrar</a>
-    </nav>
+    ${navPrincipal("/biblioteca.html")}
   </div>
 </header>
 <main id="contenido">
@@ -274,36 +268,7 @@ ${d.indice.map((s, i) => `        <li><span class="n">${String(i + 1).padStart(2
   </section>
 ${secFrameworks}${secChecklists}${ejemplo(d)}${secGlosario}${secIndice}
 </main>
-<footer class="pie-sitio">
-  <div class="envoltura pie-grid">
-    <div class="pie-marca">
-      <a class="marca" href="/index.html" aria-label="Textifika, inicio"><svg class="iso" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="var(--tile)"/><rect x="13" y="14" width="38" height="11" rx="3.5" fill="var(--barra)"/><path d="M26 25h12v26l-6-5.5L26 51z" fill="var(--cinta)"/></svg><span>Text<b>ifika</b></span></a>
-      <p>Lo mejor de cada libro, dentro de tu IA.</p>
-    </div>
-    <nav class="pie-col" aria-labelledby="pie-t1">
-      <h2 id="pie-t1">Textifika</h2>
-      <a href="/biblioteca.html">Biblioteca</a>
-      <a href="/planes.html">Planes</a>
-      <a href="/subir.html">Subir una obra</a>
-      <a href="/guia.html">Guía de conexión</a>
-      <a href="/autores.html">Para autores</a>
-      <a href="/mi-biblioteca.html">Mi biblioteca</a>
-    </nav>
-    <nav class="pie-col" aria-labelledby="pie-t2">
-      <h2 id="pie-t2">Legal</h2>
-      <a href="/terminos.html">Términos</a>
-      <a href="/privacidad.html">Privacidad</a>
-    </nav>
-    <div class="pie-credito">
-      <span class="pie-etiqueta">Una creación de</span>
-      <a class="pie-kitifica" href="https://www.kitifica.com" target="_blank" rel="noopener" aria-label="Kitifica (se abre en una pestaña nueva)">
-        <picture><source media="(prefers-color-scheme: dark)" srcset="/kitifica-claro.svg"><img src="/kitifica.svg" alt="Kitifica" width="98" height="26"></picture>
-        <svg class="pie-salida" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
-      </a>
-    </div>
-  </div>
-  <div class="envoltura pie-base"><span>© 2026 Textifika — Edición uno · El Salvador</span></div>
-</footer>
+${pie}
 <script src="../app.js"></script>
 </body>
 </html>
